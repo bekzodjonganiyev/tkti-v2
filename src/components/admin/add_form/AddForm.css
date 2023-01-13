@@ -1,0 +1,12 @@
+.main-texteditor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.main-texteditor-form hr {
+  padding: 5px;
+  /* border: 1px solid red; */
+  background: #222;
+  opacity: 1 !important;
+}

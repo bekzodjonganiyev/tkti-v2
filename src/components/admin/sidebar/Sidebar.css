@@ -1,0 +1,47 @@
+::-webkit-scrollbar {
+  height: 4px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 0px;               /* width of vertical scrollbar */
+  border: 1px solid #d5d5d5;
+}
+
+aside {
+  background: #222;
+  flex-grow: 0;
+  padding: 0px 20px 20px 20px;
+  box-sizing: border-box;
+}
+
+/* LOGO */
+.side-logo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 70px;
+  padding-top: 20px;
+  background: inherit;
+  color: white;
+  font-size: 30px;
+}
+
+/* LINKS */
+ul {
+  position: fixed;
+  top:70px;
+  margin: 0;
+  padding: 20px 0px 100px 0px;
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+.side-link {
+  display: block;
+  color: white;
+  font-size: 20px;
+  padding: 10px 15px;
+}
+
+.side-link:hover {
+  background: white;
+  color: #222;
+}
+

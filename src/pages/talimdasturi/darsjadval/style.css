@@ -1,0 +1,103 @@
+table{
+    width: 100%;
+}
+.info__wrapper{
+    display: flex;
+    
+    justify-content: center;
+    align-items:center;
+    margin-bottom: -65px;
+}
+thead .first__child th{
+    font-size: 3rem;
+    padding-left: 20%;
+}
+
+tbody tr td ~ td {
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+tbody tr a{
+    padding: 8px 20px;
+    background: #CDDCF6;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+body tr a:hover{
+    background: #0350D0;
+    color: white !important;
+}
+@media (max-width: 768px) {
+    .bolimlar__lista{
+            display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 100%;
+                flex: 1 1 40px;
+                margin: 10rem auto;
+    }
+    .qaws{
+            min-width: 300px;
+                width: 27%;
+                color: #02307D;
+                background: #CDDCF6;
+                border-radius: 0 15px 0 15px;
+                position: relative;
+                height: 250px;
+                min-height: 100px;
+                display: flex;
+                border: 1px solid rgb(136 195 247 / 52%);
+                justify-content: center;
+                background-size: cover;
+                align-items: center;
+                text-align: center;
+                flex-direction: column;
+                overflow: hidden;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-bottom: 10rem;
+                margin: 0 7px 30px;
+                transition: all 0.5s ease;
+    }
+.page_main{
+    margin-left: -35px;
+        width: 70% !important;
+}
+
+.darsJAdval{
+    display: block;
+}
+.darsJAdval td{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+   
+    margin: 10px 14px;
+   
+}
+.darsJAdval a{
+    display: flex;
+    align-items:center;
+    text-align: center;
+        margin: 10px 2px;
+            padding: 8px 2px;
+        
+        
+}
+
+.first__child th{
+    font-size: 3.5rem !important;
+}
+.kurslar{
+    display: none !important;
+}
+
+}
+.table-box{
+    margin-bottom: 40px;
+}

@@ -1,0 +1,21 @@
+.graduates-item p,.graduates-item h4{
+    text-align: center;
+width: 90%;
+}
+.students_img{
+    width: 60%;
+    height: 60%;
+    margin: 0 40px;
+    
+    border-radius:5px;
+}
+.graduates-students{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.graduates-item{
+    width: 250px;
+    margin: 10px auto;
+}

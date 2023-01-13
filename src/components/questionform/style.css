@@ -1,0 +1,66 @@
+.question__form__container{
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.question__form{
+    margin-top: 25px;
+    width: 47%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.question__form > textarea{
+    width: 100%;
+    resize: vertical;
+    padding: 10px;
+}
+.question__form > div{
+    width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+.question__form > div >h6{
+    width: 93%;
+    text-align: justify;
+    margin-left: 10px;
+}
+.question__contact__menu{
+    width: 47%;
+    padding: 0;
+}
+
+.question__contact__menu >div {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(116, 67, 67, 0.2);
+}
+
+.question__form__checkbox{
+    display: block !important;
+    width: 20px;
+    height: 20px;
+}
+.qabul-info{
+    margin: 25px 0;
+}
+
+@media only screen and (max-width: 900px){
+    .question__form__container{
+        display: flex;
+        flex-direction: column;
+    }
+    .question__form, .question__contact__menu{
+        width: 100%;
+        margin: 20px auto;
+    }
+}
+.sdsds{
+    display: inline-block;
+}

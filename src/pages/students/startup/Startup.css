@@ -1,0 +1,53 @@
+.startup_project {
+    position: absolute;
+    border-color: coral;
+    position: relative;
+    margin-bottom: 5rem;
+    width: 100%;
+    height: 40vh;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: initial;
+    background-image: url('../../../files/sturtup_pro.png');
+}
+
+.startup_project h1 {
+    position: relative;
+    bottom: -70px;
+    color: #000;
+
+    margin-left: 20px !important;
+}
+.result_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.result_info button {
+    margin-bottom: 8px;
+    padding: 6px 18px;
+    background-color: #fff;
+    border: .1px solid #000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.result_info button:hover {
+    border: .5px solid #000;
+    background-color: #fff;
+    color: #fff !important;
+}
+.result_info-name{
+    margin: 40px 5px;
+}
+.result_info-name a:hover{
+    color: #fff !important;
+}
+.zas{
+    color:red !important;
+}
+sub{
+    color:darkblue;
+    font-weight: 600;
+}

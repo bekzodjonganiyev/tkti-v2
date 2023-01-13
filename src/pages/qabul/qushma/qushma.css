@@ -1,0 +1,120 @@
+.doktarant-content {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .doktarant-img {
+    width: 100%;
+    padding: 100px 30px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .doktarant-tcti {
+    margin-left: 30px;
+  }
+  
+  .doktarant-tcti li {
+    margin-bottom: 10px;
+    list-style-position: inside;
+    
+  }
+  
+  .doktarant-admission,.doktarant-faq {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  
+  .doktarant-admission-title, .doktarant-faq-title {
+    width: 100%;
+    padding: 15px;
+    background: #CDDCF6;
+    margin: 0 0 50px 0 !important;
+  }
+  
+  .dn {
+    display: none;
+  }
+  
+  .doktarant-admission-items {
+    padding: 0;
+    margin: 0;
+    width: 30%;
+    cursor: pointer;
+    background: #f3f2ee;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  
+  .doktarant-faq-items{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+    background: #f3f2ee;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  
+  .doktarant-faq-items-content{
+    display: block;
+    background: #fff;
+    padding: 20px;
+  }
+  
+  .doktarant-admission-items li h4, .doktarant-faq-items li h4{
+    margin: 10px 0 !important;
+    padding: 10px 20px !important;
+    padding: 5px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .doktarant-admission-items-active{
+    background: #f9f8f6;
+  }
+  
+  .doktarant-admission-items-content {
+    display: none;
+    height: auto;
+    padding: 0 20px;
+  }
+  
+  .doktarant-admission-items-content-desktop, .doktarant-faq-items-content-desktop {
+    width: 65%;
+    height: auto;
+    padding: 0 20px;
+  }
+  
+  @media only screen and (max-width:976px) {
+    .doktarant-admission-items-content, .doktarant-faq-items-content{
+      display: block;
+      background: #fff;
+    }
+  
+    .doktarant-admission-items-content-desktop, .doktarant-faq-items-content-desktop{
+      display: none;
+    }
+  
+    .doktarant-admission-items, .doktarant-faq-items{
+      width: 100%;
+    }
+  
+    .admission-mobile{
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .admission-mobile div {
+      margin: 0 auto;
+    }
+  
+    .admission-mobile div:last-child h4{
+      margin-right: 30px;
+    }
+  
+    .doktarant-admission-items-active{
+      background: none;
+    }
+  
+  
+  }
