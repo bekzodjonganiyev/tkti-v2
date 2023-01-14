@@ -17,6 +17,7 @@ function Footer() {
     location.pathname === "/admin/fakultet" ||
     location.pathname === "/admin/kafedra" ||
     location.pathname === "/admin/bolim" ||
+    location.pathname === "/admin/markaz" ||
     location.pathname === "/admin/faoliyat" ||
     location.pathname === "/admin/elon" ||
     location.pathname === "/admin/syllabus" ||

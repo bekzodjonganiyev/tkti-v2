@@ -55,6 +55,7 @@ import Admin from "./pages/admin";
 import Fakultet from "./pages/admin/fakultet/Fakultet";
 import Kafedra from "./pages/admin/kafedra/Kafedra";
 import Bolim from "./pages/admin/bolim/Bolim";
+import Markaz from "./pages/admin/markaz/Markaz";
 import Faoliyat from "./pages/admin/foliyat/Faoliyat";
 import Syllabus from "./pages/admin/syllabus/Syllabus";
 import Yangilik from "./pages/admin/yangilik/Yangilik";
@@ -110,6 +111,7 @@ function App() {
           <Route path="fakultet" element={<Fakultet />} />
           <Route path="kafedra" element={<Kafedra />} />
           <Route path="bolim" element={<Bolim />} />
+          <Route path="markaz" element={<Markaz />} />
           <Route path="faoliyat" element={<Faoliyat />} />
           <Route path="syllabus" element={<Syllabus />} />
           <Route path="yangilik" element={<Yangilik />} />

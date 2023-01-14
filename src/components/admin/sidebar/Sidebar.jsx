@@ -25,7 +25,12 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink className="side-link" to="/admin/bolim">
-            Bo'lim va Markaz
+            Bo'lim
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="side-link" to="/admin/markaz">
+            Markaz
           </NavLink>
         </li>
         <li>
