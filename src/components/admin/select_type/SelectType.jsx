@@ -22,14 +22,17 @@ const SelectType = ({ title = "tipni tanlang", options }) => {
         <option value="" hidden>
           tanlang
         </option>
-        {options.length > 0 ? (
-          options.map((item, index) => <option key={index}>{item}</option>)
+        {options?.length > 0 ? (
+          options.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)
         ) : (
           <option>Yuklanmoqda ...</option>
         )}
       </select>
     </div>
   );
-};
+}
+
 
 export default SelectType;
+
+

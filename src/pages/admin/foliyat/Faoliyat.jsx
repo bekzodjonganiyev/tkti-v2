@@ -1,5 +1,5 @@
 import React from "react";
-import FormHeader from "../../../components/admin/form _header/FormHeader";
+import FormHeader from "../../../components/admin/form_header/FormHeader";
 
 const Faoliyat = () => {
   return (

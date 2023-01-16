@@ -6,7 +6,12 @@
 
 .main-texteditor-form hr {
   padding: 5px;
-  /* border: 1px solid red; */
   background: #222;
   opacity: 1 !important;
+}
+
+.textEditorName{
+  display: block;
+  width: 95%;
+  margin: 0 auto;
 }
