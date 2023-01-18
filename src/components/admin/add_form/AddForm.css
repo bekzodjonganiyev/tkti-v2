@@ -4,6 +4,17 @@
   gap: 50px;
 }
 
+.text-editor-wrapper{
+  width: 95%;
+  margin: 0 auto;
+}
+
+.text-editor-body{
+  background: white;
+  min-height: 200px;
+  padding:0px 20px;
+}
+
 .main-texteditor-form hr {
   padding: 5px;
   background: #222;
@@ -14,4 +25,9 @@
   display: block;
   width: 95%;
   margin: 0 auto;
+  font-size: 20px;
+}
+
+.text-editor-toolbar .rdw-list-wrapper[title="Unordered"]{
+  display: none;
 }

@@ -1,0 +1,16 @@
+.student-section{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.student-section .student-section-logo{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.student-section div span{
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+}

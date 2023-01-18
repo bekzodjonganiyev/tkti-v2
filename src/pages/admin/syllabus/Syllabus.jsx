@@ -1,12 +1,243 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
+
+import "./Syllabus.css";
+
 import FormHeader from "../../../components/admin/form_header/FormHeader";
-import TextEditor from "../../../components/admin/text_editor/TextEditor";
+import Button from "../../../components/admin/button/Button";
+
+import { Context } from "../../../context";
 
 const Syllabus = () => {
+  const photoRef = useRef();
+  const { globalUrl } = useState(Context);
+  const [inputValue, setInputValue] = useState();
+  const [fakultet, setFakultet] = useState();
+  const [kafedra, setKafedra] = useState();
+  const [yonalish, setYonalish] = useState();
+  const year = [
+    { id: 2020, name: "2020-2021" },
+    { id: 2021, name: "2021-2022" },
+    { id: 2022, name: "2022-2023" },
+  ];
+  const educationType = ["Kechki", "Kunduzgi", "Sirtqi"];
+  const educationDegree = ["Bakalavr", "Magistr", "Doktarantura"];
+
+  function handleInputValue(e) {
+    const { name, value } = e.target;
+    setInputValue((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function fetchKafedra(id) {
+    const fakultetId = id.split(",")[0];
+    fetch(`http://localhost:5000/Fak_data/${fakultetId}`, {
+      headers: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((res) => setKafedra(res.data.kafedralar))
+      .catch((err) => console.log(err));
+  }
+
+  function fetchYonalish(id) {
+    const kafedraId = id.split(",")[0];
+    fetch(`http://localhost:5000/kafedra_data/${kafedraId}`, {
+      headers: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((res) => setYonalish(res.data[0].yonalishlar))
+      .catch((err) => console.log(err));
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    // Object.keys(inputValue).forEach((key) => {
+    //   formData.append(key, inputValue[key]);
+    // });
+    formData.append("title", inputValue?.title);
+    formData.append("yili", inputValue?.yili);
+    formData.append("talim_turi", inputValue?.talim_turi);
+    formData.append("talim_darajasi", inputValue?.talim_darajasi);
+    formData.append("Fakultet", inputValue?.Fakultet.split(",")[1]);
+    formData.append("Kafedra", inputValue?.Kafedra.split(",")[1]);
+    formData.append(
+      "talim_yonalishi",
+      inputValue?.talim_yonalishi.split(",")[1]
+    );
+    for (let i = 0; i < photoRef.current.files.length; i++) {
+      formData.append("photo", photoRef.current.files[i]);
+    }
+
+    // fetch(`http://localhost:5000/daraja/add`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //     Token: localStorage.getItem("token"),
+    //   },
+    //   body: formData
+    // });
+
+    console.log(photoRef.current.files);
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+  }
+
+  useEffect(() => {
+    async function fetchFakultet() {
+      fetch(`http://localhost:5000/Fak_data/all`, {
+        headers: { "Content-type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((res) => setFakultet(res.data))
+        .catch((err) => console.log(err));
+    }
+    fetchFakultet();
+  }, []);
   return (
-    <div>
-      <FormHeader title="Syllabus" buttonName="+" />
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio amet sapiente sunt dignissimos reiciendis, eveniet, deleniti corrupti fuga ipsam ducimus velit quos laboriosam itaque sequi eum minus quod at ad excepturi temporibus quia illo alias! Voluptatibus laudantium eius incidunt, tempore non aliquam possimus mollitia maiores quae. Nemo blanditiis quas, quam saepe beatae fugiat dignissimos reiciendis doloribus ut quis, ab magni necessitatibus magnam maxime consequatur temporibus! Iure soluta alias impedit rerum debitis obcaecati, deserunt perspiciatis voluptatibus modi, quidem perferendis quo eaque animi pariatur provident! Ipsam voluptate magnam excepturi similique cupiditate, dolores in voluptatem vero, voluptatum cumque animi vel distinctio enim saepe officiis obcaecati cum ut pariatur quo recusandae esse eum. Natus veniam quae eveniet nostrum quaerat harum fuga fugit aliquam id illo. Omnis officia, odio minus quisquam iure similique placeat minima! Tempora dicta ab ipsa quisquam iusto pariatur officia, earum, repellendus incidunt, est totam aut reprehenderit? Vero corporis ipsam minima suscipit quaerat ea quod quasi tempora quidem? Obcaecati eveniet saepe itaque vitae dicta repellendus. Qui culpa dolores veritatis deleniti neque aliquid distinctio atque, expedita amet eligendi rem quae commodi molestiae? Eius provident iusto deserunt quisquam harum perspiciatis rem numquam. Quas magni dolores obcaecati, numquam quibusdam porro minima omnis quos beatae reiciendis totam perspiciatis hic cumque, iusto aspernatur a dolor, laborum voluptate. Impedit porro quia nesciunt dolores iusto iure itaque, sit a tempora inventore, necessitatibus, laudantium id. Commodi deserunt, optio ipsam rem quos corrupti! Ut suscipit, esse sunt harum recusandae qui numquam pariatur consectetur maiores id, rem inventore voluptatibus! Ratione accusamus veniam accusantium natus assumenda? Quam est iste culpa non aliquid sed laborum, labore sapiente autem ratione? Mollitia nam vel numquam voluptate architecto deserunt molestias eveniet libero dolore voluptatem. Amet iure placeat nisi dolores inventore praesentium maiores quidem aut itaque repellendus, dignissimos sapiente aspernatur beatae ducimus libero! Tenetur deleniti cumque saepe, velit aspernatur praesentium qui non vitae. Ducimus similique inventore ipsum deserunt iste, quasi esse veritatis assumenda illum eligendi amet sint fugit blanditiis vero, rem dicta adipisci consectetur facilis quae. Nam aspernatur iusto nesciunt ducimus blanditiis accusantium provident, consequatur culpa, amet odit nobis laborum dolores? Eos nihil in pariatur minima asperiores perferendis ratione iure ex doloremque reprehenderit! Delectus repudiandae possimus, quisquam officia corporis minima quo ut blanditiis facilis libero totam mollitia hic expedita, molestias architecto perferendis necessitatibus neque aperiam molestiae rerum consequuntur impedit est. Soluta quibusdam aspernatur ab aut reiciendis illo. Magnam iusto tenetur perspiciatis id. Tempore illum, harum repudiandae ut perferendis rerum quo consequuntur sit! Provident alias veniam nemo et laudantium magnam ipsa consequuntur nostrum impedit inventore qui assumenda fuga optio nihil quas, magni natus, esse eos officia! Deleniti iusto aspernatur blanditiis dolorem. Harum praesentium iste inventore temporibus repellendus quasi vero ipsa facere ab at quo fugiat corrupti quod perferendis recusandae dolores, sapiente dignissimos molestiae commodi mollitia voluptas laudantium cum deserunt debitis! Minus dolorum sit tempora ullam molestiae dolore placeat porro eum debitis qui. Consequatur ratione illum, omnis in velit aliquid debitis! Repudiandae nobis provident mollitia, minus recusandae sapiente odio. Quas tenetur veritatis facilis dolorum alias, laborum ad magnam amet nam!
+    <div className="syllabus-page">
+      <FormHeader title="Syllabus" buttonName="Syllabus Qo'shish" />
+      <form className="syllabus-form" onSubmit={onSubmit}>
+        <label htmlFor="title">
+          Syllabus Nomi <br />
+          <input
+            type="text"
+            required
+            name="title"
+            id="title"
+            onChange={handleInputValue}
+          />
+        </label>
+
+        <div className="year-type-degree">
+          <label htmlFor="yili">
+            Talim Yili <br />
+            <select id="yili" required name="yili" onChange={handleInputValue}>
+              <option value=" " hidden>
+                ...
+              </option>
+              {year.map((i) => (
+                <option value={i.id} key={i.id}>
+                  {i.name}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label htmlFor="talim_turi">
+            Talim Turi <br />
+            <select
+              id="talim_turi"
+              required
+              name="talim_turi"
+              onChange={handleInputValue}
+            >
+              <option value=" " hidden>
+                ...
+              </option>
+              {educationType.map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label htmlFor="talim_darajasi">
+            Talim Darajasi <br />
+            <select
+              id="talim_darajasi"
+              required
+              name="talim_darajasi"
+              onChange={handleInputValue}
+            >
+              <option value=" " hidden>
+                ...
+              </option>
+              {educationDegree.map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <label htmlFor="Fakultet">
+          Fakultet <br />
+          <select
+            required
+            name="Fakultet"
+            onChange={(e) => {
+              handleInputValue(e);
+              fetchKafedra(e.target.value);
+            }}
+          >
+            <option value=" " hidden>
+              ...
+            </option>
+            {fakultet?.map((i) => (
+              <option value={[i._id, i.title_uz]} key={i._id}>
+                {i.title_uz}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label htmlFor="Kafedra">
+          Kafedra <br />
+          <select
+            id="Kafedra"
+            required
+            name="Kafedra"
+            onChange={(e) => {
+              handleInputValue(e);
+              fetchYonalish(e.target.value);
+            }}
+          >
+            <option value="" hidden>
+              ...
+            </option>
+            {kafedra?.map((i) => (
+              <option value={[i._id, i.title_uz]} key={i._id}>
+                {i.title_uz}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label htmlFor="talim_yonalishi">
+          Talim Yo'nalishi <br />
+          <select
+            id="talim_yonalishi"
+            required
+            name="talim_yonalishi"
+            onChange={handleInputValue}
+          >
+            <option value="" hidden>
+              ...
+            </option>
+            {yonalish?.map((i) => (
+              <option value={i.title_uz} key={i._id}>
+                {i.title_uz}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label htmlFor="photo">
+          File Biriktirish <br />
+          <input
+            type="file"
+            id="photo"
+            required
+            name="photo"
+            multiple
+            ref={photoRef}
+          />
+        </label>
+
+        <Button name="Qo'shish" onClick={() => {}} />
+      </form>
     </div>
   );
 };

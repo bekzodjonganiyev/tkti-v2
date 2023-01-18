@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { convertToRaw, EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
@@ -49,17 +49,18 @@ const AddForm = (props) => {
     maqsad_ru: convertToHtml(aimEn),
   };
 
-  const body = hasSelect ? JSON.stringify({...obj, fakultet_id: selectValue}) : JSON.stringify(obj);
+  const body = hasSelect
+    ? JSON.stringify({ ...obj, fakultet_id: selectValue })
+    : JSON.stringify(obj);
 
   function postData() {
     fetch(`${globalUrl}/${url}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzQzODZlMDEyZGU3OTg1YTFhYTMwYyIsImlhdCI6MTY3MzgzOTM4OSwiZXhwIjoxNjczOTI1Nzg5fQ.VUpWPsKmokUS3f55TjLPISMB4crqPwhSu-ja2SrInV8",
+        "Token": localStorage.getItem("token")
       },
-      obj: body
+      body: body,
     })
       .then((res) => res.json())
       .then((res) => console.log(res))
@@ -76,6 +77,9 @@ const AddForm = (props) => {
       <div>
         <span className="textEditorName">{textEditorNames1.nameUz}</span>
         <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
           editorState={aboutUz}
           onEditorStateChange={(a) => setAboutUz(a)}
         />
@@ -83,6 +87,9 @@ const AddForm = (props) => {
       <div>
         <span className="textEditorName">{textEditorNames1.nameRu}</span>
         <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
           editorState={aboutRu}
           onEditorStateChange={(a) => setAboutRu(a)}
         />
@@ -90,6 +97,9 @@ const AddForm = (props) => {
       <div>
         <span className="textEditorName">{textEditorNames1.nameEn}</span>
         <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
           editorState={aboutEn}
           onEditorStateChange={(a) => setAboutEn(a)}
         />
@@ -98,15 +108,33 @@ const AddForm = (props) => {
 
       <div>
         <span className="textEditorName">{textEditorNames2.nameUz}</span>
-        <Editor editorState={aimUz} onEditorStateChange={(a) => setAimUz(a)} />
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aimUz}
+          onEditorStateChange={(a) => setAimUz(a)}
+        />
       </div>
       <div>
         <span className="textEditorName">{textEditorNames2.nameRu}</span>
-        <Editor editorState={aimRu} onEditorStateChange={(a) => setAimRu(a)} />
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aimRu}
+          onEditorStateChange={(a) => setAimRu(a)}
+        />
       </div>
       <div>
         <span className="textEditorName">{textEditorNames2.nameEn}</span>
-        <Editor editorState={aimEn} onEditorStateChange={(a) => setAimEn(a)} />
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aimEn}
+          onEditorStateChange={(a) => setAimEn(a)}
+        />
       </div>
 
       {hasSelect && (
