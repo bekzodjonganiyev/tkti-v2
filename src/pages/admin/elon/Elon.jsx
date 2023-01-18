@@ -1,12 +1,34 @@
 import React from "react";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
+import AddForm from "../../../components/admin/add_form/AddForm";
 
 const Elon = () => {
+  const props = {
+    inputNames: {
+      nameUz: "Yangilik nomi Uz",
+      nameRu: "Yangilik nomi Ru",
+      nameEn: "Yangilik nomi En",
+    },
+    textEditorNames1: {
+      nameUz: "maqsad va vazifa Uz",
+      nameRu: "maqsad va vazifa Ru",
+      nameEn: "maqsad va vazifa En",
+    },
+    buttonName: "Saqlash",
+    url: "elon/add",
+  };
   return (
     <div>
-      <FormHeader title="Elon" buttonName="+"/>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsum tempora repellat aliquid beatae odit dolorem, blanditiis, minima quam consectetur nisi. Quis ea dignissimos provident. Fuga voluptatem a facilis fugit, sit, nam similique alias ratione asperiores sint eaque, unde numquam sed beatae eos voluptatum qui quis quos debitis? Est excepturi ut ducimus perferendis et unde similique repellendus, commodi quidem, distinctio, vel nihil iusto? Ratione quibusdam accusamus error eligendi, tempore temporibus impedit consequuntur illo? Architecto ut quasi provident! Saepe tempora porro doloremque quidem molestias nulla! Cumque esse praesentium in natus libero ratione veniam possimus dignissimos, vitae, numquam autem sint voluptatum repudiandae recusandae corporis maxime eligendi earum quaerat. Sapiente sequi adipisci rerum consequuntur beatae harum laboriosam aut maxime est eaque, voluptatum ipsa magni earum rem! Quibusdam laboriosam assumenda a eaque qui porro, architecto numquam aliquid, facere quo harum voluptas aut vel, earum dolores dolorem veritatis possimus? Cumque, rem dolore earum modi, tempore voluptatum doloribus expedita deleniti accusamus eos sapiente voluptatibus rerum quos? Provident blanditiis quibusdam molestiae dolorem placeat rem, ullam est quod? Excepturi qui voluptatem amet, quas temporibus magnam iure provident sed consequatur, unde facere iste fuga nulla placeat iusto! Suscipit natus ex distinctio tempore corporis tenetur mollitia assumenda. Perferendis asperiores minima quod, eveniet ab nisi illum! Omnis id commodi harum aliquam quod error et est nesciunt, excepturi dolor sit aperiam praesentium labore veniam nulla corporis? Tenetur, voluptatem officia, modi earum saepe repellendus cumque est dolor magni adipisci delectus minus. Quo totam, soluta consequuntur excepturi culpa minima atque maxime rerum, tempore, illum nulla sed consequatur unde quisquam ut veniam molestiae sunt quae aliquam quas eveniet perspiciatis laborum? Error assumenda soluta omnis velit eum! Nulla pariatur laboriosam dolores doloremque, culpa ratione harum libero ducimus corrupti voluptatibus consequatur rem incidunt quod aut facere totam odit aspernatur nostrum eligendi? Excepturi, ipsum explicabo dolores cumque molestiae saepe, odio accusamus vel adipisci velit obcaecati quae quo itaque sint totam, cupiditate eveniet ea beatae architecto dolorem quas enim atque laudantium in. Corrupti quia, nisi recusandae aliquam ea distinctio suscipit ipsum necessitatibus fugiat. Rerum fuga sed laboriosam esse perspiciatis eos minus aspernatur voluptatibus dolore voluptate, provident praesentium illo corrupti, mollitia perferendis, quia molestiae? Eligendi repellat eius labore cum qui soluta pariatur suscipit ut, eum quae ad odio, dolorum molestias aliquam quis reiciendis sequi blanditiis deleniti ratione minima tempore iusto rem expedita amet? Consectetur laboriosam aut quaerat repellat assumenda sequi ad illum perspiciatis, voluptates eaque recusandae cum, modi praesentium quae vero. Dicta quisquam repellat perferendis omnis veritatis molestiae eius. Aut nemo accusantium asperiores esse aperiam tempora cum laboriosam necessitatibus consequatur possimus pariatur dignissimos quod corporis obcaecati eligendi itaque, commodi repellat consectetur ab iure ex libero saepe minus! Dolor, praesentium veniam illum, quas accusantium excepturi suscipit et vero neque minima mollitia libero officia, autem sequi debitis numquam aliquid aperiam. Commodi ipsam at eos veritatis dolorum modi earum accusamus optio quod, recusandae, natus ratione quaerat iure alias amet, molestiae deleniti ut quidem. Laboriosam, a eveniet soluta cupiditate dolore harum dolorum possimus, tempora alias, eaque quos obcaecati. Error eius cumque repellat aperiam vitae.
+      <FormHeader title="Elon" buttonName="+" />
+      <AddForm
+        inputNames={props.inputNames}
+        textEditorNames1={props.textEditorNames1}
+        buttomName={props.buttonName}
+        hasSelect={false}
+        isNews={true}
+        url={props.url}
+      />{" "}
     </div>
   );
 };

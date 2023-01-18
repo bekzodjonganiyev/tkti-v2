@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
@@ -8,6 +8,7 @@ import "./StudentBolim.css";
 
 import Input from "../../../components/admin/input/Input";
 import Button from "../../../components/admin/button/Button";
+import FormHeader from "../../../components/admin/form_header/FormHeader";
 
 import { Context } from "../../../context";
 
@@ -29,7 +30,7 @@ const StudentBolim = () => {
     icon: link,
   };
 
-  function convertToHtml (raw) {
+  function convertToHtml(raw) {
     return draftToHtml(convertToRaw(raw.getCurrentContent()));
   }
 
@@ -39,56 +40,68 @@ const StudentBolim = () => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Token: localStorage.getItem("token")
+        Token: localStorage.getItem("token"),
       },
       body: JSON.stringify(body),
     })
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    console.log(body)
   };
   return (
-    <form className="student-section" onSubmit={submitForm}>
-      <Input
-        nameUz="Bo'lim nomi(UZ)"
-        nameRu="Bo'lim nomi(RU)"
-        nameEn="Bo'lim nomi(EN)"
-      />
-      <div>
-        <span>Bo'lim kontenti(UZ)</span>
-        <Editor
-          editorState={contentUz}
-          onEditorStateChange={(e) => setContentUz(e)}
+    <div>
+      <FormHeader title="Talabalar uchun" buttonName="Qo'shish"/>
+      <form className="student-section" onSubmit={submitForm}>
+        <Input
+          nameUz="Bo'lim nomi(UZ)"
+          nameRu="Bo'lim nomi(RU)"
+          nameEn="Bo'lim nomi(EN)"
         />
-      </div>
+        <div>
+          <span>Bo'lim kontenti(UZ)</span>
+          <Editor
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            wrapperClassName="text-editor-wrapper"
+            editorState={contentUz}
+            onEditorStateChange={(e) => setContentUz(e)}
+          />
+        </div>
 
-      <div>
-        <span>Bo'lim kontenti(RU)</span>
-        <Editor
-          editorState={contentRu}
-          onEditorStateChange={(e) => setContentRu(e)}
-        />
-      </div>
+        <div>
+          <span>Bo'lim kontenti(RU)</span>
+          <Editor
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            wrapperClassName="text-editor-wrapper"
+            editorState={contentRu}
+            onEditorStateChange={(e) => setContentRu(e)}
+          />
+        </div>
 
-      <div>
-        <span>Bo'lim kontenti(EN)</span>
-        <Editor
-          editorState={contentEn}
-          onEditorStateChange={(e) => setContentEn(e)}
-        />
-      </div>
+        <div>
+          <span>Bo'lim kontenti(EN)</span>
+          <Editor
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            wrapperClassName="text-editor-wrapper"
+            editorState={contentEn}
+            onEditorStateChange={(e) => setContentEn(e)}
+          />
+        </div>
 
-      <label htmlFor="forIcon" className="student-section-logo">
-        Bo'lim uchun logo <br />
-        <input
-          type="text"
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
-        />
-      </label>
+        <label htmlFor="forIcon" className="student-section-logo">
+          Bo'lim uchun logo <br />
+          <input
+            type="text"
+            onChange={(e) => setLink(e.target.value)}
+          />
+        </label>
 
-      <Button name="Bo'limni qo'shish" />
-    </form>
+        <Button name="Bo'limni qo'shish" />
+      </form>
+    </div>
   );
 };
 

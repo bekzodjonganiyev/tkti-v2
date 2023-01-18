@@ -1,11 +1,40 @@
 import React from "react";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
+import AddForm from "../../../components/admin/add_form/AddForm";
 
 const Bolim = () => {
+  const props = {
+    inputNames: {
+      nameUz: "Markaz nomi Uz",
+      nameRu: "Markaz nomi Ru",
+      nameEn: "Markaz nomi En",
+    },
+    textEditorNames1: {
+      nameUz: "maqsad va vazifa Uz",
+      nameRu: "maqsad va vazifa Ru",
+      nameEn: "maqsad va vazifa En",
+    },
+    textEditorNames2: {
+      nameUz: "Markaz haqida Uz",
+      nameRu: "Markaz haqida Ru",
+      nameEn: "Markaz haqida En",
+    },
+    selectName: "select name",
+    buttonName: "buttob name",
+    url:"markaz_data/add"
+  };
   return (
     <div>
       <FormHeader title="Markaz" buttonName="+" />
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae eius illo optio atque, distinctio provident id eaque consequatur nam unde quisquam, odio porro pariatur, repudiandae mollitia amet exercitationem tenetur animi. Minima id consequatur omnis adipisci esse hic autem soluta, reiciendis quisquam possimus placeat corrupti, non, illum est animi natus laboriosam dolores illo dignissimos obcaecati quasi laudantium eos. Quia possimus quam harum cumque quis, facilis, quod illo vel odit perspiciatis doloremque soluta quo modi ipsam praesentium iure nihil minima cupiditate ipsum? Mollitia voluptatum nulla inventore ipsum omnis reiciendis eveniet laudantium molestias magni possimus fugit libero dolore accusantium temporibus nemo, illum, rerum dolorum cumque atque excepturi? Fugiat aliquid reiciendis vitae, mollitia dolor obcaecati neque. Voluptatum obcaecati deserunt, mollitia distinctio sapiente quidem pariatur eligendi eius, exercitationem veniam tenetur vitae dignissimos corporis dicta. Expedita, soluta corrupti nobis deleniti sit temporibus assumenda atque, dignissimos iure ducimus non vel. Non explicabo, debitis reiciendis maiores deleniti molestiae cupiditate magnam veritatis sequi maxime dolorem nihil dolor sed rerum ipsa nesciunt esse, aspernatur quod quaerat possimus delectus consequatur voluptate nulla! Error nisi placeat, accusamus architecto, earum nesciunt possimus id quos rerum ipsam reprehenderit ullam. Tempore voluptatibus perspiciatis id voluptas, distinctio similique eveniet maxime beatae velit eius error exercitationem facere perferendis et, labore libero ab. Eaque harum minus fugit quia. Dolorem ea beatae odit modi qui! Aliquam laborum itaque numquam veniam tenetur saepe? Voluptas assumenda tempore voluptates placeat temporibus repellat aliquid natus ullam repudiandae, ipsam est architecto distinctio perspiciatis. Voluptatem recusandae maiores accusantium! Nam voluptate saepe repellat quia ea totam alias id provident minus deleniti nesciunt animi nobis sapiente eligendi laboriosam, asperiores quo quis excepturi omnis itaque unde doloribus odit vero. Aliquid consectetur est quod excepturi nobis culpa perspiciatis odit nisi saepe omnis dolore odio, delectus officia. Commodi nulla, rerum odit corrupti excepturi minima dolorum mollitia dignissimos aliquam, saepe optio, magnam dicta a repellat nesciunt natus! Aliquam et odit nam perspiciatis error veritatis quidem similique, aperiam repudiandae aliquid soluta laboriosam. Quod, sed nostrum a aperiam asperiores molestiae rem eum illum necessitatibus architecto provident quaerat quos quae voluptates, illo officiis. Sed minus temporibus, quasi a at in eveniet placeat animi molestiae sapiente suscipit harum cumque vitae tenetur obcaecati dolor porro, odio quam saepe doloribus ratione et repellat officia! Eligendi nesciunt minus illo numquam nisi quibusdam corporis culpa rem voluptates cumque itaque ea ipsam neque delectus, natus maxime. Nam odio a quia magni laudantium consequuntur animi expedita inventore ad aut voluptates, perferendis veritatis ratione et assumenda. Dolore beatae, amet temporibus ad, libero mollitia eos a culpa magnam harum laborum cupiditate doloribus? Quo ad unde magnam quod adipisci fuga nemo dolores, ducimus, sit minus maiores explicabo magni. Rem odio deserunt adipisci dolores temporibus, distinctio numquam. Omnis consequuntur enim, laboriosam praesentium dolores quos aperiam optio voluptates? Quisquam laudantium quam tempora nam inventore culpa voluptate debitis, esse incidunt mollitia aperiam quaerat illum autem, nihil, magni necessitatibus minima eaque aspernatur in. Et praesentium magni velit illum, ea numquam harum facere, reiciendis incidunt quod itaque laboriosam aperiam error repellat impedit molestiae ipsa in aspernatur id. Saepe, sunt.
+      <AddForm
+        inputNames={props.inputNames}
+        textEditorNames1={props.textEditorNames1}
+        textEditorNames2={props.textEditorNames2}
+        selectName={props.selectName}
+        buttomName={props.buttonName}
+        hasSelect={false}
+        url={props.url}
+      />
     </div>
   );
 };
