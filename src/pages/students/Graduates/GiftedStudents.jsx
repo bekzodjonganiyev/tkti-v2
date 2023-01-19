@@ -17,6 +17,8 @@ import { Context } from "../../../context";
 const GiftedStudents = () => {
  
    const { lang } = useContext(Context);
+
+   fetch("http://localhost:5000/Fak_data/all", {headers:{"Content-type":"application/json"}}).then(res => res.json()).then(res => console.log(res.data))
    
   return (
           <div className="p-5">

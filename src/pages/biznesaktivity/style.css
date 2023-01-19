@@ -1,0 +1,32 @@
+.faoliyatInfo{
+    width: 100vw;
+}
+.faoliyat{
+    
+    margin: 15px;
+    padding: 15px 30px;
+}
+.faoliyat .edfewdf{
+    width: 400px;
+    margin: 0 20px;
+    background-color: #0350D0;
+    border-radius: 10px;
+    padding: 15px 30px;
+    
+}
+.faoliyat .edfewdf:hover{
+    transition: 1s all;
+    margin-top: -5px;
+}
+.faoliyat .edfewdf span{
+
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 29px;
+    color: #FFFFFF;
+}
+.faoliyat-title h1{
+    display: flex;
+    justify-content: center;
+}

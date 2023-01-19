@@ -12,6 +12,11 @@ function Provider({ children }) {
   const [textEditorBodyEn, setTextEditorBodyEn] = useState();
   const [names, setNames] = useState();
   const [selectValue, setSelectValue] = useState();
+  const [fakultetActivity, setFakultetActivity] = useState();
+  const [kafedraActivity, setKafedraActivity] = useState();
+  const [bolimActivity, setBolimActivity] = useState();
+  const [markazActivity, setMarkazActivity] = useState();
+  const [rektoratActivity, setRektoratActivity] = useState();
   const globalUrl = "http://localhost:5000";
 
   const time = (arg) => {
@@ -50,7 +55,12 @@ function Provider({ children }) {
           textEditorBodyUz, setTextEditorBodyUz,
           textEditorBodyRu, setTextEditorBodyRu,
           textEditorBodyEn, setTextEditorBodyEn,
-          selectValue, setSelectValue
+          selectValue, setSelectValue,
+          fakultetActivity, setFakultetActivity,
+          kafedraActivity, setKafedraActivity,
+          bolimActivity, setBolimActivity,
+          markazActivity, setMarkazActivity,
+          rektoratActivity, setRektoratActivity
         }}
       >
         {children}

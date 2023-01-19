@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import "./index.css";
@@ -34,6 +35,7 @@ import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 
 //Faoliyat
 import BusinessActivity from "./pages/biznesaktivity";
+import TKTIFaoliyat from "./components/Faoliyat/Faoliyat";
 
 //Institut
 import HighSchool from "./pages/institut/HighSchool/HighSchool";
@@ -58,10 +60,12 @@ import Bolim from "./pages/admin/bolim/Bolim";
 import Faoliyat from "./pages/admin/foliyat/Faoliyat";
 import Syllabus from "./pages/admin/syllabus/Syllabus";
 import Yangilik from "./pages/admin/yangilik/Yangilik";
-import Elon from "./pages/admin/elon/Elon"
+import Elon from "./pages/admin/elon/Elon";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 
 function App() {
+  const [variant, setVariant] = useState("");
+
   return (
     <div className="my__container">
       <Header />
@@ -74,7 +78,6 @@ function App() {
         <Route path="/qabul/magistratura" element={<Magistratura />} />
         <Route path="/qabul/doktarantura" element={<Doktarantura />} />
         <Route path="/qabul/qushma" element={<Qushma />} />
-
         <Route path="/talabalar" element={<Students />} />
         <Route path="/talabalar/moliya" element={<Finance />} />
         <Route path="/talabalar/turar-joy" element={<Bedroom />} />
@@ -88,10 +91,18 @@ function App() {
 
         <Route path="/rektorat" element={<Rectorat />} />
         <Route path="/rektorat/:id" element={<RectoratItem />} />
+
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />
 
-        <Route path="/moliyaviy-faoliyat" element={<BusinessActivity />} />
+        <Route
+          path="/moliyaviy-faoliyat"
+          element={<BusinessActivity setVariant={setVariant} />}
+        />
+        <Route
+          path="/moliyaviy-faoliyat/hammasi"
+          element={<TKTIFaoliyat variant={variant} />}
+        />
 
         <Route path="/faoliyat-hujjatlari" element={<ActivityDocuments />} />
         <Route path="/biz-bilan-aloqa" element={<BizBilanAloqa />} />
