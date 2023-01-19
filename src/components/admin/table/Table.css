@@ -1,0 +1,38 @@
+.table-wrapper {
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 400px;
+    border-spacing: 0;
+    
+}
+
+thead {
+    background-color: cyan;
+    width: 100%;
+}
+
+tr {
+    text-align: center;
+    border: 1px solid red;
+}
+
+
+td {
+    text-transform: capitalize;
+    padding: 0px 10px;
+    margin: 10px 0px;
+    font-size: .800rem!important;
+}
+
+/* th{
+    text-transform: capitalize;
+    padding: 15px 10px;
+    font-size: 1rem!important;
+} */
+ 
+tbody > tr:hover {
+    color: var(--txt-white);
+}

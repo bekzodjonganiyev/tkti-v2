@@ -50,9 +50,6 @@ const Syllabus = () => {
   function onSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    // Object.keys(inputValue).forEach((key) => {
-    //   formData.append(key, inputValue[key]);
-    // });
     formData.append("title", inputValue?.title);
     formData.append("yili", inputValue?.yili);
     formData.append("talim_turi", inputValue?.talim_turi);
@@ -61,7 +58,7 @@ const Syllabus = () => {
     formData.append("Kafedra", inputValue?.Kafedra.split(",")[1]);
     formData.append(
       "talim_yonalishi",
-      inputValue?.talim_yonalishi.split(",")[1]
+      inputValue?.talim_yonalishi
     );
     for (let i = 0; i < photoRef.current.files.length; i++) {
       formData.append("photo", photoRef.current.files[i]);
@@ -73,8 +70,11 @@ const Syllabus = () => {
     //     "Content-type": "application/json",
     //     Token: localStorage.getItem("token"),
     //   },
-    //   body: formData
-    // });
+    //   body: JSON.stringify(formData)
+    // })
+    // .then(res => res.json())
+    // .then(res => console.log(res.data))
+    // .catch(err => console.log(err))
 
     console.log(photoRef.current.files);
     for (var pair of formData.entries()) {

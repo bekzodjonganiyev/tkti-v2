@@ -4,15 +4,14 @@
   gap: 50px;
 }
 
-.text-editor-wrapper{
+.text-editor-wrapper {
   width: 95%;
   margin: 0 auto;
 }
 
-.text-editor-body{
-  background: white;
+.text-editor-body {
   min-height: 200px;
-  padding:0px 20px;
+  padding: 0px 20px;
 }
 
 .main-texteditor-form hr {
@@ -21,10 +20,9 @@
   opacity: 1 !important;
 }
 
-.textEditorName{
+.textEditorName {
   display: block;
   width: 95%;
   margin: 0 auto;
   font-size: 20px;
 }
-
