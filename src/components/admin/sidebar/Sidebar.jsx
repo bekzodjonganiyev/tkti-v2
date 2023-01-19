@@ -7,7 +7,7 @@ const Sidebar = () => {
   return (
     <aside className="">
       <div className="side-logo">TCTI Admin</div>
-      <ul className="">
+      <ul className="ul-class">
         <li>
           <Link className="side-link" to="/admin">
             Dashboard
