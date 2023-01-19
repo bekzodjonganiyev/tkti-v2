@@ -1,27 +1,71 @@
-import React, { useContext } from "react";
+import { useContext, useState } from "react";
+import { convertToRaw, EditorState } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import draftToHtml from "draftjs-to-html";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import "./AddForm.css";
 
 import Input from "../../../components/admin/input/Input";
-import TextEditor from "../../../components/admin/text_editor/TextEditor";
 import SelectType from "../../../components/admin/select_type/SelectType";
 import Button from "../button/Button";
 
 import { Context } from "../../../context";
 
 const AddForm = (props) => {
+  const { names, selectValue, globalUrl } = useContext(Context);
   const {
     inputNames,
     textEditorNames1,
     textEditorNames2,
     selectName,
     buttonName,
-    isNews,
-    options
+    options,
+    hasSelect,
+    url,
   } = props;
 
-  const data = useContext(Context)
+  const [aboutUz, setAboutUz] = useState(EditorState.createEmpty());
+  const [aboutRu, setAboutRu] = useState(EditorState.createEmpty());
+  const [aboutEn, setAboutEn] = useState(EditorState.createEmpty());
 
+  const [aimUz, setAimUz] = useState(EditorState.createEmpty());
+  const [aimRu, setAimRu] = useState(EditorState.createEmpty());
+  const [aimEn, setAimEn] = useState(EditorState.createEmpty());
+
+  const convertToHtml = (raw) => {
+    return draftToHtml(convertToRaw(raw.getCurrentContent()));
+  };
+
+  const obj = {
+    title_uz: names?.nameUz,
+    title_ru: names?.nameRu,
+    title_en: names?.nameEn,
+    haqida_uz: convertToHtml(aboutUz),
+    haqida_ru: convertToHtml(aboutRu),
+    haqida_en: convertToHtml(aboutEn),
+    maqsad_uz: convertToHtml(aimUz),
+    maqsad_en: convertToHtml(aimRu),
+    maqsad_ru: convertToHtml(aimEn),
+  };
+
+  const body = hasSelect
+    ? JSON.stringify({ ...obj, fakultet_id: selectValue })
+    : JSON.stringify(obj);
+
+  function postData() {
+    fetch(`${globalUrl}/${url}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+      body: body,
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
   return (
     <form className="main-texteditor-form">
       <Input
@@ -30,26 +74,72 @@ const AddForm = (props) => {
         nameEn={inputNames.nameEn}
       />
       <hr />
-      <TextEditor
-        nameUz={textEditorNames1.nameUz}
-        nameRu={textEditorNames1.nameRu}
-        nameEn={textEditorNames1.nameEn}
-      />
+      <div>
+        <span className="textEditorName">{textEditorNames1.nameUz}</span>
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aboutUz}
+          onEditorStateChange={(a) => setAboutUz(a)}
+        />
+      </div>
+      <div>
+        <span className="textEditorName">{textEditorNames1.nameRu}</span>
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aboutRu}
+          onEditorStateChange={(a) => setAboutRu(a)}
+        />
+      </div>
+      <div>
+        <span className="textEditorName">{textEditorNames1.nameEn}</span>
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aboutEn}
+          onEditorStateChange={(a) => setAboutEn(a)}
+        />
+      </div>
       <hr />
-      {!isNews && (
-        <>
-          <TextEditor
-            nameUz={textEditorNames2.nameUz}
-            nameRu={textEditorNames2.nameRu}
-            nameEn={textEditorNames2.nameEn}
-          />
-          <hr />
-        </>
-      )}
 
-      {!isNews && (
+      <div>
+        <span className="textEditorName">{textEditorNames2.nameUz}</span>
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aimUz}
+          onEditorStateChange={(a) => setAimUz(a)}
+        />
+      </div>
+      <div>
+        <span className="textEditorName">{textEditorNames2.nameRu}</span>
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aimRu}
+          onEditorStateChange={(a) => setAimRu(a)}
+        />
+      </div>
+      <div>
+        <span className="textEditorName">{textEditorNames2.nameEn}</span>
+        <Editor
+          wrapperClassName="text-editor-wrapper"
+          editorClassName="text-editor-body"
+          toolbarClassName="text-editor-toolbar"
+          editorState={aimEn}
+          onEditorStateChange={(a) => setAimEn(a)}
+        />
+      </div>
+
+      {hasSelect && (
         <>
-          <SelectType title={selectName} options={options}/>
+          <SelectType title={selectName} options={options} />
           <hr />
         </>
       )}
@@ -58,7 +148,7 @@ const AddForm = (props) => {
         name={buttonName}
         onClick={(e) => {
           e.preventDefault();
-          console.log(data);
+          postData();
         }}
       />
     </form>

@@ -55,11 +55,19 @@ import Admin from "./pages/admin";
 import Fakultet from "./pages/admin/fakultet/Fakultet";
 import Kafedra from "./pages/admin/kafedra/Kafedra";
 import Bolim from "./pages/admin/bolim/Bolim";
+import Markaz from "./pages/admin/markaz/Markaz";
 import Faoliyat from "./pages/admin/foliyat/Faoliyat";
 import Syllabus from "./pages/admin/syllabus/Syllabus";
 import Yangilik from "./pages/admin/yangilik/Yangilik";
 import Elon from "./pages/admin/elon/Elon"
 import Dashboard from "./pages/admin/dashboard/Dashboard";
+import StudentBolim from "./pages/admin/student-bolim/StudentBolim";
+import Rahbariyat from "./pages/admin/rectorat/Rektorat"
+import Sertifikat from "./pages/admin/sertifikat/Setrifikat"
+import Matbuot from "./pages/admin/matbuot/Matbuot"
+import FamousStudent from "./pages/admin/famous-student/FamousStudent"
+import StatisticsForStudent from "./pages/admin/statistics/Statistics"
+import QabulData from "./pages/admin/qabul/Qabul"
 
 function App() {
   return (
@@ -110,10 +118,18 @@ function App() {
           <Route path="fakultet" element={<Fakultet />} />
           <Route path="kafedra" element={<Kafedra />} />
           <Route path="bolim" element={<Bolim />} />
+          <Route path="markaz" element={<Markaz />} />
           <Route path="faoliyat" element={<Faoliyat />} />
           <Route path="syllabus" element={<Syllabus />} />
           <Route path="yangilik" element={<Yangilik />} />
           <Route path="elon" element={<Elon />} />
+          <Route path="student-bolim" element={<StudentBolim />} />
+          <Route path="rektorat" element={<Rahbariyat />} />
+          <Route path="sertifikat" element={<Sertifikat />} />
+          <Route path="nashriyot" element={<Matbuot />} />
+          <Route path="famous-student" element={<FamousStudent />} />
+          <Route path="statistics-of-student" element={<StatisticsForStudent />} />
+          <Route path="qabul" element={<QabulData />} />
         </Route>
       </Routes>
       <Footer />
