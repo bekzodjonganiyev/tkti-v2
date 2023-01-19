@@ -65,8 +65,7 @@ const Rektorat = () => {
     fetch(`${globalUrl}/rektorat/add`, {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
-        "Token": localStorage.getItem("token")
+        "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzdhZGFhNzAzYmRmMTNhYTI2ZmViNyIsImlhdCI6MTY3NDExNjEzMiwiZXhwIjoxNjc0MjAyNTMyfQ.Sazo9WjES9eSF96KFu9wtlzof1iooguMcnVdfU92sk0"
       },
       body: formData
     })
