@@ -34,6 +34,8 @@ import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 
 //Faoliyat
 import BusinessActivity from "./pages/biznesaktivity";
+import FaoliyatNew from "./pages/faoliyat/FaoliyatNew";
+import SingleFaoliyat from "./pages/faoliyat/single_page_faoliyat/SingleFaoliyat";
 
 //Institut
 import HighSchool from "./pages/institut/HighSchool/HighSchool";
@@ -100,6 +102,8 @@ function App() {
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />
 
         <Route path="/moliyaviy-faoliyat" element={<BusinessActivity />} />
+        <Route path="/barcha-faoliyat" element={<FaoliyatNew />} />
+        <Route path="/barcha-faoliyat/:id" element={<SingleFaoliyat />} />
 
         <Route path="/faoliyat-hujjatlari" element={<ActivityDocuments />} />
         <Route path="/biz-bilan-aloqa" element={<BizBilanAloqa />} />

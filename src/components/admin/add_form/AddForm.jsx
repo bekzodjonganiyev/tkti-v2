@@ -58,7 +58,7 @@ const AddForm = (props) => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Token: localStorage.getItem("token"),
+        Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5OWI5YzUwNjBlZDlhMGRkODg0OCIsImlhdCI6MTY3NDIyMjAyNSwiZXhwIjoxNjc0MzA4NDI1fQ.nCpywJANzwjsmupFweDt58k_uBl0b6aYFd1TXhcLWwo",
       },
       body: body,
     })

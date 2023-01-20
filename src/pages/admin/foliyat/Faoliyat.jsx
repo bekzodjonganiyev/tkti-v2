@@ -67,7 +67,7 @@ const Faoliyat = () => {
       recusandae eos! Libero consequatur hic illo, voluptatem sint quibusdam ab
       beatae doloribus exercitationem neque facere officia.
       <h1>--------------------------------------------</h1>
-      <FaoliyatForm catogoryId="fakultet_id" url="Fak_data/all" />
+      <FaoliyatForm catogoryId="bolim_id" url="bm_data/all" categoryLabel="Qayerda chaqirilsa shu joyni nomi"/>
       <h1>--------------------------------------------</h1>
       <FaoliyatData />
       <h1>------------------------------------------</h1>

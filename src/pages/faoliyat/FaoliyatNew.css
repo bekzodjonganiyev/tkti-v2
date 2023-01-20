@@ -1,0 +1,26 @@
+.all-activities {
+}
+
+.all-activities h1 {
+    text-align: center;
+}
+
+.activity-items {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 50px auto;
+}
+
+.activity-items a{
+    color: white;
+    background: #02307d;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.barcha-faoliyat {
+}

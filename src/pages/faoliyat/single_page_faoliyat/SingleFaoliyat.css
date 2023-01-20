@@ -1,0 +1,30 @@
+.activity{
+    display: flex;
+    align-items: flex-start;
+}
+
+.left{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+}
+
+.left h1 {
+    text-align: center;
+}
+
+.left button{
+    
+}
+
+.right{
+    padding-left: 200px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.right-inner{
+    width: 100%;
+    height: 100%;
+}

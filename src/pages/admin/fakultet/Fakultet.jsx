@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 import Table from "../../../components/admin/table/Table";
+import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
 
 import "./Fakultet.css";
 
@@ -60,7 +61,9 @@ const Fakultet = () => {
         url={props.url}
       />
 
-<span>Table component tasalyapti</span>
+      <FaoliyatForm categoryLabel="Fakultetga faoliyat qo'shing" catogoryId="fakultet_id" url="Faf_data/add" />
+
+      {/* <span>Table component tasalyapti</span>
       <Table
         headData={analyseNameTableHead}
         renderHead={renderHead}
@@ -95,7 +98,7 @@ const Fakultet = () => {
           },
         ]}
         renderBody={renderBody}
-      />
+      /> */}
     </div>
   );
 };
