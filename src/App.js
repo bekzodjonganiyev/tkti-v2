@@ -61,6 +61,7 @@ import Faoliyat from "./pages/admin/foliyat/Faoliyat";
 import Syllabus from "./pages/admin/syllabus/Syllabus";
 import Yangilik from "./pages/admin/yangilik/Yangilik";
 import Elon from "./pages/admin/elon/Elon";
+
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 
 function App() {
