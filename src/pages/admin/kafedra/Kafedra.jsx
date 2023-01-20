@@ -28,7 +28,7 @@ const Kafedra = () => {
 
   useEffect(() => {
     async function fetchFakultet() {
-      fetch(`http://localhost:5000/Fak_data/all`, {
+      fetch(`http://backend.tkti.uz/Fak_data/all`, {
         headers: { "Content-type": "application/json" },
       })
         .then((res) => res.json())
