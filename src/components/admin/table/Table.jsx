@@ -4,7 +4,7 @@ import "./Table.css";
 const Table = ({ bodyData, headData, renderHead, renderBody }) => {
 
   return (
-    <div>
+    <div className="generic-table">
       <table>
         {headData && renderHead ? (
           <thead>

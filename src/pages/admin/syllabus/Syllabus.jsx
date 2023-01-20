@@ -64,17 +64,16 @@ const Syllabus = () => {
       formData.append("photo", photoRef.current.files[i]);
     }
 
-    // fetch(`http://localhost:5000/daraja/add`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //     Token: localStorage.getItem("token"),
-    //   },
-    //   body: JSON.stringify(formData)
-    // })
-    // .then(res => res.json())
-    // .then(res => console.log(res.data))
-    // .catch(err => console.log(err))
+    fetch(`http://localhost:5000/daraja/add`, {
+      method: "POST",
+      headers: {
+        "Token": localStorage.getItem("token"),
+      },
+      body: formData
+    })
+    .then(res => res.json())
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
 
     console.log(photoRef.current.files);
     for (var pair of formData.entries()) {

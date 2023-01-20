@@ -49,8 +49,18 @@ const Fakultet = () => {
 
   return (
     <div>
-      
-      <span>Table component tasalyapti</span>
+      <FormHeader title="Fakultet" buttonName="+" />
+      <AddForm
+        inputNames={props.inputNames}
+        textEditorNames1={props.textEditorNames1}
+        textEditorNames2={props.textEditorNames2}
+        selectName={props.selectName}
+        buttomName={props.buttonName}
+        hasSelect={false}
+        url={props.url}
+      />
+
+<span>Table component tasalyapti</span>
       <Table
         headData={analyseNameTableHead}
         renderHead={renderHead}
@@ -85,16 +95,6 @@ const Fakultet = () => {
           },
         ]}
         renderBody={renderBody}
-      />
-      <FormHeader title="Fakultet" buttonName="+" />
-      <AddForm
-        inputNames={props.inputNames}
-        textEditorNames1={props.textEditorNames1}
-        textEditorNames2={props.textEditorNames2}
-        selectName={props.selectName}
-        buttomName={props.buttonName}
-        hasSelect={false}
-        url={props.url}
       />
     </div>
   );

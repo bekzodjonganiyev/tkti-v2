@@ -24,7 +24,7 @@ aside {
 }
 
 /* LINKS */
-ul {
+.ul-class {
   position: fixed;
   top:70px;
   margin: 0;
