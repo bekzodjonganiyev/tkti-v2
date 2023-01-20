@@ -40,7 +40,7 @@ const Faoliyat = ({ catogoryId = "fakultet_id", url = "Fak_data/all", categoryLa
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzdhZGFhNzAzYmRmMTNhYTI2ZmViNyIsImlhdCI6MTY3NDExNjEzMiwiZXhwIjoxNjc0MjAyNTMyfQ.Sazo9WjES9eSF96KFu9wtlzof1iooguMcnVdfU92sk0"
+          "Token": localStorage.getItem("token")
         },
         body: JSON.stringify(inputValue),
       })

@@ -18,7 +18,7 @@ const Matbuot = () => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Token: localStorage.getItem("token"),
+        "Token": localStorage.getItem("token"),
       },
       body: JSON.stringify({
         name_uz: names?.nameUz,

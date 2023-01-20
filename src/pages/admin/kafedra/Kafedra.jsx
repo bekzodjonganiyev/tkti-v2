@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 
+import { Context } from "../../../context";
+
 const Kafedra = () => {
+  const {globalUrl} = useContext(Context)
   const [fakultet, setFakultet] = useState();
   const props = {
     inputNames: {
@@ -28,13 +31,12 @@ const Kafedra = () => {
 
   useEffect(() => {
     async function fetchFakultet() {
-      fetch(`http://localhost:5000/Fak_data/all`, {
+      fetch(`${globalUrl}//Fak_data/all`, {
         headers: { "Content-type": "application/json" },
       })
         .then((res) => res.json())
         .then((res) => {
           setFakultet(res.data);
-          console.log(res.data);
         })
         .catch((err) => console.log(err));
     }
