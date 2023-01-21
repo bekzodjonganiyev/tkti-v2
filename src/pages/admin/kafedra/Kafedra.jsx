@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
+import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
+
 
 import { Context } from "../../../context";
 
@@ -55,6 +57,11 @@ const Kafedra = () => {
         options={fakultet?.map((i) => ({ id: i._id, name: i.title_uz }))}
         url={props.url}
       />{" "}
+      <br /><br />
+      <h1>-----------------Kafedraga Faoliyat qo`shish------------------</h1>
+      <br /><br />
+      <FaoliyatForm catogoryId="kafedra_id" url="kafedra_data/all" categoryLabel="Faoliyat Qo'shish"/>
+
     </div>
   );
 };

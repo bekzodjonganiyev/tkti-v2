@@ -1,6 +1,8 @@
 import React from "react";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
+import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
+
 
 const Bolim = () => {
   const props = {
@@ -35,6 +37,11 @@ const Bolim = () => {
         hasSelect={false}
         url={props.url}
       />
+      <br /><br />
+      <h1>-----------------Markaz Faoliyat qo`shish------------------</h1>
+      <br /><br />
+      <FaoliyatForm catogoryId="markaz_id" url="markaz_data/all" categoryLabel="Faoliyat Qo'shish"/>
+
     </div>
   );
 };

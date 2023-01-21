@@ -6,6 +6,7 @@ import draftToHtml from "draftjs-to-html";
 import "./Rektorat.css"
 import FormHeader from '../../../components/admin/form_header/FormHeader'
 import Button from '../../../components/admin/button/Button';
+import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
 
 import { Context } from '../../../context';
 
@@ -282,6 +283,12 @@ const Rektorat = () => {
         
         <Button name='Saqlash' />
       </form>
+      
+      <br /><br />
+      <h1>-----------------Rektoratga Faoliyat qo`shish------------------</h1>
+      <br /><br />
+      <FaoliyatForm catogoryId="rektorat_id" url="rektorat/all" categoryLabel="Faoliyat Qo'shish"/>
+
     </div>
   )
 }
