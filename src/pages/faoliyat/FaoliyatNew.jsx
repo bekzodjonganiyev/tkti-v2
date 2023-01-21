@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { Context } from "../../context";
@@ -168,11 +168,11 @@ const QuestionForm = ({ divclass }) => {
 
 const FaoliyatNew = () => {
   const activities = [
-    { id: 1, name: "fakultet_id", title: "Fakultet faoliyati" },
-    { id: 2, name: "kafedra_id", title: "Kafedra faoliyati" },
-    { id: 3, name: "bolim_id", title: "Bo'lim faoliyati" },
-    { id: 4, name: "markaz_id", title: "Markaz faoliyati" },
-    { id: 5, name: "rektorat_id", title: "Rektorat faoliyati" },
+    { id: 1, name: "fakultet_id", title: "Rektorat faoliyati" },
+    { id: 2, name: "kafedra_id", title: "Fakultet faoliyati" },
+    { id: 3, name: "bolim_id", title: "Kafedra faoliyati" },
+    { id: 4, name: "markaz_id", title: "Bo'lim faoliyati" },
+    { id: 5, name: "rektorat_id", title: "Markaz faoliyati" },
   ];
   return (
     <div className="all-activities">
@@ -193,7 +193,7 @@ const FaoliyatNew = () => {
 
       <div className="activity-items">
         {activities.map((i) => (
-          <Link to={`/barcha-faoliyat/${i.name}`} key={i.id}>
+          <Link to={`/faoliyat/${i.id}`} key={i.id}>
             {i.title}
           </Link>
         ))}

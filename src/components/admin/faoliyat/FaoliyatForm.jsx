@@ -40,7 +40,7 @@ const Faoliyat = ({ catogoryId = "fakultet_id", url = "Fak_data/all", categoryLa
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzdhZGFhNzAzYmRmMTNhYTI2ZmViNyIsImlhdCI6MTY3NDExNjEzMiwiZXhwIjoxNjc0MjAyNTMyfQ.Sazo9WjES9eSF96KFu9wtlzof1iooguMcnVdfU92sk0"
+          "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5OWI5YzUwNjBlZDlhMGRkODg0OCIsImlhdCI6MTY3NDI0MTAwMCwiZXhwIjoxNjc0MzI3NDAwfQ.2Vj_TFo9cBeubwbas9ryQ9lT1Oo48bkgznRbQKdlAZA"
         },
         body: JSON.stringify(inputValue),
       })
@@ -127,7 +127,7 @@ const Faoliyat = ({ catogoryId = "fakultet_id", url = "Fak_data/all", categoryLa
             </option>
             {options?.map((i) => (
               <option value={i._id} key={i._id}>
-                {i.title_uz}
+                {catogoryId === "rektorat_id" ? i.job_uz : i.title_uz}
               </option>
             ))}
           </select>

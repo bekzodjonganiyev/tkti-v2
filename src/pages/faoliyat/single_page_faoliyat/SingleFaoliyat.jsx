@@ -1,21 +1,58 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "./SingleFaoliyat.css";
 
 import { Context } from "../../../context";
-import { AccordionComponent } from "../../../components/accordion";
+
+function SocialShare() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="social-share"
+      onMouseEnter={() => setIsOpen(!isOpen)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <div className="share-button">
+        <i className="fas fa-share-alt"></i>
+      </div>
+      {isOpen && (
+        <div className="social-icons">
+          <a href="#">
+            <i className="fab fa-facebook-f"></i>
+          </a>
+          <a href="#">
+            <i className="fab fa-twitter"></i>
+          </a>
+          <a href="#">
+            <i className="fab fa-instagram"></i>
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
 
 const SingleFaoliyat = () => {
-  const key = useLocation();
-  const id = useParams();
+  const {time} = useContext(Context)
+  const { id } = useParams();
   const { globalUrl } = useContext(Context);
 
   const [data, setData] = useState([]);
-  const [activityData, setActivityData] = useState([]);
+  const [activityData, setActivityData] = useState();
 
-  const activityContent = data?.filter((i) => id.id in i);
+  let actiovityPreloadData = null;
 
+  let key = "";
+  if (+id === 1) key = "rektorat_id";
+  if (+id === 2) key = "fakultet_id";
+  if (+id === 3) key = "kafedra_id";
+  if (+id === 4) key = "bolim_id";
+  if (+id === 5) key = "markaz_id";
+  const activityContent = data?.filter((i) => key in i);
+  
+  console.log(activityData)
   async function getData(id) {
     fetch(`${globalUrl}/faoliyat/${id}`, {
       headers: {
@@ -29,20 +66,30 @@ const SingleFaoliyat = () => {
       })
       .catch((err) => console.log(err));
   }
-  useEffect(() => {
-    function getActivities() {
-      fetch(`${globalUrl}/faoliyat/all`, {
-        headers: {
-          "Content-type": "application/json",
-        },
+  
+  function getActivities() {
+    fetch(`${globalUrl}/faoliyat/all`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res.data);
       })
-        .then((res) => res.json())
-        .then((res) => {
-          //   console.log(res);
-          setData(res.data);
-        })
-        .catch((err) => console.log(err));
+      .catch((err) => console.log(err));
+  }
+
+  function checkParamsId(id) {
+    if (id === 1 || id === 2 || id === 3 || id === 4 || id === 5) {
+      console.log("jdjdj");
+    } else {
+      window.location.href = "/barcha-faoliyat";
     }
+  }
+
+  useEffect(() => {
+    checkParamsId(+id);
     getActivities();
   }, []);
   return (
@@ -52,23 +99,26 @@ const SingleFaoliyat = () => {
           <>
             <div className="left">
               {activityContent.map((i) => (
-                <button onClick={() => getData(i._id)}>{i.title_uz}</button>
+                <b onClick={() => getData(i._id)}>{i.title_uz}</b>
               ))}
             </div>
             <div className="right">
-              {activityData.map((i) => (
+             
+              {activityData?.map((i) => (
                 <div className="right-inner">
                   <h1>{i.title_uz}</h1>
-                  <div
-                    className=""
-                    dangerouslySetInnerHTML={{ __html: i.description_uz }}
-                  ></div>
+                  <div dangerouslySetInnerHTML={{ __html: i.description_uz }} />
+                  <div style={{ display: "flex", justifyContent:"space-between",  }}>
+                    <SocialShare />
+                    <span>{time(i.date)}</span>
+                  </div>
                 </div>
               ))}
+
             </div>
           </>
         ) : (
-          <h1>Hech qanday faoliyat topilmadi</h1>
+          <h1>Loading...</h1>
         )}
       </div>
       {/* <AccordionComponent /> */}

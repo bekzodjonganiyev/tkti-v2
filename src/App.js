@@ -103,7 +103,7 @@ function App() {
 
         <Route path="/moliyaviy-faoliyat" element={<BusinessActivity />} />
         <Route path="/barcha-faoliyat" element={<FaoliyatNew />} />
-        <Route path="/barcha-faoliyat/:id" element={<SingleFaoliyat />} />
+        <Route path="/faoliyat/:id" element={<SingleFaoliyat />} />
 
         <Route path="/faoliyat-hujjatlari" element={<ActivityDocuments />} />
         <Route path="/biz-bilan-aloqa" element={<BizBilanAloqa />} />
