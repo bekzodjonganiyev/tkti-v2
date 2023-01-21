@@ -1,47 +1,117 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { convertToRaw, EditorState } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import draftToHtml from "draftjs-to-html";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
-import AddForm from "../../../components/admin/add_form/AddForm";
 import { Context } from "../../../context";
+import Input from "../../../components/admin/input/Input";
+import Button from "../../../components/admin/button/Button";
 
 const Elon = () => {
-  const {globalUrl} = useContext(Context) 
-  const props = {
-    inputNames: {
-      nameUz: "Yangilik nomi Uz",
-      nameRu: "Yangilik nomi Ru",
-      nameEn: "Yangilik nomi En",
-    },
-    textEditorNames1: {
-      nameUz: "maqsad va vazifa Uz",
-      nameRu: "maqsad va vazifa Ru",
-      nameEn: "maqsad va vazifa En",
-    },
-    buttonName: "Saqlash",
-    url: "elon/add",
+  const imgRef = useRef();
+  const { globalUrl, names } = useContext(Context);
+
+  const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
+    EditorState.createEmpty()
+  );
+  const [asosiyVazifaRu, setAsosiyVazifaRu] = useState(
+    EditorState.createEmpty()
+  );
+  const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
+    EditorState.createEmpty()
+  );
+
+  const convertToHtml = (raw) => {
+    return JSON.stringify(draftToHtml(convertToRaw(raw.getCurrentContent())));
   };
 
-  useEffect(() => {
-    
-    function postData() {
-      fetch(`${globalUrl}/faoliyat/all`, {
-        headers: {
-          "Content-type": "application/json",
-        }
-      })
-        .then((res) => res.json())
-        .then((res) => console.log(res.data.filter(i => ("kafedra_id" in i))))
-        .catch((err) => console.log(err));
-    }
-    postData()
-  })
+  function postData(e) {
+    e.preventDefault();
 
+    const formData = new FormData();
+    formData.append("body_uz", convertToHtml(asosiyVazifaUz));
+    formData.append("body_ru", convertToHtml(asosiyVazifaRu));
+    formData.append("body_en", convertToHtml(asosiyVazifaEn));
+    formData.append("title_uz", names?.nameUz);
+    formData.append("title_ru", names?.nameRu);
+    formData.append("title_en", names?.nameEn);
+    for (let i = 0; i < imgRef.current.files.length; i++) {
+      formData.append("photo", imgRef.current.files[i]);
+    }
+
+    fetch(`${globalUrl}/elon/add`, {
+      method: "POST",
+      headers: {
+        Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5OWI5YzUwNjBlZDlhMGRkODg0OCIsImlhdCI6MTY3NDI5NzAwOSwiZXhwIjoxNjc0MzgzNDA5fQ.g0oMwE6qMK0n1xSvpa_jVdeDiM_ZzWVFP5vqTGAWj2Y",
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+  }
 
   return (
     <div>
       <FormHeader title="Elon" buttonName="+" />
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae quisquam, quibusdam doloremque perferendis tenetur neque eum cumque necessitatibus, beatae soluta eveniet, nam similique dolore accusamus adipisci. Tempora distinctio, esse voluptas, excepturi quae sequi, suscipit modi obcaecati culpa quas totam. Quos aspernatur odio, ab enim optio accusamus blanditiis harum neque eveniet eum laborum nulla iusto amet rerum quam voluptates incidunt, aliquam quia. Doloribus exercitationem porro impedit hic pariatur magnam facere autem distinctio commodi est deleniti dicta nulla ullam, dignissimos voluptatibus atque reiciendis. Nesciunt numquam libero dolore. Quas accusantium, reprehenderit ad perspiciatis quae, quos magni enim pariatur voluptatibus sit dolor. Voluptatum aspernatur minus ab nam doloremque numquam aliquid adipisci eveniet voluptates et distinctio dolorum atque, rerum totam qui saepe. Rerum quo maxime neque officiis odio repellat molestiae exercitationem nam eligendi ex modi non velit eos esse facilis quasi, et libero! Quaerat veritatis id, perferendis corporis, repellendus molestiae repudiandae, ea maxime aliquam iste dolorem. Excepturi porro non praesentium iure doloribus ut est odit molestiae perspiciatis incidunt eius animi amet culpa, nobis asperiores saepe magni corrupti eos aspernatur sed fugit? Quas praesentium, aut nostrum ad aperiam ea reiciendis nulla sequi fugiat, mollitia, aliquam obcaecati voluptatem itaque facilis sed quae eveniet omnis! Nisi, nemo. Omnis illo ipsam, quidem id praesentium nihil facilis ut odio, ad repudiandae doloribus unde saepe reprehenderit quam fugit. Ullam, saepe! Numquam nesciunt deserunt ex illo nulla labore consequatur quo consectetur officiis natus commodi dolores deleniti quia quis rerum aspernatur esse eos, nobis eveniet dicta eaque neque! Quos voluptates odit animi vitae voluptatibus dignissimos esse dolorem distinctio minus voluptate voluptatum dolores, illum repudiandae inventore dolore quo labore qui error ea unde autem aut eum consequuntur facere! Quod blanditiis earum minima nobis! Molestias dolor, quisquam dicta odit magnam veniam iusto rerum saepe, alias distinctio aliquam enim sit, assumenda repellendus accusamus eos quaerat nisi?
-      <h1>FormData bilan ishlashda muammo bolyapti</h1>
+      <form className="rektorat-form" onSubmit={postData}>
+        {/* Sarlavha qo`shish */}
+        <Input
+          nameUz="Sarlavha kiritng(UZ)"
+          nameRu="Sarlavha kiritng(RU)"
+          nameEn="Sarlavha kiritng(EN)"
+        />
+
+        {/* Asosiy Vazifa */}
+        <div>
+          <span className="textEditorName">Asosiy Vazifa(UZ)</span>
+          <Editor
+            wrapperClassName="text-editor-wrapper"
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            editorState={asosiyVazifaUz}
+            onEditorStateChange={(a) => setAsosiyVazifaUz(a)}
+          />
+        </div>
+        <div>
+          <span className="textEditorName">Asosiy Vazifa(RU)</span>
+          <Editor
+            wrapperClassName="text-editor-wrapper"
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            editorState={asosiyVazifaRu}
+            onEditorStateChange={(a) => setAsosiyVazifaRu(a)}
+          />
+        </div>
+        <div>
+          <span className="textEditorName">Asosiy Vazifa(EN)</span>
+          <Editor
+            wrapperClassName="text-editor-wrapper"
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            editorState={asosiyVazifaEn}
+            onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="forImg">
+            <input
+              type="file"
+              id="forImg"
+              multiple
+              accept="image/png, image/gif, image/jpeg"
+              ref={imgRef}
+            />
+          </label>
+        </div>
+        <Button name="Saqlash" />
+      </form>
     </div>
   );
 };
