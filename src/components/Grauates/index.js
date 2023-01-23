@@ -5,11 +5,7 @@ import { Context } from "../../context";
 import Card from "../card/Card";
 const Famous = () => {
   const { lang } = useContext(Context);
-    const [student, setStudent] = useEffect({
-        isFetched: false,
-        error: false,
-        data: {},
-    })
+    const [student, setStudent] = useEffect()
     useEffect(()=>{
         fetch(`localhost:5000/Fak_data/all`,
         {headers:{

@@ -33,6 +33,17 @@ import RectoratItem from "./pages/rektorat/rectoratItem/rectoratitem";
 import PageStaticAkademikFilial from "./pages/filiallar/filial";
 import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 
+
+
+import FacultetFrond from "./pages/structure/FakultetId/FacultetFrond";
+import FakultetId from "./pages/structure/FakultetId/FakultetId";
+
+import KafedraFrond from "./pages/structure/Kafedra/KafedraFrond";
+import KafedraId from "./pages/structure/Kafedra/KafedraId";
+
+import BolimMarkaz from "./pages/structure/BolimMarkaz/BolimMarkaz";
+import BolimMarkazId from "./pages/structure/BolimMarkaz/BolimMarkazId";
+import MarkazId from "./pages/structure/BolimMarkaz/MarkazId";
 //Faoliyat
 import BusinessActivity from "./pages/biznesaktivity";
 import TKTIFaoliyat from "./components/Faoliyat/Faoliyat";
@@ -64,6 +75,10 @@ import Elon from "./pages/admin/elon/Elon";
 
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 
+
+
+
+
 function App() {
   const [variant, setVariant] = useState("");
 
@@ -92,6 +107,19 @@ function App() {
 
         <Route path="/rektorat" element={<Rectorat />} />
         <Route path="/rektorat/:id" element={<RectoratItem />} />
+
+        <Route path="/faculty" element={<FacultetFrond />} />
+        <Route path="/facultyId/:id" element={<FakultetId />} />
+
+        <Route path="/bolimMarkaz" element={<BolimMarkaz />} />
+        <Route path="/bolimMarkazId/:id" element={<BolimMarkazId />} />
+
+        <Route path="/kafedrafrond" element={<KafedraFrond />} />
+        <Route path="/kafedraId/:id" element={<KafedraId />} />
+
+        
+      
+        <Route path="/markazId/:id" element={<MarkazId />} />
 
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />
@@ -126,6 +154,9 @@ function App() {
           <Route path="syllabus" element={<Syllabus />} />
           <Route path="yangilik" element={<Yangilik />} />
           <Route path="elon" element={<Elon />} />
+
+          {/* tuzilma */}
+          
         </Route>
       </Routes>
       <Footer />

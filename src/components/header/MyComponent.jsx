@@ -5,7 +5,11 @@ import { Institut } from "../../icons/Icons";
 import "./MyComponent.css";
 import HeaderLang from "./lang";
 import { Context } from "../../context";
+
 const MyComponent = () => {
+  const [facultet, setFacultet] = useState([]);
+
+  
   const location = useLocation();
 
   const { lang, setLang} = useContext(Context);
@@ -121,15 +125,15 @@ const MyComponent = () => {
         },
         {
           labelId: HeaderLang[lang].structure[2],
-          href: "/fakultetlar",
+          href: "/faculty",
         },
         {
           labelId: HeaderLang[lang].structure[3],
-          href: "/kafedralar",
+          href: "/kafedrafrond",
         },
         {
           labelId: HeaderLang[lang].structure[4],
-          href: "/bolim-va-markazlar",
+          href: "/bolimMarkaz",
         },
         {
           labelId: HeaderLang[lang].structure[5],
