@@ -1,58 +1,9 @@
 import React, { useContext, useEffect } from "react";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
-import AddForm from "../../../components/admin/add_form/AddForm";
 import { Context } from "../../../context";
 
 const Elon = () => {
-  const {globalUrl} = useContext(Context) 
-  const props = {
-    inputNames: {
-      nameUz: "Yangilik nomi Uz",
-      nameRu: "Yangilik nomi Ru",
-      nameEn: "Yangilik nomi En",
-    },
-    textEditorNames1: {
-      nameUz: "maqsad va vazifa Uz",
-      nameRu: "maqsad va vazifa Ru",
-      nameEn: "maqsad va vazifa En",
-    },
-    buttonName: "Saqlash",
-    url: "elon/add",
-  };
-
-  function postData(e) {
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("body_uz", convertToHtml(asosiyVazifaUz));
-    formData.append("body_ru", convertToHtml(asosiyVazifaRu));
-    formData.append("body_en", convertToHtml(asosiyVazifaEn));
-    formData.append("title_uz", names?.nameUz);
-    formData.append("title_ru", names?.nameRu);
-    formData.append("title_en", names?.nameEn);
-    for (let i = 0; i < imgRef.current.files.length; i++) {
-      formData.append("photo", imgRef.current.files[i]);
-    }
-
-    fetch(`${globalUrl}/elon/add`, {
-      method: "POST",
-      headers: {
-        Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5OWI5YzUwNjBlZDlhMGRkODg0OCIsImlhdCI6MTY3NDQ1MDIxNywiZXhwIjoxNjc0NTM2NjE3fQ.8HtdsogxLAWUzLjYtCK-rqQBIw98LJX5wZkhQ7KaJgg"
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-    postData()
-  }
-
-
   return (
     <div>
       <FormHeader title="Elon" buttonName="+" />
