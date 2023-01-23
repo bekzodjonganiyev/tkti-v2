@@ -42,9 +42,17 @@ const Header = () => {
     location.pathname === "/admin/fakultet" ||
     location.pathname === "/admin/kafedra" ||
     location.pathname === "/admin/bolim" ||
+    location.pathname === "/admin/markaz" ||
     location.pathname === "/admin/faoliyat" ||
     location.pathname === "/admin/elon" ||
     location.pathname === "/admin/syllabus" ||
+    location.pathname === "/admin/rektorat" ||
+    location.pathname === "/admin/student-bolim" ||
+    location.pathname === "/admin/sertifikat" ||
+    location.pathname === "/admin/nashriyot" ||
+    location.pathname === "/admin/famous-student" ||
+    location.pathname === "/admin/statistics-of-student" ||
+    location.pathname === "/admin/qabul" ||
     location.pathname === "/admin/yangilik"
   ) {
     content = null;

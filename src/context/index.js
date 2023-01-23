@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import draftToHtml from "draftjs-to-html";
+import {convertToRaw} from "react-draft-wysiwyg"
 
 const Context = React.createContext();
 
@@ -12,19 +13,15 @@ function Provider({ children }) {
   const [textEditorBodyEn, setTextEditorBodyEn] = useState();
   const [names, setNames] = useState();
   const [selectValue, setSelectValue] = useState();
-  const [fakultetActivity, setFakultetActivity] = useState();
-  const [kafedraActivity, setKafedraActivity] = useState();
-  const [bolimActivity, setBolimActivity] = useState();
-  const [markazActivity, setMarkazActivity] = useState();
-  const [rektoratActivity, setRektoratActivity] = useState();
-  const globalUrl = "http://localhost:5000";
+  //globalUrl = "http://localhost:5000";
+  const globalUrl = "http://backend.tkti.uz";
+
 
   const time = (arg) => {
     const date = new Date(arg);
     const kun = String(date.getDate()).padStart(2, 0);
     const oy = String(date.getMonth() + 1).padStart(2, 0);
     const yil = date.getFullYear();
-
     return `${kun}.${oy}.${yil}`;
   };
 
@@ -36,6 +33,10 @@ function Provider({ children }) {
     };
   };
 
+  const convertToHtml = (raw) => {
+    return draftToHtml(convertToRaw(raw.getCurrentContent()));
+  }
+
   useEffect(() => {
     if (lang) {
       localStorage.setItem("lang", JSON.stringify(lang));
@@ -46,11 +47,13 @@ function Provider({ children }) {
     <>
       <Context.Provider
         value={{
+          globalUrl,
+          time,
+          textSytles,
+          convertToHtml,
           names, setNames,
           refresh, setRefresh,
           lang, setLang,
-          time, globalUrl,
-          textSytles,
           searchedData, setSearchedData,
           textEditorBodyUz, setTextEditorBodyUz,
           textEditorBodyRu, setTextEditorBodyRu,

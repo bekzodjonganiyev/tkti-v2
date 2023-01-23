@@ -1,0 +1,33 @@
+.table-wrapper {
+    overflow-y: auto;
+}
+
+.generic-table table {
+    width: 100%;
+    min-width: 400px;
+    border-spacing: 0;
+    
+}
+
+.generic-table thead {
+    background-color: cyan;
+    width: 100%;
+}
+
+.generic-table tr {
+    text-align: center;
+    border: 1px solid red;
+}
+
+
+.generic-table td {
+    text-transform: capitalize;
+    padding: 0px 10px;
+    margin: 10px 0px;
+    font-size: .800rem!important;
+}
+ .generic-table th{
+    text-transform: capitalize;
+    padding: 15px 10px;
+    font-size: 1rem!important;
+} 

@@ -1,12 +1,13 @@
+import React from "react";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 
 const Bolim = () => {
   const props = {
     inputNames: {
-      nameUz: "Bo'lim nomi Uz",
-      nameRu: "Bo'lim nomi Ru",
-      nameEn: "Bo'lim nomi En",
+      nameUz: "Markaz nomi Uz",
+      nameRu: "Markaz nomi Ru",
+      nameEn: "Markaz nomi En",
     },
     textEditorNames1: {
       nameUz: "maqsad va vazifa Uz",
@@ -14,17 +15,17 @@ const Bolim = () => {
       nameEn: "maqsad va vazifa En",
     },
     textEditorNames2: {
-      nameUz: "Bo'lim haqida Uz",
-      nameRu: "Bo'lim haqida Ru",
-      nameEn: "Bo'lim haqida En",
+      nameUz: "Markaz haqida Uz",
+      nameRu: "Markaz haqida Ru",
+      nameEn: "Markaz haqida En",
     },
     selectName: "select name",
     buttonName: "buttob name",
-    url: "bm_data/add",
+    url:"markaz_data/add"
   };
   return (
     <div>
-      <FormHeader title="Bo'limlar" buttonName="+" />
+      <FormHeader title="Markaz" buttonName="+" />
       <AddForm
         inputNames={props.inputNames}
         textEditorNames1={props.textEditorNames1}

@@ -7,7 +7,7 @@ const Sidebar = () => {
   return (
     <aside className="">
       <div className="side-logo">TCTI Admin</div>
-      <ul className="">
+      <ul className="ul-class">
         <li>
           <Link className="side-link" to="/admin">
             Dashboard
@@ -25,7 +25,17 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink className="side-link" to="/admin/bolim">
-            Bo'lim va Markaz
+            Bo'lim
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="side-link" to="/admin/markaz">
+            Markaz
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="side-link" to="/admin/rektorat">
+            Rahbariyat
           </NavLink>
         </li>
         <li>
@@ -49,28 +59,33 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className="side-link" to="/admin/yangilik">
-            Yangilik
+          <NavLink className="side-link" to="/admin/student-bolim">
+            Student Bolim
           </NavLink>
         </li>
         <li>
-          <NavLink className="side-link" to="/admin/yangilik">
-            Yangilik
+          <NavLink className="side-link" to="/admin/sertifikat">
+            Sertifikat
           </NavLink>
         </li>
         <li>
-          <NavLink className="side-link" to="/admin/yangilik">
-            Yangilik
+          <NavLink className="side-link" to="/admin/nashriyot">
+            Mutbuot
           </NavLink>
         </li>
         <li>
-          <NavLink className="side-link" to="/admin/yangilik">
-            Yangilik
+          <NavLink className="side-link" to="/admin/famous-student">
+            Mashxur Bituvchilar
           </NavLink>
         </li>
         <li>
-          <NavLink className="side-link" to="/admin/yangilik">
-            Yangilik
+          <NavLink className="side-link" to="/admin/statistics-of-student">
+            Bitirucvhilar Statistikasi
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="side-link" to="/admin/statistics-of-student">
+            Qabul
           </NavLink>
         </li>
       </ul>

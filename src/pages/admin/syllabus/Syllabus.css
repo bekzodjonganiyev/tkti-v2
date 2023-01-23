@@ -1,0 +1,27 @@
+.syllabus-form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.syllabus-form label {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.syllabus-form .year-type-degree {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.syllabus-form select {
+  width: 100%;
+  padding: 8px 10px;
+}
+
+.syllabus-form option {
+  padding: 18px 10px;
+}

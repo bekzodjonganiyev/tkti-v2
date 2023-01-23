@@ -8,7 +8,7 @@ import { darsJadvali } from "./lang";
 function DarsJadval() {
   const { lang } = useContext(Context);
   return (
-    <div className="wrapped">
+    <div className="lesson-table">
     <h1>{darsJadvali[lang].title}</h1>
     <br />
     <table className="table-box">
