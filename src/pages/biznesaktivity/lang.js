@@ -1,6 +1,9 @@
 const ActivityLang = {
     uz:{
-        title:`MOLIYA`,
+        title:`Faoliyat`,
+        faoliyatName:["Bo'lim faoliyati","Fakulted faoliyati","Kafedra faoliyati","Rahbariyat faoliyati","Markaz faoliyati"],
+      
+
         hero:`Instititut talabalar uchun davlat tomonidan moliyalashtiriladigan va ta'lim muassasalarida turli xil moliyaviy yordam va ko'tarilish imkoniyatlarini taklif etadi. Instititut tomonidan taqdim etilgan barcha imkoniyatlardan foydalaning!`,
         data:[
             {
@@ -27,6 +30,7 @@ const ActivityLang = {
     },
     ru:{
         title:`ФИНАНСЫ`,
+        faoliyatName:["Деятельность кафедры", "Деятельность факультета", "Деятельность кафедры", "Руководящая деятельность", "Деятельность центра"],
         hero:`Институт предлагает различные возможности финансовой помощи и продвижения по службе для студентов государственных и образовательных учреждений. Воспользуйтесь всеми возможностями, предоставляемыми институтом!`,
         data:[
             {
@@ -53,6 +57,7 @@ const ActivityLang = {
     },
     en:{
         title:`FINANCE`,
+        faoliyatName:["Department activities", "Faculty activities", "Department activities", "Leadership activities", "Center activities"],
         hero:`The Institute offers a variety of financial aid and promotion opportunities for students in government funded and educational institutions. Take advantage of all the opportunities provided by the institute!`,
         data:[
             {

@@ -1,0 +1,47 @@
+const MyComponent = () => {
+  const [hoveredButton, setHoveredButton] = useState([]);
+  const buttons = [
+    { id: 1, label: ["jhbdhbd", "kndjnd", "nsdjndsjn", "jsndjdn"] },
+    { id: 2, label: ["jhbdhbd", "kndjnd", "nsdjndsjn", "jsndjdn"] },
+    { id: 3, label: ["jhbdhbd", "kndjnd", "nsdjndsjn", "jsndjdn"] },
+    { id: 4, label: ["jhbdhbd", "kndjnd", "nsdjndsjn", "jsndjdn"] },
+    { id: 5, label: ["jhbdhbd", "kndjnd", "nsdjndsjn", "jsndjdn"] },
+  ];
+
+  const handleMouseEnter = (arr) => {
+    setHoveredButton({...arr});
+  };
+  const handleMouseLeave = () => {
+    setHoveredButton(null);
+  };
+
+  return (
+    <div>
+      <div className="buttons">
+        {buttons.map((button) => (
+          <button
+            key={button.id}
+            onMouseEnter={() => handleMouseEnter(button)}
+            onMouseLeave={handleMouseLeave}
+          >
+            {button.id}
+          </button>
+        ))}
+      </div>
+      {hoveredButton !== null && (
+        <div className="content" style={{background: "red"}}>
+          <ul>
+            <strong>{hoveredButton.id}</strong>
+            <ul>
+            {
+              hoveredButton?.label?.map(i => (
+                <li>{i}</li>
+              ))
+            }
+            </ul>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
