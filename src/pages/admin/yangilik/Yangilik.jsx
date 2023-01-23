@@ -43,7 +43,7 @@ const Yangilik = () => {
     fetch(`${globalUrl}/news/add`, {
       method: "POST",
       headers: {
-        Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5OWI5YzUwNjBlZDlhMGRkODg0OCIsImlhdCI6MTY3NDI5NzAwOSwiZXhwIjoxNjc0MzgzNDA5fQ.g0oMwE6qMK0n1xSvpa_jVdeDiM_ZzWVFP5vqTGAWj2Y",
+        Token: localStorage.getItem("token")
       },
       body: formData,
     })
