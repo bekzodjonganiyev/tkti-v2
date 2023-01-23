@@ -12,6 +12,7 @@ const FakultetId = () => {
       title: "Fakultetlar haqida",
       desc:"Maqsad va vazifalari",
       kafedra:"Kafedralari",
+      
 
     },
     ru: {
