@@ -4,6 +4,7 @@ import "./Faoliyat.css";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import FaoliyatData from "../../../components/admin/faoliyat/faoliyat_data/FaoliyatData";
+import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm"
 
 const Faoliyat = () => {
 
