@@ -59,11 +59,6 @@ function Provider({ children }) {
           textEditorBodyRu, setTextEditorBodyRu,
           textEditorBodyEn, setTextEditorBodyEn,
           selectValue, setSelectValue,
-          fakultetActivity, setFakultetActivity,
-          kafedraActivity, setKafedraActivity,
-          bolimActivity, setBolimActivity,
-          markazActivity, setMarkazActivity,
-          rektoratActivity, setRektoratActivity
         }}
       >
         {children}
