@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+
+import "./Fakultet.css";
+
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 import Table from "../../../components/admin/table/Table";
 import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
+import XodimForm from "../../../components/admin/xodim_form/XodimForm";
 
-import "./Fakultet.css";
 
 const Fakultet = () => {
   const props = {
@@ -102,6 +105,8 @@ const Fakultet = () => {
         ]}
         renderBody={renderBody}
       />
+
+      <XodimForm categoryId={"fakultet_id"} categoryEndpoint={"Fak_data/all"} employerEndpoint={"Fak_hodim/add"}/>
     </div>
   );
 };
