@@ -21,20 +21,36 @@ const Elon = () => {
     url: "elon/add",
   };
 
-  useEffect(() => {
-    
-    function postData() {
-      fetch(`${globalUrl}/faoliyat/all`, {
-        headers: {
-          "Content-type": "application/json",
-        }
-      })
-        .then((res) => res.json())
-        .then((res) => console.log(res.data.filter(i => ("kafedra_id" in i))))
-        .catch((err) => console.log(err));
+  function postData(e) {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("body_uz", convertToHtml(asosiyVazifaUz));
+    formData.append("body_ru", convertToHtml(asosiyVazifaRu));
+    formData.append("body_en", convertToHtml(asosiyVazifaEn));
+    formData.append("title_uz", names?.nameUz);
+    formData.append("title_ru", names?.nameRu);
+    formData.append("title_en", names?.nameEn);
+    for (let i = 0; i < imgRef.current.files.length; i++) {
+      formData.append("photo", imgRef.current.files[i]);
+    }
+
+    fetch(`${globalUrl}/elon/add`, {
+      method: "POST",
+      headers: {
+        Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5OWI5YzUwNjBlZDlhMGRkODg0OCIsImlhdCI6MTY3NDQ1MDIxNywiZXhwIjoxNjc0NTM2NjE3fQ.8HtdsogxLAWUzLjYtCK-rqQBIw98LJX5wZkhQ7KaJgg"
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
     }
     postData()
-  })
+  }
 
 
   return (
