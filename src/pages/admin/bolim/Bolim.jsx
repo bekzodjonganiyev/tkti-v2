@@ -1,5 +1,7 @@
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
+import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
+
 
 const Bolim = () => {
   const props = {
@@ -34,6 +36,11 @@ const Bolim = () => {
         hasSelect={false}
         url={props.url}
       />
+      <br /><br />
+      <h1>-----------------Bo'limga Faoliyat qo`shish------------------</h1>
+      <br /><br />
+      <FaoliyatForm catogoryId="bolim_id" url="bm_data/all" categoryLabel="Faoliyat Qo'shish"/>
+
     </div>
   );
 };

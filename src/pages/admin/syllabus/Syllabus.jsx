@@ -29,7 +29,7 @@ const Syllabus = () => {
 
   function fetchKafedra(id) {
     const fakultetId = id.split(",")[0];
-    fetch(`http://localhost:5000/Fak_data/${fakultetId}`, {
+    fetch(`${globalUrl}/Fak_data/${fakultetId}`, {
       headers: { "Content-type": "application/json" },
     })
       .then((res) => res.json())
@@ -39,7 +39,7 @@ const Syllabus = () => {
 
   function fetchYonalish(id) {
     const kafedraId = id.split(",")[0];
-    fetch(`http://localhost:5000/kafedra_data/${kafedraId}`, {
+    fetch(`${globalUrl}/kafedra_data/${kafedraId}`, {
       headers: { "Content-type": "application/json" },
     })
       .then((res) => res.json())
@@ -83,7 +83,7 @@ const Syllabus = () => {
 
   useEffect(() => {
     async function fetchFakultet() {
-      fetch(`http://localhost:5000/Fak_data/all`, {
+      fetch(`${globalUrl}/Fak_data/all`, {
         headers: { "Content-type": "application/json" },
       })
         .then((res) => res.json())

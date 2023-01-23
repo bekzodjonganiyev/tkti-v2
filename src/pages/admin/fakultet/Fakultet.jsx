@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
+
+import "./Fakultet.css";
+
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 import Table from "../../../components/admin/table/Table";
 import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
+import XodimForm from "../../../components/admin/xodim_form/XodimForm";
 
 import { Context } from "../../../context";
 
-import "./Fakultet.css";
 
 const Fakultet = () => {
   const { globalUrl } = useContext(Context);
@@ -124,7 +127,9 @@ const Fakultet = () => {
         renderHead={renderHead}
         bodyData={fakultetData}
         renderBody={renderBody}
-      /> 
+      />
+
+      <XodimForm categoryId={"fakultet_id"} categoryEndpoint={"Fak_data/all"} employerEndpoint={"Fak_hodim/add"}/>
     </div>
   );
 };

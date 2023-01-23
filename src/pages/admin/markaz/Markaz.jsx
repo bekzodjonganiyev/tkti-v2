@@ -36,7 +36,11 @@ const Bolim = () => {
         hasSelect={false}
         url={props.url}
       />
-       <FaoliyatForm categoryLabel="Markazga Faoliyat" catogoryId="markaz_id" url="markaz_data/all"/>
+      <br /><br />
+      <h1>-----------------Markaz Faoliyat qo`shish------------------</h1>
+      <br /><br />
+      <FaoliyatForm catogoryId="markaz_id" url="markaz_data/all" categoryLabel="Faoliyat Qo'shish"/>
+
     </div>
   );
 };

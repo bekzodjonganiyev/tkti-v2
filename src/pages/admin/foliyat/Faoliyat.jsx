@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import "./Faoliyat.css";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
-import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
 import FaoliyatData from "../../../components/admin/faoliyat/faoliyat_data/FaoliyatData";
 
 const Faoliyat = () => {
@@ -17,9 +16,6 @@ const Faoliyat = () => {
       <h1>--------------------------------------------</h1>
       <FaoliyatData />
       <h1>------------------------------------------</h1>
-      <br />
-      <br />
-      <br />
       <div>
         
       </div>
