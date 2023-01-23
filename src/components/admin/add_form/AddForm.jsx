@@ -58,12 +58,15 @@ const AddForm = (props) => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5OWI5YzUwNjBlZDlhMGRkODg0OCIsImlhdCI6MTY3NDIyMjAyNSwiZXhwIjoxNjc0MzA4NDI1fQ.nCpywJANzwjsmupFweDt58k_uBl0b6aYFd1TXhcLWwo",
+        Token: localStorage.getItem("token"),
       },
       body: body,
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        alert("Malumotlar qo'shildi");
+        window.location.reload(true);
+      })
       .catch((err) => console.log(err));
   }
   return (

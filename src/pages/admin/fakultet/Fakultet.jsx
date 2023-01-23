@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 import Table from "../../../components/admin/table/Table";
 import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
 
+import { Context } from "../../../context";
+
 import "./Fakultet.css";
 
 const Fakultet = () => {
+  const { globalUrl } = useContext(Context);
+  const [fakultetData, setFakultetData] = useState();
   const props = {
     inputNames: {
       nameUz: "fakultet nomi Uz",
@@ -28,25 +32,62 @@ const Fakultet = () => {
     url: "Fak_data/add",
   };
 
-  const analyseNameTableHead = [
-    "AnalyseName.name",
-    "AnalyseName.price",
-    "AnalyseName.attachedWorker",
-    "AnalyseName.date",
-  ];
+  const analyseNameTableHead = ["Tartib raqam", "Fakultet nomi", "Amallar"];
 
   const renderHead = (item, index) => <th key={index}>{item}</th>;
 
   const renderBody = (item, index) => {
     return (
       <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
-        <td>{item.name}</td>
-        <td>{item.paymentAmount}</td>
-        <td>{item.fullname}</td>
-        <td>{item.createdDate}</td>
+        <td>{index + 1}</td>
+        <td>{item.title_uz}</td>
+        <td>
+          <button className="event-btn edit" onClick={() => {}}>
+            <i className="fa fa-edit"></i>
+          </button>
+          <button
+            className="event-btn delete"
+            onClick={() => deleteFakultet(item._id)}
+          >
+            <i className="fa fa-trash"></i>
+          </button>
+        </td>
       </tr>
     );
   };
+
+  function getData() {
+    fetch(`${globalUrl}/Fak_data/all`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setFakultetData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function deleteFakultet(id) {
+    fetch(`${globalUrl}/Fak_data/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err);
+        window.localStorage.setItem("token", "sss");
+      });
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div>
@@ -61,44 +102,29 @@ const Fakultet = () => {
         url={props.url}
       />
 
-      <FaoliyatForm categoryLabel="Fakultetga faoliyat qo'shing" catogoryId="fakultet_id" url="Faf_data/add" />
+      <br />
+      <br />
+      <h1>---------------Fakultetga Faoliyat qo`shish-----------------</h1>
+      <br />
+      <br />
+      <FaoliyatForm
+        catogoryId="fakultet_id"
+        url="Fak_data/all"
+        categoryLabel="Faoliyat Qo'shish"
+      />
 
-      {/* <span>Table component tasalyapti</span>
+      <br />
+      <br />
+      <h1>-------------------Barcha fakultetlar jadvali-----------------</h1>
+      <br />
+      <br />
+
       <Table
         headData={analyseNameTableHead}
         renderHead={renderHead}
-        bodyData={[
-          {
-            id: 1,
-            name: "kxkxk",
-            paymentAmount: 1212,
-            fullname: "dswws",
-            createdDate: "sdddd",
-          },
-          {
-            id: 1,
-            name: "kxkxk",
-            paymentAmount: 1212,
-            fullname: "dswws",
-            createdDate: "sdddd",
-          },
-          {
-            id: 1,
-            name: "kxkxk",
-            paymentAmount: 1212,
-            fullname: "dswws",
-            createdDate: "sdddd",
-          },
-          {
-            id: 1,
-            name: "kxkxk",
-            paymentAmount: 1212,
-            fullname: "dswws",
-            createdDate: "sdddd",
-          },
-        ]}
+        bodyData={fakultetData}
         renderBody={renderBody}
-      /> */}
+      /> 
     </div>
   );
 };

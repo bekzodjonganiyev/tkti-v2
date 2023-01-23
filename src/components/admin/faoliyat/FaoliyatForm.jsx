@@ -2,11 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 
 import "./FaoliyatForm.css";
 
-import Button from "../../../components/admin/button/Button"
+import Button from "../../../components/admin/button/Button";
 
 import { Context } from "../../../context";
 
-const Faoliyat = ({ catogoryId = "fakultet_id", url = "Fak_data/all", categoryLabel = "Fakultetni tanlang" }) => {
+const Faoliyat = ({
+  catogoryId = "fakultet_id",
+  url = "Fak_data/all",
+  categoryLabel = "Fakultetni tanlang",
+}) => {
   const { globalUrl } = useContext(Context);
   const [inputValue, setInputValue] = useState({});
   const [options, setOptions] = useState([]);
@@ -16,38 +20,40 @@ const Faoliyat = ({ catogoryId = "fakultet_id", url = "Fak_data/all", categoryLa
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  useEffect(() => {
-    function getOptions() {
-      fetch(`${globalUrl}/${url}`, {
-        headers: {
-          "Content-type": "application/json",
-        },
+  function getOptions() {
+    fetch(`${globalUrl}/${url}`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setOptions(res.data);
       })
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res.data);
-          setOptions(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
+      .catch((err) => console.log(err));
+  }
 
+  function postData(e) {
+    e.preventDefault();
+    fetch(`${globalUrl}/faoliyat/add`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(inputValue),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        alert("Malumotlar qo'shildi")
+        window.location.reload(true);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
     getOptions();
   }, []);
-
-    function postData(e) {
-      e.preventDefault();
-      fetch(`${globalUrl}/faoliyat/add`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E5OWI5YzUwNjBlZDlhMGRkODg0OCIsImlhdCI6MTY3NDI0MTAwMCwiZXhwIjoxNjc0MzI3NDAwfQ.2Vj_TFo9cBeubwbas9ryQ9lT1Oo48bkgznRbQKdlAZA"
-        },
-        body: JSON.stringify(inputValue),
-      })
-        .then((res) => res.json())
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    }
 
   return (
     <form onSubmit={postData} className="faoliyat-form">
@@ -134,7 +140,7 @@ const Faoliyat = ({ catogoryId = "fakultet_id", url = "Fak_data/all", categoryLa
         </label>
       </div>
 
-      <Button name="Saqlash"/>
+      <Button name="Saqlash" />
     </form>
   );
 };

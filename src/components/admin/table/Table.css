@@ -3,14 +3,13 @@
 }
 
 .generic-table table {
-    width: 100%;
+    width: 95%;
     min-width: 400px;
     border-spacing: 0;
-    
+    margin: 0 auto;
 }
 
 .generic-table thead {
-    background-color: cyan;
     width: 100%;
 }
 
@@ -22,9 +21,9 @@
 
 .generic-table td {
     text-transform: capitalize;
-    padding: 0px 10px;
+    padding: 20px 10px;
     margin: 10px 0px;
-    font-size: .800rem!important;
+    font-size: 1.1rem!important;
 }
  .generic-table th{
     text-transform: capitalize;

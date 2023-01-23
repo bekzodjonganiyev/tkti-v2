@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
+import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
+
+import { Context } from "../../../context";
+import Table from "../../../components/admin/table/Table";
 
 const Kafedra = () => {
+  const { globalUrl } = useContext(Context);
   const [fakultet, setFakultet] = useState();
+  const [kafedra, setKafedra] = useState();
   const props = {
     inputNames: {
       nameUz: "kafedra nomi Uz",
@@ -26,19 +32,74 @@ const Kafedra = () => {
     url: "kafedra_data/add",
   };
 
-  useEffect(() => {
-    async function fetchFakultet() {
-      fetch(`http://localhost:5000/Fak_data/all`, {
-        headers: { "Content-type": "application/json" },
+  const tableHead = ["Tartib raqam", "Kafedra nomi", "Amallar"];
+  const renderHead = (item, index) => <th key={index}>{item}</th>;
+
+  const renderBody = (item, index) => {
+    return (
+      <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+        <td>{index + 1}</td>
+        <td>{item.title_uz}</td>
+        <td>
+          <button className="event-btn edit" onClick={() => {}}>
+            <i className="fa fa-edit"></i>
+          </button>
+          <button
+            className="event-btn delete"
+            onClick={() => deleteFakultet(item._id)}
+          >
+            <i className="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    );
+  };
+
+  function deleteFakultet(id) {
+    fetch(`${globalUrl}/kafedrEa_data/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res)
+        alert("Malumotlar o`chirildi")
+        window.location.reload(false)
       })
-        .then((res) => res.json())
-        .then((res) => {
-          setFakultet(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
+      .catch((err) => {
+        console.log(err);
+        window.localStorage.setItem("token", "sss");
+      });
+  }
+
+  function fetchFakultet() {
+    fetch(`${globalUrl}/Fak_data/all`, {
+      headers: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setFakultet(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function fetchKafedra() {
+    fetch(`${globalUrl}/kafedra_data/all`, {
+      headers: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setKafedra(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
     fetchFakultet();
+    fetchKafedra();
   }, []);
   return (
     <div>
@@ -53,6 +114,27 @@ const Kafedra = () => {
         options={fakultet?.map((i) => ({ id: i._id, name: i.title_uz }))}
         url={props.url}
       />{" "}
+      <br />
+      <br />
+      <h1>-----------------Kafedraga Faoliyat qo`shish----------------</h1>
+      <br />
+      <br />
+      <FaoliyatForm
+        catogoryId="kafedra_id"
+        url="kafedra_data/all"
+        categoryLabel="Faoliyat Qo'shish"
+      />
+      <br />
+      <br />
+      <h1>-----------------Barcha kafedralar jadvali----------------</h1>
+      <br />
+      <br />
+      <Table
+        headData={tableHead}
+        renderHead={renderHead}
+        bodyData={kafedra}
+        renderBody={renderBody}
+      />
     </div>
   );
 };
