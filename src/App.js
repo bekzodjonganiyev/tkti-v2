@@ -33,17 +33,16 @@ import RectoratItem from "./pages/rektorat/rectoratItem/rectoratitem";
 import PageStaticAkademikFilial from "./pages/filiallar/filial";
 import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 
-
-
 import FacultetFrond from "./pages/structure/FakultetId/FacultetFrond";
 import FakultetId from "./pages/structure/FakultetId/FakultetId";
 
-import KafedraFrond from "./pages/structure/Kafedra/KafedraFrond";
-import KafedraId from "./pages/structure/Kafedra/KafedraId";
+import KafedraFrond from "./pages/structure/kafedra/KafedraFrond";
+import KafedraId from "./pages/structure/kafedra/KafedraId";
 
 import BolimMarkaz from "./pages/structure/BolimMarkaz/BolimMarkaz";
 import BolimMarkazId from "./pages/structure/BolimMarkaz/BolimMarkazId";
 import MarkazId from "./pages/structure/BolimMarkaz/MarkazId";
+
 //Faoliyat
 import BusinessActivity from "./pages/biznesaktivity";
 import TKTIFaoliyat from "./components/Faoliyat/Faoliyat";

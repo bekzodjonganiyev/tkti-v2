@@ -4,9 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import Sherzod from "./sherzod.jpg";
 import "./Fakultet.css";
 import "./style.css";
+import XodimCard from "../../../components/xodim_card/XodimCard";
 
 const FakultetId = () => {
-  const { lang } = useContext(Context);
+  const { lang, globalUrl } = useContext(Context);
   const [hero] = useState({
     uz: {
       title: "Fakultetlar haqida",
@@ -30,7 +31,7 @@ const FakultetId = () => {
   const [activeButton, setActiveButton] = useState(1);
 
   useEffect(() => {
-    fetch(`http://backend.tkti.uz/Fak_data/${id}`, {
+    fetch(`${globalUrl}/Fak_data/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -93,26 +94,33 @@ const FakultetId = () => {
 
         <div className="cardHodim">
           {facultetId?.hodimlar?.map((e, index) => (
-            <div key={index} className="cardInfo">
-              <div className="cardImg">
-                <img src={Sherzod} alt="" />
-              </div>
-              <div className="cardDesc">
-                <span className="cardJob">{e[`job_${lang}`]}</span>
-                <div className=" aSD"></div>
-                <br />
-                <p>{e[`name_${lang}`]}</p>
-                <div>
-                  <span>Email: </span>
-                  {e[`email`]}
-                </div>
+            // <div key={index} className="cardInfo">
+            //   <div className="cardImg">
+            //     <img src={`${globalUrl}/${e.photo}`} alt="" />
+            //   </div>
+            //   <div className="cardDesc">
+            //     <span className="cardJob">{e[`job_${lang}`]}</span>
+            //     <div className=" aSD"></div>
+            //     <br />
+            //     <p>{e[`name_${lang}`]}</p>
+            //     <div>
+            //       <span>Email: </span>
+            //       {e[`email`]}
+            //     </div>
 
-                <div>
-                  <span>Telefon</span>
-                  <a href="tel:+{e[`tell`]}"> {e[`tell`]}</a>
-                </div>
-              </div>
-            </div>
+            //     <div>
+            //       <span>Telefon</span>
+            //       <a href="tel:+{e[`tell`]}"> {e[`tell`]}</a>
+            //     </div>
+            //   </div>
+            // </div>
+            <XodimCard
+              img={`${globalUrl}/${e.photo}`}
+              job={e[`job_${lang}`]}
+              name={e[`name_${lang}`]}
+              email={e.email}
+              tel={e.tell}
+            />
           ))}
         </div>
       </div>
