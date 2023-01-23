@@ -45,7 +45,7 @@ const XodimForm = (props) => {
     fetch(`${globalUrl}/${employerEndpoint}`, {
       method: "POST",
       headers: {
-        Token: localStorage.getItem("token"),
+        Token: localStorage.getItem("token")
       },
       body: formData,
     })
@@ -77,7 +77,7 @@ const XodimForm = (props) => {
         </label>
 
         <label htmlFor="nameRU">
-          Fio(UZ) <br />
+          Fio(RU) <br />
           <input
             type="text"
             id="nameRU"
@@ -87,7 +87,7 @@ const XodimForm = (props) => {
         </label>
 
         <label htmlFor="nameEN">
-          Fio(UZ) <br />
+          Fio(EN) <br />
           <input
             type="text"
             id="nameEN"
@@ -119,7 +119,7 @@ const XodimForm = (props) => {
       <div className="tel-email">
         <label htmlFor="telNumber">
           Telefon raqami <br />
-          <input type="tel" id="telNumber" name="tel" onChange={handleChange} />
+          <input type="tel" id="telNumber" name="tell" onChange={handleChange} />
         </label>
         <label htmlFor="email">
           Email pochta <br />

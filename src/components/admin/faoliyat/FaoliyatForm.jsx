@@ -70,7 +70,7 @@ const Faoliyat = ({
         </label>
 
         <label htmlFor="nameRU">
-          Faoliyat nomini kiriting(UZ) <br />
+          Faoliyat nomini kiriting(RU) <br />
           <input
             type="text"
             id="nameRU"
@@ -80,7 +80,7 @@ const Faoliyat = ({
         </label>
 
         <label htmlFor="nameEN">
-          Faoliyat nomini kiriting(UZ) <br />
+          Faoliyat nomini kiriting(EN) <br />
           <input
             type="text"
             id="nameEN"

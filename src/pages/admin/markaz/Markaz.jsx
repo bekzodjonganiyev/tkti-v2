@@ -2,6 +2,7 @@ import React from "react";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
+import XodimForm from "../../../components/admin/xodim_form/XodimForm";
 
 const Bolim = () => {
   const props = {
@@ -22,7 +23,7 @@ const Bolim = () => {
     },
     selectName: "select name",
     buttonName: "buttob name",
-    url:"markaz_data/add"
+    url: "markaz_data/add",
   };
   return (
     <div>
@@ -36,11 +37,22 @@ const Bolim = () => {
         hasSelect={false}
         url={props.url}
       />
-      <br /><br />
-      <h1>-----------------Markaz Faoliyat qo`shish------------------</h1>
-      <br /><br />
-      <FaoliyatForm catogoryId="markaz_id" url="markaz_data/all" categoryLabel="Faoliyat Qo'shish"/>
-
+      <br />
+      <br />
+      <h1>-----------------Markazga Faoliyat qo`shish------------------</h1>
+      <br />
+      <br />
+      <FaoliyatForm
+        catogoryId="markaz_id"
+        url="markaz_data/all"
+        categoryLabel="Faoliyat Qo'shish"
+      />
+      <br />
+      <br />
+      <h1>-----------------Markazga Xodim qo`shish----------------</h1>
+      <br />
+      <br />
+      <XodimForm categoryId={"markaz_id"} categoryEndpoint={"markaz_data/all"} employerEndpoint={"markaz_hodim/add"}/>
     </div>
   );
 };

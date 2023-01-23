@@ -1,7 +1,7 @@
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
-
+import XodimForm from "../../../components/admin/xodim_form/XodimForm";
 
 const Bolim = () => {
   const props = {
@@ -36,11 +36,22 @@ const Bolim = () => {
         hasSelect={false}
         url={props.url}
       />
-      <br /><br />
+      <br />
+      <br />
       <h1>-----------------Bo'limga Faoliyat qo`shish------------------</h1>
-      <br /><br />
-      <FaoliyatForm catogoryId="bolim_id" url="bm_data/all" categoryLabel="Faoliyat Qo'shish"/>
-
+      <br />
+      <br />
+      <FaoliyatForm
+        catogoryId="bolim_id"
+        url="bm_data/all"
+        categoryLabel="Faoliyat Qo'shish"
+      />
+      <br />
+      <br />
+      <h1>-----------------Bolimga Xodim qo`shish----------------</h1>
+      <br />
+      <br />
+      <XodimForm categoryId={"bolim_id"} categoryEndpoint={"bm_data/all"} employerEndpoint={"bm_hodim/add"}/>
     </div>
   );
 };

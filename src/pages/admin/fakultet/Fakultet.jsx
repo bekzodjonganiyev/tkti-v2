@@ -128,7 +128,9 @@ const Fakultet = () => {
         bodyData={fakultetData}
         renderBody={renderBody}
       />
-
+      <br />
+      <br />
+      <h1>------------Xodim qo`shish------------</h1>
       <XodimForm categoryId={"fakultet_id"} categoryEndpoint={"Fak_data/all"} employerEndpoint={"Fak_hodim/add"}/>
     </div>
   );

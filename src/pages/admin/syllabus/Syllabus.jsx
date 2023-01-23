@@ -29,7 +29,7 @@ const Syllabus = () => {
 
   function fetchKafedra(id) {
     const fakultetId = id.split(",")[0];
-    fetch(`${globalUrl}/Fak_data/${fakultetId}`, {
+    fetch(`http://backend.tkti.uz/Fak_data/${fakultetId}`, {
       headers: { "Content-type": "application/json" },
     })
       .then((res) => res.json())
@@ -56,24 +56,21 @@ const Syllabus = () => {
     formData.append("talim_darajasi", inputValue?.talim_darajasi);
     formData.append("Fakultet", inputValue?.Fakultet.split(",")[1]);
     formData.append("Kafedra", inputValue?.Kafedra.split(",")[1]);
-    formData.append(
-      "talim_yonalishi",
-      inputValue?.talim_yonalishi
-    );
+    formData.append("talim_yonalishi", inputValue?.talim_yonalishi);
     for (let i = 0; i < photoRef.current.files.length; i++) {
       formData.append("photo", photoRef.current.files[i]);
     }
 
-    fetch(`http://localhost:5000/daraja/add`, {
+    fetch(`${globalUrl}/daraja/add`, {
       method: "POST",
       headers: {
-        "Token": localStorage.getItem("token"),
+        Token: localStorage.getItem("token"),
       },
-      body: formData
+      body: formData,
     })
-    .then(res => res.json())
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
+      .then((res) => res.json())
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
 
     console.log(photoRef.current.files);
     for (var pair of formData.entries()) {
@@ -84,7 +81,7 @@ const Syllabus = () => {
   useEffect(() => {
     async function fetchFakultet() {
       fetch(`${globalUrl}/Fak_data/all`, {
-        headers: { "Content-type": "application/json" },
+        headers: { "Content-type": "application/json" }
       })
         .then((res) => res.json())
         .then((res) => setFakultet(res.data))
