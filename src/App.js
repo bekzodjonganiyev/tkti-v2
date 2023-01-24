@@ -36,8 +36,8 @@ import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 import FacultetFrond from "./pages/structure/FakultetId/FacultetFrond";
 import FakultetId from "./pages/structure/FakultetId/FakultetId";
 
-import KafedraFrond from "./pages/structure/kafedra/KafedraFrond";
-import KafedraId from "./pages/structure/kafedra/KafedraId";
+import KafedraFrond from "./pages/structure/Kafedra/KafedraFrond";
+import KafedraId from "./pages/structure/Kafedra/KafedraId";
 
 import BolimMarkaz from "./pages/structure/BolimMarkaz/BolimMarkaz";
 import BolimMarkazId from "./pages/structure/BolimMarkaz/BolimMarkazId";
