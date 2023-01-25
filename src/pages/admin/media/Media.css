@@ -1,0 +1,19 @@
+.media{
+    margin-bottom: 70vh;
+}
+
+.media-form{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.media-form div{
+    width: 100%;
+}
+
+.media-form label{
+    width: 95%;
+    margin: 0 auto;
+    display: block;
+}

@@ -7,6 +7,7 @@ import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
 import { Context } from "../../../context";
 import Table from "../../../components/admin/table/Table";
 import XodimForm from "../../../components/admin/xodim_form/XodimForm";
+import { Yonalish } from "./Yonalish";
 
 const Kafedra = () => {
   const { globalUrl } = useContext(Context);
@@ -142,6 +143,12 @@ const Kafedra = () => {
       <br />
       <br />
       <XodimForm categoryId={"kafedra_id"} categoryEndpoint={"kafedra_data/all"} employerEndpoint={"kafedra_hodim/add"}/>
+      <br />
+      <br />
+      <h1>-----------------Yonalish qo`shish----------------</h1>
+      <br />
+      <br />
+      <Yonalish />
     </div>
   );
 };

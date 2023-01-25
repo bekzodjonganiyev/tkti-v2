@@ -27,7 +27,6 @@ const XodimForm = (props) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
         setCategory(res.data);
       })
       .catch((err) => console.log(err));
@@ -45,7 +44,7 @@ const XodimForm = (props) => {
     fetch(`${globalUrl}/${employerEndpoint}`, {
       method: "POST",
       headers: {
-        Token: localStorage.getItem("token")
+        Token: localStorage.getItem("token"),
       },
       body: formData,
     })
@@ -119,7 +118,12 @@ const XodimForm = (props) => {
       <div className="tel-email">
         <label htmlFor="telNumber">
           Telefon raqami <br />
-          <input type="tel" id="telNumber" name="tell" onChange={handleChange} />
+          <input
+            type="tel"
+            id="telNumber"
+            name="tell"
+            onChange={handleChange}
+          />
         </label>
         <label htmlFor="email">
           Email pochta <br />

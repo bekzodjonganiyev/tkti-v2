@@ -70,6 +70,7 @@ import Matbuot from "./pages/admin/matbuot/Matbuot"
 import FamousStudent from "./pages/admin/famous-student/FamousStudent"
 import StatisticsForStudent from "./pages/admin/statistics/Statistics"
 import QabulData from "./pages/admin/qabul/Qabul"
+import Media from "./pages/admin/media/Media"
 
 function App() {
   return (
@@ -134,6 +135,7 @@ function App() {
           <Route path="famous-student" element={<FamousStudent />} />
           <Route path="statistics-of-student" element={<StatisticsForStudent />} />
           <Route path="qabul" element={<QabulData />} />
+          <Route path="media" element={<Media />} />
         </Route>
       </Routes>
       <Footer />

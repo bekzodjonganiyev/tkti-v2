@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 
 import "./Syllabus.css";
 
@@ -9,7 +9,7 @@ import { Context } from "../../../context";
 
 const Syllabus = () => {
   const photoRef = useRef();
-  const { globalUrl } = useState(Context);
+  const { globalUrl } = useContext(Context);
   const [inputValue, setInputValue] = useState();
   const [fakultet, setFakultet] = useState();
   const [kafedra, setKafedra] = useState();
@@ -28,8 +28,7 @@ const Syllabus = () => {
   }
 
   function fetchKafedra(id) {
-    const fakultetId = id.split(",")[0];
-    fetch(`http://backend.tkti.uz/Fak_data/${fakultetId}`, {
+    fetch(`${globalUrl}/Fak_data/${id}`, {
       headers: { "Content-type": "application/json" },
     })
       .then((res) => res.json())
@@ -38,13 +37,20 @@ const Syllabus = () => {
   }
 
   function fetchYonalish(id) {
-    const kafedraId = id.split(",")[0];
-    fetch(`${globalUrl}/kafedra_data/${kafedraId}`, {
+    fetch(`${globalUrl}/kafedra_data/${id}`, {
       headers: { "Content-type": "application/json" },
     })
       .then((res) => res.json())
       .then((res) => setYonalish(res.data[0].yonalishlar))
       .catch((err) => console.log(err));
+  }
+
+  function test(id, type) {
+    if (type === 1) {
+      return fakultet.find((i) => i._id === id)?.title_uz;
+    } else {
+      return kafedra.find((i) => i._id === id)?.title_uz;
+    }
   }
 
   function onSubmit(e) {
@@ -54,8 +60,8 @@ const Syllabus = () => {
     formData.append("yili", inputValue?.yili);
     formData.append("talim_turi", inputValue?.talim_turi);
     formData.append("talim_darajasi", inputValue?.talim_darajasi);
-    formData.append("Fakultet", inputValue?.Fakultet.split(",")[1]);
-    formData.append("Kafedra", inputValue?.Kafedra.split(",")[1]);
+    formData.append("Fakultet", test(inputValue?.Fakultet, 1));
+    formData.append("Kafedra", test(inputValue?.Kafedra, 2));
     formData.append("talim_yonalishi", inputValue?.talim_yonalishi);
     for (let i = 0; i < photoRef.current.files.length; i++) {
       formData.append("photo", photoRef.current.files[i]);
@@ -81,7 +87,7 @@ const Syllabus = () => {
   useEffect(() => {
     async function fetchFakultet() {
       fetch(`${globalUrl}/Fak_data/all`, {
-        headers: { "Content-type": "application/json" }
+        headers: { "Content-type": "application/json" },
       })
         .then((res) => res.json())
         .then((res) => setFakultet(res.data))
@@ -172,7 +178,7 @@ const Syllabus = () => {
               ...
             </option>
             {fakultet?.map((i) => (
-              <option value={[i._id, i.title_uz]} key={i._id}>
+              <option value={i._id} key={i._id}>
                 {i.title_uz}
               </option>
             ))}
@@ -194,7 +200,7 @@ const Syllabus = () => {
               ...
             </option>
             {kafedra?.map((i) => (
-              <option value={[i._id, i.title_uz]} key={i._id}>
+              <option value={i._id} key={i._id}>
                 {i.title_uz}
               </option>
             ))}

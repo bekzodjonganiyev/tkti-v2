@@ -3,6 +3,8 @@ import { convertToRaw, EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 
+import "./Yangilik.css"
+
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import { Context } from "../../../context";
 import Input from "../../../components/admin/input/Input";
@@ -57,9 +59,9 @@ const Yangilik = () => {
   }
 
   return (
-    <div>
+    <div className="yangilik">
       <FormHeader title="Yangilik" buttonName="+" />
-      <form className="rektorat-form" onSubmit={postData}>
+      <form className="yangilik-form" onSubmit={postData}>
         {/* Sarlavha qo`shish */}
         <Input
           nameUz="Sarlavha kiritng(UZ)"
@@ -99,7 +101,7 @@ const Yangilik = () => {
           />
         </div>
 
-        <div>
+        <div className="file">
           <label htmlFor="forImg">
             <input
               type="file"

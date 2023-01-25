@@ -11,29 +11,12 @@ function Footer() {
   const { lang } = useContext(Context);
 
   let content = null;
-
-  if (
-    location.pathname === "/admin" ||
-    location.pathname === "/admin/fakultet" ||
-    location.pathname === "/admin/kafedra" ||
-    location.pathname === "/admin/bolim" ||
-    location.pathname === "/admin/markaz" ||
-    location.pathname === "/admin/faoliyat" ||
-    location.pathname === "/admin/elon" ||
-    location.pathname === "/admin/syllabus" ||
-    location.pathname === "/admin/rektorat" ||
-    location.pathname === "/admin/student-bolim" ||
-    location.pathname === "/admin/sertifikat" ||
-    location.pathname === "/admin/nashriyot" ||
-    location.pathname === "/admin/famous-student" ||
-    location.pathname === "/admin/statistics-of-student" ||
-    location.pathname === "/admin/qabul" ||
-    location.pathname === "/admin/yangilik"  
-  ) {
+  const result = location.pathname.split("/")[1] === "admin";
+  if (result) {
     content = null;
   } else {
     content = (
-      <footer className={location === "" ? "" : ""}>
+      <footer >
         <a href="/" className="logo">
           <img src={logo} alt="tkti logosi" />
           <p>

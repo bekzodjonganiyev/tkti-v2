@@ -10,10 +10,10 @@ import XodimForm from "../../../components/admin/xodim_form/XodimForm";
 
 import { Context } from "../../../context";
 
-
 const Fakultet = () => {
   const { globalUrl } = useContext(Context);
   const [fakultetData, setFakultetData] = useState();
+  const [type, setType] = useState("table");
   const props = {
     inputNames: {
       nameUz: "fakultet nomi Uz",
@@ -34,6 +34,7 @@ const Fakultet = () => {
     buttonName: "buttob name",
     url: "Fak_data/add",
   };
+  let content = null;
 
   const analyseNameTableHead = ["Tartib raqam", "Fakultet nomi", "Amallar"];
 
@@ -92,9 +93,17 @@ const Fakultet = () => {
     getData();
   }, []);
 
-  return (
-    <div>
-      <FormHeader title="Fakultet" buttonName="+" />
+  if (type === "table") {
+    content = (
+      <Table
+        headData={analyseNameTableHead}
+        renderHead={renderHead}
+        bodyData={fakultetData}
+        renderBody={renderBody}
+      />
+    );
+  } else if (type === "addFaculty") {
+    content = (
       <AddForm
         inputNames={props.inputNames}
         textEditorNames1={props.textEditorNames1}
@@ -104,36 +113,93 @@ const Fakultet = () => {
         hasSelect={false}
         url={props.url}
       />
-
-      <br />
-      <br />
-      <h1>---------------Fakultetga Faoliyat qo`shish-----------------</h1>
-      <br />
-      <br />
+    );
+  } else if (type === "addEmployer") {
+    content = (
+      <XodimForm
+        categoryId={"fakultet_id"}
+        categoryEndpoint={"Fak_data/all"}
+        employerEndpoint={"Fak_hodim/add"}
+      />
+    );
+  } else {
+    content = (
       <FaoliyatForm
         catogoryId="fakultet_id"
         url="Fak_data/all"
         categoryLabel="Faoliyat Qo'shish"
       />
+    );
+  }
 
-      <br />
-      <br />
-      <h1>-------------------Barcha fakultetlar jadvali-----------------</h1>
-      <br />
-      <br />
-
-      <Table
-        headData={analyseNameTableHead}
-        renderHead={renderHead}
-        bodyData={fakultetData}
-        renderBody={renderBody}
+  return (
+    <>
+      <FormHeader
+        title="Fakultet"
+        event1="Fakultetlar jadvali"
+        event2="Fakultet qo`shish"
+        event3="Xodim qo`shish"
+        event4="Faoliyat qo`shish"
+        handleEvent1={() => setType("table")}
+        handleEvent2={() => setType("addFaculty")}
+        handleEvent3={() => setType("addEmployer")}
+        handleEvent4={() => setType("addAction")}
       />
-      <br />
-      <br />
-      <h1>------------Xodim qo`shish------------</h1>
-      <XodimForm categoryId={"fakultet_id"} categoryEndpoint={"Fak_data/all"} employerEndpoint={"Fak_hodim/add"}/>
-    </div>
+      {content}
+    </>
   );
+
+  // return (
+  //   <div>
+  //     <FormHeader
+  //       title="Fakultet"
+  //       event1="Fakultet qo`shish"
+  //       event2="Xodim qo`shish"
+  //       event3="Faoliyat qo`shish"
+  //     />
+  //     <AddForm
+  //       inputNames={props.inputNames}
+  //       textEditorNames1={props.textEditorNames1}
+  //       textEditorNames2={props.textEditorNames2}
+  //       selectName={props.selectName}
+  //       buttomName={props.buttonName}
+  //       hasSelect={false}
+  //       url={props.url}
+  //     />
+
+  //     <br />
+  //     <br />
+  //     <h1>---------------Fakultetga Faoliyat qo`shish-----------------</h1>
+  //     <br />
+  //     <br />
+  //     <FaoliyatForm
+  //       catogoryId="fakultet_id"
+  //       url="Fak_data/all"
+  //       categoryLabel="Faoliyat Qo'shish"
+  //     />
+
+  //     <br />
+  //     <br />
+  //     <h1>-------------------Barcha fakultetlar jadvali-----------------</h1>
+  //     <br />
+  //     <br />
+
+  //     <Table
+  //       headData={analyseNameTableHead}
+  //       renderHead={renderHead}
+  //       bodyData={fakultetData}
+  //       renderBody={renderBody}
+  //     />
+  //     <br />
+  //     <br />
+  //     <h1>------------Xodim qo`shish------------</h1>
+  //     <XodimForm
+  //       categoryId={"fakultet_id"}
+  //       categoryEndpoint={"Fak_data/all"}
+  //       employerEndpoint={"Fak_hodim/add"}
+  //     />
+  //   </div>
+  // );
 };
 
 export default Fakultet;
