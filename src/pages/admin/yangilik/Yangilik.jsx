@@ -1,13 +1,209 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { convertToRaw, EditorState } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import draftToHtml from "draftjs-to-html";
+
+import "./Yangilik.css";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
+import Input from "../../../components/admin/input/Input";
+import Button from "../../../components/admin/button/Button";
+import Table from "../../../components/admin/table/Table";
+
+import { Context } from "../../../context";
 
 const Yangilik = () => {
+  const imgRef = useRef();
+  const { globalUrl, names } = useContext(Context);
+  const [type, setType] = useState("table");
+  const [data, setData] = useState();
+
+  let content = null;
+
+  const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
+    EditorState.createEmpty()
+  );
+  const [asosiyVazifaRu, setAsosiyVazifaRu] = useState(
+    EditorState.createEmpty()
+  );
+  const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
+    EditorState.createEmpty()
+  );
+
+  const convertToHtml = (raw) => {
+    return JSON.stringify(draftToHtml(convertToRaw(raw.getCurrentContent())));
+  };
+
+  const analyseNameTableHead = ["Tartib raqam", "Yangilik nomi", "Amallar"];
+  const renderHead = (item, index) => <th key={index}>{item}</th>;
+  const bodyData = data;
+  const renderBody = (item, index) => {
+    return (
+      <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+        <td>{index + 1}</td>
+        <td>{item.title_uz}</td>
+        <td>
+          <button className="event-btn edit" onClick={() => {}}>
+            <i className="fa fa-edit"></i>
+          </button>
+          <button
+            className="event-btn delete"
+            onClick={() => deleteYangilik(item._id)}
+          >
+            <i className="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    );
+  };
+
+  function getData() {
+    fetch(`${globalUrl}/news/all`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function postData(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("body_uz", convertToHtml(asosiyVazifaUz));
+    formData.append("body_ru", convertToHtml(asosiyVazifaRu));
+    formData.append("body_en", convertToHtml(asosiyVazifaEn));
+    formData.append("title_uz", names?.nameUz);
+    formData.append("title_ru", names?.nameRu);
+    formData.append("title_en", names?.nameEn);
+    formData.append("photo", imgRef.current.files[0]);
+
+    fetch(`${globalUrl}/news/add`, {
+      method: "POST",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function deleteYangilik(id) {
+    fetch(`${globalUrl}/news/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumotlar o'chirildi");
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (type === "table") {
+    content = (
+      <Table
+        headData={analyseNameTableHead}
+        renderHead={renderHead}
+        bodyData={bodyData}
+        renderBody={renderBody}
+      />
+    );
+  } else {
+    content = (
+      <form className="yangilik-form" onSubmit={postData}>
+        {/* Sarlavha qo`shish */}
+        <Input
+          nameUz="Sarlavha kiritng(UZ)"
+          nameRu="Sarlavha kiritng(RU)"
+          nameEn="Sarlavha kiritng(EN)"
+        />
+
+        {/* Asosiy Vazifa */}
+        <div>
+          <span className="textEditorName">Asosiy Vazifa(UZ)</span>
+          <Editor
+            wrapperClassName="text-editor-wrapper"
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            editorState={asosiyVazifaUz}
+            onEditorStateChange={(a) => setAsosiyVazifaUz(a)}
+          />
+        </div>
+        <div>
+          <span className="textEditorName">Asosiy Vazifa(RU)</span>
+          <Editor
+            wrapperClassName="text-editor-wrapper"
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            editorState={asosiyVazifaRu}
+            onEditorStateChange={(a) => setAsosiyVazifaRu(a)}
+          />
+        </div>
+        <div>
+          <span className="textEditorName">Asosiy Vazifa(EN)</span>
+          <Editor
+            wrapperClassName="text-editor-wrapper"
+            editorClassName="text-editor-body"
+            toolbarClassName="text-editor-toolbar"
+            editorState={asosiyVazifaEn}
+            onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
+          />
+        </div>
+
+        <div className="file">
+          <label htmlFor="forImg">
+            <input
+              type="file"
+              id="forImg"
+              multiple
+              accept="image/png, image/gif, image/jpeg"
+              ref={imgRef}
+            />
+          </label>
+        </div>
+
+        <Button name="Saqlash" />
+      </form>
+    );
+  }
+
   return (
-    <div>
-      <FormHeader title="Yangilik" buttonName="+" />
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio cumque facilis ex ullam ratione quam temporibus aliquid dolor, maxime, tempora debitis expedita est quibusdam ut, repellendus dolores repudiandae. Quas repellendus, recusandae at eius incidunt, ut fugit voluptates assumenda inventore alias veniam impedit tenetur facere laboriosam quam quae molestias ipsum obcaecati modi enim ab sit? Perspiciatis necessitatibus quia totam minima porro praesentium eaque aut quam animi. Sequi, doloribus, repellat blanditiis eius quia atque saepe debitis rem, excepturi neque quaerat impedit hic. Quisquam ad consequatur exercitationem ullam reprehenderit optio, iste veritatis velit excepturi temporibus dicta reiciendis ipsum provident delectus illo, voluptatum distinctio ipsa possimus vitae officia modi odit voluptates, impedit eos! Excepturi esse recusandae, amet soluta delectus repellat aliquid harum sed! Laborum deserunt odio natus, mollitia sed maxime dolorum, quis molestiae nostrum ad perferendis. Tempora optio commodi eius! Atque dolorem doloremque soluta exercitationem optio harum saepe beatae, eveniet repellat voluptates eum sed est quidem nostrum hic iste quod. Praesentium suscipit voluptas a asperiores? Inventore sed laborum eligendi consequuntur sit officia laboriosam id, hic repellat. Accusamus tempora natus explicabo perspiciatis quisquam fugiat veritatis quo consequuntur facere. Eveniet rem earum possimus, amet dicta, temporibus, eos voluptas modi impedit quasi dolorem dignissimos non. Soluta aspernatur omnis, dolores qui quibusdam magni necessitatibus magnam possimus aliquam obcaecati ullam minus quo nihil consequuntur incidunt, laborum rerum eaque voluptatem exercitationem. Cum animi, deserunt consequatur eius, dignissimos quod quos molestias quibusdam ex consequuntur possimus quas, nesciunt necessitatibus. Dolore quis cupiditate, mollitia, dolor esse repudiandae nobis enim incidunt, similique earum natus. Quam adipisci vitae odio excepturi, saepe impedit facere expedita eos quo omnis eaque ad dicta sit, repellendus odit molestias, cum eum voluptatum. Deleniti, pariatur? Quaerat repellat aliquid laborum assumenda delectus ipsum ut minima ducimus quibusdam culpa. Odio voluptatem expedita aliquid nobis fugiat dolores, blanditiis cumque, quo doloremque tempore quas fuga ipsum commodi voluptatum consequuntur maxime consectetur nihil nam ratione perferendis porro? Inventore, impedit! Consectetur labore rem suscipit, fuga totam laudantium facere, consequatur assumenda tempore ipsum dolores maiores, ab omnis! Eius quaerat cumque ipsam repudiandae facere, hic fugiat, ab est, corrupti corporis magni. Suscipit esse, illum nam vel pariatur aperiam. Officiis dolor cum soluta qui nihil velit, ab dolores enim ipsum? Excepturi qui dolores deserunt officiis ipsa nemo quod architecto perspiciatis est quam illum commodi nobis velit aliquam repellendus nam, soluta laborum itaque rerum sint veniam dolor sequi. Quos, dolor nobis labore qui debitis nulla possimus quisquam et accusantium natus veritatis, fuga voluptatum minima non atque corporis aperiam velit repudiandae sequi nisi impedit! Nam similique dignissimos autem optio, iure consectetur, beatae distinctio sunt quae officia obcaecati voluptas pariatur odit expedita facere non placeat quibusdam temporibus architecto perspiciatis doloremque! Harum quidem omnis praesentium voluptatem neque labore vitae? Nihil quae ea suscipit modi eum nulla veniam id molestias, doloribus rerum illum tempora est nobis. Nisi doloribus eos culpa perferendis impedit dolorem necessitatibus, minus possimus magnam dolorum placeat quam pariatur facere iure sapiente exercitationem cumque earum optio saepe labore maiores vel quibusdam vitae magni. Incidunt officia harum ad dolor dicta possimus assumenda doloribus laboriosam.
-      <h1>FormData bilan muammo bolyapti</h1>
+    <div className="yangilik">
+      <FormHeader
+        title="Yangilik"
+        event1="Yangiliklar jadvali"
+        event2="Yangilik qo'shish"
+        handleEvent1={() => setType("table")}
+        handleEvent2={() => setType("addNew")}
+      />
+      {content}
     </div>
   );
 };

@@ -1,145 +1,165 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useState, useRef } from "react";
 
 import "./XodimForm.css";
 
 import Button from "../../../components/admin/button/Button";
 
 import { Context } from "../../../context";
+import { useEffect } from "react";
 
 const XodimForm = (props) => {
-  const {
-    nameLb,
-    jobLb,
-    telLabel,
-    photoLabel,
-    emailLabel,
-
-    isSelect,
-    selectLabel,
-    options,
-
-    isRectorat,
-    //Rectorating propslari
-
-    isFamousStudent,
-    //mashxur studentning propslari
-  } = props;
-
+  const { categoryId, categoryEndpoint, employerEndpoint } = props;
+  const { globalUrl } = useContext(Context);
+  const imageRef = useRef();
   const [inputValue, setInputValue] = useState();
+  const [category, setCategory] = useState();
 
   const handleChange = useCallback((e) => {
-    setInputValue((prev) => ({
-      ...prev,
-      [e.target.id]: e.target.value,
-    }));
+    const { name, value } = e.target;
+    setInputValue((prev) => ({ ...prev, [name]: value }));
   });
 
-  console.log(inputValue);
+  function getOptions() {
+    fetch(`${globalUrl}/${categoryEndpoint}`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setCategory(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function addEmployer(e) {
+    e.preventDefault();
+
+    const formData = new FormData();
+    Object.keys(inputValue).forEach((i) => formData.append(i, inputValue[i]));
+    formData.append("photo", imageRef.current.files[0]);
+
+    fetch(`${globalUrl}/${employerEndpoint}`, {
+      method: "POST",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    getOptions();
+  }, []);
 
   return (
-    <form>
-      {/* NAME */}
-      <label htmlFor="nameUz">
-        {nameLb.uz} <br />
-        <input type="text" id="nameUz" onChange={handleChange} />
-      </label>
-      <label htmlFor="nameRu">
-        {nameLb.ru} <br />
-        <input type="text" id="nameRu" onChange={handleChange} />
-      </label>
-      <label htmlFor="nameEn">
-        {nameLb.en} <br />
-        <input type="text" id="nameEn" onChange={handleChange} />
-      </label>
+    <form className="xodim-form" onSubmit={addEmployer}>
+      {/* Ismi */}
+      <div className="inputs">
+        <label htmlFor="nameUZ">
+          Fio(UZ) <br />
+          <input
+            type="text"
+            id="nameUZ"
+            name="name_uz"
+            onChange={handleChange}
+          />
+        </label>
 
-      {/* JOB */}
-      <label htmlFor="jobUz">
-        {jobLb.uz} <br />
-        <input type="text" id="jobUz" onChange={handleChange} />
-      </label>
-      <label htmlFor="jobRu">
-        {jobLb.ru} <br />
-        <input type="text" id="jobRu" onChange={handleChange} />
-      </label>
-      <label htmlFor="jobEn">
-        {jobLb.en} <br />
-        <input type="text" id="jobEn" onChange={handleChange} />
-      </label>
+        <label htmlFor="nameRU">
+          Fio(RU) <br />
+          <input
+            type="text"
+            id="nameRU"
+            name="name_ru"
+            onChange={handleChange}
+          />
+        </label>
 
-      {isFamousStudent && (
-        <>
-          {/* LOCATION OF JOB */}
-          <label htmlFor="nameUz">
-            {nameLb.uz} <br />
-            <input type="text" id="nameUz" onChange={handleChange} />
-          </label>
-          <label htmlFor="nameRu">
-            {nameLb.ru} <br />
-            <input type="text" id="nameRu" onChange={handleChange} />
-          </label>
-          <label htmlFor="nameEn">
-            {nameLb.en} <br />
-            <input type="text" id="nameEn" onChange={handleChange} />
-          </label>
+        <label htmlFor="nameEN">
+          Fio(EN) <br />
+          <input
+            type="text"
+            id="nameEN"
+            name="name_en"
+            onChange={handleChange}
+          />
+        </label>
+      </div>
 
-          {/* KAFEDRA */}
-          {/* FINISHED YEAR */}
-        </>
-      )}
+      {/* Lvozim */}
+      <div className="inputs">
+        <label htmlFor="lavUZ">
+          Lavozim(UZ) <br />
+          <input type="text" id="lavUZ" name="job_uz" onChange={handleChange} />
+        </label>
 
-      {isRectorat && (
-        <>
-          {/* ADDRESS */}
-          {/* SHORTS */}
-          {/* ACTIVITY OF LABOR */}
-          {/* SCIENTIFIC DIRECTION */}
-          {/* MAIN TASK */}
-        </>
-      )}
+        <label htmlFor="lavRU">
+          Lavozim(RU) <br />
+          <input type="text" id="lavRU" name="job_ru" onChange={handleChange} />
+        </label>
 
-      {/* TEL NUMBER */}
-      <label htmlFor="tel">
-        Xodim telefon raqami <br />
-        <input type="tel" id="tel" onChange={handleChange} />
-      </label>
+        <label htmlFor="lavEN">
+          Lavozim(EN) <br />
+          <input type="text" id="lavEN" name="job_en" onChange={handleChange} />
+        </label>
+      </div>
 
-      {/* EMAIL OR CONTACT LINK */}
-      <label htmlFor="email">
-        Xodim emaili <br />
-        <input type="email" id="email" onChange={handleChange} />
-      </label>
+      {/* Telefon, Email va Rasm */}
+      <div className="tel-email">
+        <label htmlFor="telNumber">
+          Telefon raqami <br />
+          <input
+            type="tel"
+            id="telNumber"
+            name="tell"
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="email">
+          Email pochta <br />
+          <input type="tel" id="email" name="email" onChange={handleChange} />
+        </label>
+        <label htmlFor="image">
+          Rasm yuklash <br />
+          <input
+            type="file"
+            id="image"
+            accept="image/png, image/gif, image/jpeg"
+            multiple
+            ref={imageRef}
+          />
+        </label>
+      </div>
 
-      {isSelect && (
-        <>
-          {/* SELECT ...  */}
-          <div>
-            <span>Selectni title li</span>
-            <select>
-              <option value="">Xodim qayerda ishlaydi</option>
-              {/* {
-                    options.map((item, index) => (
-                        <option key={index} value={item}>{item}</option>
-                    ))
-                } */}
-            </select>
-          </div>
-        </>
-      )}
+      {/* Kategoriyani tanlash */}
+      <div>
+        <label htmlFor="forCategory">
+          <select name={categoryId} id="forCategory" onChange={handleChange}>
+            <option value="" hidden>
+              ...
+            </option>
+            {category?.map((i) => (
+              <option value={i._id} key={i._id}>
+                {i.title_uz}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
-      {/* IMG */}
-      <label htmlFor="photo">
-        Xodim rasmi <br />
-        <input type="file" id="photo" />
-      </label>
-      <Button
-        name="Xodimni qo'shish"
-        onClick={(e) => {
-          e.preventDefault();
-          console.log();
-        }}
-      />
+      <Button name="Saqlash" />
     </form>
   );
 };
-
 export default XodimForm;

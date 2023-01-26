@@ -88,6 +88,11 @@ const Sidebar = () => {
             Qabul
           </NavLink>
         </li>
+        <li>
+          <NavLink className="side-link" to="/admin/media">
+            Media
+          </NavLink>
+        </li>
       </ul>
     </aside>
   );

@@ -1,0 +1,11 @@
+.yangilik-form .file {
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .yangilik-form {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  
