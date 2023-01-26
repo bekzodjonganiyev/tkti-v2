@@ -3,7 +3,7 @@ import { Context } from "../../../context";
 import { Link } from "react-router-dom";
 
 const KafedraFrond = () => {
-    const { lang } = useContext(Context);
+    const { lang, globalUrl } = useContext(Context);
     const [hero] = useState({
       uz: {
         title: "Kafedralar",
@@ -21,7 +21,7 @@ const KafedraFrond = () => {
     const [kafedra, setKafedra] = useState([]);
       
   useEffect(() => {
-    fetch(`http://backend.tkti.uz/kafedra_data/all`, {
+    fetch(`${globalUrl}/kafedra_data/all`, {
       headers: {
         "Content-Type": "application/json",
       },
