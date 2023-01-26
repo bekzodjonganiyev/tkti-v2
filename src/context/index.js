@@ -13,7 +13,9 @@ function Provider({ children }) {
   const [textEditorBodyEn, setTextEditorBodyEn] = useState();
   const [names, setNames] = useState();
   const [selectValue, setSelectValue] = useState();
+  //globalUrl = "http://localhost:5000";
   const globalUrl = "http://backend.tkti.uz";
+
 
   const time = (arg) => {
     const date = new Date(arg);
@@ -56,7 +58,7 @@ function Provider({ children }) {
           textEditorBodyUz, setTextEditorBodyUz,
           textEditorBodyRu, setTextEditorBodyRu,
           textEditorBodyEn, setTextEditorBodyEn,
-          selectValue, setSelectValue
+          selectValue, setSelectValue,
         }}
       >
         {children}

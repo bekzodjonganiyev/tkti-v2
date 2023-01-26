@@ -14,6 +14,7 @@ const aloqaLang = {
 <img class="images mx-4" style="
     width: 300px;
 " src=${xalqaro} alt="" />
+
 <span>
 <h4>Babaxanova Zebo Abdullaevna</h4>
 xalqaro hamkorlik bo‘limi boshlig’i</br>

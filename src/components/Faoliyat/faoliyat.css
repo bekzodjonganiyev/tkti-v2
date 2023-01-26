@@ -1,0 +1,21 @@
+.boxsss{
+    display: flex;
+    width: 100%;
+}
+.faoliyatInfo .edfdwe{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+width: 100vw;
+  height: 100vh;
+
+  background:#F9F9F9;
+   
+    
+}
+.faoliyatInfo .faoliyat__data{
+    background:#c9d6da;
+   width: 300px;
+   height: 100vw;
+ 
+}
