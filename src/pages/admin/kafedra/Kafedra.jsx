@@ -172,53 +172,6 @@ const Kafedra = () => {
         handleEvent3={() => setType("addEmployer")}
         handleEvent4={() => setType("addAction")}
       />
-      {/* <AddForm
-        inputNames={props.inputNames}
-        textEditorNames1={props.textEditorNames1}
-        textEditorNames2={props.textEditorNames2}
-        selectName={props.selectName}
-        buttomName={props.buttonName}
-        hasSelect={true}
-        options={fakultet?.map((i) => ({ id: i._id, name: i.title_uz }))}
-        url={props.url}
-      />{" "}
-      <br />
-      <br />
-      <h1>-----------------Kafedraga Faoliyat qo`shish----------------</h1>
-      <br />
-      <br />
-      <FaoliyatForm
-        catogoryId="kafedra_id"
-        url="kafedra_data/all"
-        categoryLabel="Faoliyat Qo'shish"
-      />
-      <br />
-      <br />
-      <h1>-----------------Barcha kafedralar jadvali----------------</h1>
-      <br />
-      <br />
-      <Table
-        headData={tableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
-      <br />
-      <br />
-      <h1>-----------------Xodim qo`shish----------------</h1>
-      <br />
-      <br />
-      <XodimForm
-        categoryId={"kafedra_id"}
-        categoryEndpoint={"kafedra_data/all"}
-        employerEndpoint={"kafedra_hodim/add"}
-      />
-      <br />
-      <br />
-      <h1>-----------------Yonalish qo`shish----------------</h1>
-      <br />
-      <br />
-      <Yonalish /> */}
       {content}
     </div>
   );

@@ -37,9 +37,7 @@ const XodimForm = (props) => {
 
     const formData = new FormData();
     Object.keys(inputValue).forEach((i) => formData.append(i, inputValue[i]));
-    for (let i = 0; i < imageRef.current.files.length; i++) {
-      formData.append("photo", imageRef.current.files[i]);
-    }
+    formData.append("photo", imageRef.current.files[0]);
 
     fetch(`${globalUrl}/${employerEndpoint}`, {
       method: "POST",
@@ -50,9 +48,12 @@ const XodimForm = (props) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        alert("Xodim qo`shildi");
-        window.location.reload(false);
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumotlar o'chirildi");
+          window.location.reload(false);
+        }
       })
       .catch((err) => console.log(err));
   }

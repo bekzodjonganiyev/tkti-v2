@@ -38,10 +38,7 @@ const Fakultet = () => {
 
   const analyseNameTableHead = ["Tartib raqam", "Fakultet nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
-  const bodyData = async () =>
-    fetch(`${globalUrl}/Fak_data/all`)
-      .then((res) => res.json())
-      .then((data) => data.data);
+  const bodyData = fakultetData
   const renderBody = (item, index) => {
     return (
       <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
@@ -107,7 +104,7 @@ const Fakultet = () => {
       <Table
         headData={analyseNameTableHead}
         renderHead={renderHead}
-        bodyData={fakultetData}
+        bodyData={bodyData}
         renderBody={renderBody}
       />
     );
