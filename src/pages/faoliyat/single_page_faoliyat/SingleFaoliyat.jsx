@@ -39,24 +39,26 @@ const SingleFaoliyat = () => {
   const { globalUrl, lang } = useContext(Context);
   const [data, setData] = useState({get:false,error:false,data:false});
   const navigate = useNavigate()
-  
+  const id = ref.substring(ref.lastIndexOf('-')+Number(1))
   useEffect(() => {
-    fetch(`${globalUrl}/faoliyat/${ref.substring(ref.lastIndexOf('-')+Number(1))}`, {
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if(res.status ===200){
-          setData({get:true, error:false, data:res.data});
-        }
+    if(id.length ===24){
+      fetch(`${globalUrl}/faoliyat/${id}`, {
+        headers: {
+          "Content-type": "application/json",
+        },
       })
-      .catch(() => setData({get:false, error:true}));
+        .then((res) => res.json())
+        .then((res) => {
+          if(res.status ===200){
+            setData({get:true, error:false, data:res.data});
+          }
+        })
+        .catch(() => setData({get:false, error:true}));
+    }
   }, []);
 
   useEffect(()=>{
-    if(!data.get && data.error){
+    if(id.length != 24){
       navigate(-1)
     }
   },[])
