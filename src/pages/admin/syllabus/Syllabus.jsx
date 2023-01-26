@@ -75,7 +75,14 @@ const Syllabus = () => {
       body: formData,
     })
       .then((res) => res.json())
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumot Qo`shildi");
+          window.location.reload(false);
+        }
+      })
       .catch((err) => console.log(err));
 
     console.log(photoRef.current.files);

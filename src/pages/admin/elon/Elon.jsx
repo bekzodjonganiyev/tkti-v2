@@ -89,7 +89,14 @@ const Elon = () => {
       body: formData,
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
       .catch((err) => console.log(err));
   }
 
@@ -116,8 +123,8 @@ const Elon = () => {
   }
 
   useEffect(() => {
-    getData()
-  }, [])
+    getData();
+  }, []);
 
   if (type === "table") {
     content = (
@@ -190,9 +197,9 @@ const Elon = () => {
   return (
     <div className="yangilik">
       <FormHeader
-        title="Yangilik"
-        event1="Yangiliklar jadvali"
-        event2="Yangilik qo'shish"
+        title="Elon"
+        event1="Elonlar jadvali"
+        event2="Elon qo'shish"
         handleEvent1={() => setType("table")}
         handleEvent2={() => setType("addNew")}
       />

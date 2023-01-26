@@ -128,7 +128,7 @@ const Rektorat = () => {
         if (!res.success) {
           alert(res.message + "❌");
         } else {
-          alert("Malumotlar o'chirildi");
+          alert(res.message);
           window.location.reload(false);
         }
       })

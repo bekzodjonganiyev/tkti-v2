@@ -68,7 +68,7 @@ const AddForm = (props) => {
         if (!res.success) {
           alert(res.message  + " ❌");
         } else {
-          alert("Malumotlar qo'shildi");
+          alert(res.message);
           window.location.reload(true);
         }
       })

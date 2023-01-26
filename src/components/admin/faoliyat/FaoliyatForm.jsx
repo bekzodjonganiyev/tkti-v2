@@ -45,8 +45,12 @@ const Faoliyat = ({
     })
       .then((res) => res.json())
       .then((res) => {
-        alert("Malumotlar qo'shildi")
-        window.location.reload(true);
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
       })
       .catch((err) => console.log(err));
   }

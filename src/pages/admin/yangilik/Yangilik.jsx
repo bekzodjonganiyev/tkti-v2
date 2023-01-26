@@ -89,7 +89,14 @@ const Yangilik = () => {
       body: formData,
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
       .catch((err) => console.log(err));
   }
 
@@ -116,8 +123,8 @@ const Yangilik = () => {
   }
 
   useEffect(() => {
-    getData()
-  }, [])
+    getData();
+  }, []);
 
   if (type === "table") {
     content = (
