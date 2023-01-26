@@ -32,3 +32,10 @@
     margin: 10px 0;
     font-size: 20px;
 }
+.bolimMarkaz h3{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color:#02307d;
+    font-weight: 700;
+}

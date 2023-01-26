@@ -15,13 +15,14 @@ const XodimCard = (props) => {
           <div className=" aSD"></div>
           <br />
           <p>{name}</p>
-          <div>
+          <div className="cardEmail">
+          <i className="fa-solid fa-phone"></i>
+          <i className="fa-solid fa-envelope"></i>
             <span>Email: </span>
-            {email}
+          <a href={`mailto:${email}`}>{email}</a>
           </div>
-
-          <div>
-            <span>Telefon</span>
+          <div className="cardEmail">
+            <span>Telefon:</span>
             <a href={`tel:${tel}`}>{tel}</a>
           </div>
         </div>

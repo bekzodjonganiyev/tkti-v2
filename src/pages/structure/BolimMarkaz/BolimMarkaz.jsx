@@ -4,7 +4,22 @@ import { Link } from "react-router-dom";
 import Markaz from "./Markaz";
 
 const BolimMarkaz = () => {
-  const { lang } = useContext(Context);
+  const { lang,globalUrl } = useContext(Context);
+  const [hero] = useState({
+    uz: {
+      title: "Bo'limlar",
+      
+
+    },
+    ru: {
+      title: "Разделы",
+    
+      },
+    en: {
+      title: "Departments",
+    
+      },
+  });
 
   const [facultet, setFacultet] = useState([]);
 
@@ -22,7 +37,11 @@ const BolimMarkaz = () => {
 
   return (
     <div className="container">
-   
+   <div className="bolimMarkaz">
+    <h3>
+    {hero[lang].title}
+    </h3>
+   </div>
      
       <div className="facultetInfo">
         {facultet?.length > 0

@@ -15,6 +15,10 @@ import Bakalavr from "./pages/qabul/bakalavr/bakalavr";
 import Doktarantura from "./pages/qabul/doktantura/doktarantura";
 import Magistratura from "./pages/qabul/magistratura/magistratura";
 
+// news 
+import ElonlarItem from "./pages/elonlar/elonItem";
+import Elonlar from "./pages/elonlar/elonlar";
+
 //Talabalar
 import Students from "./pages/students/Students";
 import Bedroom from "./pages/students/bedroom/Bedroom";
@@ -36,8 +40,8 @@ import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 import FacultetFrond from "./pages/structure/FakultetId/FacultetFrond";
 import FakultetId from "./pages/structure/FakultetId/FakultetId";
 
-import KafedraFrond from "./pages/structure/kafedra/KafedraFrond";
-import KafedraId from "./pages/structure/kafedra/KafedraId";
+import KafedraName from "./pages/structure/Kafedra/KafedraFrond";
+import KafedraId from "./pages/structure/Kafedra/KafedraId";
 
 import BolimMarkaz from "./pages/structure/BolimMarkaz/BolimMarkaz";
 import BolimMarkazId from "./pages/structure/BolimMarkaz/BolimMarkazId";
@@ -112,6 +116,9 @@ function App() {
         <Route path="/talabalar/baholash" element={<StudentInfo />} />
         <Route path="/bitiruvchilar" element={<Graduates />} />
 
+        <Route path="/elon" element={<Elonlar />} />
+        <Route path="/elon/:id" element={<ElonlarItem />} />
+
         <Route path="/rektorat" element={<Rectorat />} />
         <Route path="/rektorat/:id" element={<RectoratItem />} />
 
@@ -121,7 +128,7 @@ function App() {
         <Route path="/bolimMarkaz" element={<BolimMarkaz />} />
         <Route path="/bolimMarkazId/:id" element={<BolimMarkazId />} />
 
-        <Route path="/kafedrafrond" element={<KafedraFrond />} />
+        <Route path="/kafedrafrond" element={<KafedraName />} />
         <Route path="/kafedraId/:id" element={<KafedraId />} />
 
         

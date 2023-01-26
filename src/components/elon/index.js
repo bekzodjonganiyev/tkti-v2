@@ -5,13 +5,15 @@ import NewsLang from "../news/lang";
 import "./style.css";
 
 function ElonlarComp({ home }) {
-  const { lang, time, globalUrl} = useContext(Context);
+  const { lang, time, globalUrl,textSytles} = useContext(Context);
 
   const [news, setNews] = useState({
     isFetched: false,
     error: false,
     data: {},
   });
+
+  const [ofset, setOfset] = useState(1);
 
   useEffect(() => {
     fetch(`${globalUrl}/elon/all`)
@@ -25,12 +27,15 @@ function ElonlarComp({ home }) {
                   .sort((a, b) => new Date(b.date) - new Date(a.date))
                   .slice(0, 4)
               : data.data
-                  .sort((a, b) => new Date(b.date) - new Date(a.date)),
+                  .sort((a, b) => new Date(b.date) - new Date(a.date))
+                  .slice(0, ofset * 30),
             isFetched: true,
           })
       )
       .catch(() => setNews({ error: true }));
-  }, []);
+  }, [ofset]);
+
+  console.log(news);
 
   return (
     <>
@@ -64,13 +69,25 @@ function ElonlarComp({ home }) {
             </>
           ))
         ) : news.isFetched && news.data && news.data.length === 0 ? (
-          <h2>{NewsLang[lang][3]}</h2>
+          <h2>Yangilik hali joylanmagan</h2>
         ) : news.error ? (
-          <h2>{NewsLang[lang][1]}</h2>
+          <h2>Xatolik</h2>
         ) : (
-          <h2>{NewsLang[lang][0]} ...</h2>
+          <h2>Yangiliklar yuklanmoqda ...</h2>
         )}
       </div>
+
+      {home ? (
+        <></>
+      ) : (
+        <button
+          className="hj"
+          style={textSytles(30, 600)}
+          onClick={() => setOfset(ofset + 1)}
+        >
+          <i className="fa-solid fa-plus"></i>
+        </button>
+      )}
     </>
   );
 }

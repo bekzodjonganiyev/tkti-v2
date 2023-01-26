@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../../context";
 import { Link } from "react-router-dom";
-import './style.css'
+
 const FacultetFrond = () => {
   const { lang } = useContext(Context);
   const [hero] = useState({
@@ -32,7 +32,7 @@ const FacultetFrond = () => {
     })
       .then((res) => res.json())
       .then((data) => setFacultet(data.data));
-    
+    console.log(facultet);
   }, [setFacultet]);
 
 

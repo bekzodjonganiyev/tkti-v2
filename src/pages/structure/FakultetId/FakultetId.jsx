@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../../context";
 import { Link, useParams } from "react-router-dom";
-import Sherzod from "./sherzod.jpg";
+
 import "./Fakultet.css";
-import "./style.css";
+
 import XodimCard from "../../../components/xodim_card/XodimCard";
 
 const FakultetId = () => {
@@ -39,7 +39,6 @@ const FakultetId = () => {
       .then((res) => res.json())
       .then((data) => setFacultetId(data.data));
   }, []);
-  console.log(facultetId);
 
   return (
     <div className="container">
@@ -94,26 +93,6 @@ const FakultetId = () => {
 
         <div className="cardHodim">
           {facultetId?.hodimlar?.map((e, index) => (
-            // <div key={index} className="cardInfo">
-            //   <div className="cardImg">
-            //     <img src={`${globalUrl}/${e.photo}`} alt="" />
-            //   </div>
-            //   <div className="cardDesc">
-            //     <span className="cardJob">{e[`job_${lang}`]}</span>
-            //     <div className=" aSD"></div>
-            //     <br />
-            //     <p>{e[`name_${lang}`]}</p>
-            //     <div>
-            //       <span>Email: </span>
-            //       {e[`email`]}
-            //     </div>
-
-            //     <div>
-            //       <span>Telefon</span>
-            //       <a href="tel:+{e[`tell`]}"> {e[`tell`]}</a>
-            //     </div>
-            //   </div>
-            // </div>
             <XodimCard
               img={`${globalUrl}/${e.photo}`}
               job={e[`job_${lang}`]}

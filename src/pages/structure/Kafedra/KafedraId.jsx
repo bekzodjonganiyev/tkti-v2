@@ -2,8 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../../context";
 import { Link, useParams } from "react-router-dom";
 import Sherzod from '../FakultetId/sherzod.jpg'
+import XodimCard from "../../../components/xodim_card/XodimCard";
 const FakultetId = () => {
-  const { lang } = useContext(Context);
+  const { lang,globalUrl } = useContext(Context);
   const [hero] = useState({
     uz: {
       title: "Fakultetlar haqida",
@@ -28,29 +29,29 @@ const FakultetId = () => {
   const [activeButton, setActiveButton] = useState(1);
    
   useEffect(() => {
-    fetch(`http://backend.tkti.uz/Fak_data/${id}`, {
+    fetch(`http://backend.tkti.uz/kafedra_data/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
       .then((data) => setFacultetId(data.data));
-      console.log(facultetId);
-  }, [setFacultetId]);
- 
+    }, [setFacultetId]);
+    
+  
   
   return (
     <div className="container">
         <div className="facultetDesc">
 
         {
-                facultetId?.kafedralar?.map((e)=>(
+                facultetId?.map((e)=>(
                   <div key={e.id}  >
                     {
                 <div
                   className="fakultetName"
                   dangerouslySetInnerHTML={{
-                    __html: facultetId[`title_${lang}`],
+                    __html: e[`title_${lang}`],
                    
                   }}
                 />
@@ -72,18 +73,19 @@ const FakultetId = () => {
       
 
       {
-                facultetId?.kafedralar?.map((e, index)=>(
+                facultetId?.map((e, index)=>(
                   <div key={index}  >
+                 
                       {activeButton === 1 && <div>
                         <div
                  className="fakultet-inner"
                  dangerouslySetInnerHTML={{
-                   __html: facultetId[`haqida_${lang}`],
+                   __html: e[`haqida_${lang}`],
                   
                  }}
                />
         {
-          
+         
                 
                 
               }
@@ -93,7 +95,7 @@ const FakultetId = () => {
         <div
                  className="fakultet-inner"
                  dangerouslySetInnerHTML={{
-                   __html: facultetId[`maqsad_${lang}`],
+                   __html: e[`maqsad_${lang}`],
                   
                  }}
                />
@@ -104,44 +106,24 @@ const FakultetId = () => {
 
     
      
-        <div className="cardHodim">
-              {
-                facultetId?.hodimlar?.map((e, index)=>(
-                  <div key={index}  className="cardInfo">
-                    <div className="cardImg">
-                     <img src= {Sherzod} alt=""  />
-                     </div>
-                     <div className="cardDesc">
-                      <span className="cardJob">
-                      {e[`job_${lang}`]}
-                      
-                      </span>
-                      <div className=" aSD"></div>
-                      <br/>
-                      <p>{e[`name_${lang}`]}</p>
-                      <div>
-                      <span>Email: </span>
-                       {e[`email`]}
-                       </div>
-                      
-                      <div>
-                        <span>Telefon</span>
-                       <a href="tel:+{e[`tell`]}"> {e[`tell`]}</a>
-                     
-                    
-                       </div>
-                       </div>
-                  </div>
-                ))
-              }
-              </div>
-    </div>
-
-      <div>
-     
-      </div>
-    
       
+    </div>
+    
+      <div className="cardHodim">
+      {facultetId[0]?.hodimlar?.map((e, index) => (
+
+<XodimCard
+key={index}
+img={`${globalUrl}/${e.photo}`}
+job={e[`job_${lang}`]}
+name={e[`name_${lang}`]}
+email={e.email}
+tel={e.tell}
+/>
+      )
+      )}
+      </div>
+     
     </div>
   );
 };

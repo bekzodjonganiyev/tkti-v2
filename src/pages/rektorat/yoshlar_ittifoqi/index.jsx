@@ -107,47 +107,33 @@ function YoshlarIttifoqi() {
         {YoshLarIttifoqiLang[lang].yoshlarga.h6}
       </h4>
     </div>
-    <div className="teacher__list">
-      <div className="teachers__card">
-        <img
-          className="teacher__image w-10"
-          src={YoshlarItt}
-          alt=""
-        />
-        <div className="teacher__body">
-          <span className="teacher__fullname fw-bolder">
-            {" "}
-            {YoshLarIttifoqiLang[lang].teacher.name}
-          </span>
-          <span className="teacher__degree">
-            {" "}
-            {YoshLarIttifoqiLang[lang].teacher.job}
-          </span>
-          <div className="info">
-            <span>
-              <i className="fa-solid fa-hourglass-start"></i>{" "}
-              {YoshLarIttifoqiLang[lang].teacher.jobTime}
-            </span>
-            <br />
-            <span>
-              <b>
-                <i className="fa-solid fa-phone"></i>
-              </b>
-              <a href="tel:+998712449235">+99871 244-92-35</a>
-            </span>
-            <br />
-            <span>
-              <b>
-                <i className="fa-solid fa-envelope"></i>
-              </b>
-              <a href="mailto:ulug85bek77@gmail.com">
+
+    <div className="cardHodim">
+      <div className="cardInfo">
+        <div className="cardImg">
+          <img src={YoshlarItt} alt="employer img" />
+        </div>
+        <div className="cardDesc">
+          <span className="cardJob">{YoshLarIttifoqiLang[lang].teacher.name}</span>
+          <div className=" aSD"></div>
+          <br />
+          <p>{YoshLarIttifoqiLang[lang].teacher.job}</p>
+          <div className="cardEmail">
+         
+          
+            <span><i className="fa-solid fa-envelope"></i></span>
+            <a href="mailto:ulug85bek77@gmail.com">
                 ulug85bek77@gmail.com
               </a>
-            </span>
+          </div>
+          <div className="cardEmail">
+          <i className="fa-solid fa-phone"></i>
+          <a href="tel:+998712449235">+99871 244-92-35</a>
           </div>
         </div>
       </div>
     </div>
+   
     
   </div>
   );

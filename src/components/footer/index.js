@@ -48,16 +48,16 @@ function Footer() {
           <div className="location">
             <p>
               <i className="fa-regular fa-phone"></i>
-              <a target="_blank" href="tel:(998-71)244-79-15.">
-                +(998 71) 244-79-15
+              <a target="_blank" href="tel:(998-71)244-79-20">
+                +(998 71) 244-79-20
               </a>
               &nbsp; &nbsp;
             </p>
 
             <p>
               <i className="fa-regular fa-envelope"></i>
-              <a target="_blank" href="mailto:info@tcti.uz">
-                info@tcti.uz
+              <a target="_blank" href="mailto:info@tkti.uz">
+                info@tkti.uz
               </a>
             </p>
           </div>
