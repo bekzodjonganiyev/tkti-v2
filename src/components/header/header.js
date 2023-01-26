@@ -8,6 +8,7 @@ import gerb from "../../files/gerb.png";
 
 import HeaderLang from "./lang";
 import { Context } from "../../context";
+import MyComponent from "./MyComponent";
 
 const Header = () => {
   const location = useLocation();
@@ -77,6 +78,7 @@ const Header = () => {
               <a className="header__nav" href="/biz-bilan-aloqa">
                 {HeaderLang[lang].contact}
               </a>
+
             </div>
 
             <div className="header__top__icon">
@@ -115,8 +117,7 @@ const Header = () => {
               </div>
 
               <div className="dropdown">
-                <h3 className="dropbtn"> {lang.toUpperCase()}</h3>
-
+              <h3 className="dropbtn"> {lang.toUpperCase()}</h3>
                 <div className="dropdown-content icon__wrapper">
                   <h3
                     onClick={() => (setLang("uz"), setRefresh(true))}
@@ -141,7 +142,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div
+        <div 
           onClick={() => setShowHeader(!showHeader)}
           className="header__nav burger"
         >

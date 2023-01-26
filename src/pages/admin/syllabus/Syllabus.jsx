@@ -28,7 +28,9 @@ const Syllabus = () => {
   }
 
   function fetchKafedra(id) {
+
     fetch(`${globalUrl}/Fak_data/${id}`, {
+
       headers: { "Content-type": "application/json" },
     })
       .then((res) => res.json())
@@ -67,6 +69,7 @@ const Syllabus = () => {
       formData.append("photo", photoRef.current.files[i]);
     }
 
+
     fetch(`${globalUrl}/daraja/add`, {
       method: "POST",
       headers: {
@@ -94,6 +97,7 @@ const Syllabus = () => {
   useEffect(() => {
     async function fetchFakultet() {
       fetch(`${globalUrl}/Fak_data/all`, {
+
         headers: { "Content-type": "application/json" },
       })
         .then((res) => res.json())

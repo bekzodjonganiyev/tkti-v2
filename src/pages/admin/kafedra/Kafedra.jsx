@@ -37,7 +37,6 @@ const Kafedra = () => {
     buttonName: "Saqlash",
     url: "kafedra_data/add",
   };
-
   const tableHead = ["Tartib raqam", "Kafedra nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   const bodyData = kafedra;

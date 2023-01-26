@@ -19,3 +19,12 @@ width: 90%;
     width: 250px;
     margin: 10px auto;
 }
+.studentCard{
+    display: flex;
+    flex-wrap: wrap;
+}
+.graduates-info{
+    display: flex;
+    
+    justify-content: center;
+}

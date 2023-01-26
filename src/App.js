@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import "./index.css";
@@ -13,6 +14,10 @@ import Xalqaro from "./pages/institut/xalqaroAloqalar/Xalqaro";
 import Bakalavr from "./pages/qabul/bakalavr/bakalavr";
 import Doktarantura from "./pages/qabul/doktantura/doktarantura";
 import Magistratura from "./pages/qabul/magistratura/magistratura";
+
+// news 
+import ElonlarItem from "./pages/elonlar/elonItem";
+import Elonlar from "./pages/elonlar/elonlar";
 
 //Talabalar
 import Students from "./pages/students/Students";
@@ -32,10 +37,21 @@ import RectoratItem from "./pages/rektorat/rectoratItem/rectoratitem";
 import PageStaticAkademikFilial from "./pages/filiallar/filial";
 import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 
+import FacultetFrond from "./pages/structure/FakultetId/FacultetFrond";
+import FakultetId from "./pages/structure/FakultetId/FakultetId";
+
+import KafedraName from "./pages/structure/Kafedra/KafedraFrond";
+import KafedraId from "./pages/structure/Kafedra/KafedraId";
+
+import BolimMarkaz from "./pages/structure/BolimMarkaz/BolimMarkaz";
+import BolimMarkazId from "./pages/structure/BolimMarkaz/BolimMarkazId";
+import MarkazId from "./pages/structure/BolimMarkaz/MarkazId";
+
 //Faoliyat
 import BusinessActivity from "./pages/biznesaktivity";
 import FaoliyatNew from "./pages/faoliyat/FaoliyatNew";
 import SingleFaoliyat from "./pages/faoliyat/single_page_faoliyat/SingleFaoliyat";
+import TKTIFaoliyat from "./components/Faoliyat/Faoliyat";
 
 //Institut
 import HighSchool from "./pages/institut/HighSchool/HighSchool";
@@ -74,7 +90,13 @@ import QabulData from "./pages/admin/qabul/Qabul";
 import Media from "./pages/admin/media/Media";
 import ProtectedRoute from "./components/admin/protected_route/ProtectedRoute";
 
+
+
+
+
 function App() {
+  const [variant, setVariant] = useState("");
+
   return (
     <div className="my__container">
       <Header />
@@ -87,7 +109,6 @@ function App() {
         <Route path="/qabul/magistratura" element={<Magistratura />} />
         <Route path="/qabul/doktarantura" element={<Doktarantura />} />
         <Route path="/qabul/qushma" element={<Qushma />} />
-
         <Route path="/talabalar" element={<Students />} />
         <Route path="/talabalar/moliya" element={<Finance />} />
         <Route path="/talabalar/turar-joy" element={<Bedroom />} />
@@ -99,14 +120,40 @@ function App() {
         <Route path="/talabalar/baholash" element={<StudentInfo />} />
         <Route path="/bitiruvchilar" element={<Graduates />} />
 
+        <Route path="/elon" element={<Elonlar />} />
+        <Route path="/elon/:id" element={<ElonlarItem />} />
+
         <Route path="/rektorat" element={<Rectorat />} />
         <Route path="/rektorat/:id" element={<RectoratItem />} />
+
+        <Route path="/faculty" element={<FacultetFrond />} />
+        <Route path="/facultyId/:id" element={<FakultetId />} />
+
+        <Route path="/bolimMarkaz" element={<BolimMarkaz />} />
+        <Route path="/bolimMarkazId/:id" element={<BolimMarkazId />} />
+
+        <Route path="/kafedrafrond" element={<KafedraName />} />
+        <Route path="/kafedraId/:id" element={<KafedraId />} />
+
+        
+      
+        <Route path="/markazId/:id" element={<MarkazId />} />
+
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />
-
         <Route path="/moliyaviy-faoliyat" element={<BusinessActivity />} />
         <Route path="/barcha-faoliyat" element={<FaoliyatNew />} />
         <Route path="/faoliyat/:id" element={<SingleFaoliyat />} />
+        <Route
+          path="/moliyaviy-faoliyat"
+          element={<BusinessActivity setVariant={setVariant} />}
+        />
+        <Route
+          path="/moliyaviy-faoliyat/hammasi"
+          element={<TKTIFaoliyat variant={variant} />}
+        />
+
+
 
         <Route path="/faoliyat-hujjatlari" element={<ActivityDocuments />} />
         <Route path="/biz-bilan-aloqa" element={<BizBilanAloqa />} />
@@ -139,6 +186,7 @@ function App() {
           <Route path="statistics-of-student" element={<ProtectedRoute><StatisticsForStudent /></ProtectedRoute>} />
           <Route path="qabul" element={<ProtectedRoute><QabulData /></ProtectedRoute>} />
           <Route path="media" element={<ProtectedRoute><Media /></ProtectedRoute>} />
+
         </Route>
       </Routes>
       <Footer />
