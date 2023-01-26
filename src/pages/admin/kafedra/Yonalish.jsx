@@ -1,8 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 
+import "./Kafedra.css";
+
 import Input from "../../../components/admin/input/Input";
 import SelectType from "../../../components/admin/select_type/SelectType";
-import Button from  "../../../components/admin/button/Button"
+import Button from "../../../components/admin/button/Button";
 
 import { Context } from "../../../context";
 
@@ -23,7 +25,7 @@ export const Yonalish = () => {
   }
 
   function addYonalish(e) {
-    e.prenventDefault();
+    e.preventDefault();
     fetch(`${globalUrl}/kafedra_yonalish/add`, {
       method: "POST",
       headers: {
@@ -39,8 +41,12 @@ export const Yonalish = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        alert("Malumotlar qo'shildi");
-        window.location.reload(true);
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumot qo'shildi");
+          window.location.reload(true);
+        }
       })
       .catch((err) => console.log(err));
   }
@@ -48,7 +54,7 @@ export const Yonalish = () => {
     getData();
   }, []);
   return (
-    <form onSubmit={addYonalish}>
+    <form onSubmit={addYonalish} className="yonalish-form">
       <Input
         nameEn="Yo'nalish nomi (UZ)"
         nameRu="Yo'nalish nomi (RU)"
@@ -60,7 +66,7 @@ export const Yonalish = () => {
         options={kafedra.map((i) => ({ id: i._id, name: i.title_uz }))}
       />
 
-      <Button name="Saqlash"/>
+      <Button name="Saqlash" />
     </form>
   );
 };

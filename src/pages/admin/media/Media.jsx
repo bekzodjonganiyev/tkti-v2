@@ -1,5 +1,6 @@
 import { useState, useRef, useContext, useEffect } from "react";
 import copy from "copy-to-clipboard";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../../../components/admin/button/Button";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
@@ -19,31 +20,59 @@ function FileDisplay({ file }) {
     setCopied(true);
   };
 
+  const handleDelete = (id) => {
+    fetch(`${globalUrl}/media/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumotlar o'chirildi");
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        window.localStorage.setItem("token", "sss");
+      });
+  };
   setTimeout(() => {
-    setCopied(false)
-  }, 2000);
+    setCopied(false);
+  }, 1000);
 
   return (
-    <div style={{
-      display:"flex",
-      flexDirection:"column",
-      width:"300px",
-      alignItems:"center"
-    }}>
+    <div className="show-media">
+      <span>{file.name}</span>
       {isImg ? (
-        <img src={`${globalUrl}/${file.link}`} alt={file.name} />
+        <img
+          src={`${globalUrl}/${file.link}`}
+          alt={file.name}
+          className="media-img"
+        />
       ) : (
-        <i className="fa fa-file" style={{fontSize:"100px"}}></i>
+        <i className="fa fa-file" style={{ fontSize: "100px" }}></i>
       )}
-
-      <br />
-      <button onClick={handleCopy}><i className="fa fa-copy"></i></button>
-      {copied && <div>{fileUrl}</div>}
+      <div className="media-events hidden-events">
+        <i onClick={handleCopy} className="fa fa-copy icon" title="Copy"></i>
+        <i onClick={handleCopy} className="fa fa-edit icon" title="Edit"></i>
+        <i
+          onClick={() => handleDelete(file._id)}
+          className="fa fa-trash icon"
+          title="Delete"
+        ></i>
+      </div>
     </div>
   );
 }
 
 const Media = () => {
+  const navigate = useNavigate();
   const fileRef = useRef();
   const nameRef = useRef();
   const { globalUrl } = useContext(Context);
@@ -62,7 +91,19 @@ const Media = () => {
         Token: localStorage.getItem("token"),
       },
       body: formData,
-    });
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success && res.status === 498) {
+          alert(res.message + " ❌");
+          navigate("login");
+        } else if (res.status === 498) {
+        } else {
+          alert("Malumotlar qo'shildi");
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   function getMedia() {
@@ -100,8 +141,8 @@ const Media = () => {
         <Button name="Saqlash" />
       </form>
     ) : (
-      <div style={{display:"flex", flexWrap:"wrap", gap:"50px"}}>
-        {media.length !== 0 && media?.map((i) => <FileDisplay file={i} />)}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "50px" }}>
+        {media?.length !== 0 && media?.map((i) => <FileDisplay file={i} />)}
       </div>
     );
   return (

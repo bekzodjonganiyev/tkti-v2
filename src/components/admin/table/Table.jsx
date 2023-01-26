@@ -13,7 +13,7 @@ const Table = ({ bodyData, headData, renderHead, renderBody }) => {
         ) : null}
         {bodyData && renderBody ? (
           <tbody>
-            {bodyData.map((item, index) => renderBody(item, index))}
+            {bodyData?.map((item, index) => renderBody(item, index))}
           </tbody>
         ) : null}
       </table>

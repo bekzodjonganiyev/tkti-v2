@@ -11,6 +11,7 @@ import SelectType from "../../../components/admin/select_type/SelectType";
 import Button from "../button/Button";
 
 import { Context } from "../../../context";
+import ProtectedRoute from "../protected_route/ProtectedRoute";
 
 const AddForm = (props) => {
   const { names, selectValue, globalUrl } = useContext(Context);
@@ -58,14 +59,18 @@ const AddForm = (props) => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        "Token": localStorage.getItem("token")
+        "Token": localStorage.getItem("token"),
       },
       body: body,
     })
       .then((res) => res.json())
       .then((res) => {
-        alert("Malumotlar qo'shildi");
-        window.location.reload(true);
+        if (!res.success) {
+          alert(res.message  + " ❌");
+        } else {
+          alert("Malumotlar qo'shildi");
+          window.location.reload(true);
+        }
       })
       .catch((err) => console.log(err));
   }

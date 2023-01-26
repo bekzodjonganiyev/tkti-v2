@@ -37,9 +37,11 @@ const Fakultet = () => {
   let content = null;
 
   const analyseNameTableHead = ["Tartib raqam", "Fakultet nomi", "Amallar"];
-
   const renderHead = (item, index) => <th key={index}>{item}</th>;
-
+  const bodyData = async () =>
+    fetch(`${globalUrl}/Fak_data/all`)
+      .then((res) => res.json())
+      .then((data) => data.data);
   const renderBody = (item, index) => {
     return (
       <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
@@ -82,7 +84,14 @@ const Fakultet = () => {
       },
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumotlar o'chirildi");
+          window.location.reload(false);
+        }
+      })
       .catch((err) => {
         console.log(err);
         window.localStorage.setItem("token", "sss");
@@ -91,7 +100,7 @@ const Fakultet = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [type]);
 
   if (type === "table") {
     content = (
