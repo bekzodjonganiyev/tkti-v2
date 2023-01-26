@@ -84,7 +84,7 @@ const FakultetId = () => {
         {activeButton === 3 && (
           <div className="kafedraName">
             {facultetId?.kafedralar?.map((e) => (
-              <Link key={e.id} to={`/facultyId/${e._id}`}>
+              <Link key={e.id} to={`/kafedraId/${e._id}`}>
                 <h3>{e[`title_${lang}`]}</h3>
               </Link>
             ))}
