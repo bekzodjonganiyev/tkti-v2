@@ -142,8 +142,8 @@ function App() {
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />
         <Route path="/moliyaviy-faoliyat" element={<BusinessActivity />} />
-        <Route path="/barcha-faoliyat" element={<FaoliyatNew />} />
-        <Route path="/faoliyat/:id" element={<SingleFaoliyat />} />
+        <Route path="/faoliyatlar" element={<FaoliyatNew />} />
+        <Route path="/faoliyatlar/:ref" element={<SingleFaoliyat />} />
         <Route
           path="/moliyaviy-faoliyat"
           element={<BusinessActivity setVariant={setVariant} />}
