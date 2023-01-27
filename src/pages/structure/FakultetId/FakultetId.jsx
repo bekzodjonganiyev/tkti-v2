@@ -45,7 +45,7 @@ const FakultetId = () => {
       <div className="facultetDesc">
         {
           <div
-            className="fakultetName"
+            className="fakultetName card__html__content"
             dangerouslySetInnerHTML={{
               __html: facultetId[`title_${lang}`],
             }}
@@ -61,7 +61,7 @@ const FakultetId = () => {
           <div>
             {
               <div
-                className="fakultet-inner"
+                className="fakultet-inner card__html__content"
                 dangerouslySetInnerHTML={{
                   __html: facultetId[`haqida_${lang}`],
                 }}
@@ -73,7 +73,7 @@ const FakultetId = () => {
           <div>
             {
               <div
-                className="fakultet-inner"
+                className="fakultet-inner card__html__content"
                 dangerouslySetInnerHTML={{
                   __html: facultetId[`maqsad_${lang}`],
                 }}

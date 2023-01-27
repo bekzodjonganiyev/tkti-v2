@@ -16,11 +16,8 @@ import Doktarantura from "./pages/qabul/doktantura/doktarantura";
 import Magistratura from "./pages/qabul/magistratura/magistratura";
 
 // news 
-import ElonlarItem from "./pages/elonlar/elonItem";
-import Elonlar from "./pages/elonlar/elonlar";
-
-import Yangiliklar from "./pages/news/news/news";
-import YengiItem from "./pages/news/news/yengiItem";
+import Yangiliklar from "./pages/news/news";
+import YengiItem from "./pages/news/yengiItem";
 
 
 //Talabalar
@@ -47,9 +44,7 @@ import FakultetId from "./pages/structure/FakultetId/FakultetId";
 import KafedraName from "./pages/structure/Kafedra/KafedraFrond";
 import KafedraId from "./pages/structure/Kafedra/KafedraId";
 
-import BolimMarkaz from "./pages/structure/BolimMarkaz/BolimMarkaz";
-import BolimMarkazId from "./pages/structure/BolimMarkaz/BolimMarkazId";
-import MarkazId from "./pages/structure/BolimMarkaz/MarkazId";
+import BolimMarkaz from "./pages/structure/BolimMarkaz";
 
 //Faoliyat
 import BusinessActivity from "./pages/biznesaktivity";
@@ -94,6 +89,7 @@ import StatisticsForStudent from "./pages/admin/statistics/Statistics";
 import QabulData from "./pages/admin/qabul/Qabul";
 import Media from "./pages/admin/media/Media";
 import ProtectedRoute from "./components/admin/protected_route/ProtectedRoute";
+import BolimMarkazSingle from "./pages/structure/BolimMarkaz/Single";
 
 
 
@@ -126,10 +122,10 @@ function App() {
         <Route path="/bitiruvchilar" element={<Graduates />} />
         <Route path="/davlat-ramzlari" element={<Silbol />} />
 
-        <Route path="/elon" element={<Elonlar />} />
-        <Route path="/elon/:id" element={<ElonlarItem />} />
-        <Route path="/news" element={<Yangiliklar />} />
-            <Route path="/news/:id" element={<YengiItem />} />
+        <Route path="/elon" element={<Yangiliklar myKey='elon'  />} />
+        <Route path="/news" element={<Yangiliklar myKey='news'/>} />
+        <Route path="/elon/:id" element={<YengiItem myKey='elon' />} />
+        <Route path="/news/:id" element={<YengiItem myKey='news' />} />
 
         <Route path="/rektorat" element={<Rectorat />} />
         <Route path="/rektorat/:id" element={<RectoratItem />} />
@@ -138,14 +134,11 @@ function App() {
         <Route path="/facultyId/:id" element={<FakultetId />} />
 
         <Route path="/bolimMarkaz" element={<BolimMarkaz />} />
-        <Route path="/bolimMarkazId/:id" element={<BolimMarkazId />} />
+        <Route path="/bolimlar/:id" element={<BolimMarkazSingle myKey='bolim' />} />
+        <Route path="/markazlar/:id" element={<BolimMarkazSingle myKey='markaz' />} />
 
         <Route path="/kafedrafrond" element={<KafedraName />} />
         <Route path="/kafedraId/:id" element={<KafedraId />} />
-
-        
-      
-        <Route path="/markazId/:id" element={<MarkazId />} />
 
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />

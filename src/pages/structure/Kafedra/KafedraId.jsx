@@ -36,7 +36,7 @@ const FakultetId = () => {
     })
       .then((res) => res.json())
       .then((data) => setFacultetId(data.data));
-    }, [setFacultetId]);
+    }, []);
     
   
   
@@ -44,41 +44,28 @@ const FakultetId = () => {
     <div className="container">
         <div className="facultetDesc">
 
-        {
+            {
                 facultetId?.map((e)=>(
                   <div key={e.id}  >
                     {
-                <div
-                  className="fakultetName"
-                  dangerouslySetInnerHTML={{
-                    __html: e[`title_${lang}`],
-                   
-                  }}
-                />
-                
+                <div className="fakultetName ">{e[`title_${lang}`]}</div>
               }
                   </div>
                 ))
               }
 
-       
-
-      
- 
       </div>
       <div className="btnGroup">
       <button onClick={() => setActiveButton(1)}>{hero[lang].title}</button>
       <button onClick={() => setActiveButton(2)}>{hero[lang].desc}</button>
       
-      
-
       {
                 facultetId?.map((e, index)=>(
                   <div key={index}  >
                  
                       {activeButton === 1 && <div>
                         <div
-                 className="fakultet-inner"
+                 className="fakultet-inner card__html__content"
                  dangerouslySetInnerHTML={{
                    __html: e[`haqida_${lang}`],
                   
@@ -93,7 +80,7 @@ const FakultetId = () => {
       {activeButton === 2 && <div>
         
         <div
-                 className="fakultet-inner"
+                 className="fakultet-inner card__html__content"
                  dangerouslySetInnerHTML={{
                    __html: e[`maqsad_${lang}`],
                   

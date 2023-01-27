@@ -80,7 +80,7 @@ const SingleFaoliyat = () => {
                       </span>
                     ))}
                   </div>
-                  <div
+                  <div className="card__html__content"
                     dangerouslySetInnerHTML={{
                       __html: i[`description_${lang}`],
                     }}

@@ -23,7 +23,6 @@ const FacultetFrond = () => {
   });
   const [facultet, setFacultet] = useState([]);
 
-
   useEffect(() => {
     fetch(`${globalUrl}/Fak_data/all`, {
       headers: {
@@ -32,14 +31,7 @@ const FacultetFrond = () => {
     })
       .then((res) => res.json())
       .then((data) => setFacultet(data.data));
-    console.log(facultet);
-  }, [setFacultet]);
-
-
-
-
-
-  
+  }, []);
 
   return (
     <div className="container">
@@ -54,7 +46,7 @@ const FacultetFrond = () => {
             <Link className="facultetTitle" to={`/facultyId/${e._id}`} key={index}>
               {
                 <div
-                  className="fakultet-inner"
+                  className="fakultet-inner card__html__content"
                   dangerouslySetInnerHTML={{
                     __html: e[`title_${lang}`],
                   }}
@@ -62,7 +54,7 @@ const FacultetFrond = () => {
               }
                 {
                 <div
-                  className="fakultet-inner"
+                  className="fakultet-inner card__html__content"
                   dangerouslySetInnerHTML={{
                     __html: e[`job_${lang}`],
                   }}

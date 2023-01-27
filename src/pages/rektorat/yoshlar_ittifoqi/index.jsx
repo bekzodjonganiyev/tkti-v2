@@ -65,7 +65,7 @@ function YoshlarIttifoqi() {
         {YoshLarIttifoqiLang[lang].yoshlarga.bob}
       </h4>
       <h4
-        className="yoshlar__titles"
+        className="yoshlar__titles card__html__content"
         dangerouslySetInnerHTML={{
           __html: YoshLarIttifoqiLang[lang].yoshlarga.data,
         }}
@@ -74,7 +74,7 @@ function YoshlarIttifoqi() {
         {YoshLarIttifoqiLang[lang].yoshlarga.bob2}
       </h4>
       <h4
-        className="yoshlar__titles"
+        className="yoshlar__titles card__html__content"
         dangerouslySetInnerHTML={{
           __html: YoshLarIttifoqiLang[lang].yoshlarga.data2,
         }}

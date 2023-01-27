@@ -29,9 +29,9 @@ const KafedraFrond = () => {
     .then((res) => res.json())
     .then((data) => setKafedra(data.data));
  
-}, [setKafedra]);
-console.log(kafedra);
-  return (
+}, []);
+
+return (
     <div className="container">
       <div className="departments">
               <h2>{hero[lang].title}</h2>
@@ -44,7 +44,7 @@ console.log(kafedra);
             <Link className="facultetTitle" to={`/kafedraId/${e._id}`} key={index}>
               {
                 <div
-                  className="fakultet-inner"
+                  className="fakultet-inner card__html__content"
                   dangerouslySetInnerHTML={{
                     __html: e[`title_${lang}`],
                   }}

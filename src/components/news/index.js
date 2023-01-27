@@ -4,7 +4,7 @@ import { Context } from "../../context";
 import NewsLang from "../news/lang";
 import "./style.css";
 
-function YangiliklarComp({ home }) {
+function YangiliklarComp({ home, myKey }) {
   const { lang, time, globalUrl, textSytles } = useContext(Context);
 
   const [news, setNews] = useState({
@@ -13,10 +13,8 @@ function YangiliklarComp({ home }) {
     data: {},
   });
 
-  const [ofset, setOfset] = useState(1);
-
   useEffect(() => {
-    fetch(`${globalUrl}/news/all`, {
+    fetch(`${globalUrl}/${myKey}/all`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -26,20 +24,13 @@ function YangiliklarComp({ home }) {
         (data) =>
           data.success &&
           setNews({
-            data: home
-              ? data.data
-                  .sort((a, b) => new Date(b.date) - new Date(a.date))
-                  .slice(0, 3)
-              : data.data
-                  .sort((a, b) => new Date(b.date) - new Date(a.date))
-                  .slice(0, ofset * 30),
+            data: home ? data.data.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3)
+              : data.data.sort((a, b) => new Date(b.date) - new Date(a.date)),
             isFetched: true,
           })
       )
       .catch(() => setNews({ error: true }));
-  }, [ofset]);
-  console.log(news);
-
+  }, []);
   console.log(news);
 
   return (
@@ -48,7 +39,7 @@ function YangiliklarComp({ home }) {
         {news.isFetched && news.data && news.data.length > 0 ? (
           news.data.map((e, index) => (
             <>
-              <Link className="news__card" key={index} to={`/news/${e._id}`}>
+              <Link className="news__card" key={index} to={`/${myKey}/${e._id}`}>
                 <img
                   className="news_photo"
                   src={`${globalUrl}/${e.photo}`}
@@ -67,7 +58,6 @@ function YangiliklarComp({ home }) {
                   <br />
                   <p>
                     <i className="fa-solid fa-calendar-days">
-                      {" "}
                       <time className="ms-3">{time(e.date)}</time>{" "}
                     </i>
                   </p>
@@ -83,18 +73,6 @@ function YangiliklarComp({ home }) {
           <h2>Yangiliklar yuklanmoqda ...</h2>
         )}
       </div>
-
-      {home ? (
-        <></>
-      ) : (
-        <button
-          className="hj"
-          style={textSytles(30, 600)}
-          onClick={() => setOfset(ofset + 1)}
-        >
-          <i className="fa-solid fa-plus"></i>
-        </button>
-      )}
     </>
   );
 }

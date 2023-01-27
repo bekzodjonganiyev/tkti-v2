@@ -16,7 +16,7 @@ const AccordionComponent = ({ arr, setarr }) => {
       </li>
 
       <div 
-        className={a.status ? "accordion__secret__item" : "d-none"}
+        className={a.status ? "accordion__secret__item card__html__content" : "d-none"}
         dangerouslySetInnerHTML={{ __html: a["content"] }}
       ></div>
     </React.Fragment>
@@ -42,7 +42,7 @@ const AccordionBest = ({ arr, setarr }) => {
             </li>
 
             <div
-              className={a.status ? "accordion__secret__key" : "d-none"}
+              className={a.status ? "accordion__secret__key card__html__content" : "d-none"}
               dangerouslySetInnerHTML={{ __html: a["content"] }}
             ></div>
           </React.Fragment>
@@ -53,7 +53,7 @@ const AccordionBest = ({ arr, setarr }) => {
         {arr.map((a, index) => (
             <div
               key={index}
-              className={a.status ? "accordion__secret__key__desk" : "d-none"}
+              className={a.status ? "accordion__secret__key__desk card__html__content" : "d-none"}
               dangerouslySetInnerHTML={{ __html: a["content"] }}
             ></div>
         ))}

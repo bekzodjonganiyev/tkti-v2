@@ -1,27 +1,18 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { Context } from "../../context";
 
-const ElonItem = () => {
+const YengiItem = ({myKey}) => {
   const { lang, time, globalUrl, textSytles } = useContext(Context);
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const [elon, setElon] = useState({
+  const [data, setData] = useState({
     isFetched: false,
     error: false,
     data: {},
   });
-
-  useEffect(() => {
-    fetch(`${globalUrl}/elon/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setElon(data.data));
-  }, [setElon]);
 
   const [newOne, setNewOne] = useState({
     isFetched: false,
@@ -34,11 +25,14 @@ const ElonItem = () => {
     link: "",
   });
 
-  if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-    window.location.href = "/elon";
-  }
+  useEffect(()=>{
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      navigate(-1)
+    }
+  },[])
+  
   useEffect(() => {
-    fetch(`${globalUrl}/elon/${id}`, {
+    fetch(`${globalUrl}/${myKey}/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -49,11 +43,11 @@ const ElonItem = () => {
           data.success && setNewOne({ data: data.data, isFetched: true })
       )
       .catch(() => setNewOne({ error: true }));
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (newOne.isFetched && newOne.data) {
-      fetch(`${globalUrl}/elon/all`, {
+      fetch(`${globalUrl}/${myKey}/all`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -62,11 +56,8 @@ const ElonItem = () => {
         .then(
           (data) =>
             data.success &&
-            setElon({
-              data: data.data
-                .sort((a, b) => new Date(a.date) - new Date(b.date))
-                .slice(0, 5)
-                .filter((a) => a._id !== id),
+            setData({
+              data: data.data.sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 7).filter((a) => a._id !== id),
               isFetched: true,
             })
         );
@@ -84,19 +75,13 @@ const ElonItem = () => {
   return (
     <>
       <div className="wrapped">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-lg-12 col-md-12 bakalavr__container elonDesc">
+      <div className="elonDesc">
               <div className="news__item__card">
                 {newOne.isFetched && newOne.data ? (
                   <>
                     <div className="news__item__body">
                       <h2>{newOne.data[`title_${lang}`]} </h2>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: newOne.data[`body_${lang}`],
-                        }}
-                      />
+                      <div className="card__html__content" dangerouslySetInnerHTML={{__html: newOne.data[`body_${lang}`]}}></div>
                     </div>
                     <div className="news__item__body">
                       <div className="card__control">
@@ -119,17 +104,17 @@ const ElonItem = () => {
                     </div>
                   </>
                 ) : (
-                  <h2>Yangilik yuklanmoqda</h2>
+                  <></>
                 )}
               </div>
 
               <div className="mt-5 news__nav">
-                {elon.isFetched && elon.data && elon.data.length > 0 ? (
-                  elon.data.map((e, index) => (
+                {data.isFetched && data.data && data.data.length > 0 ? (
+                  data.data.map((e, index) => (
                     <Link
                       className="news__nav__card"
                       key={index}
-                      to={`/elon/${e._id}`}
+                      to={`/${myKey}/${e._id}`}
                     >
                       <i
                         style={textSytles(14, 500)}
@@ -142,15 +127,13 @@ const ElonItem = () => {
                       <h4 style={textSytles(16, 600)}> {e[`title_${lang}`]}</h4>
                     </Link>
                   ))
-                ) : elon.error ? (
-                  <h2>Xatolik</h2>
+                ) : data.error ? (
+                  <h2>Error</h2>
                 ) : (
-                  <h2>Boshqa yangiliklar yuklanmoqda ...</h2>
+                  <h2>Loading ...</h2>
                 )}
               </div>
             </div>
-          </div>
-        </div>
       </div>
 
       {toggle.display ? (
@@ -207,4 +190,4 @@ const ElonItem = () => {
   );
 };
 
-export default ElonItem;
+export default YengiItem;
