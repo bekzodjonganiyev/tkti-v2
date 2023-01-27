@@ -81,7 +81,7 @@ const Header = () => {
             </div>
 
             <div className="header__top__icon">
-              <a className="header__nav" href="/simvollar">
+              <a className="header__nav" href="/davlat-ramzlari">
                 <img className="gerb__img" src={gerb} alt="gerb" />
               </a>
               <div className="dropdown">
