@@ -33,11 +33,11 @@ const MyComponent = () => {
       label: [
         {
           labelId: HeaderLang[lang].institut[1],
-          href: "/faoliyat-hujjatlari",
+          href: "/rektorat",
         },
         {
           labelId: HeaderLang[lang].institut[2],
-          href: "/xalqaro-aloqalar",
+          href: "/interaktiv-hizmatlar",
         },
         {
           labelId: HeaderLang[lang].institut[3],
@@ -53,11 +53,11 @@ const MyComponent = () => {
         },
         {
           labelId: HeaderLang[lang].institut[6],
-          href: "/interaktiv-hizmatlar",
+          href: "/xalqaro-aloqalar",
         },
         {
           labelId: HeaderLang[lang].institut[7],
-          href: "/rektorat",
+          href: "/faoliyat-hujjatlari",
         },
         {
           labelId: HeaderLang[lang].institut[8],

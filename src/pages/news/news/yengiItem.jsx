@@ -3,16 +3,26 @@ import { Link, useParams } from "react-router-dom";
 
 import { Context } from "../../../context";
 
-
 const YengiItem = () => {
-  const { lang, time, globalUrl, textSytles} = useContext(Context);
+  const { lang, time, globalUrl, textSytles } = useContext(Context);
   const { id } = useParams();
 
-  const [news, setNews] = useState({
+  const [elon, setElon] = useState({
     isFetched: false,
     error: false,
     data: {},
   });
+
+  useEffect(() => {
+    fetch(`${globalUrl}/news/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setElon(data.data));
+  }, [setElon]);
+
   const [newOne, setNewOne] = useState({
     isFetched: false,
     error: false,
@@ -20,40 +30,46 @@ const YengiItem = () => {
   });
 
   const [toggle, setToggle] = useState({
-    diplay: false,
+    display: false,
     link: "",
   });
 
   if (!id.match(/^[0-9a-fA-F]{24}$/)) {
     window.location.href = "/news";
   }
-
   useEffect(() => {
-    fetch(`${globalUrl}/news/${id}`)
+    fetch(`${globalUrl}/news/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then(
         (data) =>
           data.success && setNewOne({ data: data.data, isFetched: true })
       )
       .catch(() => setNewOne({ error: true }));
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     if (newOne.isFetched && newOne.data) {
-      fetch(`${globalUrl}/news/all`)
+      fetch(`${globalUrl}/news/all`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((res) => res.json())
         .then(
           (data) =>
             data.success &&
-            setNews({
+            setElon({
               data: data.data
                 .sort((a, b) => new Date(a.date) - new Date(b.date))
                 .slice(0, 5)
                 .filter((a) => a._id !== id),
               isFetched: true,
             })
-        )
-        .catch(() => setNews({ error: true }));
+        );
     }
   }, [newOne]);
 
@@ -70,30 +86,19 @@ const YengiItem = () => {
       <div className="wrapped">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-12 col-md-12  bakalavr__container">
+            <div className="col-lg-12 col-md-12 bakalavr__container elonDesc">
               <div className="news__item__card">
                 {newOne.isFetched && newOne.data ? (
                   <>
                     <div className="news__item__body">
-                      <h2>{newOne.data[`title_${lang}`]}</h2>
-                      {newOne.data[`body_${lang}`].map((a, ind) => (
-                        <span key={ind}>{a}</span>
-                      ))}
-                    
+                      <h2>{newOne.data[`title_${lang}`]} </h2>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: newOne.data[`body_${lang}`],
+                        }}
+                      />
                     </div>
-                    <img
-                      src={`${globalUrl}/${newOne.data.photo[0]}`}
-                      alt="some info"
-                    />
-
-                    {newOne.data.photo.slice(1).map((imgUrl, item)=>(
-                      <img src={`${globalUrl}/${imgUrl}`} key={item}/>
-                     
-                    ))}
-                     
                     <div className="news__item__body">
-                      
-                     
                       <div className="card__control">
                         <i className="fa-solid fa-calendar-days">
                           <span>{time(newOne.data.date)}</span>
@@ -117,9 +122,10 @@ const YengiItem = () => {
                   <h2>Yangilik yuklanmoqda</h2>
                 )}
               </div>
+
               <div className="mt-5 news__nav">
-                {news.isFetched && news.data && news.data.length > 0 ? (
-                  news.data.map((e, index) => (
+                {elon.isFetched && elon.data && elon.data.length > 0 ? (
+                  elon.data.map((e, index) => (
                     <Link
                       className="news__nav__card"
                       key={index}
@@ -133,13 +139,10 @@ const YengiItem = () => {
                           {time(e.date)}
                         </span>
                       </i>
-                      <h4 style={textSytles(16, 600)}>
-                        {e[`title_${lang}`].split(" ").slice(0, 10).join(" ")}
-                        ...&#128279;
-                      </h4>
+                      <h4 style={textSytles(16, 600)}> {e[`title_${lang}`]}</h4>
                     </Link>
                   ))
-                ) : news.error ? (
+                ) : elon.error ? (
                   <h2>Xatolik</h2>
                 ) : (
                   <h2>Boshqa yangiliklar yuklanmoqda ...</h2>
