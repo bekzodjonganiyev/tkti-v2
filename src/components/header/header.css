@@ -227,7 +227,16 @@ gap: 10px;
   }
 }
 
+@media only screen and (min-width: 1120px){
+  .qawws{
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 1120px){
+  .qaww{
+    display: none;
+  }
   .header_border{
     border:none;
   }
