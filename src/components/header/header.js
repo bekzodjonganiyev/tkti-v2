@@ -61,19 +61,19 @@ const Header = () => {
               <i className="fa-solid fa-xmark"></i>
             </div>
             <div className="header__top__main">
-              <a className="header__nav" href="/qabul">
+              <a className="header__nav header_border" href="/qabul">
                 {HeaderLang[lang].qabul}
               </a>
-              <a className="header__nav" href="/talabalar">
+              <a className="header__nav header_border" href="/talabalar">
                 {HeaderLang[lang].students}
               </a>
-              <a className="header__nav" href="/bitiruvchilar">
+              <a className="header__nav header_border" href="/bitiruvchilar">
                 {HeaderLang[lang].graduates}
               </a>
-              <a className="header__nav" href="/moliyaviy-faoliyat">
+              <a className="header__nav header_border" href="/moliyaviy-faoliyat">
               {HeaderLang[lang].activity[0]}
               </a>
-              <a className="header__nav" href="/biz-bilan-aloqa">
+              <a className="header__nav header_border" href="/biz-bilan-aloqa">
               {HeaderLang[lang].contact}
             </a>
             </div>

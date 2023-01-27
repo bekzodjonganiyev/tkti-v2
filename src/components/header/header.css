@@ -61,7 +61,10 @@ margin: 0;
   background: #cddcf6 !important;
   color: #02307d;
 }
-
+.header_border{
+  border:1px solid blue;
+  border-radius:5px;
+}
 .header__nav:hover, .dropbtn:hover, .header__bottom .dropdown-content .header__nav:hover{
   color:#2169e7;
  
@@ -225,6 +228,9 @@ gap: 10px;
 }
 
 @media only screen and (max-width: 1120px){
+  .header_border{
+    border:none;
+  }
   .buttons button ,.hovered-list,.hovered-list .list-info span{
     display: block !important;
   }

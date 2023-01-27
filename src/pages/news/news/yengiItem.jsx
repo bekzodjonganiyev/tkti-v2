@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Context } from "../../context";
 
-const ElonItem = () => {
-  const { lang, time, globalUrl, textSytles } = useContext(Context);
+import { Context } from "../../../context";
+
+
+const YengiItem = () => {
+  const { lang, time, globalUrl, textSytles} = useContext(Context);
   const { id } = useParams();
 
-  const [elon, setElon] = useState({
+  const [news, setNews] = useState({
     isFetched: false,
     error: false,
     data: {},
@@ -18,16 +20,16 @@ const ElonItem = () => {
   });
 
   const [toggle, setToggle] = useState({
-    display: false,
+    diplay: false,
     link: "",
   });
 
   if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-    window.location.href = "/elon";
+    window.location.href = "/news";
   }
 
   useEffect(() => {
-    fetch(`${globalUrl}/elon/${id}`)
+    fetch(`${globalUrl}/news/${id}`)
       .then((res) => res.json())
       .then(
         (data) =>
@@ -38,12 +40,12 @@ const ElonItem = () => {
 
   useEffect(() => {
     if (newOne.isFetched && newOne.data) {
-      fetch(`${globalUrl}/elon/all`)
+      fetch(`${globalUrl}/news/all`)
         .then((res) => res.json())
         .then(
           (data) =>
             data.success &&
-            setElon({
+            setNews({
               data: data.data
                 .sort((a, b) => new Date(a.date) - new Date(b.date))
                 .slice(0, 5)
@@ -51,7 +53,7 @@ const ElonItem = () => {
               isFetched: true,
             })
         )
-        .catch(() => setElon({ error: true }));
+        .catch(() => setNews({ error: true }));
     }
   }, [newOne]);
 
@@ -68,33 +70,30 @@ const ElonItem = () => {
       <div className="wrapped">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-12 col-md-12 bakalavr__container">
+            <div className="col-lg-12 col-md-12  bakalavr__container">
               <div className="news__item__card">
                 {newOne.isFetched && newOne.data ? (
                   <>
                     <div className="news__item__body">
-                     
-                    <h2>
-                        {
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: newOne.data[`title_${lang}`],
-                            }}
-                          />
-                        }
-                      </h2>
+                      <h2>{newOne.data[`title_${lang}`]}</h2>
                       {newOne.data[`body_${lang}`].map((a, ind) => (
                         <span key={ind}>{a}</span>
                       ))}
+                    
                     </div>
                     <img
                       src={`${globalUrl}/${newOne.data.photo[0]}`}
                       alt="some info"
                     />
-                    {newOne.data.photo.slice(1).map((imgUrl, item) => (
-                      <img src={`${globalUrl}/${imgUrl}`} key={item} />
+
+                    {newOne.data.photo.slice(1).map((imgUrl, item)=>(
+                      <img src={`${globalUrl}/${imgUrl}`} key={item}/>
+                     
                     ))}
+                     
                     <div className="news__item__body">
+                      
+                     
                       <div className="card__control">
                         <i className="fa-solid fa-calendar-days">
                           <span>{time(newOne.data.date)}</span>
@@ -119,12 +118,12 @@ const ElonItem = () => {
                 )}
               </div>
               <div className="mt-5 news__nav">
-                {elon.isFetched && elon.data && elon.data.length > 0 ? (
-                  elon.data.map((e, index) => (
+                {news.isFetched && news.data && news.data.length > 0 ? (
+                  news.data.map((e, index) => (
                     <Link
                       className="news__nav__card"
                       key={index}
-                      to={`/elon/${e._id}`}
+                      to={`/news/${e._id}`}
                     >
                       <i
                         style={textSytles(14, 500)}
@@ -135,21 +134,12 @@ const ElonItem = () => {
                         </span>
                       </i>
                       <h4 style={textSytles(16, 600)}>
-                      {
-                <div
-                 
-                  dangerouslySetInnerHTML={{
-                    __html: e[`title_${lang}`].split(" ").slice(0, 10).join(" "),
-                  }}
-                />
-              }
-
                         {e[`title_${lang}`].split(" ").slice(0, 10).join(" ")}
                         ...&#128279;
                       </h4>
                     </Link>
                   ))
-                ) : elon.error ? (
+                ) : news.error ? (
                   <h2>Xatolik</h2>
                 ) : (
                   <h2>Boshqa yangiliklar yuklanmoqda ...</h2>
@@ -214,4 +204,4 @@ const ElonItem = () => {
   );
 };
 
-export default ElonItem;
+export default YengiItem;
