@@ -78,9 +78,6 @@ const Header = () => {
               <a className="header__nav header_border" href="/biz-bilan-aloqa">
                 {HeaderLang[lang].contact}
               </a>
-              <div className="qawws">
-                <MyComponent />
-              </div>
             </div>
 
             <div className="header__top__icon">
@@ -143,10 +140,9 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="qaww">
-                <MyComponent />
-              </div>
-
+          <div>
+          <MyComponent />
+        </div>
         </div>
 
         <div
