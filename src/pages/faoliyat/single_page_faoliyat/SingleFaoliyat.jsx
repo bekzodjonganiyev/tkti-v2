@@ -18,14 +18,22 @@ function SocialShare() {
       </div>
       {isOpen && (
         <div className="social-icons">
-          <a href="#">
-            <i className="fab fa-facebook-f"></i>
+          <a
+            href={`https://telegram.me/share/url?url=${window.location.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fa-brands fa-telegram"></i>
           </a>
           <a href="#">
-            <i className="fab fa-twitter"></i>
+            <i className="fa-brands fa-twitter"></i>
           </a>
-          <a href="#">
-            <i className="fab fa-instagram"></i>
+          <a
+            href={`https://api.whatsapp.com/send?${window.location.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fa-brands fa-whatsapp"></i>
           </a>
         </div>
       )}
@@ -94,7 +102,9 @@ const SingleFaoliyat = () => {
                   >
                     <SocialShare />
                     {/* <span style={{fontSize:"20px"}}><i style={{fontSize:"20px", backgroundColor:"black", color:"white", padding:"10px", borderRadius:"50%", width:"40px", height:"40px", textAlign:"center"}} className="fa fa-map-marker"></i>{i[`location_${lang}`]}</span> */}
-                    <span style={{fontWeight:"700", fontSize:"20px"}}>{time(i.date)}</span>
+                    <span style={{ fontWeight: "700", fontSize: "20px" }}>
+                      {time(i.date)}
+                    </span>
                   </div>
                 </div>
               ))}
