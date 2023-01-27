@@ -11,6 +11,17 @@ const ElonItem = () => {
     error: false,
     data: {},
   });
+
+  useEffect(() => {
+    fetch(`${globalUrl}/elon/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setElon(data.data));
+  }, [setElon]);
+
   const [newOne, setNewOne] = useState({
     isFetched: false,
     error: false,
@@ -25,20 +36,27 @@ const ElonItem = () => {
   if (!id.match(/^[0-9a-fA-F]{24}$/)) {
     window.location.href = "/elon";
   }
-
   useEffect(() => {
-    fetch(`${globalUrl}/elon/${id}`)
+    fetch(`${globalUrl}/elon/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then(
         (data) =>
           data.success && setNewOne({ data: data.data, isFetched: true })
       )
       .catch(() => setNewOne({ error: true }));
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     if (newOne.isFetched && newOne.data) {
-      fetch(`${globalUrl}/elon/all`)
+      fetch(`${globalUrl}/elon/all`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((res) => res.json())
         .then(
           (data) =>
@@ -50,8 +68,7 @@ const ElonItem = () => {
                 .filter((a) => a._id !== id),
               isFetched: true,
             })
-        )
-        .catch(() => setElon({ error: true }));
+        );
     }
   }, [newOne]);
 
@@ -68,32 +85,18 @@ const ElonItem = () => {
       <div className="wrapped">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-12 col-md-12 bakalavr__container">
+            <div className="col-lg-12 col-md-12 bakalavr__container elonDesc">
               <div className="news__item__card">
                 {newOne.isFetched && newOne.data ? (
                   <>
                     <div className="news__item__body">
-                     
-                    <h2>
-                        {
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: newOne.data[`title_${lang}`],
-                            }}
-                          />
-                        }
-                      </h2>
-                      {newOne.data[`body_${lang}`].map((a, ind) => (
-                        <span key={ind}>{a}</span>
-                      ))}
+                      <h2>{newOne.data[`title_${lang}`]} </h2>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: newOne.data[`body_${lang}`],
+                        }}
+                      />
                     </div>
-                    <img
-                      src={`${globalUrl}/${newOne.data.photo[0]}`}
-                      alt="some info"
-                    />
-                    {newOne.data.photo.slice(1).map((imgUrl, item) => (
-                      <img src={`${globalUrl}/${imgUrl}`} key={item} />
-                    ))}
                     <div className="news__item__body">
                       <div className="card__control">
                         <i className="fa-solid fa-calendar-days">
@@ -118,6 +121,7 @@ const ElonItem = () => {
                   <h2>Yangilik yuklanmoqda</h2>
                 )}
               </div>
+
               <div className="mt-5 news__nav">
                 {elon.isFetched && elon.data && elon.data.length > 0 ? (
                   elon.data.map((e, index) => (
@@ -134,19 +138,7 @@ const ElonItem = () => {
                           {time(e.date)}
                         </span>
                       </i>
-                      <h4 style={textSytles(16, 600)}>
-                      {
-                <div
-                 
-                  dangerouslySetInnerHTML={{
-                    __html: e[`title_${lang}`].split(" ").slice(0, 10).join(" "),
-                  }}
-                />
-              }
-
-                        {e[`title_${lang}`].split(" ").slice(0, 10).join(" ")}
-                        ...&#128279;
-                      </h4>
+                      <h4 style={textSytles(16, 600)}> {e[`title_${lang}`]}</h4>
                     </Link>
                   ))
                 ) : elon.error ? (
