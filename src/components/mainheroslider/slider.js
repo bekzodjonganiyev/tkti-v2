@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./slider.css";
 
@@ -8,8 +8,19 @@ import slide_3 from "../../files/slide3.jpg";
 import slide_4 from "../../files/slide4.jpg";
 import slide_1 from "../../files/Qabul22.jpg";
 import slide_6 from "../../files/Toshkent_kimyo_texnologiya_instituti.jpg";
+import { Context } from "../../context";
 
 function MainSlider() {
+  const {DataGetter, lang, textSytles} = useContext(Context);
+  const [sertifikat, setSertifikat] = useState({
+    isFetched: false,
+    error: false,
+    data: {},
+  });
+
+  useEffect(()=>{
+    DataGetter(setSertifikat, 'sertifikat/all')
+  },[]);
   return (
     <>
       <div className="container-fluid">
