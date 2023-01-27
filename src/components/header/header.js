@@ -144,9 +144,8 @@ const Header = () => {
             </div>
           </div>
           <div className="qaww">
-                <MyComponent />
-              </div>
-
+            <MyComponent />
+          </div>
         </div>
 
         <div
