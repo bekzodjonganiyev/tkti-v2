@@ -1,26 +1,40 @@
-.all-activities {
-}
-
 .all-activities h1 {
     text-align: center;
 }
 
-.activity-items {
-  width: 85%;
-  margin: 0 auto;
+.activity__wrapper{
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  margin: 50px auto;
+  flex-direction: column;
 }
 
-.activity-items a{
-    color: white;
+.activity__item{
+  width: 100%;
+  border: 1px dotted rgb(106, 148, 234);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 3px 5px;
+}
+
+.activity__nested__item{
+  border-radius: 7px;
+  margin: 3px 0;
+  display: none;
+  display: none;
+}
+
+
+
+.activity__link{
+  display: block;
+  color: white;
     background: #02307d;
     font-size: 20px;
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 5px 7px;
+    border-radius: 7px;
+    margin-bottom: 5px;
 }
-.barcha-faoliyat {
+
+.activity__show{
+  display: block;
+  /* Animatsiyalar yozsela bo'ladi shu classga */
 }

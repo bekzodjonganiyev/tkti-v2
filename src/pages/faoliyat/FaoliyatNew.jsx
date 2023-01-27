@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { Context } from "../../context";
@@ -6,7 +7,7 @@ import { Context } from "../../context";
 import "./FaoliyatNew.css";
 
 const QuestionForm = ({ divclass }) => {
-  const { lang } = useContext(Context);
+  const { lang, globalUrl } = useContext(Context);
   const [display, setDisplay] = React.useState(false);
   const [text] = useState({
     uz: {
@@ -61,7 +62,6 @@ const QuestionForm = ({ divclass }) => {
               Address: Tashkent city, Navoi st, 32 apt, 2nd building`,
     },
   });
-
   function SubmitForm(e) {
     e.preventDefault();
     if (!display) {
@@ -167,16 +167,43 @@ const QuestionForm = ({ divclass }) => {
 };
 
 const FaoliyatNew = () => {
-  const activities = [
-    { id: 1, name: "fakultet_id", title: "Rektorat faoliyati" },
-    { id: 2, name: "kafedra_id", title: "Fakultet faoliyati" },
-    { id: 3, name: "bolim_id", title: "Kafedra faoliyati" },
-    { id: 4, name: "markaz_id", title: "Bo'lim faoliyati" },
-    { id: 5, name: "rektorat_id", title: "Markaz faoliyati" },
-  ];
+  const {lang, globalUrl}= useContext(Context);
+
+  const [state, setState] = useState({get:false, error:false, data: []})
+  const obj = {
+    kafedra_id: {uz:`Kafedraning faoliyatlari`, ru:`Деятельность отдела`,en:`Activities of the department`},
+    markaz_id:{uz:`Markazning faoliyatlari`,ru:`Деятельность центра`,en:`Activities of the center`},
+    bolim_id:{uz:`Bo'limning faoliyatlari`, ru:`Деятельность отдела`,en:`Activities of the department`},
+    rektorat_id:{uz:`Rektoratning faoliyatlari`,ru:`Деятельность ректората`,en:`Activities of the Rectorate`},
+    fakultet_id:{uz:`Fakultetning faoliyatlari`, ru:`Деятельность факультета`,en:`Activities of the faculty`}}
+
+  useEffect(()=>{
+    fetch(`${globalUrl}/faoliyat/all`,{
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }).then(res => res.json())
+    .then(data => {
+      if(data.status === 200 && data.success){
+        const result = {}
+        for(let item of Object.keys(obj)){
+          result[item] = data.data.filter(element => element[item])
+        }
+        setState({get:true, error:false, data: result})
+      }
+    })
+  },[]);
+
+  // const onlyStr =( message) => message.split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')
+
+  // console.log(onlyStr(`ijfoeif fiuenf9uerf er9fuerfe4y3^%&"%^£*&"^ efh9eufh`));
+  const togglerFunction = (index) => {
+    document.querySelector(`.activity__toggle${index}`).classList.toggle('activity__show')
+  }
+  
   return (
     <div className="all-activities">
-      <h1>Moliya</h1>
+      <h1>Faoliyat</h1>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est, nam culpa
         quisquam commodi natus veritatis saepe nesciunt ratione aliquid rem,
@@ -191,12 +218,24 @@ const FaoliyatNew = () => {
         architecto omnis eum ab impedit.
       </p>
 
-      <div className="activity-items">
-        {activities.map((i) => (
-          <Link to={`/faoliyat/${i.id}`} key={i.id}>
-            {i.title}
-          </Link>
-        ))}
+      <div className="activity__wrapper">
+        {
+          state.get && !state.error ? (
+            Object.keys(obj).map((e, index) =>(
+              <div className="activity__item" key={index}>
+                <h2 onClick={() => togglerFunction(index)}>{obj[e][lang]}</h2>
+                <div className={`activity__nested__item activity__toggle${index}`}>
+                  {/* {console.log(state.data[e].map)} */}
+                  {state.data[e].map((item, ind) =>(
+                    <a className="activity__link" href={`/faoliyatlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}`} key={ind}>{item[`title_${lang}`]}</a>
+                  ))}
+                </div>
+              </div>
+            ))
+          ):(
+            <></>
+          )
+        }
       </div>
 
       <QuestionForm />
