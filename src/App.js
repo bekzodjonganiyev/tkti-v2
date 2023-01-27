@@ -54,6 +54,7 @@ import MarkazId from "./pages/structure/BolimMarkaz/MarkazId";
 //Faoliyat
 import BusinessActivity from "./pages/biznesaktivity";
 import TKTIFaoliyat from "./components/Faoliyat/Faoliyat";
+import Silbol from "./pages/simbol/Silbol";
 
 //Institut
 import HighSchool from "./pages/institut/HighSchool/HighSchool";
@@ -119,6 +120,7 @@ function App() {
         <Route path="/talabalar/startup-loyihalar" element={<Startup />} />
         <Route path="/talabalar/baholash" element={<StudentInfo />} />
         <Route path="/bitiruvchilar" element={<Graduates />} />
+        <Route path="/davlat-ramzlari" element={<Silbol />} />
 
         <Route path="/elon" element={<Elonlar />} />
         <Route path="/elon/:id" element={<ElonlarItem />} />

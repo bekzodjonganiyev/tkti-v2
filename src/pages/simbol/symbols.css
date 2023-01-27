@@ -1,0 +1,12 @@
+.ramz-title p{
+   text-align: justify; 
+}
+.symbol{
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.symbolImg{
+    width: 30%;
+}
