@@ -5,7 +5,7 @@ const BedroomLAng = {
             {
                 title:`Talabalarni joylashtirish markazi`,
                 content:` <h2 className='fw-bold'>Yotoqxonalar</h2> <br />
-                <p>KTUda 12 ta yotoqxona mavjud. Talabalarga uch kishilik, ikki kishilik va bir kishilik xonalarda joylashish taklif etiladi. KTU yotoqxonasini bron qilish tizimida yotoqxonada joy bron qilishingiz mumkin . Ro'yxatdan o'ting va ajoyib yotoqxona hamjamiyatiga qo'shiling. <br />
+                <p>KTUda 2 ta yotoqxona mavjud. Talabalarga uch kishilik, ikki kishilik va bir kishilik xonalarda joylashish taklif etiladi. KTU yotoqxonasini bron qilish tizimida yotoqxonada joy bron qilishingiz mumkin . Ro'yxatdan o'ting va ajoyib yotoqxona hamjamiyatiga qo'shiling. <br />
                 <br /> <br />
                 Og‘ir ijtimoiy va moddiy ahvol tufayli yotoqxonadan ustuvor tartibda joy olishni va/yoki yotoqxona narxining kompensatsiyasini olishni xohlovchi talabalar tasdiqlovchi hujjatlar bilan ariza topshirishlari shart. <br />
                 
@@ -13,13 +13,13 @@ const BedroomLAng = {
                 Konsultatsiya vaqti: 
                 I - IV: 9:00 - 17:00 
                 V: 9:00 - 15:45  <br/>
-                Tushlik tanaffusi: 11:45 - 12:30 <br />
+                Tushlik tanaffusi: 13:00 - 14:00 <br />
                 <br /> <br />
-                tel. +370 (696) 73 277 (turar joy) <br />
-                tel. +370 (696) 52 253 (to'lovlar) <br />
+                tel. +998712730296 (turar joy) <br />
+                tel. +998712730296 (to'lovlar) <br />
                 <br /> <br />
                 Talabalarni joylashtirish markazi menejeri <br />
-                tel. +370 (601) 73 031 <br /> <br/></p>
+                tel. +998712730296 <br /> <br/></p>
                 <div className="bedroom_map">
                             <iframe
                               className="gmap_iframe"
@@ -51,7 +51,7 @@ const BedroomLAng = {
             {
                 title:`Центр размещения студентов`,
                 content:`<h2 className='fw-bold'>Общежития</h2> <br />
-                КТУ имеет 12 общежитий. Студентам предлагается размещение в трехместных, двухместных и одноместных номерах. Забронировать место в общежитии можно в системе бронирования общежитий КТУ. Зарегистрируйтесь и присоединитесь к удивительному сообществу хостелов. <br />
+                КТУ имеет 2 общежитий. Студентам предлагается размещение в трехместных, двухместных и одноместных номерах. Забронировать место в общежитии можно в системе бронирования общежитий КТУ. Зарегистрируйтесь и присоединитесь к удивительному сообществу хостелов. <br />
                 <br /> <br />
                 Студенты, желающие получить первоочередное размещение в общежитии и/или компенсацию стоимости общежития в связи с тяжелым социально-материальным положением, должны подать заявление с приложением подтверждающих документов. <br />
                 <br /> <br />
@@ -61,11 +61,11 @@ const BedroomLAng = {
                 В: 9:00 - 15:45 <br />
                 Обеденный перерыв: 11:45 - 12:30 <br />
                 <br /> <br />
-                тел. +370 (696) 73 277 (резиденция) <br />
-                тел. +370 (696) 52 253 (платежи) <br />
+                тел. +998712730296 (резиденция) <br />
+                тел. +998712730296 (платежи) <br />
                 <br /> <br />
                 Менеджер центра размещения студентов <br />
-                тел. +370 (601) 73 031 <br /> <br/>
+                тел. +998712730296 <br /> <br/>
                 <div className="bedroom_map">
                             <iframe
                               className="gmap_iframe"
@@ -97,7 +97,7 @@ const BedroomLAng = {
             {
                 title:`Student Placement Center`,
                 content:`<h2 className='fw-bold'>Dorms</h2> <br />
-                KTU has 12 dormitories. Students are offered accommodation in triple, double and single rooms. You can reserve a place in the dormitory in the KTU dormitory reservation system. Sign up and join the amazing hostel community. <br />
+                KTU has 2 dormitories. Students are offered accommodation in triple, double and single rooms. You can reserve a place in the dormitory in the KTU dormitory reservation system. Sign up and join the amazing hostel community. <br />
                 <br /> <br />
                 Students who want to receive priority accommodation in a dormitory and/or compensation for the cost of a dormitory due to a difficult social and material situation must submit an application with supporting documents. <br />
                 <br /> <br />
@@ -107,11 +107,11 @@ const BedroomLAng = {
                 V: 9:00 - 15:45 <br />
                 Lunch break: 11:45 - 12:30 <br />
                 <br /> <br />
-                tel. +370 (696) 73 277 (residence) <br />
-                tel. +370 (696) 52 253 (payments) <br />
+                tel. +998712730296 (residence) <br />
+                tel. +998712730296 (payments) <br />
                 <br /> <br />
                 Student Accommodation Center Manager <br />
-                tel. +370 (601) 73 031 <br /> <br/>
+                tel. +998712730296 <br /> <br/>
                 <div className="bedroom_map">
                 <iframe
                   className="gmap_iframe"

@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Context } from "../../context";
+import { Context } from "../../../context";
 
-const ElonItem = () => {
+const YengiItem = () => {
   const { lang, time, globalUrl, textSytles } = useContext(Context);
   const { id } = useParams();
 
@@ -14,7 +14,7 @@ const ElonItem = () => {
   });
 
   useEffect(() => {
-    fetch(`${globalUrl}/elon/${id}`, {
+    fetch(`${globalUrl}/news/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -35,10 +35,10 @@ const ElonItem = () => {
   });
 
   if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-    window.location.href = "/elon";
+    window.location.href = "/news";
   }
   useEffect(() => {
-    fetch(`${globalUrl}/elon/${id}`, {
+    fetch(`${globalUrl}/news/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -53,7 +53,7 @@ const ElonItem = () => {
 
   useEffect(() => {
     if (newOne.isFetched && newOne.data) {
-      fetch(`${globalUrl}/elon/all`, {
+      fetch(`${globalUrl}/news/all`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -129,7 +129,7 @@ const ElonItem = () => {
                     <Link
                       className="news__nav__card"
                       key={index}
-                      to={`/elon/${e._id}`}
+                      to={`/news/${e._id}`}
                     >
                       <i
                         style={textSytles(14, 500)}
@@ -207,4 +207,4 @@ const ElonItem = () => {
   );
 };
 
-export default ElonItem;
+export default YengiItem;

@@ -77,10 +77,11 @@
   }
   
   .news__nav {
-    width: 100%;
+    
+    width: 50%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+   
     flex-wrap: wrap;
   }
   
@@ -92,4 +93,14 @@
     border-radius: 10px;
     text-decoration: none;
   }
-  
+  .elonDesc{
+    display: flex;
+  }
+  @media (max-width: 768px) {
+    .elonDesc{
+      display: block;
+    }
+    ..news__nav__card {
+      width: 100%;
+    }
+  }

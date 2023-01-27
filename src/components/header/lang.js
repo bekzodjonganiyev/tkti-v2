@@ -17,7 +17,7 @@ const HeaderLang = {
         "INSTITUT O’TGAN DAVR ICHIDA KIMYO, OZIQ-OVQAT, NEFT-GAZ, QURILISH MATERIALLARI VA IQTISODIYOTNING BOSHQA TARMOQLARIGA 10 MINGDAN ZIYOD YUQORI MALAKALI MUHANDIS TEXNOLOGLAR, TA’LIM YO’NALISHLARI BO’YICHA MINGDAN ORTIQ BAKALAVR VA 30 GA YAQIN MUTAXASSISLIKLAR BO’YICHA MAGISTRLAR TAYYORLAB BERDI",
     "KIMYOVIY TEXNOLOGIYALARNING ILMIY-TEXNIKAVIY RIVOJLANISH SUR'ATI TEZ SUR'ATLAR BILAN O'SIB BORMOQDA. ALYUMINIY ISHLAB CHIQARISHNING ELEKTROKIMYOVIY JARAYONINING SANOAT RIVOJLANISHI UCHUN 35 YIL KERAK BO'LDI."
 ,"TKTI BUTUN DUNYO BOʻYLAB 800 DAN ORTIQ TAʼLIM SUBYEKTLARINING IXTIYORIY TASHABBUSI SIFATIDA SHAKLLANGAN. BUGUNGI KUNDA BMT BILAN HAMKORLIK QILAYOTGAN VA MENEJMENT BILAN BOGʻLIQ BOʻLGAN OLIY OʻQUV YURTLARI OʻRTASIDAGI ENG YIRIK UYUSHMA HISOBLANADI."],
-        institut:['Institut','Faoliyat Xujjatlari','Xalqaro Aloqalar','Tkti Ish Rejasi','Korrupsiayni Oldini Olish','Biz bilan Aloqa','Interaktiv Xizmatlar','Rektorat','Tkti Qoshidagi Litsey'],
+        institut:['Institut','Rektorat','Interaktiv Xizmatlar','Tkti Ish Rejasi','Korrupsiayni Oldini Olish','Biz bilan Aloqa','Xalqaro Aloqalar','Ilmiy loyihalar','Tkti Qoshidagi Litsey'],
        
         library:'Kutubxona',
         contact:`Bog'lanish`
@@ -39,8 +39,8 @@ const HeaderLang = {
         `В институте более 10 000 бакалавров и около 30 специальностей в областях химической, пищевой, нефтегазовой, строительных материалов и других отраслях химической и других отраслей промышленности ПОДГОТОВЛЕНЫ МАГИСТРЫ`,
     `СКОРОСТЬ НАУЧНО-ТЕХНИЧЕСКОГО РАЗВИТИЯ ХИМИЧЕСКИХ ТЕХНОЛОГИЙ БЫСТРО РАСТУТ. ЕСЛИ В СЕРЕДИНЕ XIX ВЕКА. ЭТО БЫЛО 35 ЛЕТ ПРОМЫШЛЕННОЙ РАЗРАБОТКИ ЭЛЕКТРОХИМИЧЕСКОГО ПРОЦЕССА ПРОИЗВОДСТВА АЛЮМИНИЯ, ПОТОМ В 50-Х ГГ. ХХ ВЕКА.`,
 `TKTI БЫЛ СОЗДАН ПО ДОБРОВОЛЬНОЙ ИНИЦИАТИВЕ БОЛЕЕ 800 ОБРАЗОВАТЕЛЬНЫХ УЧАСТНИКОВ ВО ВСЕМ МИРЕ. СЕГОДНЯ ЯВЛЯЕТСЯ КРУПНЕЙШИМ СОЮЗОМ ВЫСШИХ УЧЕБНЫХ ЗАВЕДЕНИЙ В СОТРУДНИЧЕСТВЕ С ООН И В УПРАВЛЕНИИ.`],
-        institut:['Институт','документы о деятельности','Международные связи','план ТХТИ ','предотвращение коррупции','Контакты','интерактивные услуги','РЕКТОРАТ','Академический лицей при ТХТИ'],
-       
+        institut:["Институт",'Pекторат','интерактивные услуги','План работы Тхти','предотвращение коррупции','Контакты','Международные отношения','Научные проекты','Академический лицей при ТХТИ'],
+     
         library:'Библиотека',
         contact:'Контакты'
     },
@@ -61,8 +61,8 @@ const HeaderLang = {
     `The Institute has more than 10,000 bachelors and about 30 specialties in the fields of chemical, food, oil and gas, construction materials and other sectors of the chemical and other industries MASTERS PREPARED`,
 `THE SPEED OF SCIENTIFIC AND TECHNOLOGICAL DEVELOPMENT OF CHEMICAL TECHNOLOGIES IS GROWING RAPIDLY. IF IN THE MIDDLE OF THE XIX CENTURY. IT WAS 35 YEARS FOR THE INDUSTRIAL DEVELOPMENT OF THE ELECTROCHEMICAL PROCESS OF ALUMINUM MANUFACTURING, THEN IN THE 50S OF THE XX CENTURY.`,
 `TKTI WAS FORMED AS A VOLUNTARY INITIATIVE OF MORE THAN 800 EDUCATIONAL SUBJECTS AROUND THE WORLD. TODAY IS THE LARGEST UNION OF HIGHER EDUCATION INSTITUTIONS IN COOPERATION WITH THE UN AND IN MANAGEMENT.`],
-        institut:['Institute','Activity Documents','International Relations','Tkti Business Plan','Preventing Corruption','Contact Us','Interactive Services','Rectorate','Lyceum u'],
-        
+        institut:['Institute', 'Rectorate','Interactive Services','Tkti Business Plan','Prevention of Corruption','Contact Us','International Relations','Scientific Projects','Lyceum under Tkti'],
+
         library:'Library',
         contact:'Contact'
     }

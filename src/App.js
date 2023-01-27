@@ -19,6 +19,10 @@ import Magistratura from "./pages/qabul/magistratura/magistratura";
 import ElonlarItem from "./pages/elonlar/elonItem";
 import Elonlar from "./pages/elonlar/elonlar";
 
+import Yangiliklar from "./pages/news/news/news";
+import YengiItem from "./pages/news/news/yengiItem";
+
+
 //Talabalar
 import Students from "./pages/students/Students";
 import Bedroom from "./pages/students/bedroom/Bedroom";
@@ -122,6 +126,8 @@ function App() {
 
         <Route path="/elon" element={<Elonlar />} />
         <Route path="/elon/:id" element={<ElonlarItem />} />
+        <Route path="/news" element={<Yangiliklar />} />
+            <Route path="/news/:id" element={<YengiItem />} />
 
         <Route path="/rektorat" element={<Rectorat />} />
         <Route path="/rektorat/:id" element={<RectoratItem />} />

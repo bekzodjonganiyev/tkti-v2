@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Institut } from "../../icons/Icons";
@@ -9,25 +9,35 @@ import { Context } from "../../context";
 const MyComponent = () => {
   const [facultet, setFacultet] = useState([]);
 
-  
   const location = useLocation();
 
-  const { lang, setLang} = useContext(Context);
+  const { lang, setLang, globalUrl } = useContext(Context);
 
   const [hoveredButton, setHoveredButton] = useState(null);
+  useEffect(() => {
+    fetch(`${globalUrl}/Fak_data/all`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setFacultet(data.data));
+    console.log(facultet);
+  }, [setFacultet]);
+
   const buttons = [
     {
       id: 1,
       name: HeaderLang[lang].institut[0],
-      fakultetInfo:HeaderLang[lang].fakultetInfo[0],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[0],
       label: [
         {
           labelId: HeaderLang[lang].institut[1],
-          href: "/faoliyat-hujjatlari",
+          href: "/rektorat",
         },
         {
           labelId: HeaderLang[lang].institut[2],
-          href: "/xalqaro-aloqalar",
+          href: "/interaktiv-hizmatlar",
         },
         {
           labelId: HeaderLang[lang].institut[3],
@@ -43,11 +53,11 @@ const MyComponent = () => {
         },
         {
           labelId: HeaderLang[lang].institut[6],
-          href: "/interaktiv-hizmatlar",
+          href: "/xalqaro-aloqalar",
         },
         {
           labelId: HeaderLang[lang].institut[7],
-          href: "/rektorat",
+          href: "/faoliyat-hujjatlari",
         },
         {
           labelId: HeaderLang[lang].institut[8],
@@ -58,7 +68,7 @@ const MyComponent = () => {
     {
       id: 2,
       name: HeaderLang[lang].ilmiy[0],
-      fakultetInfo:HeaderLang[lang].fakultetInfo[1],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[1],
       label: [
         {
           labelId: HeaderLang[lang].ilmiy[1],
@@ -68,13 +78,12 @@ const MyComponent = () => {
           labelId: HeaderLang[lang].ilmiy[2],
           href: "/startup-loyihalar",
         },
-      
       ],
     },
     {
       id: 3,
       name: HeaderLang[lang].talim[0],
-      fakultetInfo:HeaderLang[lang].fakultetInfo[2],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[2],
       label: [
         {
           labelId: HeaderLang[lang].talim[1],
@@ -84,40 +93,18 @@ const MyComponent = () => {
           labelId: HeaderLang[lang].talim[2],
           href: "https://www.dropbox.com/s/mhexwrmj4s638if/1.PDF?dl=0",
         },
-       
       ],
     },
     {
       id: 4,
       name: HeaderLang[lang].fakultet[0],
       fakultetInfo: HeaderLang[lang].fakultetInfo[3],
-      label: [
-        {
-          labelId: HeaderLang[lang].fakultet[1],
-          href: "/fakultetlar/menejment-va-kasb-talimi-fakulteti",
-        },
-        {
-          labelId: HeaderLang[lang].fakultet[2],
-          href: "/fakultetlar/oziq-ovqat-mahsulotlari-texnologiyasi-fakulteti",
-        },
-        {
-          labelId: HeaderLang[lang].fakultet[3],
-          href: "/fakultetlar/noorganik-moddalar-kimyoviy-texnologiyasi-fakulteti",
-        },
-        {
-          labelId: HeaderLang[lang].fakultet[4],
-          href: "/fakultetlar/yoqilgi-va-organik-birikmalar-kimyoviy-texnologiyasi-fakulteti",
-        },
-        {
-          labelId: HeaderLang[lang].fakultet[5],
-          href: "/fakultetlar/vinochilik-texnologiyasi-va-sanoat-uzumchiligi-fakulteti",
-        },
-      ],
+      label: test(facultet),
     },
     {
       id: 5,
       name: HeaderLang[lang].structure[0],
-      fakultetInfo:HeaderLang[lang].fakultetInfo[1],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[1],
       label: [
         {
           labelId: HeaderLang[lang].structure[1],
@@ -148,7 +135,7 @@ const MyComponent = () => {
     {
       id: 6,
       name: HeaderLang[lang].mytkti[0],
-      fakultetInfo:HeaderLang[lang].fakultetInfo[1],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[1],
       label: [
         {
           labelId: HeaderLang[lang].mytkti[1],
@@ -170,7 +157,6 @@ const MyComponent = () => {
           labelId: HeaderLang[lang].mytkti[5],
           href: "https://hemis.tcti.uz/dashboard/login",
         },
-        
       ],
     },
   ];
@@ -181,59 +167,58 @@ const MyComponent = () => {
   const handleMouseLeave = () => {
     setHoveredButton(null);
   };
-
+  function test(params) {
+    const result = [];
+    for (let i of params) {
+      result.push({ labelId: i[`title_${lang}`], href: `/facultyId/${i._id}` });
+    }
+    return result;
+  }
   return (
-    <div className="buttons">
-     
-      {buttons.map((button) => (
-        <button
-          key={button.id}
-          onMouseEnter={() => setHoveredButton({ ...button })}
-          onMouseLeave={() => setHoveredButton(null)}
-        >
-          {button.name}
-        </button>
-      ))}
-      
-      {hoveredButton && (
-        < >
-       
-        <div
-          className="hovered-content"
-          onMouseEnter={() => setHoveredButton({ ...hoveredButton })}
-          onMouseLeave={() => setHoveredButton(null)}
-        > 
-          <ul className="hovered-list">
-            <div className="list-info">
-          <span>
-          <Institut />
-          <h3>{hoveredButton.name}</h3>
-          </span>
-          <p>{hoveredButton.fakultetInfo}</p>
-          </div>
-          <div className="asdaaf">
-            {hoveredButton?.label?.map((i, index) => (
-              <>
+    <>
+      <div className="buttons">
+        {buttons.map((button) => (
+          <button
+            key={button.id}
+            onMouseEnter={() => setHoveredButton({ ...button })}
+            onMouseLeave={() => setHoveredButton(null)}
+          >
+            {button.name}
+          </button>
+        ))}
 
-              <li className="li" key={index}>
-    
-                <a href={i.href}>
-                  <span>{i.labelId}</span>
-               
-                </a>
-                
-              </li>
-              </>
-            ))}
+        {hoveredButton && (
+          <>
+            <div
+              className="hovered-content"
+              onMouseEnter={() => setHoveredButton({ ...hoveredButton })}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <ul className="hovered-list">
+                <div className="list-info">
+                  <span>
+                    <Institut />
+                    <h3>{hoveredButton.name}</h3>
+                  </span>
+                  <p>{hoveredButton.fakultetInfo}</p>
+                </div>
+                <div className="asdaaf">
+                  {hoveredButton?.label?.map((i, index) => (
+                    <>
+                      <li className="li" key={index}>
+                        <a href={i.href}>
+                          <span>{i.labelId}</span>
+                        </a>
+                      </li>
+                    </>
+                  ))}
+                </div>
+              </ul>
             </div>
-          </ul>
-
-         
-        </div>
-
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
