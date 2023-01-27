@@ -39,3 +39,8 @@
     color:#02307d;
     font-weight: 700;
 }
+
+.faoliyat__wrapper{
+    display: flex;
+    flex-direction: column;
+}

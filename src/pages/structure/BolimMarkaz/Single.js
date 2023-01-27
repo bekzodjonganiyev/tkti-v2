@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import XodimCard from "../../../components/xodim_card/XodimCard";
 
 const BolimMarkazSingle = ({myKey}) => {
-  const { lang, globalUrl } = useContext(Context);
+  const { lang, globalUrl ,textSytles, DataGetter} = useContext(Context);
   const [hero] = useState({
     uz: {
       title: `${myKey ==='markaz' ? 'Markaz':`Bo'lim`} haqida`,
@@ -34,16 +34,7 @@ const BolimMarkazSingle = ({myKey}) => {
   const [activeButton, setActiveButton] = useState(1);
 
   useEffect(() => {
-    fetch(`${globalUrl}/${myKey ==='markaz' ? 'markaz':'bm'}_data/${refId}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then(result => {
-          result.success && setNewOne({ data: !result.data.length ? result.data : result.data[0], isFetched: true })
-        })
-      .catch(() => setNewOne({ error: true }));
+    DataGetter(setNewOne, `${myKey ==='markaz' ? 'markaz':'bm'}_data/${refId}`)
   }, []);
 
   return (
@@ -60,6 +51,7 @@ const BolimMarkazSingle = ({myKey}) => {
                     <div className="btnGroup">
                         <button onClick={() => setActiveButton(1)}>{hero[lang].title}</button>
                         <button onClick={() => setActiveButton(2)}>{hero[lang].desc}</button>
+                        <button onClick={() => setActiveButton(3)}>{hero[lang].info}</button>
 
                         <div>
                             {
@@ -67,7 +59,17 @@ const BolimMarkazSingle = ({myKey}) => {
                                     <div dangerouslySetInnerHTML={{__html: newOne.data[`haqida_${lang}`]}}></div>
                                     ) : activeButton ===2 ?(
                                     <div dangerouslySetInnerHTML={{__html: newOne.data[`maqsad_${lang}`]}}></div>
-                                ):(
+                                    ) : activeButton ===3 ?(
+                                      <div>
+                                        {
+                                        newOne.data?.faoliyatlar && newOne.data.faoliyatlar.map((item, index) => (
+                                          <div key={index} className='faoliyat__wrapper'>
+                                            <Link style={textSytles(20,700)} to={`/faoliyatlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}`} key={index}>{item[`title_${lang}`]}</Link>
+                                          </div>
+                                        ))
+                                        }
+                                      </div>
+                                    ) :(
                                     <></>
                                 )
                             }

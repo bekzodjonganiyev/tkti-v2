@@ -38,12 +38,6 @@ import RectoratItem from "./pages/rektorat/rectoratItem/rectoratitem";
 import PageStaticAkademikFilial from "./pages/filiallar/filial";
 import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 
-import FacultetFrond from "./pages/structure/FakultetId/FacultetFrond";
-import FakultetId from "./pages/structure/FakultetId/FakultetId";
-
-import KafedraName from "./pages/structure/Kafedra/KafedraFrond";
-import KafedraId from "./pages/structure/Kafedra/KafedraId";
-
 import BolimMarkaz from "./pages/structure/BolimMarkaz";
 
 //Faoliyat
@@ -90,6 +84,10 @@ import QabulData from "./pages/admin/qabul/Qabul";
 import Media from "./pages/admin/media/Media";
 import ProtectedRoute from "./components/admin/protected_route/ProtectedRoute";
 import BolimMarkazSingle from "./pages/structure/BolimMarkaz/Single";
+import FacultetComponent from "./pages/structure/fakultet";
+import FakultetSingle from "./pages/structure/fakultet/Single";
+import KafedraComponent from "./pages/structure/Kafedra";
+import KafedraSingle from "./pages/structure/Kafedra/Single";
 
 
 
@@ -130,15 +128,15 @@ function App() {
         <Route path="/rektorat" element={<Rectorat />} />
         <Route path="/rektorat/:id" element={<RectoratItem />} />
 
-        <Route path="/faculty" element={<FacultetFrond />} />
-        <Route path="/facultyId/:id" element={<FakultetId />} />
+        <Route path="/fakultetlar" element={<FacultetComponent />} />
+        <Route path="/fakultetlar/:id" element={<FakultetSingle />} />
 
         <Route path="/bolimMarkaz" element={<BolimMarkaz />} />
         <Route path="/bolimlar/:id" element={<BolimMarkazSingle myKey='bolim' />} />
         <Route path="/markazlar/:id" element={<BolimMarkazSingle myKey='markaz' />} />
 
-        <Route path="/kafedrafrond" element={<KafedraName />} />
-        <Route path="/kafedraId/:id" element={<KafedraId />} />
+        <Route path="/kafedralar" element={<KafedraComponent />} />
+        <Route path="/kafedralar/:id" element={<KafedraSingle />} />
 
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />

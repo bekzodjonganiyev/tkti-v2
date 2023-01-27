@@ -3,7 +3,7 @@ import { Context } from "../../../context";
 import { Link } from "react-router-dom";
 
 const BolimMarkaz = () => {
-  const { lang,globalUrl, textSytles } = useContext(Context);
+  const { lang,textSytles, DataGetter } = useContext(Context);
   const [hero] = useState({
     uz: {
       title: "Bo'limlar",
@@ -32,29 +32,8 @@ const BolimMarkaz = () => {
   });
 
   useEffect(() => {
-    fetch(`${globalUrl}/bm_data/all`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then(
-        (data) =>
-          data.success && setBolim({ data: data.data, isFetched: true })
-      )
-      .catch(() => setBolim({ error: true }));
-
-      fetch(`${globalUrl}/markaz_data/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then(
-          (data) =>
-            data.success && setMarkaz({ data: data.data, isFetched: true })
-        )
-        .catch(() => setMarkaz({ error: true }));
+    DataGetter(setBolim, 'bm_data/all')
+    DataGetter(setMarkaz, 'markaz_data/all')
   }, []);
 
   return (

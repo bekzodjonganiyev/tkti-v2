@@ -2,8 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../../context";
 import { Link } from "react-router-dom";
 
-const FacultetFrond = () => {
-  const { lang, globalUrl } = useContext(Context);
+const FacultetComponent = () => {
+  const { lang, DataGetter } = useContext(Context);
   const [hero] = useState({
     uz: {
       title: "Fakultetlar",
@@ -21,16 +21,14 @@ const FacultetFrond = () => {
         "TKTI offers bachelor's, master's and one integrated study program, the possibility to continue studying at the doctoral level and to obtain a teacher's qualification. All this is done in 5 faculties:",
     },
   });
-  const [facultet, setFacultet] = useState([]);
+  const [facultet, setFacultet] = useState({
+    isFetched: false,
+    error: false,
+    data: {},
+  });
 
   useEffect(() => {
-    fetch(`${globalUrl}/Fak_data/all`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setFacultet(data.data));
+    DataGetter(setFacultet, 'Fak_data/all')
   }, []);
 
   return (
@@ -40,37 +38,21 @@ const FacultetFrond = () => {
               <p>{hero[lang].about}</p>
         </div>
       <div className="facultetInfo">
-        {facultet?.length > 0
-        ? (
-          facultet?.map((e, index) => (
-            <Link className="facultetTitle" to={`/facultyId/${e._id}`} key={index}>
-              {
-                <div
-                  className="fakultet-inner card__html__content"
-                  dangerouslySetInnerHTML={{
-                    __html: e[`title_${lang}`],
-                  }}
-                />
-              }
-                {
-                <div
-                  className="fakultet-inner card__html__content"
-                  dangerouslySetInnerHTML={{
-                    __html: e[`job_${lang}`],
-                  }}
-                />
-              }
-            </Link>
-            
-          ))
-        ) 
-        :(
-          <h2>yuklanmoqda ...</h2>
-          )}
+        {
+            facultet.isFetched && facultet.data ? (
+                facultet.data.map((item, index) => (
+                    <Link className="facultetTitle" to={`/fakultetlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}`} key={index}>
+                        <h3 className="fakultet-inner">{item[`title_${lang}`]}</h3>
+                    </Link>
+                ))
+            ):(
+                <></>
+            )
+        }
       </div>
       
     </div>
   );
 };
 
-export default FacultetFrond;
+export default FacultetComponent;

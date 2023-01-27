@@ -43,11 +43,26 @@ function Provider({ children }) {
     }
   }, [lang]);
 
+  const DataGetter = (setMyState, url) =>{
+    fetch(`${globalUrl}/${url}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then(
+        (data) =>
+          data.success && setMyState({ data: data.data, isFetched: true })
+      )
+      .catch(() => setMyState({ error: true }));
+  }
+
   return (
     <>
       <Context.Provider
         value={{
           globalUrl,
+          DataGetter,
           time,
           textSytles,
           convertToHtml,

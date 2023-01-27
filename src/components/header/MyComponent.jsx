@@ -112,11 +112,11 @@ const MyComponent = () => {
         },
         {
           labelId: HeaderLang[lang].structure[2],
-          href: "/faculty",
+          href: "/fakultetlar",
         },
         {
           labelId: HeaderLang[lang].structure[3],
-          href: "/kafedrafrond",
+          href: "/kafedralar",
         },
         {
           labelId: HeaderLang[lang].structure[4],
@@ -169,8 +169,8 @@ const MyComponent = () => {
   };
   function test(params) {
     const result = [];
-    for (let i of params) {
-      result.push({ labelId: i[`title_${lang}`], href: `/facultyId/${i._id}` });
+    for (let item of params) {
+      result.push({ labelId: item[`title_${lang}`], href: `/fakultetlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}` });
     }
     return result;
   }
