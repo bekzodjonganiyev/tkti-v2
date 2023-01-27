@@ -72,12 +72,15 @@ const Header = () => {
               <a className="header__nav header_border" href="/bitiruvchilar">
                 {HeaderLang[lang].graduates}
               </a>
-              <a className="header__nav header_border" href="/faoliyatlar">
+              <a className="header__nav" href="/faoliyatlar">
                 {HeaderLang[lang].activity[0]}
               </a>
-              <a className="header__nav header_border" href="/biz-bilan-aloqa">
+              <a className="header__nav" href="/biz-bilan-aloqa">
                 {HeaderLang[lang].contact}
               </a>
+              <div className="qawws">
+                <MyComponent />
+              </div>
             </div>
 
             <div className="header__top__icon">
@@ -140,9 +143,9 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div>
-          <MyComponent />
-        </div>
+          <div className="qaww">
+            <MyComponent />
+          </div>
         </div>
 
         <div
