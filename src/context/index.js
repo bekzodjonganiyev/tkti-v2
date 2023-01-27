@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import draftToHtml from "draftjs-to-html";
-import {convertToRaw} from "react-draft-wysiwyg"
+import {convertToRaw} from "draft-js"
 
 const Context = React.createContext();
 

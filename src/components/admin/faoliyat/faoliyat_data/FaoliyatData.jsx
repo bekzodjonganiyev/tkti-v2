@@ -11,7 +11,7 @@ import Input from "../../input/Input";
 import { Context } from "../../../../context";
 
 const FaoliyatData = () => {
-  const { globalUrl, names } = useContext(Context);
+  const { globalUrl, names, convertToHtml } = useContext(Context);
   const [inputValue, setInputValue] = useState({});
   const [activity, setActivity] = useState([]);
 
@@ -43,10 +43,6 @@ const FaoliyatData = () => {
     setElements(elements.filter((element) => element.id !== id));
   };
 
-  const convertToHtml = (raw) => {
-    return draftToHtml(convertToRaw(raw.getCurrentContent()));
-  };
-
   const body = {
     title_uz: names?.nameUz,
     title_ru: names?.nameRu,
@@ -67,15 +63,20 @@ const FaoliyatData = () => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        "Token": localStorage.getItem("token")
+        Token: localStorage.getItem("token"),
       },
       body: JSON.stringify(body),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + " ❌");
+        } else {
+          alert(res.message);
+          window.location.reload(true);
+        }
+      })
       .catch((err) => console.log(err));
-
-      console.log(body)
   }
 
   useEffect(() => {
