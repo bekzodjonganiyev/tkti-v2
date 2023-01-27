@@ -72,7 +72,7 @@ const Header = () => {
               <a className="header__nav" href="/bitiruvchilar">
                 {HeaderLang[lang].graduates}
               </a>
-              <a className="header__nav" href="/moliyaviy-faoliyat">
+              <a className="header__nav" href="/faoliyatlar">
                 {HeaderLang[lang].activity[0]}
               </a>
               <a className="header__nav" href="/biz-bilan-aloqa">
