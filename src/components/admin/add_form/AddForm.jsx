@@ -14,7 +14,7 @@ import { Context } from "../../../context";
 import ProtectedRoute from "../protected_route/ProtectedRoute";
 
 const AddForm = (props) => {
-  const { names, selectValue, globalUrl } = useContext(Context);
+  const { names, selectValue, globalUrl, convertToHtml } = useContext(Context);
   const {
     inputNames,
     textEditorNames1,
@@ -33,10 +33,6 @@ const AddForm = (props) => {
   const [aimUz, setAimUz] = useState(EditorState.createEmpty());
   const [aimRu, setAimRu] = useState(EditorState.createEmpty());
   const [aimEn, setAimEn] = useState(EditorState.createEmpty());
-
-  const convertToHtml = (raw) => {
-    return draftToHtml(convertToRaw(raw.getCurrentContent()));
-  };
 
   const obj = {
     title_uz: names?.nameUz,

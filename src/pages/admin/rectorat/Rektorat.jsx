@@ -13,7 +13,7 @@ import Table from "../../../components/admin/table/Table";
 
 const Rektorat = () => {
   const imageRef = useRef();
-  const { globalUrl } = useContext(Context);
+  const { globalUrl, convertToHtml } = useContext(Context);
   let content = null;
 
   const [inputValue, setrInputValue] = useState({});
@@ -58,10 +58,6 @@ const Rektorat = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setrInputValue((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const convertToHtml = (raw) => {
-    return JSON.stringify(draftToHtml(convertToRaw(raw.getCurrentContent())));
   };
 
   function postData(e) {
