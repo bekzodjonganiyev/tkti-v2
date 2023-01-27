@@ -14,7 +14,7 @@ import { Context } from "../../../context";
 
 const Elon = () => {
   const imgRef = useRef();
-  const { globalUrl, names } = useContext(Context);
+  const { globalUrl, names, convertToHtml } = useContext(Context);
   const [type, setType] = useState("table");
   const [data, setData] = useState();
 
@@ -29,10 +29,6 @@ const Elon = () => {
   const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
     EditorState.createEmpty()
   );
-
-  const convertToHtml = (raw) => {
-    return JSON.stringify(draftToHtml(convertToRaw(raw.getCurrentContent())));
-  };
 
   const analyseNameTableHead = ["Tartib raqam", "Elon nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
