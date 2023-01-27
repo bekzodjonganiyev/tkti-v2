@@ -45,6 +45,7 @@
   padding: 10px 20px;
   transition: 0.3s linear;
   height: 335px;
+  margin-top: -1px;
 }
 .hovered-list .list-info span{
   display: flex;
