@@ -42,26 +42,16 @@ function SocialShare() {
 }
 
 const SingleFaoliyat = () => {
-  const { time } = useContext(Context);
+  const { time, DataGetter } = useContext(Context);
   const { ref } = useParams();
   const { globalUrl, lang } = useContext(Context);
-  const [data, setData] = useState({ get: false, error: false, data: false });
+  const [data, setData] = useState({ isFetched: false, error: false, data: {} });
   const navigate = useNavigate();
   const id = ref.substring(ref.lastIndexOf("-") + Number(1));
+
   useEffect(() => {
     if (id.length === 24) {
-      fetch(`${globalUrl}/faoliyat/${id}`, {
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.status === 200) {
-            setData({ get: true, error: false, data: res.data });
-          }
-        })
-        .catch(() => setData({ get: false, error: true }));
+      DataGetter(setData, `faoliyat/${id}`)
     }
   }, []);
 
@@ -74,7 +64,7 @@ const SingleFaoliyat = () => {
   return (
     <div>
       <div className="activity">
-        {data.get && !data.error ? (
+        {data.isFetched && !data.error ? (
           <>
             <div className="left">{data.data[`title_${lang}`]}</div>
             <div className="right">

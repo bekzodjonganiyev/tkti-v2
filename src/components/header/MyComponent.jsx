@@ -93,6 +93,14 @@ const MyComponent = () => {
           labelId: HeaderLang[lang].talim[2],
           href: "https://www.dropbox.com/s/mhexwrmj4s638if/1.PDF?dl=0",
         },
+        {
+          labelId: HeaderLang[lang].talim[3],
+          href: '/sertifikat',
+        },
+        {
+          labelId: HeaderLang[lang].talim[4],
+          href: '/nashriyot',
+        }
       ],
     },
     {

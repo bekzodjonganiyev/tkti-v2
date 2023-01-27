@@ -88,6 +88,8 @@ import FacultetComponent from "./pages/structure/fakultet";
 import FakultetSingle from "./pages/structure/fakultet/Single";
 import KafedraComponent from "./pages/structure/Kafedra";
 import KafedraSingle from "./pages/structure/Kafedra/Single";
+import SertifikatComponent from "./pages/sertifikat.js";
+import NashriyotComponent from "./pages/nashriyot";
 
 
 
@@ -152,6 +154,9 @@ function App() {
           element={<TKTIFaoliyat variant={variant} />}
         />
 
+        <Route path="/sertifikat" element={<SertifikatComponent />} />
+
+        <Route path="/nashriyot" element={<NashriyotComponent />} />
 
 
         <Route path="/faoliyat-hujjatlari" element={<ActivityDocuments />} />

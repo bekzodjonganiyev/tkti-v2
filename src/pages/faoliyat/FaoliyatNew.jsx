@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import { Context } from "../../context";
 
@@ -225,7 +224,6 @@ const FaoliyatNew = () => {
               <div className="activity__item" key={index}>
                 <h2 onClick={() => togglerFunction(index)}>{obj[e][lang]}</h2>
                 <div className={`activity__nested__item activity__toggle${index}`}>
-                  {/* {console.log(state.data[e].map)} */}
                   {state.data[e].map((item, ind) =>(
                     <a className="activity__link" href={`/faoliyatlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}`} key={ind}>{item[`title_${lang}`]}</a>
                   ))}
