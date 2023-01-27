@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import ActivityLang from "./lang";
+import { AccordionComponent } from "../../components/accordion";
+
 import { Context } from "../../context";
 import { Link, useParams } from "react-router-dom";
 import QuestionForm from "../../components/questionform/index";
@@ -7,7 +9,6 @@ import "./style.css";
 
 const BusinessActivity = ({ setVariant }) => {
   const { lang } = useContext(Context);
-
   const accordionBtn = [
     {
       faoliyat_id: 1,

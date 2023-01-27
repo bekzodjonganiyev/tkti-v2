@@ -40,7 +40,7 @@ const StudentBolim = () => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Token: localStorage.getItem("token"),
+        "Token": localStorage.getItem("token"),
       },
       body: JSON.stringify(body),
     })

@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import Sidebar from "../../components/admin/sidebar/Sidebar";
 
 import "./index.css";
+
+import Sidebar from "../../components/admin/sidebar/Sidebar";
 
 const Admin = () => {
   return (

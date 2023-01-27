@@ -136,6 +136,7 @@ function RectoratItem() {
                      <li>${ContactLangMy[lang].safarov.p16}</li>
                      <li>${ContactLangMy[lang].safarov.p17}</li>`,
     },
+
     {
       human_id: 2,
       id: 3,
@@ -143,6 +144,7 @@ function RectoratItem() {
       title: ContactLangMy[lang].safarov.p18,
       content: `<li>${ContactLangMy[lang].safarov.p19}</li> <li>${ContactLangMy[lang].safarov.p20}</li> <li>${ContactLangMy[lang].safarov.p21}</li>`,
     },
+    
     {
       human_id: 2,
       id: 4,
@@ -164,6 +166,7 @@ function RectoratItem() {
                      <li>${ContactLangMy[lang].safarov.p36}</li>
                      <li>${ContactLangMy[lang].safarov.p37}</li>`,
     },
+    
     {
       human_id: 3,
       id: 1,
@@ -175,6 +178,7 @@ function RectoratItem() {
                       <p>${ContactLangMy[lang].polatov.p6}</p>
                       <p>${ContactLangMy[lang].polatov.p7}</p>`,
     },
+    
     {
       human_id: 3,
       id: 2,
@@ -182,6 +186,7 @@ function RectoratItem() {
       title: ContactLangMy[lang].polatov.p8,
       content: `<li>${ContactLangMy[lang].polatov.p9}</li> <li>${ContactLangMy[lang].polatov.p10}</li> <li>${ContactLangMy[lang].polatov.p11}</li>`,
     },
+    
     {
       human_id: 3,
       id: 3,
@@ -192,6 +197,7 @@ function RectoratItem() {
                     <li>${ContactLangMy[lang].polatov.p15}</li>
                     <li>${ContactLangMy[lang].polatov.p16}</li>`,
     },
+    
     {
       human_id: 4,
       id: 1,
@@ -202,6 +208,7 @@ function RectoratItem() {
                     <p>${ContactLangMy[lang].bobiramon.p5}</p>
                     <p>${ContactLangMy[lang].bobiramon.p6}</p>`,
     },
+    
     {
       human_id: 4,
       id: 2,
@@ -216,6 +223,7 @@ function RectoratItem() {
                     <li>${ContactLangMy[lang].bobiramon.p14}</li>
                     <li>${ContactLangMy[lang].bobiramon.p15}</li>`,
     },
+    
     {
       human_id: 4,
       id: 3,
@@ -226,6 +234,7 @@ function RectoratItem() {
                         <li>${ContactLangMy[lang].bobiramon.p20}</li>
                         <li>${ContactLangMy[lang].bobiramon.p21}</li>`,
     },
+    
     {
       human_id: 5,
       id: 1,
@@ -233,6 +242,7 @@ function RectoratItem() {
       title: ContactLangMy[lang].prormanav.f2,
       content: `<p>${ContactLangMy[lang].prormanav.f3}</p> <p>${ContactLangMy[lang].prormanav.f4}</p> <p>${ContactLangMy[lang].prormanav.f5}</p>`,
     },
+    
     {
       human_id: 5,
       id: 2,

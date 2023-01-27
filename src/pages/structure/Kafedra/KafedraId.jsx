@@ -29,7 +29,7 @@ const FakultetId = () => {
   const [activeButton, setActiveButton] = useState(1);
    
   useEffect(() => {
-    fetch(`http://backend.tkti.uz/kafedra_data/${id}`, {
+    fetch(`${globalUrl}/kafedra_data/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
