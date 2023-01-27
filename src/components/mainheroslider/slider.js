@@ -11,16 +11,17 @@ import slide_6 from "../../files/Toshkent_kimyo_texnologiya_instituti.jpg";
 import { Context } from "../../context";
 
 function MainSlider() {
-  const {DataGetter, lang, textSytles} = useContext(Context);
-  const [sertifikat, setSertifikat] = useState({
+  const {DataGetter, globalUrl} = useContext(Context);
+  const [banner, setBanner] = useState({
     isFetched: false,
     error: false,
     data: {},
   });
 
   useEffect(()=>{
-    DataGetter(setSertifikat, 'sertifikat/all')
+    DataGetter(setBanner, 'banner/all')
   },[]);
+
   return (
     <>
       <div className="container-fluid">
@@ -30,63 +31,20 @@ function MainSlider() {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item">
-              <img
-                className=""
-                src={`${slide_5}`}
-                width="100%"
-                height="100%"
-                alt=""
-              />
-            </div>
-            <div className="carousel-item active">
-              <img
-                className=""
-                src={`${slide_1}`}
-                width="100%"
-                height="100%"
-                alt=""
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                className=""
-                src={`${slide_2}`}
-                width="100%"
-                height="100%"
-                alt=""
-              />
-            </div>{" "}
-            <div className="carousel-item">
-              <a href="http://www.double-degree.tcti.uz" target="_blank">
-                {" "}
-                <img
-                  className=""
-                  src={`${slide_6}`}
-                  width="100%"
-                  height="100%"
-                  alt=""
-                />
-              </a>
-            </div>
-            <div className="carousel-item">
-              <img
-                className=""
-                src={`${slide_3}`}
-                width="100%"
-                height="100%"
-                alt=""
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                className=""
-                src={`${slide_4}`}
-                width="100%"
-                height="100%"
-                alt=""
-              />
-            </div>
+            {
+              banner.isFetched && banner.data && banner.data.length >0 ?(
+                banner.data.map((e,index) =>(
+                  <div key={index} className="carousel-item">
+                    <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt={e.name}/>
+                  </div>
+                ))
+              ): (
+                <div className="carousel-item">
+                    <img src={slide_5} width="100%" height="100%" alt='Banner img'/>
+                  </div>
+              )
+            }
+    
           </div>
           <button
             className="carousel-control-prev slider__btn"

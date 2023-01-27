@@ -31,7 +31,6 @@ function YangiliklarComp({ home, myKey }) {
       )
       .catch(() => setNews({ error: true }));
   }, []);
-  console.log(news);
 
   return (
     <>
