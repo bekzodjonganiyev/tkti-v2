@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
@@ -10,8 +10,12 @@ import { Context } from "../../../context";
 
 const Bolim = () => {
   const { globalUrl } = useContext(Context);
+  const {imageRef} = useRef()
   const [type, setType] = useState("table");
   const [bolimData, setBolimData] = useState();
+  const [bolimXodim, setBolimXodim] = useState();
+  const [onEdit, setOnEdit] = useState({});
+  const [editInput, setEditInput] = useState(null);
   let content = null;
 
   const props = {
@@ -35,6 +39,7 @@ const Bolim = () => {
     url: "bm_data/add",
   };
 
+  // FOR BO'LIM DATA
   const analyseNameTableHead = ["Tartib raqam", "Bo'lim nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   const bodyData = bolimData;
@@ -58,6 +63,128 @@ const Bolim = () => {
     );
   };
 
+  // FOR BO'LIM XODIM
+  const xodimTableHead = ["Tartib raqam", "Xodim ismi nomi", "Bo`limi", "Amallar",];
+  const renderXodimHead = (item, index) => <th key={index}>{item}</th>;
+  const xodimTableBody = bolimXodim;
+  const renderXodimBody = (item, index) => {
+    return (
+      <>
+        {onEdit.open && onEdit.id === item._id
+        ? (
+          <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+            <td>
+              <td colSpan={3}>
+                <td>
+                  <input type="text" name="name_uz" onChange={handleChange} />
+                </td>
+                <br />
+                <td>
+                  <input type="text"  name="name_ru" onChange={handleChange} />
+                </td>
+                <br />
+                <td>
+                  <input type="text"  name="name_en" onChange={handleChange} />
+                </td>
+              </td>
+            </td>
+            <td>
+              <td colSpan={3}>
+                <td>
+                  <input type="text"  name="job_uz" onChange={handleChange} />
+                </td>
+                <br />
+                <td>
+                  <input type="text"  name="job_ru" onChange={handleChange} />
+                </td>
+                <br />
+                <td>
+                  <input type="text"  name="job_en" onChange={handleChange} />
+                </td>
+              </td>
+            </td>
+            <td>
+              <td colSpan={3}>
+                <td>
+                  <input type="text"  name="tell" onChange={handleChange} />
+                </td>
+                <br />
+                <td>
+                  <input type="text"  name="email" onChange={handleChange} />
+                </td>
+                <br />
+                <td>
+                  <input type="file" ref={imageRef}/>
+                </td>
+              </td>
+            </td>
+            <td>
+              <td colSpan={3}>
+                <td>
+                  <select id="" name="bolim_id" onChange={handleChange} style={{width:"200px"}}>
+                    <option value="" hidden>...</option>
+                    {
+                      bolimData?.map(i => (
+                        <option value={i._id}>
+                          {i.title_uz }
+                        </option>
+                      ))
+                    }
+                  </select>
+                </td>
+                <br />
+                <td>
+                  <button className="event-btn edit" onClick={() => {
+                    putData(item._id)
+                  }}>
+                    <i className="fa fa-check"></i>
+                  </button>
+                </td>
+                <br />
+                <td>
+                  <button
+                    className="event-btn delete"
+                    onClick={() => setOnEdit({
+                      open: false,
+                      id: false
+                    })}
+                  >
+                    <i className="fa fa-x"></i>
+                  </button>
+                </td>
+              </td>
+            </td>
+          </tr>
+        ) : (
+          <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+            <td>{index + 1}</td>
+            <td>{item.name_uz}</td>
+            <td>{test(item.bolim_id)}</td>
+            <td>
+              <button
+                className="event-btn edit"
+                onClick={() => {
+                  setOnEdit({
+                    open: true,
+                    id: item._id
+                  });
+                }}
+              >
+                <i className="fa fa-edit"></i>
+              </button>
+              <button
+                className="event-btn delete"
+                onClick={() => deleteDepartmentEmployer(item._id)}
+              >
+                <i className="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        )}
+      </>
+    );
+  };
+
   function getData() {
     fetch(`${globalUrl}/bm_data/all`, {
       headers: {
@@ -67,6 +194,18 @@ const Bolim = () => {
       .then((res) => res.json())
       .then((res) => {
         setBolimData(res.data);
+      })
+      .catch((err) => console.log(err));
+
+    fetch(`${globalUrl}/bm_hodim/all`, {
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setBolimXodim(res.data);
       })
       .catch((err) => console.log(err));
   }
@@ -94,6 +233,58 @@ const Bolim = () => {
       });
   }
 
+  function deleteDepartmentEmployer(id) {
+    fetch(`${globalUrl}/bm_hodim/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumotlar o'chirildi");
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function test(id) {
+    return bolimData?.find((i) => i._id === id)?.title_uz;
+  }
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setEditInput((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function putData (id) {
+    const formData = new FormData()
+    Object.keys(editInput).forEach((i) => formData.append(i, editInput[i]));
+    // formData.append("photo", imageRef.current.files[0]);
+
+    fetch(`${globalUrl}/bm_hodim/${id}`, {
+      method: "PUT",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
 
   useEffect(() => {
     getData();
@@ -101,12 +292,23 @@ const Bolim = () => {
 
   if (type === "table") {
     content = (
-      <Table
-        headData={analyseNameTableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
+      <>
+        <Table
+          headData={analyseNameTableHead}
+          renderHead={renderHead}
+          bodyData={bodyData}
+          renderBody={renderBody}
+        />
+        <br />
+        <br />
+        <p style={{ fontSize: "30px", textAlign: "center" }}>Xodimlar</p>
+        <Table
+          headData={xodimTableHead}
+          renderHead={renderXodimHead}
+          bodyData={xodimTableBody}
+          renderBody={renderXodimBody}
+        />
+      </>
     );
   } else if (type === "addDepartmant") {
     content = (
@@ -137,6 +339,8 @@ const Bolim = () => {
       />
     );
   }
+
+  console.log(editInput)
   return (
     <div>
       <FormHeader
@@ -150,7 +354,6 @@ const Bolim = () => {
         handleEvent3={() => setType("addEmployer")}
         handleEvent4={() => setType("addAction")}
       />
-
       {content}
     </div>
   );
