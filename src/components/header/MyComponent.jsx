@@ -161,12 +161,6 @@ const MyComponent = () => {
     },
   ];
 
-  const handleMouseEnter = (arr) => {
-    setHoveredButton({ ...arr });
-  };
-  const handleMouseLeave = () => {
-    setHoveredButton(null);
-  };
   function test(params) {
     const result = [];
     for (let i of params) {
