@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 
 const Markaz = () => {
-  const { lang } = useContext(Context);
+  const { lang, globalUrl } = useContext(Context);
 
   const [facultet, setFacultet] = useState([]);
 
   useEffect(() => {
-    fetch(`http://backend.tkti.uz/markaz_data/all`, {
+    fetch(`${globalUrl}/markaz_data/all`, {
       headers: {
         "Content-Type": "application/json",
       },

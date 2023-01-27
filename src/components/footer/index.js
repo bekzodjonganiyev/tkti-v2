@@ -11,11 +11,13 @@ function Footer() {
   const { lang } = useContext(Context);
 
   let content = null;
-  const result = location.pathname.split("/")[1] === "admin";
+  const result = location.pathname.split("/")[1] === "admin" || location.pathname.split("/")[1] === "login";
+
   if (result) {
     content = null;
   } else {
     content = (
+
       <footer>
         <a href="/" className="logo">
           <img src={logo} alt="tkti logosi" />

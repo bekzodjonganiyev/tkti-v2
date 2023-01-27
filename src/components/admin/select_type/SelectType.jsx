@@ -7,6 +7,7 @@ import { Context } from "../../../context";
 const SelectType = ({ title = "tipni tanlang", options }) => {
   const { setSelectValue } = useContext(Context);
   const [value, setValue] = useState();
+  console.log(options)
 
   function handleChange(e) {
     setValue(e.target.value);

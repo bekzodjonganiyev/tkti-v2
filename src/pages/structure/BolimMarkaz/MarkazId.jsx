@@ -26,7 +26,7 @@ const MarkazId = () => {
   const [bolimId, setBolimId] = useState();
   const [activeButton, setActiveButton] = useState(1);
   useEffect(() => {
-    fetch(`http://backend.tkti.uz/markaz_data/${id}`, {
+    fetch(`${globalUrl}/markaz_data/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },

@@ -53,6 +53,8 @@ import MarkazId from "./pages/structure/BolimMarkaz/MarkazId";
 
 //Faoliyat
 import BusinessActivity from "./pages/biznesaktivity";
+import FaoliyatNew from "./pages/faoliyat/FaoliyatNew";
+import SingleFaoliyat from "./pages/faoliyat/single_page_faoliyat/SingleFaoliyat";
 import TKTIFaoliyat from "./components/Faoliyat/Faoliyat";
 import Silbol from "./pages/simbol/Silbol";
 
@@ -73,6 +75,7 @@ import DarsJadval from "./pages/talimdasturi/darsjadval";
 
 //Admin
 import Admin from "./pages/admin";
+import AdminLogin from "./pages/admin/login/Login";
 import Fakultet from "./pages/admin/fakultet/Fakultet";
 import Kafedra from "./pages/admin/kafedra/Kafedra";
 import Bolim from "./pages/admin/bolim/Bolim";
@@ -81,15 +84,16 @@ import Faoliyat from "./pages/admin/foliyat/Faoliyat";
 import Syllabus from "./pages/admin/syllabus/Syllabus";
 import Yangilik from "./pages/admin/yangilik/Yangilik";
 import Elon from "./pages/admin/elon/Elon";
-
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import StudentBolim from "./pages/admin/student-bolim/StudentBolim";
-import Rahbariyat from "./pages/admin/rectorat/Rektorat"
-import Sertifikat from "./pages/admin/sertifikat/Setrifikat"
-import Matbuot from "./pages/admin/matbuot/Matbuot"
-import FamousStudent from "./pages/admin/famous-student/FamousStudent"
-import StatisticsForStudent from "./pages/admin/statistics/Statistics"
-import QabulData from "./pages/admin/qabul/Qabul"
+import Rahbariyat from "./pages/admin/rectorat/Rektorat";
+import Sertifikat from "./pages/admin/sertifikat/Setrifikat";
+import Matbuot from "./pages/admin/matbuot/Matbuot";
+import FamousStudent from "./pages/admin/famous-student/FamousStudent";
+import StatisticsForStudent from "./pages/admin/statistics/Statistics";
+import QabulData from "./pages/admin/qabul/Qabul";
+import Media from "./pages/admin/media/Media";
+import ProtectedRoute from "./components/admin/protected_route/ProtectedRoute";
 
 
 
@@ -145,7 +149,9 @@ function App() {
 
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />
-
+        <Route path="/moliyaviy-faoliyat" element={<BusinessActivity />} />
+        <Route path="/faoliyatlar" element={<FaoliyatNew />} />
+        <Route path="/faoliyatlar/:ref" element={<SingleFaoliyat />} />
         <Route
           path="/moliyaviy-faoliyat"
           element={<BusinessActivity setVariant={setVariant} />}
@@ -154,6 +160,8 @@ function App() {
           path="/moliyaviy-faoliyat/hammasi"
           element={<TKTIFaoliyat variant={variant} />}
         />
+
+
 
         <Route path="/faoliyat-hujjatlari" element={<ActivityDocuments />} />
         <Route path="/biz-bilan-aloqa" element={<BizBilanAloqa />} />
@@ -167,23 +175,25 @@ function App() {
         <Route path="/startup-loyihalar" element={<Startup />} />
 
         <Route path="/dars-jadvali" element={<DarsJadval />} />
-        <Route path="/admin" element={<Admin />}>
-          <Route index element={<Dashboard />} />
-          <Route path="fakultet" element={<Fakultet />} />
-          <Route path="kafedra" element={<Kafedra />} />
-          <Route path="bolim" element={<Bolim />} />
-          <Route path="markaz" element={<Markaz />} />
-          <Route path="faoliyat" element={<Faoliyat />} />
-          <Route path="syllabus" element={<Syllabus />} />
-          <Route path="yangilik" element={<Yangilik />} />
-          <Route path="elon" element={<Elon />} />
-          <Route path="student-bolim" element={<StudentBolim />} />
-          <Route path="rektorat" element={<Rahbariyat />} />
-          <Route path="sertifikat" element={<Sertifikat />} />
-          <Route path="nashriyot" element={<Matbuot />} />
-          <Route path="famous-student" element={<FamousStudent />} />
-          <Route path="statistics-of-student" element={<StatisticsForStudent />} />
-          <Route path="qabul" element={<QabulData />} />
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>}>
+          <Route index element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="fakultet" element={<ProtectedRoute><Fakultet /></ProtectedRoute>} />
+          <Route path="kafedra" element={<ProtectedRoute><Kafedra /></ProtectedRoute>} />
+          <Route path="bolim" element={<ProtectedRoute><Bolim /></ProtectedRoute>} />
+          <Route path="markaz" element={<ProtectedRoute><Markaz/></ProtectedRoute>} />
+          <Route path="rektorat" element={<ProtectedRoute><Rahbariyat /></ProtectedRoute>} />
+          <Route path="faoliyat" element={<ProtectedRoute><Faoliyat /></ProtectedRoute>} />
+          <Route path="syllabus" element={<ProtectedRoute><Syllabus /></ProtectedRoute>} />
+          <Route path="elon" element={<ProtectedRoute><Elon /></ProtectedRoute>} />
+          <Route path="yangilik" element={<ProtectedRoute><Yangilik /></ProtectedRoute>} />
+          <Route path="student-bolim" element={<ProtectedRoute><StudentBolim /></ProtectedRoute>} />
+          <Route path="sertifikat" element={<ProtectedRoute><Sertifikat/></ProtectedRoute>} />
+          <Route path="nashriyot" element={<ProtectedRoute><Matbuot /></ProtectedRoute>} />
+          <Route path="famous-student" element={<ProtectedRoute><FamousStudent /></ProtectedRoute>} />
+          <Route path="statistics-of-student" element={<ProtectedRoute><StatisticsForStudent /></ProtectedRoute>} />
+          <Route path="qabul" element={<ProtectedRoute><QabulData /></ProtectedRoute>} />
+          <Route path="media" element={<ProtectedRoute><Media /></ProtectedRoute>} />
 
         </Route>
       </Routes>

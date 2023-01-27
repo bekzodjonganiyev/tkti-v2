@@ -36,7 +36,9 @@ const Header = () => {
   };
 
   let content = null;
-  const result = location.pathname.split("/")[1] === "admin"
+  const result =
+    location.pathname.split("/")[1] === "admin" ||
+    location.pathname.split("/")[1] === "login";
   if (result) {
     content = null;
   } else {
@@ -70,12 +72,12 @@ const Header = () => {
               <a className="header__nav header_border" href="/bitiruvchilar">
                 {HeaderLang[lang].graduates}
               </a>
-              <a className="header__nav header_border" href="/moliyaviy-faoliyat">
-              {HeaderLang[lang].activity[0]}
+              <a className="header__nav" href="/faoliyatlar">
+                {HeaderLang[lang].activity[0]}
               </a>
-              <a className="header__nav header_border" href="/biz-bilan-aloqa">
-              {HeaderLang[lang].contact}
-            </a>
+              <a className="header__nav" href="/biz-bilan-aloqa">
+                {HeaderLang[lang].contact}
+              </a>
             </div>
 
             <div className="header__top__icon">
@@ -114,12 +116,7 @@ const Header = () => {
               </div>
 
               <div className="dropdown">
-                <h3 className="dropbtn">
-                  {" "}
-                  {lang.toUpperCase()}
-                 
-                </h3>
-
+                <h3 className="dropbtn"> {lang.toUpperCase()}</h3>
                 <div className="dropdown-content icon__wrapper">
                   <h3
                     onClick={() => (setLang("uz"), setRefresh(true))}
@@ -143,13 +140,12 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="header__bottom">
-            
-           
-          <MyComponent/>
-          </div>
+          <div>
+          <MyComponent />
         </div>
-        <div 
+        </div>
+
+        <div
           onClick={() => setShowHeader(!showHeader)}
           className="header__nav burger"
         >

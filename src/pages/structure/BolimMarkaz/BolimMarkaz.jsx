@@ -24,7 +24,7 @@ const BolimMarkaz = () => {
   const [facultet, setFacultet] = useState([]);
 
   useEffect(() => {
-    fetch(`http://backend.tkti.uz/bm_data/all`, {
+    fetch(`${globalUrl}/bm_data/all`, {
       headers: {
         "Content-Type": "application/json",
       },
