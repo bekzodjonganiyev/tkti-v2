@@ -32,14 +32,27 @@ function MainSlider() {
         >
           <div className="carousel-inner">
             {
-              banner.isFetched && banner.data && banner.data.length >0 ?(
+              banner.isFetched && banner.data && banner.data.length >0 && banner.data.length===1 ?(
                 banner.data.map((e,index) =>(
-                  <div key={index} className="carousel-item">
+                  <div key={index} className="carousel-item active">
                     <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt={e.name}/>
                   </div>
                 ))
-              ): (
-                <div className="carousel-item">
+              ): banner.isFetched && banner.data && banner.data.length >1 ? (
+                  <>
+                      <div className="carousel-item active">
+                        <img src={`${globalUrl}/${banner.data[0].banner_img}`} width="100%" height="100%" alt='Banner img'/>
+                      </div>
+                      {
+                        banner.data.splice(0,1).map((e, index) => (
+                          <div key={index} className="carousel-item">
+                            <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt='Banner img'/>
+                        </div>
+                        ))
+                      }
+                  </>
+              ):(
+                <div className="carousel-item active">
                     <img src={slide_5} width="100%" height="100%" alt='Banner img'/>
                   </div>
               )
