@@ -11,16 +11,28 @@ import slide_6 from "../../files/Toshkent_kimyo_texnologiya_instituti.jpg";
 import { Context } from "../../context";
 
 function MainSlider() {
-  const {DataGetter, globalUrl} = useContext(Context);
+  const { DataGetter, globalUrl } = useContext(Context);
   const [banner, setBanner] = useState({
     isFetched: false,
     error: false,
     data: {},
   });
 
-  useEffect(()=>{
-    DataGetter(setBanner, 'banner/all')
-  },[]);
+  useEffect(() => {
+    fetch(`${globalUrl}/elon/all`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then(
+        (data) =>
+          data.success && setBanner({ data: data.data, isFetched: true })
+      )
+      .catch(() => setBanner({ error: true }));
+  }, []);
+
+  console.log(banner.data);
 
   return (
     <>
