@@ -41,10 +41,8 @@ import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 import BolimMarkaz from "./pages/structure/BolimMarkaz";
 
 //Faoliyat
-import BusinessActivity from "./pages/biznesaktivity";
 import FaoliyatNew from "./pages/faoliyat/FaoliyatNew";
 import SingleFaoliyat from "./pages/faoliyat/single_page_faoliyat/SingleFaoliyat";
-import TKTIFaoliyat from "./components/Faoliyat/Faoliyat";
 import Silbol from "./pages/simbol/Silbol";
 
 //Institut
@@ -94,8 +92,6 @@ import Banner from "./pages/admin/banner/Banner";
 
 
 function App() {
-  const [variant, setVariant] = useState("");
-
   return (
     <div className="my__container">
       <Header />
@@ -140,17 +136,9 @@ function App() {
 
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />
-        <Route path="/moliyaviy-faoliyat" element={<BusinessActivity />} />
         <Route path="/faoliyatlar" element={<FaoliyatNew />} />
         <Route path="/faoliyatlar/:ref" element={<SingleFaoliyat />} />
-        <Route
-          path="/moliyaviy-faoliyat"
-          element={<BusinessActivity setVariant={setVariant} />}
-        />
-        <Route
-          path="/moliyaviy-faoliyat/hammasi"
-          element={<TKTIFaoliyat variant={variant} />}
-        />
+        
 
         <Route path="/sertifikat" element={<SertifikatComponent />} />
 
