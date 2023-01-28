@@ -38,7 +38,7 @@ const KafedraComponent = () => {
         {
             rektorat.isFetched && rektorat.data ? (
                 rektorat.data.map((item, index) => (
-                  <AnimateCard animClass='fadeInRightBig' animTime='0.3s' refLink='kafedralar' refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
+                  <AnimateCard refLink='kafedralar' refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
                 ))
             ): rektorat.error ?(
                 <></>

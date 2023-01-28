@@ -50,7 +50,7 @@ const FacultetComponent = () => {
         {
             facultet.isFetched && facultet.data ? (
                 facultet.data.map((item, index) => (
-                  <AnimateCard animClass='fadeInLeftBig' animTime='0.3s' refLink='fakultetlar' refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
+                  <AnimateCard refLink='fakultetlar' refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
                 ))
             ): facultet.error ? (
               <div style={textSytles(30,800)}>Xatolik :(</div>
