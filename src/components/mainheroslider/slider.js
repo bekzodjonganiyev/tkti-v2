@@ -19,8 +19,24 @@ function MainSlider() {
   });
 
   useEffect(()=>{
-    DataGetter(setBanner, 'banner/all')
+    fetch(`${globalUrl}/banner/get/all`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then(
+        (data) =>
+          data.status ===200 && setBanner({ data: data.data, isFetched: true })
+      )
+      .catch(() => setBanner({ error: true }));
+  
   },[]);
+  useEffect(()=>{
+    if(banner.isFetched && banner.data){
+      document.querySelector('.carousel-item').classList.add('active')
+    }
+  },[banner])
 
   return (
     <>
@@ -32,25 +48,12 @@ function MainSlider() {
         >
           <div className="carousel-inner">
             {
-              banner.isFetched && banner.data && banner.data.length >0 && banner.data.length===1 ?(
-                banner.data.map((e,index) =>(
-                  <div key={index} className="carousel-item active">
-                    <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt={e.name}/>
+               banner.isFetched && banner.data && banner.data.length>0 ? (
+                  banner.data.map((e, index) => (
+                    <div key={index} className="carousel-item">
+                      <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt='Banner img'/>
                   </div>
-                ))
-              ): banner.isFetched && banner.data && banner.data.length >1 ? (
-                  <>
-                      <div className="carousel-item active">
-                        <img src={`${globalUrl}/${banner.data[0].banner_img}`} width="100%" height="100%" alt='Banner img'/>
-                      </div>
-                      {
-                        banner.data.splice(0,1).map((e, index) => (
-                          <div key={index} className="carousel-item">
-                            <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt='Banner img'/>
-                        </div>
-                        ))
-                      }
-                  </>
+                  ))
               ):(
                 <div className="carousel-item active">
                     <img src={slide_5} width="100%" height="100%" alt='Banner img'/>
