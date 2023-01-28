@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useContext, useState} from "react";
 import Gerb from '../../assets/gerb.png'
 import madhiya from '../../assets/madhiya.png'
 import bayroq from '../../assets/bayroq.jpg'
@@ -120,12 +119,8 @@ const Silbol = () => {
         },
       });
   return (
-    <>
-    <div className="container-pages">
-      <div className="mainsss">
-        <div className="page_main">
-          <div className="clearfix" id="content">
-            <div className="symbols">
+    <div className="wrapped mb-5">
+      <div className="symbols">
               <div>
                 <img className="symbol" alt="gerb" src={Gerb} />
                 <br />
@@ -163,7 +158,7 @@ const Silbol = () => {
                 <p>{hero[lang].madhiya.third}</p>
               </div>
               <br />
-              <div className="row">
+              <div className="row ramz-title">
                 <div className="col-lg-6 col-md-6">
                   <h5>{hero[lang].madhiya.fourth}</h5>
                   <h5>{hero[lang].madhiya.fivth}</h5>
@@ -192,11 +187,7 @@ const Silbol = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </>
   )
 }
 

@@ -36,7 +36,6 @@ function About_us() {
         ru:['Статистические данные','ФАКУЛЬТЕТЫ','СТУДЕНТЫ','УЧИТЕЛЯ','ПАРТНЕРЫ','НАШИ ПАРТНЕРЫ','НАПРАВЛЕНИЯ ОБРАЗОВАНИ','СОВМЕСТНЫЕ ОБРАЗОВАТЕЛЬНЫЕ ПРОГРАММЫ'],
         en:['Statistical data','FACULTIES','STUDENTS','TEACHERS','PARTNERS','OUR PARTNERS','AREAS OF EDUCATION','JOINT EDUCATIONAL PROGRAMS']
     })
-
     const { lang } = useContext(Context);
     return (
       <div className="container">
