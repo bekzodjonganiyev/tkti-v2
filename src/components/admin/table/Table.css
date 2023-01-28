@@ -15,7 +15,7 @@
 
 .generic-table tr {
     text-align: center;
-    border: 1px solid red;
+    border: .5px solid #02307d;
 }
 
 
@@ -27,6 +27,7 @@
 }
  .generic-table th{
     text-transform: capitalize;
+    font-weight: 600;
     padding: 15px 10px;
     font-size: 1rem!important;
 } 

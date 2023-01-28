@@ -5,6 +5,20 @@ import Table from '../../components/admin/table/Table'
 
 const NashriyotComponent = () =>{
     const {DataGetter, lang,time} = useContext(Context);
+    const [hero] = useState({
+      uz: {
+        title: "Nashriyot",
+       
+      },
+      ru: {
+        title: "Издатель",
+       
+      },
+      en: {
+        title: "Publisher",
+        
+      },
+    });
     const [about]= useState({
       uz:[`№`,`Sana`,`Ismi`,`Yuklash`],
       ru:[`№`, `Дата`, `Имя`, `Скачать`],
@@ -30,7 +44,7 @@ const NashriyotComponent = () =>{
             <th>{index+1}</th>
             <th>{item[`name_${lang}`]}</th>
             <th>{time(item.date)}</th>
-            <th><a download href={item.link}><i className="fa-solid fa-file-pdf"></i></a></th>
+            <th><a download href={item.link}><i className="fa-2x fa-solid fa-file-pdf"></i></a></th>
           </tr>
 
         )
@@ -38,7 +52,7 @@ const NashriyotComponent = () =>{
     console.log(nashriyot);
     return(
         <div className="container mb-5">
-          
+          <h2 className="cardTitleComp">{hero[lang].title}</h2>
            {
             nashriyot.isFetched && nashriyot.data ? (
               <Table headData={TableHead} renderHead={TableContent} renderBody={TableRender} bodyData={TableBody} />
