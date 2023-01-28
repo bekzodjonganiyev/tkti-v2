@@ -14,9 +14,10 @@ import { Context } from "../../../context";
 
 const Elon = () => {
   const imgRef = useRef();
-  const { globalUrl, names, convertToHtml } = useContext(Context);
+  const {time, globalUrl, names, convertToHtml ,DataDeleter,DataPoster, DataGetter} = useContext(Context);
   const [type, setType] = useState("table");
-  const [data, setData] = useState();
+  const [data, setData] = useState({isFetched: false,error: false,data: {}});
+  const [edit,setEdit] = useState({display:false, edit:false})
 
   let content = null;
 
@@ -30,41 +31,54 @@ const Elon = () => {
     EditorState.createEmpty()
   );
 
+  const putElon = id =>{
+    const title_uz = document.querySelector(`.elon__title_uz${id}`).value
+    const title_ru = document.querySelector(`.elon__title_ru${id}`).value
+    const title_en = document.querySelector(`.elon__title_en${id}`).value
+
+    console.log(title_en, title_ru,title_uz);
+    // tablega chunmey form qo'sholmadim form bo'sa namedan value olardim 
+    setEdit({display:false, id:false})
+  }
+
   const analyseNameTableHead = ["Tartib raqam", "Elon nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
-  const bodyData = data;
+  const bodyData = data.data;
   const renderBody = (item, index) => {
     return (
-      <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
-        <td>{index + 1}</td>
-        <td>{item.title_uz}</td>
-        <td>
-          <button className="event-btn edit" onClick={() => {}}>
-            <i className="fa fa-edit"></i>
-          </button>
-          <button
-            className="event-btn delete"
-            onClick={() => deleteYangilik(item._id)}
-          >
-            <i className="fa fa-trash"></i>
-          </button>
-        </td>
-      </tr>
+      edit.display && edit.id ===item._id ?(
+          <table>
+          <tr>
+                <td colSpan={3}>
+                  <td><input className={`form-control elon__title_uz${item._id}`} type="text" defaultValue={item.title_uz} /></td>
+                  <td><input className={`form-control elon__title_ru${item._id}`} type="text" defaultValue={item.title_ru} /></td>
+                  <td><input className={`form-control elon__title_en${item._id}`} type="text" defaultValue={item.title_en} /></td>
+                </td>
+          </tr>            
+          <td><button onClick={() => putElon(item._id)} >Submit</button></td>
+          <td><button onClick={() => setEdit({display:false, id:false})} >close</button></td>
+          </table>
+      ):(
+        <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+          <td>{index + 1}</td>
+          <td>{item.title_uz}</td>
+          <td>
+            <button className="event-btn edit" onClick={() => setEdit({display:true, id: item._id})}>
+              <i className="fa fa-edit"></i>
+            </button>
+            <button
+              className="event-btn delete"
+              onClick={() => deleteYangilik(item._id)}
+            >
+              <i className="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      )
     );
   };
 
-  function getData() {
-    fetch(`${globalUrl}/elon/all`, {
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }
+ 
 
   function postData(e) {
     e.preventDefault();
@@ -75,61 +89,32 @@ const Elon = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
+    formData.append("date", time(e.target.fordate.value));
     formData.append("photo", imgRef.current.files[0]);
 
-    fetch(`${globalUrl}/elon/add`, {
-      method: "POST",
-      headers: {
-        Token: localStorage.getItem("token"),
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success) {
-          alert(res.message + "❌");
-        } else {
-          alert(res.message);
-          window.location.reload(false);
-        }
-      })
-      .catch((err) => console.log(err));
+    DataPoster('elon/add', formData)
   }
 
   function deleteYangilik(id) {
-    fetch(`${globalUrl}/elon/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-        Token: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success) {
-          alert(res.message + "❌");
-        } else {
-          alert("Malumotlar o'chirildi");
-          window.location.reload(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    DataDeleter(`elon/${id}`)
   }
 
   useEffect(() => {
-    getData();
+    DataGetter(setData, 'elon/all')
   }, []);
 
   if (type === "table") {
     content = (
-      <Table
+      data.isFetched && data.data ?(
+        <Table
         headData={analyseNameTableHead}
         renderHead={renderHead}
         bodyData={bodyData}
         renderBody={renderBody}
       />
+      ):(
+        <></>
+      )
     );
   } else {
     content = (
@@ -171,6 +156,10 @@ const Elon = () => {
             editorState={asosiyVazifaEn}
             onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
           />
+        </div>
+
+        <div className="file w-25">
+          <input className="form-control" type="datetime-local" name="fordate"/>
         </div>
 
         <div className="file">
