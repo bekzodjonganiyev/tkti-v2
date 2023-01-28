@@ -19,7 +19,7 @@ function MainSlider() {
   });
 
   useEffect(() => {
-    fetch(`${globalUrl}/elon/all`, {
+    fetch(`http://backend.tkti.uz/banner/get/all`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,12 +27,12 @@ function MainSlider() {
       .then((res) => res.json())
       .then(
         (data) =>
-          data.success && setBanner({ data: data.data, isFetched: true })
+          data.status ===200 && setBanner({ data: data.data, isFetched: true })
       )
       .catch(() => setBanner({ error: true }));
   }, []);
 
-  console.log(banner.data);
+  console.log(banner);
 
   return (
     <>
@@ -42,10 +42,10 @@ function MainSlider() {
           className="carousel slide"
           data-bs-ride="carousel"
         >
-          <div className="carousel-inner">
+          {/* <div className="carousel-inner">
             {banner.isFetched && banner.data && banner.data.length > 0 ? (
               banner.data.map((e, index) => (
-                <div key={index} className="carousel-item">
+                <div key={index} className="carousel-item ">
                   <img
                     src={`${globalUrl}/${e.banner_img}`}
                     width="100%"
@@ -55,15 +55,92 @@ function MainSlider() {
                 </div>
               ))
             ) : (
-              <div className="carousel-item active">
+              // <>
+              // <div className="carousel-item active">
+              //   <img
+              //     src={slide_5}
+              //     width="100%"
+              //     height="100%"
+              //     alt="Banner img"
+              //   />
+              // </div>
+              // <div className="carousel-item active">
+              //   <img
+              //     src={slide_2}
+              //     width="100%"
+              //     height="100%"
+              //     alt="Banner img"
+              //   />
+              // </div>
+              // <div className="carousel-item active">
+              //   <img
+              //     src={slide_3}
+              //     width="100%"
+              //     height="100%"
+              //     alt="Banner img"
+              //   />
+              // </div>
+              // <div className="carousel-item active">
+              //   <img
+              //     src={slide_4}
+              //     width="100%"
+              //     height="100%"
+              //     alt="Banner img"
+              //   />
+              // </div>
+              // </>
+              <></>
+            )}
+          </div> */}
+          <div className="carousel-inner">
+            <div className="carousel-item">
+              <img
+                className=""
+                src={`${slide_5}`}
+                width="100%"
+                height="100%"
+                alt=""
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className=""
+                src={`${slide_2}`}
+                width="100%"
+                height="100%"
+                alt=""
+              />
+            </div>{" "}
+            <div className="carousel-item">
+              <a href="http://www.double-degree.tcti.uz" target="_blank">
+                {" "}
                 <img
-                  src={slide_5}
+                  className=""
+                  src={`${slide_6}`}
                   width="100%"
                   height="100%"
-                  alt="Banner img"
+                  alt=""
                 />
-              </div>
-            )}
+              </a>
+            </div>
+            <div className="carousel-item">
+              <img
+                className=""
+                src={`${slide_3}`}
+                width="100%"
+                height="100%"
+                alt=""
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className=""
+                src={`${slide_4}`}
+                width="100%"
+                height="100%"
+                alt=""
+              />
+            </div>
           </div>
           <button
             className="carousel-control-prev slider__btn"
@@ -94,3 +171,4 @@ function MainSlider() {
 }
 
 export default MainSlider;
+

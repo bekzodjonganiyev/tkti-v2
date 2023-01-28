@@ -93,6 +93,11 @@ const Sidebar = () => {
             Media
           </NavLink>
         </li>
+        <li>
+          <NavLink className="side-link" to="/admin/banner">
+            Banner
+          </NavLink>
+        </li>
       </ul>
     </aside>
   );
