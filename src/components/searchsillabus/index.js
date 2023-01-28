@@ -27,9 +27,9 @@ function Filter({yili}) {
   const [syllabus, setSyllabus] = useState({});
 
  const [about] = useState({
-  uz:[`Darajani tanlang`,`Yilni tanlang`,`Ta'lim turini tanlang`,`Ta'lim darajasini tanlang`,`Fakultetni tanlang`,`Kafedrani tanlang`,`Yo'nalishni tanlang`,`Qidirish`],
-  ru:[`Выберите уровень`,`Выберите год`,`Выберите тип образования`,`Выберите уровень образования`,`Выберите факультет`,`Выберите отдел`,`Выберите направление`,`Поиск`],
-  en:[`Select a level`,`Select a year`,`Select the type of education`,`Select the level of education`,`Choose a faculty`,`Select a department`,`Choose a direction`,`Search`]
+  uz:[`Syllabusni toping`,`Yilni tanlang`,`Ta'lim turini tanlang`,`Ta'lim darajasini tanlang`,`Fakultetni tanlang`,`Kafedrani tanlang`,`Yo'nalishni tanlang`,`Qidirish`],
+  ru:[`Найдите программу`,`Выберите год`,`Выберите тип образования`,`Выберите уровень образования`,`Выберите факультет`,`Выберите отдел`,`Выберите направление`,`Поиск`],
+  en:[`SFind the syllabus`,`Select a year`,`Select the type of education`,`Select the level of education`,`Choose a faculty`,`Select a department`,`Choose a direction`,`Search`]
  })
 
   const [types, setTypes] = useState([]);

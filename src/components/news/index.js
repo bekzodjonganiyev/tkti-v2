@@ -24,7 +24,10 @@ function YangiliklarComp({ home, myKey }) {
         (data) =>
           data.success &&
           setNews({
-            data: home ? data.data.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3)
+            data: home
+              ? data.data
+                  .sort((a, b) => new Date(b.date) - new Date(a.date))
+                  .slice(0, 3)
               : data.data.sort((a, b) => new Date(b.date) - new Date(a.date)),
             isFetched: true,
           })
@@ -38,7 +41,20 @@ function YangiliklarComp({ home, myKey }) {
         {news.isFetched && news.data && news.data.length > 0 ? (
           news.data.map((e, index) => (
             <>
-              <Link className="news__card" key={index} to={`/${myKey}/${e._id}`}>
+              <Link
+                className="news__card"
+                key={index}
+                to={`/${myKey}/${e.title_uz
+                  .toLowerCase()
+                  .split(" ")
+                  .map((str) =>
+                    str
+                      .split("")
+                      .filter((char) => /[a-zA-Z]/.test(char))
+                      .join("")
+                  )
+                  .join("-")}-${e._id}`}
+              >
                 <img
                   className="news_photo"
                   src={`${globalUrl}/${e.photo}`}

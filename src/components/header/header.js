@@ -63,6 +63,9 @@ const Header = () => {
               <i className="fa-solid fa-xmark"></i>
             </div>
             <div className="header__top__main">
+              <a style={{background:"darkblue", color:"white"}} className="header__nav header_border" href="https://tkti-2023.edupage.org/timetable/view.php">
+                {HeaderLang[lang].talim[1]}
+              </a>
               <a className="header__nav header_border" href="/qabul">
                 {HeaderLang[lang].qabul}
               </a>
@@ -74,10 +77,6 @@ const Header = () => {
               </a>
               <a className="header__nav header_border" href="/faoliyatlar">
                 {HeaderLang[lang].activity[0]}
-              </a>
-
-              <a className="header__nav header_border" href="https://tkti-2023.edupage.org/timetable/view.php">
-                {HeaderLang[lang].talim[1]}
               </a>
               <a className="header__nav header_border" href="/biz-bilan-aloqa">
                 {HeaderLang[lang].contact}
