@@ -41,7 +41,7 @@ const KafedraComponent = () => {
                   <AnimateCard refLink='kafedralar' refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
                 ))
             ): rektorat.error ?(
-                <></>
+               <></>
             ):(
               <div style={{marginTop:'-70px'}} className="loodaer__wrapper">
                 <DoorDashFavorite width='400px'/>
@@ -51,7 +51,6 @@ const KafedraComponent = () => {
             )
         }
       </div>
-      
     </div>
   );
 };
