@@ -44,13 +44,8 @@ function YangiliklarComp({ home }) {
                   alt="news img"
                 />
                 <div className="news__body">
-                  <h4>
-                    {e[`title_${lang}`].split(" ").slice(0, 10).join(" ")}
-                    ...&#128279;
-                  </h4>
-                  {e[`body_${lang}`].map((a, ind) => (
-                    <p key={ind}>{a}</p>
-                  ))}
+                  <h4>{e[`title_${lang}`]}</h4>
+
                   <br />
                   <p>
                     <i className="fa-solid fa-calendar-days">
