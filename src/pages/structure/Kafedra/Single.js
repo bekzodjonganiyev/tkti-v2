@@ -10,19 +10,22 @@ const KafedraSingle = () => {
     uz: {
       title: "Kafedralar haqida",
       desc: "Maqsad va vazifalari",
-         info:"Faoliyatlar"
+      info:"Faoliyatlar",
+      type:`Ta'lim yo'nalishlari`
 
     },
     ru: {
         title: "О Отделы",
         desc: "Цели и задачи",
-      info:"Деятельность"
+       info:"Деятельность",
+       type:`Образовательные направления`
 
     },
     en: {
         title: "About Departments",
         desc: "Aims and Objectives",
-      info:"Activities"
+        info:"Activities",
+        type:`Educational directions`
 
     },
   });
@@ -42,6 +45,8 @@ const KafedraSingle = () => {
     }
   }, []);
 
+  console.log(newOne);
+
   return (
     <div className="container">
       <div className="facultetDesc">
@@ -53,14 +58,15 @@ const KafedraSingle = () => {
                 <div className="btnGroup">
                     <button onClick={() => setActiveButton(1)}>{hero[lang].title}</button>
                     <button onClick={() => setActiveButton(2)}>{hero[lang].desc}</button>
-                    <button onClick={() => setActiveButton(3)}>{hero[lang].info}</button>
+                    <button onClick={() => setActiveButton(3)}>{hero[lang].type}</button>
+                    <button onClick={() => setActiveButton(4)}>{hero[lang].info}</button>
 
                     {
                         activeButton ===1?(
                             <div className="fakultet-inner" dangerouslySetInnerHTML={{__html:newOne.data[`haqida_${lang}`]}} ></div>
                         ):activeButton ===2 ?(
                             <div className="fakultet-inner" dangerouslySetInnerHTML={{__html: newOne.data[`maqsad_${lang}`]}} ></div>
-                        ) : activeButton ===3 ?(
+                        ) : activeButton ===4 ?(
                             <div>
                                 {
                                 newOne.data?.faoliyatlar && newOne.data.faoliyatlar.map((item, index) => (
@@ -70,6 +76,14 @@ const KafedraSingle = () => {
                                 ))
                                 }
                             </div>
+                        ): activeButton ===3 ? (
+                          <div>
+                            {
+                              newOne.data?.yonalishlar && newOne.data.yonalishlar.map((e, ind) =>(
+                                <h2 key={ind} style={textSytles(20,700)}>{e[`title_${lang}`]}</h2>
+                              ))
+                            }
+                          </div>
                         ):(
                             <></>
                         )
