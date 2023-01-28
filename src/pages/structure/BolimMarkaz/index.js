@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../../context";
 import { Link } from "react-router-dom";
+import { DoorDashFavorite, ThreeDots } from "../../../components/animjs";
+import AnimateCard from '../../../components/animateCard'
 
 const BolimMarkaz = () => {
   const { lang,textSytles, DataGetter } = useContext(Context);
@@ -32,39 +34,65 @@ const BolimMarkaz = () => {
   });
 
   useEffect(() => {
+   setTimeout(() => {
     DataGetter(setBolim, 'bm_data/all')
     DataGetter(setMarkaz, 'markaz_data/all')
+   }, 800);
   }, []);
 
   return (
     <div className="container">
-   <h3 style={textSytles(30,700)} className="text-center">{hero[lang].title}</h3>
+      {
+        bolim.isFetched && bolim.data ? (
+          <h3 style={textSytles(30,700)} className="text-center">{hero[lang].title}</h3>
+        ):bolim.error ?(
+          <div className="text-center" style={textSytles(30,700)}>{hero[lang].title} :(</div>
+        ):(
+          <ThreeDots width='100%' />
+        )
+      }
       <div className="facultetInfo">
         {
             bolim.isFetched && bolim.data ? (
                 bolim.data.map((item, index) => (
-                    <Link className="facultetTitle" to={`/bolimlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}`} key={index} >
-                      <span style={textSytles(20,600)}>{item[`title_${lang}`]}</span>
-                    </Link>
+                  <AnimateCard animClass='fadeInRightBig' animTime='0.3s' refLink='bolimlar' refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
                 ))
-            ):(
+            ):bolim.error ?(
                 <></>
+            ):(
+              <div style={{marginTop:'-100px'}} className="loodaer__wrapper">
+                <DoorDashFavorite width='400px'/>
+                <DoorDashFavorite width='400px'/>
+                <DoorDashFavorite width='400px'/>
+              </div>
             )
         }
       </div>
 
-      <h3 style={textSytles(30,700)} className="text-center">{hero[lang].title2}</h3>
+      {
+        markaz.isFetched && markaz.data ? (
+          <h3 style={textSytles(30,700)} className="text-center">{hero[lang].title2}</h3>
+        ):markaz.error ?(
+          <div className="text-center" style={textSytles(30,700)}>{hero[lang].title2} :(</div>
+        ):(
+          <ThreeDots width='100%' />
+        )
+      }
 
       <div className="facultetInfo">
         {
             markaz.isFetched && markaz.data ? (
                 markaz.data.map((item, index) => (
-                    <Link className="facultetTitle" to={`/markazlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}`} key={index} >
-                      <span style={textSytles(20,600)}>{item[`title_${lang}`]}</span>
-                    </Link>
+                  <AnimateCard animClass='fadeInRightBig' animTime='0.3s' refLink='markazlar' refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
                 ))
-            ):(
+            ): markaz.error ?(
                 <></>
+            ):(
+              <div style={{marginTop:'-100px'}} className="loodaer__wrapper">
+                <DoorDashFavorite width='400px'/>
+                <DoorDashFavorite width='400px'/>
+                <DoorDashFavorite width='400px'/>
+              </div>
             )
         }
       </div>

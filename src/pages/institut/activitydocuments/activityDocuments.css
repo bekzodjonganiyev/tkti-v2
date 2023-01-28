@@ -71,8 +71,9 @@
     border-bottom: 4px solid transparent;
     border-left: 4px solid transparent;
     transition: all 0.7s ease;
+    /* border-radius: 15px !important; */
 }
-.bolim__inner::after{
+.bolim__inner::after, .fakultetinner::after{
     transition: all 0.7s ease;
     content: "";
     position: absolute;
@@ -84,10 +85,11 @@
   z-index: 9;
   border-top: 4px solid transparent;
   border-right: 4px solid transparent;
+  /* border-radius: 15px !important; */
 }
 
 .bolim:hover .bolim__inner::after, .bolim:hover .bolim__inner::before{
-    width: 100%;
+    width: 95%;
     height: 100%;
     border-color: #02307d;
 }

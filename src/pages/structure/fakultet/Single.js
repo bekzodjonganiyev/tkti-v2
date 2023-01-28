@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../../context";
 import { Link, useParams } from "react-router-dom";
+import {ThreeDots} from '../../../components/animjs'
 
 import "./style.css";
 
@@ -92,22 +93,30 @@ const FakultetSingle = () => {
                     }
                 </div>
             </>
+          ): newOne.error ?(
+            <div>Xatolik :(</div>
           ):(
-            <></>
+            <ThreeDots width='100%'/>
           )
         }
       </div>
       <div className="cardHodim">
-          {newOne.data?.hodimlar?.map((e, index) => (
-            <XodimCard
-              key={index}
-              img={`${globalUrl}/${e.photo}`}
-              job={e[`job_${lang}`]}
-              name={e[`name_${lang}`]}
-              email={e.email}
-              tel={e.tell}
-            />
-          ))}
+          {
+            newOne.data && newOne.isFetched ? (
+              newOne.data?.hodimlar?.map((e, index) => (
+                <XodimCard
+                  key={index}
+                  img={`${globalUrl}/${e.photo}`}
+                  job={e[`job_${lang}`]}
+                  name={e[`name_${lang}`]}
+                  email={e.email}
+                  tel={e.tell}
+                />
+              ))
+            ):(
+             <></>
+            )
+          }
         </div>
     </div>
   );
