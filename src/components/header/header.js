@@ -75,6 +75,10 @@ const Header = () => {
               <a className="header__nav header_border" href="/faoliyatlar">
                 {HeaderLang[lang].activity[0]}
               </a>
+
+              <a className="header__nav header_border" href="https://tkti-2023.edupage.org/timetable/view.php">
+                {HeaderLang[lang].talim[1]}
+              </a>
               <a className="header__nav header_border" href="/biz-bilan-aloqa">
                 {HeaderLang[lang].contact}
               </a>
