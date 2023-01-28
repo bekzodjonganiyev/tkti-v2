@@ -55,14 +55,7 @@ function YangiliklarComp({ home }) {
                   alt=""
                 />
                 <div className="news__body">
-                  <h4
-                    dangerouslySetInnerHTML={{
-                      __html: e[`title_${lang}`]
-                        .split(" ")
-                        .slice(0, 10)
-                        .join(" "),
-                    }}
-                  ></h4>
+                  <h4>{e[`title_${lang}`]}</h4>
 
                   <br />
                   <p>
