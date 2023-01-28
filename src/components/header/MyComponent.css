@@ -24,6 +24,9 @@
   border-bottom: 0.3rem solid #02307d;
   padding-bottom: 0.5rem;
 }
+.hovered_logo{
+  width: 15%;
+}
 .list-info{
   width:340px ;
   font-style: normal;
@@ -42,13 +45,15 @@
   background: white;
   border-radius: 10px;
   box-shadow: 2px 2px 10px 2px #cddcf6;
-  padding: 10px 20px;
+  padding:  20px;
   transition: 0.3s linear;
-  height: 335px;
+  
+  /* height: 335px; */
   margin-top: -1px;
 }
 .hovered-list .list-info span{
   display: flex;
+  margin-bottom: 20px;
 }
 .hovered-list h3{
   font-style: normal;

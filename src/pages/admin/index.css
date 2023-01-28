@@ -15,6 +15,7 @@ section{
     position: -ms-page;
     top: 200px;
     left: 20%;
+    min-height: 800px;
 }
 
 nav{

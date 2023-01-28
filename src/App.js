@@ -61,6 +61,13 @@ import TKTIProject from "./pages/ilmiy";
 
 //Talim-Dasturi
 import DarsJadval from "./pages/talimdasturi/darsjadval";
+import BolimMarkazSingle from "./pages/structure/BolimMarkaz/Single";
+import FacultetComponent from "./pages/structure/fakultet";
+import FakultetSingle from "./pages/structure/fakultet/Single";
+import KafedraComponent from "./pages/structure/Kafedra";
+import KafedraSingle from "./pages/structure/Kafedra/Single";
+import SertifikatComponent from "./pages/sertifikat.js";
+import NashriyotComponent from "./pages/nashriyot";
 
 //Admin
 import Admin from "./pages/admin";
@@ -83,16 +90,7 @@ import StatisticsForStudent from "./pages/admin/statistics/Statistics";
 import QabulData from "./pages/admin/qabul/Qabul";
 import Media from "./pages/admin/media/Media";
 import ProtectedRoute from "./components/admin/protected_route/ProtectedRoute";
-import BolimMarkazSingle from "./pages/structure/BolimMarkaz/Single";
-import FacultetComponent from "./pages/structure/fakultet";
-import FakultetSingle from "./pages/structure/fakultet/Single";
-import KafedraComponent from "./pages/structure/Kafedra";
-import KafedraSingle from "./pages/structure/Kafedra/Single";
-import SertifikatComponent from "./pages/sertifikat.js";
-import NashriyotComponent from "./pages/nashriyot";
-
-
-
+import Banner from "./pages/admin/banner/Banner";
 
 
 function App() {
@@ -190,6 +188,7 @@ function App() {
           <Route path="statistics-of-student" element={<ProtectedRoute><StatisticsForStudent /></ProtectedRoute>} />
           <Route path="qabul" element={<ProtectedRoute><QabulData /></ProtectedRoute>} />
           <Route path="media" element={<ProtectedRoute><Media /></ProtectedRoute>} />
+          <Route path="banner" element={<ProtectedRoute><Banner /></ProtectedRoute>} />
 
         </Route>
       </Routes>

@@ -3,15 +3,15 @@ import React, { useContext, useEffect, useState } from "react";
 import "./slider.css";
 
 import slide_5 from "../../files/slide1.jpg";
-import slide_2 from "../../files/slide2.jpg";
-import slide_3 from "../../files/slide3.jpg";
-import slide_4 from "../../files/slide4.jpg";
-import slide_1 from "../../files/Qabul22.jpg";
-import slide_6 from "../../files/Toshkent_kimyo_texnologiya_instituti.jpg";
+// import slide_2 from "../../files/slide2.jpg";
+// import slide_3 from "../../files/slide3.jpg";
+// import slide_4 from "../../files/slide4.jpg";
+// import slide_1 from "../../files/Qabul22.jpg";
+// import slide_6 from "../../files/Toshkent_kimyo_texnologiya_instituti.jpg";
 import { Context } from "../../context";
 
 function MainSlider() {
-  const {DataGetter, globalUrl} = useContext(Context);
+  const { DataGetter, globalUrl } = useContext(Context);
   const [banner, setBanner] = useState({
     isFetched: false,
     error: false,
@@ -48,12 +48,12 @@ function MainSlider() {
         >
           <div className="carousel-inner">
             {
-               banner.isFetched && banner.data && banner.data.length>0 ? (
-                  banner.data.map((e, index) => (
-                    <div key={index} className="carousel-item">
-                      <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt='Banner img'/>
+              banner.isFetched && banner.data && banner.data.length >0 ?(
+                banner.data.map((e,index) =>(
+                  <div key={index} className="carousel-item">
+                    <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt={e.name}/>
                   </div>
-                  ))
+                ))
               ):(
                 <div className="carousel-item active">
                     <img src={slide_5} width="100%" height="100%" alt='Banner img'/>
@@ -91,3 +91,4 @@ function MainSlider() {
 }
 
 export default MainSlider;
+

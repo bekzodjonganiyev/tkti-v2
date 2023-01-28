@@ -4,7 +4,7 @@ function Yangiliklar({myKey}) {
   return (
     <>
       <div className="wrapped">
-              <YangiliklarComp myKey={myKey} />
+        <YangiliklarComp myKey={myKey} />
       </div>
     </>
   );

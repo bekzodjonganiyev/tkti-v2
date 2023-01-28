@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Institut } from "../../icons/Icons";
+import Logo from '../../files/logo.png'
 import "./MyComponent.css";
 import HeaderLang from "./lang";
 import { Context } from "../../context";
@@ -205,7 +206,9 @@ const MyComponent = () => {
               <ul className="hovered-list">
                 <div className="list-info">
                   <span>
-                    <Institut />
+                    <img className="hovered_logo" src={Logo} alt="" />
+                    {/* <Institut /> */}
+                   
                     <h3>{hoveredButton.name}</h3>
                   </span>
                   <p>{hoveredButton.fakultetInfo}</p>
