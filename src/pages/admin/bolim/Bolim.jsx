@@ -1,5 +1,7 @@
 import { useContext, useState, useEffect, useRef } from "react";
 
+import "./Bolim.css";
+
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import AddForm from "../../../components/admin/add_form/AddForm";
 import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
@@ -7,10 +9,11 @@ import XodimForm from "../../../components/admin/xodim_form/XodimForm";
 import Table from "../../../components/admin/table/Table";
 
 import { Context } from "../../../context";
+import EditXodim from "../../../components/edit_xodim/EditXodim";
 
 const Bolim = () => {
   const { globalUrl } = useContext(Context);
-  const {imageRef} = useRef()
+  const { imageRef } = useRef();
   const [type, setType] = useState("table");
   const [bolimData, setBolimData] = useState();
   const [bolimXodim, setBolimXodim] = useState();
@@ -64,97 +67,117 @@ const Bolim = () => {
   };
 
   // FOR BO'LIM XODIM
-  const xodimTableHead = ["Tartib raqam", "Xodim ismi nomi", "Bo`limi", "Amallar",];
+  const xodimTableHead = [
+    "Tartib raqam",
+    "Xodim ismi nomi",
+    "Bo`limi",
+    "Amallar",
+  ];
   const renderXodimHead = (item, index) => <th key={index}>{item}</th>;
   const xodimTableBody = bolimXodim;
   const renderXodimBody = (item, index) => {
     return (
       <>
-        {onEdit.open && onEdit.id === item._id
-        ? (
-          <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+        {onEdit.open && onEdit.id === item._id ? (
+          <tr
+            key={index}
+            style={{ cursor: "pointer", userSelect: "none" }}
+            className="edit-table-row"
+          >
             <td>
-              <td colSpan={3}>
-                <td>
-                  <input type="text" name="name_uz" onChange={handleChange} />
-                </td>
-                <br />
-                <td>
-                  <input type="text"  name="name_ru" onChange={handleChange} />
-                </td>
-                <br />
-                <td>
-                  <input type="text"  name="name_en" onChange={handleChange} />
-                </td>
-              </td>
+              <input
+                className="table-edit-input"
+                type="text"
+                name="name_uz"
+                onChange={handleChange}
+              />
+              <input
+                className="table-edit-input"
+                type="text"
+                name="name_ru"
+                onChange={handleChange}
+              />
+              <input
+                className="table-edit-input"
+                type="text"
+                name="name_en"
+                onChange={handleChange}
+              />
             </td>
             <td>
-              <td colSpan={3}>
-                <td>
-                  <input type="text"  name="job_uz" onChange={handleChange} />
-                </td>
-                <br />
-                <td>
-                  <input type="text"  name="job_ru" onChange={handleChange} />
-                </td>
-                <br />
-                <td>
-                  <input type="text"  name="job_en" onChange={handleChange} />
-                </td>
-              </td>
+              <input
+                className="table-edit-input"
+                type="text"
+                name="job_uz"
+                onChange={handleChange}
+              />
+              <input
+                className="table-edit-input"
+                type="text"
+                name="job_ru"
+                onChange={handleChange}
+              />
+              <input
+                className="table-edit-input"
+                type="text"
+                name="job_en"
+                onChange={handleChange}
+              />
             </td>
             <td>
-              <td colSpan={3}>
-                <td>
-                  <input type="text"  name="tell" onChange={handleChange} />
-                </td>
-                <br />
-                <td>
-                  <input type="text"  name="email" onChange={handleChange} />
-                </td>
-                <br />
-                <td>
-                  <input type="file" ref={imageRef}/>
-                </td>
-              </td>
+              <input
+                className="table-edit-input"
+                type="text"
+                name="tell"
+                onChange={handleChange}
+              />
+              <input
+                className="table-edit-input"
+                type="text"
+                name="email"
+                onChange={handleChange}
+              />
+              <input className="table-edit-input" type="file" ref={imageRef} />
             </td>
+
             <td>
-              <td colSpan={3}>
-                <td>
-                  <select id="" name="bolim_id" onChange={handleChange} style={{width:"200px"}}>
-                    <option value="" hidden>...</option>
-                    {
-                      bolimData?.map(i => (
-                        <option value={i._id}>
-                          {i.title_uz }
-                        </option>
-                      ))
-                    }
-                  </select>
-                </td>
-                <br />
-                <td>
-                  <button className="event-btn edit" onClick={() => {
-                    putData(item._id)
-                  }}>
-                    <i className="fa fa-check"></i>
-                  </button>
-                </td>
-                <br />
-                <td>
-                  <button
-                    className="event-btn delete"
-                    onClick={() => setOnEdit({
+              <select
+                className=""
+                name="bolim_id"
+                onChange={handleChange}
+                style={{ width: "200px", padding: "5px", marginTop:"-50px" }}
+              >
+                <option value="" hidden>
+                  ...
+                </option>
+                {bolimData?.map((i) => (
+                  <option value={i._id}>{i.title_uz}</option>
+                ))}
+              </select>
+              <div style={{marginTop:"40px"}}>
+                <button
+                  className="event-btn edit"
+                  onClick={() => {
+                    putData(item._id);
+                  }}
+                >
+                  <i className="fa fa-check"></i>
+                </button>
+                <button
+                  className="event-btn delete"
+                  onClick={() =>
+                    setOnEdit({
                       open: false,
-                      id: false
-                    })}
-                  >
-                    <i className="fa fa-x"></i>
-                  </button>
-                </td>
-              </td>
+                      id: false,
+                    })
+                  }
+                >
+                  <i className="fa fa-x"></i>
+                </button>
+              </div>
             </td>
           </tr>
+          // <EditXodim xodim={item} endpoint={`bm_hodim/${item._id}`} setOnEdit={setOnEdit}/>
         ) : (
           <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
             <td>{index + 1}</td>
@@ -166,7 +189,7 @@ const Bolim = () => {
                 onClick={() => {
                   setOnEdit({
                     open: true,
-                    id: item._id
+                    id: item._id,
                   });
                 }}
               >
@@ -262,8 +285,16 @@ const Bolim = () => {
     setEditInput((prev) => ({ ...prev, [name]: value }));
   }
 
-  function putData (id) {
-    const formData = new FormData()
+  function validate (value) {
+    if (value.length !== 0) {
+      return true
+    }
+  }
+
+  function putData(id) {
+
+    console.log(editInput.keys())
+    const formData = new FormData();
     Object.keys(editInput).forEach((i) => formData.append(i, editInput[i]));
     // formData.append("photo", imageRef.current.files[0]);
 
@@ -340,7 +371,7 @@ const Bolim = () => {
     );
   }
 
-  console.log(editInput)
+  console.log(editInput);
   return (
     <div>
       <FormHeader

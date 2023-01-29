@@ -43,7 +43,7 @@ const Syllabus = () => {
       headers: { "Content-type": "application/json" },
     })
       .then((res) => res.json())
-      .then((res) => setYonalish(res.data[0].yonalishlar))
+      .then((res) => setYonalish(res.data.yonalishlar))
       .catch((err) => console.log(err));
   }
 

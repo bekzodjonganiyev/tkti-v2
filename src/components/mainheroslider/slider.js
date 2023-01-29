@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./slider.css";
 
 import slide_5 from "../../files/slide1.jpg";
-import slide_2 from "../../files/slide2.jpg";
-import slide_3 from "../../files/slide3.jpg";
-import slide_4 from "../../files/slide4.jpg";
-import slide_1 from "../../files/Qabul22.jpg";
-import slide_6 from "../../files/Toshkent_kimyo_texnologiya_instituti.jpg";
+// import slide_2 from "../../files/slide2.jpg";
+// import slide_3 from "../../files/slide3.jpg";
+// import slide_4 from "../../files/slide4.jpg";
+// import slide_1 from "../../files/Qabul22.jpg";
+// import slide_6 from "../../files/Toshkent_kimyo_texnologiya_instituti.jpg";
+import { Context } from "../../context";
 
 function MainSlider() {
   const { DataGetter, globalUrl } = useContext(Context);
@@ -17,8 +18,8 @@ function MainSlider() {
     data: {},
   });
 
-  useEffect(() => {
-    fetch(`${globalUrl}/elon/all`, {
+  useEffect(()=>{
+    fetch(`${globalUrl}/banner/get/all`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -26,12 +27,16 @@ function MainSlider() {
       .then((res) => res.json())
       .then(
         (data) =>
-          data.success && setBanner({ data: data.data, isFetched: true })
+          data.status ===200 && setBanner({ data: data.data, isFetched: true })
       )
       .catch(() => setBanner({ error: true }));
-  }, []);
-
-  console.log(banner.data);
+  
+  },[]);
+  useEffect(()=>{
+    if(banner.isFetched && banner.data){
+      document.querySelector('.carousel-item').classList.add('active')
+    }
+  },[banner])
 
   return (
     <>
@@ -42,27 +47,20 @@ function MainSlider() {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
-            {banner.isFetched && banner.data && banner.data.length > 0 ? (
-              banner.data.map((e, index) => (
-                <div key={index} className="carousel-item">
-                  <img
-                    src={`${globalUrl}/${e.banner_img}`}
-                    width="100%"
-                    height="100%"
-                    alt={e.name}
-                  />
-                </div>
-              ))
-            ) : (
-              <div className="carousel-item active">
-                <img
-                  src={slide_5}
-                  width="100%"
-                  height="100%"
-                  alt="Banner img"
-                />
-              </div>
-            )}
+            {
+              banner.isFetched && banner.data && banner.data.length >0 ?(
+                banner.data.map((e,index) =>(
+                  <div key={index} className="carousel-item">
+                    <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt={e.name}/>
+                  </div>
+                ))
+              ):(
+                <div className="carousel-item active">
+                    <img src={slide_5} width="100%" height="100%" alt='Banner img'/>
+                  </div>
+              )
+            }
+    
           </div>
           <button
             className="carousel-control-prev slider__btn"
@@ -93,3 +91,4 @@ function MainSlider() {
 }
 
 export default MainSlider;
+

@@ -98,15 +98,21 @@ const Bolim = () => {
   useEffect(() => {
     getData();
   }, []);
-  
+
   if (type === "table") {
     content = (
-      <Table
-        headData={analyseNameTableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
+      <>
+        <Table
+          headData={analyseNameTableHead}
+          renderHead={renderHead}
+          bodyData={bodyData}
+          renderBody={renderBody}
+        />
+        <br />
+        <br />
+        <p style={{ fontSize: "30px", textAlign: "center" }}>Xodimlar</p>
+        
+      </>
     );
   } else if (type === "addCenter") {
     content = (
