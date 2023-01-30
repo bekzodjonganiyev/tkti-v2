@@ -166,74 +166,125 @@ const QuestionForm = ({ divclass }) => {
 };
 
 const FaoliyatNew = () => {
-  const {lang, globalUrl}= useContext(Context);
+  const { lang, globalUrl } = useContext(Context);
 
-  const [state, setState] = useState({get:false, error:false, data: []})
+  const [state, setState] = useState({ get: false, error: false, data: [] });
   const obj = {
-    kafedra_id: {uz:`Kafedraning faoliyatlari`, ru:`Деятельность отдела`,en:`Activities of the department`},
-    markaz_id:{uz:`Markazning faoliyatlari`,ru:`Деятельность центра`,en:`Activities of the center`},
-    bolim_id:{uz:`Bo'limning faoliyatlari`, ru:`Деятельность отдела`,en:`Activities of the department`},
-    rektorat_id:{uz:`Rektoratning faoliyatlari`,ru:`Деятельность ректората`,en:`Activities of the Rectorate`},
-    fakultet_id:{uz:`Fakultetning faoliyatlari`, ru:`Деятельность факультета`,en:`Activities of the faculty`}}
+    kafedra_id: {
+      uz: `Kafedraning faoliyatlari`,
+      ru: `Деятельность отдела`,
+      en: `Activities of the department`,
+    },
+    markaz_id: {
+      uz: `Markazning faoliyatlari`,
+      ru: `Деятельность центра`,
+      en: `Activities of the center`,
+    },
+    bolim_id: {
+      uz: `Bo'limning faoliyatlari`,
+      ru: `Деятельность отдела`,
+      en: `Activities of the department`,
+    },
+    rektorat_id: {
+      uz: `Rektoratning faoliyatlari`,
+      ru: `Деятельность ректората`,
+      en: `Activities of the Rectorate`,
+    },
+    fakultet_id: {
+      uz: `Fakultetning faoliyatlari`,
+      ru: `Деятельность факультета`,
+      en: `Activities of the faculty`,
+    },
+  };
 
-  useEffect(()=>{
-    fetch(`${globalUrl}/faoliyat/all`,{
-      headers:{
-        'Content-Type':'application/json'
-      }
-    }).then(res => res.json())
-    .then(data => {
-      if(data.status === 200 && data.success){
-        const result = {}
-        for(let item of Object.keys(obj)){
-          result[item] = data.data.filter(element => element[item])
-        }
-        setState({get:true, error:false, data: result})
-      }
+  useEffect(() => {
+    fetch(`${globalUrl}/faoliyat/all`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
-  },[]);
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 200 && data.success) {
+          const result = {};
+          for (let item of Object.keys(obj)) {
+            result[item] = data.data.filter((element) => element[item]);
+          }
+          setState({ get: true, error: false, data: result });
+        }
+      });
+  }, []);
 
-  // const onlyStr =( message) => message.split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')
-
-  // console.log(onlyStr(`ijfoeif fiuenf9uerf er9fuerfe4y3^%&"%^£*&"^ efh9eufh`));
   const togglerFunction = (index) => {
-    document.querySelector(`.activity__toggle${index}`).classList.toggle('activity__show')
-  }
-  
+    document
+      .querySelector(`.activity__toggle${index}`)
+      .classList.toggle("activity__show");
+  };
+
+  const data = {
+    uz: {
+      a1: `Faoliyat`,
+      a2: ` Universitetda bir qancha faoliyatlar olib borilmoqda, bu bo'limda siz
+      Rahbariyat, Faklultet, Kafedra, Bo'lim va Markazlarning barcha
+      faoliyatlarini kuzatib borishingiz mumkin. Bundan tashqari faoliyatlarni
+      yuqoridagi kategoriyalar bo'yicha har bir kategoriyaning o'zini
+      sahifasida ko'rishingiz mumkin`,
+    },
+    ru: {
+      a1: `Активность`,
+      a2: `В университете происходит несколько мероприятий, на этом факультете вы
+      Управление, Факультет, Кафедра, Кафедра и все Центры
+      вы можете следить за их деятельностью. Кроме того, деятельность
+      каждая категория сама в соответствии с вышеуказанными категориями
+      вы можете увидеть на странице`,
+    },
+    en: {
+      a1: `Activity`,
+      b1: `There are several activities going on in the university, in this department you
+      Management, Faculty, Department, Department and all of the Centers
+      you can follow their activities. In addition, activities
+      each category itself according to the above categories
+      you can see on the page`,
+    },
+  };
+
   return (
     <div className="all-activities">
-      <h1>Faoliyat</h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est, nam culpa
-        quisquam commodi natus veritatis saepe nesciunt ratione aliquid rem,
-        odio ex possimus esse expedita, excepturi suscipit iure eos atque
-        laborum voluptatum aut? Commodi quibusdam ipsam laboriosam esse illum
-        blanditiis est aut in eos, fugiat ab, possimus reiciendis sit velit.
-        Deserunt asperiores consequuntur reprehenderit porro impedit perferendis
-        inventore. Nihil, non reprehenderit ratione enim modi voluptates
-        praesentium iure sapiente sequi nostrum commodi corporis ad eligendi
-        consectetur excepturi ab sunt quaerat quas odio sit? Natus nisi et
-        laudantium, cumque nam blanditiis cum, temporibus, ipsum in ex nesciunt
-        architecto omnis eum ab impedit.
-      </p>
+      <h1>{data[lang].a1}</h1>
+      <p>{data[lang].a2}</p>
 
       <div className="activity__wrapper">
-        {
-          state.get && !state.error ? (
-            Object.keys(obj).map((e, index) =>(
-              <div className="activity__item" key={index}>
-                <h2 onClick={() => togglerFunction(index)}>{obj[e][lang]}</h2>
-                <div className={`activity__nested__item activity__toggle${index}`}>
-                  {state.data[e].map((item, ind) =>(
-                    <a className="activity__link" href={`/faoliyatlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}`} key={ind}>{item[`title_${lang}`]}</a>
-                  ))}
-                </div>
+        {state.get && !state.error ? (
+          Object.keys(obj).map((e, index) => (
+            <div className="activity__item" key={index}>
+              <h2 onClick={() => togglerFunction(index)}>{obj[e][lang]}</h2>
+              <div
+                className={`activity__nested__item activity__toggle${index}`}
+              >
+                {state.data[e].map((item, ind) => (
+                  <a
+                    className="activity__link"
+                    href={`/faoliyatlar/${item.title_uz
+                      .toLowerCase()
+                      .split(" ")
+                      .map((str) =>
+                        str
+                          .split("")
+                          .filter((char) => /[a-zA-Z]/.test(char))
+                          .join("")
+                      )
+                      .join("-")}-${item._id}`}
+                    key={ind}
+                  >
+                    {item[`title_${lang}`]}
+                  </a>
+                ))}
               </div>
-            ))
-          ):(
-            <></>
-          )
-        }
+            </div>
+          ))
+        ) : (
+          <></>
+        )}
       </div>
 
       <QuestionForm />
