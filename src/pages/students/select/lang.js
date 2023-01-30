@@ -2,7 +2,7 @@ const SelectLang = {
     uz:[
         {
             title:'Stipendiyalar',
-            content:`Universitetning iqtidorli stipendiyalari eng faol talabalarga beriladi, ular o'qishlarida, tadqiqotlarida yoki badiiy loyihalarida ajoyib natijalarga erishadilar, KTU nomini targ'ib qiluvchi biznes, innovatsiyalar va ijtimoiy faoliyat sohalarida darsdan tashqari mashg'ulotlarda faol ishtirok etadilar. <br />
+            content:`Universitetning iqtidorli stipendiyalari eng faol talabalarga beriladi, ular o'qishlarida, tadqiqotlarida yoki badiiy loyihalarida ajoyib natijalarga erishadilar, TKTI nomini targ'ib qiluvchi biznes, innovatsiyalar va ijtimoiy faoliyat sohalarida darsdan tashqari mashg'ulotlarda faol ishtirok etadilar. <br />
             Iste’dod stipendiyasi tanlovida bakalavr va magistratura bosqichining barcha talabalari, shuningdek, integratsiyalashgan va ta’lim bo‘lmagan talabalar ishtirok etishlari mumkin, birinchi kursning birinchi semestridagi bakalavr talabalari bundan mustasno. <br />
             Universitetning Talent stipendiyasi miqdori oyiga 250 EUR. Bir semestr uchun ajratilgan yordamning umumiy miqdori 1000 evro. <br />
             2022-2023 yilgi iste'dod stipendiyasi tanlovi: <br />
@@ -56,7 +56,7 @@ const SelectLang = {
     en:[
         {
             title:'Scholarships',
-            content:`The University's Talented Scholarships are awarded to the most active students who achieve outstanding results in their studies, research or artistic projects, actively participate in extracurricular activities in the areas of business, innovation and social activities that promote the name of KTU. <br />
+            content:`The University's Talented Scholarships are awarded to the most active students who achieve outstanding results in their studies, research or artistic projects, actively participate in extracurricular activities in the areas of business, innovation and social activities that promote the name of TKTI. <br />
             The Talent Scholarship competition is open to all undergraduate and graduate students, as well as integrated and non-teaching students, with the exception of undergraduate students in the first semester of their first year. <br />
             The amount of the University's Talent Scholarship is 250 EUR per month. The total amount of support allocated for one semester is 1000 euros. <br />
             2022-2023 Talent Scholarship Contest: <br />
