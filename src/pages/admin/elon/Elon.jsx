@@ -2,24 +2,18 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { convertToRaw, EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
-
 import "../yangilik/Yangilik.css";
-
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import Input from "../../../components/admin/input/Input";
 import Button from "../../../components/admin/button/Button";
 import Table from "../../../components/admin/table/Table";
-
 import { Context } from "../../../context";
-
 const Elon = () => {
   const imgRef = useRef();
-  const { globalUrl, names, convertToHtml } = useContext(Context);
+  const { globalUrl, names } = useContext(Context);
   const [type, setType] = useState("table");
   const [data, setData] = useState();
-
   let content = null;
-
   const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
     EditorState.createEmpty()
   );
@@ -29,7 +23,9 @@ const Elon = () => {
   const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
     EditorState.createEmpty()
   );
-
+  const convertToHtml = (raw) => {
+    return (draftToHtml(convertToRaw(raw.getCurrentContent())));
+  };
   const analyseNameTableHead = ["Tartib raqam", "Elon nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   const bodyData = data;
@@ -52,7 +48,6 @@ const Elon = () => {
       </tr>
     );
   };
-
   function getData() {
     fetch(`${globalUrl}/elon/all`, {
       headers: {
@@ -65,7 +60,6 @@ const Elon = () => {
       })
       .catch((err) => console.log(err));
   }
-
   function postData(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -76,7 +70,6 @@ const Elon = () => {
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
     formData.append("photo", imgRef.current.files[0]);
-
     fetch(`${globalUrl}/elon/add`, {
       method: "POST",
       headers: {
@@ -95,7 +88,6 @@ const Elon = () => {
       })
       .catch((err) => console.log(err));
   }
-
   function deleteYangilik(id) {
     fetch(`${globalUrl}/elon/${id}`, {
       method: "DELETE",
@@ -117,19 +109,22 @@ const Elon = () => {
         console.log(err);
       });
   }
-
   useEffect(() => {
     getData();
   }, []);
 
   if (type === "table") {
     content = (
-      <Table
-        headData={analyseNameTableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
+      <>
+        {data && (
+          <Table
+            headData={analyseNameTableHead}
+            renderHead={renderHead}
+            bodyData={bodyData}
+            renderBody={renderBody}
+          />
+        )}
+      </>
     );
   } else {
     content = (
@@ -140,7 +135,6 @@ const Elon = () => {
           nameRu="Sarlavha kiritng(RU)"
           nameEn="Sarlavha kiritng(EN)"
         />
-
         {/* Asosiy Vazifa */}
         <div>
           <span className="textEditorName">Asosiy Vazifa(UZ)</span>
@@ -172,7 +166,6 @@ const Elon = () => {
             onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
           />
         </div>
-
         <div className="file">
           <label htmlFor="forImg">
             <input
@@ -184,12 +177,10 @@ const Elon = () => {
             />
           </label>
         </div>
-
         <Button name="Saqlash" />
       </form>
     );
   }
-
   return (
     <div className="yangilik">
       <FormHeader
@@ -203,5 +194,4 @@ const Elon = () => {
     </div>
   );
 };
-
 export default Elon;

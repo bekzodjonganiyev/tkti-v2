@@ -13,3 +13,7 @@
 .delete{
     background-color: rgb(218, 14, 14);
 }
+
+.edit-table-row select{
+    margin-bottom: 10px;
+}

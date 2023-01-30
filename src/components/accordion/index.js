@@ -1,4 +1,5 @@
 import React from "react";
+import Fade from 'react-reveal/Fade';
 import "./style.css";
 const AccordionComponent = ({ arr, setarr }) => {
   const test = (id) => {
@@ -10,15 +11,19 @@ const AccordionComponent = ({ arr, setarr }) => {
 
   return arr.map((a, idx) => (
     <React.Fragment key={idx}>
-      <li  onClick={() => test(a.id)} className={`accordion__item ${a.status ? 'active__accordion' : ''}`}>
-        <h4>{a.title}</h4>
-        <span  className={a.status ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right'}></span>
-      </li>
+      <Fade zoom>
+        <li  onClick={() => test(a.id)} className={`accordion__item ${a.status ? 'active__accordion' : ''}`}>
+          <h4>{a.title}</h4>
+          <span  className={a.status ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right'}></span>
+        </li>
+      </Fade>
 
-      <div 
-        className={a.status ? "accordion__secret__item card__html__content" : "d-none"}
-        dangerouslySetInnerHTML={{ __html: a["content"] }}
-      ></div>
+      <Fade zoom>
+        <div 
+          className={a.status ? "accordion__secret__item card__html__content" : "d-none"}
+          dangerouslySetInnerHTML={{ __html: a["content"] }}
+        ></div>
+      </Fade>
     </React.Fragment>
   ));
 };
@@ -51,11 +56,13 @@ const AccordionBest = ({ arr, setarr }) => {
 
       <div className="right">
         {arr.map((a, index) => (
-            <div
+            <Fade zoom>
+              <div
               key={index}
               className={a.status ? "accordion__secret__key__desk card__html__content" : "d-none"}
               dangerouslySetInnerHTML={{ __html: a["content"] }}
             ></div>
+            </Fade>
         ))}
       </div>
     </div>

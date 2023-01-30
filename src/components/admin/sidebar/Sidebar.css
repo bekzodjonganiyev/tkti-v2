@@ -2,13 +2,15 @@
   height: 4px;              /* height of horizontal scrollbar ← You're missing this */
   width: 0px;               /* width of vertical scrollbar */
   border: 1px solid #d5d5d5;
+  overflow-y: scroll;
 }
 
 aside {
-  background: #222;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
   flex-grow: 0;
   padding: 0px 20px 20px 20px;
   box-sizing: border-box;
+  scrollbar-width: 0px;
 }
 
 /* LOGO */

@@ -8,6 +8,7 @@ import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
 import { Yonalish } from "./Yonalish";
 import Table from "../../../components/admin/table/Table";
 import XodimForm from "../../../components/admin/xodim_form/XodimForm";
+import EditXodim from "../../../components/admin/edit_xodim/EditXodim";
 
 import { Context } from "../../../context";
 
@@ -15,6 +16,8 @@ const Kafedra = () => {
   const { globalUrl } = useContext(Context);
   const [fakultet, setFakultet] = useState();
   const [kafedra, setKafedra] = useState();
+  const [kafedraEmployers, setKafedraEmployers] = useState();
+  const [onEdit, setOnEdit] = useState({});
   const [type, setType] = useState("table");
   let content = null;
   const props = {
@@ -37,9 +40,10 @@ const Kafedra = () => {
     buttonName: "Saqlash",
     url: "kafedra_data/add",
   };
+
+  // FOR DATA
   const tableHead = ["Tartib raqam", "Kafedra nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
-  const bodyData = kafedra;
   const renderBody = (item, index) => {
     return (
       <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
@@ -59,6 +63,84 @@ const Kafedra = () => {
       </tr>
     );
   };
+
+  // FOR EMPLOYERS
+  const employerTableHead = ["Tartib raqam", "Ismi", "Fakulteti", "Amallar"];
+  const renderemployerTableHead = (item, index) => <th key={index}>{item}</th>;
+  const renderEmployerTableBody = (item, index) => {
+    return (
+      <>
+        {onEdit.open && onEdit.id === item._id ? (
+          <EditXodim
+            xodim={item}
+            endpoint={`kafedra_hodim/${item._id}`}
+            setOnEdit={setOnEdit}
+            position={"kafedra_id"}
+            optionsEndpoint={"kafedra_data/all"}
+            key={index}
+          />
+        ) : (
+          <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+            <td>{index + 1}</td>
+            <td>{item.name_uz}</td>
+            <td>{test(item.kafedra_id)}</td>
+            <td>
+              <button
+                className="event-btn edit"
+                onClick={() => {
+                  setOnEdit({
+                    open: true,
+                    id: item._id,
+                  });
+                  console.log("Ochildi",item)
+                }}
+              >
+                <i className="fa fa-edit"></i>
+              </button>
+              <button
+                className="event-btn delete"
+                onClick={() => deleteKafedraEmployer(item._id)}
+              >
+                <i className="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        )}
+      </>
+    );
+  };
+
+  function getData() {
+    fetch(`${globalUrl}/kafedra_data/all`, {
+      headers: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setKafedra(res.data);
+      })
+      .catch((err) => console.log(err));
+
+    fetch(`${globalUrl}/Fak_data/all`, {
+      headers: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setFakultet(res.data);
+      })
+      .catch((err) => console.log(err));
+
+    fetch(`${globalUrl}/kafedra_hodim/all`, {
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setKafedraEmployers(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
   function deleteKafedra(id) {
     fetch(`${globalUrl}/kafedra_data/${id}`, {
@@ -82,41 +164,59 @@ const Kafedra = () => {
       });
   }
 
-  function fetchFakultet() {
-    fetch(`${globalUrl}/Fak_data/all`, {
-      headers: { "Content-type": "application/json" },
+  function deleteKafedraEmployer(id) {
+    fetch(`${globalUrl}/kafedra_hodim/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
     })
       .then((res) => res.json())
       .then((res) => {
-        setFakultet(res.data);
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumotlar o'chirildi");
+          window.location.reload(false);
+        }
       })
       .catch((err) => console.log(err));
   }
 
-  function fetchKafedra() {
-    fetch(`${globalUrl}/kafedra_data/all`, {
-      headers: { "Content-type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setKafedra(res.data);
-      })
-      .catch((err) => console.log(err));
+  function test(id) {
+    return kafedra?.find((i) => i._id === id)?.title_uz;
   }
 
   useEffect(() => {
-    fetchFakultet();
-    fetchKafedra();
+    getData();
   }, []);
 
   if (type === "table") {
     content = (
-      <Table
-        headData={tableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
+      <>
+      {kafedra && (
+        <Table
+          headData={tableHead}
+          renderHead={renderHead}
+          bodyData={kafedra}
+          renderBody={renderBody}
+          limit={10}
+        />
+      )}
+      <br />
+      <br />
+      <p style={{ fontSize: "30px", textAlign: "center" }}>Xodimlar</p>
+      {kafedraEmployers && (
+        <Table
+          headData={employerTableHead}
+          renderHead={renderemployerTableHead}
+          bodyData={kafedraEmployers}
+          renderBody={renderEmployerTableBody}
+          limit={10}
+        />
+      )}
+    </>
     );
   } else if (type === "addKafedra") {
     content = (
