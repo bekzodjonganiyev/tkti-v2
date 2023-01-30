@@ -1,5 +1,8 @@
 .home{
-    min-width: 425px;
+    /* min-width: 425px; */
+}
+.newsPage{
+    min-width: 490px;
 }
 .card__control {
     display: flex;
@@ -59,7 +62,7 @@
 }
 .elonlar{
     background:#eff5fb;
-    min-width: 490px;
+    min-width: 425px;
 }
 .news__info h3{
     display: flex;
@@ -87,4 +90,11 @@ color: #0350D0 !important;
     .news__info h3 {
             font-size: 24px;
         }
+}
+@media (max-width: 500px) {
+    .elonlar{
+        box-sizing:border-box;
+        background:#eff5fb;
+       min-width: 490px;
+    }
 }
