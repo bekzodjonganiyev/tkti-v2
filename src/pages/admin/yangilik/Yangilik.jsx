@@ -79,6 +79,7 @@ const Yangilik = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
+    formData.append("date", e.target.fordate.value);
     formData.append("photo", imgRef.current.files[0]);
 
     fetch(`${globalUrl}/news/add`, {
@@ -128,12 +129,16 @@ const Yangilik = () => {
 
   if (type === "table") {
     content = (
-      <Table
-        headData={analyseNameTableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
+      <>
+        {data && (
+          <Table
+            headData={analyseNameTableHead}
+            renderHead={renderHead}
+            bodyData={bodyData}
+            renderBody={renderBody}
+          />
+        )}
+      </>
     );
   } else {
     content = (
@@ -174,6 +179,14 @@ const Yangilik = () => {
             toolbarClassName="text-editor-toolbar"
             editorState={asosiyVazifaEn}
             onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
+          />
+        </div>
+
+        <div className="file w-25">
+          <input
+            className="form-control"
+            type="datetime-local"
+            name="fordate"
           />
         </div>
 

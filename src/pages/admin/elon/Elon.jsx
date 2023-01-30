@@ -79,6 +79,7 @@ const Elon = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
+    formData.append("date", e.target.fordate.value);
     formData.append("photo", imgRef.current.files[0]);
 
     fetch(`${globalUrl}/elon/add`, {
@@ -179,6 +180,10 @@ const Elon = () => {
             editorState={asosiyVazifaEn}
             onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
           />
+        </div>
+
+        <div className="file w-25">
+          <input className="form-control" type="datetime-local" name="fordate"/>
         </div>
 
         <div className="file">
