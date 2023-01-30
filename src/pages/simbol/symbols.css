@@ -10,3 +10,6 @@
 .symbolImg{
     width: 30%;
 }
+.clearfix{
+    min-width: 425px;
+}

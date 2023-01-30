@@ -4,6 +4,7 @@
     box-sizing: border-box;
     text-align: center;
     background-color: #e6edfa;
+    min-width: 490px;
   }
   
   .select-title {

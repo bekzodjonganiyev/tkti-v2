@@ -1,3 +1,6 @@
+.home{
+    min-width: 425px;
+}
 .card__control {
     display: flex;
     justify-content: space-between;
@@ -52,9 +55,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 .elonlar{
     background:#eff5fb;
+    min-width: 490px;
 }
 .news__info h3{
     display: flex;

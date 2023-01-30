@@ -166,6 +166,9 @@
     }
   }
   @media (max-width: 920px) {
+    .btnGroup button{
+      margin: 12px 0 !important;
+     }
     .cardInfo {
       width: 400px;
       border:0.4px solid #02307d !important;
@@ -197,11 +200,11 @@
     font-weight: 500;
   }
   @media (max-width: 768px) {
-    .cardEmail{
+    /* .cardEmail{
       width:min-content;
-    }
+    } */
     .cardInfo {
-      width: 300px;
+      width: 350px;
     }
     .facultetTitle {
       margin: 10px auto;
@@ -212,9 +215,9 @@
     }
   }
   @media (max-width: 540px) {
-    .cardInfo {
-      width: 200px;
-    }
+   .btnGroup button{
+    margin: 10px 0 !important;
+   }
     .cardDesc{
       padding: 12px;
       font-size: 16px;

@@ -3,3 +3,6 @@
         margin-top: 80px;
     }
 }
+.carousel-inner{
+    min-width:476px;
+}

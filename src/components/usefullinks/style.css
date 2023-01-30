@@ -41,3 +41,8 @@ width: 90%;
   .useful__info{
     height: 300px;
   }
+
+
+  .react-multiple-carousel__arrow{
+    display: none !important;
+  }

@@ -121,9 +121,9 @@ const Silbol = () => {
       });
   return (
     <>
-    <div className="container-pages">
+    <div className="container">
       <div className="mainsss">
-        <div className="page_main">
+        <div className="">
           <div className="clearfix" id="content">
             <div className="symbols">
               <div>

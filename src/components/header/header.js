@@ -62,8 +62,8 @@ const Header = () => {
             >
               <i className="fa-solid fa-xmark"></i>
             </div>
-            <div className="header__top__main">
-              <a style={{background:"darkblue", color:"white"}} className="header__nav header_border" href="https://tkti-2023.edupage.org/timetable/view.php">
+            <div className="header__top__main ">
+              <a style={{background:"darkblue", color:"white"}} className="header__nav header_border navbarStudy" href="https://tkti-2023.edupage.org/timetable/view.php">
                 {HeaderLang[lang].talim[1]}
               </a>
               <a className="header__nav header_border" href="/qabul">
@@ -150,7 +150,7 @@ const Header = () => {
             <MyComponent />
           </div>
         </div>
-
+        
         <div
           onClick={() => setShowHeader(!showHeader)}
           className="header__nav burger"

@@ -1,3 +1,6 @@
+.all-activities{
+  min-width: 425px;
+}
 .all-activities h1 {
     text-align: center;
 }

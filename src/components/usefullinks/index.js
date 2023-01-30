@@ -45,8 +45,8 @@ function UsefulLinks() {
               <Carousel
                 autoplay={true}
                 effect="fade"
-                draggable
-                pauseOnDotsHover={true}
+                // draggable
+                // pauseOnDotsHover={true}
                 swipeable={false}
                 showDots={false}
                 responsive={responsive}
