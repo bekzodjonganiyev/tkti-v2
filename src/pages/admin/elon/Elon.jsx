@@ -89,7 +89,7 @@ const Elon = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
-    formData.append("date", time(e.target.fordate.value));
+    formData.append("date", e.target.fordate.value);
     formData.append("photo", imgRef.current.files[0]);
 
     DataPoster('elon/add', formData)
@@ -105,16 +105,16 @@ const Elon = () => {
 
   if (type === "table") {
     content = (
-      data.isFetched && data.data ?(
-        <Table
-        headData={analyseNameTableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
-      ):(
-        <></>
-      )
+      <>
+        {data && (
+          <Table
+            headData={analyseNameTableHead}
+            renderHead={renderHead}
+            bodyData={bodyData}
+            renderBody={renderBody}
+          />
+        )}
+      </>
     );
   } else {
     content = (

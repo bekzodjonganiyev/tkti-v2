@@ -75,7 +75,7 @@ const Yangilik = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
-    formData.append("date", time(e.target.fordate.value));
+    formData.append("date", e.target.fordate.value);
     formData.append("photo", imgRef.current.files[0]);
 
     DataPoster('news/add', formData)
@@ -91,16 +91,16 @@ const Yangilik = () => {
 
   if (type === "table") {
     content = (
-      data.isFetched && data.data ?(
-        <Table
-        headData={analyseNameTableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
-      ):(
-        <></>
-      )
+      <>
+        {data && (
+          <Table
+            headData={analyseNameTableHead}
+            renderHead={renderHead}
+            bodyData={bodyData}
+            renderBody={renderBody}
+          />
+        )}
+      </>
     );
   } else {
     content = (
@@ -145,7 +145,11 @@ const Yangilik = () => {
         </div>
 
         <div className="file w-25">
-          <input className="form-control" type="datetime-local" name="fordate"/>
+          <input
+            className="form-control"
+            type="datetime-local"
+            name="fordate"
+          />
         </div>
 
         <div className="file">
