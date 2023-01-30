@@ -2,24 +2,18 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { convertToRaw, EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
-
-import "./Yangilik.css";
-
+import "../yangilik/Yangilik.css";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import Input from "../../../components/admin/input/Input";
 import Button from "../../../components/admin/button/Button";
 import Table from "../../../components/admin/table/Table";
-
 import { Context } from "../../../context";
-
-const Yangilik = () => {
+const Elon = () => {
   const imgRef = useRef();
-  const {time, globalUrl, names, convertToHtml,DataDeleter,DataPoster, DataGetter } = useContext(Context);
+  const { globalUrl, names } = useContext(Context);
   const [type, setType] = useState("table");
-  const [data, setData] = useState({isFetched: false,error: false,data: {}});
-
+  const [data, setData] = useState();
   let content = null;
-
   const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
     EditorState.createEmpty()
   );
@@ -29,10 +23,12 @@ const Yangilik = () => {
   const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
     EditorState.createEmpty()
   );
-
+  const convertToHtml = (raw) => {
+    return (draftToHtml(convertToRaw(raw.getCurrentContent())));
+  };
   const analyseNameTableHead = ["Tartib raqam", "Yangilik nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
-  const bodyData = data.data;
+  const bodyData = data;
   const renderBody = (item, index) => {
     return (
       <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
@@ -52,7 +48,6 @@ const Yangilik = () => {
       </tr>
     );
   };
-
   function getData() {
     fetch(`${globalUrl}/news/all`, {
       headers: {
@@ -65,7 +60,6 @@ const Yangilik = () => {
       })
       .catch((err) => console.log(err));
   }
-
   function postData(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -75,18 +69,48 @@ const Yangilik = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
-    formData.append("date", e.target.fordate.value);
     formData.append("photo", imgRef.current.files[0]);
-
-    DataPoster('news/add', formData)
+    fetch(`${globalUrl}/news/add`, {
+      method: "POST",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
   }
-
   function deleteYangilik(id) {
-    DataDeleter(`news/${id}`)
+    fetch(`${globalUrl}/news/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumotlar o'chirildi");
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-
   useEffect(() => {
-    DataGetter(setData, 'news/all')
+    getData();
   }, []);
 
   if (type === "table") {
@@ -111,7 +135,6 @@ const Yangilik = () => {
           nameRu="Sarlavha kiritng(RU)"
           nameEn="Sarlavha kiritng(EN)"
         />
-
         {/* Asosiy Vazifa */}
         <div>
           <span className="textEditorName">Asosiy Vazifa(UZ)</span>
@@ -143,15 +166,6 @@ const Yangilik = () => {
             onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
           />
         </div>
-
-        <div className="file w-25">
-          <input
-            className="form-control"
-            type="datetime-local"
-            name="fordate"
-          />
-        </div>
-
         <div className="file">
           <label htmlFor="forImg">
             <input
@@ -163,12 +177,10 @@ const Yangilik = () => {
             />
           </label>
         </div>
-
         <Button name="Saqlash" />
       </form>
     );
   }
-
   return (
     <div className="yangilik">
       <FormHeader
@@ -182,5 +194,4 @@ const Yangilik = () => {
     </div>
   );
 };
-
-export default Yangilik;
+export default Elon;
