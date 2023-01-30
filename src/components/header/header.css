@@ -370,7 +370,8 @@ gap: 10px;
     top: -55px;
   }
   .show__header{
-    height: calc(100vh - 90px);
+    height: 100%;
+    /* height: calc(100vh - 90px); */
       min-height: 570px;
       width: 100%;
       position: fixed;
