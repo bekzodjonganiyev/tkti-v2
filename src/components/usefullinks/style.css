@@ -40,4 +40,13 @@ width: 90%;
   }
   .useful__info{
     height: 300px;
+    min-width: 425px;
+  }
+
+
+  .react-multiple-carousel__arrow{
+    display: none !important;
+  }
+  @media only screen and (min-width: 500px){
+ 
   }

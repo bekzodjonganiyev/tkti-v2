@@ -42,7 +42,7 @@ const HomePage = () =>{
             <MainSlider  />
             <Filter yili={yili} />
 
-            <div className="p-5">
+            <div className="p-5 newsPage">
                 <div className="news__info">
                 <h3>{about[lang].new}</h3>
                 </div>

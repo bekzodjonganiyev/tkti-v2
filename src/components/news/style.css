@@ -3,6 +3,7 @@
   justify-content: space-evenly;
   align-items: flex-start;
   flex-wrap: wrap;
+  /* min-width: 425px; */
 }
 
 .news__card {

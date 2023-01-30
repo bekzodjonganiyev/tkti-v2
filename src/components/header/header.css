@@ -9,7 +9,7 @@
 
 /* main header styles */
 header {
-  min-width: 425px;
+  min-width: 490px;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -232,9 +232,32 @@ gap: 10px;
   .qawws{
     display: none;
   }
+ 
 }
 
 @media only screen and (max-width: 1120px){
+  
+  .hovered-list{
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+    top:0 !important;
+    width: 270px !important;
+    right: -204px !important;
+    background: white ;
+   
+   
+    padding:  20px;
+    transition: 0.3s linear;
+    
+    height: 335px;
+    margin-left:300px;
+  }
+ 
+.navbarStudy {
+  background:transparent !important;
+  color:#02307d !important;
+}
   .qaww{
     display: none;
   }
@@ -244,19 +267,25 @@ gap: 10px;
   .buttons button ,.hovered-list,.hovered-list .list-info span{
     display: block !important;
   }
+  .qawws{
+    margin: 0 -145px;
+  }
+ 
   .hovered-list .list-info {
     display: none;
   }
  
   .hovered-content{
-    width: 430px;
+    width: 230px;
+    height: fit-content;
+    
   }
   .asdaaf{
     display: block !important;
-    margin: 0 -15px;
+    margin: 0;
   }
   .hovered-content .li span{
-   width:100vw;
+   width:10vw;
    text-align: justify;
   }
   header{
@@ -341,7 +370,8 @@ gap: 10px;
     top: -55px;
   }
   .show__header{
-    height: calc(100vh - 90px);
+    height: 100%;
+    /* height: calc(100vh - 90px); */
       min-height: 570px;
       width: 100%;
       position: fixed;
@@ -361,6 +391,11 @@ gap: 10px;
 }
 
 @media only screen and (max-width: 550px){
+  .hovered-content{
+    /* min-width:  333px; */
+    width: 333px;
+    
+  }
   .header__top__icon{
     display: none;
   }

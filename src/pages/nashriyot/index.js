@@ -35,6 +35,9 @@ const NashriyotComponent = () =>{
         DataGetter(setNashriyot, 'matbuot/all')
       },[]);
 
+      const [search, setSearch] = useState()
+
+
       const TableHead = about[lang];
       const TableContent = (item, index) => <th key={index}>{item}</th> 
       const TableBody = nashriyot.data;
@@ -55,7 +58,10 @@ const NashriyotComponent = () =>{
           <h2 className="cardTitleComp">{hero[lang].title}</h2>
            {
             nashriyot.isFetched && nashriyot.data ? (
-              <Table headData={TableHead} renderHead={TableContent} renderBody={TableRender} bodyData={TableBody} />
+              <>
+              <input type="text" className="form-control" value={search} onChange={(e) => setSearch(e.target.value)} />
+              <Table headData={TableHead} renderHead={TableContent} renderBody={TableRender} bodyData={TableBody} search={search} />
+              </>
             ):(
               <></>
             )

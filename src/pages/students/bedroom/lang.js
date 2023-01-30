@@ -5,7 +5,7 @@ const BedroomLAng = {
             {
                 title:`Talabalarni joylashtirish markazi`,
                 content:` <h2 className='fw-bold'>Yotoqxonalar</h2> <br />
-                <p>KTUda 2 ta yotoqxona mavjud. Talabalarga uch kishilik, ikki kishilik va bir kishilik xonalarda joylashish taklif etiladi. KTU yotoqxonasini bron qilish tizimida yotoqxonada joy bron qilishingiz mumkin . Ro'yxatdan o'ting va ajoyib yotoqxona hamjamiyatiga qo'shiling. <br />
+                <p>TKTIda 2 ta yotoqxona mavjud. Talabalarga uch kishilik, ikki kishilik va bir kishilik xonalarda joylashish taklif etiladi. TKTI yotoqxonasini bron qilish tizimida yotoqxonada joy bron qilishingiz mumkin . Ro'yxatdan o'ting va ajoyib yotoqxona hamjamiyatiga qo'shiling. <br />
                 <br /> <br />
                 Og‘ir ijtimoiy va moddiy ahvol tufayli yotoqxonadan ustuvor tartibda joy olishni va/yoki yotoqxona narxining kompensatsiyasini olishni xohlovchi talabalar tasdiqlovchi hujjatlar bilan ariza topshirishlari shart. <br />
                 
@@ -97,7 +97,7 @@ const BedroomLAng = {
             {
                 title:`Student Placement Center`,
                 content:`<h2 className='fw-bold'>Dorms</h2> <br />
-                KTU has 2 dormitories. Students are offered accommodation in triple, double and single rooms. You can reserve a place in the dormitory in the KTU dormitory reservation system. Sign up and join the amazing hostel community. <br />
+                TKTI has 2 dormitories. Students are offered accommodation in triple, double and single rooms. You can reserve a place in the dormitory in the TKTI dormitory reservation system. Sign up and join the amazing hostel community. <br />
                 <br /> <br />
                 Students who want to receive priority accommodation in a dormitory and/or compensation for the cost of a dormitory due to a difficult social and material situation must submit an application with supporting documents. <br />
                 <br /> <br />

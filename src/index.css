@@ -21,6 +21,7 @@ a{
 
 .wrapped{
   padding: 0 2%;
+  /* min-width: 425px; */
 }
 
 .map{
@@ -46,5 +47,6 @@ a{
   .my__container {
     max-width: 1440px;
     margin: 0 auto;
+    
   }
 }

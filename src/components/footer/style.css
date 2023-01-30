@@ -1,12 +1,12 @@
 footer{
-    /* position: fixed;
-    bottom: 0; */
+    
     width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     padding: 30px 20px;
     transition: .3s linear;
+    min-width: 425px;
 }
 
 .footer-info{
