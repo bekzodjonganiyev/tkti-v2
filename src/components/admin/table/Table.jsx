@@ -45,9 +45,7 @@ const Table = ({ bodyData, headData, renderHead, renderBody, limit, search }) =>
         ) : null}
         {bodyData && renderBody ? (
           <tbody>
-            {/* {bodyData?.map((item, index) => renderBody(item, index))} */}
-            {dataShow
-                .filter((item) => {
+            {dataShow?.filter((item) => {
                   if (search && search.length > 0) {
                     if (item.name_uz) {
                       return item.name_uz

@@ -2,25 +2,18 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { convertToRaw, EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
-
 import "../yangilik/Yangilik.css";
-
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import Input from "../../../components/admin/input/Input";
 import Button from "../../../components/admin/button/Button";
 import Table from "../../../components/admin/table/Table";
-
 import { Context } from "../../../context";
-
 const Elon = () => {
   const imgRef = useRef();
-  const {time, globalUrl, names, convertToHtml ,DataDeleter,DataPoster, DataGetter} = useContext(Context);
+  const { globalUrl, names } = useContext(Context);
   const [type, setType] = useState("table");
-  const [data, setData] = useState({isFetched: false,error: false,data: {}});
-  const [edit,setEdit] = useState({display:false, edit:false})
-
+  const [data, setData] = useState();
   let content = null;
-
   const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
     EditorState.createEmpty()
   );
@@ -30,56 +23,43 @@ const Elon = () => {
   const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
     EditorState.createEmpty()
   );
-
-  const putElon = id =>{
-    const title_uz = document.querySelector(`.elon__title_uz${id}`).value
-    const title_ru = document.querySelector(`.elon__title_ru${id}`).value
-    const title_en = document.querySelector(`.elon__title_en${id}`).value
-
-    console.log(title_en, title_ru,title_uz);
-    // tablega chunmey form qo'sholmadim form bo'sa namedan value olardim 
-    setEdit({display:false, id:false})
-  }
-
+  const convertToHtml = (raw) => {
+    return (draftToHtml(convertToRaw(raw.getCurrentContent())));
+  };
   const analyseNameTableHead = ["Tartib raqam", "Elon nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
-  const bodyData = data.data;
+  const bodyData = data;
   const renderBody = (item, index) => {
     return (
-      edit.display && edit.id ===item._id ?(
-          <table>
-          <tr>
-                <td colSpan={3}>
-                  <td><input className={`form-control elon__title_uz${item._id}`} type="text" defaultValue={item.title_uz} /></td>
-                  <td><input className={`form-control elon__title_ru${item._id}`} type="text" defaultValue={item.title_ru} /></td>
-                  <td><input className={`form-control elon__title_en${item._id}`} type="text" defaultValue={item.title_en} /></td>
-                </td>
-          </tr>            
-          <td><button onClick={() => putElon(item._id)} >Submit</button></td>
-          <td><button onClick={() => setEdit({display:false, id:false})} >close</button></td>
-          </table>
-      ):(
-        <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
-          <td>{index + 1}</td>
-          <td>{item.title_uz}</td>
-          <td>
-            <button className="event-btn edit" onClick={() => setEdit({display:true, id: item._id})}>
-              <i className="fa fa-edit"></i>
-            </button>
-            <button
-              className="event-btn delete"
-              onClick={() => deleteYangilik(item._id)}
-            >
-              <i className="fa fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      )
+      <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+        <td>{index + 1}</td>
+        <td>{item.title_uz}</td>
+        <td>
+          <button className="event-btn edit" onClick={() => {}}>
+            <i className="fa fa-edit"></i>
+          </button>
+          <button
+            className="event-btn delete"
+            onClick={() => deleteYangilik(item._id)}
+          >
+            <i className="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
     );
   };
-
- 
-
+  function getData() {
+    fetch(`${globalUrl}/elon/all`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
   function postData(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -89,18 +69,48 @@ const Elon = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
-    formData.append("date", e.target.fordate.value);
     formData.append("photo", imgRef.current.files[0]);
-
-    DataPoster('elon/add', formData)
+    fetch(`${globalUrl}/elon/add`, {
+      method: "POST",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
   }
-
   function deleteYangilik(id) {
-    DataDeleter(`elon/${id}`)
+    fetch(`${globalUrl}/elon/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Token: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert("Malumotlar o'chirildi");
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-
   useEffect(() => {
-    DataGetter(setData, 'elon/all')
+    getData();
   }, []);
 
   if (type === "table") {
@@ -125,7 +135,6 @@ const Elon = () => {
           nameRu="Sarlavha kiritng(RU)"
           nameEn="Sarlavha kiritng(EN)"
         />
-
         {/* Asosiy Vazifa */}
         <div>
           <span className="textEditorName">Asosiy Vazifa(UZ)</span>
@@ -157,11 +166,6 @@ const Elon = () => {
             onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
           />
         </div>
-
-        <div className="file w-25">
-          <input className="form-control" type="datetime-local" name="fordate"/>
-        </div>
-
         <div className="file">
           <label htmlFor="forImg">
             <input
@@ -173,12 +177,10 @@ const Elon = () => {
             />
           </label>
         </div>
-
         <Button name="Saqlash" />
       </form>
     );
   }
-
   return (
     <div className="yangilik">
       <FormHeader
@@ -192,5 +194,4 @@ const Elon = () => {
     </div>
   );
 };
-
 export default Elon;
