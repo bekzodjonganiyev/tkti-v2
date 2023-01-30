@@ -1,15 +1,22 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 
-import { Context } from "../../context";
+import { Context } from "../../../context/index";
 
-const EditXodim = ({ xodim, endpoint, setOnEdit }) => {
+const EditXodim = ({
+  xodim,
+  endpoint,
+  setOnEdit,
+  position,
+  optionsEndpoint,
+  index,
+}) => {
   const imageRef = useRef();
   const { globalUrl } = useContext(Context);
   const [selectValue, setSelectValue] = useState();
-  
-  delete xodim.__v  
-  delete xodim.date
-  delete xodim._id  
+
+  delete xodim.__v;
+  delete xodim.date;
+  delete xodim.photo; // optional
   const [inputValue, setInputValue] = useState(xodim);
 
   function handleChange(e) {
@@ -19,21 +26,33 @@ const EditXodim = ({ xodim, endpoint, setOnEdit }) => {
 
   function editEmployer() {
     const formData = new FormData();
+    delete inputValue._id
     Object.keys(inputValue).forEach((i) => formData.append(i, inputValue[i]));
-    formData.append("photo", imageRef.current.files[0]);
+
+    // optional
+    // formData.append("photo", imageRef.current.files[0]);
 
     fetch(`${globalUrl}/${endpoint}`, {
       method: "PUT",
       headers: {
-        "Content-type": "appliaction/json",
         Token: localStorage.getItem("token"),
       },
       body: formData,
-    });
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + " ❌");
+        } else {
+          alert(res.message);
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   useEffect(() => {
-    fetch(`${globalUrl}/bm_data/all`, {
+    fetch(`${globalUrl}/${optionsEndpoint}`, {
       headers: {
         "Content-type": "application/json",
       },
@@ -47,7 +66,7 @@ const EditXodim = ({ xodim, endpoint, setOnEdit }) => {
 
   return (
     <tr
-      key={xodim.name_uz}
+      key={index}
       style={{ cursor: "pointer", userSelect: "none" }}
       className="edit-table-row"
     >
@@ -119,8 +138,8 @@ const EditXodim = ({ xodim, endpoint, setOnEdit }) => {
       <td>
         <select
           className=""
-          name="bolim_id"
-          value={inputValue.bolim_id}
+          name={position}
+          value={inputValue[position]}
           onChange={handleChange}
           style={{ width: "200px", padding: "5px", marginTop: "-50px" }}
         >
@@ -142,12 +161,13 @@ const EditXodim = ({ xodim, endpoint, setOnEdit }) => {
           </button>
           <button
             className="event-btn delete"
-            onClick={() =>
+            onClick={() => {
               setOnEdit({
                 open: false,
                 id: false,
-              })
-            }
+              });
+              console.log("yopildi",xodim);
+            }}
           >
             <i className="fa fa-x"></i>
           </button>
