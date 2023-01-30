@@ -128,12 +128,16 @@ const Elon = () => {
 
   if (type === "table") {
     content = (
-      <Table
-        headData={analyseNameTableHead}
-        renderHead={renderHead}
-        bodyData={bodyData}
-        renderBody={renderBody}
-      />
+      <>
+        {data && (
+          <Table
+            headData={analyseNameTableHead}
+            renderHead={renderHead}
+            bodyData={bodyData}
+            renderBody={renderBody}
+          />
+        )}
+      </>
     );
   } else {
     content = (
