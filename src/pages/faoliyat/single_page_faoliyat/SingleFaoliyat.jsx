@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "./SingleFaoliyat.css";
 
@@ -7,7 +7,6 @@ import { Context } from "../../../context";
 
 function SocialShare() {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div
       className="social-share"
@@ -19,14 +18,22 @@ function SocialShare() {
       </div>
       {isOpen && (
         <div className="social-icons">
-          <a href="#">
-            <i className="fab fa-facebook-f"></i>
+          <a
+            href={`https://telegram.me/share/url?url=${window.location.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fa-brands fa-telegram"></i>
           </a>
           <a href="#">
-            <i className="fab fa-twitter"></i>
+            <i className="fa-brands fa-twitter"></i>
           </a>
-          <a href="#">
-            <i className="fab fa-instagram"></i>
+          <a
+            href={`https://api.whatsapp.com/send?${window.location.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fa-brands fa-whatsapp"></i>
           </a>
         </div>
       )}
@@ -35,93 +42,68 @@ function SocialShare() {
 }
 
 const SingleFaoliyat = () => {
-  const {time} = useContext(Context)
-  const { id } = useParams();
-  const { globalUrl } = useContext(Context);
-
-  const [data, setData] = useState([]);
-  const [activityData, setActivityData] = useState();
-
-  let actiovityPreloadData = null;
-
-  let key = "";
-  if (+id === 1) key = "rektorat_id";
-  if (+id === 2) key = "fakultet_id";
-  if (+id === 3) key = "kafedra_id";
-  if (+id === 4) key = "bolim_id";
-  if (+id === 5) key = "markaz_id";
-  const activityContent = data?.filter((i) => key in i);
-  
-  console.log(activityData)
-  async function getData(id) {
-    fetch(`${globalUrl}/faoliyat/${id}`, {
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.data.child);
-        setActivityData(res.data.child);
-      })
-      .catch((err) => console.log(err));
-  }
-  
-  function getActivities() {
-    fetch(`${globalUrl}/faoliyat/all`, {
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }
-
-  function checkParamsId(id) {
-    if (id === 1 || id === 2 || id === 3 || id === 4 || id === 5) {
-      console.log("jdjdj");
-    } else {
-      window.location.href = "/barcha-faoliyat";
-    }
-  }
+  const { time, DataGetter } = useContext(Context);
+  const { ref } = useParams();
+  const { globalUrl, lang } = useContext(Context);
+  const [data, setData] = useState({ isFetched: false, error: false, data: {} });
+  const navigate = useNavigate();
+  const id = ref.substring(ref.lastIndexOf("-") + Number(1));
 
   useEffect(() => {
-    checkParamsId(+id);
-    getActivities();
+    if (id.length === 24) {
+      DataGetter(setData, `faoliyat/${id}`)
+    }
   }, []);
+
+  useEffect(() => {
+    if (id.length != 24) {
+      navigate(-1);
+    }
+  }, []);
+
   return (
     <div>
       <div className="activity">
-        {activityContent.length !== 0 ? (
+        {data.isFetched && !data.error ? (
           <>
-            <div className="left">
-              {activityContent.map((i) => (
-                <b onClick={() => getData(i._id)}>{i.title_uz}</b>
-              ))}
-            </div>
+            <div className="left">{data.data[`title_${lang}`]}</div>
             <div className="right">
-             
-              {activityData?.map((i) => (
-                <div className="right-inner">
+              {data.data.child?.map((i, index) => (
+                <div key={index} className="right-inner">
                   <h1>{i.title_uz}</h1>
-                  <div dangerouslySetInnerHTML={{ __html: i.description_uz }} />
-                  <div style={{ display: "flex", justifyContent:"space-between",  }}>
+                  <div style={{ margin: "30px 10px" }}>
+                    {i?.hashtag?.map((item) => (
+                      <span style={{ color: "blue", marginRight: "15px" }}>
+                        #{item.value}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="card__html__content"
+                    dangerouslySetInnerHTML={{
+                      __html: i[`description_${lang}`],
+                    }}
+                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
                     <SocialShare />
-                    <span>{time(i.date)}</span>
+                    {/* <span style={{fontSize:"20px"}}><i style={{fontSize:"20px", backgroundColor:"black", color:"white", padding:"10px", borderRadius:"50%", width:"40px", height:"40px", textAlign:"center"}} className="fa fa-map-marker"></i>{i[`location_${lang}`]}</span> */}
+                    <span style={{ fontWeight: "700", fontSize: "20px" }}>
+                      {time(i.date)}
+                    </span>
                   </div>
                 </div>
               ))}
-
             </div>
           </>
         ) : (
-          <h1>Loading...</h1>
+          <></>
         )}
       </div>
-      {/* <AccordionComponent /> */}
     </div>
   );
 };

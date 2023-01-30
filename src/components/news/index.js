@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context";
-import NewsLang from "./lang";
+import NewsLang from "../news/lang";
 import "./style.css";
 
-function YangiliklarComp({ home }) {
-  const { lang, time, globalUrl} = useContext(Context);
+function YangiliklarComp({ home, myKey }) {
+  const { lang, time, globalUrl, textSytles } = useContext(Context);
 
   const [news, setNews] = useState({
     isFetched: false,
@@ -14,20 +14,24 @@ function YangiliklarComp({ home }) {
   });
 
   useEffect(() => {
-    fetch(`${globalUrl}/news/all`)
+    fetch(`${globalUrl}/${myKey}/all`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
-      .then((data) => {
-        data.success &&
+      .then(
+        (data) =>
+          data.success &&
           setNews({
             data: home
               ? data.data
                   .sort((a, b) => new Date(b.date) - new Date(a.date))
-                  .slice(0, 4)
-              : data.data
-                  .sort((a, b) => new Date(b.date) - new Date(a.date)),
+                  .slice(0, 3)
+              : data.data.sort((a, b) => new Date(b.date) - new Date(a.date)),
             isFetched: true,
-          });
-      })
+          })
+      )
       .catch(() => setNews({ error: true }));
   }, []);
 
@@ -37,11 +41,24 @@ function YangiliklarComp({ home }) {
         {news.isFetched && news.data && news.data.length > 0 ? (
           news.data.map((e, index) => (
             <>
-              <Link className="news__card" key={index} to={`/news/${e._id}`}>
+              <Link
+                className="news__card"
+                key={index}
+                to={`/${myKey}/${e.title_uz
+                  .toLowerCase()
+                  .split(" ")
+                  .map((str) =>
+                    str
+                      .split("")
+                      .filter((char) => /[a-zA-Z]/.test(char))
+                      .join("")
+                  )
+                  .join("-")}-${e._id}`}
+              >
                 <img
                   className="news_photo"
-                  src={globalUrl + "/" + e.photo[0]}
-                  alt="news img"
+                  src={`${globalUrl}/${e.photo}`}
+                  alt=""
                 />
                 <div className="news__body">
                   <h4>{e[`title_${lang}`]}</h4>
@@ -49,8 +66,7 @@ function YangiliklarComp({ home }) {
                   <br />
                   <p>
                     <i className="fa-solid fa-calendar-days">
-                     
-                      <time className="ms-3">{time(e.date)}</time>
+                      <time className="ms-3">{time(e.date)}</time>{" "}
                     </i>
                   </p>
                 </div>
@@ -58,11 +74,11 @@ function YangiliklarComp({ home }) {
             </>
           ))
         ) : news.isFetched && news.data && news.data.length === 0 ? (
-          <h2>{NewsLang[lang][2]}</h2>
+          <h2>Yangilik hali joylanmagan</h2>
         ) : news.error ? (
-          <h2>{NewsLang[lang][1]}</h2>
+          <h2>Xatolik</h2>
         ) : (
-          <h2>{NewsLang[lang][0]} ...</h2>
+          <h2>Yangiliklar yuklanmoqda ...</h2>
         )}
       </div>
     </>

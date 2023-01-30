@@ -2,7 +2,6 @@ footer{
     /* position: fixed;
     bottom: 0; */
     width: 100%;
-    min-height: 500px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;

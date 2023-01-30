@@ -19,7 +19,7 @@ function Rectorat() {
         third: "Ilmiy ishlar va innovatsiyalar bo‘yicha prorektor",
         fourth: "Iqtisodiy va tashkiliy masalalar bo‘yicha prorektor",
         fifth:
-          "Yoshlar masalalari va ma'naviy-ma'rifiy ishlari birinchi bo'yicha prorektor",
+          "Yoshlar masalalari va ma'naviy-ma'rifiy ishlari bo'yicha birinchi prorektor",
         sixth: "Usmonov Botir Shukurillayevich",
         seventh: "Safarov Toyir Tursunovich",
         eighth: "Pulatov Xayrulla Lutpullayevich",
@@ -34,7 +34,7 @@ function Rectorat() {
         third: "Проректор по научной работе и инновациям",
         fourth: "Проректор по экономическим и организационным вопросам",
         fifth:
-          "Первый проректор по делам молодежи и духовно-просветительской работе",
+          "Первый проректор по работе с молодежью и духовно-просветительской работе",
         sixth: "Усмонов Ботир Шукуриллаевич",
         seventh: "Сафаров Тойир Турсунович",
         eighth: "Пулатов Хайрулла Лутпуллаевич",
@@ -48,7 +48,7 @@ function Rectorat() {
         second: "Vice - Rector for Academic Affairs",
         third: "Vice - Rector for Research and Innovation",
         fourth: "Vice - rector for economic and organizational issues",
-        fifth: "The first vice-rector for youth issues and spiritual and educational affairs",
+        fifth: "First vice-rector for youth issues and spiritual and educational affairs",
         sixth: "Usmonov Botir Shukurillaevich",
         seventh: "Safarov Toyir Tursunovich",
         eighth: "Pulatov Khayrulla Lutpullaevich",

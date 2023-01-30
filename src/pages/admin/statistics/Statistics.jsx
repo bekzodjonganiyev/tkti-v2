@@ -13,16 +13,12 @@ import { Context } from "../../../context";
 import Button from "../../../components/admin/button/Button";
 
 const Statistics = () => {
-  const { names, globalUrl } = useContext(Context);
+  const { names, globalUrl, convertToHtml } = useContext(Context);
 
   const [statisticsUz, setStatisticsUz] = useState(EditorState.createEmpty());
   const [statisticsRu, setStatisticsRu] = useState(EditorState.createEmpty());
   const [statisticsEn, setStatisticsEn] = useState(EditorState.createEmpty());
-
-  const convertToHtml = (raw) => {
-    return draftToHtml(convertToRaw(raw.getCurrentContent()));
-  };
-
+  
   function postData(e) {
     e.preventDefault()
     fetch(`${globalUrl}/statistics/add`, {

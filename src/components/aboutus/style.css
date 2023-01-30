@@ -12,7 +12,7 @@ color: #02307D;
 .list-info{
   
     margin:0 auto;
-    display: flex;
+    /* display: flex; */
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
@@ -43,9 +43,7 @@ color: #02307D;
     transition: all 0.5s ease;
 }
 
-.list-info img:hover {
-    box-shadow: 0px 0px 13px 0px rgba(163, 155, 155, 0.9);
-}
+
 
 
 .list-item >p{

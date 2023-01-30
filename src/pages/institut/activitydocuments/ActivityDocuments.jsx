@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../../context";
+import AnimateCard from "../../../components/animateCard";
+import {ThreeDots, DoorDashFavorite} from '../../../components/animjs'
 
 import "./activityDocuments.css";
+import { useEffect } from "react";
 
 const ActivityDocuments = () => {
-  
-  const { lang } = useContext(Context);
+  const [display, setDisplay] = useState(true);
+  const { lang,textSytles } = useContext(Context);
     const [title] = useState({
       uz: "ILMIY LOYIHALAR",
       ru: "НАУЧНЫЕ ПРОЕКТЫ",
@@ -62,23 +65,36 @@ const ActivityDocuments = () => {
       },
     ]);
 
+    useEffect(()=>{
+      setTimeout(()=>{
+        setDisplay(false)
+      },700)
+    },[])
+
   return (
     <div className="wrapped mb-5">
-     <div className="bolimlar__wrapper">
-            <h3 className="project-title"> {title[lang]} </h3>
-            <div className="bolimlar__list activity__documents">
-              {data &&
-                data.map((e, index) => (
-                  <div key={index} className="bolim document-info">
-                    <a href="#">
-                      <span>{e.link}</span>
-                      <div className="bolim__inner">
-                        <h5>{e[lang]}</h5>
-                      </div>
-                    </a>
+           {
+            display ?(
+              <ThreeDots width='100%' />
+            ):(
+              <h3 style={textSytles(30,700)} className="text-center"> {title[lang]} </h3>
+            )
+           }
+     <div className="facultetInfo">
+              {
+                display ?(
+                  <div style={{marginTop:'-120px'}} className="loader__wrapper">
+                      <DoorDashFavorite width='400px' />
+                      <DoorDashFavorite width='400px' />
+                      <DoorDashFavorite width='400px' />
                   </div>
-                ))}
-            </div>
+                ):(
+                    data &&
+                  data.map((e, index) => (
+                    <AnimateCard key={index} refLink='#' mainTitle={e[lang]} />
+                  ))
+                )
+              }
           </div>
     </div>
   );

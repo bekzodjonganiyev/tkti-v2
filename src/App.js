@@ -16,8 +16,9 @@ import Doktarantura from "./pages/qabul/doktantura/doktarantura";
 import Magistratura from "./pages/qabul/magistratura/magistratura";
 
 // news 
-import ElonlarItem from "./pages/elonlar/elonItem";
-import Elonlar from "./pages/elonlar/elonlar";
+import Yangiliklar from "./pages/news/news";
+import YengiItem from "./pages/news/yengiItem";
+
 
 //Talabalar
 import Students from "./pages/students/Students";
@@ -37,21 +38,12 @@ import RectoratItem from "./pages/rektorat/rectoratItem/rectoratitem";
 import PageStaticAkademikFilial from "./pages/filiallar/filial";
 import YoshlarIttifoqi from "./pages/rektorat/yoshlar_ittifoqi";
 
-import FacultetFrond from "./pages/structure/FakultetId/FacultetFrond";
-import FakultetId from "./pages/structure/FakultetId/FakultetId";
-
-import KafedraName from "./pages/structure/Kafedra/KafedraFrond";
-import KafedraId from "./pages/structure/Kafedra/KafedraId";
-
-import BolimMarkaz from "./pages/structure/BolimMarkaz/BolimMarkaz";
-import BolimMarkazId from "./pages/structure/BolimMarkaz/BolimMarkazId";
-import MarkazId from "./pages/structure/BolimMarkaz/MarkazId";
+import BolimMarkaz from "./pages/structure/BolimMarkaz";
 
 //Faoliyat
-import BusinessActivity from "./pages/biznesaktivity";
 import FaoliyatNew from "./pages/faoliyat/FaoliyatNew";
 import SingleFaoliyat from "./pages/faoliyat/single_page_faoliyat/SingleFaoliyat";
-import TKTIFaoliyat from "./components/Faoliyat/Faoliyat";
+import Silbol from "./pages/simbol/Silbol";
 
 //Institut
 import HighSchool from "./pages/institut/HighSchool/HighSchool";
@@ -67,6 +59,13 @@ import TKTIProject from "./pages/ilmiy";
 
 //Talim-Dasturi
 import DarsJadval from "./pages/talimdasturi/darsjadval";
+import BolimMarkazSingle from "./pages/structure/BolimMarkaz/Single";
+import FacultetComponent from "./pages/structure/fakultet";
+import FakultetSingle from "./pages/structure/fakultet/Single";
+import KafedraComponent from "./pages/structure/Kafedra";
+import KafedraSingle from "./pages/structure/Kafedra/Single";
+import SertifikatComponent from "./pages/sertifikat.js";
+import NashriyotComponent from "./pages/nashriyot";
 
 //Admin
 import Admin from "./pages/admin";
@@ -89,14 +88,10 @@ import StatisticsForStudent from "./pages/admin/statistics/Statistics";
 import QabulData from "./pages/admin/qabul/Qabul";
 import Media from "./pages/admin/media/Media";
 import ProtectedRoute from "./components/admin/protected_route/ProtectedRoute";
-
-
-
+import Banner from "./pages/admin/banner/Banner";
 
 
 function App() {
-  const [variant, setVariant] = useState("");
-
   return (
     <div className="my__container">
       <Header />
@@ -119,40 +114,35 @@ function App() {
         <Route path="/talabalar/startup-loyihalar" element={<Startup />} />
         <Route path="/talabalar/baholash" element={<StudentInfo />} />
         <Route path="/bitiruvchilar" element={<Graduates />} />
+        <Route path="/davlat-ramzlari" element={<Silbol />} />
 
-        <Route path="/elon" element={<Elonlar />} />
-        <Route path="/elon/:id" element={<ElonlarItem />} />
+        <Route path="/elon" element={<Yangiliklar myKey='elon'  />} />
+        <Route path="/news" element={<Yangiliklar myKey='news'/>} />
+        <Route path="/elon/:id" element={<YengiItem myKey='elon' />} />
+        <Route path="/news/:id" element={<YengiItem myKey='news' />} />
 
         <Route path="/rektorat" element={<Rectorat />} />
         <Route path="/rektorat/:id" element={<RectoratItem />} />
 
-        <Route path="/faculty" element={<FacultetFrond />} />
-        <Route path="/facultyId/:id" element={<FakultetId />} />
+        <Route path="/fakultetlar" element={<FacultetComponent />} />
+        <Route path="/fakultetlar/:id" element={<FakultetSingle />} />
 
         <Route path="/bolimMarkaz" element={<BolimMarkaz />} />
-        <Route path="/bolimMarkazId/:id" element={<BolimMarkazId />} />
+        <Route path="/bolimlar/:id" element={<BolimMarkazSingle myKey='bolim' />} />
+        <Route path="/markazlar/:id" element={<BolimMarkazSingle myKey='markaz' />} />
 
-        <Route path="/kafedrafrond" element={<KafedraName />} />
-        <Route path="/kafedraId/:id" element={<KafedraId />} />
-
-        
-      
-        <Route path="/markazId/:id" element={<MarkazId />} />
+        <Route path="/kafedralar" element={<KafedraComponent />} />
+        <Route path="/kafedralar/:id" element={<KafedraSingle />} />
 
         <Route path="/filiallar" element={<PageStaticAkademikFilial />} />
         <Route path="/yoshlar-ittifoqi" element={<YoshlarIttifoqi />} />
-        <Route path="/moliyaviy-faoliyat" element={<BusinessActivity />} />
         <Route path="/faoliyatlar" element={<FaoliyatNew />} />
         <Route path="/faoliyatlar/:ref" element={<SingleFaoliyat />} />
-        <Route
-          path="/moliyaviy-faoliyat"
-          element={<BusinessActivity setVariant={setVariant} />}
-        />
-        <Route
-          path="/moliyaviy-faoliyat/hammasi"
-          element={<TKTIFaoliyat variant={variant} />}
-        />
+        
 
+        <Route path="/sertifikat" element={<SertifikatComponent />} />
+
+        <Route path="/nashriyot" element={<NashriyotComponent />} />
 
 
         <Route path="/faoliyat-hujjatlari" element={<ActivityDocuments />} />
@@ -186,6 +176,7 @@ function App() {
           <Route path="statistics-of-student" element={<ProtectedRoute><StatisticsForStudent /></ProtectedRoute>} />
           <Route path="qabul" element={<ProtectedRoute><QabulData /></ProtectedRoute>} />
           <Route path="media" element={<ProtectedRoute><Media /></ProtectedRoute>} />
+          <Route path="banner" element={<ProtectedRoute><Banner /></ProtectedRoute>} />
 
         </Route>
       </Routes>

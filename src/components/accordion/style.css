@@ -1,7 +1,7 @@
 @keyframes openContent {
     from {
         opacity: 0;
-        transform: scale(0.5);
+        transform: scale(0.8);
     }
     to {
         opacity: 1;
@@ -22,12 +22,14 @@
     align-items: center;
     animation-name: openContent;
     animation-duration: 1.5s;
+    border: 1px solid #02307D;
+    margin-bottom: 5px;
+    border-radius: 7px;
 }
 .accordion__item >h4{
     margin-right: 10px !important;
 }
 .accordion-top, .accordion-bottom{
-    
     display: block;
     content: "";
     width: 0; 

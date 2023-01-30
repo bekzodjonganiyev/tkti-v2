@@ -3,11 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import "./slider.css";
 
 import slide_5 from "../../files/slide1.jpg";
-// import slide_2 from "../../files/slide2.jpg";
-// import slide_3 from "../../files/slide3.jpg";
-// import slide_4 from "../../files/slide4.jpg";
-// import slide_1 from "../../files/Qabul22.jpg";
-// import slide_6 from "../../files/Toshkent_kimyo_texnologiya_instituti.jpg";
 import { Context } from "../../context";
 
 function MainSlider() {

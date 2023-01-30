@@ -8,9 +8,14 @@ import Intqabul from "../../../files/intqabul.pdf";
 import Intvacancy from "../../../files/intvacancy.pdf";
 import Ishchioquvreja1 from "../../../files/ishchiuquvreja1.pdf";
 import { Context } from "../../../context";
+import AnimateCard from '../../../components/animateCard'
+import {ThreeDots, DoorDashFavorite} from '../../../components/animjs'
+import { useEffect } from "react";
+
 
 function InteractiveServices() {
-  const { lang } = useContext(Context);
+  const [display, setDisplay] = useState(true);
+  const { lang, textSytles } = useContext(Context);
   const [title] = useState({
     uz: "Interaktiv xizmatlar reglamentlari",
     ru: "Регламент интерактивных сервисов",
@@ -66,22 +71,35 @@ function InteractiveServices() {
       en: "Regulations of the interactive service of working educational plans",
     },
   ]);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setDisplay(false)
+    },700)
+  },[])
   return (
     <div className="wrapped">
-        <div className="bolimlar__wrapper">
-              <h2 className="text-center">{title[lang]}</h2>
-              <div className="bolimlar__list interaktiv__list">
-                {data &&
+              {
+                display ?(
+                  <ThreeDots width='100%' />
+                ):(
+                  <h2 className="text-center" style={textSytles(30, 700)}>{title[lang]}</h2>
+                )
+              }
+        <div className="facultetInfo">
+                {
+                display ?(
+                  <div style={{marginTop:'-120px'}} className="loader__wrapper">
+                      <DoorDashFavorite width='400px' />
+                      <DoorDashFavorite width='400px' />
+                      <DoorDashFavorite width='400px' />
+                  </div>
+                ):(
+                  data &&
                   data.map((e, index) => (
-                    <div key={index} className="bolim">
-                      <a href={e.link}>
-                        <div className="bolim__inner">
-                          <h4>{e[lang]}</h4>
-                        </div>
-                      </a>
-                    </div>
-                  ))}
-              </div>
+                    <AnimateCard  key={index} refLink={e.link} mainTitle={e[lang]} />
+                  ))
+                )
+                }
             </div>
     </div>
   );

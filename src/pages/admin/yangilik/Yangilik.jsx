@@ -14,9 +14,9 @@ import { Context } from "../../../context";
 
 const Yangilik = () => {
   const imgRef = useRef();
-  const { globalUrl, names } = useContext(Context);
+  const {time, globalUrl, names, convertToHtml,DataDeleter,DataPoster, DataGetter } = useContext(Context);
   const [type, setType] = useState("table");
-  const [data, setData] = useState();
+  const [data, setData] = useState({isFetched: false,error: false,data: {}});
 
   let content = null;
 
@@ -30,13 +30,9 @@ const Yangilik = () => {
     EditorState.createEmpty()
   );
 
-  const convertToHtml = (raw) => {
-    return JSON.stringify(draftToHtml(convertToRaw(raw.getCurrentContent())));
-  };
-
   const analyseNameTableHead = ["Tartib raqam", "Yangilik nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
-  const bodyData = data;
+  const bodyData = data.data;
   const renderBody = (item, index) => {
     return (
       <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
@@ -82,49 +78,15 @@ const Yangilik = () => {
     formData.append("date", e.target.fordate.value);
     formData.append("photo", imgRef.current.files[0]);
 
-    fetch(`${globalUrl}/news/add`, {
-      method: "POST",
-      headers: {
-        Token: localStorage.getItem("token"),
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success) {
-          alert(res.message + "❌");
-        } else {
-          alert(res.message);
-          window.location.reload(false);
-        }
-      })
-      .catch((err) => console.log(err));
+    DataPoster('news/add', formData)
   }
 
   function deleteYangilik(id) {
-    fetch(`${globalUrl}/news/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-        Token: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success) {
-          alert(res.message + "❌");
-        } else {
-          alert("Malumotlar o'chirildi");
-          window.location.reload(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    DataDeleter(`news/${id}`)
   }
 
   useEffect(() => {
-    getData();
+    DataGetter(setData, 'news/all')
   }, []);
 
   if (type === "table") {

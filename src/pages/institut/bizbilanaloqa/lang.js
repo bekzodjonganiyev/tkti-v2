@@ -15,11 +15,12 @@ const BizBilanAloqaLang = {
             first: "Oziq ovqat mahsulotlari texnologiyasi fakulteti",
             second: "Yoqilg'i va organik birikmalar kimyoviy texnologiyasi fakulteti",
             third: "Menejment va kasb ta'limi fakulteti",
-            fourth: "Noorganik moddalar kimyoviy texnologiyasi fakulteti"
+            fourth: "Noorganik moddalar kimyoviy texnologiyasi fakulteti",
+            fifth: "Vinochilik texnologiyasi va sanoat uzumchligi fakulteti"
           },
         text1:`Bizning manzil`,
         text2:`Ishonch telefoni`,
-        text:`TKTI qoshidagi akademik litsey`
+        text3:`TKTI qoshidagi akademik litsey`
     },
     ru:{
         bizningManzil: {
@@ -38,11 +39,12 @@ const BizBilanAloqaLang = {
             second:
               "Факультет Химической технологии топлива и органических соединений",
             third: "Факультет Менеджмента и профессионального образования",
-            fourth: "Факультет Технологии неорганических веществ"
+            fourth: "Факультет Технологии неорганических веществ",
+            fifth: "Факультет технологии виноделия и промышленного виноградарства"
           },
         text1:`Наш адресс`,
         text2:`Телефон доверия`,
-        text:`Академический лицей при ТХТИ`
+        text3:`Академический лицей при ТХТИ`
     },
     en:{
         bizningManzil: {
@@ -60,11 +62,12 @@ const BizBilanAloqaLang = {
             first: "Faculty of technology of foodstuff products",
             second: "Faculty of chemical technology of fuel and organic substances",
             third: "Faculty management and professional education",
-            fourth: "Faculty technology of production of inorganic substances"
+            fourth: "Faculty technology of production of inorganic substances",
+            fifth: "Faculty of technology of winemaking and industrial viticulture"
           },
         text1:`Our address`,
         text2:`Call centre`,
-        text:`Academic Lyceum at TICT`
+        text3:`Academic Lyceum at TICT`
     }
 }
 

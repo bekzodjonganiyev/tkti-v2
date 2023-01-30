@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import About_us from "../../components/aboutus";
-import ElonlarComp from "../../components/elon";
 import MainSlider from "../../components/mainheroslider/slider";
 import YangiliklarComp from "../../components/news";
 import Filter from "../../components/searchsillabus";
@@ -48,7 +47,7 @@ const HomePage = () =>{
                 <h3>{about[lang].new}</h3>
                 </div>
 
-                <YangiliklarComp home={true} />
+                <YangiliklarComp home={true} myKey='news'/>
 
                 <Link to="/news" className="news__info-link">
                 {about[lang].more} <i className="mx-3 fa-solid fa-right-long"></i>
@@ -59,7 +58,7 @@ const HomePage = () =>{
               <div className="news__info">
                 <h3>{about[lang].elon}</h3>
               </div>
-              <ElonlarComp home={true} />
+              <YangiliklarComp home={true} myKey='elon'/>
               <Link to="/elon" className="news__info-link">
                 {about[lang].more} <i className="mx-3 fa-solid fa-right-long"></i>
               </Link>
