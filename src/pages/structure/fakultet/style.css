@@ -51,8 +51,8 @@
     flex-wrap: wrap;
 }
 .container{
-    min-width: 425px;
+    /* min-width: 425px; */
 }
 .facultetDesc, .facultetInfo{
-    min-width: 425px;
+    /* min-width: 425px; */
 }

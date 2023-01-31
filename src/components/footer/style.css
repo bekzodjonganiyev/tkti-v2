@@ -6,7 +6,7 @@ footer{
     justify-content: space-between;
     padding: 30px 20px;
     transition: .3s linear;
-    min-width: 425px;
+    /* min-width: 425px; */
 }
 
 .footer-info{

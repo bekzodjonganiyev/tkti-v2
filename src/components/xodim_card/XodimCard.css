@@ -64,7 +64,7 @@
     margin: 5rem auto;
   }
   .facultetTitle {
-    min-width: 300px;
+    /* min-width: 300px; */
     width: 400px;
     background-color: #ccd7ed;
     /* border: 3px solid #02307D !important; */

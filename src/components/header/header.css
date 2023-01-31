@@ -9,7 +9,7 @@
 
 /* main header styles */
 header {
-  min-width: 490px;
+  /* min-width: 490px; */
   position: sticky;
   top: 0;
   z-index: 999;
@@ -244,13 +244,16 @@ gap: 10px;
     top:0 !important;
     width: 270px !important;
     right: -204px !important;
-    background: white ;
+    /* background: white ; */
+    background: none !important;
    
    
-    padding:  20px;
+    /* padding:  20px; */
     transition: 0.3s linear;
     
     height: 335px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     margin-left:300px;
   }
  
@@ -346,6 +349,7 @@ gap: 10px;
     justify-content: left;
     flex-direction: column;
     padding: 10px 20px;
+    margin: 0 auto;
   }
   .show__header .header__top__main{
     display: flex;
@@ -393,7 +397,8 @@ gap: 10px;
 @media only screen and (max-width: 550px){
   .hovered-content{
     /* min-width:  333px; */
-    width: 333px;
+    /* width: 333px; */
+    background: none !important;
     
   }
   .header__top__icon{

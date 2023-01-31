@@ -4,7 +4,7 @@
 
 .generic-table table {
     width: 95%;
-    min-width: 400px;
+    /* min-width: 400px; */
     border-spacing: 0;
     margin: 0 auto;
 }

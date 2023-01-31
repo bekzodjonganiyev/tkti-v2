@@ -2,7 +2,7 @@
     /* min-width: 425px; */
 }
 .newsPage{
-    min-width: 490px;
+    /* min-width: 490px; */
 }
 .card__control {
     display: flex;
@@ -62,7 +62,7 @@
 }
 .elonlar{
     background:#eff5fb;
-    min-width: 425px;
+    /* min-width: 425px; */
 }
 .news__info h3{
     display: flex;
@@ -95,6 +95,6 @@ color: #0350D0 !important;
     .elonlar{
         box-sizing:border-box;
         background:#eff5fb;
-       min-width: 490px;
+       /* min-width: 490px; */
     }
 }

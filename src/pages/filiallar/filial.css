@@ -8,7 +8,7 @@
     margin: 0 auto;
 }
 .wrapped{
-  min-width: 425px;
+  /* min-width: 425px; */
 }
 .tab {
     margin-top: 30px;

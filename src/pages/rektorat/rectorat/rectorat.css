@@ -8,7 +8,7 @@
 
 }
 .wrapped, .accordion__secret__item {
-    min-width: 425px;
+    /* min-width: 425px; */
 }
 .rectorat__menu{
     width: 40%;

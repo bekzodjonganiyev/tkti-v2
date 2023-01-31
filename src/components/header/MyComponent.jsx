@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { Institut } from "../../icons/Icons";
-import Logo from '../../files/logo.png'
+import Logo from "../../files/logo.png";
 import "./MyComponent.css";
 import HeaderLang from "./lang";
 import { Context } from "../../context";
@@ -97,12 +97,12 @@ const MyComponent = () => {
         },
         {
           labelId: HeaderLang[lang].talim[3],
-          href: '/sertifikat',
+          href: "/sertifikat",
         },
         {
           labelId: HeaderLang[lang].talim[4],
-          href: '/nashriyot',
-        }
+          href: "/nashriyot",
+        },
       ],
     },
     {
@@ -180,18 +180,39 @@ const MyComponent = () => {
   function test(params) {
     const result = [];
     for (let item of params) {
-      result.push({ labelId: item[`title_${lang}`], href: `/fakultetlar/${item.title_uz.toLowerCase().split(' ').map(str => str.split('').filter(char => /[a-zA-Z]/.test(char)).join('')).join('-')}-${item._id}` });
+      result.push({
+        labelId: item[`title_${lang}`],
+        href: `/fakultetlar/${item.title_uz
+          .toLowerCase()
+          .split(" ")
+          .map((str) =>
+            str
+              .split("")
+              .filter((char) => /[a-zA-Z]/.test(char))
+              .join("")
+          )
+          .join("-")}-${item._id}`,
+      });
     }
     return result;
   }
+  const screenWidth = window.screen.width;
+  console.log();
   return (
     <>
       <div className="buttons">
         {buttons.map((button) => (
           <button
             key={button.id}
-            onMouseEnter={() => setHoveredButton({ ...button })}
-            onMouseLeave={() => setHoveredButton(null)}
+            onMouseEnter={() =>
+              screenWidth > 1120 ? setHoveredButton({ ...button }) : null
+            }
+            onMouseLeave={() =>
+              screenWidth > 1120 ? setHoveredButton(null) : null
+            }
+            onClick={() =>
+              screenWidth < 1120 ? setHoveredButton({ ...button }) : null
+            }
           >
             {button.name}
           </button>
@@ -202,14 +223,16 @@ const MyComponent = () => {
             <div
               className="hovered-content"
               onMouseEnter={() => setHoveredButton({ ...hoveredButton })}
-              onMouseLeave={() => setHoveredButton(null)}
+              onMouseLeave={() =>
+                screenWidth > 1120 ? setHoveredButton(null) : null
+              }
             >
               <ul className="hovered-list">
                 <div className="list-info">
                   <span>
                     <img className="hovered_logo" src={Logo} alt="" />
                     {/* <Institut /> */}
-                   
+
                     <h3>{hoveredButton.name}</h3>
                   </span>
                   <p>{hoveredButton.fakultetInfo}</p>
