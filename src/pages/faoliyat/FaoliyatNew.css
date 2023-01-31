@@ -11,10 +11,11 @@
 }
 
 .activity__item{
-  width: 100%;
+  width: 90%;
   border: 1px dotted rgb(106, 148, 234);
   border-radius: 10px;
-  margin-bottom: 15px;
+  
+  margin: 10px auto;
   padding: 3px 5px;
 }
 

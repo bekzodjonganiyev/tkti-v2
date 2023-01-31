@@ -257,7 +257,7 @@ const FaoliyatNew = () => {
         {state.get && !state.error ? (
           Object.keys(obj).map((e, index) => (
             <div className="activity__item" key={index}>
-              <h2 onClick={() => togglerFunction(index)}>{obj[e][lang]}</h2>
+              <h4 onClick={() => togglerFunction(index)}>{obj[e][lang]}</h4>
               <div
                 className={`activity__nested__item activity__toggle${index}`}
               >

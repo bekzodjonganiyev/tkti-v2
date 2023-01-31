@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useContext } from "react";
 import YoshLarIttifoqiLang from "./lang";
-import YoshlarItt from "../../../files/yosh.png";
+import YoshlarItt from "../../../files/Yoshlari.png";
 import "./index.css";
 import { Context } from "../../../context";
 
@@ -37,13 +37,13 @@ function YoshlarIttifoqi() {
     <div ref={tabOne} className="maqsad__wrapper tabcontent opened ">
       <h3>{YoshLarIttifoqiLang[lang].maqsad.title}</h3>
       <span>
-        <b>{YoshLarIttifoqiLang[lang].maqsad.text1}</b>
+        <p>{YoshLarIttifoqiLang[lang].maqsad.text1}</p>
       </span>
       <span>
-        <b>{YoshLarIttifoqiLang[lang].maqsad.text2}</b>
+        <p>{YoshLarIttifoqiLang[lang].maqsad.text2}</p>
       </span>
       <span>
-        <b>{YoshLarIttifoqiLang[lang].maqsad.text3}</b>
+        <p>{YoshLarIttifoqiLang[lang].maqsad.text3}</p>
       </span>
       {YoshLarIttifoqiLang[lang].maqsad.data.map((e, index) => (
         <span key={index}>- {e}</span>
