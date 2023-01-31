@@ -56,6 +56,7 @@ import WorkPlan from "./pages/institut/workPlan/WorkPlan";
 //Ilmiy-Tadqiqot
 import Startup from "./pages/students/startup/Startup";
 import TKTIProject from "./pages/ilmiy";
+import SearchedPage from "./pages/searchedPage/SearchedPage";
 
 //Talim-Dasturi
 import DarsJadval from "./pages/talimdasturi/darsjadval";
@@ -155,7 +156,7 @@ function App() {
 
         <Route path="/institut-loyihalari" element={<TKTIProject />} />
         <Route path="/startup-loyihalar" element={<Startup />} />
-
+        <Route path="/filter/result" element={<SearchedPage />} />
         <Route path="/dars-jadvali" element={<DarsJadval />} />
         <Route path="/login" element={<AdminLogin />} />
         <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>}>
