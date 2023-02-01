@@ -96,7 +96,7 @@ function InteractiveServices() {
                 ):(
                   data &&
                   data.map((e, index) => (
-                    <AnimateCard  key={index} refLink={e.link} mainTitle={e[lang]} />
+                    <AnimateCard isPdf={true}  key={index}  refLink={e.link} mainTitle={e[lang]} />
                   ))
                 )
                 }
