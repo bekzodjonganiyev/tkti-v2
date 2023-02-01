@@ -20,9 +20,9 @@ const QuestionForm = ({ divclass }) => {
         `Yuborish`,
       ],
       right: `<br />  
-      Moliyaviy ishlar bo'yicha prorektor __ <hr /> 
-              Тел. +998938269119 <hr />
-              E-mail: ron25my@gmail.com <hr /> 
+      Iqtisodiy va tashkiliy masalalar bo‘yicha prorektor:  Qodirov Bobiromon Bekmurodovich <hr /> 
+              Тел. +998712447915 <hr />
+              E-mail: tkti_b.kodirov@edu.uz <hr /> 
               Ish vaqti: Dush-Shan, soat  09:00-17:00 gacha  <hr /> 
               Manzil: Toshkent sh., Navoiy 9, 32-uy, 2-bino`,
     },
@@ -37,9 +37,9 @@ const QuestionForm = ({ divclass }) => {
         `Отправит`,
       ],
       right: ` <br />
-      Вице-канцлер по финансовым вопросам__ <hr />
-             Тел: +998938269119 <hr />
-             Эл. адрес: ron25my@gmail.com <hr />
+      Вице-канцлер по финансовым вопросам: Кадыров Бобиромон Бекмуродович <hr />
+             Тел: +998712447915 <hr />
+             Эл. адрес: tkti_b.kodirov@edu.uz <hr />
              Время работы: Пн-Сб, 09:00-17:00 <hr />
              Адрес: г.Ташкент, Навои 9, дом 32, корпус 2`,
     },
@@ -54,9 +54,9 @@ const QuestionForm = ({ divclass }) => {
         `Sending`,
       ],
       right: ` <br />
-      Vice Chancellor for Financial Affairs __ <hr />
-              Tel: +998938269119 <hr />
-              Email: ron25my@gmail.com <hr />
+      Vice Chancellor for Financial Affairs: Qodirov Bobiromon Bekhmurodovich <hr />
+              Tel: +998712447915 <hr />
+              Email: tkti_b.kodirov@edu.uz <hr />
               Working hours: Mon-Sat, 09:00-17:00 <hr />
               Address: Tashkent city, Navoi st, 32 apt, 2nd building`,
     },
@@ -170,6 +170,16 @@ const FaoliyatNew = () => {
 
   const [state, setState] = useState({ get: false, error: false, data: [] });
   const obj = {
+    rektorat_id: {
+      uz: `Rektoratning faoliyatlari`,
+      ru: `Деятельность ректората`,
+      en: `Activities of the Rectorate`,
+    },
+    fakultet_id: {
+      uz: `Fakultetning faoliyatlari`,
+      ru: `Деятельность факультета`,
+      en: `Activities of the faculty`,
+    },
     kafedra_id: {
       uz: `Kafedraning faoliyatlari`,
       ru: `Деятельность отдела`,
@@ -184,16 +194,6 @@ const FaoliyatNew = () => {
       uz: `Bo'limning faoliyatlari`,
       ru: `Деятельность отдела`,
       en: `Activities of the department`,
-    },
-    rektorat_id: {
-      uz: `Rektoratning faoliyatlari`,
-      ru: `Деятельность ректората`,
-      en: `Activities of the Rectorate`,
-    },
-    fakultet_id: {
-      uz: `Fakultetning faoliyatlari`,
-      ru: `Деятельность факультета`,
-      en: `Activities of the faculty`,
     },
   };
 
@@ -240,7 +240,7 @@ const FaoliyatNew = () => {
     },
     en: {
       a1: `Activity`,
-      b1: `There are several activities going on in the university, in this department you
+      a2: `There are several activities going on in the university, in this department you
       Management, Faculty, Department, Department and all of the Centers
       you can follow their activities. In addition, activities
       each category itself according to the above categories

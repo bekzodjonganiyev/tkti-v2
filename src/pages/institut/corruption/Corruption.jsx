@@ -20,10 +20,10 @@ const Corruption = () => {
             {documentLang[lang].name.name6}
           </p>
           <p>{documentLang[lang].name.name7}: (+99871) 244-78-49;</p>
-          <p>
+          {/* <p>
             {documentLang[lang].name.name8}:{" "}
             <a href="http://rector.tcti.uz/">rector.tcti.uz</a>
-          </p>
+          </p> */}
     </div>
   );
 };

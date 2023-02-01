@@ -11,8 +11,8 @@ const BedroomLAng = {
                 
                 Talabalarni joylashtirish markazi <br/>
                 Konsultatsiya vaqti: 
-                I - IV: 9:00 - 17:00 
-                V: 9:00 - 15:45  <br/>
+                9:00 - 17:00 
+                9:00 - 15:45  <br/>
                 Tushlik tanaffusi: 13:00 - 14:00 <br />
                 <br /> <br />
                 tel. +998712730296 (turar joy) <br />
@@ -34,7 +34,7 @@ const BedroomLAng = {
             },
             {
                 title:`Yotoqxona haqida ma'lumot`,
-                content:`<span className='fw-bold'>Bino turi</span>	– 4 qavatli remontsiz bino <br/>
+                content:`<span className='fw-bold'>Bino turi</span>	– 4 qavatli bino <br/>
                 <span className='fw-bold'>Xonalar va joylar soni</span>	- 94 xona, 201 o'rin <br/>
                 <span className='fw-bold'>Xona turlari</span>  - 3 kishilik xona, 4 kishilik xona, 5 kishilik xona <br/>
                 <span className='fw-bold'>Mebel va boshqa inventar</span>	- barcha xonalarda ko'rpa-to'shak, stol, stullar, shkaf va shkaflar bor - mebellarning bir qismi eski turdagi, ba'zilari ta'mirlangan - oshxonalarda gaz plitasi va stollar, shkaflar - oshxonalardagi mebel va jihozlar nisbatan yangi <br/>
@@ -57,7 +57,7 @@ const BedroomLAng = {
                 <br /> <br />
                 Центр трудоустройства студентов <br />
                 Время консультации: <br />
-                I - IV: 9:00 - 17:00 <br />
+                9:00 - 17:00 <br />
                 В: 9:00 - 15:45 <br />
                 Обеденный перерыв: 11:45 - 12:30 <br />
                 <br /> <br />
@@ -80,7 +80,7 @@ const BedroomLAng = {
             },
             {
                 title:`Информация об общежитии`,
-                content:`<span className='fw-bold'>Тип здания</span> — 4-х этажное здание без ремонта <br/>
+                content:`<span className='fw-bold'>Тип здания</span> — 4-х этажное здание <br/>
                 <span className='fw-bold'>Количество номеров и мест</span> - 94 номера, 201 спальное место <br/>
                 <span className='fw-bold'>Типы номеров</span> - 3-местный номер, 4-местный номер, 5-местный номер <br/>
                 <span className='fw-bold'>Мебель и другой инвентарь</span> - во всех комнатах есть кровати, столы, стулья, шкафы и шкафы - часть мебели старая, часть отремонтирована - газовая плита и столы, шкафы в кухни - мебель и техника на кухнях относительно новые <br/>
@@ -103,8 +103,8 @@ const BedroomLAng = {
                 <br /> <br />
                 Student Placement Center <br />
                 Consultation time: <br />
-                I - IV: 9:00 - 17:00 <br />
-                V: 9:00 - 15:45 <br />
+                9:00 - 17:00 <br />
+                9:00 - 15:45 <br />
                 Lunch break: 11:45 - 12:30 <br />
                 <br /> <br />
                 tel. +998712730296 (residence) <br />
@@ -126,7 +126,7 @@ const BedroomLAng = {
             },
             {
                 title:`Information about the dormitory`,
-                content:`<span className='fw-bold'>Type of building</span> – 4-story building without repair <br/>
+                content:`<span className='fw-bold'>Type of building</span> – 4-story building <br/>
                 <span className='fw-bold'>Number of rooms and places</span> - 94 rooms, 201 beds <br/>
                 <span className='fw-bold'>Room types</span> - 3-person room, 4-person room, 5-person room <br/>
                 <span className='fw-bold'>Furniture and other inventory</span> - all rooms have beds, tables, chairs, wardrobes and wardrobes - some of the furniture is old, some is renovated - gas stove and tables, cabinets in kitchens - furniture and equipment in kitchens are relatively new <br/>

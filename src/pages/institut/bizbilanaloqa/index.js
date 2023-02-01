@@ -28,7 +28,7 @@ function BizBilanAloqa() {
                 </a>
                 <br />
                 <span>{BizBilanAloqaLang[lang].bizningManzil.second}</span>
-                <a href="tel:+998712447920">(+998-71) 244-79-20</a>
+                <a href="tel:+998712447920">(+998-71) 244-79-15</a>
                 <br />
                 <span>{BizBilanAloqaLang[lang].bizningManzil.third}</span>{" "}
                 (+998-71) 244-79-17 <br />

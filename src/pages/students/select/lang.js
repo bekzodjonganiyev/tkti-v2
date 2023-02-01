@@ -4,18 +4,11 @@ const SelectLang = {
             title:'Stipendiyalar',
             content:`Universitetning iqtidorli stipendiyalari eng faol talabalarga beriladi, ular o'qishlarida, tadqiqotlarida yoki badiiy loyihalarida ajoyib natijalarga erishadilar, TKTI nomini targ'ib qiluvchi biznes, innovatsiyalar va ijtimoiy faoliyat sohalarida darsdan tashqari mashg'ulotlarda faol ishtirok etadilar. <br />
             Iste’dod stipendiyasi tanlovida bakalavr va magistratura bosqichining barcha talabalari, shuningdek, integratsiyalashgan va ta’lim bo‘lmagan talabalar ishtirok etishlari mumkin, birinchi kursning birinchi semestridagi bakalavr talabalari bundan mustasno. <br />
-            Universitetning Talent stipendiyasi miqdori oyiga 250 EUR. Bir semestr uchun ajratilgan yordamning umumiy miqdori 1000 evro. <br />
-            2022-2023 yilgi iste'dod stipendiyasi tanlovi: <br />
-            Kuzgi semestr | 2022 yil 9 sentyabr - 2022 yil 22 sentyabr <br />
-            Bahorgi semestr | 2023 yil 10 fevral - 2023 yil 23 fevral <br />
-            2021-2022 yil bahorgi semestr yakunlari. <br />
-            Barcha kerakli hujjatlar va ko'rsatmalar AISda joylashtirilishi kerak. Qo'shimcha ma'lumot va muhim hujjatlar Batafsil ma'lumot: <br />
-            
-            el. p. klausk@ktu.lt <br />`
+            `
         },
         {
             title:`Doktorantura ta'lim`,
-            content:`Doktorantura ilmiy tadqiqot va tajriba-konstruktorlik ishlarini mustaqil olib borishga, ilmiy muammolarni hal qilishga qodir, akademik va akademik boʻlmagan muhitda ishlay oladigan olimlarni tayyorlashga moʻljallangan. Doktoranturada oʻqish muddati 4 yil (kunduzgi taʼlim boʻyicha) boʻlib, ularga magistratura yoki unga tenglashtirilgan malakaga ega boʻlgan shaxslar hujjat topshirishlari mumkin. Doktorantura dasturiga tadqiqotlar (30 AKTS), tadqiqot, doktorlik dissertatsiyasini tayyorlash va himoya qilish kiradi. Doktoranturani tamomlagandan va doktorlik dissertatsiyasini himoya qilgandan keyin fan doktori ilmiy darajasi beriladi.`
+            content:`Doktorantura ilmiy tadqiqot va tajriba-konstruktorlik ishlarini mustaqil olib borishga, ilmiy muammolarni hal qilishga qodir, akademik va akademik boʻlmagan muhitda ishlay oladigan olimlarni tayyorlashga moʻljallangan. Doktoranturada oʻqish muddati 3 yil (kunduzgi taʼlim boʻyicha) boʻlib, ularga magistratura yoki unga tenglashtirilgan malakaga ega boʻlgan shaxslar hujjat topshirishlari mumkin. Doktorantura dasturiga tadqiqotlar (30 AKTS), tadqiqot, doktorlik dissertatsiyasini tayyorlash va himoya qilish kiradi. Doktoranturani tamomlagandan va doktorlik dissertatsiyasini himoya qilgandan keyin fan doktori ilmiy darajasi beriladi.`
         },
         {
             title:`Sirtqi ta'lim`,
