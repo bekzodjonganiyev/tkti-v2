@@ -89,7 +89,7 @@ const MyComponent = () => {
       label: [
         {
           labelId: HeaderLang[lang].talim[1],
-          href: "/dars-jadvali",
+          href: "https://tkti-2023.edupage.org/timetable/view.php",
         },
         {
           labelId: HeaderLang[lang].talim[2],

@@ -10,7 +10,7 @@ const SelectLang = {
             Bahorgi semestr | 2023 yil 10 fevral - 2023 yil 23 fevral <br />
             2021-2022 yil bahorgi semestr yakunlari. <br />
             Barcha kerakli hujjatlar va ko'rsatmalar AISda joylashtirilishi kerak. Qo'shimcha ma'lumot va muhim hujjatlar Batafsil ma'lumot: <br />
-            tel. +370 37 300 327; +3706 14 200 55 <br />
+            
             el. p. klausk@ktu.lt <br />`
         },
         {
@@ -37,7 +37,7 @@ const SelectLang = {
             Весенний семестр | 10 февраля 2023 г. - 23 февраля 2023 г. <br />
             Итоги весеннего семестра 2021-2022 гг. <br />
             Все необходимые документы и инструкции должны быть размещены в АИС. Дополнительная информация и важные документы Дополнительная информация: <br />
-            тел. +370 37 300 327; +3706 14 200 55 <br />
+            
             люди п. klausk@ktu.lt <br />`
         },
         {
@@ -64,7 +64,7 @@ const SelectLang = {
             Spring Semester | February 10, 2023 - February 23, 2023 <br />
             Results of the spring semester 2021-2022. <br />
             All necessary documents and instructions must be placed in AIS. Additional information and important documents More information: <br />
-            tel. +370 37 300 327; +3706 14 200 55 <br />
+         
             people p. klausk@ktu.lt <br />`
         },
         {
