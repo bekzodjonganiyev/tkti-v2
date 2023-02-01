@@ -17,6 +17,9 @@ const Bolim = () => {
   const [bolimData, setBolimData] = useState();
   const [bolimXodim, setBolimXodim] = useState();
   const [onEdit, setOnEdit] = useState({});
+  const [search, setSearch] = useState("");
+  const [xodimSearch, setXodimSearch] = useState("");
+
   let content = null;
 
   const props = {
@@ -69,7 +72,7 @@ const Bolim = () => {
     "Xodim ismi nomi",
     "Bo`limi",
     "Amallar",
-];
+  ];
   const renderXodimHead = (item, index) => <th key={index}>{item}</th>;
   const renderXodimBody = (item, index) => {
     return (
@@ -192,25 +195,37 @@ const Bolim = () => {
     content = (
       <>
         {bolimData && (
-          <Table
-            headData={analyseNameTableHead}
-            renderHead={renderHead}
-            bodyData={bolimData}
-            renderBody={renderBody}
-            limit={10}
-          />
+          <>
+            <input className="form-control" type="text" onChange={(e) => setSearch(e.target.value)} />
+            <Table
+              headData={analyseNameTableHead}
+              renderHead={renderHead}
+              bodyData={bolimData}
+              renderBody={renderBody}
+              limit={10}
+              search={search}
+            />
+          </>
         )}
         <br />
         <br />
         <p style={{ fontSize: "30px", textAlign: "center" }}>Xodimlar</p>
         {bolimXodim && (
-          <Table
-            headData={xodimTableHead}
-            renderHead={renderXodimHead}
-            bodyData={bolimXodim}
-            renderBody={renderXodimBody}
-            limit={10}
-          />
+          <>
+            <input
+              className="form-control"
+              type="text"
+              onChange={(e) => setXodimSearch(e.target.value)}
+            />
+            <Table
+              headData={xodimTableHead}
+              renderHead={renderXodimHead}
+              bodyData={bolimXodim}
+              renderBody={renderXodimBody}
+              limit={10}
+              search={xodimSearch}
+            />
+          </>
         )}
       </>
     );
