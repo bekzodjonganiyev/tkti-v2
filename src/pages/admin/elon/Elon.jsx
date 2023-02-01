@@ -10,7 +10,7 @@ import Table from "../../../components/admin/table/Table";
 import { Context } from "../../../context";
 const Elon = () => {
   const imgRef = useRef();
-  const { globalUrl, names } = useContext(Context);
+  const { time, globalUrl, names } = useContext(Context);
   const [type, setType] = useState("table");
   const [data, setData] = useState();
   let content = null;
@@ -24,7 +24,7 @@ const Elon = () => {
     EditorState.createEmpty()
   );
   const convertToHtml = (raw) => {
-    return (draftToHtml(convertToRaw(raw.getCurrentContent())));
+    return draftToHtml(convertToRaw(raw.getCurrentContent()));
   };
   const analyseNameTableHead = ["Tartib raqam", "Elon nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
@@ -69,7 +69,8 @@ const Elon = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
-    formData.append("photo", imgRef.current.files[0]);
+    formData.append("date", e.target.date.value);
+    formData.append("photo", e.target.photo.files[0]);
     fetch(`${globalUrl}/elon/add`, {
       method: "POST",
       headers: {
@@ -87,6 +88,8 @@ const Elon = () => {
         }
       })
       .catch((err) => console.log(err));
+
+    console.log(formData);
   }
   function deleteYangilik(id) {
     fetch(`${globalUrl}/elon/${id}`, {
@@ -171,12 +174,18 @@ const Elon = () => {
             <input
               type="file"
               id="forImg"
-              multiple
+              name="photo"
               accept="image/png, image/gif, image/jpeg"
               ref={imgRef}
             />
           </label>
         </div>
+        <div>
+          <label htmlFor="forDate">
+            <input type="date" id="forDate" name="date" />
+          </label>
+        </div>
+
         <Button name="Saqlash" />
       </form>
     );
