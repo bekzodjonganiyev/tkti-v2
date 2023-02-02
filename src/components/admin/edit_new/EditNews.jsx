@@ -1,20 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ContentState, convertFromHTML, EditorState } from "draft-js";
+import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
+
+import "./EditNews.css";
+
+import Button from "../../../components/admin/button/Button";
 
 import { Context } from "../../../context";
 
-const EditNews = ({ id }) => {
-  const { globalUrl, convertToHtml } = useContext(Context);
+const EditNews = ({ id, url }) => {
+  const { globalUrl, convertToHtml, convertToEntityMap } = useContext(Context);
   const [data, setData] = useState({
     isFetched: false,
     data: {},
     error: false,
-  });
-  const [fetchedData, setFetchedData] = useState({
-    body_uz: "",
-    body_ru: "",
-    body_en: "",
   });
   const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
     EditorState.createEmpty()
@@ -26,17 +25,39 @@ const EditNews = ({ id }) => {
     EditorState.createEmpty()
   );
 
-  function converter(data) {
-    const contentBlock = convertFromHTML(data);
-    const contentState = ContentState.createFromBlockArray(
-      contentBlock.contentBlocks,
-      contentBlock.entityMap
-    );
-    return contentState;
+  function putData(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("title_uz", e.target.title_uz.value);
+    formData.append("title_ru", e.target.title_ru.value);
+    formData.append("title_en", e.target.title_en.value);
+    formData.append("body_uz", convertToHtml(asosiyVazifaUz));
+    formData.append("body_ru", convertToHtml(asosiyVazifaRu));
+    formData.append("body_en", convertToHtml(asosiyVazifaEn));
+    formData.append("date", e.target.date.value);
+    formData.append("photo", e.target.photo.files[0]);
+
+    fetch(`${globalUrl}/${url}/${id}`, {
+      method: "PUT",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + " ❌");
+        } else {
+          alert(res.message);
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   function getData() {
-    fetch(`${globalUrl}/elon/${id}`, {
+    fetch(`${globalUrl}/${url}/${id}`, {
       headers: {
         "Content-type": "application/json",
         Token: localStorage.getItem("token"),
@@ -49,11 +70,6 @@ const EditNews = ({ id }) => {
           data: res.data,
           error: false,
         });
-        setFetchedData({
-          body_uz: res.data.body_uz,
-          body_ru: res.data.body_ru,
-          body_en: res.data.body_en,
-        });
       })
       .catch((err) => {
         console.log(err);
@@ -65,19 +81,66 @@ const EditNews = ({ id }) => {
 
   useEffect(() => {
     if (data.isFetched) {
-      setAsosiyVazifaUz(EditorState.createWithContent(converter(fetchedData.body_uz)));
-      setAsosiyVazifaRu(EditorState.createWithContent(converter(fetchedData.body_ru)));
-      setAsosiyVazifaEn(EditorState.createWithContent(converter(fetchedData.body_en)));
+      setAsosiyVazifaUz(
+        EditorState.createWithContent(convertToEntityMap(data.data.body_uz))
+      );
+      setAsosiyVazifaRu(
+        EditorState.createWithContent(convertToEntityMap(data.data.body_ru))
+      );
+      setAsosiyVazifaEn(
+        EditorState.createWithContent(convertToEntityMap(data.data.body_en))
+      );
     }
   }, [data.isFetched]);
 
   useEffect(() => {
     getData();
   }, []);
-
-  console.log(data);
   return (
-    <div>
+    <form className="text-editor-form-forEdit" onSubmit={putData}>
+      {/* TITLE UZ */}
+      <div>
+        <label htmlFor="forUzName">
+          Elon uchun bosh sahidada korinadigan sarlavha(UZ)
+          <input
+            type="text"
+            id="forUzName"
+            name="title_uz"
+            defaultValue={data.isFetched ? data.data.title_uz : "" }
+          />
+        </label>
+      </div>
+      {/* TITLE UZ */}
+
+      {/* TITLE RU */}
+      <div>
+        <label htmlFor="forRuName">
+          Elon uchun bosh sahidada korinadigan sarlavha(RU)
+          <input
+            type="text"
+            id="forRuName"
+            name="title_ru"
+            defaultValue={data.isFetched ? data.data.title_ru : "" }
+          />
+        </label>
+      </div>
+      {/* TITLE RU */}
+
+      {/* TITLE EN */}
+      <div>
+        <label htmlFor="forEnName">
+          Elon uchun bosh sahidada korinadigan sarlavha(EN)
+          <input
+            type="text"
+            id="forEnName"
+            name="title_en"
+            defaultValue={data.isFetched ? data.data.title_en : "" }
+          />
+        </label>
+      </div>
+      {/* TITLE EN */}
+
+      {/* BODY UZ */}
       <div>
         <span className="textEditorName">Asosiy Vazifa(UZ)</span>
         <Editor
@@ -88,6 +151,9 @@ const EditNews = ({ id }) => {
           onEditorStateChange={(a) => setAsosiyVazifaUz(a)}
         />
       </div>
+      {/* BODY UZ */}
+
+      {/* BODY RU */}
       <div>
         <span className="textEditorName">Asosiy Vazifa(RU)</span>
         <Editor
@@ -98,6 +164,9 @@ const EditNews = ({ id }) => {
           onEditorStateChange={(a) => setAsosiyVazifaRu(a)}
         />
       </div>
+      {/* BODY RU */}
+
+      {/* BODY EN */}
       <div>
         <span className="textEditorName">Asosiy Vazifa(EN)</span>
         <Editor
@@ -108,7 +177,29 @@ const EditNews = ({ id }) => {
           onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
         />
       </div>
-    </div>
+      {/* BODY EN */}
+
+      {/* POSTER IMG */}
+      <div className="image-and-date">
+        <label htmlFor="forPhoto">
+          Elon uchun rasm(Poster img)
+          <input type="file" id="forPhoto" name="photo" />
+        </label>
+
+        <label htmlFor="forDate">
+          Elon uchun mos sanani kiriting
+          <input
+            type="date"
+            id="forDate"
+            name="date"
+            defaultValue={data.isFetched ? data.data.date : ""}
+          />
+        </label>
+      </div>
+      {/* POSTER IMG */}
+
+      <Button name="Yangilash" />
+    </form>
   );
 };
 

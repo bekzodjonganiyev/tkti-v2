@@ -8,11 +8,13 @@ import Input from "../../../components/admin/input/Input";
 import Button from "../../../components/admin/button/Button";
 import Table from "../../../components/admin/table/Table";
 import { Context } from "../../../context";
+import ModalWindow from "../../../components/admin/modal-window/ModalWindow";
 const Elon = () => {
   const imgRef = useRef();
-  const { time, globalUrl, names } = useContext(Context);
+  const { time, globalUrl, names, convertToHtml } = useContext(Context);
   const [type, setType] = useState("table");
   const [data, setData] = useState();
+  const [onEdit, setOnEdit] = useState({});
   let content = null;
   const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
     EditorState.createEmpty()
@@ -23,9 +25,6 @@ const Elon = () => {
   const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
     EditorState.createEmpty()
   );
-  const convertToHtml = (raw) => {
-    return draftToHtml(convertToRaw(raw.getCurrentContent()));
-  };
   const analyseNameTableHead = ["Tartib raqam", "Elon nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   const bodyData = data;
@@ -35,7 +34,16 @@ const Elon = () => {
         <td>{index + 1}</td>
         <td>{item.title_uz}</td>
         <td>
-          <button className="event-btn edit" onClick={() => {}}>
+          <button
+            className="event-btn edit"
+            onClick={() =>
+              setOnEdit({
+                open: true,
+                id: item._id,
+                name: item.title_uz
+              })
+            }
+          >
             <i className="fa fa-edit"></i>
           </button>
           <button
@@ -192,6 +200,11 @@ const Elon = () => {
   }
   return (
     <div className="yangilik">
+      {
+        onEdit.open && (
+          <ModalWindow id={onEdit.id} url={"elon"} name={onEdit.name} closeModal={() => setOnEdit({open: false})}/>
+        )
+      }
       <FormHeader
         title="Elon"
         event1="Elonlar jadvali"

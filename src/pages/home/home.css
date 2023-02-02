@@ -42,7 +42,7 @@
     padding: 10px;
     border-radius: 15px;
     background: whitesmoke;
-    z-index: 200;
+    z-index: 999;
 }
 
 .modal__content a {

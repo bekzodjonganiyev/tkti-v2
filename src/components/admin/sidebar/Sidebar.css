@@ -11,13 +11,14 @@ aside {
   padding: 0px 20px 20px 20px;
   box-sizing: border-box;
   scrollbar-width: 0px;
+  scrollbar-base-color: aliceblue;
 }
 
 /* LOGO */
 .side-logo {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1;
   height: 70px;
   padding-top: 20px;
   background: inherit;

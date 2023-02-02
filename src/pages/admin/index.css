@@ -12,7 +12,7 @@ section {
   flex-grow: 1;
   padding-bottom: 100px;
   background:#cddcf6;
-  min-height: 800px;
+  min-height: 100vh;
 }
 
 nav {

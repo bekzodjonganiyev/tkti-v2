@@ -24,11 +24,7 @@ function YangiliklarComp({ home, myKey }) {
         (data) =>
           data.success &&
           setNews({
-            data: home
-              ? data.data
-                  .sort((a, b) => new Date(b.date) - new Date(a.date))
-                  .slice(0, 3)
-              : data.data.sort((a, b) => new Date(b.date) - new Date(a.date)),
+            data: home ? data.data.slice(0, 4) : data.data,
             isFetched: true,
           })
       )

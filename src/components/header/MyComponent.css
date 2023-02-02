@@ -1,6 +1,6 @@
 .buttons {
   position: relative;
-  z-index: 999;
+  z-index: 100;
   width: max-content;
   display: inline-block;
   text-align: right;

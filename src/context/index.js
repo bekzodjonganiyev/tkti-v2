@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import draftToHtml from "draftjs-to-html";
-import {convertToRaw} from "draft-js"
+import {convertToRaw, ContentState, convertFromHTML} from "draft-js"
 import { useNavigate } from "react-router-dom";
 
 const Context = React.createContext();
@@ -15,7 +15,7 @@ function Provider({ children }) {
   const [textEditorBodyEn, setTextEditorBodyEn] = useState();
   const [names, setNames] = useState();
   const [selectValue, setSelectValue] = useState();
-  //const globalUrl = "http://localhost:5000";
+  // const globalUrl = "http://localhost:5000";
   const globalUrl = "http://backend.tkti.uz";
 
 
@@ -24,9 +24,9 @@ function Provider({ children }) {
     const kun = String(date.getDate()).padStart(2, 0);
     const oy = String(date.getMonth() + 1).padStart(2, 0);
     const soat = String(date.getHours()).padStart(2,0);
-    const minut = String(date.getMinutes()).padStart(2.0)
+    const minut = String(date.getMinutes()).padStart(2.0);
     const yil = date.getFullYear();
-    return `${soat}:${minut} | ${kun}.${oy}.${yil}`;
+    return `${kun}.${oy}.${yil}`;
   };
 
   const textSytles = (size, weight) => {
@@ -39,6 +39,15 @@ function Provider({ children }) {
 
   const convertToHtml = (raw) => {
     return draftToHtml(convertToRaw(raw.getCurrentContent()));
+  }
+
+  const convertToEntityMap = (raw) => {
+    const contentBlock = convertFromHTML(raw);
+    const contentState = ContentState.createFromBlockArray(
+      contentBlock.contentBlocks,
+      contentBlock.entityMap
+    );
+    return contentState;
   }
 
   useEffect(() => {
@@ -122,6 +131,7 @@ function Provider({ children }) {
           time,
           textSytles,
           convertToHtml,
+          convertToEntityMap,
           names, setNames,
           refresh, setRefresh,
           lang, setLang,

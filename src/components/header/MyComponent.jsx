@@ -197,7 +197,6 @@ const MyComponent = () => {
     return result;
   }
   const screenWidth = window.screen.width;
-  console.log();
   return (
     <>
       <div className="buttons">

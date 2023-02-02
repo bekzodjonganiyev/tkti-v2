@@ -8,11 +8,13 @@ import Input from "../../../components/admin/input/Input";
 import Button from "../../../components/admin/button/Button";
 import Table from "../../../components/admin/table/Table";
 import { Context } from "../../../context";
-const Elon = () => {
+import ModalWindow from "../../../components/admin/modal-window/ModalWindow";
+const Yangilik = () => {
   const imgRef = useRef();
-  const { globalUrl, names } = useContext(Context);
+  const { time, globalUrl, names, convertToHtml } = useContext(Context);
   const [type, setType] = useState("table");
   const [data, setData] = useState();
+  const [onEdit, setOnEdit] = useState({});
   let content = null;
   const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
     EditorState.createEmpty()
@@ -23,9 +25,6 @@ const Elon = () => {
   const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
     EditorState.createEmpty()
   );
-  const convertToHtml = (raw) => {
-    return (draftToHtml(convertToRaw(raw.getCurrentContent())));
-  };
   const analyseNameTableHead = ["Tartib raqam", "Yangilik nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   const bodyData = data;
@@ -35,7 +34,16 @@ const Elon = () => {
         <td>{index + 1}</td>
         <td>{item.title_uz}</td>
         <td>
-          <button className="event-btn edit" onClick={() => {}}>
+          <button
+            className="event-btn edit"
+            onClick={() =>
+              setOnEdit({
+                open: true,
+                id: item._id,
+                name: item.title_uz
+              })
+            }
+          >
             <i className="fa fa-edit"></i>
           </button>
           <button
@@ -69,7 +77,8 @@ const Elon = () => {
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
-    formData.append("photo", imgRef.current.files[0]);
+    formData.append("date", e.target.date.value);
+    formData.append("photo", e.target.photo.files[0]);
     fetch(`${globalUrl}/news/add`, {
       method: "POST",
       headers: {
@@ -87,6 +96,8 @@ const Elon = () => {
         }
       })
       .catch((err) => console.log(err));
+
+    console.log(formData);
   }
   function deleteYangilik(id) {
     fetch(`${globalUrl}/news/${id}`, {
@@ -171,18 +182,29 @@ const Elon = () => {
             <input
               type="file"
               id="forImg"
-              multiple
+              name="photo"
               accept="image/png, image/gif, image/jpeg"
               ref={imgRef}
             />
           </label>
         </div>
+        <div>
+          <label htmlFor="forDate">
+            <input type="date" id="forDate" name="date" />
+          </label>
+        </div>
+
         <Button name="Saqlash" />
       </form>
     );
   }
   return (
     <div className="yangilik">
+      {
+        onEdit.open && (
+          <ModalWindow id={onEdit.id} url={"news"} name={onEdit.name} closeModal={() => setOnEdit({open: false})}/>
+        )
+      }
       <FormHeader
         title="Yangilik"
         event1="Yangiliklar jadvali"
@@ -194,4 +216,4 @@ const Elon = () => {
     </div>
   );
 };
-export default Elon;
+export default Yangilik;
