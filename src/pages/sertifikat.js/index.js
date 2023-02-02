@@ -4,19 +4,22 @@ import { Context } from "../../context";
 import Table from '../../components/admin/table/Table'
 
 const SertifikatComponent = () =>{
-    const {DataGetter, lang, textSytles} = useContext(Context);
+    const {DataGetter, lang} = useContext(Context);
+   
     const [hero] = useState({
       uz: {
         title: "Sertifikat",
+        placeholder:" Sertifikat qidirish"
        
       },
       ru: {
         title: "Cертификат",
+        placeholder:" Поиск сертификата"
        
       },
       en: {
         title: "Certificate",
-        
+        placeholder:" Certificate search"
       },
     });
     const [about]= useState({
@@ -55,8 +58,8 @@ const SertifikatComponent = () =>{
            {
             sertifikat.isFetched && sertifikat.data ? (
               <>
-              <input type="text" className="form-control" value={search} onChange={(e) => setSearch(e.target.value)} />
-              <Table headData={TableHead} renderHead={TableContent} renderBody={TableRender} bodyData={TableBody} search={search} />
+              <input  placeholder={hero[lang].placeholder} type="text" className="search-input" value={search} onChange={(e) => setSearch(e.target.value)} />
+              <Table headData={TableHead} renderHead={TableContent} renderBody={TableRender} bodyData={TableBody} search={search} limit={10} />
 
               </>
             ):(

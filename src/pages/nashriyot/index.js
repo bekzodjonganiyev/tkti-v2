@@ -8,14 +8,17 @@ const NashriyotComponent = () =>{
     const [hero] = useState({
       uz: {
         title: "Nashriyot",
+        placeholder:" Nashriyot qidirish"
        
       },
       ru: {
         title: "Издатель",
+        placeholder:" Поиск издателя"
        
       },
       en: {
         title: "Publisher",
+        placeholder:" Publisher search"
         
       },
     });
@@ -59,8 +62,8 @@ const NashriyotComponent = () =>{
            {
             nashriyot.isFetched && nashriyot.data ? (
               <>
-              <input type="text" className="form-control" value={search} onChange={(e) => setSearch(e.target.value)} />
-              <Table headData={TableHead} renderHead={TableContent} renderBody={TableRender} bodyData={TableBody} search={search} />
+              <input  placeholder={hero[lang].placeholder} type="text" className="search-input" value={search} onChange={(e) => setSearch(e.target.value)} />
+              <Table headData={TableHead} renderHead={TableContent} renderBody={TableRender} bodyData={TableBody} search={search} limit={10} />
               </>
             ):(
               <></>
