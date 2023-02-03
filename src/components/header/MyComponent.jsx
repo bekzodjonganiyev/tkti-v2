@@ -69,50 +69,6 @@ const MyComponent = () => {
     },
     {
       id: 2,
-      name: HeaderLang[lang].ilmiy[0],
-      fakultetInfo: HeaderLang[lang].fakultetInfo[1],
-      label: [
-        {
-          labelId: HeaderLang[lang].ilmiy[1],
-          href: "/institut-loyihalari",
-        },
-        {
-          labelId: HeaderLang[lang].ilmiy[2],
-          href: "/startup-loyihalar",
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: HeaderLang[lang].talim[0],
-      fakultetInfo: HeaderLang[lang].fakultetInfo[2],
-      label: [
-        {
-          labelId: HeaderLang[lang].talim[1],
-          href: "https://tkti-2023.edupage.org/timetable/view.php",
-        },
-        {
-          labelId: HeaderLang[lang].talim[2],
-          href: "https://www.dropbox.com/s/mhexwrmj4s638if/1.PDF?dl=0",
-        },
-        {
-          labelId: HeaderLang[lang].talim[3],
-          href: "/sertifikat",
-        },
-        {
-          labelId: HeaderLang[lang].talim[4],
-          href: "/nashriyot",
-        },
-      ],
-    },
-    {
-      id: 4,
-      name: HeaderLang[lang].fakultet[0],
-      fakultetInfo: HeaderLang[lang].fakultetInfo[3],
-      label: test(facultet),
-    },
-    {
-      id: 5,
       name: HeaderLang[lang].structure[0],
       fakultetInfo: HeaderLang[lang].fakultetInfo[1],
       label: [
@@ -139,6 +95,51 @@ const MyComponent = () => {
         {
           labelId: HeaderLang[lang].structure[6],
           href: "/yoshlar-ittifoqi",
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: HeaderLang[lang].fakultet[0],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[3],
+      label: test(facultet),
+    },
+    {
+      id: 4,
+      name: HeaderLang[lang].talim[0],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[2],
+      label: [
+        {
+          labelId: HeaderLang[lang].talim[1],
+          href: "https://tkti-2023.edupage.org/timetable/view.php",
+        },
+        {
+          labelId: HeaderLang[lang].talim[2],
+          href: "https://www.dropbox.com/s/mhexwrmj4s638if/1.PDF?dl=0",
+        },
+        {
+          labelId: HeaderLang[lang].talim[3],
+          href: "/sertifikat",
+        },
+        {
+          labelId: HeaderLang[lang].talim[4],
+          href: "/nashriyot",
+        },
+      ],
+    },
+   
+    {
+      id: 5,
+      name: HeaderLang[lang].ilmiy[0],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[1],
+      label: [
+        {
+          labelId: HeaderLang[lang].ilmiy[1],
+          href: "/institut-loyihalari",
+        },
+        {
+          labelId: HeaderLang[lang].ilmiy[2],
+          href: "/startup-loyihalar",
         },
       ],
     },

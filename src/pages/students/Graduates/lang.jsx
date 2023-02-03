@@ -3,7 +3,7 @@ const studentInfo = {
     talaba: {
       b1: "Tirkasheva Xurshida Otabek qizi",
       p1: "Toshkent kimyo-texnologiya instituti 26-18 gurux talabasi",
-      b2: "Abdukodirova Nodira Asqaraliqizi",
+      b2: "Abdukodirova Nodira Asqarali qizi",
       p2: "Toshkent kimyo-texnologiya instituti 49-18 MTguruh talabasi",
       b3: "Nabiyeva Nilufar Baxtiyor qizi",
       p3: "Toshkent kimyo-texnologiya instituti 40-18 guruh talabasi",
@@ -11,12 +11,12 @@ const studentInfo = {
       p4: "Toshkent kimyo-texnologiya instituti, 19-19 guruh talabasi",
       b5: "Tursunova Dilnozaxon Isroiljon qizi",
       p5: "Toshkent kimyo-texnologiya instituti M14-21 guruh talabasi",
-      b6: "Farxodova Nazokat Farxodqizi",
+      b6: "Farxodova Nazokat Farxod qizi",
       p6: "Toshkent kimyo-texnologiya instituti 1-19 guruh talabasi",
-      b7: "Maxmudova Mashxura Komilqizi",
+      b7: "Maxmudova Mashxura Komil qizi",
       p7: "Toshkent kimyo-texnologiya instituti, 26-20 guruh talabasi",
       b8: "Sabina Bekmuradova",
-      p8: "Toshkent kimyo-texnologiya instituti 46-19 gчruh talabas",
+      p8: "Toshkent kimyo-texnologiya instituti 46-19 guruh talabasi",
     },
     graduates: {
       first:
