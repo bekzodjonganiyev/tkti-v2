@@ -1,9 +1,10 @@
 import { useState, useRef, useContext, useEffect } from "react";
 import copy from "copy-to-clipboard";
-import { useNavigate } from "react-router-dom";
 
 import Button from "../../../components/admin/button/Button";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
+
+import { Fetchers } from "../../../services/fetchRequests";
 import { Context } from "../../../context";
 
 import "./Media.css";
@@ -14,7 +15,6 @@ function FileDisplay({ file }) {
   const fileUrl = `${globalUrl}/${file.link}`;
   const imgUrl = file.link.split(".")[1];
   const isImg = imgUrl === "png" || imgUrl === "jpg";
-  console.log(isImg);
   const handleCopy = () => {
     copy(fileUrl);
     setCopied(true);
@@ -72,10 +72,8 @@ function FileDisplay({ file }) {
 }
 
 const Media = () => {
-  const navigate = useNavigate();
   const fileRef = useRef();
   const nameRef = useRef();
-  const { globalUrl } = useContext(Context);
   const [type, setType] = useState("all");
   const [media, setMedia] = useState([]);
   let content = null;
@@ -85,39 +83,25 @@ const Media = () => {
     formData.append("name", nameRef.current.value);
     formData.append("file", fileRef.current.files[0]);
 
-    fetch(`${globalUrl}/media/add`, {
-      method: "POST",
-      headers: {
-        Token: localStorage.getItem("token"),
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success && res.status === 498) {
-          alert(res.message + " ❌");
-          navigate("login");
-        } else if (res.status === 498) {
-        } else {
-          alert("Malumotlar qo'shildi");
-          window.location.reload(true);
-        }
-      })
-      .catch((err) => console.log(err));
+    Fetchers.addData(`media/add`, formData, true).then((res) => {
+      if (!res.success) {
+        alert(res.message + " ❌");
+      } else if (res.status === 498) {
+      } else {
+        alert("Malumotlar qo'shildi");
+        window.location.reload(true);
+      }
+    });
   }
 
   function getMedia() {
-    fetch(`${globalUrl}/media/all`, {
-      headers: {
-        "Content-type": "application/json",
-        token: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    Fetchers.getData("media/all", true).then((data) => {
+      if (!data.success) {
+        alert(data.message + " ❌");
+      } else {
         setMedia(data.data);
-      });
+      }
+    });
   }
 
   useEffect(() => {
@@ -142,7 +126,7 @@ const Media = () => {
       </form>
     ) : (
       <div style={{ display: "flex", flexWrap: "wrap", gap: "50px" }}>
-        {media?.length !== 0 && media?.map((i) => <FileDisplay file={i} />)}
+        {media?.length !== 0 && media?.map((i) => <FileDisplay file={i} key={i._id} />)}
       </div>
     );
   return (

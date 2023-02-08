@@ -1,53 +1,46 @@
-import { useContext } from "react";
-
-import Context from "../context/index";
-
-const { globalUrl } = useContext(Context);
+const globalUrl = "http://backend.tkti.uz";
 
 class Http {
-  async addData(endpoint, body) {
+  async addData(endpoint, body, isFormData) {
+    let headers = isFormData
+      ? {
+          Token: localStorage.getItem("token"),
+        }
+      : {
+          "Content-type": "application/json",
+          Token: localStorage.getItem("token"),
+        };
     try {
       const res = (
         await fetch(`${globalUrl}/${endpoint}`, {
           method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            Token: localStorage.getItem("token"),
-          },
-          body: JSON.stringify(body),
+          headers,
+          body,
         })
       ).json();
       return res;
-
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const e = { message: err.message, error: true, success: false };
+      return e;
     }
   }
 
-  async addDataWithFormData(endpoint, formData) {
+  async getData(endpoint, shouldToken) {
     try {
       const res = (
         await fetch(`${globalUrl}/${endpoint}`, {
-          method: "POST",
-          headers: {
-            Token: localStorage.getItem("token"),
-          },
-          body: formData,
+          headers: shouldToken
+            ? {
+                "Content-type": "application/json",
+                Token: localStorage.getItem("token"),
+              }
+            : { "Content-type": "application/json" },
         })
       ).json();
       return res;
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async getData(endpoint) {
-    try {
-      const res = (await fetch(`${globalUrl}/${endpoint}`)).json();
-      return res;
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const e = { message: err.message, success: false };
+      return e;
     }
   }
 
@@ -63,7 +56,6 @@ class Http {
         })
       ).json();
       return res;
-
     } catch (error) {
       console.log(error);
     }
@@ -81,9 +73,11 @@ class Http {
         })
       ).json();
       return res;
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 }
+
+const Fetchers = new Http();
+module.exports = { Fetchers };

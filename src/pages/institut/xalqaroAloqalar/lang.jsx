@@ -10,8 +10,8 @@ const aloqaLang = {
             <p>
 <h3>Toshkent kimyo-texnologiya instituti xalqaro hamkorlik bo‘limi</h3>
 
-<span class="aloqaBox">
-<img class="images mx-4" style="
+<span className="aloqaBox">
+<img className="images mx-4" style="
     width: 300px;
 " src=${xalqaro} alt="" />
 
@@ -27,8 +27,8 @@ Babaxanova Zebo Abdullaevna 2018-yil 15-oktabrdan boshlab Toshkent kimyo-texnolo
 Babaxanova. Z.A 1971-yil 1-fevralda Toshkent shahrida tavallud topgan. 1993-yilda Toshkent davlat universitetini tamomlagan. 2019-yilda Texnika fanlari doktori (DSc) ilmiy darajasini olgan. Ilm fan sohasida qo’shgan hissalari uchun Babaxanova. Z.A 2014-yilda “Shuhrat” medali bilan taqdirlangan.</p>
 
 <hr>
-<span class="aloqaBox">
-<img class="images mx-4" style="
+<span className="aloqaBox">
+<img className="images mx-4" style="
     width: 300px;
 " src=${xalqaro2} alt="" />
 <span>
@@ -49,7 +49,7 @@ Saidahmadov S.S. 2021-yil Toshkent kimyo-texnologiya institutini tamomlagan. 201
       {
         title: `Hamkor davlatlar `,
         content: `
-        <div class="xamkor__davlats">
+        <div className="xamkor__davlats">
          <a  href="https://www.belstu.by/">
                 
                   <p>Belorusiya Davlat Texnologiya Universiteti</p>
@@ -103,8 +103,8 @@ Saidahmadov S.S. 2021-yil Toshkent kimyo-texnologiya institutini tamomlagan. 201
             <p>
 <h3>Отдел международного сотрудничества Ташкентского химико-технологического института</h3>
 
-<span class="aloqaBox  ">
-<img class="images mx-4" src=${xalqaro} alt="" />
+<span className="aloqaBox  ">
+<img className="images mx-4" src=${xalqaro} alt="" />
 <span>
 <h4>Бабаханова Зебо Абдуллаевна</h4>
 начальник отдела международного сотрудничества</br>
@@ -117,8 +117,8 @@ Saidahmadov S.S. 2021-yil Toshkent kimyo-texnologiya institutini tamomlagan. 201
 Бабаханова. З.А. родилась 1 февраля 1971 года в Ташкенте. В 1993 году окончила Ташкентский государственный университет. В 2019 году получила степень доктора технических наук (DSc) за вклад в науку. В 2014 году З.А. Бабаханова награждена медалью «Слава».</p>
 
 <hr>
-<span class="aloqaBox">
-<img class="images mx-4" src=${xalqaro2} alt="" />
+<span className="aloqaBox">
+<img className="images mx-4" src=${xalqaro2} alt="" />
 <span>
 <h4>Саидахмадов Саидумархан - Саидаброр  угли</h4>
 методист отдела международного сотрудничества</br>
@@ -137,7 +137,7 @@ Saidahmadov S.S. 2021-yil Toshkent kimyo-texnologiya institutini tamomlagan. 201
       {
         title: `МЕЖДУНАРОДНЫЕ ПРОЕКТЫ `,
         content: `
-        <div class="xamkor__davlats">
+        <div className="xamkor__davlats">
          <a href="https://www.belstu.by/">
                 
                   <p>Белорусский государственный технологический университет</p>
@@ -191,8 +191,8 @@ Saidahmadov S.S. 2021-yil Toshkent kimyo-texnologiya institutini tamomlagan. 201
             <p>
 <h3>Department of International Cooperation of the Tashkent Institute of Chemical Technology</h3>
 
-<span class="aloqaBox  ">
-<img class="images mx-4" src=${xalqaro} alt="" />
+<span className="aloqaBox  ">
+<img className="images mx-4" src=${xalqaro} alt="" />
 <span>
 <h4>Babakhanova Zebo Abdullaevna</h4>
 head of the international cooperation department</br>
@@ -205,8 +205,8 @@ Since October 15, 2018 Babakhanova Zebo Abdullaevna has been working as the head
 Babakhanov. PER. was born on February 1, 1971 in Tashkent. In 1993 he graduated from Tashkent State University. In 2019 he received the degree of Doctor of Engineering (DSc). Babakhanov for his contribution to science. In 2014 Z.A. was awarded the medal "Glory".</p>
 
 <hr>
-<span class="aloqaBox">
-<img class="images mx-4" src=${xalqaro2} alt="" />
+<span className="aloqaBox">
+<img className="images mx-4" src=${xalqaro2} alt="" />
 <span>
 <h4>Saidakhmadov Saidumarkhan - son of Saidabror</h4>
 international cooperation department designer</br>
@@ -225,7 +225,7 @@ Saidahmadov S.S. Graduated from Tashkent Institute of Chemical Technology in 202
       {
         title: `INTERNATIONAL PROJECTS`,
         content: `
-        <div class="xamkor__davlats">
+        <div className="xamkor__davlats">
          <a href="https://www.belstu.by/">
                 
                   <p>Belarusian State Technological University</p>
