@@ -1,13 +1,13 @@
 import { useState, useRef, useContext, useEffect } from "react";
 import copy from "copy-to-clipboard";
 
+import "./Media.css";
+
 import Button from "../../../components/admin/button/Button";
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 
 import { Fetchers } from "../../../services/fetchRequests";
 import { Context } from "../../../context";
-
-import "./Media.css";
 
 function FileDisplay({ file }) {
   const { globalUrl } = useContext(Context);
@@ -66,6 +66,9 @@ function FileDisplay({ file }) {
           className="fa fa-trash icon"
           title="Delete"
         ></i>
+        {copied && (
+          <div style={{ color: "red", position: "absolute" }}>Copied✔</div>
+        )}
       </div>
     </div>
   );
@@ -86,7 +89,6 @@ const Media = () => {
     Fetchers.addData(`media/add`, formData, true).then((res) => {
       if (!res.success) {
         alert(res.message + " ❌");
-      } else if (res.status === 498) {
       } else {
         alert("Malumotlar qo'shildi");
         window.location.reload(true);
@@ -95,18 +97,13 @@ const Media = () => {
   }
 
   function getMedia() {
-    Fetchers.getData("media/all", true).then((data) => {
-      if (!data.success) {
-        alert(data.message + " ❌");
-      } else {
-        setMedia(data.data);
-      }
-    });
+    Fetchers.getData("media/all", true).then((data) => setMedia(data));
   }
 
   useEffect(() => {
     getMedia();
   }, []);
+  console.log(media);
   content =
     type === "add" ? (
       <form onSubmit={addMedia} className="media-form">
@@ -126,7 +123,11 @@ const Media = () => {
       </form>
     ) : (
       <div style={{ display: "flex", flexWrap: "wrap", gap: "50px" }}>
-        {media?.length !== 0 && media?.map((i) => <FileDisplay file={i} key={i._id} />)}
+        {media?.success ? (
+          media?.data.map((i) => <FileDisplay file={i} key={i._id} />)
+        ) : (
+          <h1>{media.message}</h1>
+        )}
       </div>
     );
   return (

@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from "react";
-import { Route, Navigate, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
-import { Context } from "../../../context";
 import { Fetchers } from "../../../services/fetchRequests";
 
 export default function ProtectedRoute({ children }) {
@@ -16,7 +15,7 @@ export default function ProtectedRoute({ children }) {
         navigate("/login");
       }
     });
-  }, []);
+  }, [token]);
 
   return token ? <>{children}</> : <Navigate replace to="/login" />;
 }

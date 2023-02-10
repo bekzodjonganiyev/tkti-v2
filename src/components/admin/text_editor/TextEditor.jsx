@@ -1,76 +1,57 @@
-import React, { useState, useContext, useCallback } from "react";
-import { convertToRaw } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { Editor } from "@tinymce/tinymce-react";
 
-import "./TextEditor.css";
-
-import { Context } from "../../../context";
-
-const TextEditor = ({ nameUz = "name", nameRu = "name", nameEn = "name" }) => {
-  const { setTextEditorBodyUz, setTextEditorBodyRu, setTextEditorBodyEn } =
-    useContext(Context);
-
-  const [editorStateUz, setEditorStateUz] = useState("");
-  const [editorStateRu, setEditorStateRu] = useState("");
-  const [editorStateEn, setEditorStateEn] = useState("");
-
-  const onEditorStateChangeUz = useCallback((editorState) => {
-    setEditorStateUz(editorState);
-    const rawDataUz = convertToRaw(editorState.getCurrentContent());
-    setTextEditorBodyUz(draftToHtml(rawDataUz));
-  });
-
-  function onEditorStateChangeRu(editorState) {
-    setEditorStateRu(editorState);
-    const rawDataRu = convertToRaw(editorState.getCurrentContent());
-    setTextEditorBodyRu(draftToHtml(rawDataRu));
-  }
-
-  function onEditorStateChangeEn(editorState) {
-    setEditorStateEn(editorState);
-    const rawDataEn = convertToRaw(editorState.getCurrentContent());
-    setTextEditorBodyEn(draftToHtml(rawDataEn));
-  }
-
+const TextEditor = ({ title, name, value, handleValue }) => {
+  const editorInit = {
+    min_height: 400,
+    plugins: [
+      "advlist autolink lists link image charmap print preview anchor",
+      "searchreplace visualblocks code fullscreen",
+      "insertdatetime media table paste wordcount",
+      "codesample code",
+      "autoresize",
+    ],
+    codesample_languages: [
+      { text: "HTML/XML", value: "markup" },
+      { text: "JavaScript", value: "javascript" },
+      { text: "CSS", value: "css" },
+      { text: "PHP", value: "php" },
+    ],
+    toolbar:
+      "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | codesample code",
+  };
   return (
-    <div className="texteditor-component">
-      {/* O'zbekcha */}
-      <div>
-        <span className="editor-title">{nameUz}</span>
-        <Editor
-          editorState={editorStateUz}
-          toolbarClassName="toolbarClassName"
-          wrapperClassName="wrapperClassName"
-          editorClassName="editorClassName"
-          onEditorStateChange={onEditorStateChangeUz}
-        />
-      </div>
-
-      {/* Ruscha */}
-      <div>
-        <span className="editor-title">{nameRu}</span>
-        <Editor
-          editorState={editorStateRu}
-          toolbarClassName="toolbarClassName"
-          wrapperClassName="wrapperClassName"
-          editorClassName="editorClassName"
-          onEditorStateChange={onEditorStateChangeRu}
-        />
-      </div>
-
-      {/* Inglizcha */}
-      <div>
-        <span className="editor-title">{nameEn}</span>
-        <Editor
-          editorState={editorStateEn}
-          toolbarClassName="toolbarClassName"
-          wrapperClassName="wrapperClassName"
-          editorClassName="editorClassName"
-          onEditorStateChange={onEditorStateChangeEn}
-        />
-      </div>
+    <div className="editor-wrapper">
+      <span className="textEditorName">{title.uz}</span>
+      <Editor
+        onEditorChange={(e) => {
+          handleValue.uz && handleValue.uz(e);
+          localStorage.setItem(name.uz, JSON.stringify(e));
+        }}
+        value={value.uz}
+        init={editorInit}
+      />
+      <br />
+      <br />
+      <span className="textEditorName">{title.ru}</span>
+      <Editor
+        onEditorChange={(e) => {
+          handleValue.ru && handleValue.ru(e);
+          localStorage.setItem(name.ru, JSON.stringify(e));
+        }}
+        value={value.ru}
+        init={editorInit}
+      />
+      <br />
+      <br />
+      <span className="textEditorName">{title.en}</span>
+      <Editor
+        onEditorChange={(e) => {
+          handleValue.ru && handleValue.en(e);
+          localStorage.setItem(name.en, JSON.stringify(e));
+        }}
+        value={value.en}
+        init={editorInit}
+      />
     </div>
   );
 };

@@ -1,8 +1,6 @@
 import { useContext, useState } from "react";
-import { convertToRaw, EditorState } from "draft-js";
+import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import "./AddForm.css";
 
@@ -11,7 +9,6 @@ import SelectType from "../../../components/admin/select_type/SelectType";
 import Button from "../button/Button";
 
 import { Context } from "../../../context";
-import ProtectedRoute from "../protected_route/ProtectedRoute";
 
 const AddForm = (props) => {
   const { names, selectValue, globalUrl, convertToHtml } = useContext(Context);
