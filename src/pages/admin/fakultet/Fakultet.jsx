@@ -9,12 +9,23 @@ import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
 import XodimForm from "../../../components/admin/xodim_form/XodimForm";
 import EditXodim from "../../../components/admin/edit_xodim/EditXodim";
 
+import TextEditor from "../../../components/admin/text_editor/TextEditor";
+
+
+
 import { Context } from "../../../context";
 
 const Fakultet = () => {
   const { globalUrl } = useContext(Context);
   const [fakultetData, setFakultetData] = useState();
   const [faklutetEmployers, setFaklutetEmployers] = useState();
+
+  const [editor, setEditor] = useState({
+    uz: JSON.parse(localStorage.getItem("haqida_uz")) ?? "",
+    ru: JSON.parse(localStorage.getItem("haqida_ru")) ?? "",
+    en: JSON.parse(localStorage.getItem("haqida_en")) ?? "",
+  })
+
   const [onEdit, setOnEdit] = useState({});
   const [type, setType] = useState("table");
   const props = {

@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 
+import TextEditor from "../text_editor/TextEditor";
+
 import "./AddForm.css";
 
 import Input from "../../../components/admin/input/Input";
@@ -11,10 +13,10 @@ import Button from "../button/Button";
 import { Context } from "../../../context";
 
 const AddForm = (props) => {
-  const { names, selectValue, globalUrl, convertToHtml } = useContext(Context);
+  const { names, selectValue, globalUrl } = useContext(Context);
   const {
     inputNames,
-    textEditorNames1,
+
     textEditorNames2,
     selectName,
     buttonName,
@@ -23,9 +25,17 @@ const AddForm = (props) => {
     url,
   } = props;
 
-  const [aboutUz, setAboutUz] = useState(EditorState.createEmpty());
-  const [aboutRu, setAboutRu] = useState(EditorState.createEmpty());
-  const [aboutEn, setAboutEn] = useState(EditorState.createEmpty());
+  const [editorHaqida, setEditorHaqida] = useState({
+    uz: JSON.parse(localStorage.getItem("haqida_uz")) ?? "",
+    ru: JSON.parse(localStorage.getItem("haqida_ru")) ?? "",
+    en: JSON.parse(localStorage.getItem("haqida_en")) ?? "",
+  });
+
+  const [editorMaqsad, setEditorMaqsad] = useState({
+    uz: JSON.parse(localStorage.getItem("haqida_uz")) ?? "",
+    ru: JSON.parse(localStorage.getItem("haqida_ru")) ?? "",
+    en: JSON.parse(localStorage.getItem("haqida_en")) ?? "",
+  });
 
   const [aimUz, setAimUz] = useState(EditorState.createEmpty());
   const [aimRu, setAimRu] = useState(EditorState.createEmpty());
@@ -35,12 +45,14 @@ const AddForm = (props) => {
     title_uz: names?.nameUz,
     title_ru: names?.nameRu,
     title_en: names?.nameEn,
-    haqida_uz: convertToHtml(aboutUz),
-    haqida_ru: convertToHtml(aboutRu),
-    haqida_en: convertToHtml(aboutEn),
-    maqsad_uz: convertToHtml(aimUz),
-    maqsad_en: convertToHtml(aimRu),
-    maqsad_ru: convertToHtml(aimEn),
+
+    haqida_uz: editorHaqida.uz,
+    haqida_ru: editorHaqida.ru,
+    haqida_en: editorHaqida.en,
+
+    maqsad_uz: editorMaqsad.uz,
+    maqsad_ru: editorMaqsad.ru,
+    maqsad_en: editorMaqsad.en,
   };
 
   const body = hasSelect
@@ -52,14 +64,14 @@ const AddForm = (props) => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        "Token": localStorage.getItem("token"),
+        Token: localStorage.getItem("token"),
       },
       body: body,
     })
       .then((res) => res.json())
       .then((res) => {
         if (!res.success) {
-          alert(res.message  + " ❌");
+          alert(res.message + " ❌");
         } else {
           alert(res.message);
           window.location.reload(true);
@@ -75,68 +87,45 @@ const AddForm = (props) => {
         nameEn={inputNames.nameEn}
       />
       <hr />
-      <div>
-        <span className="textEditorName">{textEditorNames1.nameUz}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutUz}
-          onEditorStateChange={(a) => setAboutUz(a)}
-        />
-      </div>
-      <div>
-        <span className="textEditorName">{textEditorNames1.nameRu}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutRu}
-          onEditorStateChange={(a) => setAboutRu(a)}
-        />
-      </div>
-      <div>
-        <span className="textEditorName">{textEditorNames1.nameEn}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutEn}
-          onEditorStateChange={(a) => setAboutEn(a)}
-        />
-      </div>
-      <hr />
+      <TextEditor
+        title={{
+          uz: "maqsad batafsil(UZ)",
+          ru: "maqsad batafsil(RU)",
+          en: "maqsad batafsil(EN)",
+        }}
+        // name={{ uz: "body_uz", ru: "body_ru", en: "body_en" }}
+        value={{
+          uz: editorHaqida.uz,
+          ru: editorHaqida.ru,
+          en: editorHaqida.en,
+        }}
+        handleValue={{
+          uz: (e) => setEditorHaqida({ ...editorHaqida, uz: e }),
+          ru: (e) => setEditorHaqida({ ...editorHaqida, ru: e }),
+          en: (e) => setEditorHaqida({ ...editorHaqida, en: e }),
+        }}
+      />
+      <hr/>
 
-      <div>
-        <span className="textEditorName">{textEditorNames2.nameUz}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aimUz}
-          onEditorStateChange={(a) => setAimUz(a)}
-        />
-      </div>
-      <div>
-        <span className="textEditorName">{textEditorNames2.nameRu}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aimRu}
-          onEditorStateChange={(a) => setAimRu(a)}
-        />
-      </div>
-      <div>
-        <span className="textEditorName">{textEditorNames2.nameEn}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aimEn}
-          onEditorStateChange={(a) => setAimEn(a)}
-        />
-      </div>
+      <TextEditor
+        title={{
+          uz: "maqsad batafsil(UZ)",
+          ru: "maqsad batafsil(RU)",
+          en: "maqsad batafsil(EN)",
+        }}
+        // name={{ uz: "body_uz", ru: "body_ru", en: "body_en" }}
+        value={{
+          uz: editorMaqsad.uz,
+          ru: editorMaqsad.ru,
+          en: editorMaqsad.en,
+        }}
+        handleValue={{
+          uz: (e) => setEditorMaqsad({ ...editorMaqsad, uz: e }),
+          ru: (e) => setEditorMaqsad({ ...editorMaqsad, ru: e }),
+          en: (e) => setEditorMaqsad({ ...editorMaqsad, en: e }),
+        }}
+      />
+
 
       {hasSelect && (
         <>

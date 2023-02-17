@@ -13,8 +13,8 @@ function Provider({ children }) {
   const [names, setNames] = useState();
   const [selectValue, setSelectValue] = useState();
   const [editorValue, setEditorValue] = useState();
-  // const globalUrl = "http://localhost:5000";
-  const globalUrl = "http://backend.tkti.uz";
+  const globalUrl = "http://localhost:5000";
+  // const globalUrl = "https://backend.tkti.uz";
 
 
   const time = (arg) => {

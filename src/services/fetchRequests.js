@@ -1,4 +1,5 @@
-const globalUrl = "http://backend.tkti.uz";
+// const globalUrl = "https://backend.tkti.uz";
+const globalUrl = "http://localhost:5000";
 
 class Http {
   async addData(endpoint, body, isFormData) {
@@ -79,5 +80,5 @@ class Http {
   }
 }
 
-const Fetchers = new Http();
-module.exports = { Fetchers };
+export const Fetchers = new Http();
+
