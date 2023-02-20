@@ -1,5 +1,5 @@
-// const globalUrl = "https://backend.tkti.uz";
-const globalUrl = "http://localhost:5000";
+const globalUrl = "https://backend.tkti.uz";
+// const globalUrl = "http://localhost:5000";
 
 class Http {
   async addData(endpoint, body, isFormData) {
