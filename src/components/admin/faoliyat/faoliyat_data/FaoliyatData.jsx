@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { convertToRaw, EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
+
+import TextEditor from "../../text_editor/TextEditor";
 
 import "./FaoliyatData.css";
 
@@ -11,13 +10,15 @@ import Input from "../../input/Input";
 import { Context } from "../../../../context";
 
 const FaoliyatData = () => {
-  const { globalUrl, names, convertToHtml } = useContext(Context);
+  const { globalUrl, names } = useContext(Context);
   const [inputValue, setInputValue] = useState({});
   const [activity, setActivity] = useState([]);
 
-  const [aboutUz, setAboutUz] = useState(EditorState.createEmpty());
-  const [aboutRu, setAboutRu] = useState(EditorState.createEmpty());
-  const [aboutEn, setAboutEn] = useState(EditorState.createEmpty());
+  const [editor, setEditor] = useState({
+    uz: "",
+    ru: "",
+    en: "",
+  });
 
   const [hashtag, setHashtag] = useState("");
   const [elements, setElements] = useState([]);
@@ -47,9 +48,9 @@ const FaoliyatData = () => {
     title_uz: names?.nameUz,
     title_ru: names?.nameRu,
     title_en: names?.nameEn,
-    description_uz: convertToHtml(aboutUz),
-    description_ru: convertToHtml(aboutRu),
-    description_en: convertToHtml(aboutEn),
+    description_uz: editor.uz,
+    description_ru: editor.ru,
+    description_en: editor.en,
     location_uz: inputValue.location_uz,
     location_ru: inputValue.location_ru,
     location_en: inputValue.location_en,
@@ -111,42 +112,24 @@ const FaoliyatData = () => {
       />
 
       {/* Batafil Malumot */}
-      <div>
-        <span className="textEditorName">
-          Faoliyat haqida batafsil yozing (UZ)
-        </span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutUz}
-          onEditorStateChange={(a) => setAboutUz(a)}
-        />
-      </div>
-      <div>
-        <span className="textEditorName">
-          Faoliyat haqida batafsil yozing (RU)
-        </span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutRu}
-          onEditorStateChange={(a) => setAboutRu(a)}
-        />
-      </div>
-      <div>
-        <span className="textEditorName">
-          Faoliyat haqida batafsil yozing (EN)
-        </span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutEn}
-          onEditorStateChange={(a) => setAboutEn(a)}
-        />
-      </div>
+
+      <TextEditor
+        title={{
+          uz: "Faoliyat haqida batafsil  (uz)",
+          ru: "Faoliyat haqida batafsil  (ru)",
+          en: "Faoliyat haqida batafsil  (en)",
+        }}
+        value={{
+          uz: editor.uz,
+          ru: editor.ru,
+          en: editor.en,
+        }}
+        handleValue={{
+          uz: (e) => setEditor({ ...editor, uz: e }),
+          ru: (e) => setEditor({ ...editor, ru: e }),
+          en: (e) => setEditor({ ...editor, en: e }),
+        }}
+      />
 
       {/* Lokatsiya kiritamiz */}
       <div className="additional-datas">

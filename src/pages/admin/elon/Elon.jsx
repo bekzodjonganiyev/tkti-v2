@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 
-
 import "../yangilik/Yangilik.css";
 
 import FormHeader from "../../../components/admin/form_header/FormHeader";
@@ -15,15 +14,15 @@ import TextEditor from "../../../components/admin/text_editor/TextEditor";
 
 const Elon = () => {
   const imgRef = useRef();
-  const { globalUrl, names, convertToHtml } = useContext(Context);
+  const { globalUrl, names } = useContext(Context);
   const [type, setType] = useState("table");
   const [data, setData] = useState();
   const [onEdit, setOnEdit] = useState({});
   let content = null;
   const [editor, setEditor] = useState({
-    uz: JSON.parse(localStorage.getItem("body_uz")) ?? "",
-    ru: JSON.parse(localStorage.getItem("body_ru")) ?? "",
-    en: JSON.parse(localStorage.getItem("body_en")) ?? "",
+    uz: "",
+    ru: "",
+    en: "",
   });
 
   const analyseNameTableHead = ["Tartib raqam", "Elon nomi", "Amallar"];
@@ -37,13 +36,17 @@ const Elon = () => {
         <td>
           <button
             className="event-btn edit"
-            onClick={() =>
+            onClick={() => {
               setOnEdit({
                 open: true,
                 id: item._id,
                 name: item.title_uz,
-              })
-            }
+                obj: item,
+              });
+              JSON.stringify(localStorage.setItem("ebody_uz", item.body_uz));
+              JSON.stringify(localStorage.setItem("ebody_ru", item.body_ru));
+              JSON.stringify(localStorage.setItem("ebody_en", item.body_en));
+            }}
           >
             <i className="fa fa-edit"></i>
           </button>
@@ -112,11 +115,10 @@ const Elon = () => {
   }
   useEffect(() => {
     getData();
+    localStorage.removeItem("ebody_uz");
+    localStorage.removeItem("ebody_ru");
+    localStorage.removeItem("ebody_en");
   }, []);
-
-  useEffect(() => {
-    console.log(editor);
-  }, [editor]);
 
   if (type === "table") {
     content = (
@@ -147,7 +149,7 @@ const Elon = () => {
             ru: "Elon haqida batafsil(RU)",
             en: "Elon haqida batafsil(EN)",
           }}
-          name={{ uz: "body_uz", ru: "body_ru", en: "body_en" }}
+          name={{ uz: "ebody_uz", ru: "ebody_ru", en: "ebody_en" }}
           value={{
             uz: editor.uz,
             ru: editor.ru,
@@ -193,7 +195,13 @@ const Elon = () => {
           id={onEdit.id}
           url={"elon"}
           name={onEdit.name}
-          closeModal={() => setOnEdit({ open: false })}
+          keys={{ uz: "ebody_uz", ru: "ebody_ru", en: "ebody_en" }}
+          closeModal={() => {
+            localStorage.removeItem("ebody_uz");
+            localStorage.removeItem("ebody_ru");
+            localStorage.removeItem("ebody_en");
+            setOnEdit({ open: false });
+          }}
         />
       )}
       <FormHeader

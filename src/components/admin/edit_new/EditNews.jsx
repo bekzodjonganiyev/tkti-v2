@@ -1,29 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import { EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
 
 import "./EditNews.css";
 
+import TextEditor from "../text_editor/TextEditor";
 import Button from "../../../components/admin/button/Button";
 
 import { Context } from "../../../context";
 
-const EditNews = ({ id, url }) => {
-  const { globalUrl, convertToHtml, convertToEntityMap } = useContext(Context);
+const EditNews = ({ id, url, names }) => {
+  const { globalUrl } = useContext(Context);
   const [data, setData] = useState({
     isFetched: false,
     data: {},
     error: false,
   });
-  const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
-    EditorState.createEmpty()
-  );
-  const [asosiyVazifaRu, setAsosiyVazifaRu] = useState(
-    EditorState.createEmpty()
-  );
-  const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
-    EditorState.createEmpty()
-  );
+
+  const [editor, setEditor] = useState({
+    uz: (localStorage.getItem(names.uz)) ?? "",
+    ru: (localStorage.getItem(names.ru)) ?? "",
+    en: (localStorage.getItem(names.en)) ?? "",
+  });
 
   function putData(e) {
     e.preventDefault();
@@ -31,9 +27,9 @@ const EditNews = ({ id, url }) => {
     formData.append("title_uz", e.target.title_uz.value);
     formData.append("title_ru", e.target.title_ru.value);
     formData.append("title_en", e.target.title_en.value);
-    formData.append("body_uz", convertToHtml(asosiyVazifaUz));
-    formData.append("body_ru", convertToHtml(asosiyVazifaRu));
-    formData.append("body_en", convertToHtml(asosiyVazifaEn));
+    formData.append("body_uz", editor.uz);
+    formData.append("body_ru", editor.ru);
+    formData.append("body_en", editor.en);
     formData.append("date", e.target.date.value);
     formData.append("photo", e.target.photo.files[0]);
 
@@ -50,6 +46,9 @@ const EditNews = ({ id, url }) => {
           alert(res.message + " ❌");
         } else {
           alert(res.message);
+          localStorage.removeItem(names.uz);
+          localStorage.removeItem(names.ru);
+          localStorage.removeItem(names.en);
           window.location.reload(true);
         }
       })
@@ -65,6 +64,7 @@ const EditNews = ({ id, url }) => {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res.data)
         setData({
           isFetched: true,
           data: res.data,
@@ -80,20 +80,6 @@ const EditNews = ({ id, url }) => {
   }
 
   useEffect(() => {
-    if (data.isFetched) {
-      setAsosiyVazifaUz(
-        EditorState.createWithContent(convertToEntityMap(data.data.body_uz))
-      );
-      setAsosiyVazifaRu(
-        EditorState.createWithContent(convertToEntityMap(data.data.body_ru))
-      );
-      setAsosiyVazifaEn(
-        EditorState.createWithContent(convertToEntityMap(data.data.body_en))
-      );
-    }
-  }, [data.isFetched]);
-
-  useEffect(() => {
     getData();
   }, []);
   return (
@@ -103,10 +89,11 @@ const EditNews = ({ id, url }) => {
         <label htmlFor="forUzName">
           Elon uchun bosh sahidada korinadigan sarlavha(UZ)
           <input
+            className="form-control"
             type="text"
             id="forUzName"
             name="title_uz"
-            defaultValue={data.isFetched ? data.data.title_uz : "" }
+            defaultValue={data.isFetched ? data.data?.title_uz : "" }
           />
         </label>
       </div>
@@ -117,10 +104,11 @@ const EditNews = ({ id, url }) => {
         <label htmlFor="forRuName">
           Elon uchun bosh sahidada korinadigan sarlavha(RU)
           <input
+            className="form-control"
             type="text"
             id="forRuName"
             name="title_ru"
-            defaultValue={data.isFetched ? data.data.title_ru : "" }
+            defaultValue={data.isFetched ? data.data?.title_ru : "" }
           />
         </label>
       </div>
@@ -131,68 +119,55 @@ const EditNews = ({ id, url }) => {
         <label htmlFor="forEnName">
           Elon uchun bosh sahidada korinadigan sarlavha(EN)
           <input
+            className="form-control"
             type="text"
             id="forEnName"
             name="title_en"
-            defaultValue={data.isFetched ? data.data.title_en : "" }
+            defaultValue={data.isFetched ? data.data?.title_en : "" }
           />
         </label>
       </div>
       {/* TITLE EN */}
 
-      {/* BODY UZ */}
-      <div>
-        <span className="textEditorName">Asosiy Vazifa(UZ)</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={asosiyVazifaUz}
-          onEditorStateChange={(a) => setAsosiyVazifaUz(a)}
+      <TextEditor
+          title={{
+            uz: "Elon haqida batafsil(UZ)",
+            ru: "Elon haqida batafsil(RU)",
+            en: "Elon haqida batafsil(EN)",
+          }}
+          name={{ uz: names.uz, ru: names.ru, en: names.en }}
+          value={{
+            uz: editor.uz,
+            ru: editor.ru,
+            en: editor.en,
+          }}
+          handleValue={{
+            uz: (e) => setEditor({ ...editor, uz: e }),
+            ru: (e) => setEditor({ ...editor, ru: e }),
+            en: (e) => setEditor({ ...editor, en: e }),
+          }}
+          initialValue={{
+            uz: data.isFetched && data?.data?.body_uz,
+            ru: data.isFetched && data?.data?.body_ru,
+            en: data.isFetched && data?.data?.body_en,
+          }}
         />
-      </div>
-      {/* BODY UZ */}
-
-      {/* BODY RU */}
-      <div>
-        <span className="textEditorName">Asosiy Vazifa(RU)</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={asosiyVazifaRu}
-          onEditorStateChange={(a) => setAsosiyVazifaRu(a)}
-        />
-      </div>
-      {/* BODY RU */}
-
-      {/* BODY EN */}
-      <div>
-        <span className="textEditorName">Asosiy Vazifa(EN)</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={asosiyVazifaEn}
-          onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
-        />
-      </div>
-      {/* BODY EN */}
 
       {/* POSTER IMG */}
       <div className="image-and-date">
         <label htmlFor="forPhoto">
           Elon uchun rasm(Poster img)
-          <input type="file" id="forPhoto" name="photo" />
+          <input className="form-control" type="file" id="forPhoto" name="photo" />
         </label>
 
         <label htmlFor="forDate">
           Elon uchun mos sanani kiriting
           <input
+            className="form-control"
             type="date"
             id="forDate"
             name="date"
-            defaultValue={data.isFetched ? data.data.date : ""}
+            defaultValue={data.isFetched ? data.data?.date : ""}
           />
         </label>
       </div>
