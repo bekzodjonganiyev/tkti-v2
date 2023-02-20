@@ -47,7 +47,7 @@ Saidahmadov S.S. 2021-yil Toshkent kimyo-texnologiya institutini tamomlagan. 201
                 `,
       },
       {
-        title: `Hamkor davlatlar `,
+        title: `Hamkor universitetlar `,
         content: `
         <div className="xamkor__davlats">
          <a  href="https://www.belstu.by/">
@@ -70,9 +70,9 @@ Saidahmadov S.S. 2021-yil Toshkent kimyo-texnologiya institutini tamomlagan. 201
                   <p>Chungnam milliy universiteti</p>
                 </a>
             <hr>
-               <a  href="https://www.lu.lv/en/">
+               <a  href="https://www.llu.lv/lv">
                  
-                  <p>Latviya universiteti</p>
+                  <p>Latviya Biofanlar va Texnologiyalar universiteti - LBTU</p>
                 </a>
              <hr>
               <a  href=" http://english.cas.cn/">
@@ -160,7 +160,7 @@ Saidahmadov S.S. 2021-yil Toshkent kimyo-texnologiya institutini tamomlagan. 201
             <hr>
                <a href="https://www.lu.lv/en/">
                  
-                  <p>Латвийский университет</p>
+                  <p>Латвийский университет биологических наук и технологий - LBTU</p>
                 </a>
              <hr>
             <a href=" http://english.cas.cn/">
@@ -246,9 +246,9 @@ Saidahmadov S.S. Graduated from Tashkent Institute of Chemical Technology in 202
                   <p>Chungnam National University</p>
                 </a>
             <hr>
-               <a href="https://www.lu.lv/en/">
+               <a href="https://www.llu.lv/lv">
                  
-                  <p>University of Latvia</p>
+                  <p>Latvia University of Biosciences and Technologies - LBTU</p>
                 </a>
              <hr>
              <a href=" http://english.cas.cn/">
