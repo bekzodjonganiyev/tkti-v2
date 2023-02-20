@@ -110,16 +110,17 @@ const YengiItem = ({ myKey }) => {
                 <Link
                   className="news__nav__card"
                   key={index}
-                  to={`/${myKey}/${e.title_uz
-                    .toLowerCase()
-                    .split(" ")
-                    .map((str) =>
-                      str
-                        .split("")
-                        .filter((char) => /[a-zA-Z]/.test(char))
-                        .join("")
-                    )
-                    .join("-")}-${e._id}`}
+                  // to={`/${myKey}/${e.title_uz
+                  //   .toLowerCase()
+                  //   .split(" ")
+                  //   .map((str) =>
+                  //     str
+                  //       .split("")
+                  //       .filter((char) => /[a-zA-Z]/.test(char))
+                  //       .join("")
+                  //   )
+                  //   .join("-")}-${e._id}`}
+                  to={`/${myKey}/${e._id}`}
                 >
                   <i
                     style={textSytles(14, 500)}

@@ -11,23 +11,27 @@ function Footer() {
   const { lang } = useContext(Context);
 
   let content = null;
-  const result = location.pathname.split("/")[1] === "admin" || location.pathname.split("/")[1] === "login";
+  const result =
+    location.pathname.split("/")[1] === "admin" ||
+    location.pathname.split("/")[1] === "login";
 
   if (result) {
     content = null;
   } else {
     content = (
-
       <footer>
-        <a href="/" className="logo">
-          <img src={logo} alt="tkti logosi" />
-          <p>
-            <br />
-            {HeaderLang[lang].logo[0]} <br />
-            {HeaderLang[lang].logo[1]} <br />
-            {HeaderLang[lang].logo[2]}
-          </p>
-        </a>
+        {/* Logo and Address */}
+        <div className="logo-and-address">
+          <a href="/" className="logo">
+            <img src={logo} alt="tkti logosi" />
+            <p>
+              <br />
+              {HeaderLang[lang].logo[0]} <br />
+              {HeaderLang[lang].logo[1]} <br />
+              {HeaderLang[lang].logo[2]}
+            </p>
+          </a>
+        </div>
 
         <div className="footer-info">
           <div className="location">

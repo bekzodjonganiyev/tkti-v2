@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import "./Login.css";
 
-import { Context } from "../../../context";
-import { useContext } from "react";
 import { Fetchers } from "../../../services/fetchRequests";
 
 const Login = () => {

@@ -40,16 +40,17 @@ function YangiliklarComp({ home, myKey }) {
               <Link
                 className="news__card"
                 key={index}
-                to={`/${myKey}/${e.title_uz
-                  .toLowerCase()
-                  .split(" ")
-                  .map((str) =>
-                    str
-                      .split("")
-                      .filter((char) => /[a-zA-Z]/.test(char))
-                      .join("")
-                  )
-                  .join("-")}-${e._id}`}
+                // to={`/${myKey}/${e.title_uz
+                //   .toLowerCase()
+                //   .split(" ")
+                //   .map((str) =>
+                //     str
+                //       .split("")
+                //       .filter((char) => /[a-zA-Z]/.test(char))
+                //       .join("")
+                //   )
+                //   .join("-")}-${e._id}`}
+                to={`/${myKey}/${e._id}`}
               >
                 <img
                   className="news_photo"

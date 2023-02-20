@@ -264,16 +264,19 @@ const FaoliyatNew = () => {
                 {state.data[e].map((item, ind) => (
                   <a
                     className="activity__link"
-                    href={`/faoliyatlar/${item.title_uz
-                      .toLowerCase()
-                      .split(" ")
-                      .map((str) =>
-                        str
-                          .split("")
-                          .filter((char) => /[a-zA-Z]/.test(char))
-                          .join("")
-                      )
-                      .join("-")}-${item._id}`}
+
+                    // link qisqardi 🔨
+                    // ${item.title_uz
+                    //   .toLowerCase()
+                    //   .split(" ")
+                    //   .map((str) =>
+                    //     str
+                    //       .split("")
+                    //       .filter((char) => /[a-zA-Z]/.test(char))
+                    //       .join("")
+                    //   )
+                    //   .join("-")}-
+                    href={`/faoliyatlar/${item._id}`}
                     key={ind}
                   >
                     {item[`title_${lang}`]}

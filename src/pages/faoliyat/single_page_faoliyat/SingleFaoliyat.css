@@ -62,8 +62,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -73,7 +75,7 @@
 
 .social-icons a {
     color: #ffffff;
-    font-size: 30px;
+    font-size: 20px;
     padding: 10px;
     transition: all 0.3s ease-in-out;
 }
