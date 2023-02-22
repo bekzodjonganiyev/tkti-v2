@@ -1,12 +1,5 @@
 @keyframes openContent {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+
 }
 
 .accordion__item{
@@ -52,7 +45,7 @@
 }
 .accordion-bottom{
     border-top: none;
-    border-bottom: 8px solid CDDCF6 !important;
+    border-bottom: 8px solid #CDDCF6 !important;
 }
 
 .accordion-right{

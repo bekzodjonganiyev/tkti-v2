@@ -83,3 +83,10 @@
 .social-icons a:hover {
     color: rgb(255, 234, 1);
 }
+
+@media screen and (max-width:400px) {
+    .right{
+        width: 100%;
+        min-width: 100%;
+    }
+}
