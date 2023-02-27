@@ -103,7 +103,6 @@ const Media = () => {
   useEffect(() => {
     getMedia();
   }, []);
-  console.log(media);
   content =
     type === "add" ? (
       <form onSubmit={addMedia} className="media-form">

@@ -104,6 +104,46 @@
 .card__html__content video {
   max-width: 100%;
 }
+
+
+.card__html__content table {
+  width: 95%;
+  border-spacing: 0;
+  margin: 0 auto;
+}
+
+.card__html__content thead {
+  width: 100%;
+}
+
+.card__html__content tr {
+  text-align: center;
+  border: 2px solid rgba(0, 0, 0, 0.45);
+}
+
+.card__html__content tr:last-child{
+  margin-bottom: 50px;
+}
+
+.card__html__content td {
+  text-transform: capitalize;
+  /* padding: 20px 10px; */
+  margin: 10px 0px;
+  font-size: 1.1rem !important;
+}
+.card__html__content th {
+  text-transform: capitalize;
+  font-weight: 600;
+  /* padding: 15px 10px; */
+  font-size: 1rem !important;
+}
+
+@media (max-width:1107px) {
+  .card__html__content table {
+    width: 100% !important;
+  }
+}
+
 @media (max-width: 768px) {
   .elonDesc {
     display: block;
@@ -113,5 +153,17 @@
   }
   .news__nav {
     width: 100%;
+  }
+  .card__html__content tr{
+    display: flex;
+    flex-direction: column;
+    border-bottom: none
+  }
+  .card__html__content tr:last-child{
+    border: 2px solid rgba(0, 0, 0, 0.45);
+    margin-bottom: 20px;
+  }
+  .card__html__content table {
+    width: 100% !important;
   }
 }

@@ -64,7 +64,6 @@ const EditNews = ({ id, url, names }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data)
         setData({
           isFetched: true,
           data: res.data,
@@ -72,7 +71,6 @@ const EditNews = ({ id, url, names }) => {
         });
       })
       .catch((err) => {
-        console.log(err);
         setData({
           error: true,
         });

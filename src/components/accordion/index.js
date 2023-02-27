@@ -37,7 +37,7 @@ const AccordionComponent = ({ arr, setarr }) => {
   ));
 };
 
-const AccordionBest = ({ arr, setarr }) => {
+const AccordionBest = ({ arr, setarr, xalqaro }) => {
   const test = (id) => {
     arr.map((a) => (a.status = false));
     const find = arr.find((e) => e.id === id);

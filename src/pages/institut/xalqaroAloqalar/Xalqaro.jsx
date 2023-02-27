@@ -65,7 +65,7 @@ const Xalqaro = () => {
 
   return (
     <div className="wrapped mt-5 mb-5">
-          <AccordionBest arr={g} setarr={setG} />
+      <AccordionBest arr={g} setarr={setG} xalqaro={true} />
     </div>
   );
 };
