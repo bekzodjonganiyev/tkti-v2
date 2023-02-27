@@ -222,7 +222,7 @@ const QushmaLang = {
         shart:[
             {
                 title:`General rules`,
-                content:`Acceptance of documents of applicants for joint education for each academic year is carried out by the working group of the admission commission formed on the basis of the order of the rector of TKTI. The Admissions Committee, involving responsible specialists from partner universities, will organize entrance exams at TKTI for applicants who have submitted documents for 3+2 part-time undergraduate, 2+2 full-time education, and 1+1 master's specialties.`
+                content:`Acceptance of documents of applicants for joint education for each academic year is carried out by the working group of the admission commission formed on the basis of the order of the rector of TCTI. The Admissions Committee, involving responsible specialists from partner universities, will organize entrance exams at TKTI for applicants who have submitted documents for 3+2 part-time undergraduate, 2+2 full-time education, and 1+1 master's specialties.`
             },
             {
                 title:`Admission steps`,

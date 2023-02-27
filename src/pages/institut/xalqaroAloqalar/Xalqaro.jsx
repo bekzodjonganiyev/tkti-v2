@@ -20,12 +20,44 @@ const Xalqaro = () => {
       title: aloqaLang[lang].gpa[1].title,
       content: aloqaLang[lang].gpa[1].content,
     },
+    {
+      id: 2,
+      status: false,
+      title: aloqaLang[lang].gpa[2].title,
+      content: aloqaLang[lang].gpa[2].content,
+    },
+    {
+      id: 3,
+      status: false,
+      title: aloqaLang[lang].gpa[3].title,
+      content: aloqaLang[lang].gpa[3].content,
+    },
+    {
+      id: 4,
+      status: false,
+      title: aloqaLang[lang].gpa[4].title,
+      content: aloqaLang[lang].gpa[4].content,
+    },
+    {
+      id: 5,
+      status: false,
+      title: aloqaLang[lang].gpa[5].title,
+      content: aloqaLang[lang].gpa[5].content,
+    },
+    
+    {
+      id: 6,
+      status: false,
+      title: aloqaLang[lang].gpa[6].title,
+      content: aloqaLang[lang].gpa[6].content,
+    },
+ 
   ]);
   useEffect(() => {
     const filter = g.filter(
       (a, index) => (
-        (a.title = aloqaLang[lang].gpa[index].title),
-        (a.content = aloqaLang[lang].gpa[index].content)
+        (a.title = aloqaLang[lang].gpa[a.id].title),
+        (a.content = aloqaLang[lang].gpa[a.id].content)
       )
     );
     setG(filter);

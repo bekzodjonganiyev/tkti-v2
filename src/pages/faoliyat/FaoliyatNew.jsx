@@ -225,7 +225,7 @@ const FaoliyatNew = () => {
     uz: {
       a1: `Faoliyat`,
       a2: ` Universitetda bir qancha faoliyatlar olib borilmoqda, bu bo'limda siz
-      Rahbariyat, Faklultet, Kafedra, Bo'lim va Markazlarning barcha
+      Rahbariyat, Fakultet, Kafedra, Bo'lim va Markazlarning barcha
       faoliyatlarini kuzatib borishingiz mumkin. Bundan tashqari faoliyatlarni
       yuqoridagi kategoriyalar bo'yicha har bir kategoriyaning o'zini
       sahifasida ko'rishingiz mumkin`,

@@ -20,7 +20,7 @@ const studentInfo = {
     },
     graduates: {
       first:
-        "TKTI bitiruvchilari Bizni Toshkent kimyo-texnologiya instituti birlashtirib turibdi. 2020/2021 o‘quv yilida Bakalavriat  947 ta va Magistratura 283 ta,  jami 1230 ta,   2021/2022 o‘quv yilida Bakalavriat yo’nalishi bo’yicha 683 ta, Magistratura 298 ta, Bakalavriat (Sirtqi) 5 ta, Ikkinchi oliy ta’lim Bakalavriat (Sirtqi) 7 ta, Qo‘shma ta’lim magistratura (1+1) 4 ta, jami bitiruvchilar soni 997 ta tashkil qiladi. Biz eslaymiz va faxrlanamiz. Mehnat qilayotgan bitiruvchilarimiz Rosibaev Dilshodbek Uktamovich, Dostmuxamedov Temur Vyacheslavovich, Rahimov Ramiz Ulug'bekovich kabi, tahsil olayotgan Hakimova Barchina Abdurasulovna, Saidahmadov Saidumar Saidabror o‘g‘li, Yuldasheva Aziza Shuhratovna kabilarni hurmat qilamiz va o'z bilim va tajribalarini Toshkent, O'zbekiston va butun dunyoga yetkazamiz. Shu bilan birga, biz ham shunday bo'lishga intilamiz, chunki institut bizning hayot tariximizning bir qismidir, biz buni bir-birimiz bilan bo'lishishni xohlaymiz.",
+        "Toshkent kimyo-texnologiya institutida juda ko‘plab iqtidorli yoshlar taxsil olishadi. Bu talaba-yoshlarimiz ko‘pgina yutuqlarga erishib kelishmoqda.  Biz bu talaba-yoshlarimiz bilan faxrlanamiz",
       second: "Iqtidorli talabalar",
     }
   },
@@ -45,7 +45,7 @@ const studentInfo = {
     },
     graduates: {
       first:
-        "ВЫПУСКНИКИ ТХТИ Нас объединяет Ташкентский химико-технологический институт. В 2020/2021 учебном году бакалавриата 947, а магистратуры 283, всего 1230, в 2021/2022 учебном году по направлению бакалавриата 683, магистратуры 298, бакалавриата (заочно) 5, второго высшего образования бакалавриата (заочно) 7, совместного образования магистратуры (1+1) 4, всего выпускников 997. Мы помним и гордимся. Мы уважаем таких выпускников, как Росибаев Дилшодбек Уктамович, Достмухамедов Темур Вячеславович, Рахимов Рамиз Улугбекович, Хакимова Барчина Абдурасуловна, Саидахмедов Саидумар Саидаброр угли, Юлдашева Азиза Шухратовна, передаем свои знания и опыт Ташкенту, Узбекистану и всему миру. В то же время мы стремимся быть такими же, потому что это часть истории нашей жизни, которой мы хотим поделиться друг с другом.",
+        "В Ташкентском химико-технологическом институте учится много одарённые молодежи. На молодёжи добиваются многих успехов. Мы гордимся нашими молодёжими.",
       second: "одаренные студенты",
     }
   },

@@ -91,6 +91,8 @@ import Media from "./pages/admin/media/Media";
 import ProtectedRoute from "./components/admin/protected_route/ProtectedRoute";
 import Banner from "./pages/admin/banner/Banner";
 
+import XalqaroAloqa from "./pages/admin/xalqaro_aloqa/XalqaroAloqa";
+
 
 function App() {
   return (
@@ -164,6 +166,9 @@ function App() {
           <Route path="fakultet" element={<ProtectedRoute><Fakultet /></ProtectedRoute>} />
           <Route path="kafedra" element={<ProtectedRoute><Kafedra /></ProtectedRoute>} />
           <Route path="bolim" element={<ProtectedRoute><Bolim /></ProtectedRoute>} />
+
+          <Route path="halqaro-bolim" element={<ProtectedRoute><XalqaroAloqa /></ProtectedRoute>} />
+
           <Route path="markaz" element={<ProtectedRoute><Markaz/></ProtectedRoute>} />
           <Route path="rektorat" element={<ProtectedRoute><Rahbariyat /></ProtectedRoute>} />
           <Route path="faoliyat" element={<ProtectedRoute><Faoliyat /></ProtectedRoute>} />

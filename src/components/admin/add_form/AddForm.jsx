@@ -1,6 +1,4 @@
 import { useContext, useState } from "react";
-import { EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
 
 import TextEditor from "../text_editor/TextEditor";
 
