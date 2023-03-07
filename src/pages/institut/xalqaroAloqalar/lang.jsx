@@ -103,6 +103,17 @@ Babaxanova Z.A 1971-yil 1-fevralda Toshkent shahrida tavallud topgan. 1993-yilda
                   <p>TDP Data Systems MChJ (AQSH)</p>
                 </a>
              <hr>
+             <div class="department__file">
+             <button class="department__btn">
+             <a
+               target="_blank"
+               href="https://backend.tkti.uz/uploads/file-1677592895524.pdf "
+             >
+               <span>Batafsil</span>
+               <i class=" fa-solid fa-file-pdf"></i>
+             </a>
+           </button>
+           </div>
             </div>
               `,
       },
@@ -303,7 +314,7 @@ Bakalavriat, magistraturada o‘qish uchun - 65 nafar qatnashdi. <br/><br/>
                 <img src=${xalqaro} alt="employer img"/>
               </div>
               <div class="cardDesc">
-                <span class="cardJob">начальник отдела международного сотрудничества</span>
+                <span class="cardJob">Начальник отдела международного сотрудничества</span>
                 <div class=" aSD"></div>
                 <br />
                 <p>Бабаханова Зебо Абдуллаевна</p>
@@ -321,7 +332,7 @@ Bakalavriat, magistraturada o‘qish uchun - 65 nafar qatnashdi. <br/><br/>
           <div class="departmentContent"><p>
 С июля 2017 года Зебо Абдуллаевна Бабаханова работала заведующей отделом международного сотрудничества Ташкентского химико-технологического института.</br></br>
 &nbsp
-Aханова З.А. родилась 1 февраля 1971 года в г.Ташкенте. В 1993 году окончила Ташкентский государственный университет по специальности «Химия». В 2019 году получила степень доктора технических наук (DSc). В 2014 году Бабаханова З.А. награждена медалью «Слава» за вклад в науку.</p>
+Бабаханова З.А. родилась 1 февраля 1971 года в г.Ташкенте. В 1993 году окончила Ташкентский государственный университет по специальности «Химия». В 2019 году получила степень доктора технических наук (DSc). В 2014 году Бабаханова З.А. награждена медалью «Слава» за вклад в науку.</p>
 </p>
 </div>
 
@@ -372,6 +383,17 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
                   <p>TDP Data Systems LLC (США) </p>
                 </a>
              <hr>
+             <div class="department__file">
+             <button class="department__btn">
+             <a
+               target="_blank"
+               href="https://backend.tkti.uz/uploads/file-1677593014814.pdf "
+             >
+               <span>Более </span>
+               <i class=" fa-solid fa-file-pdf"></i>
+             </a>
+           </button>
+           </div>
              </div>
               `,
       },
@@ -386,7 +408,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677327293556.pdf"
         >
-          <span>Batafsil</span>
+          <span>Более</span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -399,7 +421,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677327737543.pdf "
         >
-          <span>Batafsil</span>
+          <span>Более </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -412,7 +434,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677331019794.pdf "
         >
-          <span>Batafsil</span>
+          <span>Более</span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -425,7 +447,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677331521338.pdf "
         >
-          <span>Batafsil</span>
+          <span>Более</span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -438,7 +460,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677331125088.pdf"
         >
-          <span>Batafsil</span>
+          <span>Более</span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -451,7 +473,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677331299802.pdf  "
         >
-          <span>Batafsil</span>
+          <span>Более</span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -491,7 +513,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677337954322.pdf"
         >
-          <span>Batafsil</span>
+          <span>Более</span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -535,7 +557,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677334241500.pdf "
         >
-          <span>Batafsil</span>
+          <span>Более</span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -579,7 +601,7 @@ Aханова З.А. родилась 1 февраля 1971 года в г.Та�
       },
       
       {
-        title: `Department of International Cooperation`,
+        title: `Employees of the International Relations Department`,
         content: `
             <p>
 
@@ -661,6 +683,17 @@ Babakhanova Z. A was born on February 1, 1971 in Tashkent. In 1993, she graduate
                   <p>TDP Data Systems LLC (USA)</p>
                 </a>
              <hr>
+             <div class="department__file">
+             <button class="department__btn">
+             <a
+               target="_blank"
+               href="https://backend.tkti.uz/uploads/file-1677593141434.pdf "
+             >
+               <span>More </span>
+               <i class=" fa-solid fa-file-pdf"></i>
+             </a>
+           </button>
+           </div>
             </div>
               `,
       },
@@ -675,7 +708,7 @@ Babakhanova Z. A was born on February 1, 1971 in Tashkent. In 1993, she graduate
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677327422061.pdf "
         >
-          <span>Batafsil</span>
+          <span>More </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -688,7 +721,7 @@ Babakhanova Z. A was born on February 1, 1971 in Tashkent. In 1993, she graduate
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677327769873.pdf "
         >
-          <span>Batafsil</span>
+          <span>More </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -704,7 +737,7 @@ Babakhanova Z. A was born on February 1, 1971 in Tashkent. In 1993, she graduate
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677332472948.pdf"
         >
-          <span>Batafsil</span>
+          <span>More </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -717,7 +750,7 @@ Babakhanova Z. A was born on February 1, 1971 in Tashkent. In 1993, she graduate
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677332792455.pdf "
         >
-          <span>Batafsil</span>
+          <span>More </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -730,7 +763,7 @@ Babakhanova Z. A was born on February 1, 1971 in Tashkent. In 1993, she graduate
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677332658319.pdf "
         >
-          <span>Batafsil</span>
+          <span>More </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -743,7 +776,7 @@ Babakhanova Z. A was born on February 1, 1971 in Tashkent. In 1993, she graduate
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677332335048.pdf "
         >
-          <span>Batafsil</span>
+          <span>More </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -784,7 +817,7 @@ The scholarship application deadline is January 25.
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677338030980.pdf"
         >
-          <span>Batafsil</span>
+          <span>More </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>
@@ -819,7 +852,7 @@ The scholarship application deadline is January 25.
           target="_blank"
           href="https://backend.tkti.uz/uploads/file-1677334158381.pdf "
         >
-          <span>Batafsil</span>
+          <span>More </span>
           <i class=" fa-solid fa-file-pdf"></i>
         </a>
       </button>

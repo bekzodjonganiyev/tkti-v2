@@ -161,7 +161,7 @@ const MyComponent = () => {
         },
         {
           labelId: HeaderLang[lang].mytkti[4],
-          href: "https://rector.tcti.uz/",
+          href: "https://corp.uz/webmail/",
         },
         {
           labelId: HeaderLang[lang].mytkti[5],
