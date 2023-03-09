@@ -103,17 +103,11 @@ Babaxanova Z.A 1971-yil 1-fevralda Toshkent shahrida tavallud topgan. 1993-yilda
                   <p>TDP Data Systems MChJ (AQSH)</p>
                 </a>
              <hr>
-             <div class="department__file">
-             <button class="department__btn">
-             <a
-               target="_blank"
-               href="https://backend.tkti.uz/uploads/file-1677592895524.pdf "
-             >
-               <span>Batafsil</span>
-               <i class=" fa-solid fa-file-pdf"></i>
-             </a>
-           </button>
-           </div>
+             <a  href="https://www.decisionplatform.io/">
+                 
+                  <p>TDP Data Systems MChJ (AQSH)</p>
+                </a>
+             <hr>
             </div>
               `,
       },

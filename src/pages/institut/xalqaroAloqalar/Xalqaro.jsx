@@ -1,71 +1,35 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import aloqaLang from "./lang";
-import { AccordionBest } from "../../../components/accordion";
+import { AccordionComponent } from "../../../components/accordion";
 import "./xalqaroAloqa.css";
 import { Context } from "../../../context";
 
 const Xalqaro = () => {
-  const { lang } = useContext(Context);
-  const [g, setG] = useState([
-    {
-      id: 0,
-      status: true,
-      title: aloqaLang[lang].gpa[0].title,
-      content: aloqaLang[lang].gpa[0].content,
-    },
-    {
-      id: 1,
-      status: false,
-      title: aloqaLang[lang].gpa[1].title,
-      content: aloqaLang[lang].gpa[1].content,
-    },
-    {
-      id: 2,
-      status: false,
-      title: aloqaLang[lang].gpa[2].title,
-      content: aloqaLang[lang].gpa[2].content,
-    },
-    {
-      id: 3,
-      status: false,
-      title: aloqaLang[lang].gpa[3].title,
-      content: aloqaLang[lang].gpa[3].content,
-    },
-    {
-      id: 4,
-      status: false,
-      title: aloqaLang[lang].gpa[4].title,
-      content: aloqaLang[lang].gpa[4].content,
-    },
-    {
-      id: 5,
-      status: false,
-      title: aloqaLang[lang].gpa[5].title,
-      content: aloqaLang[lang].gpa[5].content,
-    },
-    
-    {
-      id: 6,
-      status: false,
-      title: aloqaLang[lang].gpa[6].title,
-      content: aloqaLang[lang].gpa[6].content,
-    },
- 
-  ]);
-  useEffect(() => {
-    const filter = g.filter(
-      (a, index) => (
-        (a.title = aloqaLang[lang].gpa[a.id].title),
-        (a.content = aloqaLang[lang].gpa[a.id].content)
-      )
-    );
-    setG(filter);
-  }, [lang]);
+  const { lang, globalUrl } = useContext(Context);
+  const [fetchedData, setFetchedData] = useState([]);
 
+  const getData = async () => {
+    const res = await fetch(`${globalUrl}/xalqaro_aloqa/all`, {
+      headers: {
+        "Content-type": "application/json",
+        token: localStorage.getItem("token"),
+      },
+    });
+    const parsed = await res.json();
+    const filter = parsed.data.map((item) => ({
+      id: item._id,
+      status: false,
+      title: item[`title_${lang}`],
+      content: item[`body_${lang}`],
+    }));
+    setFetchedData(filter);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className="wrapped mt-5 mb-5">
-      <AccordionBest arr={g} setarr={setG} xalqaro={true} />
+      <AccordionComponent arr={fetchedData} setarr={setFetchedData} />
     </div>
   );
 };

@@ -98,6 +98,11 @@ const Sidebar = () => {
             Banner
           </NavLink>
         </li>
+        <li>
+          <NavLink className="side-link" to="/admin/xalqaro-bolim">
+            Xalqaro Bolim
+          </NavLink>
+        </li>
       </ul>
     </aside>
   );

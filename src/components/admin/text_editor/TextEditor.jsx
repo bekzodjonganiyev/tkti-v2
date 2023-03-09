@@ -25,7 +25,7 @@ const TextEditor = ({ title, name, value, handleValue }) => {
       <Editor
         onEditorChange={(e) => {
           handleValue.uz && handleValue.uz(e);
-          localStorage.setItem(name.uz, JSON.stringify(e));
+          name && localStorage.setItem(name.uz, JSON.stringify(e));
         }}
         value={value.uz}
         init={editorInit}
@@ -36,7 +36,7 @@ const TextEditor = ({ title, name, value, handleValue }) => {
       <Editor
         onEditorChange={(e) => {
           handleValue.ru && handleValue.ru(e);
-          localStorage.setItem(name.ru, JSON.stringify(e));
+          name && localStorage.setItem(name.ru, JSON.stringify(e));
         }}
         value={value.ru}
         init={editorInit}
@@ -47,7 +47,7 @@ const TextEditor = ({ title, name, value, handleValue }) => {
       <Editor
         onEditorChange={(e) => {
           handleValue.ru && handleValue.en(e);
-          localStorage.setItem(name.en, JSON.stringify(e));
+          name && localStorage.setItem(name.en, JSON.stringify(e));
         }}
         value={value.en}
         init={editorInit}

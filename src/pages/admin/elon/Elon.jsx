@@ -62,6 +62,7 @@ const Elon = () => {
   };
   function getData() {
     fetch(`${globalUrl}/elon/all`, {
+      
       headers: {
         "Content-type": "application/json",
       },

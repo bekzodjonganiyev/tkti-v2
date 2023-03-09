@@ -1,144 +1,178 @@
+import React from "react";
+import { useContext } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
-import { Editor } from "@tinymce/tinymce-react";
+import FormHeader from "../../../components/admin/form_header/FormHeader";
+import Table from "../../../components/admin/table/Table";
 import TextEditor from "../../../components/admin/text_editor/TextEditor";
-import "./XalqaroAloqa.css";
-
-const ToDoList = () => {
-  const [sections, setSections] = useState([]);
-  const [id, setId] = useState();
-  const [titleUz, setTitleUz] = useState();
-  const [titleRu, setTitleRu] = useState();
-  const [titleEn, setTitleEn] = useState();
-
-  const editorInit = {
-    min_height: 400,
-    plugins: [
-      "advlist autolink lists link image charmap print preview anchor",
-      "searchreplace visualblocks code fullscreen",
-      "insertdatetime media table paste wordcount",
-      "codesample code",
-      "autoresize",
-    ],
-    codesample_languages: [
-      { text: "HTML/XML", value: "markup" },
-      { text: "JavaScript", value: "javascript" },
-      { text: "CSS", value: "css" },
-      { text: "PHP", value: "php" },
-    ],
-    toolbar:
-      "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | codesample code",
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newTodo = {
-      id: id,
-      title_uz: titleUz,
-      title_en: titleRu,
-      title_ru: titleEn,
-    };
-    (titleUz || titleRu || titleEn) && setSections([...sections, newTodo]);
-    console.log(sections);
-    setId("");
-    setTitleUz("");
-    setTitleRu("");
-    setTitleEn("");
-  };
-
-  const removeTask = (index) => {
-    const newTasks = [...sections];
-    newTasks.splice(index, 1);
-    setSections(newTasks);
-  };
-
-  return (
-    <div className="w-100">
-      <form onSubmit={handleSubmit} className="form-control form__section">
-        <input
-          type="text"
-          name="id"
-          value={id}
-          placeholder="Enter a title for this task…"
-          onChange={(e) => setId(e.target.value)}
-          className="form-control "
-        />
-
-        <Editor
-          value={titleUz}
-          onEditorChange={(e) => {
-            setTitleUz(e);
-          }}
-          init={editorInit}
-        />
-        <Editor
-          value={titleRu}
-          onEditorChange={(e) => {
-            setTitleRu(e);
-          }}
-          init={editorInit}
-        />
-        <Editor
-          value={titleEn}
-          onEditorChange={(e) => {
-            setTitleEn(e);
-          }}
-          init={editorInit}
-        />
-
-        <button type="submit" className="form-control">
-          <i class="fas fa-plus"></i>
-        </button>
-      </form>
-      {sections.map((task, index) => (
-        <div className="todo" key={index}>
-          <div className="d-flex gap-5">
-            <div>{task.id}</div>
-            <div dangerouslySetInnerHTML={{ __html: task.title_uz }} />
-            <button onClick={() => removeTask(index)}>
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+import { Context } from "../../../context/";
 
 const XalqaroAloqa = () => {
-  const [bolim, setBolim] = useState(true);
-  return (
-    <div className="container">
-      <div className="bolim-wrapper">
-        <div className="w-30">
-          <input
-            onChange={() => setBolim(!bolim)}
-            type="checkbox"
-            class="form-check-input"
-            id="exampleInputEmail1"
-          />
-          <label for="exampleInputEmail1" class="form-label">
-            Malumotni bo'limlardan iborat
-          </label>
-        </div>
-        {bolim && <ToDoList />}
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label"></label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
+  const { globalUrl } = useContext(Context);
+  const [editor, setEditor] = useState({ uz: "", ru: "", en: "" });
+  const [fetchedData, setFetchedData] = useState([]);
+  const [status, setStatus] = useState("read");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newBody = {
+      title_uz: e.target.title_uz.value,
+      title_ru: e.target.title_ru.value,
+      title_en: e.target.title_en.value,
+      body_uz: editor.uz,
+      body_ru: editor.ru,
+      body_en: editor.en,
+    };
+    const res = await fetch(`${globalUrl}/xalqaro_aloqa/add`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        token: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(newBody),
+    });
+
+    const parsed = await res.json();
+    if (parsed.status === 200) {
+      alert("Qo'shildi");
+      window.location.reload();
+    }
+  };
+  const getData = async () => {
+    const res = await fetch(`${globalUrl}/xalqaro_aloqa/all`, {
+      headers: {
+        "Content-type": "application/json",
+        token: localStorage.getItem("token"),
+      },
+    });
+    const parsed = await res.json();
+    setFetchedData(parsed.data);
+  };
+  const deleteData = async (id) => {
+    const res = await fetch(`${globalUrl}/xalqaro_aloqa/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        token: localStorage.getItem("token"),
+      },
+    });
+    const parsed = await res.json();
+    if (parsed.status === 200) {
+      alert("O'chirildi");
+      window.location.reload();
+    }
+  };
+
+  const analyseNameTableHead = ["Tartib raqam", "Sarlavha", "Amallar"];
+  const renderHead = (item, index) => <th key={index}>{item}</th>;
+  const bodyData = fetchedData;
+  const renderBody = (item, index) => {
+    return (
+      <tr key={index} style={{ cursor: "pointer", userSelect: "none" }}>
+        <td>{index + 1}</td>
+        <td>{item.title_uz}</td>
+        <td>
+          <button
+            className="event-btn edit"
+            onClick={() =>
+              // {
+              //   setOnEdit({
+              //     open: true,
+              //     id: item._id,
+              //     name: item.title_uz,
+              //     obj: item,
+              //   });
+              //   JSON.stringify(localStorage.setItem("xalqaro_body_uz", item.body_uz));
+              //   JSON.stringify(localStorage.setItem("xalqaro_body_ru", item.body_ru));
+              //   JSON.stringify(localStorage.setItem("xalqaro_body_en", item.body_en));
+              // }
+              console.log("EDIT")
+            }
+          >
+            <i className="fa fa-edit"></i>
+          </button>
+          <button
+            className="event-btn delete"
+            onClick={() => deleteData(item._id)}
+          >
+            <i className="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    );
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const content =
+    status === "read" ? (
+      <h1>
+        <Table
+          headData={analyseNameTableHead}
+          renderHead={renderHead}
+          bodyData={bodyData}
+          renderBody={renderBody}
         />
-      </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">
-          Check me out
+      </h1>
+    ) : (
+      <form
+        style={{ display: "flex", flexDirection: "column", gap: "30px" }}
+        onSubmit={handleSubmit}
+      >
+        <label htmlFor="title_uz" style={{ width: "95%", margin: "0 auto" }}>
+          Mavzu nima? UZ
+          <input type="text" name="title_uz" id="title_uz" className="form-control" />
         </label>
-      </div>
-      <button type="submit" class="btn btn-primary">
-        Submit
-      </button>
+        <label htmlFor="title_ru" style={{ width: "95%", margin: "0 auto" }}>
+          Mavzu nima? RU
+          <input type="text" name="title_ru" id="title_ru" className="form-control" />
+        </label>
+        <label htmlFor="title_en" style={{ width: "95%", margin: "0 auto" }}>
+          Mavzu nima? EN
+          <input type="text" name="title_en" id="title_en" className="form-control" />
+        </label>
+        <TextEditor
+          title={{
+            uz: "Batafsil malumot kiriting (UZ)",
+            ru: "Batafsil malumot kiriting (RU)",
+            en: "Batafsil malumot kiriting (EN)",
+          }}
+          // name={{
+          //   uz: "xalqaro_body_uz",
+          //   ru: "xalqaro_body_ru",
+          //   en: "xalqaro_body_en",
+          // }}
+          value={{
+            uz: editor.uz,
+            ru: editor.ru,
+            en: editor.en,
+          }}
+          handleValue={{
+            uz: (e) => setEditor({ ...editor, uz: e }),
+            ru: (e) => setEditor({ ...editor, ru: e }),
+            en: (e) => setEditor({ ...editor, en: e }),
+          }}
+        />
+        <button
+          className="form-control"
+          style={{ width: "95%", margin: "0 auto" }}
+        >
+          Saqlash
+        </button>
+      </form>
+    );
+  return (
+    <div>
+      <FormHeader
+        title={"Xalqaro aloqa"}
+        event2="Qo'shish"
+        handleEvent2={() => setStatus("create")}
+        event1="Barchasi"
+        handleEvent1={() => setStatus("read")}
+      />
+      {content}
     </div>
   );
 };
