@@ -26,7 +26,7 @@ const Xalqaro = () => {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [lang]);
   return (
     <div className="wrapped mt-5 mb-5">
       <AccordionComponent arr={fetchedData} setarr={setFetchedData} />
