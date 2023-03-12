@@ -76,7 +76,7 @@ const XalqaroAloqa = () => {
       },
     });
     const parsed = await res.json();
-    setFetchedData(parsed.data);
+    setFetchedData(parsed.data.reverse());
   };
   const deleteData = async (id) => {
     const res = await fetch(`${globalUrl}/xalqaro_aloqa/${id}`, {

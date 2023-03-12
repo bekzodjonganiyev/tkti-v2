@@ -21,7 +21,7 @@ const Xalqaro = () => {
       status: false,
       title: item[`title_${lang}`],
       content: item[`body_${lang}`],
-    }));
+    })).reverse();
     setFetchedData(filter);
   };
   useEffect(() => {
