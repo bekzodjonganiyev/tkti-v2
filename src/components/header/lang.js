@@ -18,7 +18,7 @@ const HeaderLang = {
     "KIMYOVIY TEXNOLOGIYALARNING ILMIY-TEXNIKAVIY RIVOJLANISH SUR'ATI TEZ SUR'ATLAR BILAN O'SIB BORMOQDA. ALYUMINIY ISHLAB CHIQARISHNING ELEKTROKIMYOVIY JARAYONINING SANOAT RIVOJLANISHI UCHUN 35 YIL KERAK BO'LDI."
 ,"TKTI BUTUN DUNYO BOʻYLAB 800 DAN ORTIQ TAʼLIM SUBYEKTLARINING IXTIYORIY TASHABBUSI SIFATIDA SHAKLLANGAN. BUGUNGI KUNDA BMT BILAN HAMKORLIK QILAYOTGAN VA MENEJMENT BILAN BOGʻLIQ BOʻLGAN OLIY OʻQUV YURTLARI OʻRTASIDAGI ENG YIRIK UYUSHMA HISOBLANADI."],
         institut:['Institut','Rektorat','Interaktiv xizmatlar','Tkti ish rejasi','Korrupsiayni oldini olish','Biz bilan aloqa','Xalqaro aloqalar','Ilmiy loyihalar','Tkti qoshidagi litsey'],
-       
+        institut1:['Institut','Biz haqimizda','Missiyamiz','Institut tuzilmasi','Tarix va meros','Bizning majburiyatlarimiz','Korrupsiyani oldini olish','Bitiruvchilar'],
         library:'Kutubxona',
         contact:`Bog'lanish`
     },
