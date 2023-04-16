@@ -6,7 +6,7 @@
     error: ''
   }
   
-  const reducer = (state = initialState, action) => {
+  export const aboutUsReducer = (state = initialState, action) => {
     switch (action.type) {
       case ABOUT_US.request:
         return {
@@ -29,4 +29,3 @@
     }
   }
   
-  export default reducer

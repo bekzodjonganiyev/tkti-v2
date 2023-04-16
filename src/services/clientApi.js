@@ -1,31 +1,24 @@
 import { instance } from "./http";
 
-const config = {
-  a: (method) => (
-    { 
-      method: method,
-      headers: {
-        "Content-type": "application/json",
-        "Token": localStorage.getItem("token")
-      }
-    }
-  ),
-
-  b: (method, body, formData) => (
-    { 
-      method: method,
-      headers: {
-        "Content-type": formData ? "application/json" : "multipart/form-data",
-        "Token": localStorage.getItem("token")
-      },
-      body: body
-    }
-  )
-}
-
 class ClientApiService {
   getAll(url){
     return instance.get(url)
+  }
+
+  getById(url, id){
+    return instance.get(`${url}/${id}`)
+  }
+
+  add(url, data){
+    return instance.post(url, data)
+  }
+
+  update(url, id, data){
+    return instance.put(`${url}/${id}`, data)
+  }
+
+  delete(id){
+    return instance.delete(id)
   }
 }
 

@@ -1,39 +1,41 @@
-import axios from 'axios'
-import { ABOUT_US } from './types'
+import axios from "axios";
+
+import { ABOUT_US } from "./types";
+import clientApi from "../../services/clientApi";
 
 export const fetchUsers = () => {
   return (dispatch) => {
-    dispatch(fetchUsersRequest())
-    axios
-      .get('https://jsonplaceholder.typicode.com/users')
-      .then(response => {
+    dispatch(fetchUsersRequest());
+    clientApi
+      .getAll("/about_us")
+      .then((response) => {
         // response.data is the users
-        const users = response.data
-        dispatch(fetchUsersSuccess(users))
+        const {data} = response.data;
+        dispatch(fetchUsersSuccess(data));
       })
-      .catch(error => {
-        // error.message is the error message
-        dispatch(fetchUsersFailure(error.message))
-      })
-  }
-}
+      .catch((error) => {
+        // error.mssage is the error message
+        dispatch(fetchUsersFailure(error.message));
+      });
+  };
+};
 
 export const fetchUsersRequest = () => {
   return {
-    type: ABOUT_US.request
-  }
-}
+    type: ABOUT_US.request,
+  };
+};
 
-export const fetchUsersSuccess = users => {
+export const fetchUsersSuccess = (users) => {
   return {
     type: ABOUT_US.add,
-    payload: users
-  }
-}
+    payload: users,
+  };
+};
 
-export const fetchUsersFailure = error => {
+export const fetchUsersFailure = (error) => {
   return {
     type: ABOUT_US.error,
-    payload: error
-  }
-}
+    payload: error,
+  };
+};
