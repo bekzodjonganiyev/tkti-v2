@@ -43,7 +43,7 @@ background: #fff;
 .department__file{
     display: flex;
     margin:  0 40px;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .departmentContent {
     color:#02307D;

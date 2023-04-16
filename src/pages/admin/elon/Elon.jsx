@@ -60,6 +60,7 @@ const Elon = () => {
       </tr>
     );
   };
+
   function getData() {
     fetch(`${globalUrl}/elon/all`, {
       
@@ -73,6 +74,7 @@ const Elon = () => {
       })
       .catch((err) => console.log(err));
   }
+  
   function postData(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -93,6 +95,7 @@ const Elon = () => {
       }
     });
   }
+
   function deleteYangilik(id) {
     fetch(`${globalUrl}/elon/${id}`, {
       method: "DELETE",
@@ -114,6 +117,7 @@ const Elon = () => {
         console.log(err);
       });
   }
+
   useEffect(() => {
     getData();
     localStorage.removeItem("ebody_uz");

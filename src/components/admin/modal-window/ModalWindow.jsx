@@ -3,7 +3,7 @@ import EditNews from '../edit_new/EditNews'
 
 import "./ModalWindow.css"
 
-const ModalWindow = ({id, url, name, closeModal, keys}) => {
+const ModalWindow = ({id, url, name, closeModal, keys, isNews}) => {
   return (
     <div className='modal-window'>
       <div className='modal-inner'>
@@ -13,7 +13,9 @@ const ModalWindow = ({id, url, name, closeModal, keys}) => {
             <i className="fa fa-x"></i>
           </button>
         </div>
-        <EditNews id={id} url={url} names={keys}/>
+        {
+          isNews ? <EditNews id={id} url={url} names={keys}/> : ""
+        }
       </div>
     </div>
   )

@@ -45,8 +45,12 @@ a{
 
 @media only screen and (min-width: 1440px) {
   .my__container {
-    max-width: 1440px;
-    margin: 0 auto;
+    /* max-width: 1440px;
+    margin: 0 auto; */
     
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
