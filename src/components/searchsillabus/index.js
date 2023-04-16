@@ -29,7 +29,7 @@ function Filter({yili}) {
  const [about] = useState({
   uz:[`Syllabusni toping`,`Yilni tanlang`,`Ta'lim turini tanlang`,`Ta'lim darajasini tanlang`,`Fakultetni tanlang`,`Kafedrani tanlang`,`Yo'nalishni tanlang`,`Qidirish`],
   ru:[`Найдите программу`,`Выберите год`,`Выберите тип образования`,`Выберите уровень образования`,`Выберите факультет`,`Выберите отдел`,`Выберите направление`,`Поиск`],
-  en:[`SFind the syllabus`,`Select a year`,`Select the type of education`,`Select the level of education`,`Choose a faculty`,`Select a department`,`Choose a direction`,`Search`]
+  en:[`Find the syllabus`,`Select a year`,`Select the type of education`,`Select the level of education`,`Choose a faculty`,`Select a department`,`Choose a direction`,`Search`]
  })
 
   const [types, setTypes] = useState([]);

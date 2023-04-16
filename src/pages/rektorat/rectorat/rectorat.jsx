@@ -102,7 +102,7 @@ function Rectorat() {
         {
           class: "fa-solid fa-envelope",
           text: ContactLang[lang].safarov.p38,
-          href: "mailto:uquv_prorektor@tcti.uz",
+          href: "mailto:t.safarov@tkti.uz",
         },
         {
           class: "fa-solid fa-location-dot",
@@ -154,7 +154,7 @@ function Rectorat() {
         {
           class: "fa-solid fa-envelope",
           text: ContactLang[lang].bobiramon.p22,
-          href: "mailto:tkti_b.kodirov@edu.uz",
+          href: "mailto:b.kodirov@tkti.uz",
         },
         {
           class: "fa-solid fa-location-dot",
@@ -180,7 +180,7 @@ function Rectorat() {
         {
           class: "fa-solid fa-envelope",
           text: ContactLang[lang].prormanav.f16,
-          href: "mailto:boborajabov@bk.ru",
+          href: "mailto:b.boborajabov@tkti.uz",
         },
         {
           class: "fa-solid fa-location-dot",

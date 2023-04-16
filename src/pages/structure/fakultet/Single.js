@@ -20,7 +20,7 @@ const FakultetSingle = () => {
     ru: {
         title: "О факультетах",
         desc: "Цели и задачи",
-        kafedra: "Отделы",     
+        kafedra: "Кафедры",     
       info:"Деятельность"
 
     },

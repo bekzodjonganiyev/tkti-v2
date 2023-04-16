@@ -75,7 +75,7 @@ const ContactLangMy = {
             p35: "- Bo‘sh lavozimlarga tanlov asosida ishga qabul qilish, magistrlarni ishga olib qolish bo‘yicha takliflar tayyorlash, professor-o‘qituvchilar tarkibini yaxshilash va malakasini oshirish rejalarini ishlab chiqish va amalga oshirishga rahbarlik qilish;",
             p36: "- Ta’lim mazmunini takomillashtirish, mutaxassis-kadrlarni xalqaro talablar asosida tayyorlashni ta’minlash maqsadida xorij mamlakatlarning turdosh oliy ta’lim muassasalari bilan hamkorlikda fakultet, kafedralar tashkil etish bo‘yicha takliflar tayyorlash;",
             p37: "- Boshqa oliy ta’lim muassasalari bilan o‘quv-uslubiy yo‘nalishda doimiy hamkorlikni amalga oshirish, konferensiya, seminarlarda professor-o‘qituvchilarning faol ishtirokini ta’minlash, mahalliy hokimiyatlar bilan hamkorlikda ishlash;",
-            p38: "uquv_prorektor@tcti.uz",
+            p38: "t.safarov@tkti.uz",
           p39: "Manzil: Toshkent sh. Navoiy koʻchasi, 32 uy, 100011",
         },
         bobiramon: {
@@ -100,7 +100,7 @@ const ContactLangMy = {
           p19: "- oliy taʼlim muassasasining moliyaviy-iqtisodiy faoliyatiga doir belgilangan vazifalar ijrosini taʼminlash va nazoratini olib borish",
           p20: "- tuzilmasiga kiruvchi bo‘linmalar faoliyatini muvofiqlashtirish, xodimlari bo‘yicha moddiy va maʼnaviy rag‘batlantirish, ijtimoiy muhofazasini taʼminlash, intizomiy choralar qo‘llash yuzasidan takliflar kiritish;",
           p21: "- oliy taʼlim muassasasining moddiy-texnika bazasini mustahkamlash bo‘yicha takliflar ishlab chiqish va boshqalar.",
-          p22: "tkti_b.kodirov@edu.uz",
+          p22: "b.kodirov@tkti.uz",
           p23: "Manzil: Toshkent sh. Navoiy ko’chasi, 32 uy, 100011",
         },
         prormanav: {
@@ -119,7 +119,7 @@ const ContactLangMy = {
           f13: "2012-2016 yillar Toshkent kimyo-texnologiya instituti rektor yordamchisi;",
           f14: "2017-2022 yillar Toshkent kimyo-texnologiya instituti Oziq-ovqat mahsulotlari texnologiyasi fakulteti yoshlar bilan ishlash bo‘yicha dekan o‘rinbosari;",
           f15: "2022 yil 14 – martdan Yoshlar masalalari va ma'naviy-ma'rifiy ishlar boyicha birinchi prorektor v.b.",
-          f16: "boborajabov@bk.ru",
+          f16: "b.boborajabov@tkti.uz",
           f17: "Manzil: Toshkent sh. Navoiy ko’chasi, 32 uy, 100011",
         },
         polatov: {
@@ -291,15 +291,15 @@ const ContactLangMy = {
             p35: "- Руководство разработкой и реализацией планов повышения квалификации и совершенствования профессорско-преподавательского состава, подготовка предложений по приему на вакантные должности магистров на конкурсной основе;",
             p36: "- Подготовка предложений по созданию факультетов, кафедр совместно с зарубежными вузами в целях совершенствования содержания образования, обеспечения подготовки специалистов-кадров на основе международных требований;",
             p37: "- Осуществление постоянного сотрудничества с другими высшими образовательными учреждениями в учебно-методическом направлении, обеспечение активного участия профессорско-преподавательского состава в конференциях, семинарах, работа в сотрудничестве с местными органами власти;",
-            p38: "uquv_prorektor@tcti.uz",
+            p38: "t.safarov@tkti.uz",
           p39: "Адрес: г. Ташкент, ул. Навоий, дом 32, 100011",
         }, 
         bobiramon: {
           p1: "С 2022 года проректор по финансово-экономической работе Ташкентского химико-технологического института",
           p2: "Краткая информация",
-          p3: "B.B.Кадыров родился в 1979 году в городе Термез Сурхандарьинской области",
+          p3: "Б.Б.Кадыров родился в 1979 году в городе Термез Сурхандарьинской области",
           p4: "В 2000 году окончил Термезский государственный университет, в 2004 году-бакалавриат и в 2007 году-магистратуру Ташкентского государственного юридического института. По специальности-филолог, юрист. Доктор юридических наук (DSc), доцент",
-          p5: "B.B.На сегодняшний день Кадыров опубликовал более 50 научно-методических работ, в том числе 2 монографии, 2 учебно-методических пособия и более 40 научных статей и тезисов",
+          p5: "Б.Б.Кадыров На сегодняшний день  опубликовал более 50 научно-методических работ, в том числе 2 монографии, 2 учебно-методических пособия и более 40 научных статей и тезисов",
           p6: "Прошел обучение в престижных учебных заведениях ряда зарубежных стран, в том числе развитых стран, таких как Германия, Япония, Южная Корея.",
           p7: "Научно-педагогическая трудовая деятельность",
           p8: "2001-2004 гг.-специалист I категории Института проблем высшей и средней специальной школы при Министерстве высшего и среднего специального образования Республики Узбекистан",
@@ -316,7 +316,7 @@ const ContactLangMy = {
           p19: "- обеспечение и контроль за выполнением задач, определенных в финансово-экономической деятельности Высшего образовательного учреждения",
           p20: "-внесение предложений по координации деятельности подразделений, входящих в его структуру, материальному и моральному стимулированию, обеспечению социальной защиты работников, применению дисциплинарных мер;",
           p21: "- разработка предложений по укреплению материально-технической базы высшего учебного заведения и др.",
-          p22: "tkti_b.kodirov@edu.uz",
+          p22: "b.kodirov@tkti.uz",
           p23: "Адрес: г. Ташкент, ул. Навоий, дом 32, 100011",
         },
         prormanav: {
@@ -335,7 +335,7 @@ const ContactLangMy = {
           f13: "2012-2016 гг. помощник ректора Ташкентского химико-технологического института;",
           f14: "2017-2022 гг. заместитель декана по работе с молодежью факультета технологии пищевых продуктов Ташкентского химико-технологического института;",
           f15: "С 14 марта 2022 года первый проректор по делам молодежи и духовно – просветительской работе В.У.",
-          f16: "boborajabov@bk.ru",
+          f16: "b.boborajabov@tkti.uz",
           f17: "Адрес: г. Ташкент, ул. Навоий, дом 32, 100011",
         },
         polatov: {
@@ -457,7 +457,7 @@ const ContactLangMy = {
             p35: "- Leadership in the development and implementation of plans for admission to vacant positions on a competitive basis, preparation of proposals for the recruitment of Masters, improvement of the composition of professors and teachers and professional development;",
             p36: "- In order to improve the content of education, to ensure the training of specialists on the basis of international requirements, to prepare proposals for the organization of faculties and departments in cooperation with other higher education institutions of foreign countries;",
             p37: "- Constant cooperation with other higher education institutions in the educational-methodical direction, ensuring the active participation of professors and teachers in conferences and seminars, working in cooperation with local authorities;",
-            p38: "uquv_prorektor@tcti.uz",
+            p38: "t.safarov@tkti.uz",
           p39: "Address: 32, Navoiy street, Tashkent city, 100011",
           },
           bobiramon: {
@@ -482,7 +482,7 @@ const ContactLangMy = {
             p19: "- to ensure the implementation and control of the tasks set forth in the financial and economic activities of the higher educational institution",
             p20: "- coordination of the activities of the divisions included in the structure, material and spiritual stimulation on the staff, provision of social protection, making proposals on the application of disciplinary measures;",
             p21: "- development of proposals for strengthening the material and technical base of the higher educational institution and others.",
-            p22: "tkti_b.kodirov@edu.uz",
+            p22: "b.kodirov@tkti.uz",
             p23: "Address: 32, Navoiy street, Tashkent city, 100011",
           },
           prormanav: {
@@ -501,7 +501,7 @@ const ContactLangMy = {
             f13: "2012-2016-assistant rector of Tashkent chemical and Technological Institute;",
             f14: "2017-2022-dean of the Faculty of food technology of the Tashkent chemical and Technological Institute for work with young people;",
             f15: "From March 14, 2022, the first vice – rector for youth issues and spiritual and educational work.b.",
-            f16: "boborajabov@bk.ru",
+            f16: "b.boborajabov@tkti.uz",
             f17: "Address: 32, Navoiy street, Tashkent city, 100011",
           },
         polatov: {

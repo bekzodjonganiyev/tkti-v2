@@ -22,7 +22,7 @@ const QuestionForm = ({ divclass }) => {
       right: `<br />  
       Iqtisodiy va tashkiliy masalalar bo‘yicha prorektor:  Qodirov Bobiromon Bekmurodovich <hr /> 
               Тел. +998712447915 <hr />
-              E-mail: tkti_b.kodirov@edu.uz <hr /> 
+              E-mail: b.kodirov@tkti.uz <hr /> 
               Ish vaqti: Dush-Shan, soat  09:00-17:00 gacha  <hr /> 
               Manzil: Toshkent sh., Navoiy 9, 32-uy, 2-bino`,
     },
@@ -39,7 +39,7 @@ const QuestionForm = ({ divclass }) => {
       right: ` <br />
       Вице-канцлер по финансовым вопросам: Кадыров Бобиромон Бекмуродович <hr />
              Тел: +998712447915 <hr />
-             Эл. адрес: tkti_b.kodirov@edu.uz <hr />
+             Эл. адрес: b.kodirov@tkti.uz <hr />
              Время работы: Пн-Сб, 09:00-17:00 <hr />
              Адрес: г.Ташкент, Навои 9, дом 32, корпус 2`,
     },
@@ -56,7 +56,7 @@ const QuestionForm = ({ divclass }) => {
       right: ` <br />
       Vice Chancellor for Financial Affairs: Qodirov Bobiromon Bekhmurodovich <hr />
               Tel: +998712447915 <hr />
-              Email: tkti_b.kodirov@edu.uz <hr />
+              Email: b.kodirov@tkti.uz <hr />
               Working hours: Mon-Sat, 09:00-17:00 <hr />
               Address: Tashkent city, Navoi st, 32 apt, 2nd building`,
     },

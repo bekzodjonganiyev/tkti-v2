@@ -14,7 +14,7 @@ const FacultetComponent = () => {
   const AboutTextFunction = num =>{
     const obj = {
       uz:`TKTI  bakalavriat, magistratura va bitta integratsiyalashgan o'quv dasturini, doktoranturada  o'qishni davom ettirish va o'qituvchi malakasini olish imkoniyatini taklif etadi. Bularning barchasi ${num} fakultetda amalga oshiriladi`,
-      ru:`TKTI предлагает бакалавриат, магистратуру и одну интегрированную учебную программу, возможность продолжить обучение в докторантуре и получить квалификацию преподавателя. Все это делается на ${num} факультетах`,
+      ru:`TXTI предлагает бакалавриат, магистратуру и интегрированную учебную программу, возможность продолжить обучение в докторантуре и получить квалификацию преподавателя. Все это делается на ${num} факультетах`,
       en:`TKTI offers bachelor's, master's and one integrated study program, the possibility to continue studying at the doctoral level and to obtain a teacher's qualification. All this is done in ${num} faculties`
     }
     return obj[lang]
