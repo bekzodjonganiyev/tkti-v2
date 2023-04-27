@@ -3,10 +3,10 @@ import PhotoAlbum from "react-photo-album";
 
 const History = () => {
   const imageArray = [
-    { id: "1681724100858", width: "1000", height: "900" },
-    { id: "1681724058110", width: "1000", height: "900" },
-    { id: "1681724028891", width: "1000", height: "900" },
-    { id: "1681723978779", width: "1000", height: "900" },
+    { id: "1681724100858", width: "600", height: "300" },
+    { id: "1681724058110", width: "1000", height: "1200" },
+    { id: "1681724028891", width: "1000", height: "500" },
+    { id: "1681723978779", width: "2000", height: "800" },
     { id: "1681723953213", width: "1000", height: "900" },
     { id: "1681723928868", width: "1000", height: "900" },
     { id: "1681723912165", width: "1000", height: "900" },
