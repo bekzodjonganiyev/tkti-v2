@@ -1,18 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import "./MyComponent.css";
-
+import { Institut } from "../../icons/Icons";
 import Logo from "../../files/logo.png";
+import "./MyComponent.css";
 import HeaderLang from "./lang";
-
 import { Context } from "../../context";
 
 const MyComponent = () => {
-  const { lang, globalUrl } = useContext(Context);
-
   const [facultet, setFacultet] = useState([]);
-  const [hoveredButton, setHoveredButton] = useState(null);
 
+  const location = useLocation();
+
+  const { lang, setLang, globalUrl } = useContext(Context);
+
+  const [hoveredButton, setHoveredButton] = useState(null);
   useEffect(() => {
     fetch(`${globalUrl}/Fak_data/all`, {
       headers: {
@@ -27,85 +30,45 @@ const MyComponent = () => {
   const buttons = [
     {
       id: 1,
-      name: HeaderLang[lang].institut1[0],
+      name: HeaderLang[lang].institut[0],
       fakultetInfo: HeaderLang[lang].fakultetInfo[0],
       label: [
         {
-          labelId: HeaderLang[lang].institut1[1],
-          href: "/about-us",
-        },
-        {
-          labelId: HeaderLang[lang].institut1[2],
-          href: "/our-mission",
-        },
-        {
-          labelId: HeaderLang[lang].institut1[3],
+          labelId: HeaderLang[lang].institut[1],
           href: "/rektorat",
         },
         {
-          labelId: HeaderLang[lang].institut1[4],
-          href: "/history",
+          labelId: HeaderLang[lang].institut[2],
+          href: "/interaktiv-hizmatlar",
         },
         {
-          labelId: HeaderLang[lang].institut1[5],
-          href: "/our-requipments",
+          labelId: HeaderLang[lang].institut[3],
+          href: "/tkti-ish-rejasi",
         },
         {
-          labelId: HeaderLang[lang].institut1[6],
+          labelId: HeaderLang[lang].institut[4],
           href: "/korrupsiya",
         },
         {
-          labelId: HeaderLang[lang].institut1[7],
-          href: "/bitiruvchilar",
+          labelId: HeaderLang[lang].institut[5],
+          href: "/biz-bilan-aloqa",
+        },
+        {
+          labelId: HeaderLang[lang].institut[6],
+          href: "/xalqaro-aloqalar",
+        },
+        {
+          labelId: HeaderLang[lang].institut[7],
+          href: "/faoliyat-hujjatlari",
+        },
+        {
+          labelId: HeaderLang[lang].institut[8],
+          href: "/litsey",
         },
       ],
     },
     {
       id: 2,
-      name: HeaderLang[lang].ilmiy[0],
-      fakultetInfo: HeaderLang[lang].fakultetInfo[1],
-      label: [
-        {
-          labelId: HeaderLang[lang].ilmiy[1],
-          href: "/institut-loyihalari",
-        },
-        {
-          labelId: HeaderLang[lang].ilmiy[2],
-          href: "/startup-loyihalar",
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: HeaderLang[lang].talim[0],
-      fakultetInfo: HeaderLang[lang].fakultetInfo[2],
-      label: [
-        {
-          labelId: HeaderLang[lang].talim[1],
-          href: "https://tkti-2023.edupage.org/timetable/view.php",
-        },
-        {
-          labelId: HeaderLang[lang].talim[2],
-          href: "https://www.dropbox.com/s/mhexwrmj4s638if/1.PDF?dl=0",
-        },
-        {
-          labelId: HeaderLang[lang].talim[3],
-          href: "/sertifikat",
-        },
-        {
-          labelId: HeaderLang[lang].talim[4],
-          href: "/nashriyot",
-        },
-      ],
-    },
-    {
-      id: 4,
-      name: HeaderLang[lang].fakultet[0],
-      fakultetInfo: HeaderLang[lang].fakultetInfo[3],
-      label: test(facultet),
-    },
-    {
-      id: 5,
       name: HeaderLang[lang].structure[0],
       fakultetInfo: HeaderLang[lang].fakultetInfo[1],
       label: [
@@ -136,6 +99,51 @@ const MyComponent = () => {
       ],
     },
     {
+      id: 3,
+      name: HeaderLang[lang].fakultet[0],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[3],
+      label: test(facultet),
+    },
+    {
+      id: 4,
+      name: HeaderLang[lang].talim[0],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[2],
+      label: [
+        {
+          labelId: HeaderLang[lang].talim[1],
+          href: "https://tkti-2023.edupage.org/timetable/view.php",
+        },
+        {
+          labelId: HeaderLang[lang].talim[2],
+          href: "https://www.dropbox.com/s/mhexwrmj4s638if/1.PDF?dl=0",
+        },
+        {
+          labelId: HeaderLang[lang].talim[3],
+          href: "/sertifikat",
+        },
+        {
+          labelId: HeaderLang[lang].talim[4],
+          href: "/nashriyot",
+        },
+      ],
+    },
+   
+    {
+      id: 5,
+      name: HeaderLang[lang].ilmiy[0],
+      fakultetInfo: HeaderLang[lang].fakultetInfo[1],
+      label: [
+        {
+          labelId: HeaderLang[lang].ilmiy[1],
+          href: "/institut-loyihalari",
+        },
+        {
+          labelId: HeaderLang[lang].ilmiy[2],
+          href: "/startup-loyihalar",
+        },
+      ],
+    },
+    {
       id: 6,
       name: HeaderLang[lang].mytkti[0],
       fakultetInfo: HeaderLang[lang].fakultetInfo[1],
@@ -154,7 +162,7 @@ const MyComponent = () => {
         },
         {
           labelId: HeaderLang[lang].mytkti[4],
-          href: "https://corp.uz/webmail/",
+          href: "https://rector.tcti.uz/",
         },
         {
           labelId: HeaderLang[lang].mytkti[5],

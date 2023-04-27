@@ -1,62 +1,38 @@
 {
-  "name": "kimyo",
-  "version": "0.1.0",
+  "name": "tkti-frontend-better",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@tinymce/tinymce-react": "^4.3.0",
-    "axios": "^1.3.5",
-    "copy-to-clipboard": "^3.3.3",
-    "draft-js": "^0.11.7",
-    "draftjs-to-html": "^0.9.1",
-    "jwt-decode": "^3.1.2",
-    "react": "^18.2.0",
-    "react-content-loader": "^6.2.0",
-    "react-countup": "^6.4.0",
-    "react-dom": "^18.2.0",
-    "react-draft-wysiwyg": "^1.15.0",
-    "react-multi-carousel": "^2.8.2",
-    "react-photo-album": "^2.0.4",
-    "react-photo-gallery": "^8.0.0",
-    "react-redux": "^8.0.5",
-    "react-reveal": "^1.2.2",
-    "react-router-dom": "^6.6.1",
-    "react-scripts": "5.0.1",
-    "react-slick": "^0.29.0",
-    "redux": "^4.2.1",
-    "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.4.2",
-    "slick": "^1.12.2",
-    "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "axios": "^1.3.6",
+    "i18next": "^22.4.15",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.2",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.10.0",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.0"
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.3.2"
   }
 }
