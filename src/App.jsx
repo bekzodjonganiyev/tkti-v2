@@ -18,6 +18,16 @@ function App() {
             </Suspense>
           }
         >
+          <Route
+            index
+            element={
+              <Suspense
+            
+              >
+                <Home />
+              </Suspense>
+            }
+          />
           <Route index element={<h1 className="text-3xl">HOME</h1>} />
           <Route path="a" element={<AboutUs />} />
           <Route path="b" element={<h1 className="text-3xl">HOME B</h1>} />
