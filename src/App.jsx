@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { UserLayout, AdminLayout } from "./components/layout";
 import { ProtectedRoute } from "./components";
 
-import { AboutUs } from "./pages";
+import { AboutUs, Home } from "./pages";
 
 function App() {
   return (
@@ -18,17 +18,7 @@ function App() {
             </Suspense>
           }
         >
-          <Route
-            index
-            element={
-              <Suspense
-            
-              >
-                <Home />
-              </Suspense>
-            }
-          />
-          <Route index element={<h1 className="text-3xl">HOME</h1>} />
+          <Route index element={<Home />} />
           <Route path="a" element={<AboutUs />} />
           <Route path="b" element={<h1 className="text-3xl">HOME B</h1>} />
         </Route>

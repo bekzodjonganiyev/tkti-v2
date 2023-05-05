@@ -1,12 +1,10 @@
-import React from 'react'
-import UsefulLink from '../../components/layout/UsefulLink/UsefulLink'
+import UsefulLink from "../../components/useful_links/UsefulLinks";
 
-const Home = () => {
+export const Home = () => {
   return (
-    <div>Home
-        <UsefulLink />
+    <div>
+      Home
+      <UsefulLink />
     </div>
-  )
-}
-
-export default Home
+  );
+};
