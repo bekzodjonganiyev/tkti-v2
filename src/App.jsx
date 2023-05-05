@@ -3,7 +3,10 @@ import { Routes, Route } from "react-router-dom";
 
 import { UserLayout, AdminLayout } from "./components/layout";
 import { ProtectedRoute } from "./components";
-
+import {
+  Home,
+  
+} from "./pages";
 function App() {
   return (
     <div className="h-screen">
@@ -16,6 +19,16 @@ function App() {
             </Suspense>
           }
         >
+          <Route
+            index
+            element={
+              <Suspense
+            
+              >
+                <Home />
+              </Suspense>
+            }
+          />
           <Route index element={<h1 className="text-3xl">HOME</h1>} />
           <Route path="a" element={<h1 className="text-3xl">HOME A</h1>} />
           <Route path="b" element={<h1 className="text-3xl">HOME B</h1>} />
