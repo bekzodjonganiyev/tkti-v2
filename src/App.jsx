@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import { UserLayout, AdminLayout } from "./components/layout";
 import { ProtectedRoute } from "./components";
 
+import { AboutUs } from "./pages";
+
 function App() {
   return (
     <div className="h-screen">
@@ -17,7 +19,7 @@ function App() {
           }
         >
           <Route index element={<h1 className="text-3xl">HOME</h1>} />
-          <Route path="a" element={<h1 className="text-3xl">HOME A</h1>} />
+          <Route path="a" element={<AboutUs />} />
           <Route path="b" element={<h1 className="text-3xl">HOME B</h1>} />
         </Route>
 
