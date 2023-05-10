@@ -1,12 +1,16 @@
 import axios from "axios";
 
 export const fetchApi = async (url, data) => {
-    const res = await fetch(`http://localhost:5000/${url}`, data)
-    return await res.json()
-}  
+  try {
+    const res = await fetch(`https://tkti-back-lexde.ondigitalocean.app/${url}`, data);
+    return res.ok ? res.json() : res;
+  } catch ({ message }) {
+    return message;
+  }
+};
 
 export const http = axios.create({
-  baseURL: "https://triumf.pythonanywhere.com/api/v1/dashboard/",
+  baseURL: "https://backend.tkti.uz/",
   headers: {
     Token: localStorage.getItem("token"),
   },

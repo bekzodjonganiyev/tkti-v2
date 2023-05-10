@@ -5,11 +5,13 @@ import {
   POST_ABOUT_US,
   PUT_ABOUT_US,
   DELETE_ABOUT_US,
+  GET_BY_ID_ABOUT_US,
 } from "./actions";
 
 const initialState = {
   loading: false,
   data: [],
+  dataById: {},
   error: "",
 };
 
@@ -27,9 +29,16 @@ export const aboutUsReducer = (state = initialState, action) => {
         loading: false,
         error: "",
       };
+    case GET_BY_ID_ABOUT_US:
+      return {
+        ...state,
+        dataById: action.payload,
+        loading: false,
+        error: ""
+      }
     case PUT_ABOUT_US: {
       const updatedItem = state.data.map((item) =>
-        item._id === action.payload._id ? action.payload._id : item
+        item._id === action.payload._id ? action.payload : item
       );
       return {
         data: updatedItem,
@@ -39,7 +48,7 @@ export const aboutUsReducer = (state = initialState, action) => {
     }
     case DELETE_ABOUT_US: {
       const filteredItem = state.data.filter(
-        (item) => item._id !== action.payload
+        (item) => item._id !== action.payload._id
       );
       return {
         data: filteredItem,
