@@ -1,32 +1,9 @@
 import { NavLink } from "react-router-dom";
 
+import { sidebarItems } from "../../../config/sidebarItems.config";
+
 export const Sidebar = () => {
-  const superAdminItems = [
-    {
-      name: "Tashkilot",
-      url: "/organizations",
-    },
-    {
-      name: "Kuriyerlar",
-      url: "/couriers",
-    },
-    {
-      name: "Statistika",
-      url: "/statistics",
-    },
-    {
-      name: "Tushumlar",
-      url: "/incomes",
-    },
-    {
-      name: "Arxiv",
-      url: "/archive",
-    },
-    {
-      name: "Admin qo'shish",
-      url: "/admins",
-    },
-  ];
+
 
   const userAccess = (arr) => {
     const isSuperAdmin = "is_active" in permissionKeys;
@@ -36,7 +13,7 @@ export const Sidebar = () => {
     <aside className="bg-slate-400 h-screen">
       <h1 className="text-3xl">Admin Panel</h1>
       <ul className="mt-10">
-        {superAdminItems.map((item) => (
+        {sidebarItems.map((item) => (
           <li key={item.name}>
             <NavLink to={item.url} className="flex gap-4 py-3 px-4 rounded-lg">
               {/* <span>{item.icon}</span> */}
