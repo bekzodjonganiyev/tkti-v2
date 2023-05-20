@@ -1,4 +1,4 @@
-import { instance } from "./http";
+import  {fetchApi} from "./http";
 
 const config = {
   a: (method) => (
@@ -25,7 +25,7 @@ const config = {
 
 class ClientApiService {
   getAll(url){
-    return instance.get(url)
+    return fetchApi.get(url)
   }
 }
 

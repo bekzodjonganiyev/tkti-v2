@@ -1,11 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context";
-import NewsLang from "../news/lang";
+import { DoorDashFavorite } from "../animjs";
+
 import "./style.css";
 
-function YangiliklarComp({ home, myKey }) {
-  const { lang, time, globalUrl, textSytles } = useContext(Context);
+function YangiliklarComp({ home, myKey, page }) {
+  const { lang, time, globalUrl } = useContext(Context);
 
   const [news, setNews] = useState({
     isFetched: false,
@@ -13,65 +14,74 @@ function YangiliklarComp({ home, myKey }) {
     data: {},
   });
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    fetch(`${globalUrl}/${myKey}/all`, {
+    setLoading(true);
+    fetch(`${globalUrl}/${myKey}/all?page=${page}`, {
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
-      .then(
-        (data) =>
-          data.success &&
+      .then((data) => {
+        setLoading(false);
+        data.success &&
           setNews({
             data: home ? data.data.slice(0, 4) : data.data,
             isFetched: true,
-          })
-      )
+          });
+      })
       .catch(() => setNews({ error: true }));
-  }, []);
+  }, [page]);
 
   return (
     <>
       <div className="news__list">
         {news.isFetched && news.data && news.data.length > 0 ? (
-          news.data.map((e, index) => (
-            <>
-              <Link
-                className="news__card"
-                key={index}
-                
-                // link qisqardi
-                // ${e.title_uz
-                //   .toLowerCase()
-                //   .split(" ")
-                //   .map((str) =>
-                //     str
-                //       .split("")
-                //       .filter((char) => /[a-zA-Z]/.test(char))
-                //       .join("")
-                //   )
-                //   .join("-")}-
-                to={`/${myKey}/${e._id}`}
-              >
-                <img
-                  className="news_photo"
-                  src={`${globalUrl}/${e.photo}`}
-                  alt=""
-                />
-                <div className="news__body">
-                  <h4>{e[`title_${lang}`]}</h4>
+          loading ? (
+            <div className="loodaer__wrapper">
+              <DoorDashFavorite width="400px" />
+              <DoorDashFavorite width="400px" />
+              <DoorDashFavorite width="400px" />
+            </div>
+          ) : (
+            news.data.map((e, index) => (
+              <>
+                <Link
+                  className="news__card"
+                  key={index}
+                  to={`/${myKey}/${e.title_uz
+                    .toLowerCase()
+                    .split(" ")
+                    .map((str) =>
+                      str
+                        .split("")
+                        .filter((char) => /[a-zA-Z]/.test(char))
+                        .join("")
+                    )
+                    .join("-")}-${e._id}`}
+                >
+                  <img
+                    className="news_photo"
+                    src={`${globalUrl}/${e.photo}`}
+                    alt=""
+                    loading="lazy"
+                  />
+                  <div className="news__body">
+                    <h4>{e[`title_${lang}`]}</h4>
 
-                  <br />
-                  <p>
-                    <i className="fa-solid fa-calendar-days">
-                      <time className="ms-3">{time(e.date)}</time>{" "}
-                    </i>
-                  </p>
-                </div>
-              </Link>
-            </>
-          ))
+                    <br />
+                    <p>
+                      <i className="fa-solid fa-calendar-days">
+                        <time className="ms-3">{time(e.date)}</time>{" "}
+                      </i>
+                    </p>
+                  </div>
+                </Link>
+              </>
+            ))
+          )
         ) : news.isFetched && news.data && news.data.length === 0 ? (
           <h2>Yangilik hali joylanmagan</h2>
         ) : news.error ? (
