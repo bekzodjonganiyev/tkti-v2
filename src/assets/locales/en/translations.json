@@ -1,3 +1,81 @@
 {
-    "":""
+  "headerTop": [
+    { "name": "Hemis student" },
+    { "name": "Hemis teacher" },
+    { "name": "Class schedule" },
+    { "name": "Quick Links" },
+    {"name": "en"}
+  ],
+
+  "Header": {
+    "name": "YANGIYER FLOUR ",
+    "name2": "TRADING",
+    "about": "Biz haqimizda",
+    "product": "Mahsulotlar",
+    "partners": "Hamkorlar",
+    "ContactUs": "Bog'lanish",
+    "language": "Language",
+    "Gallary": "Galeriya"
+  },
+  "Admission": [
+    { "name": "Bachelor" },
+    { "name": "Master" },
+    { "name": "Doctorate" },
+    { "name": "Joint education" }
+  ],
+  "Students": [
+    { "name": "Moliya" },
+    { "name": "Talabalar turar joyi" },
+    { "name": "Tibbiyot bo’limi" },
+    { "name": "Iqtidorli talabalar" },
+    { "name": "Sport" },
+    { "name": "Ijtimoiy yordam" },
+    { "name": "Tanlov va grandlar" },
+    { "name": "Startup loyihalar" },
+    { "name": "Talabalarni baholash" },
+    { "name": "Bo’sh ish o’rinlari" },
+    { "name": "Ma’naviyat" },
+    { "name": "Ko’p beriladigan savollar" }
+  ],
+
+  "Education": [
+    {
+      "title": "INSTITUT O’TGAN DAVR ICHIDA KIMYO, OZIQ-OVQAT, NEFT-GAZ, QURILISH MATERIALLARI VA IQTISODIYOTNING BOSHQA TARMOQLARIGA 10 MINGDAN ZIYOD YUQORI MALAKALI MUHANDIS TEXNOLOGLAR, TA’LIM YO’NALISHLARI BO’YICHA MINGDAN ORTIQ BAKALAVR VA 30 GA YAQIN MUTAXASSISLIKLAR BO’YICHA MAGISTRLAR TAYYORLAB BERDI"
+    },
+    { "name": "Bachelor " },
+    { "name": "Master    " },
+    { "name": "Correspondence" },
+    { "name": "Joint education" },
+    { "name": "Second education" },
+
+    { "name": "Dars jadvali " }
+  ],
+
+  "ScientificResearch": [
+    {
+      "title": "KIMYOVIY TEXNOLOGIYA ANORGANIG MODDALAR TEXNOLOGIYASI (KISLOTA, ISHQOR, SODA, MINERAL OʻGʻITLAR VA BOSHQA SANOATI) VA ORGANIQ MODDALAR TEXNOLOGIYASI (SINTETIK KAUCHUK, PLASTMASSA, KIMYOVIY TOLALAR, SPIRT, ORGANIQ KISLOTALAR VA BOSHQA SANOATI)GA BOʻLINADI."
+    },
+    { "name": "Scientific councils" },
+    { "name": "International project" },
+    { "name": "Scientific project" },
+    { "name": "Startup" },
+    { "name": "Contracts" },
+    { "name": "Scientific journal" },
+    { "name": "Conference " },
+    { "name": "Scientific schools" },
+    { "name": "Obtained patents for inventions, utility models, certificates for exposure programs" },
+    { "name": "Doctorate" },
+    { "name": "Abstract" }
+  ],
+  "International": [
+    {
+      "title": "INSTITUTDA SANOAT CHIQISHSHLARIDAN FOYDALANISH, EKOLOGIK XAVFSIZ, IMPORT OʻRNINI BOSUVCHI VA EKSPORTGA MOʻLJALLANGAN TEXNOLOGIYALARNI ISHLAB CHIQISH, ENERGIYANI TEJOVCHI MAXALLIY MINERAL XOM ASHYO BAZASI TASHKIL QILISH VA NEFT VA GAZLARDAN OLINADIGAN MAHSULOTLAR TURLARINI KOʻPAYTIRISH USTIDA ILMIY TADQIQOTLAR ISHLARI OLIB BORILADI."
+    },
+    { "name": "Department of International Relations" },
+    { "name": "Announcements and news" },
+    { "name": "International project" },
+    { "name": "International grants" },
+    { "name": "Partner organizations" },
+    { "name": "International activity" }
+  ]
 }

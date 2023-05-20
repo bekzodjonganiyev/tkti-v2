@@ -1,3 +1,95 @@
 {
-    "":""
+  "headerTop": [
+    { "name": "Хемис студент" },
+    { "name": "Хемис учитель" },
+    { "name": "Расписание занятий" },
+    { "name": "Быстрые ссылки" },
+    
+
+    {"name": "ru"}
+  ],
+  "Header": {
+    "name": "ЙAНГИЙЕР ФЛОУР ",
+    "name2": "ТРAДИНГ",
+    "about": "О нас",
+    "product": "продукты",
+    "partners": "партнеры",
+    "ContactUs": "контакты",
+    "language": "язык",
+    "Gallary": "Галерея"
+  },
+  "Institute": [
+    {
+      "title": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN "
+    },
+    { "name": "О нас" },
+    { "name": "Наша миссия" },
+    { "name": "Структура" },
+    { "name": "История и наследие" },
+    { "name": "План работы" },
+    { "name": "Предотвращение коррупции" },
+    { "name": "Выпускники" },
+    { "name": "Faoliyat" },
+    { "name": "Bog'laish" }
+  ],
+  "Admission": [
+    { "name": "Бакалавриатура" },
+    { "name": "Магистатура" },
+    { "name": "Докторантура" },
+    { "name": "Совместное обучение" }
+  ],
+  "Students": [
+    { "name": "Moliya" },
+    { "name": "Talabalar turar joyi" },
+    { "name": "Tibbiyot bo’limi" },
+    { "name": "Iqtidorli talabalar" },
+    { "name": "Sport" },
+    { "name": "Ijtimoiy yordam" },
+    { "name": "Tanlov va grandlar" },
+    { "name": "Startup loyihalar" },
+    { "name": "Talabalarni baholash" },
+    { "name": "Bo’sh ish o’rinlari" },
+    { "name": "Ma’naviyat" },
+    { "name": "Ko’p beriladigan savollar" }
+  ],
+  "Education": [
+    {
+      "title": "INSTITUT O’TGAN DAVR ICHIDA KIMYO, OZIQ-OVQAT, NEFT-GAZ, QURILISH MATERIALLARI VA IQTISODIYOTNING BOSHQA TARMOQLARIGA 10 MINGDAN ZIYOD YUQORI MALAKALI MUHANDIS TEXNOLOGLAR, TA’LIM YO’NALISHLARI BO’YICHA MINGDAN ORTIQ BAKALAVR VA 30 GA YAQIN MUTAXASSISLIKLAR BO’YICHA MAGISTRLAR TAYYORLAB BERDI"
+    },
+    { "name": "Бакалавриатура  " },
+    { "name": "Магистатура" },
+    { "name": "Заочное обучение" },
+    { "name": "Совместное обучение" },
+    { "name": "Второе образование" },
+
+    { "name": "Dars jadvali " }
+  ],
+
+  "ScientificResearch": [
+    {
+      "title": "KIMYOVIY TEXNOLOGIYA ANORGANIG MODDALAR TEXNOLOGIYASI (KISLOTA, ISHQOR, SODA, MINERAL OʻGʻITLAR VA BOSHQA SANOATI) VA ORGANIQ MODDALAR TEXNOLOGIYASI (SINTETIK KAUCHUK, PLASTMASSA, KIMYOVIY TOLALAR, SPIRT, ORGANIQ KISLOTALAR VA BOSHQA SANOATI)GA BOʻLINADI."
+    },
+    { "name": "Ilmiy kengash" },
+    { "name": "Xalqaro loyihalari" },
+    { "name": "Научный проект" },
+    { "name": "Startup" },
+    { "name": "Контракты" },
+    { "name": "Научный журнал" },
+    { "name": "Конференция" },
+    { "name": "Научные школы" },
+    { "name": "Получены патенты на изобретения, полезные модели, свидетельства на программы экспонирования" },
+    { "name": "Докторантура" },
+    { "name": "Автореферат" }
+  ],
+  "International": [
+    {
+      "title": "INSTITUTDA SANOAT CHIQISHSHLARIDAN FOYDALANISH, EKOLOGIK XAVFSIZ, IMPORT OʻRNINI BOSUVCHI VA EKSPORTGA MOʻLJALLANGAN TEXNOLOGIYALARNI ISHLAB CHIQISH, ENERGIYANI TEJOVCHI MAXALLIY MINERAL XOM ASHYO BAZASI TASHKIL QILISH VA NEFT VA GAZLARDAN OLINADIGAN MAHSULOTLAR TURLARINI KOʻPAYTIRISH USTIDA ILMIY TADQIQOTLAR ISHLARI OLIB BORILADI."
+    },
+    { "name": "Департамент международных отношений" },
+    { "name": "Объявления и новости" },
+    { "name": "Междуародный проект" },
+    { "name": "Международные гранты " },
+    { "name": "Партнерские организации" },
+    { "name": "Mеждународная деятельность " }
+  ]
 }

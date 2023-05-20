@@ -1,7 +1,10 @@
 import React from 'react'
+import Banner from '../../banner'
 
 export const Sidebar = () => {
   return (
-    <aside className='bg-slate-400 h-screen'>Sidebar</aside>
+    <div>err
+      <Banner />
+    </div>
   )
 }

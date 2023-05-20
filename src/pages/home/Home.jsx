@@ -1,10 +1,24 @@
-import UsefulLink from "../../components/useful_links/UsefulLinks";
+import Banner from "../../components/banner";
+
+
+
+import { News } from "../news";
+import {Announcement} from '../announcement';
+import { VideoNews } from "../videoNews";
+import {UsefulLinks} from "../usefulLinks";
+import {Statistics} from "../statistics";
 
 export const Home = () => {
   return (
     <div>
-      Home
-      <UsefulLink />
+    
+      <Banner />
+      <News />
+      <Announcement />
+      <VideoNews />
+      <UsefulLinks/>
+      <Statistics />
+
     </div>
   );
 };

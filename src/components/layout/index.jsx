@@ -1,16 +1,18 @@
 import React from "react";
 
-import { Header } from "./header/Header";
+
 import  Footer  from "./footer/Footer";
 import { Sidebar } from "./sidebar/Sidebar";
 import { FunctionalHeader } from "./functional_header/FunctionalHeader";
 import { Outlet } from "react-router-dom";
+import  Navbar  from "../layout/Navbar/Navbar";
 
 export const UserLayout = () => {
   return (
     <div className="min-h-full flex flex-col">
-      <Header />
-      <main className="flex-auto bg-green-200">
+     
+      <Navbar />
+      <main className="flex-auto ">
         <Outlet />
       </main>
       <Footer />
