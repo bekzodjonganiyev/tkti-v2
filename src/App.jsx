@@ -14,6 +14,10 @@ import {
   XalqaroChildEdit,
 
 } from "./pages/admin";
+import { Student } from "./pages/admin/student";
+import { StudentChildEdit } from "./pages/admin/student/edit";
+import { StudentView } from "./pages/admin/student/view";
+import { StudentCreate } from "./pages/admin/student/create";
 
 function App() {
   return (
@@ -50,6 +54,11 @@ function App() {
           <Route path="int_connections/edit/:id" element={<XalqaroChildEdit />} />
           <Route path="int_connections/view/:id" element={<XalqaroView />} />
           <Route path="int_connections/add" element={<XalqaroCreate />} />
+
+          <Route path="students" element={<Student/>}/>
+          <Route path="students/edit/:id" element={<StudentChildEdit/>}/>
+          <Route path="students/view/:id" element={<StudentView/>}/>
+          <Route path="students/add" element={<StudentCreate/>}/>
 
           {/* <Route path="/adminPanel/:name/add" element={<AddForm />} />
           <Route

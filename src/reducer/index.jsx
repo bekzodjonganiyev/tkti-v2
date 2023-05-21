@@ -5,6 +5,7 @@ import { univerUsReducer } from "../pages/admin/institust/reducer";
 import { fakultetUsReducer } from "../pages/admin/institust/childReducer";
 
 import { xalqaroParentReducer, xalqaroChildReducer } from "../pages/admin/xalqaro_aloqa";
+import { studentChildReducer, studentParentReducer } from "../pages/admin/student";
 
 export const rootReducers = combineReducers({
   aboutUs: aboutUsReducer,
@@ -13,4 +14,7 @@ export const rootReducers = combineReducers({
 
   xalqaroParent: xalqaroParentReducer,
   xalqaroChild: xalqaroChildReducer,
+
+  studentParent:studentParentReducer,
+  studentChild:studentChildReducer
 });
