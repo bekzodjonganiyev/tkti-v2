@@ -1,14 +1,19 @@
-import { lazy } from "react";
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { UserLayout, AdminLayout } from "./components/layout";
-import { ProtectedRoute } from "./components";
+import { ProtectedRoute, EditForm, ViewComponent, AddForm } from "./components";
 
 import { AboutUs, Home } from "./pages";
-import { UnverAdd , Institute } from "./pages/admin";
-import { View } from "./pages/admin/View";
-import { adminPages } from "./config/adminPages.config";
+import {
+  Institute,
+
+  XalqaroAloqa,
+  XalqaroCreate,
+  XalqaroView,
+  XalqaroChildEdit,
+
+} from "./pages/admin";
 
 function App() {
   return (
@@ -38,11 +43,20 @@ function App() {
           }
         >
           <Route index element={<h1 className="text-3xl">Dashboard</h1>} />
-          
-            
-        <Route path="institute" element = {<Institute/>}/>
-        <Route path="/adminPanel/:name/add" element={<UnverAdd/>}/>
-        <Route path="/adminPanel/:name/view/:id" element={<View/>}/>
+
+          <Route path="institute" element={<Institute />} />
+
+          <Route path="int_connections" element={<XalqaroAloqa />} />
+          <Route path="int_connections/edit/:id" element={<XalqaroChildEdit />} />
+          <Route path="int_connections/view/:id" element={<XalqaroView />} />
+          <Route path="int_connections/add" element={<XalqaroCreate />} />
+
+          {/* <Route path="/adminPanel/:name/add" element={<AddForm />} />
+          <Route
+            path="/adminPanel/:name/view/:id"
+            element={<ViewComponent />}
+          />
+          <Route path="/adminPanel/:name/edit/:id" element={<EditForm />} /> */}
         </Route>
       </Routes>
     </div>

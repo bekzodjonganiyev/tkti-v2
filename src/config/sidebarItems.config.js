@@ -17,7 +17,7 @@ export const sidebarItems = [
   },
   {
     name: "Xalqaro aloqalar",
-    url: "international-relations",
+    url: "int_connections",
   },
   {
     name: "Matbout",
