@@ -22,15 +22,15 @@ export const News = ({ myKey }) => {
 
   if (error) return <h1>{error}</h1>;
   return (
-    <div className="container mx-auto w-[80%]">
-      <h1 className="text-3xl">news</h1>
+    <div className="container mx-auto w-[80%] ">
+     
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="grid   justify-between lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 w-[full]">
-          {data.slice(0, 3).map((item) => (
+        <div className="grid grid-cols-3 justify-between lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 w-[full]">
+          {data.map((item) => (
             <>
-              <Link className="news__card" key={item} to={`news/:id`}>
+              <Link className="news__card mx-auto" key={item} to={`/${myKey}/${item._id}`}>
                 <NewsCard
                   key={item._id}
                   id={item}
@@ -39,9 +39,8 @@ export const News = ({ myKey }) => {
                   title={t("NewsCard.title", {
                     news_card_title: `${item?.[`title_${i18next.language}`]}`,
                   })}
-                
                 />
-                {console.log(data)}
+                
               </Link>
             </>
           ))}

@@ -1,11 +1,19 @@
 import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import CountUp from "react-countup";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import './style.css'
+import fakultetImg from '../../assets/images/university.png'
+import studentImg from '../../assets/images/student.png'
+
+import partnerImg from '../../assets/images/partners.png'
+import directionalImg from '../../assets/images/directional.png'
+import doubleImg from '../../assets/images/global-education.png'
 import teacher from '../../assets/images/teacher.png'
 
 export const UsefulLinks = () => {
+  const {t} = useTranslation()
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -25,34 +33,40 @@ export const UsefulLinks = () => {
   };
   const images = [
     {
-      src: teacher,
+      src: fakultetImg,
       alt: "Image 1",
-      CountUp: "35",
-      title: "talabalar",
+      CountUp: "5",
+      title:  t("Statistic.facultet"),
+    },
+    {
+      src: studentImg,
+      alt: "Image 1",
+      CountUp: "7300",
+      title:  t("Statistic.student"),
+    },
+    {
+      src: partnerImg,
+      alt: "Image 1",
+      CountUp: "47",
+      title:  t("Statistic.Partners"),
+    },
+    {
+      src: directionalImg,
+      alt: "Image 1",
+      CountUp: "25",
+      title:  t("Statistic.OurPartners"),
     },
     {
       src: teacher,
       alt: "Image 1",
-      CountUp: "35",
-      title: "talabalar",
+      CountUp: "500",
+      title:  t("Statistic.Teacher"),
     },
-    {
-      src: teacher,
+      {
+      src:doubleImg,
       alt: "Image 1",
-      CountUp: "35",
-      title: "talabalar",
-    },
-    {
-      src: teacher,
-      alt: "Image 1",
-      CountUp: "35",
-      title: "talabalar",
-    },
-    {
-      src: teacher,
-      alt: "Image 1",
-      CountUp: "35",
-      title: "talabalar",
+      CountUp: "7",
+      title:  t("Statistic.Education"),
     },
   ];
 
@@ -84,17 +98,15 @@ export const UsefulLinks = () => {
           >
               {images.map((image) => (
               <div className="mx-auto text-center " key={image.src}>
-               <div className="w-36 h-36 bg-[#E6EDFA] mx-10 rounded-[50%] ">
+               <div className="w-36 h-36 mx-auto bg-[#E6EDFA] rounded-[50%] ">
                 
                   <img
-                    className="w-[60%]  mx-auto py-5 items-start "
+                    className="w-[60%]  mx-auto flex-col justify-center items-center  py-5 "
                     src={image.src}
                     alt={image.alt}
                   />
                </div>
-               <div>
-                
-               </div>
+              
                  <div className="text-3xl  font-semibold">
                   <CountUp end={image.CountUp} duration={5} />
                 </div>

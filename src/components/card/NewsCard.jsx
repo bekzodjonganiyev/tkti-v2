@@ -11,9 +11,9 @@ export const NewsCard = ({
 }) => {
     const {t} = useTranslation()
   return (
-    <Link to={`/${i18next.language}/news/details/`}>
+ 
     <div className={`flex p-5 rounded-xl ${ "gap-5 sm:flex-row    w-[100%] md:w-56 lg:w-72 xl:w-[380] 2xl:w-[430px]"}`}>
-      <div className={``}>
+      <div className={`mx-auto`}>
         <img
           src={img}
           alt={`Image Alt`}
@@ -36,6 +36,6 @@ export const NewsCard = ({
       
   
     </div>
-  </Link>
+ 
   )
 }

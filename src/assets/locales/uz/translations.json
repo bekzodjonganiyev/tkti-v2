@@ -171,5 +171,16 @@
     "ContactUs": "Bog'lanish",
     "language": "Language",
     "Gallary": "Galeriya"
+  },
+  "Statistic": {
+    "Statistical":"Statistik ma’lumotlar",
+    "facultet":"FAKULTETLAR",
+    "student":"TALABALAR",
+    "Teacher":"O'QITUVCHILAR",
+    "Partners":"HAMKORLAR",
+    "OurPartners":"BIZNING HAMKORLAR",
+    "AreaEducation":"TA'LIM YO'NALISHLARI",
+    "Education":"QO'SHMA TA'LIM"
   }
+
 }

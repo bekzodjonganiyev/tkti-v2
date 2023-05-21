@@ -16,7 +16,7 @@ const NavLinks = () => {
     })
       .then((res) => res.json())
       .then((data) => setFacultet(data.data));
-    console.log(facultet);
+  
   }, [setFacultet]);
   const [subHeading, setSubHeading] = useState("");
   const links = [

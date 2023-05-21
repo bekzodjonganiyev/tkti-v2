@@ -20,7 +20,7 @@ export const Banner = () => {
 
   return (
     <>
-<div className="w-[100vw] h-[100vh]">
+<div className="container-fluid w-[100%] h-[100vh]">
   <Carousel>
     {data?.map((item)=>(
       <div key={item._id} className="h-[100vh] bg-cover">

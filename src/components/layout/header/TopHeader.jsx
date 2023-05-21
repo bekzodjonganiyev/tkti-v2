@@ -78,9 +78,9 @@ export const TopHeader = () => {
 
   return (
     <>
-      <div className="bg-[#26597E] container-fluid">
+      <div className="bg-[#26597E] container-fluid w-[100%]">
         <header className="container-fluid flex items-center justify-around mx-auto  h-16 ">
-          <div className="lg:flex   justify-between  text-white xl:flex hidden ">
+          <div className="lg:flex justify-between  text-white xl:flex hidden ">
             <NavLink to={`/`} className=" mx-4">
               {t("headerTop.0.name")}
             </NavLink>

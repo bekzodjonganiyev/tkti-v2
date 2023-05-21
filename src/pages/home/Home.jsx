@@ -2,7 +2,7 @@ import Banner from "../../components/banner";
 
 
 
-import { News } from "../news";
+import { NewsAll } from "../news/NewsAll";
 import {Announcement} from '../announcement';
 import { VideoNews } from "../videoNews";
 import {UsefulLinks} from "../usefulLinks";
@@ -13,7 +13,7 @@ export const Home = () => {
     <div>
     
       <Banner />
-      <News />
+      <NewsAll myKey={"news"} />
       <Announcement />
       <VideoNews />
       <UsefulLinks/>

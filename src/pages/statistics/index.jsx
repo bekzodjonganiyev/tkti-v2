@@ -1,23 +1,17 @@
 import { useContext, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
-import "./style.css";
-import Slider from "react-slick";
-import uzEdu from "../../assets/images/eduuz.jpg";
-import dtm from "../../assets/images/DTM.jpg";
 import { Link } from "react-router-dom";
+import "./style.css";
+import uzEdu from "../../assets/images/eduuz.jpg";
 
-const images = [
-  {
-    src: dtm,
-    alt: "Image 1",
-  },
-  {
-    src: dtm,
-    alt: "Image 3",
-  },
-];
+import lexUz from '../../assets/images/lexuz.jpg'
+
+import yoshItt from '../../assets/images/YI.jpg'
+import scopus from '../../assets/images/scopus.jpg'
+import ziyoNetUz from '../../assets/images/ziyonet.jpg'
+import dtm from "../../assets/images/DTM.jpg";
+
 
 export const Statistics = () => {
   const responsive = {
@@ -41,32 +35,32 @@ export const Statistics = () => {
     {
       src: dtm,
       alt: "Image 1",
-      href: "https://edu.uz/uz",
+      href: "https://edu.uz/",
     },
     {
-      src: dtm,
+      src: uzEdu,
       alt: "Image 3",
       href: "https://edu.uz/uz",
     },
     {
-      src: dtm,
+      src: lexUz,
       alt: "Image 1",
-      href: "https://edu.uz/uz",
+      href: "https://lex.uz/",
     },
     {
-      src: dtm,
+      src: yoshItt,
       alt: "Image 3",
-      href: "https://edu.uz/uz",
+      href: "http://yi.uz/",
     },
     {
-      src: dtm,
+      src: scopus,
       alt: "Image 1",
-      href: "https://edu.uz/uz",
+      href: "https://www.scopus.com/search/form.uri?display=basic#basic",
     },
     {
-      src: dtm,
+      src: ziyoNetUz,
       alt: "Image 3",
-      href: "https://edu.uz/uz",
+      href: "http://ziyonet.uz/",
     },
   ];
   const settings = {
@@ -107,18 +101,16 @@ export const Statistics = () => {
 
   return (
     <>
-      <div className="container-fluid w-[100vw]  py-10  ">
+      <div className="container-fluid w-[100%]  py-10  ">
         <h3 className="text-4xl text-center p-10">Foydali havolalar</h3>
         <div className="container w-[80%] mx-auto">
           <Carousel
             autoplay={true}
             effect="fade"
-            // draggable
-            // pauseOnDotsHover={true}
             swipeable={false}
             showDots={false}
             responsive={responsive}
-            ssr={true} // means to render carousel on server-side.
+            ssr={true} 
             infinite={true}
             autoPlay={true}
             autoPlaySpeed={2000}
@@ -130,10 +122,10 @@ export const Statistics = () => {
             dotListClass="custom-dot-list-style"
           >
             {images.map((image) => (
-              <div className="useful-item " key={image.src}>
+              <div className="w-[90%] flex justify-center  bg-[#E6EDFA] cursor-pointer my-[10px] mx-3 useful-item p-4" key={image.src}>
                 <Link to={image.href} target="_blank">
                   <img
-                    className="w-[80%] rounded-md cursor-pointer"
+                    className="w-[80%] mx-auto rounded-md cursor-pointer"
                     src={image.src}
                     alt={image.alt}
                   />

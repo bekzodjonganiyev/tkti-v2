@@ -77,5 +77,15 @@
     { "name": "International grants" },
     { "name": "Partner organizations" },
     { "name": "International activity" }
-  ]
+  ],
+  "Statistic": {
+    "Statistical":"Statistical data",
+    "facultet":"FACULTIES",
+    "student":"STUDENTS",
+    "Teacher":"TEACHERS",
+    "Partners":"PARTNERS",
+    "OurPartners":"OUR PARTNERS",
+    "AreaEducation":"AREAS OF EDUCATION",
+    "Education":"JOINT EDUCATIONAL PROGRAMS"
+  }
 }

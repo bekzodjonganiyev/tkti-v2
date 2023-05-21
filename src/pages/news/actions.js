@@ -34,7 +34,7 @@ export class NewsActions {
       dispatch({
         type: REQUEST_NEWS,
       });
-      const res = await apiClientWithFetch.get(`elon/${id}`);
+      const res = await apiClientWithFetch.get(`news/${id}`);
       if (res.status === 200) {
         dispatch({
           type: GET_BY_ID_NEWS,

@@ -30,7 +30,7 @@ export const MoreNews = () => {
         <div className="grid  justify-between grid-cols-3 gap-5 w-[full]">
           {data.map((item) => (
             <>
-              <Link className="news__card" key={item} to={``}>
+              <Link className="news__card mx-auto" key={item} to={``}>
                 <NewsCard
                   key={item._id}
                   id={item}
