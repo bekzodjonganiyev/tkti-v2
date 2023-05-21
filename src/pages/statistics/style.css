@@ -1,6 +1,7 @@
 
 
 .useful-item {
+  z-index: 0;
 width: 90%;
 
     padding: 20px;

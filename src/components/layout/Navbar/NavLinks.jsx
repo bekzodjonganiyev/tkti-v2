@@ -30,26 +30,11 @@ const NavLinks = () => {
            
           ],
         },
-        // {
-        //   sublink: [
-        //     { name: t("Institute.1.name"), link: "/" },
-        //     { name: t("Institute.2.name"), link: "/" },
-        //     { name: t("Institute.3.name"), link: "/" },
-        //     { name: t("Institute.4.name"), link: "/" },
-        //     { name: t("Institute.5.name"), link: "/" },
-        //   ],
-        // },
+        
         {
           sublink: test(facultet),
         },
-        // {
-        //   sublink: [
-        //     { name: t("Institute.6.name"), link: "/" },
-        //     { name: t("Institute.7.name"), link: "/" },
-        //     { name: t("Institute.8.name"), link: "/" },
-        //     { name: t("Institute.9.name"), link: "/" },
-        //   ],
-        // },
+       
       ],
     },
     {
@@ -216,7 +201,7 @@ const NavLinks = () => {
           </div>
           {/* Mobile menus */}
           <div
-            className={`
+            className={`absolute
             ${heading === link.name ? "xl:hidden" : "hidden"}
           `}
           >

@@ -4,7 +4,7 @@ import { BannerActions } from "./actions";
 import "./slider.css";
 
 import { Carousel } from "flowbite-react";
-export {bannerReducer} from "./reducer";
+export * from "./reducer";
 export const Banner = () => {
   const { getData } = new BannerActions();
 
@@ -20,21 +20,23 @@ export const Banner = () => {
 
   return (
     <>
-      <div className="w-full h-[90vh] ">
-        <Carousel>
-          {data?.map((item) => (
-            <div key={item._id} className="h-[100vh] bg-cover">
-              <img
-                src={`https://backend.tkti.uz/${item.banner_img}`}
-                width="100%"
-                height="100%"
-                alt={item.name}
-                className="bg-cover bg-center"
-              />
-            </div>
-          ))}
-        </Carousel>
-      </div>
+<div className="w-[100vw] h-[100vh]">
+  <Carousel>
+    {data?.map((item)=>(
+      <div key={item._id} className="h-[100vh] bg-cover">
+      <img
+        src={`https://backend.tkti.uz/${item.banner_img}`}
+        width="100%"
+        height="100%"
+        alt={item.name}
+        className="bg-cover bg-center"
+      />
+    </div>
+    ))}
+
+  </Carousel>
+</div>
+  
     </>
   );
 };
