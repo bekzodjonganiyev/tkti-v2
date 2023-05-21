@@ -9,33 +9,37 @@ export const adminPages = [
         component: "Education"
     },
 
-    {
-        route: "scientific-research",
-        component: "ScientificResearch"
-    },
+    // {
+    //     route: "scientific-research",
+    //     component: "ScientificResearch"
+    // },
 
-    {
-        route: "my-tkti",
-        component: "MyTkti"
-    },
+    // {
+    //     route: "my-tkti",
+    //     component: "MyTkti"
+    // },
 
-    {
-        route: "international-relations",
-        component: "InternationalRelations"
-    },
+    // {
+    //     route: "international-relations",
+    //     component: "InternationalRelations"
+    // },
 
-    {
-        route: "press-club",
-        component: "Press"
-    },
+    // {
+    //     route: "press-club",
+    //     component: "Press"
+    // },
 
-    {
-        route: "admission",
-        component: "Admission"
-    },
+    // {
+    //     route: "admission",
+    //     component: "Admission"
+    // },
 
-    {
-        route: "students",
-        component: "Students"
-    },
+    // {
+    //     route: "students",
+    //     component: "Students"
+    // },
+    // {
+    //     route: "add",
+    //     component: "UnverAdd"
+    // }
 ]

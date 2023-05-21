@@ -5,8 +5,9 @@ import { Routes, Route } from "react-router-dom";
 import { UserLayout, AdminLayout } from "./components/layout";
 import { ProtectedRoute } from "./components";
 
-import { AboutUs, Home, Institute } from "./pages";
-
+import { AboutUs, Home } from "./pages";
+import { UnverAdd , Institute } from "./pages/admin";
+import { View } from "./pages/admin/View";
 import { adminPages } from "./config/adminPages.config";
 
 function App() {
@@ -37,19 +38,11 @@ function App() {
           }
         >
           <Route index element={<h1 className="text-3xl">Dashboard</h1>} />
-          {adminPages.map((item) => (
-            <Route
-              key={item.route}
-              path={item.route}
-              Component={lazy(() =>
-                import(
-                  /* @vite-ignore */ `./pages/admin/${item.component}`
-                ).then((module) => ({
-                  default: module[`${item.component}`],
-                }))
-              )}
-            />
-          ))}
+          
+            
+        <Route path="institute" element = {<Institute/>}/>
+        <Route path="/adminPanel/:name/add" element={<UnverAdd/>}/>
+        <Route path="/adminPanel/:name/view/:id" element={<View/>}/>
         </Route>
       </Routes>
     </div>

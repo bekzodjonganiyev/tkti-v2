@@ -14,11 +14,11 @@ const Structure = lazy(() => import("./institut/structure").then(module => ({def
 
 
 
-const Institute = lazy(() => import("./admin/Institute").then(module => ({default: module.Institute})))
+// const Institute = lazy(() => import("./admin/Institute").then(module => ({default: module.Institute})))
 
 export {
     Home,
-    Institute,
+    // Institute,
     AboutUs,
     AntiCorruption,
     Graduets, 
