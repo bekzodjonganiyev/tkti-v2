@@ -7,6 +7,7 @@ import {Announcement} from '../announcement';
 import { VideoNews } from "../videoNews";
 import {UsefulLinks} from "../usefulLinks";
 import {Statistics} from "../statistics";
+import { Accardion } from "../../components/accardion";
 
 export const Home = () => {
   return (
@@ -18,6 +19,7 @@ export const Home = () => {
       <VideoNews />
       <UsefulLinks/>
       <Statistics />
+      <Accardion />
 
     </div>
   );

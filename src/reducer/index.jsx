@@ -14,7 +14,8 @@ export const rootReducers = combineReducers({
     banner:bannerReducer,
     news:newsReducer,
     announcement: announcementReducer,
-    videoNews: videoNewsReducer
+    videoNews: videoNewsReducer,
+  
     
     
 })
