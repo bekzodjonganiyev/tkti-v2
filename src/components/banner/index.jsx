@@ -4,7 +4,7 @@ import { BannerActions } from "./actions";
 import "./slider.css";
 
 import { Carousel } from "flowbite-react";
-export * from "./reducer";
+export {bannerReducer} from "./reducer";
 export const Banner = () => {
   const { getData } = new BannerActions();
 

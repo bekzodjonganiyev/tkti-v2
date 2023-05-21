@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../assets/images/logo.png";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 const NavLinks = () => {
   const { t } = useTranslation();
   const [heading, setHeading] = useState("");
+
+  const [facultet, setFacultet] = useState([]);
+  useEffect(() => {
+    fetch(`https://backend.tkti.uz/Fak_data/all`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setFacultet(data.data));
+    console.log(facultet);
+  }, [setFacultet]);
   const [subHeading, setSubHeading] = useState("");
   const links = [
     {
@@ -13,22 +26,30 @@ const NavLinks = () => {
       sublinks: [
         {
           sublink: [
-            { name: t("Institute.1.name"), link: "/" },
-            { name: t("Institute.2.name"), link: "/" },
-            { name: t("Institute.3.name"), link: "/" },
-            { name: t("Institute.4.name"), link: "/" },
-            { name: t("Institute.5.name"), link: "/" },
+            { name: t("Header.0.name") },
+           
           ],
         },
-
+        // {
+        //   sublink: [
+        //     { name: t("Institute.1.name"), link: "/" },
+        //     { name: t("Institute.2.name"), link: "/" },
+        //     { name: t("Institute.3.name"), link: "/" },
+        //     { name: t("Institute.4.name"), link: "/" },
+        //     { name: t("Institute.5.name"), link: "/" },
+        //   ],
+        // },
         {
-          sublink: [
-            { name: t("Institute.6.name"), link: "/" },
-            { name: t("Institute.7.name"), link: "/" },
-            { name: t("Institute.8.name"), link: "/" },
-            { name: t("Institute.9.name"), link: "/" },
-          ],
+          sublink: test(facultet),
         },
+        // {
+        //   sublink: [
+        //     { name: t("Institute.6.name"), link: "/" },
+        //     { name: t("Institute.7.name"), link: "/" },
+        //     { name: t("Institute.8.name"), link: "/" },
+        //     { name: t("Institute.9.name"), link: "/" },
+        //   ],
+        // },
       ],
     },
     {
@@ -37,12 +58,15 @@ const NavLinks = () => {
       sublinks: [
         {
           sublink: [
-            { name: t("Admission.0.name"), link: "/" },
-            { name: t("Admission.1.name"), link: "/" },
-            { name: t("Admission.2.name"), link: "/" },
-            { name: t("Admission.3.name"), link: "/" },
+            { name: t("Header.1.name") },
+           
           ],
         },
+       
+        {
+          sublink: test(facultet),
+        },
+        
       ],
     },
     {
@@ -51,88 +75,92 @@ const NavLinks = () => {
       sublinks: [
         {
           sublink: [
-            { name: t("Students.1.name"), link: "/" },
-            { name: t("Students.2.name"), link: "/" },
-            { name: t("Students.3.name"), link: "/" },
-            { name: t("Students.4.name"), link: "/" },
-            { name: t("Students.5.name"), link: "/" },
-            { name: t("Students.6.name"), link: "/" },
+            { name: t("Header.2.name") },
+           
           ],
         },
+       
         {
-          sublink: [
-            { name: t("Students.7.name"), link: "/" },
-            { name: t("Students.8.name"), link: "/" },
-            { name: t("Students.9.name"), link: "/" },
-            { name: t("Students.10.name"), link: "/" },
-            { name: t("Students.11.name"), link: "/" },
-          ],
+          sublink: test(facultet),
         },
+        
       ],
     },
 
     {
-      name:  t("Header.3.name"),
+      name: t("Header.3.name"),
       submenu: true,
       sublinks: [
         {
           sublink: [
-            { name: t("Education.1.name"), link: "/" },
-            { name: t("Education.2.name"), link: "/" },
-            { name: t("Education.3.name"), link: "/" },
-            { name: t("Education.4.name"), link: "/" },
-            { name: t("Education.5.name"), link: "/" },
-            { name: t("Education.6.name"), link: "/" },
+            { name: t("Header.3.name") },
+           
           ],
+        },
+       
+        {
+          sublink: test(facultet),
         },
         
       ],
     },
     {
-      name:t("Header.4.name"),
+      name: t("Header.4.name"),
       submenu: true,
       sublinks: [
         {
           sublink: [
-          
-            { name: t("ScientificResearch.1.name"), link: "/" },
-            { name: t("ScientificResearch.2.name"), link: "/" },
-            { name: t("ScientificResearch.3.name"), link: "/" },
-            { name: t("ScientificResearch.4.name"), link: "/" },
-            { name: t("ScientificResearch.5.name"), link: "/" },
-            { name: t("ScientificResearch.6.name"), link: "/" },
+            { name: t("Header.4.name") },
+           
           ],
         },
+       
         {
-          sublink: [
-            { name: t("ScientificResearch.7.name"), link: "/" },
-            { name: t("ScientificResearch.8.name"), link: "/" },
-            { name: t("ScientificResearch.9.name"), link: "/" },
-            { name: t("ScientificResearch.10.name"), link: "/" },
-            { name: t("ScientificResearch.11.name"), link: "/" },
-          ],
+          sublink: test(facultet),
         },
+        
       ],
     },
 
     {
-      name:  t("Header.5.name"),
+      name: t("Header.5.name"),
       submenu: true,
       sublinks: [
         {
           sublink: [
-            { name: t("International.1.name"), link: "/" },
-            { name: t("International.2.name"), link: "/" },
-            { name: t("International.3.name"), link: "/" },
-            { name: t("International.4.name"), link: "/" },
-            { name: t("International.5.name"), link: "/" },
-            { name: t("International.6.name"), link: "/" },
+            { name: t("Header.5.name") },
+           
           ],
+        },
+       
+        {
+          sublink: test(facultet),
         },
         
       ],
     },
   ];
+
+  function test(params) {
+    const result = [];
+    for (let item of params) {
+      result.push({
+        name: item[`title_${i18next.language}`],
+        link: `/fakultetlar/${item.title_uz
+          .toLowerCase()
+          .split(" ")
+          .map((str) =>
+            str
+              .split("")
+              .filter((char) => /[a-zA-Z]/.test(char))
+              .join("")
+          )
+          .join("-")}-${item._id}`,
+      });
+    }
+   
+    return result;
+  }
   return (
     <>
       {links.map((link) => (
@@ -169,9 +197,6 @@ const NavLinks = () => {
                   <div className="bg-white p-5 flex  gap-10">
                     {link.sublinks.map((mysublinks) => (
                       <div>
-                        <h1 className="text-lg font-semibold">
-                          {mysublinks.Head}
-                        </h1>
                         {mysublinks.sublink.map((slink) => (
                           <li className="text-sm text-gray-600 my-2.5">
                             <Link
@@ -197,33 +222,26 @@ const NavLinks = () => {
           >
             {/* sublinks */}
             {link.sublinks.map((slinks) => (
-              
               <div>
-                
                 <div>
                   <div
                     onClick={() =>
-                      subHeading === slinks.Head ? "xl:hidden" : "hidden"
+                      subHeading === slinks.Head
+                        ? "xl:hidden"
+                        : "hidden"
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
                     className=" py-4 pl-7 z-50  font-semibold  flex justify-between items-center md:pr-0 pr-5"
                   >
-                    
-                   <div
-                    className={`z-5000 `}
-                  >
-                    
-                    {slinks.sublink.map((slink) => (
-                      <li className="py-3 pl-14">
-                        <Link to={slink.link}>{slink.name}</Link>
-                      </li>
-                    ))}
+                    <div className={`z-5000 `}>
+                      {slinks.sublink.map((slink) => (
+                        <li className="py-3 pl-14">
+                          <Link to={slink.link}>{slink.name}</Link>
+                        </li>
+                      ))}
+                    </div>
                   </div>
-
-                
-                  </div>
-               
                 </div>
               </div>
             ))}

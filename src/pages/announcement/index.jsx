@@ -27,7 +27,7 @@ export const Announcement = () => {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="grid  justify-between grid-cols-3 w-[full]">
+        <div className="ggrid   justify-between lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 w-[full]">
           {data.slice(0, 3).map((item) => (
             <>
               <Link className="news__card" key={item} to={`/${i18next.language}/news/${item._id}`}>

@@ -96,12 +96,12 @@ export const TopHeader = () => {
           </div>
           <div className="flex items-center h-5 ">
             <input
-              className="py-2  w-[350px]  rounded-3xl"
+              className="py-2  lg:w-[350px] md:w-[300px] sm:w-[200px]  rounded-3xl"
               type="text"
               placeholder="Qidiruv"
             />
           </div>
-          <div className="flex justify-between items-center">
+          <div className="lg:flex hidden justify-between items-center">
             <img className="w-[40px] h-auto" src={gerb} alt="" />
             <div>
               <div
@@ -175,28 +175,23 @@ export const TopHeader = () => {
              
             </div>
           </div>
-        </header>
-{/*         
-        <div className="container-fluid items-center bg-[#A6A1A1]">
-          <div className="flex container justify-between w-[90%]  mx-auto h-20">
-            <div className="">
-              <Link to="/" className="   ">
-                <div className="flex items-center ">
-                  <img src={logo} alt="Main logo" className="w-16 h-16" />
-                  <div className={`text-white font-bold`}>
-                    <div className="text-[15px] my-3 mx-3">
-                      <div>TOSHKENT </div>
-                      <div>KIMYO-TEXNOLOGIYA</div>
-                      <div>INSTITUTI</div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-
-            <MainHeader />
+          <div className="">
+          <ul className="lg:hidden flex bg-[#F2F2F2]  text-black top-10 left-0 w-full rounded cursor-pointer">
+                {language.map((item) => (
+                  <li
+                    key={item.code}
+                    className="px-3.5 py-2 hover:bg-black hover:text-white"
+                    onClick={() => {
+                      changeLanguage(item.code);
+                    }}
+                  >
+                    {item.name}
+                  </li>
+                ))}
+              </ul>
           </div>
-        </div> */}
+        </header>
+
       </div>
     </>
   );
