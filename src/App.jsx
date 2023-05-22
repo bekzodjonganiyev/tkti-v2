@@ -18,6 +18,9 @@ import { Student } from "./pages/admin/student";
 import { StudentChildEdit } from "./pages/admin/student/edit";
 import { StudentView } from "./pages/admin/student/view";
 import { StudentCreate } from "./pages/admin/student/create";
+import { Qabul } from "./pages/admin/qabul";
+import { QabulCreate } from "./pages/admin/qabul/create";
+import { QabulChildEdit } from "./pages/admin/qabul/edit";
 
 function App() {
   return (
@@ -59,6 +62,11 @@ function App() {
           <Route path="students/edit/:id" element={<StudentChildEdit/>}/>
           <Route path="students/view/:id" element={<StudentView/>}/>
           <Route path="students/add" element={<StudentCreate/>}/>
+
+          <Route path="admission" element={<Qabul/>}/>
+          <Route path="admission/edit/:id" element={<QabulChildEdit/>}/>
+          <Route path="admission/view/:id" element={<Qabul/>}/>
+          <Route path="admission/add" element={<QabulCreate/>}/>
 
           {/* <Route path="/adminPanel/:name/add" element={<AddForm />} />
           <Route
