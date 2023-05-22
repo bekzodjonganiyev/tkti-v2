@@ -21,6 +21,9 @@ import { StudentCreate } from "./pages/admin/student/create";
 import { Qabul } from "./pages/admin/qabul";
 import { QabulCreate } from "./pages/admin/qabul/create";
 import { QabulChildEdit } from "./pages/admin/qabul/edit";
+import { MyInstitute } from "./pages/admin/my_institute";
+import { MyInstituteCreate } from "./pages/admin/my_institute/create";
+import { MyInstituteEdit } from "./pages/admin/my_institute/edit";
 
 function App() {
   return (
@@ -58,15 +61,21 @@ function App() {
           <Route path="int_connections/view/:id" element={<XalqaroView />} />
           <Route path="int_connections/add" element={<XalqaroCreate />} />
 
-          <Route path="students" element={<Student/>}/>
-          <Route path="students/edit/:id" element={<StudentChildEdit/>}/>
-          <Route path="students/view/:id" element={<StudentView/>}/>
-          <Route path="students/add" element={<StudentCreate/>}/>
+          <Route path="students" element={<Student />} />
+          <Route path="students/edit/:id" element={<StudentChildEdit />} />
+          <Route path="students/view/:id" element={<StudentView />} />
+          <Route path="students/add" element={<StudentCreate />} />
 
-          <Route path="admission" element={<Qabul/>}/>
-          <Route path="admission/edit/:id" element={<QabulChildEdit/>}/>
-          <Route path="admission/view/:id" element={<Qabul/>}/>
-          <Route path="admission/add" element={<QabulCreate/>}/>
+          <Route path="admission" element={<Qabul />} />
+          <Route path="admission/edit/:id" element={<QabulChildEdit />} />
+          <Route path="admission/view/:id" element={<Qabul />} />
+          <Route path="admission/add" element={<QabulCreate />} />
+
+
+          <Route path="my-tkti" element={<MyInstitute />} />
+          <Route path="my-tkti/edit/:id" element={<MyInstituteEdit />} />
+          <Route path="my-tkti/view/:id" element={<XalqaroView />} />
+          <Route path="my-tkti/add" element={<MyInstituteCreate />} />
 
           {/* <Route path="/adminPanel/:name/add" element={<AddForm />} />
           <Route
