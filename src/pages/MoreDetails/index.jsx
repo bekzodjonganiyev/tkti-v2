@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { NewsCard } from "../../components/card/NewsCard";
 export { newsReducer } from "../news/reducer";
 
-export const MoreNews = ({title, body}) => {
+export const MoreNews = () => {
   const { t } = useTranslation();
   const { getData, getDataById, deleteData } = new NewsActions();
 
