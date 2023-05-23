@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { NewsActions } from "../news/actions";
 import { Link } from "react-router-dom";
 import { NewsCard } from "../../components/card/NewsCard";
-import { Accardion } from "../../components/accardion";
 export { newsReducer } from "../news/reducer";
 
 export const MoreNews = ({title, body}) => {
@@ -53,11 +52,7 @@ export const MoreNews = ({title, body}) => {
           ))}
         </div>
       )}
-      {loading ? <h1>Loading...</h1> : <span></span>}
-
-      <Accardion 
       
-      />
     </div>
   );
 };
