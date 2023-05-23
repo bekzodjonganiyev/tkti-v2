@@ -58,21 +58,7 @@ function App() {
           <Route index element={<h1 className="text-3xl">Dashboard</h1>} />
 
           <Route path="institute" element={<Institute />} />
-          <Route path="research" element={<Research />} />
 
-          <Route path="pressclub" element={<Pressclub />} />
-          <Route path="pressclub/edit/:id" element={<PressclubChildEdit />} />
-          <Route path="pressclub/view/:id" element={<PressclubView />} />
-          <Route path="pressclub/add" element={<PressclubCreate />} />
-
-          <Route path="education" element={<Education />} />
-          <Route
-            path="education/edit/:id"
-            element={<EducationChildEdit />}
-          />
-          <Route path="education/view/:id" element={<EducationView/>} />
-          <Route path="education/add" element={<EducationCreate />} />
-          
 
           <Route path="int_connections" element={<XalqaroAloqa />} />
           <Route

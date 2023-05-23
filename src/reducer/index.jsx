@@ -24,6 +24,8 @@ import {
   myInstituteParentReducer,
 } from "../pages/admin/my_institute";
 
+import { qabulChildReducer, qabulParentReducer } from "../pages/admin/qabul";
+
 export const rootReducers = combineReducers({
   aboutUs: aboutUsReducer,
   univer: univerUsReducer,
@@ -40,4 +42,7 @@ export const rootReducers = combineReducers({
 
   myInstituteParent: myInstituteParentReducer,
   myInstituteChild: myInstituteChildReducer,
+
+  qabulChild: qabulChildReducer,
+  qabulParent: qabulParentReducer
 });
