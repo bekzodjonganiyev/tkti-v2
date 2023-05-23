@@ -4,13 +4,25 @@ import { aboutUsReducer } from "../pages/institut/about_us";
 import { univerUsReducer } from "../pages/admin/institust/reducer";
 import { fakultetUsReducer } from "../pages/admin/institust/childReducer";
 
-import { xalqaroParentReducer, xalqaroChildReducer } from "../pages/admin/xalqaro_aloqa";
+import {
+  xalqaroParentReducer,
+  xalqaroChildReducer,
+} from "../pages/admin/xalqaro_aloqa";
 
-import { pressclubParentReducer, pressclubChildReducer } from "../pages/admin/press_club";
+import {
+  pressclubParentReducer,
+  pressclubChildReducer,
+} from "../pages/admin/press_club";
 
-import { educationParentReducer, educationChildReducer } from "../pages/admin/education";
+import {
+  educationParentReducer,
+  educationChildReducer,
+} from "../pages/admin/education";
 
-import { researchParentReducer, researchChildReducer } from "../pages/admin/research";
+import {
+  myInstituteChildReducer,
+  myInstituteParentReducer,
+} from "../pages/admin/my_institute";
 
 export const rootReducers = combineReducers({
   aboutUs: aboutUsReducer,
@@ -26,6 +38,6 @@ export const rootReducers = combineReducers({
   pressclubParent: pressclubParentReducer,
   pressclubChild: pressclubChildReducer,
 
-  myInstituteParent:MyInstituteParentReducer,
-  myInstituteChild:MyInstituteChildReducer
+  myInstituteParent: myInstituteParentReducer,
+  myInstituteChild: myInstituteChildReducer,
 });

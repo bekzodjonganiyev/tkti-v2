@@ -7,7 +7,7 @@ const parentInitialState = {
   error: "",
 };
 
-export const MyInstituteParentReducer = (state = parentInitialState, action) => {
+export const myInstituteParentReducer = (state = parentInitialState, action) => {
   switch (action.type) {
     case my_institute_parent.request:
       return { ...state, loading: true };
@@ -55,7 +55,7 @@ const childInitialState = {
   error: "",
 };
 
-export const MyInstituteChildReducer = (state = childInitialState, action) => {
+export const myInstituteChildReducer = (state = childInitialState, action) => {
   switch (action.type) {
     case my_institute_child.request:
       return { ...state, loading: true };

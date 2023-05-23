@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { MyInstituteParentActions } from "./actions";
 
-export { MyInstituteParentReducer, MyInstituteChildReducer } from "./reducers";
+export { myInstituteParentReducer, myInstituteChildReducer } from "./reducers";
 export const MyInstitute = () => {
   const dispatch = useDispatch();
 
