@@ -6,8 +6,9 @@ import { ProtectedRoute } from "./components";
 
 import { AboutUs, Home } from "./pages";
 import { News } from "./pages/news";
+import { Announcement } from "./pages/announcement";
 
-import { Details } from "./components/details";
+import { Details, DetailsElon } from "./components/details";
 function App() {
   return (
     <div className="h-screen">
@@ -23,9 +24,11 @@ function App() {
           <Route index element={<Home />} />
           <Route path="a" element={<AboutUs />} />
           <Route path="news" element={<News/>} />
-          
+          <Route path="elon" element={<Announcement/>} />
           <Route path="/:news/:id" element={<Details />} />
+          <Route path="/:elon/:id" element={<DetailsElon  />} />
         </Route>
+        
 
         <Route
           path="adminPanel"

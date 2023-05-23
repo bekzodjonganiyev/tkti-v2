@@ -24,7 +24,7 @@ export const NewsCard = ({
           <CalendarIcon />{" "}
           <span>{dateProps}</span>
         </div>
-        <p className={`font-semibold mt-2 ${ "xl:text-xl lg:text-lg text-sm news-title"} `}>
+        <p className={`font-semibold mt-2 line-clamp-2 ${ "xl:text-xl lg:text-lg text-sm news-title"} `}>
           {t("NewsCard.title", {news_card_title: title})}
         </p>
     

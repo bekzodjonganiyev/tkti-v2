@@ -117,3 +117,113 @@ export class DetailsActions {
     };
   }
 }
+
+export class DetailsElonActions {
+  getData() {
+    return async (dispatch) => {
+      dispatch({
+        type: REQUEST_DETAILS,
+      });
+      const res = await apiClientWithFetch.get("elon/all");
+      if (res.status === 200) {
+        dispatch({
+          type: GET_DETAILS,
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: ERROR_DETAILS,
+          payload: res?.status ? res.status : res,
+        });
+      }
+    };
+  }
+
+  getDataById(id) {
+    return async (dispatch) => {
+      dispatch({
+        type: REQUEST_DETAILS,
+      });
+      const res = await apiClientWithFetch.get(`elon/${id}`);
+      if (res.status === 200) {
+        dispatch({
+          type: GET_BY_ID_DETAILS,
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: ERROR_DETAILS,
+          payload: res?.status ? res.status : res,
+        });
+      }
+    };
+  }
+
+  postData(body) {
+    return async (dispatch) => {
+      dispatch({
+        type: REQUEST_DETAILS,
+      });
+      const res = await apiClientWithFetch.add(
+        "elon/add",
+        body,
+        "multipart/form-data"
+      );
+      if (res.status === 200) {
+        dispatch({
+          type: POST_DETAILS,
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: ERROR_DETAILS,
+          payload: res?.status ? res.status : res,
+        });
+      }
+    };
+  }
+
+  updateData(id, body) {
+    return async (dispatch) => {
+      dispatch({
+        type: REQUEST_DETAILS,
+      });
+      const res = await apiClientWithFetch.update(
+        `elon/${id}`,
+        body,
+        "multipart/form-data"
+      );
+      if (res.status === 200) {
+        dispatch({
+          type: PUT_DETAILS,
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: ERROR_DETAILS,
+          payload: res?.status ? res.status : res,
+        });
+      }
+    };
+  }
+
+  deleteData(id) {
+    return async (dispatch) => {
+      dispatch({
+        type: REQUEST_DETAILS,
+      });
+      const res = await apiClientWithFetch.delete(`elon/${id}`);
+      if (res.status === 200) {
+        dispatch({
+          type: DELETE_news,
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: ERROR_news,
+          payload: res?.status ? res.status : res,
+        });
+      }
+    };
+  }
+}

@@ -27,7 +27,7 @@ export const News = ({ myKey }) => {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="grid grid-cols-3 justify-between lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 w-[full]">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.map((item) => (
             <>
               <Link className="news__card mx-auto" key={item} to={`/${myKey}/${item._id}`}>

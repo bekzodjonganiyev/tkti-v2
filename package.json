@@ -19,6 +19,7 @@
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.2.0",
     "react": "^18.2.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "react-countup": "^6.4.2",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.2.2",

@@ -23,18 +23,18 @@ export const NewsAll = ({ myKey }) => {
   if (error) return <h1>{error}</h1>;
   return (
     <div className="container mx-auto w-[80%] ">
-      <div cassName="flex justify-between ">
-
-      <h3 className="text-3xl  my-8">Yangiliklar</h3>
-      <Link className="text-3xl " to={`/news`}>
-        barchasini ko'rish
-        <i className="mx-3 fa-solid fa-right-long"></i>
+      <div className="flex justify-between items-center mx-auto  ">
+          <span className="text-3xl  my-8">Yangiliklar</span>
+          <Link className="text-3xl " to={`/news`}>
+        Barchasini ko'rish
+       
         </Link>
         </div>
+      
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="grid grid-cols-3 justify-between lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 w-[full]">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.slice(0, 3).map((item) => (
             <>
               <Link className="news__card mx-auto" key={item} to={`/${myKey}/${item._id}`}>
