@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { Breadcrumb, Dropdown } from "flowbite-react";
-import { Routes, Route,  useLocation } from "react-router-dom";
+import React, { useEffect } from "react"
 import { Divider, Table, Button } from 'antd';
-import { univerUsReducer } from './reducer'
 import { ActionUniver } from './actions'
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate, Link } from "react-router-dom";
