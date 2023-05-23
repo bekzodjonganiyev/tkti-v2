@@ -1,4 +1,4 @@
-import { Button, message, Popconfirm, Table } from "antd";
+import { Popconfirm, Table } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,8 +9,7 @@ export { qabulParentReducer, qabulChildReducer } from "./reducers";
 export const Qabul = () => {
   const dispatch = useDispatch();
 
-  const { getData, getDataById, postData, updateData, deleteData } =
-    new QabulParentActions();
+  const { getData, getDataById, postData, updateData, deleteData } = new QabulParentActions();
   const selectorFunc = (state) => state.qabulParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
 
@@ -31,24 +30,19 @@ export const Qabul = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/admission/view/${p.id}`}>
-            view
-          </Link>
-          <Link to={"#"}>
-            edit
-          </Link>
+          <Link to={`/adminPanel/admission/view/${p.id}`}>view</Link>
+          <Link to={"#"}>edit</Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
-            onConfirm={() => deleteData(p.id)}
+            onConfirm={() => dispatch(deleteData(p.id))}
             onCancel
             okText="Yes"
             cancelText="No"
-            okButtonProps={{style: {background: "red"}}}
+            okButtonProps={{ style: { background: "red" } }}
           >
             <button type="link">Delete</button>
           </Popconfirm>
-          
         </div>
       ),
     },

@@ -2,38 +2,31 @@ import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { UserLayout, AdminLayout } from "./components/layout";
-import { ProtectedRoute, EditForm, ViewComponent, AddForm } from "./components";
+import { ProtectedRoute } from "./components";
 
 import { AboutUs, Home } from "./pages";
 import {
   Institute,
-  Research,
-  Pressclub,
-  PressclubCreate,
-  PressclubView,
-  PressclubChildEdit,
+  // Xalqaro aloqa
   XalqaroAloqa,
   XalqaroCreate,
   XalqaroView,
   XalqaroChildEdit,
-  ResearchCreate,
-  ResearchView,
-  ResearchChildEdit,
-  Education,
-  EducationView,
-  EducationCreate,
-  EducationChildEdit,
+  // My institute
+  MyInstitute,
+  MyInstituteCreate,
+  MyInstituteChildEdit,
+  MyInstituteView,
+  // Qabul
+  Qabul,
+  QabulCreate,
+  QabulChildEdit,
+  QabulView,
 } from "./pages/admin";
 import { Student } from "./pages/admin/student";
 import { StudentChildEdit } from "./pages/admin/student/edit";
 import { StudentView } from "./pages/admin/student/view";
 import { StudentCreate } from "./pages/admin/student/create";
-import { Qabul } from "./pages/admin/qabul";
-import { QabulCreate } from "./pages/admin/qabul/create";
-import { QabulChildEdit } from "./pages/admin/qabul/edit";
-import { MyInstitute } from "./pages/admin/my_institute";
-import { MyInstituteCreate } from "./pages/admin/my_institute/create";
-import { MyInstituteEdit } from "./pages/admin/my_institute/edit";
 
 function App() {
   return (
@@ -95,21 +88,15 @@ function App() {
           <Route path="students/add" element={<StudentCreate />} />
 
           <Route path="admission" element={<Qabul />} />
-          <Route path="admission/edit/:id" element={<QabulChildEdit />} />
-          <Route path="admission/view/:id" element={<Qabul />} />
           <Route path="admission/add" element={<QabulCreate />} />
+          <Route path="admission/edit/:id" element={<QabulChildEdit />} />
+          <Route path="admission/view/:id" element={<QabulView />} />
 
           <Route path="my-tkti" element={<MyInstitute />} />
-          <Route path="my-tkti/edit/:id" element={<MyInstituteEdit />} />
-          <Route path="my-tkti/view/:id" element={<XalqaroView />} />
           <Route path="my-tkti/add" element={<MyInstituteCreate />} />
+          <Route path="my-tkti/edit/:id" element={<MyInstituteChildEdit />} />
+          <Route path="my-tkti/view/:id" element={<MyInstituteView />} />
 
-          {/* <Route path="/adminPanel/:name/add" element={<AddForm />} />
-          <Route
-            path="/adminPanel/:name/view/:id"
-            element={<ViewComponent />}
-          />
-          <Route path="/adminPanel/:name/edit/:id" element={<EditForm />} /> */}
         </Route>
       </Routes>
     </div>

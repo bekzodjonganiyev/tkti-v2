@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const MyInstituteEdit = () => {
+export const MyInstituteChildEdit = () => {
   return (
     <div>edit</div>
   )

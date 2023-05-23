@@ -12,15 +12,14 @@ export const MyInstituteView = () => {
   const parentAction = new MyInstituteParentActions();
   const childAction = new MyInstituteChildActions();
 
-  const selectorFuncParent = (state) => state.MyInstituteParent;
-  const selectorFuncChild = (state) => state.MyInstituteChild;
+  const selectorFuncParent = (state) => state.myInstituteParent;
+  const selectorFuncChild = (state) => state.myInstituteChild;
   const parentState = useSelector(selectorFuncParent);
   const childState = useSelector(selectorFuncChild);
 
   useEffect(() => {
     dispatch(parentAction.getDataById(id));
   }, [id]);
-  console.log(parentState.data, "yiuyiugy");
 
   const columns = [
     {
@@ -40,7 +39,7 @@ export const MyInstituteView = () => {
             title="Delete the task"
             description="Are you sure to delete this task?"
             onConfirm={() => childAction.deleteData(p.id)}
-            onCancel
+            onCancel={() => {}}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
@@ -52,7 +51,7 @@ export const MyInstituteView = () => {
     },
   ];
 
-  const dataSource = parentState.data?.child?.map((item, id) => ({
+  const dataSource = parentState.dataById?.child?.map((item, id) => ({
     order: id + 1,
     name: item.title_uz,
     id: item._id,
@@ -66,7 +65,7 @@ export const MyInstituteView = () => {
         columns={columns}
         dataSource={dataSource}
         size="large"
-        loading={childState.loading}
+        loading={parentState.loading}
       />
     </div>
   );

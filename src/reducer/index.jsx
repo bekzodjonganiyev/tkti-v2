@@ -26,6 +26,6 @@ export const rootReducers = combineReducers({
   pressclubParent: pressclubParentReducer,
   pressclubChild: pressclubChildReducer,
 
-  researchParent: researchParentReducer,
-  researchChild: researchChildReducer,
+  myInstituteParent:MyInstituteParentReducer,
+  myInstituteChild:MyInstituteChildReducer
 });

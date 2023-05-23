@@ -16,7 +16,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.get("admission/all");
+        const res = await apiClientWithFetch.get("xalqaro_aloqa/all");
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.get,
@@ -36,7 +36,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.get(`admission/${id}`);
+        const res = await apiClientWithFetch.get(`xalqaro_aloqa/${id}`);
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.getById,
@@ -54,9 +54,9 @@ export const qabul_parent = {
     postData(body) {
       return async (dispatch) => {
         dispatch({
-          type: qabul_parent,
+          type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.add("admission/add", body);
+        const res = await apiClientWithFetch.add("xalqaro_aloqa/add", body);
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.post,
@@ -76,7 +76,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.update(`admission/${id}`, body);
+        const res = await apiClientWithFetch.update(`xalqaro_aloqa/${id}`, body);
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.put,
@@ -96,7 +96,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.delete(`admission/${id}`);
+        const res = await apiClientWithFetch.delete(`xalqaro_aloqa/${id}`);
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.delete,
@@ -128,7 +128,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child.request,
         });
-        const res = await apiClientWithFetch.get("admission_child/all");
+        const res = await apiClientWithFetch.get("xalqaro_aloqa_child/all");
         if (res.status === 200) {
           dispatch({
             type: qabul_child.get,
@@ -148,7 +148,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child.request,
         });
-        const res = await apiClientWithFetch.get(`admission_child/${id}`);
+        const res = await apiClientWithFetch.get(`xalqaro_aloqa_child/${id}`);
         if (res.status === 200) {
           dispatch({
             type: qabul_child.getById,
@@ -168,7 +168,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child,
         });
-        const res = await apiClientWithFetch.add("admission_child/add", body);
+        const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body, true);
         if (res.status === 200) {
           dispatch({
             type: qabul_child.post,
@@ -188,7 +188,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child.request,
         });
-        const res = await apiClientWithFetch.update(`admission_child/${id}`, body);
+        const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body);
         if (res.status === 200) {
           dispatch({
             type: qabul_child.put,
@@ -208,7 +208,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child.request,
         });
-        const res = await apiClientWithFetch.delete(`admission_child/${id}`);
+        const res = await apiClientWithFetch.delete(`xalqaro_aloqa_child/${id}`);
         if (res.status === 200) {
           dispatch({
             type: qabul_child.delete,

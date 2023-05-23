@@ -1,4 +1,4 @@
-import { Button, message, Popconfirm, Table } from "antd";
+import { Popconfirm, Table } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,9 +9,9 @@ export { MyInstituteParentReducer, MyInstituteChildReducer } from "./reducers";
 export const MyInstitute = () => {
   const dispatch = useDispatch();
 
-  const { getData, getDataById, postData, updateData, deleteData } =
-    new MyInstituteParentActions();
-  const selectorFunc = (state) => state.MyInstituteParent;
+  const { getData, getDataById, postData, updateData, deleteData } = new MyInstituteParentActions();
+
+  const selectorFunc = (state) => state.myInstituteParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
 
   useEffect(() => {
@@ -31,24 +31,19 @@ export const MyInstitute = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/my-tkti/view/${p.id}`}>
-            view
-          </Link>
-          <Link to={"#"}>
-            edit
-          </Link>
+          <Link to={`/adminPanel/my-tkti/view/${p.id}`}>view</Link>
+          <Link to={"#"}>edit</Link>
           <Popconfirm
-            title="Delete the task"
-            description="Are you sure to delete this task?"
+            title="O'chirishni xoxlaysizmi?"
+            description="Malumot o'chiriladi va uni tiklab bo'lmaydi"
             onConfirm={() => deleteData(p.id)}
-            onCancel
+            onCancel={() => {}}
             okText="Yes"
             cancelText="No"
-            okButtonProps={{style: {background: "red"}}}
+            okButtonProps={{ style: { background: "red" } }}
           >
             <button type="link">Delete</button>
           </Popconfirm>
-          
         </div>
       ),
     },
