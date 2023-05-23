@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { XalqaroParentActions } from "./actions";
-
+import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 export { xalqaroParentReducer, xalqaroChildReducer } from "./reducers";
 export const XalqaroAloqa = () => {
   const dispatch = useDispatch();
@@ -31,11 +31,11 @@ export const XalqaroAloqa = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/int_connections/view/${p.id}`}>
-            view
+          <Link to={`/adminPanel/education/view/${p.id}`}>
+            <ViewIcon />
           </Link>
           <Link to={"#"}>
-            edit
+            <EditIcon />
           </Link>
           <Popconfirm
             title="Delete the task"
@@ -46,7 +46,7 @@ export const XalqaroAloqa = () => {
             cancelText="No"
             okButtonProps={{style: {background: "red"}}}
           >
-            <button type="link">Delete</button>
+            <button type="link"><DeleteIcon/></button>
           </Popconfirm>
           
         </div>
@@ -63,10 +63,10 @@ export const XalqaroAloqa = () => {
   return (
     <div>
       <Link
-        to={"/adminPanel/int_connections/add"}
-        className="float-right bg-cyan-500 my-2"
+        to={"/adminPanel/education/add"}
+        className="float-right "
       >
-        add user
+         <AddIcon/>
       </Link>
       <Table
         columns={columns}

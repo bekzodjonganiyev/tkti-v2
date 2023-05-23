@@ -9,7 +9,7 @@ export const sidebarItems = [
   },
   {
     name: "Ilmiy tadqiqoqtlar",
-    url: "scientific-research",
+    url: "research",
   },
   {
     name: "My Tkti",
@@ -21,7 +21,7 @@ export const sidebarItems = [
   },
   {
     name: "Matbout",
-    url: "press-club",
+    url: "pressclub",
   },
   {
     name: "Qabul",

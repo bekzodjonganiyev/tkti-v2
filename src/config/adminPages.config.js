@@ -4,14 +4,14 @@ export const adminPages = [
         component: "Institute"
     },
     
-    {
-        route: "education",
-        component: "Education"
-    },
+    // {
+    //     route: "education",
+    //     component: "Education"
+    // },
 
     // {
-    //     route: "scientific-research",
-    //     component: "ScientificResearch"
+    //     route: "research",
+    //     component: "Research"
     // },
 
     // {
