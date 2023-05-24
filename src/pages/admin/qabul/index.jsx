@@ -9,7 +9,8 @@ export { qabulParentReducer, qabulChildReducer } from "./reducers";
 export const Qabul = () => {
   const dispatch = useDispatch();
 
-  const { getData, getDataById, postData, updateData, deleteData } = new QabulParentActions();
+  const { getData, getDataById, postData, updateData, deleteData } =
+    new QabulParentActions();
   const selectorFunc = (state) => state.qabulParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
 

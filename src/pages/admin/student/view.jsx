@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
-import { StudentChildActions, StudentParentActions } from "./actions";
+import {  StudentChildActions, StudentParentActions} from "./actions";
+import { DeleteIcon, EditIcon } from "../../../assets/icons";
 
 export const StudentView = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,6 @@ export const StudentView = () => {
   useEffect(() => {
     dispatch(parentAction.getDataById(id));
   }, [id]);
-  console.log(parentState.data, "yiuyiugy");
 
   const columns = [
     {
@@ -35,24 +35,24 @@ export const StudentView = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/students/edit/${p.id}`}>edit</Link>
+          <Link to={`/adminPanel/my-tkti/edit/${p.id}`}><EditIcon /></Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
             onConfirm={() => childAction.deleteData(p.id)}
-            onCancel
+            onCancel={() => {}}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">Delete</button>
+            <button type="link"><DeleteIcon /></button>
           </Popconfirm>
         </div>
       ),
     },
   ];
 
-  const dataSource = parentState.data?.child?.map((item, id) => ({
+  const dataSource = parentState.dataById?.child?.map((item, id) => ({
     order: id + 1,
     name: item.title_uz,
     id: item._id,
@@ -66,7 +66,7 @@ export const StudentView = () => {
         columns={columns}
         dataSource={dataSource}
         size="large"
-        loading={childState.loading}
+        loading={parentState.loading}
       />
     </div>
   );

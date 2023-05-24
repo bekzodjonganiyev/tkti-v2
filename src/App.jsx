@@ -12,6 +12,13 @@ import {
   XalqaroCreate,
   XalqaroView,
   XalqaroChildEdit,
+
+  //Education
+  Education,
+  EducationCreate,
+  EducationView,
+  EducationChildEdit,
+
   // My institute
   MyInstitute,
   MyInstituteCreate,
@@ -22,11 +29,22 @@ import {
   QabulCreate,
   QabulChildEdit,
   QabulView,
+  // Matbuot
+  Pressclub,
+  PressclubCreate,
+  PressclubChildEdit,
+  PressclubView,
+  //Student
+  Student,
+  StudentCreate,
+  StudentChildEdit,
+  StudentView,
+  //Researche
+  Research,
+  ResearchCreate,
+  ResearchChildEdit,
+  ResearchView
 } from "./pages/admin";
-import { Student } from "./pages/admin/student";
-import { StudentChildEdit } from "./pages/admin/student/edit";
-import { StudentView } from "./pages/admin/student/view";
-import { StudentCreate } from "./pages/admin/student/create";
 
 function App() {
   return (
@@ -59,7 +77,6 @@ function App() {
 
           <Route path="institute" element={<Institute />} />
 
-
           <Route path="int_connections" element={<XalqaroAloqa />} />
           <Route
             path="int_connections/edit/:id"
@@ -67,6 +84,28 @@ function App() {
           />
           <Route path="int_connections/view/:id" element={<XalqaroView />} />
           <Route path="int_connections/add" element={<XalqaroCreate />} />
+
+          <Route path="pressclub" element={<Pressclub />} />
+          <Route path="pressclub/edit/:id" element={<PressclubChildEdit />} />
+          <Route path="pressclub/view/:id" element={<PressclubView />} />
+          <Route path="pressclub/add" element={<PressclubCreate />} />
+
+          <Route path="student" element={<Student />} />
+          <Route path="student/edit/:id" element={<StudentChildEdit />} />
+          <Route path="student/view/:id" element={<StudentView />} />
+          <Route path="student/add" element={<StudentCreate />} />
+
+
+          <Route path="education" element={<Education />} />
+          <Route path="education/edit/:id" element={<EducationChildEdit />} />
+          <Route path="education/view/:id" element={<EducationView />} />
+          <Route path="education/add" element={<EducationCreate />} />
+
+          <Route path="research" element={<Research />} />
+          <Route path="research/edit/:id" element={<ResearchChildEdit />} />
+          <Route path="research/view/:id" element={<ResearchView />} />
+          <Route path="research/add" element={<ResearchCreate />} />
+
 
           <Route path="students" element={<Student />} />
           <Route path="students/edit/:id" element={<StudentChildEdit />} />
@@ -82,7 +121,6 @@ function App() {
           <Route path="my-tkti/add" element={<MyInstituteCreate />} />
           <Route path="my-tkti/edit/:id" element={<MyInstituteChildEdit />} />
           <Route path="my-tkti/view/:id" element={<MyInstituteView />} />
-
         </Route>
       </Routes>
     </div>

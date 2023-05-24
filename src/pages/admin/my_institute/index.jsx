@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { MyInstituteParentActions } from "./actions";
+import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 
 export { myInstituteParentReducer, myInstituteChildReducer } from "./reducers";
 export const MyInstitute = () => {
   const dispatch = useDispatch();
 
-  const { getData, getDataById, postData, updateData, deleteData } = new MyInstituteParentActions();
+  const { getData, getDataById, postData, updateData, deleteData } =
+    new MyInstituteParentActions();
 
   const selectorFunc = (state) => state.myInstituteParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
@@ -31,8 +33,12 @@ export const MyInstitute = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/my-tkti/view/${p.id}`}>view</Link>
-          <Link to={"#"}>edit</Link>
+          <Link to={`/adminPanel/my-tkti/view/${p.id}`}>
+            <EditIcon />
+          </Link>
+          <Link to={"#"}>
+            <ViewIcon />
+          </Link>
           <Popconfirm
             title="O'chirishni xoxlaysizmi?"
             description="Malumot o'chiriladi va uni tiklab bo'lmaydi"
@@ -42,7 +48,9 @@ export const MyInstitute = () => {
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">Delete</button>
+            <button type="link">
+              <DeleteIcon />
+            </button>
           </Popconfirm>
         </div>
       ),
@@ -61,7 +69,7 @@ export const MyInstitute = () => {
         to={"/adminPanel/my-tkti/add"}
         className="float-right bg-cyan-500 my-2"
       >
-        add user
+        <AddIcon />
       </Link>
       <Table
         columns={columns}

@@ -113,13 +113,13 @@ export class EducationParentActions {
 }
 
 export const education_child = {
-  request: "REQ_EDUCATION",
-  error: "ERR_EDUCATION",
-  post: "POST_EDUCATION",
-  get: "GET_EDUCATION",
-  getById: "GETONE_EDUCATION",
-  put: "PUT_EDUCATION",
-  delete: "DELETE_EDUCATION",
+  request: "REQ_EDUCATION_CHILD",
+  error: "ERR_EDUCATION_CHILD",
+  post: "POST_EDUCATION_CHILD",
+  get: "GET_EDUCATION_CHILD",
+  getById: "GETONE_EDUCATION_CHILD",
+  put: "PUT_EDUCATION_CHILD",
+  delete: "DELETE_EDUCATION_CHILD",
 };
 
 export class EducationChildActions {

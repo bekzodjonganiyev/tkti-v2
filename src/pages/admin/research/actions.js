@@ -188,7 +188,7 @@ export const research_parent = {
         dispatch({
           type: research_child.request,
         });
-        const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body);
+        const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body, true);
         if (res.status === 200) {
           dispatch({
             type: research_child.put,

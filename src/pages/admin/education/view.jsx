@@ -2,8 +2,9 @@ import { Button, message, Popconfirm, Table } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import {DeleteIcon,EditIcon } from "../../../assets/icons"
-import { EducationChildActions, EducationParentActions } from "./actions";
+
+import { EducationChildActions, EducationParentActions} from "./actions";
+import { DeleteIcon, EditIcon } from "../../../assets/icons";
 
 export const EducationView = () => {
   const dispatch = useDispatch();
@@ -39,19 +40,19 @@ export const EducationView = () => {
             title="Delete the task"
             description="Are you sure to delete this task?"
             onConfirm={() => childAction.deleteData(p.id)}
-            onCancel
+            onCancel={() => {}}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link"><DeleteIcon/></button>
+            <button type="link"><DeleteIcon /></button>
           </Popconfirm>
         </div>
       ),
     },
   ];
 
-  const dataSource = parentState.data?.child?.map((item, id) => ({
+  const dataSource = parentState.dataById?.child?.map((item, id) => ({
     order: id + 1,
     name: item.title_uz,
     id: item._id,
@@ -65,7 +66,7 @@ export const EducationView = () => {
         columns={columns}
         dataSource={dataSource}
         size="large"
-        loading={childState.loading}
+        loading={parentState.loading}
       />
     </div>
   );

@@ -10,7 +10,7 @@ export const fetchApi = async (url, data) => {
 };
 
 export const http = axios.create({
-  baseURL: "https://backend.tkti.uz/",
+  baseURL: "https://tkti-backend-g6pbz.ondigitalocean.app/",
   headers: {
     Token: localStorage.getItem("token"),
   },

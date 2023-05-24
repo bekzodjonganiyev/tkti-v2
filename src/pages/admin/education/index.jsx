@@ -44,11 +44,12 @@ export const Education = () => {
             onCancel
             okText="Yes"
             cancelText="No"
-            okButtonProps={{style: {background: "red"}}}
+            okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link"><DeleteIcon/></button>
+            <button type="link">
+              <DeleteIcon />
+            </button>
           </Popconfirm>
-          
         </div>
       ),
     },
@@ -62,11 +63,8 @@ export const Education = () => {
 
   return (
     <div>
-      <Link
-        to={"/adminPanel/education/add"}
-        className="float-right "
-      >
-         <AddIcon/>
+      <Link to={"/adminPanel/education/add"} className="float-right ">
+        <AddIcon />
       </Link>
       <Table
         columns={columns}

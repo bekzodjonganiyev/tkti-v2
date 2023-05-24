@@ -31,7 +31,7 @@ export const Pressclub = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/education/view/${p.id}`}>
+          <Link to={`/adminPanel/pressclub/view/${p.id}`}>
             <ViewIcon />
           </Link>
           <Link to={"#"}>
@@ -44,11 +44,12 @@ export const Pressclub = () => {
             onCancel
             okText="Yes"
             cancelText="No"
-            okButtonProps={{style: {background: "red"}}}
+            okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link"><DeleteIcon/></button>
+            <button type="link">
+              <DeleteIcon />
+            </button>
           </Popconfirm>
-          
         </div>
       ),
     },
@@ -62,11 +63,8 @@ export const Pressclub = () => {
 
   return (
     <div>
-      <Link
-        to={"/adminPanel/education/add"}
-        className="float-right "
-      >
-         <AddIcon/>
+      <Link to={"/adminPanel/pressclub/add"} className="float-right ">
+        <AddIcon />
       </Link>
       <Table
         columns={columns}

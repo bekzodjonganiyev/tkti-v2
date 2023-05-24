@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { StudentParentActions } from "./actions";
+import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 
 export { studentParentReducer, studentChildReducer } from "./reducers";
 export const Student = () => {
@@ -31,11 +32,11 @@ export const Student = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/students/view/${p.id}`}>
-            view
+          <Link to={`/adminPanel/student/view/${p.id}`}>
+            <ViewIcon />
           </Link>
           <Link to={"#"}>
-            edit
+            <EditIcon />
           </Link>
           <Popconfirm
             title="Delete the task"
@@ -44,11 +45,12 @@ export const Student = () => {
             onCancel
             okText="Yes"
             cancelText="No"
-            okButtonProps={{style: {background: "red"}}}
+            okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">Delete</button>
+            <button type="link">
+              <DeleteIcon />
+            </button>
           </Popconfirm>
-          
         </div>
       ),
     },
@@ -63,10 +65,10 @@ export const Student = () => {
   return (
     <div>
       <Link
-        to={"/adminPanel/students/add"}
+        to={"/adminPanel/student/add"}
         className="float-right bg-cyan-500 my-2"
       >
-        add user
+        <AddIcon />
       </Link>
       <Table
         columns={columns}

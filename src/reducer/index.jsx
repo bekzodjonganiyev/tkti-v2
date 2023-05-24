@@ -24,6 +24,17 @@ import {
   myInstituteParentReducer,
 } from "../pages/admin/my_institute";
 
+import {
+  studentChildReducer,
+  studentParentReducer,
+} from "../pages/admin/student";
+
+import {
+  researchChildReducer,
+  researchParentReducer,
+} from "../pages/admin/research";
+
+
 import { qabulChildReducer, qabulParentReducer } from "../pages/admin/qabul";
 
 export const rootReducers = combineReducers({
@@ -33,6 +44,12 @@ export const rootReducers = combineReducers({
 
   xalqaroParent: xalqaroParentReducer,
   xalqaroChild: xalqaroChildReducer,
+
+  studentParent: studentParentReducer,
+  studentChild: studentChildReducer,
+
+  researchParent: researchParentReducer,
+  researchChild: researchChildReducer,
 
   educationParent: educationParentReducer,
   educationChild: educationChildReducer,

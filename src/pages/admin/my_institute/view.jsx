@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 import { MyInstituteChildActions, MyInstituteParentActions } from "./actions";
+import { DeleteIcon, EditIcon } from "../../../assets/icons";
 
 export const MyInstituteView = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export const MyInstituteView = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/my-tkti/edit/${p.id}`}>edit</Link>
+          <Link to={`/adminPanel/my-tkti/edit/${p.id}`}><EditIcon /></Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
@@ -44,7 +45,7 @@ export const MyInstituteView = () => {
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">Delete</button>
+            <button type="link"><DeleteIcon/></button>
           </Popconfirm>
         </div>
       ),
