@@ -16,7 +16,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.get("xalqaro_aloqa/all");
+        const res = await apiClientWithFetch.get("qabul/all");
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.get,
@@ -36,7 +36,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.get(`xalqaro_aloqa/${id}`);
+        const res = await apiClientWithFetch.get(`qabul/${id}`);
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.getById,
@@ -56,7 +56,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.add("xalqaro_aloqa/add", body);
+        const res = await apiClientWithFetch.add("qabul/add", body);
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.post,
@@ -76,7 +76,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.update(`xalqaro_aloqa/${id}`, body);
+        const res = await apiClientWithFetch.update(`qabul/${id}`, body);
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.put,
@@ -96,7 +96,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_parent.request,
         });
-        const res = await apiClientWithFetch.delete(`xalqaro_aloqa/${id}`);
+        const res = await apiClientWithFetch.delete(`qabul/${id}`);
         if (res.status === 200) {
           dispatch({
             type: qabul_parent.delete,
@@ -128,7 +128,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child.request,
         });
-        const res = await apiClientWithFetch.get("xalqaro_aloqa_child/all");
+        const res = await apiClientWithFetch.get("qabul_child/all");
         if (res.status === 200) {
           dispatch({
             type: qabul_child.get,
@@ -148,7 +148,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child.request,
         });
-        const res = await apiClientWithFetch.get(`xalqaro_aloqa_child/${id}`);
+        const res = await apiClientWithFetch.get(`qabul_child/${id}`);
         if (res.status === 200) {
           dispatch({
             type: qabul_child.getById,
@@ -168,7 +168,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child,
         });
-        const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body, true);
+        const res = await apiClientWithFetch.add("qabul_child/add", body, true);
         if (res.status === 200) {
           dispatch({
             type: qabul_child.post,
@@ -188,7 +188,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child.request,
         });
-        const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body);
+        const res = await apiClientWithFetch.update(`qabul_child/${id}`, body, true);
         if (res.status === 200) {
           dispatch({
             type: qabul_child.put,
@@ -208,7 +208,7 @@ export const qabul_parent = {
         dispatch({
           type: qabul_child.request,
         });
-        const res = await apiClientWithFetch.delete(`xalqaro_aloqa_child/${id}`);
+        const res = await apiClientWithFetch.delete(`qabul_child/${id}`);
         if (res.status === 200) {
           dispatch({
             type: qabul_child.delete,

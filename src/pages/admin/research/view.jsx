@@ -39,7 +39,7 @@ export const ResearchView = () => {
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
-            onConfirm={() => childAction.deleteData(p.id)}
+            onConfirm={() => dispatch( childAction.deleteData(p.id))}
             onCancel={() => {}}
             okText="Yes"
             cancelText="No"

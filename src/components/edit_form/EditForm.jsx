@@ -1,7 +1,18 @@
-import React from 'react'
+import { useState } from "react";
+import TextEditor from '../text_editor/TextEditor';
+import { Button, Form, Input, Select, Upload, Modal } from "antd";
 
-export const EditForm = ({childById, parents, putChild}) => {
+export const EditForm = ({childById, parents,body,  loading, putChild}) => {
+const editParent = (value) =>{
+
+};
+  
+ 
   return (
-    <div>EditForm</div>
+    <div>
+
+
+
+    </div>
   )
 }

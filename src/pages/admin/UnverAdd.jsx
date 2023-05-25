@@ -46,6 +46,7 @@ export const UnverAdd = ({ defaultValues }) => {
         dispatch(fac.postData(formData))
 
     }
+    console.log(formData);
 
     const handleChange = (value) => {
         console.log(`selected ${value}`);
@@ -104,9 +105,9 @@ export const UnverAdd = ({ defaultValues }) => {
                 />
                 <TextEditor
                     title={{
-                        uz: "Yangilik haqida batafsil UZB",
-                        ru: "Yangilik haqida batafsil RUS",
-                        en: "Yangilik haqida batafsil ING",
+                        uz: " batafsil UZB",
+                        ru: " batafsil RUS",
+                        en: " batafsil ING",
                     }}
                     name={{ uz: "body_uz", ru: "body_ru", en: "body_en" }}
                     value={{

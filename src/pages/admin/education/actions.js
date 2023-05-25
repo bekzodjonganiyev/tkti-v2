@@ -16,7 +16,7 @@ export class EducationParentActions {
       dispatch({
         type: education_parent.request,
       });
-      const res = await apiClientWithFetch.get("xalqaro_aloqa/all");
+      const res = await apiClientWithFetch.get("talim/all");
       if (res.status === 200) {
         dispatch({
           type: education_parent.get,
@@ -36,7 +36,7 @@ export class EducationParentActions {
       dispatch({
         type: education_parent.request,
       });
-      const res = await apiClientWithFetch.get(`xalqaro_aloqa/${id}`);
+      const res = await apiClientWithFetch.get(`talim/${id}`);
       if (res.status === 200) {
         dispatch({
           type: education_parent.getById,
@@ -56,7 +56,7 @@ export class EducationParentActions {
       dispatch({
         type: education_parent,
       });
-      const res = await apiClientWithFetch.add("xalqaro_aloqa/add", body);
+      const res = await apiClientWithFetch.add("talim/add", body);
       if (res.status === 200) {
         dispatch({
           type: education_parent.post,
@@ -76,7 +76,7 @@ export class EducationParentActions {
       dispatch({
         type: education_parent.request,
       });
-      const res = await apiClientWithFetch.update(`xalqaro_aloqa/${id}`, body);
+      const res = await apiClientWithFetch.update(`talim/${id}`, body);
       if (res.status === 200) {
         dispatch({
           type: education_parent.put,
@@ -96,7 +96,7 @@ export class EducationParentActions {
       dispatch({
         type: education_parent.request,
       });
-      const res = await apiClientWithFetch.delete(`xalqaro_aloqa/${id}`);
+      const res = await apiClientWithFetch.delete(`talim/${id}`);
       if (res.status === 200) {
         dispatch({
           type: education_parent.delete,
@@ -128,7 +128,7 @@ export class EducationChildActions {
       dispatch({
         type: education_child.request,
       });
-      const res = await apiClientWithFetch.get("xalqaro_aloqa_child/all");
+      const res = await apiClientWithFetch.get("talim_child/all");
       if (res.status === 200) {
         dispatch({
           type: education_child.get,
@@ -148,7 +148,7 @@ export class EducationChildActions {
       dispatch({
         type: education_child.request,
       });
-      const res = await apiClientWithFetch.get(`xalqaro_aloqa_child/${id}`);
+      const res = await apiClientWithFetch.get(`talim_child/${id}`);
       if (res.status === 200) {
         dispatch({
           type: education_child.getById,
@@ -168,7 +168,7 @@ export class EducationChildActions {
       dispatch({
         type: education_child,
       });
-      const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body);
+      const res = await apiClientWithFetch.add("talim_child/add", body, true);
       if (res.status === 200) {
         dispatch({
           type: education_child.post,
@@ -188,7 +188,7 @@ export class EducationChildActions {
       dispatch({
         type: education_child.request,
       });
-      const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body);
+      const res = await apiClientWithFetch.update(`talim_child/${id}`, body, true);
       if (res.status === 200) {
         dispatch({
           type: education_child.put,
@@ -208,7 +208,7 @@ export class EducationChildActions {
       dispatch({
         type: education_child.request,
       });
-      const res = await apiClientWithFetch.delete(`xalqaro_aloqa_child/${id}`);
+      const res = await apiClientWithFetch.delete(`talim_child/${id}`);
       if (res.status === 200) {
         dispatch({
           type: education_child.delete,

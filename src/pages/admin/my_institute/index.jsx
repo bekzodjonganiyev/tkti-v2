@@ -34,10 +34,10 @@ export const MyInstitute = () => {
       render: (_, p) => (
         <div className="flex gap-4">
           <Link to={`/adminPanel/my-tkti/view/${p.id}`}>
-            <EditIcon />
+            <ViewIcon />
           </Link>
           <Link to={"#"}>
-            <ViewIcon />
+            <EditIcon />
           </Link>
           <Popconfirm
             title="O'chirishni xoxlaysizmi?"

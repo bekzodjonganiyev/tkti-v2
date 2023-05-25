@@ -16,7 +16,7 @@ export class StudentParentActions {
       dispatch({
         type: student_parent.request,
       });
-      const res = await apiClientWithFetch.get("xalqaro_aloqa/all");
+      const res = await apiClientWithFetch.get("talabalar/all");
       if (res.status === 200) {
         dispatch({
           type: student_parent.get,
@@ -36,7 +36,7 @@ export class StudentParentActions {
       dispatch({
         type: student_parent.request,
       });
-      const res = await apiClientWithFetch.get(`xalqaro_aloqa/${id}`);
+      const res = await apiClientWithFetch.get(`talabalar/${id}`);
       if (res.status === 200) {
         dispatch({
           type: student_parent.getById,
@@ -56,7 +56,7 @@ export class StudentParentActions {
       dispatch({
         type: student_parent,
       });
-      const res = await apiClientWithFetch.add("xalqaro_aloqa/add", body);
+      const res = await apiClientWithFetch.add("talabalar/add", body);
       if (res.status === 200) {
         dispatch({
           type: student_parent.post,
@@ -76,7 +76,7 @@ export class StudentParentActions {
       dispatch({
         type: student_parent.request,
       });
-      const res = await apiClientWithFetch.update(`xalqaro_aloqa/${id}`, body);
+      const res = await apiClientWithFetch.update(`talabalar/${id}`, body);
       if (res.status === 200) {
         dispatch({
           type: student_parent.put,
@@ -96,7 +96,7 @@ export class StudentParentActions {
       dispatch({
         type: student_parent.request,
       });
-      const res = await apiClientWithFetch.delete(`xalqaro_aloqa/${id}`);
+      const res = await apiClientWithFetch.delete(`talabalar/${id}`);
       if (res.status === 200) {
         dispatch({
           type: student_parent.delete,
@@ -128,7 +128,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.get("xalqaro_aloqa_child/all");
+      const res = await apiClientWithFetch.get("talabalar_child/all");
       if (res.status === 200) {
         dispatch({
           type: student_child.get,
@@ -148,7 +148,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.get(`xalqaro_aloqa_child/${id}`);
+      const res = await apiClientWithFetch.get(`talabalar_child/${id}`);
       if (res.status === 200) {
         dispatch({
           type: student_child.getById,
@@ -168,7 +168,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child,
       });
-      const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body);
+      const res = await apiClientWithFetch.add("talabalar_child/add", body);
       if (res.status === 200) {
         dispatch({
           type: student_child.post,
@@ -188,7 +188,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body);
+      const res = await apiClientWithFetch.update(`talabalar_child/${id}`, body);
       if (res.status === 200) {
         dispatch({
           type: student_child.put,
@@ -208,7 +208,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.delete(`xalqaro_aloqa_child/${id}`);
+      const res = await apiClientWithFetch.delete(`talabalar_child/${id}`);
       if (res.status === 200) {
         dispatch({
           type: student_child.delete,

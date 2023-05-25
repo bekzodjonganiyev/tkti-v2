@@ -35,11 +35,11 @@ export const StudentView = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/my-tkti/edit/${p.id}`}><EditIcon /></Link>
+          <Link to={`/adminPanel/student/edit/${p.id}`}><EditIcon /></Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
-            onConfirm={() => childAction.deleteData(p.id)}
+            onConfirm={() => dispatch( childAction.deleteData(p.id))}
             onCancel={() => {}}
             okText="Yes"
             cancelText="No"

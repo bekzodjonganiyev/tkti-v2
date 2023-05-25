@@ -16,7 +16,7 @@ export const research_parent = {
         dispatch({
           type: research_parent.request,
         });
-        const res = await apiClientWithFetch.get("xalqaro_aloqa/all");
+        const res = await apiClientWithFetch.get("ilmiy_tad/all");
         if (res.status === 200) {
           dispatch({
             type: research_parent.get,
@@ -36,7 +36,7 @@ export const research_parent = {
         dispatch({
           type: research_parent.request,
         });
-        const res = await apiClientWithFetch.get(`xalqaro_aloqa/${id}`);
+        const res = await apiClientWithFetch.get(`ilmiy_tad/${id}`);
         if (res.status === 200) {
           dispatch({
             type: research_parent.getById,
@@ -56,7 +56,7 @@ export const research_parent = {
         dispatch({
           type: research_parent,
         });
-        const res = await apiClientWithFetch.add("xalqaro_aloqa/add", body);
+        const res = await apiClientWithFetch.add("ilmiy_tad/add", body);
         if (res.status === 200) {
           dispatch({
             type: research_parent.post,
@@ -76,7 +76,7 @@ export const research_parent = {
         dispatch({
           type: research_parent.request,
         });
-        const res = await apiClientWithFetch.update(`xalqaro_aloqa/${id}`, body);
+        const res = await apiClientWithFetch.update(`ilmiy_tad/${id}`, body);
         if (res.status === 200) {
           dispatch({
             type: research_parent.put,
@@ -96,7 +96,7 @@ export const research_parent = {
         dispatch({
           type: research_parent.request,
         });
-        const res = await apiClientWithFetch.delete(`xalqaro_aloqa/${id}`);
+        const res = await apiClientWithFetch.delete(`ilmiy_tad/${id}`);
         if (res.status === 200) {
           dispatch({
             type: research_parent.delete,
@@ -128,7 +128,7 @@ export const research_parent = {
         dispatch({
           type: research_child.request,
         });
-        const res = await apiClientWithFetch.get("xalqaro_aloqa_child/all");
+        const res = await apiClientWithFetch.get("ilmiy_tad_child/all");
         if (res.status === 200) {
           dispatch({
             type: research_child.get,
@@ -148,7 +148,7 @@ export const research_parent = {
         dispatch({
           type: research_child.request,
         });
-        const res = await apiClientWithFetch.get(`xalqaro_aloqa_child/${id}`);
+        const res = await apiClientWithFetch.get(`ilmiy_tad_child/${id}`);
         if (res.status === 200) {
           dispatch({
             type: research_child.getById,
@@ -168,7 +168,7 @@ export const research_parent = {
         dispatch({
           type: research_child,
         });
-        const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body);
+        const res = await apiClientWithFetch.add("ilmiy_tad_child/add", body, true);
         if (res.status === 200) {
           dispatch({
             type: research_child.post,
@@ -188,7 +188,7 @@ export const research_parent = {
         dispatch({
           type: research_child.request,
         });
-        const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body, true);
+        const res = await apiClientWithFetch.update(`ilmiy_tad_child/${id}`, body, true);
         if (res.status === 200) {
           dispatch({
             type: research_child.put,
@@ -208,7 +208,7 @@ export const research_parent = {
         dispatch({
           type: research_child.request,
         });
-        const res = await apiClientWithFetch.delete(`xalqaro_aloqa_child/${id}`);
+        const res = await apiClientWithFetch.delete(`ilmiy_tad_child/${id}`);
         if (res.status === 200) {
           dispatch({
             type: research_child.delete,

@@ -1,10 +1,11 @@
+import { useState } from "react";
+import TextEditor from "../text_editor/TextEditor";
 import { Button, Form, Input, Select, Upload, Modal } from "antd";
 import {
   UploadOutlined,
   MinusCircleOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import { useState } from "react";
 
 /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
@@ -19,28 +20,39 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-export const AddForm = ({ parents, postParent, loading, postChild }) => {
-
+export const AddForm = ({ parents, postParent,body,  loading, postChild }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [parentId, setParentId] = useState("");
 
-  const submitChild = (values) => {
+  const [editor, setEditor] = useState({
+    uz: body ? body.uz : "",
+    ru: body ? body.ru : "",
+    en: body ? body.en : "",
+  });
+  const submitChild = (value) => {
+   
     const fmData = new FormData();
-    fmData.append("title_uz", values.title_uz);
-    fmData.append("title_ru", values.title_ru);
-    fmData.append("title_en", values.title_en);
-    fmData.append("body_uz", values.body_uz);
-    fmData.append("body_ru", values.body_ru);
-    fmData.append("body_en", values.body_en);
+    fmData.append("title_uz", value.title_uz);
+    fmData.append("title_ru", value.title_ru);
+    fmData.append("title_en", value.title_en);
+    fmData.append("body_uz", editor?.uz);
+    fmData.append("body_ru", editor?.ru);
+    fmData.append("body_en", editor?.en);
     fmData.append("nameId", parentId);
 
-    values.file?.length > 0 ? values.file.forEach((item) => { fmData.append("file", item.originFileObj) }) : null;
-    values.faq?.length > 0 ? fmData.append("faq", JSON.stringify(values.faq)) : null;
+    value.file?.length > 0
+      ? value.file.forEach((item) => {
+          fmData.append("file", item.originFileObj);
+        })
+      : null;
+    value.faq?.length > 0
+      ? fmData.append("faq", JSON.stringify(value.faq))
+      : null;
 
     postChild(fmData);
   };
-  const submitParent = (values) => {
-    postParent(values);
+  const submitParent = (value) => {
+    postParent(value);
   };
 
   const normFile = (e) => {
@@ -49,7 +61,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
     }
     return e?.fileList;
   };
-  
+
   return (
     <>
       <Modal
@@ -57,7 +69,9 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
         open={isModalOpen}
         onCancel={() => setIsModalOpen(false)}
         footer={[]}
+        className="border-sky-950"
       >
+        
         <Form className="pt-10" onFinish={submitParent}>
           <Form.Item name={"title_uz"}>
             <Input placeholder="Parent(UZ)" />
@@ -69,7 +83,8 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
             <Input placeholder="Parent(EN)" />
           </Form.Item>
           <Form.Item>
-            <Button
+            <Button 
+            className="bg-blue-600 text-white"
               htmlType="submit"
               style={{ width: "100%" }}
               loading={loading}
@@ -85,6 +100,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
           maxWidth: "100%",
           padding: "20px",
         }}
+        className="my-8 mx-4"
         validateMessages={validateMessages}
       >
         <Form.Item
@@ -121,16 +137,29 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
           <Input />
         </Form.Item>
 
-        <Form.Item name="body_uz" label="Introduction">
-          <Input.TextArea />
-        </Form.Item>
-        <Form.Item name="body_ru" label="Introduction">
-          <Input.TextArea />
-        </Form.Item>
-        <Form.Item name="body_en" label="Introduction">
-          <Input.TextArea />
-        </Form.Item>
-        <Form.Item label="Select">
+        <TextEditor
+        title={{
+          uz: "haqida batafsil UZB",
+          ru: "haqida batafsil RUS",
+          en: "haqida batafsil ING",
+        }}
+        name={{ uz: "body_uz", ru: "body_ru", en: "body_en" }}
+        value={{
+          uz: editor.uz,
+          ru: editor.ru,
+          en: editor.en,
+        }}
+        handleValue={{
+          uz: (e) => setEditor({ ...editor, uz: e }),
+          ru: (e) => setEditor({ ...editor, ru: e }),
+          en: (e) => setEditor({ ...editor, en: e }),
+        }}
+      />
+        <hr />
+
+      
+
+        <Form.Item label="Qo'shish" className="my-8">
           <Select value={parentId} onChange={(e) => setParentId(e)}>
             {parents.map((item) => (
               <Option key={item._id} value={item._id}>
@@ -138,7 +167,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
               </Option>
             ))}
           </Select>{" "}
-          <Button onClick={() => setIsModalOpen(true)}>+</Button>
+          <Button className="my-8 bg-blue-600 text-white" onClick={() => setIsModalOpen(true)}>+ bo'lim qo'shish</Button>
         </Form.Item>
         <Form.Item
           name="file"
@@ -150,7 +179,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
             <Button icon={<UploadOutlined />}>Click to upload</Button>
           </Upload>
         </Form.Item>
-        <Form.List name="faq">
+        <Form.List name="faq" className="my-8">
           {(fields, { add, remove }) => (
             <>
               {fields.map(({ key, name, ...restField }) => (
@@ -247,18 +276,19 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
               <Form.Item>
                 <Button
                   type="dashed"
+                  className="bg-blue-600 text-white"
                   onClick={() => add()}
                   block
                   icon={<PlusOutlined />}
                 >
-                  Add field
+                  Accardion qo'shish
                 </Button>
               </Form.Item>
             </>
           )}
         </Form.List>
         <Form.Item>
-          <Button htmlType="submit">Submit</Button>
+          <Button htmlType="submit"   className="bg-blue-600 text-white">Submit</Button>
         </Form.Item>
       </Form>
     </>

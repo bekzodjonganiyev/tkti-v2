@@ -34,7 +34,7 @@ export const Education = () => {
           <Link to={`/adminPanel/education/view/${p.id}`}>
             <ViewIcon />
           </Link>
-          <Link to={"#"}>
+          <Link to={`/adminPanel/education/edit/${p.id}`}>
             <EditIcon />
           </Link>
           <Popconfirm

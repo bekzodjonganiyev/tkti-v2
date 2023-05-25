@@ -91,6 +91,7 @@ export class PressclubParentActions {
     };
   }
 
+  
   deleteData(id) {
     return async (dispatch) => {
       dispatch({
@@ -168,7 +169,7 @@ export class PressclubChildActions {
       dispatch({
         type: pressclub_child,
       });
-      const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body);
+      const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body, true);
       if (res.status === 200) {
         dispatch({
           type: pressclub_child.post,
@@ -188,7 +189,7 @@ export class PressclubChildActions {
       dispatch({
         type: pressclub_child.request,
       });
-      const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body);
+      const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body, true);
       if (res.status === 200) {
         dispatch({
           type: pressclub_child.put,
