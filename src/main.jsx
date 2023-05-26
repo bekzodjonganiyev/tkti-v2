@@ -6,15 +6,13 @@ import { Provider } from "react-redux";
 import "./index.css";
 
 import App from "./App";
-import {store} from "./store"
-import "./i18next"
+import { store } from "./store";
+import "./i18next";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
 );

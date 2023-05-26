@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { UserLayout, AdminLayout } from "./components/layout";
-import { ProtectedRoute } from "./components";
+import { ProtectedRoute, UniversalComponent } from "./components";
 
 import { AboutUs, Home } from "./pages";
 import { News } from "./pages/news";
@@ -25,8 +25,7 @@ function App() {
           <Route path="a" element={<AboutUs />} />
           <Route path="news" element={<News/>} />
           <Route path="elon" element={<Announcement/>} />
-          <Route path="/:news/:id" element={<Details />} />
-          <Route path="/:elon/:id" element={<DetailsElon  />} />
+          <Route path="/:page/:id/:name" element={<UniversalComponent />}/>
         </Route>
         
 
