@@ -42,7 +42,7 @@ export const MyInstitute = () => {
           <Popconfirm
             title="O'chirishni xoxlaysizmi?"
             description="Malumot o'chiriladi va uni tiklab bo'lmaydi"
-            onConfirm={() => deleteData(p.id)}
+            onConfirm={() => dispatch(deleteData(p.id))}
             onCancel={() => {}}
             okText="Yes"
             cancelText="No"

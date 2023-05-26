@@ -41,7 +41,7 @@ export const Student = () => {
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
-            onConfirm={() => deleteData(p.id)}
+            onConfirm={() => dispatch(deleteData(p.id))}
             onCancel
             okText="Yes"
             cancelText="No"

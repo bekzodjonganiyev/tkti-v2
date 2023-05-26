@@ -20,17 +20,16 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-export const AddForm = ({ parents, postParent,body,  loading, postChild }) => {
+export const AddForm = ({ parents, postParent, loading, postChild }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [parentId, setParentId] = useState("");
 
   const [editor, setEditor] = useState({
-    uz: body ? body.uz : "",
-    ru: body ? body.ru : "",
-    en: body ? body.en : "",
+    uz: "",
+    ru: "",
+    en: "",
   });
   const submitChild = (value) => {
-   
     const fmData = new FormData();
     fmData.append("title_uz", value.title_uz);
     fmData.append("title_ru", value.title_ru);
@@ -71,7 +70,6 @@ export const AddForm = ({ parents, postParent,body,  loading, postChild }) => {
         footer={[]}
         className="border-sky-950"
       >
-        
         <Form className="pt-10" onFinish={submitParent}>
           <Form.Item name={"title_uz"}>
             <Input placeholder="Parent(UZ)" />
@@ -83,13 +81,13 @@ export const AddForm = ({ parents, postParent,body,  loading, postChild }) => {
             <Input placeholder="Parent(EN)" />
           </Form.Item>
           <Form.Item>
-            <Button 
-            className="bg-blue-600 text-white"
+            <Button
+              className="bg-blue-600 text-white"
               htmlType="submit"
               style={{ width: "100%" }}
               loading={loading}
             >
-              Saqlash
+              Saqlash769tgtu7
             </Button>
           </Form.Item>
         </Form>
@@ -138,26 +136,23 @@ export const AddForm = ({ parents, postParent,body,  loading, postChild }) => {
         </Form.Item>
 
         <TextEditor
-        title={{
-          uz: "haqida batafsil UZB",
-          ru: "haqida batafsil RUS",
-          en: "haqida batafsil ING",
-        }}
-        name={{ uz: "body_uz", ru: "body_ru", en: "body_en" }}
-        value={{
-          uz: editor.uz,
-          ru: editor.ru,
-          en: editor.en,
-        }}
-        handleValue={{
-          uz: (e) => setEditor({ ...editor, uz: e }),
-          ru: (e) => setEditor({ ...editor, ru: e }),
-          en: (e) => setEditor({ ...editor, en: e }),
-        }}
-      />
+          title={{
+            uz: "haqida batafsil UZB",
+            ru: "haqida batafsil RUS",
+            en: "haqida batafsil ING",
+          }}
+          value={{
+            uz: editor.uz,
+            ru: editor.ru,
+            en: editor.en,
+          }}
+          handleValue={{
+            uz: (e) => setEditor({ ...editor, uz: e }),
+            ru: (e) => setEditor({ ...editor, ru: e }),
+            en: (e) => setEditor({ ...editor, en: e }),
+          }}
+        />
         <hr />
-
-      
 
         <Form.Item label="Qo'shish" className="my-8">
           <Select value={parentId} onChange={(e) => setParentId(e)}>
@@ -167,7 +162,12 @@ export const AddForm = ({ parents, postParent,body,  loading, postChild }) => {
               </Option>
             ))}
           </Select>{" "}
-          <Button className="my-8 bg-blue-600 text-white" onClick={() => setIsModalOpen(true)}>+ bo'lim qo'shish</Button>
+          <Button
+            className="my-8 bg-blue-600 text-white"
+            onClick={() => setIsModalOpen(true)}
+          >
+            + bo'lim qo'shish
+          </Button>
         </Form.Item>
         <Form.Item
           name="file"
@@ -288,7 +288,9 @@ export const AddForm = ({ parents, postParent,body,  loading, postChild }) => {
           )}
         </Form.List>
         <Form.Item>
-          <Button htmlType="submit"   className="bg-blue-600 text-white">Submit</Button>
+          <Button htmlType="submit" className="bg-blue-600 text-white">
+            Submit
+          </Button>
         </Form.Item>
       </Form>
     </>

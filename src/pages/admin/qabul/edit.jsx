@@ -28,6 +28,7 @@ export const QabulChildEdit = () => {
         childById={childState?.dataById}
         parents={parentState?.data}
         putChild={(e) => childAction.updateData(id, e)}
+        loading={childState?.loading}
       />
     </div>
   );
