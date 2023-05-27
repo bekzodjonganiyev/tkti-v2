@@ -166,7 +166,7 @@ export class StudentChildActions {
   postData(body) {
     return async (dispatch) => {
       dispatch({
-        type: student_child,
+        type: student_child.request,
       });
       const res = await apiClientWithFetch.add("talabalar_child/add", body, true);
       if (res.status === 200) {

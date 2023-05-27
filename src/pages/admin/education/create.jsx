@@ -18,7 +18,9 @@ export const EducationCreate = () => {
     <div>
       <AddForm
         parents={parentState?.data}
-        postParent={(e) => {console.log(e); dispatch(parentAction.postData(JSON.stringify(e)))}}
+        postParent={(e) => {
+          dispatch(parentAction.postData(JSON.stringify(e)));
+        }}
         loading={parentState.loading}
         postChild={(e) => dispatch(childAction.postData(e))}
       />

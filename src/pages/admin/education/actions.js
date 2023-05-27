@@ -54,7 +54,7 @@ export class EducationParentActions {
   postData(body) {
     return async (dispatch) => {
       dispatch({
-        type: education_parent,
+        type: education_parent.request,
       });
       const res = await apiClientWithFetch.add("talim/add", body);
       if (res.status === 200) {
@@ -166,7 +166,7 @@ export class EducationChildActions {
   postData(body) {
     return async (dispatch) => {
       dispatch({
-        type: education_child,
+        type: education_child.request,
       });
       const res = await apiClientWithFetch.add("talim_child/add", body, true);
       if (res.status === 200) {

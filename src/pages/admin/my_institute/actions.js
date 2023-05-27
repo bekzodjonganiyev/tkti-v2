@@ -54,7 +54,7 @@ export const my_institute_parent = {
     postData(body) {
       return async (dispatch) => {
         dispatch({
-          type: my_institute_parent,
+          type: my_institute_parent.request,
         });
         const res = await apiClientWithFetch.add("my_tkti/add", body);
         if (res.status === 200) {
@@ -166,7 +166,7 @@ export const my_institute_parent = {
     postData(body) {
       return async (dispatch) => {
         dispatch({
-          type: my_institute_child,
+          type: my_institute_child.request,
         });
         const res = await apiClientWithFetch.add("my_tkti_child/add", body, true);
         if (res.status === 200) {
@@ -208,7 +208,7 @@ export const my_institute_parent = {
         dispatch({
           type: my_institute_child.request,
         });
-        const res = await apiClientWithFetch.delete(`my_tkti_child${id}`);
+        const res = await apiClientWithFetch.delete(`my_tkti_child/${id}`);
         if (res.status === 200) {
           dispatch({
             type: my_institute_child.delete,

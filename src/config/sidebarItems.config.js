@@ -20,10 +20,6 @@ export const sidebarItems = [
     url: "int_connections",
   },
   {
-    name: "Matbout",
-    url: "pressclub",
-  },
-  {
     name: "Qabul",
     url: "admission",
   },

@@ -6,13 +6,16 @@ import {  ResearchChildActions, ResearchParentActions } from "./actions";
 export const ResearchCreate = () => {
   const dispatch = useDispatch();
   const selectorFuncParent = (state) => state.researchParent;
+  const selectorFuncChild = (state) => state.researchChild;
   const parentState = useSelector(selectorFuncParent);
+  const childState = useSelector(selectorFuncChild);
 
   const childAction = new ResearchChildActions();
   const parentAction = new ResearchParentActions();
 
   useEffect(() => {
     dispatch(parentAction.getData());
+    
   }, []);
   return (
     <div>
@@ -21,6 +24,7 @@ export const ResearchCreate = () => {
         postParent={(e) => {console.log(e); dispatch(parentAction.postData(JSON.stringify(e)))}}
         loading={parentState.loading}
         postChild={(e) => dispatch(childAction.postData(e))}
+        success={childState.success}
       />
     </div>
   );

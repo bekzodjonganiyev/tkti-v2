@@ -166,7 +166,7 @@ export const qabul_parent = {
     postData(body) {
       return async (dispatch) => {
         dispatch({
-          type: qabul_child,
+          type: qabul_child.request,
         });
         const res = await apiClientWithFetch.add("qabul_child/add", body, true);
         if (res.status === 200) {

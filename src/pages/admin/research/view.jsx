@@ -1,25 +1,22 @@
-import { Button, message, Popconfirm, Table } from "antd";
+import { Popconfirm, Table } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
-import { ResearchChildActions, ResearchParentActions} from "./actions";
+import { ResearchChildActions } from "./actions";
 import { DeleteIcon, EditIcon } from "../../../assets/icons";
 
 export const ResearchView = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const parentAction = new ResearchParentActions();
   const childAction = new ResearchChildActions();
 
-  const selectorFuncParent = (state) => state.researchParent;
   const selectorFuncChild = (state) => state.researchChild;
-  const parentState = useSelector(selectorFuncParent);
   const childState = useSelector(selectorFuncChild);
 
   useEffect(() => {
-    dispatch(parentAction.getDataById(id));
+    dispatch(childAction.getData());
   }, [id]);
 
   const columns = [
@@ -35,38 +32,41 @@ export const ResearchView = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/research/edit/${p.id}`}><EditIcon /></Link>
+          <Link to={`/adminPanel/research/edit/${p.id}`}>
+            <EditIcon />
+          </Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
-            onConfirm={() => dispatch( childAction.deleteData(p.id))}
+            onConfirm={() => dispatch(childAction.deleteData(p.id))}
             onCancel={() => {}}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link"><DeleteIcon /></button>
+            <button type="link">
+              <DeleteIcon />
+            </button>
           </Popconfirm>
         </div>
       ),
     },
   ];
 
-  const dataSource = parentState.dataById?.child?.map((item, id) => ({
-    order: id + 1,
-    name: item.title_uz,
-    id: item._id,
-  }));
-
-
-
+  const dataSource = childState?.data
+    .filter((item) => item.nameId === id)
+    .map((item, id) => ({
+      order: id + 1,
+      name: item.title_uz,
+      id: item._id,
+    }));
   return (
     <div>
       <Table
         columns={columns}
         dataSource={dataSource}
         size="large"
-        loading={parentState.loading}
+        loading={childState.loading}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import { Button, message, Popconfirm, Table } from "antd";
+import { Popconfirm, Table } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ export { educationParentReducer, educationChildReducer } from "./reducers";
 export const Education = () => {
   const dispatch = useDispatch();
 
-  const { getData, getDataById, postData, updateData, deleteData } =
+  const { getData, deleteData } =
     new EducationParentActions();
   const selectorFunc = (state) => state.educationParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
@@ -34,7 +34,7 @@ export const Education = () => {
           <Link to={`/adminPanel/education/view/${p.id}`}>
             <ViewIcon />
           </Link>
-          <Link to={`/adminPanel/education/edit/${p.id}`}>
+          <Link to="#">
             <EditIcon />
           </Link>
           <Popconfirm
