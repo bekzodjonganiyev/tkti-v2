@@ -26,11 +26,12 @@ export const UniversalComponent = () => {
       <h1 className="text-xl font-bold mb-10">
         {data[`title_${i18next.language}`]}
       </h1>
-      {data?.child?.map((item) => (
-        <div
-          dangerouslySetInnerHTML={{ __html: item[`body_${i18next.language}`] }}
-        />
-      ))}
+
+      {path.page.split("_")[2] === "child"
+        ? <div dangerouslySetInnerHTML={{ __html: data.body_uz }}/>
+        : data?.child?.map((item) => (
+            <div dangerouslySetInnerHTML={{ __html: item.body_uz }} />
+          ))}
     </div>
   );
 };

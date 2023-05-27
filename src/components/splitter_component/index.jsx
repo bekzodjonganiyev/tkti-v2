@@ -28,7 +28,7 @@ export const SplitterComponent = ({ children }) => {
           {data?.child?.map((item) => (
             <Link
               key={item._id}
-              to={`/${path.page}_child/${item._id}/${item.title_uz}`}
+              to={`/${path.page}_child/${item._id}`}
               className="bg-stone-100 rounded-md py-2 px-4"
             >
               {item[`title_${i18next.language}`]}
