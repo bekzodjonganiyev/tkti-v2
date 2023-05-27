@@ -5,6 +5,7 @@ export const GET_BY_ID_NEWS = "GET_BY_ID_NEWS";
 export const POST_NEWS = "POST_NEWS";
 export const PUT_NEWS = "PUT_NEWS";
 export const DELETE_NEWS = "DELETE_NEWS";
+export const SET_OPEN_NAVBAR = "SET_OPEN_NAVBAR";
 
 import apiClientWithFetch from "../../services/apiClientWithFetch";
 

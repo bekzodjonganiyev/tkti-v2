@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { UserLayout, AdminLayout } from "./components/layout";
 import {
@@ -12,10 +13,11 @@ import { AboutUs, Home } from "./pages";
 import { News } from "./pages/news";
 import { Announcement } from "./pages/announcement";
 
-import { Details, DetailsElon } from "./components/details";
 function App() {
+  const { open } = useSelector((state) => state.news);
+
   return (
-    <div className="h-screen">
+    <div className={open ? "h-screen--open" : "h-screen"}>
       <Routes>
         <Route
           path="/"

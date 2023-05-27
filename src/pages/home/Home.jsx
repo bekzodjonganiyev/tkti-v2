@@ -13,7 +13,7 @@ import { Sillabus } from "../../assets/sillabus";
 export const Home = () => {
   return (
     <div>
-      {/* <Banner /> */}
+      <Banner />
       <Sillabus />
       <NewsAll myKey={"news"} />
       <ElonAll myKey={"elon"}/>

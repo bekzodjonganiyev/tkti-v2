@@ -6,6 +6,7 @@ import {
     PUT_NEWS,
     DELETE_NEWS,
     GET_BY_ID_NEWS,
+    SET_OPEN_NAVBAR,
   } from "./actions";
   
   const initialState = {
@@ -13,6 +14,8 @@ import {
     data: [],
     dataById: {},
     error: "",
+    open: false
+
   };
   
   export const newsReducer = (state = initialState, action) => {
@@ -54,6 +57,12 @@ import {
           data: filteredItem,
           loading: false,
           error: "",
+        };
+      }
+      case SET_OPEN_NAVBAR: {
+        return {
+          ...state,
+          open: action.payload
         };
       }
       default:
