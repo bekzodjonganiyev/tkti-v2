@@ -2,7 +2,11 @@ import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { UserLayout, AdminLayout } from "./components/layout";
-import { ProtectedRoute, UniversalComponent } from "./components";
+import {
+  ProtectedRoute,
+  SplitterComponent,
+  UniversalComponent,
+} from "./components";
 
 import { AboutUs, Home } from "./pages";
 import { News } from "./pages/news";
@@ -23,11 +27,19 @@ function App() {
         >
           <Route index element={<Home />} />
           <Route path="a" element={<AboutUs />} />
-          <Route path="news" element={<News/>} />
-          <Route path="elon" element={<Announcement/>} />
-          <Route path="/:page/:id/:name" element={<UniversalComponent />}/>
+          <Route path="news" element={<News />} />
+          <Route path="elon" element={<Announcement />} />
+          <Route
+            path="/:page/:id/"
+            element={
+              <SplitterComponent>
+                <UniversalComponent />
+              </SplitterComponent>
+            }
+          />
+          <Route path="/:page/:id/:name" element={<UniversalComponent />} />
+          {/* <Route path="/:page/:id/:name" element={<UniversalComponent />} /> */}
         </Route>
-        
 
         <Route
           path="adminPanel"
@@ -42,7 +54,6 @@ function App() {
           <Route index element={<h1 className="text-3xl">Dashboard</h1>} />
         </Route>
       </Routes>
-    
     </div>
   );
 }

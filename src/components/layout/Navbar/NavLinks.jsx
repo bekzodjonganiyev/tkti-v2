@@ -22,27 +22,27 @@ const NavLinks = () => {
       loading: false,
       res1: res1?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/xalqaro_aloqa/${item._id}/${item.title_uz}`,
+        link: `/xalqaro_aloqa/${item._id}`,
       })),
       res2: res2?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/talabalar/${item._id}/${item.title_uz}`,
+        link: `/talabalar/${item._id}`,
       })),
       res3: res3?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/talim/${item._id}/${item.title_uz}`,
+        link: `/talim/${item._id}`,
       })),
       res4: res4?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/qabul/${item._id}/${item.title_uz}`,
+        link: `/qabul/${item._id}`,
       })),
       res5: res5?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/my_tkti/${item._id}/${item.title_uz}`,
+        link: `/my_tkti/${item._id}`,
       })),
       res6: res6?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/ilmiy_tad/${item._id}/${item.title_uz}`,
+        link: `/ilmiy_tad/${item._id}`,
       })),
     });
   };

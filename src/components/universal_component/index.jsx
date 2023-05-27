@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import i18next from "i18next";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { UniversalComponentActions } from "./action";
@@ -14,19 +15,22 @@ export const UniversalComponent = () => {
 
   const path = useParams();
 
-  console.log(path)
   useEffect(() => {
     dispatch(getData(`${path?.page}/${path.id}`));
   }, [path?.page, path?.id]);
 
+  if (loading) return <h1 className="text-2xl">Loading...</h1>;
+
   return (
-    <div>
-      <ul className="flex flex-col">
-        {loading ? "LOADING" : <pre>{JSON.stringify(data, null, 2)}</pre>}
-      </ul>
-      <div>
-        <Outlet />
-      </div>
+    <div className="container mx-auto">
+      <h1 className="text-xl font-bold mb-10">
+        {data[`title_${i18next.language}`]}
+      </h1>
+      {data?.child?.map((item) => (
+        <div
+          dangerouslySetInnerHTML={{ __html: item[`body_${i18next.language}`] }}
+        />
+      ))}
     </div>
   );
 };

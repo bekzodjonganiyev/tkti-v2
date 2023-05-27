@@ -6,6 +6,7 @@ import { newsReducer } from "../pages/news";
 import { announcementReducer } from "../pages/announcement";
 import { videoNewsReducer } from "../pages/videoNews";
 import { genericComReducer } from "../components/universal_component";
+import { splitterCompReducer } from "../components/splitter_component";
 
 export const rootReducers = combineReducers({
   details: detailsReducer,
@@ -15,4 +16,5 @@ export const rootReducers = combineReducers({
   announcement: announcementReducer,
   videoNews: videoNewsReducer,
   genericCom: genericComReducer,
+  splitterComp: splitterCompReducer,
 });
