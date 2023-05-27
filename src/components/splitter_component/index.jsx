@@ -21,9 +21,9 @@ export const SplitterComponent = ({ children }) => {
 
   if (loading) return <h1>Loading</h1>;
 
-  if (data?.child?.length > 0) {
+  if (data?.child?.length > 1) {
     return (
-      <div className="container mx-auto">
+      <div className="container mx-auto w-[90%]">
         <ul className="grid grid-cols-3  gap-10">
           {data?.child?.map((item) => (
             <Link
