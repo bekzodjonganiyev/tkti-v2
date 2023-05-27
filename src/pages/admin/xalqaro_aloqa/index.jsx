@@ -31,7 +31,7 @@ export const XalqaroAloqa = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/education/view/${p.id}`}>
+          <Link to={`/adminPanel/int_connections/view/${p.id}`}>
             <ViewIcon />
           </Link>
           <Link to={"#"}>
@@ -63,7 +63,7 @@ export const XalqaroAloqa = () => {
   return (
     <div>
       <Link
-        to={"/adminPanel/education/add"}
+        to={"/adminPanel/int_connections/add"}
         className="float-right "
       >
          <AddIcon/>

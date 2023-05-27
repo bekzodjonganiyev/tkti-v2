@@ -168,7 +168,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child,
       });
-      const res = await apiClientWithFetch.add("talabalar_child/add", body);
+      const res = await apiClientWithFetch.add("talabalar_child/add", body, true);
       if (res.status === 200) {
         dispatch({
           type: student_child.post,
@@ -188,7 +188,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.update(`talabalar_child/${id}`, body);
+      const res = await apiClientWithFetch.update(`talabalar_child/${id}`, body, true);
       if (res.status === 200) {
         dispatch({
           type: student_child.put,

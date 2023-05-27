@@ -168,7 +168,7 @@ export class XalqaroChildActions {
       dispatch({
         type: xalqaro_child,
       });
-      const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body);
+      const res = await apiClientWithFetch.add("xalqaro_aloqa_child/add", body, true);
       if (res.status === 200) {
         dispatch({
           type: xalqaro_child.post,
@@ -188,7 +188,7 @@ export class XalqaroChildActions {
       dispatch({
         type: xalqaro_child.request,
       });
-      const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body);
+      const res = await apiClientWithFetch.update(`xalqaro_aloqa_child/${id}`, body, true);
       if (res.status === 200) {
         dispatch({
           type: xalqaro_child.put,
