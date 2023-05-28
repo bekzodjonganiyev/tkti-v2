@@ -13,7 +13,7 @@
     { "name": "Talabalar" },
     { "name": "Ta'lim" },
     { "name": "Ilmiy tadqiqotlar" },
-    { "name": "Xalqaro aloqa" }
+    { "name": "Xalqaro aloqalar" }
   ],
   "Institute": [
     {
@@ -105,10 +105,16 @@
     { "name": "Bitiruvchilar" },
     { "name": "Korporativ pochta" }
   ],
-
+"BodyInfo":{
+  "body":"{{comp_body}}"
+},
   "NewsCard": {
     "title": "{{news_card_title}}",
     "body": "{{news_card_body}}"
+  },
+  "MoreDetails": {
+    "title": "{{more_details_title}}",
+    "body": "{{more_details_body}}"
   },
 
   "logo": [{ "name": "TOSHKENT" }, { "name": "Hemis o‘qituvchi" }],
@@ -173,13 +179,15 @@
   },
   "Statistic": {
     "Statistical":"Statistik ma’lumotlar",
-    "facultet":"FAKULTETLAR",
-    "student":"TALABALAR",
-    "Teacher":"O'QITUVCHILAR",
-    "Partners":"HAMKORLAR",
-    "OurPartners":"BIZNING HAMKORLAR",
-    "AreaEducation":"TA'LIM YO'NALISHLARI",
-    "Education":"QO'SHMA TA'LIM"
+    "facultet":" Fakultetlar",
+    "student":"Talabalar",
+    "Teacher":"O'qituvchilar",
+    "Partners":" Hamkorlari",
+    "OurPartners":" Bizning Hamkorlar",
+    "AreaEducation":"Ta'lim yo'nalishlari",
+    "Education":" Qo'shma ta'lim"
+
+    
   }
 
 }

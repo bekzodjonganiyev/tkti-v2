@@ -7,16 +7,14 @@
     {"name": "en"}
   ],
 
-  "Header": {
-    "name": "YANGIYER FLOUR ",
-    "name2": "TRADING",
-    "about": "Biz haqimizda",
-    "product": "Mahsulotlar",
-    "partners": "Hamkorlar",
-    "ContactUs": "Bog'lanish",
-    "language": "Language",
-    "Gallary": "Galeriya"
-  },
+  "Header": [
+    { "name": "Institute" },
+    { "name": "Admissions" },
+    { "name": "Students" },
+    { "name": "Education" },
+    { "name": "Scientific research" },
+    { "name": "International relations" }],
+    
   "Admission": [
     { "name": "Bachelor" },
     { "name": "Master" },
@@ -87,5 +85,13 @@
     "OurPartners":"OUR PARTNERS",
     "AreaEducation":"AREAS OF EDUCATION",
     "Education":"JOINT EDUCATIONAL PROGRAMS"
+  },
+  "NewsCard": {
+    "title": "{{news_card_title}}",
+    "body": "{{news_card_body}}"
+  },
+  "MoreDetails": {
+    "title": "{{more_details_title}}",
+    "body": "{{more_details_body}}"
   }
 }

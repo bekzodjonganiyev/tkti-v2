@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import uzEdu from "../../assets/images/eduuz.jpg";
 
-import lexUz from '../../assets/images/lexuz.jpg'
+import lexUz from "../../assets/images/lexuz.jpg";
 
-import yoshItt from '../../assets/images/YI.jpg'
-import scopus from '../../assets/images/scopus.jpg'
-import ziyoNetUz from '../../assets/images/ziyonet.jpg'
+import yoshItt from "../../assets/images/YI.jpg";
+import scopus from "../../assets/images/scopus.jpg";
+import ziyoNetUz from "../../assets/images/ziyonet.jpg";
 import dtm from "../../assets/images/DTM.jpg";
-
 
 export const Statistics = () => {
   const responsive = {
@@ -102,15 +101,17 @@ export const Statistics = () => {
   return (
     <>
       <div className="container-fluid w-[100%]  py-10  ">
-        <h3 className="text-4xl text-center p-10">Foydali havolalar</h3>
-        <div className="container w-[80%] mx-auto">
+        <h3 className="text-4xl text-center p-10 font-semibold">
+          Foydali havolalar
+        </h3>
+        <div className="container w-[95%] mx-auto">
           <Carousel
             autoplay={true}
             effect="fade"
             swipeable={false}
             showDots={false}
             responsive={responsive}
-            ssr={true} 
+            ssr={true}
             infinite={true}
             autoPlay={true}
             autoPlaySpeed={2000}
@@ -122,7 +123,10 @@ export const Statistics = () => {
             dotListClass="custom-dot-list-style"
           >
             {images.map((image) => (
-              <div className="w-[90%] flex justify-center  bg-[#E6EDFA] cursor-pointer my-[10px] mx-3 useful-item p-4" key={image.src}>
+              <div
+                className="w-[90%] flex justify-center  bg-[#E6EDFA] cursor-pointer my-[10px] mx-3 useful-item p-4"
+                key={image.src}
+              >
                 <Link to={image.href} target="_blank">
                   <img
                     className="w-[80%] mx-auto rounded-md cursor-pointer"

@@ -72,8 +72,8 @@ export const UsefulLinks = () => {
 
   return (
     <>
-      <div className="container w-[80vw] mx-auto  py-10  ">
-        <h3 className="text-4xl text-center p-10"> Statistik ma’lumotlar</h3>
+      <div className="container w-full mx-auto  py-10  ">
+        <h3 className="text-4xl text-center p-10 font-semibold"> Statistik ma’lumotlar</h3>
       
         <div className="about_us">
           <Carousel
@@ -97,7 +97,7 @@ export const UsefulLinks = () => {
             itemClass="carousel-item-padding-10-px"
           >
               {images.map((image) => (
-              <div className="mx-auto text-center " key={image.src}>
+              <div className="mx-auto text-center capitalize " key={image.src}>
                <div className="w-36 h-36 mx-auto bg-[#E6EDFA] rounded-[50%] ">
                 
                   <img
@@ -110,7 +110,7 @@ export const UsefulLinks = () => {
                  <div className="text-3xl  font-semibold">
                   <CountUp end={image.CountUp} duration={5} />
                 </div>
-                <p className="text-xl  ">{image.title}</p>
+                <p className="text-xl capitalize">{image.title}</p>
               </div>
             ))}
           

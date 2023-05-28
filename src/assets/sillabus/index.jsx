@@ -3,7 +3,7 @@ import React from "react";
 export const Sillabus = () => {
   return (
     <div className="container mx-auto w-[80%] my-24">
-      <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 ">Syllabusni toping</h2>
+      <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 font-semibold ">Syllabusni toping</h2>
 
       <form action="" className="container mx-auto ">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

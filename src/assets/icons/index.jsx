@@ -64,6 +64,33 @@ const CircleHalf= ()=>(
  </svg>
  
  )
+ const LeftArrow = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <mask
+      id="mask0_17_53"
+      style={{ maskType: "alpha" }}
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="20"
+      height="20"
+    >
+      <rect width="20" height="20" fill="#000" />
+    </mask>
+    <g mask="url(#mask0_17_53)">
+      <path
+        d="M9.99998 16.6666L8.81248 15.4999L13.4791 10.8333H3.33331V9.16658H13.4791L8.81248 4.49992L9.99998 3.33325L16.6666 9.99992L9.99998 16.6666Z"
+        fill="#000"
+      />
+    </g>
+  </svg>
+);
  
  const PhoneIcon = () => (
    <svg
@@ -474,6 +501,7 @@ const CircleHalf= ()=>(
    DeleteIcon,
    EditIcon,
    LeftIcon ,
+   LeftArrow,
    ResearTage,
    LangIcon,
    Twitter, 

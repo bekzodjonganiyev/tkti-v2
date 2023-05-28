@@ -11,39 +11,43 @@ const NavLinks = () => {
 
   const getUrls = async () => {
     let [res1, res2, res3, res4, res5, res6] = await Promise.all([
-      apiClientWithFetch.get("xalqaro_aloqa/all"),
+      apiClientWithFetch.get("my_tkti/all"),
+      apiClientWithFetch.get("qabul/all"),
       apiClientWithFetch.get("talabalar/all"),
       apiClientWithFetch.get("talim/all"),
-      apiClientWithFetch.get("qabul/all"),
-      apiClientWithFetch.get("my_tkti/all"),
       apiClientWithFetch.get("ilmiy_tad/all"),
+      apiClientWithFetch.get("xalqaro_aloqa/all"),
     ]);
 
     setUrl({
       loading: false,
       res1: res1?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/xalqaro_aloqa/${item._id}`,
+        link: `/my_tkti/${item._id}`,
+        
       })),
       res2: res2?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/talabalar/${item._id}`,
+        link: `/qabul/${item._id}`,
+       
       })),
       res3: res3?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/talim/${item._id}`,
+        link: `/talabalar/${item._id}`,
+       
       })),
       res4: res4?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/qabul/${item._id}`,
+        link: `/talim/${item._id}`,
       })),
       res5: res5?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/my_tkti/${item._id}`,
+        link: `/ilmiy_tad/${item._id}`,
       })),
       res6: res6?.data?.map((item) => ({
         name: item[`title_${i18next.language}`],
-        link: `/ilmiy_tad/${item._id}`,
+        link: `/xalqaro_aloqa/${item._id}`,
+        
       })),
     });
   };
@@ -54,36 +58,37 @@ const NavLinks = () => {
 
   const link = [
     {
-      title:t("Institute.title"),
-      name:  t("Header.5.name"),
+     
+      name:  t("Header.0.name"),
       submenu: true,
       sublinks: url?.res1,
     },
     {
-      name: t("Header.2.name"),
+      name: t("Header.1.name"),
       submenu: true,
       sublinks: url?.res2,
     },
     {
-      name: t("Header.3.name"),
+      name: t("Header.2.name"),
       submenu: true,
       sublinks: url?.res3,
     },
     {
-      name: t("Header.1.name"),
+      name: t("Header.3.name"),
       submenu: true,
       sublinks: url?.res4,
     },
     {
-      name: "My Tkti",
+      name: t("Header.4.name"),
       submenu: true,
       sublinks: url?.res5,
     },
     {
-      name: t("Header.4.name"),
+      name:t("Header.5.name"),
       submenu: true,
       sublinks: url?.res6,
     },
+   
   ];
 
   return (
@@ -95,7 +100,7 @@ const NavLinks = () => {
           <div>
             <div className="px-3 text-left lg:cursor-pointer group">
               <h1
-                className="py-7 flex justify-between items-center lg:pr-0 pr-5 group"
+                className="py-7 flex justify-between items-center lg:pr-0 pr-5 group capitalize"
                 onClick={() => {
                   heading !== link.name
                     ? setHeading(link.name)
@@ -104,6 +109,8 @@ const NavLinks = () => {
               >
                  
                 {link.name}
+                
+              
                 <span className="text-xl lg:hidden inline">
                   <ion-icon
                     name={`${
@@ -117,21 +124,21 @@ const NavLinks = () => {
               </h1>
               {link.submenu && (
                 <div>
-                  <div className="absolute top-36 hidden group-hover:lg:block hover:lg:block">
+                  <div className="absolute top-36 right-2 hidden group-hover:lg:block hover:lg:block">
                     <div className="py-3">
                       <div
                         className="w-4 h-4 left-3 absolute 
                   mt-1 bg-slate-100 rotate-45"
                       ></div>
                     </div>
-                    <div className="bg-slate-100 p-2 ml-[-10px] grid grid-cols-2 gap-5">
+                    <div className="bg-slate-100 p-2  lg:w-[950px] ml-[-10px] grid grid-cols-3 capitalize">
                       
                    
                       {link.sublinks.map((mysublinks) => (
-                        <li className="text-sm text-gray-600 my-2.5">
+                        <li className="text-sm text-gray-600 my-1">
                           <Link
                             to={mysublinks.link}
-                            className="hover:text-primary"
+                            className="hover:text-primary " style={{"fontSize":"14px"}}
                           >
                             {mysublinks.name}
                           </Link>
@@ -144,47 +151,29 @@ const NavLinks = () => {
            
             </div>
 
-            
-            {/* {link.sublinks.map((slinks) => (
-              <div>
-                <div>
-                  <h1
-                    onClick={() =>
-                      heading !== link.name
-                      ? setHeading(link.name)
-                      : setHeading("")
-                    }
-                    className="py-4 pl-7 font-semibold  flex justify-between items-center md:pr-0 pr-5"
-                  >
-                    {slinks.Head}
-
-                    <span className="text-xl lg:mt-1 md:ml-2 inline">
-                      <ion-icon
-                        name={`${
-                          setHeading === slinks.Head
-                            ? "chevron-up"
-                            : "chevron-down"
-                        }`}
-                      ></ion-icon>
-                    </span>
-                  </h1>
-                  <div
-                    className={`${
-                      setHeading === slinks.Head ? "lg:hidden" : "hidden"
-                    }`}
-                  >
-                    {slinks.sublink.map((slink) => (
-                      <li className="py-3 pl-14">
-                        <Link to={slink.link}>{slink.name}</Link>
-                      </li>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))} */}
+            <div
+            className={`
+            ${heading === link.name ? "xl:hidden" : "hidden"}
+          `}
+          >
+            {/* sublinks */}
+            {link.sublinks.map((mysublinks) => (
+                        <li className="text-sm text-gray-600 my-2.5">
+                          <Link
+                            to={mysublinks.link}
+                            className="hover:text-primary"
+                          >
+                            {mysublinks.name}
+                          </Link>
+                        </li>
+                      ))}
           </div>
-        )
-      )}
+        </div>
+      ))}
+           
+          
+        
+      
     </>
   );
 };
