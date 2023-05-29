@@ -104,33 +104,21 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
         <Form.Item
           name="title_uz"
           label="Name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+          rules={[{ required: true}]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           name="title_ru"
           label="Name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+          rules={[{ required: true}]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           name="title_en"
           label="Name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+          rules={[{ required: true}]}
         >
           <Input />
         </Form.Item>
@@ -166,7 +154,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
             className="my-8 bg-blue-600 text-white"
             onClick={() => setIsModalOpen(true)}
           >
-            + bo'lim qo'shish
+            + Bo'lim qo'shish
           </Button>
         </Form.Item>
         <Form.Item

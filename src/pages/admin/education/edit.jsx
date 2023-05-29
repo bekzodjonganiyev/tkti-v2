@@ -21,13 +21,13 @@ export const EducationChildEdit = () => {
     dispatch(childAction.getDataById(id));
     dispatch(parentAction.getData());
   }, [id]);
-
   return (
     <div>
       <EditForm
         childById={childState?.dataById}
         parents={parentState?.data}
-        putChild={(e) => childAction.updateData(id, e)}
+        putChild={(e) => {childAction.updateData(id, e); console.log(e)}}
+        loading={childState?.loading}
       />
     </div>
   );

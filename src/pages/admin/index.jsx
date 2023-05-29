@@ -1,4 +1,3 @@
-export { Institute } from "./institust/Institute";
 
 export { XalqaroAloqa } from "./xalqaro_aloqa";
 export { XalqaroCreate } from "./xalqaro_aloqa/create";
