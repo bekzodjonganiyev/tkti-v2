@@ -26,7 +26,9 @@ export const EducationChildEdit = () => {
       <EditForm
         childById={childState?.dataById}
         parents={parentState?.data}
-        putChild={(e) => {childAction.updateData(id, e); console.log(e)}}
+        putChild={(e) => {
+          dispatch(childAction.updateData(id, e));
+        }}
         loading={childState?.loading}
       />
     </div>

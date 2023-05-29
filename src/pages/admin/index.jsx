@@ -1,4 +1,3 @@
-
 export { XalqaroAloqa } from "./xalqaro_aloqa";
 export { XalqaroCreate } from "./xalqaro_aloqa/create";
 export { XalqaroChildEdit } from "./xalqaro_aloqa/edit";
@@ -24,7 +23,6 @@ export { PressclubCreate } from "./press_club/create";
 export { PressclubChildEdit } from "./press_club/edit";
 export { PressclubView } from "./press_club/view";
 
-
 export { MyInstitute } from "./my_institute";
 export { MyInstituteCreate } from "./my_institute/create";
 export { MyInstituteChildEdit } from "./my_institute/edit";
@@ -35,3 +33,4 @@ export { StudentCreate } from "./student/create";
 export { StudentChildEdit } from "./student/edit";
 export { StudentView } from "./student/view";
 
+export { Media } from "./media";

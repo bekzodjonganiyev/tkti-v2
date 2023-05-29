@@ -23,26 +23,33 @@ import {
   MyInstituteCreate,
   MyInstituteChildEdit,
   MyInstituteView,
+
   // Qabul
   Qabul,
   QabulCreate,
   QabulChildEdit,
   QabulView,
+
   // Matbuot
   Pressclub,
   PressclubCreate,
   PressclubChildEdit,
   PressclubView,
+
   //Student
   Student,
   StudentCreate,
   StudentChildEdit,
   StudentView,
+  
   //Researche
   Research,
   ResearchCreate,
   ResearchChildEdit,
-  ResearchView
+  ResearchView,
+
+  //Media
+  Media
 } from "./pages/admin";
 
 function App() {
@@ -117,6 +124,8 @@ function App() {
           <Route path="my-tkti/add" element={<MyInstituteCreate />} />
           <Route path="my-tkti/edit/:id" element={<MyInstituteChildEdit />} />
           <Route path="my-tkti/view/:id" element={<MyInstituteView />} />
+
+          <Route path="media" element={<Media />}/>
         </Route>
       </Routes>
     </div>

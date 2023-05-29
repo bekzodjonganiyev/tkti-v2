@@ -27,4 +27,8 @@ export const sidebarItems = [
     name: "Talabalar",
     url: "student",
   },
+  {
+    name: "Media",
+    url: "media",
+  },
 ];

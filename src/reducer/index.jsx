@@ -34,6 +34,7 @@ import {
 
 import { qabulChildReducer, qabulParentReducer } from "../pages/admin/qabul";
 import { userReducer } from "../pages/login/reducer";
+import { mediaReducer } from "../pages/admin/media";
 
 export const rootReducers = combineReducers({
   aboutUs: aboutUsReducer,
@@ -59,5 +60,6 @@ export const rootReducers = combineReducers({
   qabulChild: qabulChildReducer,
   qabulParent: qabulParentReducer,
 
-  user: userReducer
+  user: userReducer,
+  media: mediaReducer
 });

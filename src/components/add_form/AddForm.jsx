@@ -30,6 +30,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
     en: "",
   });
   const submitChild = (value) => {
+    
     const fmData = new FormData();
     fmData.append("title_uz", value.title_uz);
     fmData.append("title_ru", value.title_ru);
