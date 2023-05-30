@@ -47,7 +47,7 @@ export const ElonAll = ({ myKey }) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.slice(0, 3).map((item) => (
             <>
-              <Link className="news__card mx-auto" key={item} to={`/${myKey}/${item._id}`}>
+              <Link className="news__card mx-auto" key={item} to={`/elon/${item._id}`}>
                 <NewsCard
                   key={item._id}
                   id={item}
