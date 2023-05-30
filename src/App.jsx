@@ -12,6 +12,7 @@ import {
 import { AboutUs, Home } from "./pages";
 import { News } from "./pages/news";
 import { Announcement } from "./pages/announcement";
+import { Details, DetailsElon } from "./components/details";
 
 function App() {
   const { open } = useSelector((state) => state.news);
@@ -40,7 +41,8 @@ function App() {
             }
           />
           <Route path="/:page/:id/:name" element={<UniversalComponent />} />
-          {/* <Route path="/:page/:id/:name" element={<UniversalComponent />} /> */}
+          <Route path="/elon/:id" element={< DetailsElon/>} />
+          <Route path="/news/:id" element={< Details/>} />
         </Route>
 
         <Route
