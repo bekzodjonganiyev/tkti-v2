@@ -28,7 +28,7 @@ export const Banner = () => {
     {data?.map((item)=>(
       <div key={item._id} className="h-[100vh] bg-cover">
       <img
-        src={`https://backend.tkti.uz/${item.banner_img}`}
+        src={`https://tkti-backend-g6pbz.ondigitalocean.app/${item.banner_img}`}
         width="100%"
         height="100%"
         alt={item.name}
