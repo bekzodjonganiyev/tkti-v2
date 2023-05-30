@@ -7,9 +7,9 @@ import {AnnouncementActions} from './actions';
 import { NewsCard } from "../../components/card/NewsCard";
 
 export {announcementReducer} from './recucer'
-export const Announcement = ({ myKey }) => {
+export const Announcement = () => {
   const { t } = useTranslation();
-  const { getData, getDataById, deleteData } = new AnnouncementActions();
+  const { getData, getDataById} = new AnnouncementActions();
 
   const getAnnouncement = (state) => state.announcement;
   const { data, dataById, loading, error } = useSelector(getAnnouncement);
@@ -30,7 +30,7 @@ export const Announcement = ({ myKey }) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.map((item) => (
             <>
-               <Link className="news__card mx-auto" key={item} to={`/${myKey}/${item._id}`}>
+               <Link className="news__card mx-auto" key={item} to={`/${item._id}`}>
                 <NewsCard
                   key={item._id}
                   id={item}

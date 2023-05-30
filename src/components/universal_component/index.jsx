@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import i18next from "i18next";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import "./style.css"
 
@@ -9,6 +10,7 @@ import { UniversalComponentActions } from "./action";
 
 export { genericComReducer } from "./reducer";
 export const UniversalComponent = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const { getData } = new UniversalComponentActions();
@@ -30,10 +32,15 @@ export const UniversalComponent = () => {
       </h1>
 
       {path.page.split("_")[2] === "child"
-        ? <div dangerouslySetInnerHTML={{ __html: data.body_uz }}/>
+        ? <div dangerouslySetInnerHTML={{ __html: t("MoreDetails.body", {
+          more_details_body: `${data?.[`body_${i18next.language}`]}`,
+        })}}/>
         : data?.child?.map((item) => (
-            <div dangerouslySetInnerHTML={{ __html: item.body_uz }} />
+            <div dangerouslySetInnerHTML={{ __html: t("MoreDetails.body", {
+              more_details_body: `${item?.[`body_${i18next.language}`]}`,
+            }), }} />
           ))}
     </div>
   );
+  
 };

@@ -20,7 +20,7 @@ const Footer = () => {
   const { t } = useTranslation();
   return (
     <>
-      <footer className={` bg-[#26597E] w-full `}>
+      <footer className={` bg-[#26597E] `}>
         <div className="container mx-auto w-[90%] my-[40px]">
           <div className="container  flex justify-between  items-center ">
             <div className="">
@@ -40,7 +40,7 @@ const Footer = () => {
               </Link>
               <div className="flex gap-4    items-end justify-between ">
                 <div className="lg:flex lg:flex-col flex-row-reverse   max-md:flex-col max-md:gap-10 ">
-                  <div className="flex lg:gap-5 gap-10 ">
+                  <div className="flex lg:gap-5 gap-3 ">
                     <FacebookIcon color="white " />
 
                     <YouTubeIcon color="white" />

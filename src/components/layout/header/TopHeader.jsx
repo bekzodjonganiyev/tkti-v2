@@ -4,12 +4,11 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
-import MainHeader from "./MainHeader";
-
-import logo from "../../../assets/images/logo.png";
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
-
+import uz from "../../../assets/images/flag-uz.png";
+import ru from "../../../assets/images/flag-ru.png";
+import en from "../../../assets/images/flag-en.png";
 export { bannerReducer } from "../../banner/reducer";
 export const TopHeader = () => {
   const { t } = useTranslation();
@@ -28,19 +27,22 @@ export const TopHeader = () => {
   const [ecranPosition, setEcranPosition] = useState(100);
   const language = [
     {
-      code: "en",
-      name: "En",
-      conuntry_code: "gb",
-    },
-    {
       code: "uz",
-      name: "Uz",
+      img: uz,
+      name: "Oʻzbekcha",
       conuntry_code: "uz",
     },
     {
       code: "ru",
-      name: "Ru",
+      img: ru,
+      name: "русский ",
       conuntry_code: "ru",
+    },
+    {
+      code: "en",
+      img: en,
+      name: "English",
+      conuntry_code: "gb",
     },
   ];
   const changeSize = (arg) => {
@@ -63,24 +65,22 @@ export const TopHeader = () => {
     }
   };
 
-  const toggleHamburger = () => {
-    setOpen({ hamburger: !isOpen.hamburger });
-  };
-
   const changeLanguage = (code) => {
-    let pathnameLang = "uz";
-    if (pathname.split("/")[1] === "uz") pathnameLang = "uz";
-    if (pathname.split("/")[1] === "ru") pathnameLang = "ru";
-    if (pathname.split("/")[1] === "en") pathnameLang = "en";
-    navigate(pathname.replace(pathnameLang, code));
+    let pathnameLang = "uz"
     i18next.changeLanguage(code);
+    if (pathname.split("/")[1] === "uz") pathnameLang = "uz"
+    if (pathname.split("/")[1] === "ru") pathnameLang = "ru"
+    if (pathname.split("/")[1] === "en") pathnameLang = "en"
+    navigate(pathname.replace(pathnameLang, code));
+    window.location.reload();
+    
   };
 
   return (
     <>
-      <div className="bg-[#26597E] container-fluid w-[100%]">
-        <header className="container-fluid flex items-center justify-around mx-auto  h-16 ">
-          <div className="lg:flex justify-between  text-white xl:flex hidden ">
+      <div className="bg-[#26597E] ">
+        <header className="container w-[85%] flex items-center justify-between mx-auto  h-16 border-slate-600 ">
+          <div className="lg:flex justify-between  text-white xl:flex hidden border-white-600 ">
             <NavLink to={`/`} className=" mx-4">
               {t("headerTop.0.name")}
             </NavLink>
@@ -96,7 +96,7 @@ export const TopHeader = () => {
           </div>
           <div className="flex items-center h-5 ">
             <input
-              className="py-2  lg:w-[350px] md:w-[300px] sm:w-[200px]  rounded-3xl"
+              className="py-2  lg:w-[300px] md:w-[280px] sm:w-[200px]  rounded-3xl"
               type="text"
               placeholder="Qidiruv"
             />
@@ -114,18 +114,20 @@ export const TopHeader = () => {
               </div>
               {isHovered && (
                 <div
-                  className="dropdown-content absolute z-50 top-[40px] bg-white cursor: pointer py-5 "
+                  className="dropdown-content flex absolute z-50 top-[45px]  bg-white cursor-pointer "
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div onClick={() => changeSize("minus")}
-                   className="w-[30px] h-[20px] bg-[#fff] text-black text-xl font-medium mx-3"
-                  >A-
+                  <div
+                    onClick={() => changeSize("minus")}
+                    className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
+                  >
+                    A-
                   </div>
                   <div>
                     <h3
                       onClick={() => changeSize("default")}
-                      className="w-[30px] h-[20px] bg-[#fff] text-black text-xl font-medium mx-3"
+                      className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
                     >
                       A
                     </h3>
@@ -133,7 +135,7 @@ export const TopHeader = () => {
                   <div>
                     <h3
                       onClick={() => changeSize("plus")}
-                      className="w-[30px] h-[20px] bg-[#fff] text-black text-xl font-medium mx-3"
+                      className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
                     >
                       A+
                     </h3>
@@ -151,47 +153,54 @@ export const TopHeader = () => {
 
             <div className=" flex items-center justify-end gap-3">
               <div
-                className="items-center gap-3  text-black bg-[#F2F2F2] ml-10 p-2.5 rounded cursor-pointer xl:flex hidden relative"
+                className="items-center gap-3  text-black bg-[#F2F2F2] ml-10 p-1.5 rounded cursor-pointer xl:flex hidden relative"
                 onClick={() => setOpen({ ...isOpen, lang: !isOpen.lang })}
               >
                 <h3 className="cursor-pointer">{t("headerTop.4.name")}</h3>
 
                 {isOpen.lang && (
-                  <ul className="absolute bg-[#efe9e9] pb-2 text-black top-10 left-0 w-full rounded  z-50">
+                  <ul className="absolute block bg-[#efe9e9]  text-black top-12  left-[-80px] w-[200px] rounded  z-50">
                     {language.map((item) => (
                       <li
                         key={item.code}
-                        className="px-2.5 hover:bg-black hover:text-white"
+                        className="p-1.5 hover:bg-blue-800 cursor-pointer hover:text-white"
                         onClick={() => {
                           changeLanguage(item.code);
                         }}
                       >
-                        {item.name}
+                        <input type="hidden" value={item.code}/>
+                        <span className="flex">
+                          <img
+                            className="mx-2"
+                            style={{}}
+                            src={item.img}
+                            alt=""
+                          />
+                          <label htmlFor="">  {item.name} </label>
+                        
+                        </span>
                       </li>
                     ))}
                   </ul>
                 )}
               </div>
-             
             </div>
           </div>
-          <div className="">
-          <ul className="lg:hidden flex bg-[#F2F2F2]  text-black top-10 left-0 w-full rounded cursor-pointer">
-                {language.map((item) => (
-                  <li
-                    key={item.code}
-                    className="px-3.5 py-2 hover:bg-black hover:text-white"
-                    onClick={() => {
-                      changeLanguage(item.code);
-                    }}
-                  >
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-          </div>
-        </header>
 
+          <ul className="lg:hidden flex  top-10 left-0  rounded cursor-pointer">
+            {language.map((item) => (
+              <li
+                key={item.code}
+                className="px-2 py-3"
+                onClick={() => {
+                  changeLanguage(item.code);
+                }}
+              >
+                <img className="w-[50px]" src={item.img} alt="" />
+              </li>
+            ))}
+          </ul>
+        </header>
       </div>
     </>
   );

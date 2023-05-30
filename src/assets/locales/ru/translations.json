@@ -8,16 +8,14 @@
 
     {"name": "ru"}
   ],
-  "Header": {
-    "name": "ЙAНГИЙЕР ФЛОУР ",
-    "name2": "ТРAДИНГ",
-    "about": "О нас",
-    "product": "продукты",
-    "partners": "партнеры",
-    "ContactUs": "контакты",
-    "language": "язык",
-    "Gallary": "Галерея"
-  },
+  "Header": [
+    { "name": "Институт" },
+    { "name": "Прием" },
+    { "name": " Студенты" },
+    { "name": "Образование" },
+    { "name": "Научное исследование" },
+    { "name": "Международные отношения" }
+  ],
   "Institute": [
     {
       "title": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN "
@@ -94,13 +92,22 @@
   ],
   "Statistic": {
     "Statistical":"Статистические данные",
-    "facultet":"ФАКУЛЬТЕТЫ",
+    "facultet":"факультеты",
     "student":"СТУДЕНТЫ",
     "Teacher":"УЧИТЕЛЯ",
     "Partners":"ПАРТНЕРЫ",
     "OurPartners":"НАШИ ПАРТНЕРЫ",
     "AreaEducation":"НАПРАВЛЕНИЯ ОБРАЗОВАНИ",
-    "Education":"СОВМЕСТНЫЕ ОБРАЗОВАТЕЛЬНЫЕ ПРОГРАММЫ"
+    "Education":"Cовместные образовательные программы"
+  },
+  "NewsCard": {
+    "title": "{{news_card_title}}",
+    "body": "{{news_card_body}}"
+  },
+  "MoreDetails": {
+    "title": "{{more_details_title}}",
+    "body": "{{more_details_body}}"
   }
+
 
 }

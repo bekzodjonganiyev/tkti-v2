@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { BannerActions } from "./actions";
 import "./slider.css";
@@ -20,6 +20,9 @@ export const Banner = () => {
 
   return (
     <>
+     {loading ? (
+        <h1>Loading...</h1>
+      ) :(
 <div className="container-fluid w-[100%] h-[100vh]">
   <Carousel>
     {data?.map((item)=>(
@@ -35,7 +38,7 @@ export const Banner = () => {
     ))}
 
   </Carousel>
-</div>
+</div>)}
   
     </>
   );

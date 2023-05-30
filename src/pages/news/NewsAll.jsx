@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { NewsActions } from "./actions";
 import { Link } from "react-router-dom";
 import { NewsCard } from "../../components/card/NewsCard";
+import { LeftArrow } from "../../assets/icons";
 export { newsReducer } from "./reducer";
 
 export const NewsAll = ({ myKey }) => {
@@ -23,13 +24,23 @@ export const NewsAll = ({ myKey }) => {
   if (error) return <h1>{error}</h1>;
   return (
     <div className="container mx-auto w-[80%] ">
-      <div className="flex justify-between items-center mx-auto  ">
-          <span className="text-3xl  my-8">Yangiliklar</span>
-          <Link className="text-3xl " to={`/news`}>
-        Barchasini ko'rish
-       
-        </Link>
+      
+      <div className="flex justify-between items-center mb-8">
+          <h1 className="text-secondary_color text-2xl md:text-4xl font-semibold  ">
+          Yangiliklar
+          </h1>
+          <Link
+            to={"/news"}
+            className="bg-primary_color py-2 px-6 rounded-md  flex items-center gap-2 max-md:hidden"
+          >
+             Barchasini ko'rish
+            <span>
+              <LeftArrow  />
+            </span>
+          </Link>
         </div>
+        
+       
       
       {loading ? (
         <h1>Loading...</h1>

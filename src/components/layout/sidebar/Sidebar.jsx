@@ -3,7 +3,7 @@ import Banner from '../../banner'
 
 export const Sidebar = () => {
   return (
-    <div>err
+    <div>
       <Banner />
     </div>
   )

@@ -11,10 +11,10 @@ const Navbar = () => {
   return (
     <nav className=" bg-white">
       <TopHeader />
-      <div className="container mx-auto w-[95%] flex items-center font-medium ">
+      <div className="container mx-auto w-[95%] flex items-center  justify-between font-medium ">
         <Link to="/" className="py-7 px-3 inline-block">
           <div className="flex  justify-between items-center">
-            <img src={Logo} alt="" width={"90"} height={"20"} className="" />
+            <img src={Logo} alt="" width={"60"} height={"20"} className="" />
             <div className={`text-[#02307d] font-bold`}>
               <div className="text-[15px] my-3 mx-3">
                 <div>TOSHKENT </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <ul className="lg:flex hidden uppercase items-center gap-8 font-[Poppins]">
+        <ul className="lg:flex hidden uppercase items-center gap-2 font-[Poppins]">
           <NavLinks />
         </ul>
 
@@ -56,7 +56,7 @@ const Navbar = () => {
                 <img
                   src={Logo}
                   alt=""
-                  width={"90"}
+                  width={"60"}
                   height={"20"}
                   className=""
                 />
