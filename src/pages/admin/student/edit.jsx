@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { EditForm } from "../../../components";
-import {  StudentChildActions, StudentParentActions} from "./actions";
+import { StudentChildActions, StudentParentActions } from "./actions";
 
 export const StudentChildEdit = () => {
   const { id } = useParams();
@@ -27,7 +27,8 @@ export const StudentChildEdit = () => {
       <EditForm
         childById={childState?.dataById}
         parents={parentState?.data}
-        putChild={(e) => childAction.updateData(id, e)}
+        putChild={(e) => dispatch(childAction.updateData(id, e))}
+        loading={childState?.loading}
       />
     </div>
   );
