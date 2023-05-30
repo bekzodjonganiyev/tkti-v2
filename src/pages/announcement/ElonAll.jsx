@@ -52,7 +52,7 @@ export const ElonAll = ({ myKey }) => {
                   key={item._id}
                   id={item}
                   dateProps={item.date}
-                  img={`https://backend.tkti.uz/${item.photo}`}
+                  img={`https://tkti-backend-g6pbz.ondigitalocean.app/${item.photo}`}
                   title={t("NewsCard.title", {
                     news_card_title: `${item?.[`title_${i18next.language}`]}`,
                   })}
