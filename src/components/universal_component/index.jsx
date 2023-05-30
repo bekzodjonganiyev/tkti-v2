@@ -3,6 +3,8 @@ import i18next from "i18next";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import "./style.css"
+
 import { UniversalComponentActions } from "./action";
 
 export { genericComReducer } from "./reducer";

@@ -1,0 +1,98 @@
+.cardHodim {
+    flex-wrap: wrap;
+    display: flex;
+  
+    margin: 20px auto;
+  }
+  .cardEmail {
+    width: max-content;
+  }
+  .cardInfo {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 28px;
+    width: 600px;
+    border: 2px solid #eceef1;
+    border-radius: 4px;
+  }
+  
+  .cardImg img {
+    object-fit: cover;
+    width: 217px;
+    height: 100%;
+  }
+  .cardDesc {
+    padding: 24px;
+    margin: 5px 0;
+  }
+  .aSD {
+    box-sizing: border-box;
+    width: 15%;
+    height: 2px;
+    background: #6db0ff;
+    transition: all 0.3s;
+  }
+  .cardInfo:hover .aSD {
+    width: 100%;
+  }
+  
+  .cardDesc p {
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    margin-top: 8px;
+    color: #44494f;
+    font-size: 1.2rem;
+  }
+  .cardJob {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    color: #003b81;
+  }
+  @media (max-width: 1200px) {
+    .cardHodim {
+      width: 80%;
+    }
+  }
+  @media (max-width: 920px) {
+    .cardInfo {
+      width: 400px;
+      border: 0.4px solid #02307d !important;
+      border: none;
+      display: block;
+    }
+  
+    .cardHodim {
+      max-width: fit-content;
+    }
+    .cardImg img {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cardInfo {
+      width: 350px;
+    }
+  }
+  @media (max-width: 540px) {
+    .cardDesc {
+      padding: 12px;
+      font-size: 16px;
+    }
+    .cardDesc p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .cardDesc p {
+      font-size: 1rem;
+    }
+  }
