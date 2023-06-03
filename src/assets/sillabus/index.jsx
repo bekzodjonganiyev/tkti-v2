@@ -2,8 +2,10 @@ import React from "react";
 
 export const Sillabus = () => {
   return (
-    <div className="container mx-auto w-[80%] my-24">
-      <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 font-semibold ">Syllabusni toping</h2>
+    <div className="container mx-auto w-full my-24">
+      <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 font-semibold ">
+        Syllabusni toping
+      </h2>
 
       <form action="" className="container mx-auto ">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -19,7 +21,6 @@ export const Sillabus = () => {
               className="max-sm:w-full  block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>O'quv yilini tanlang</option>
-             
             </select>
           </div>
 
@@ -35,7 +36,6 @@ export const Sillabus = () => {
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Kunduzgi/Sirtqi</option>
-             
             </select>
           </div>
           <div>
@@ -50,7 +50,6 @@ export const Sillabus = () => {
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Bakalavr/Magistr</option>
-            
             </select>
           </div>
           <div>
@@ -65,7 +64,6 @@ export const Sillabus = () => {
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Fakultetni tanlang</option>
-              
             </select>
           </div>
           <div>
@@ -80,7 +78,6 @@ export const Sillabus = () => {
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Kafedrani tanlang </option>
-             
             </select>
           </div>
           <div>
@@ -95,7 +92,6 @@ export const Sillabus = () => {
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Yo'nalishni tanlang</option>
-             
             </select>
           </div>
         </div>
@@ -105,7 +101,6 @@ export const Sillabus = () => {
         >
           Qidirish
         </button>
-       
       </form>
     </div>
   );

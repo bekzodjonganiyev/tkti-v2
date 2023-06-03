@@ -16,7 +16,7 @@ import {
   Talim,
 } from "../../../assets/icons";
 
-const Footer = () => {
+export const Footer = () => {
   const { t } = useTranslation();
   return (
     <>
@@ -133,5 +133,3 @@ const Footer = () => {
     </>
   );
 };
-
-export default Footer;

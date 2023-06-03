@@ -23,7 +23,7 @@ export const NewsAll = ({ myKey }) => {
 
   if (error) return <h1>{error}</h1>;
   return (
-    <div className="container mx-auto w-[80%] ">
+    <div className="container mx-auto w-full ">
       
       <div className="flex justify-between items-center mb-8">
           <h1 className="text-secondary_color text-2xl md:text-4xl font-semibold  ">
@@ -31,7 +31,7 @@ export const NewsAll = ({ myKey }) => {
           </h1>
           <Link
             to={"/news"}
-            className="bg-primary_color py-2 px-6 rounded-md  flex items-center gap-2 max-md:hidden"
+            className="bg-primary_color py-2 rounded-md  flex items-center gap-2 max-md:hidden"
           >
              Barchasini ko'rish
             <span>

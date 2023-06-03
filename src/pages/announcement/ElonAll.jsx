@@ -24,14 +24,14 @@ export const ElonAll = ({ myKey }) => {
 
   if (error) return <h1>{error}</h1>;
   return (
-    <div className="container mx-auto w-[80%] ">
+    <div className="container mx-auto w-full ">
      <div className="flex justify-between items-center mb-8">
           <h1 className="text-secondary_color text-2xl md:text-4xl font-semibold">
          Elonlar
           </h1>
           <Link
             to={"/elon"}
-            className="bg-primary_color py-2 px-6 rounded-md  flex items-center gap-2 max-md:hidden"
+            className="bg-primary_color py-2 rounded-md  flex items-center gap-2 max-md:hidden"
           >
              Barchasini ko'rish
             <span>
@@ -63,7 +63,6 @@ export const ElonAll = ({ myKey }) => {
           ))}
         </div>
       )}
-      {loading ? <h1>Loading...</h1> : <span></span>}
     </div>
   );
 };

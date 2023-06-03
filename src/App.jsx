@@ -23,7 +23,17 @@ function App() {
         <Route
           path="/"
           element={
-            <Suspense fallback={<h1 className="text-3xl">Loading...</h1>}>
+            <Suspense
+              fallback={
+                <div className="max-w-3xl mx-auto px-4 py-6 space-y-6 container">
+                  <div className="animate-pulse">
+                    <div className="h-4 bg-gray-200 rounded"></div>
+                    <div className="h-8 bg-gray-200 rounded"></div>
+                    <div className="h-6 bg-gray-200 rounded"></div>
+                  </div>
+                </div>
+              }
+            >
               <UserLayout />
             </Suspense>
           }
@@ -41,8 +51,8 @@ function App() {
             }
           />
           <Route path="/:page/:id/:name" element={<UniversalComponent />} />
-          <Route path="/elon/:id" element={< DetailsElon/>} />
-          <Route path="/news/:id" element={< Details/>} />
+          <Route path="/elon/:id" element={<DetailsElon />} />
+          <Route path="/news/:id" element={<Details />} />
         </Route>
 
         <Route

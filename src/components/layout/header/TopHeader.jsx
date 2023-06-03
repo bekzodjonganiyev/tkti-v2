@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+
 
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
@@ -79,7 +79,7 @@ export const TopHeader = () => {
   return (
     <>
       <div className="bg-[#26597E] ">
-        <header className="container w-[85%] flex items-center justify-between mx-auto  h-16 border-slate-600 ">
+        <header className="container w-full flex items-center justify-between mx-auto  h-16 border-slate-600 ">
           <div className="lg:flex justify-between  text-white xl:flex hidden border-white-600 ">
             <NavLink to={`/`} className=" mx-4">
               {t("headerTop.0.name")}
@@ -96,13 +96,13 @@ export const TopHeader = () => {
           </div>
           <div className="flex items-center h-5 ">
             <input
-              className="py-2  lg:w-[300px] md:w-[280px] sm:w-[200px]  rounded-3xl"
+              className="py-1  lg:w-[300px] md:w-[280px] sm:w-[200px]  rounded-3xl"
               type="text"
               placeholder="Qidiruv"
             />
           </div>
           <div className="lg:flex hidden justify-between items-center">
-            <img className="w-[40px] h-auto" src={gerb} alt="" />
+            <img src={gerb} alt="O'z. Res. gerbi" width={"50"} />
             <div>
               <div
                 className="dropdown"
@@ -153,13 +153,13 @@ export const TopHeader = () => {
 
             <div className=" flex items-center justify-end gap-3">
               <div
-                className="items-center gap-3  text-black bg-[#F2F2F2] ml-10 p-1.5 rounded cursor-pointer xl:flex hidden relative"
+                className="items-center gap-3  text-white ml-10 p-1.5 rounded cursor-pointer xl:flex hidden relative"
                 onClick={() => setOpen({ ...isOpen, lang: !isOpen.lang })}
               >
                 <h3 className="cursor-pointer">{t("headerTop.4.name")}</h3>
 
                 {isOpen.lang && (
-                  <ul className="absolute block bg-[#efe9e9]  text-black top-12  left-[-80px] w-[200px] rounded  z-50">
+                  <ul className="absolute block bg-[#efe9e9]  text-black top-12  left-[-80px] w-[200px] rounded z-50">
                     {language.map((item) => (
                       <li
                         key={item.code}
@@ -167,18 +167,18 @@ export const TopHeader = () => {
                         onClick={() => {
                           changeLanguage(item.code);
                         }}
-                      >
-                        <input type="hidden" value={item.code}/>
-                        <span className="flex">
-                          <img
+                      ><img
                             className="mx-2"
                             style={{}}
                             src={item.img}
                             alt=""
                           />
+                        {/* <input type="hidden" value={item.code}/> */}
+                        {/* <span className="flex">
+                          
                           <label htmlFor="">  {item.name} </label>
                         
-                        </span>
+                        </span> */}
                       </li>
                     ))}
                   </ul>

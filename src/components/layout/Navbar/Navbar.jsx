@@ -5,18 +5,18 @@ import { TopHeader } from "../header/TopHeader";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_OPEN_NAVBAR } from "../../../pages/news/actions";
 
-const Navbar = () => {
+export const Navbar = () => {
   const dispatch = useDispatch();
   const { open } = useSelector((state) => state.news);
   return (
     <nav className=" bg-white">
       <TopHeader />
-      <div className="container mx-auto w-[95%] flex items-center  justify-between font-medium ">
+      <div className="container mx-auto w-full flex items-center  justify-between font-medium ">
         <Link to="/" className="py-7 px-3 inline-block">
           <div className="flex  justify-between items-center">
             <img src={Logo} alt="" width={"60"} height={"20"} className="" />
             <div className={`text-[#02307d] font-bold`}>
-              <div className="text-[15px] my-3 mx-3">
+              <div className="text-[14px] mx-3 ">
                 <div>TOSHKENT </div>
                 <div>KIMYO-TEXNOLOGIYA</div>
                 <div>INSTITUTI</div>
@@ -39,7 +39,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <ul className="lg:flex hidden uppercase items-center gap-2 font-[Poppins]">
+        <ul className="lg:flex hidden uppercase items-center gap-2">
           <NavLinks />
         </ul>
 
@@ -61,7 +61,7 @@ const Navbar = () => {
                   className=""
                 />
                 <div className={`text-[#02307d] font-bold`}>
-                  <div className="text-[15px] my-3 mx-3">
+                  <div className="text-[15px] mx-3">
                     <div>TOSHKENT </div>
                     <div>KIMYO-TEXNOLOGIYA</div>
                     <div>INSTITUTI</div>
@@ -76,5 +76,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;
