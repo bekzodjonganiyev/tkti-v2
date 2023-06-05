@@ -95,14 +95,28 @@ function Bakalavr() {
       <div className="container-fluid mt-5">
         <div className="row">
           <div className="col-lg-12 col-md-12 bakalavr__container ijno">
+          <div className=" container mx-auto w-[80%] lg:flex my-4 justify-between items-center ">
+            <div>
+
+
+          <a className="font-medium text-2xl" href="https://backend.tkti.uz/uploads/file-1685964934385.docx">2021-2022 qabul kvotalari va o'tish ballari</a>
+            </div>
+            <div>
+              
+          <a className="font-medium text-2xl" href="https://backend.tkti.uz/uploads/file-1685964970393.xlsx">2022-2023 qabul kvotalari va o'tish ballari</a>
+              </div>
+</div>
             <h1>{bakalavr[lang].about}</h1>
             <br />
             {bakalavr[lang].aboutData.map((i, idx) => (
               <React.Fragment key={idx}>
                 {typeof i === "object" ? (
+                  <>
                   <a href={i.link}>
                     &nbsp; &nbsp; {i.text}
                   </a>
+                 
+                  </>
                 ) : (
                   <p > &nbsp; &nbsp; {i}</p>
                 )}

@@ -54,16 +54,7 @@ const HomePage = () =>{
                 </Link>
             </div>
 
-            <div className="p-5 elonlar">
-              <div className="news__info">
-                <h3>{about[lang].elon}</h3>
-              </div>
-              <YangiliklarComp home={true} myKey='elon'/>
-              <Link to="/elon" className="news__info-link">
-                {about[lang].more} <i className="mx-3 fa-solid fa-right-long"></i>
-              </Link>
-            </div>
-
+           
             <About_us />
 
             <UsefulLinks />
