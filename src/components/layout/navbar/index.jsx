@@ -13,7 +13,7 @@ export const Navbar = () => {
   const { t } = useTranslation();
 
   const [url, setUrl] = useState({ loading: true });
-  const [hoveredLink, setHoveredLink] = useState({});
+  const [hoveredLink, setHoveredLink] = useState(null);
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
