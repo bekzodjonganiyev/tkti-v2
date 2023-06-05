@@ -2,8 +2,6 @@ import {
     REQUEST_NEWS,
     ERROR_NEWS,
     GET_NEWS,
-  
-   
     GET_BY_ID_NEWS,
     SET_OPEN_NAVBAR,
   } from "./actions";

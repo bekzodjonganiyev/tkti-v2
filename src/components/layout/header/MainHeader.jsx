@@ -16,7 +16,6 @@ const MainHeader = () => {
       name: t("Header.0.name"),
       fakultetInfo: t("Institute.0.title"),
 
-
       label: [
         {
           labelId: t("Institute.1.name"),
@@ -76,8 +75,7 @@ const MainHeader = () => {
         {
           labelId: t("Admission.3.name"),
           href: "",
-        }
-      
+        },
       ],
     },
     {
@@ -253,108 +251,105 @@ const MainHeader = () => {
   const toggleHamburger = () => {
     setOpen({ hamburger: !isOpen.hamburger });
   };
- 
+
   const screenWidth = window.screen.width;
   return (
     <>
-    
-    <div   className={`xl:flex hidden  ${
-            isOpen.hamburger
-              ? " text-[#ffff] xl:static z-[10000] absolute top-0 left-0 max-xl:w-full max-xl:h-screen xl:bg-inherit bg-[rgba(0,0,0,0.96)] text-[#ffffff] max-xl:flex max-xl:flex-col max-xl:justify-start max-xl:pt-24"
-              : "hidden"
-          }`}>
- <Link
-            to="/"
-            className="max-xl:block hidden pl-14 -mt-16 mb-14"
-            onClick={() => toggleHamburger()}
-          >
-            <div className="flex  justify-center items-center">
-
-           
+      <div
+        className={`xl:flex hidden  ${
+          isOpen.hamburger
+            ? " text-[#ffff] xl:static z-[10000] absolute top-0 left-0 max-xl:w-full max-xl:h-screen xl:bg-inherit bg-[rgba(0,0,0,0.96)] text-[#ffffff] max-xl:flex max-xl:flex-col max-xl:justify-start max-xl:pt-24"
+            : "hidden"
+        }`}
+      >
+        <Link
+          to="/"
+          className="max-xl:block hidden pl-14 -mt-16 mb-14"
+          onClick={() => toggleHamburger()}
+        >
+          <div className="flex  justify-center items-center">
             <img src={Logo} alt="" width={"100"} height={"20"} className="" />
             <div className={`text-white font-bold`}>
-                    <div className="text-[15px] my-3 mx-3">
-                      <div>TOSHKENT </div>
-                      <div>KIMYO-TEXNOLOGIYA</div>
-                      <div>INSTITUTI</div>
-                    </div>
-                  </div>
-                  </div>
-          </Link>
-
-    <div className="buttons  my-4 text-white xl:flex hidden ">
-      {buttons.map((button) => (
-        <button
-          key={button.id}
-          onMouseEnter={() =>
-            screenWidth > 1120 ? setHoveredButton({ ...button }) : null
-          }
-          onMouseLeave={() =>
-            screenWidth > 1120 ? setHoveredButton(null) : null
-          }
-          onClick={() =>
-            screenWidth < 1120 ? setHoveredButton({ ...button }) : null
-          }
-        >
-          {button.name}
-        </button>
-      ))}
-
-      {hoveredButton && (
-        <>
-          <div
-            className="hovered-content  "
-            onMouseEnter={() => setHoveredButton({ ...hoveredButton })}
-            onMouseLeave={() =>
-              screenWidth > 1120 ? setHoveredButton(null) : null
-            }
-          >
-            <ul className="hovered-list ">
-              <div className="list-info">
-                <span>
-                  <img className="hovered_logo" src={Logo} alt="" />
-                  {/* <Institut /> */}
-
-                  <h3>{hoveredButton.name}</h3>
-                </span>
-                <p>{hoveredButton.fakultetInfo}</p>
+              <div className="text-[15px] my-3 mx-3">
+                <div>TOSHKENT </div>
+                <div>KIMYO-TEXNOLOGIYA</div>
+                <div>INSTITUTI</div>
               </div>
-              <div className="asdaaf">
-                {hoveredButton?.label?.map((i, index) => (
-                  <>
-                    <li className="li " key={index}>
-                      <a href={i.href}>
-                        <span>{i.labelId}</span>
-                      </a>
-                    </li>
-                  </>
-                ))}
-              </div>
-              <div className="as">
-                {hoveredButton?.label?.map((i, index) => (
-                  <>
-                    <li className="li " key={index}>
-                      <a href={i.href}>
-                        <span>{i.labelId}</span>
-                      </a>
-                    </li>
-                  </>
-                ))}
-              </div>
-              
-            </ul>
+            </div>
           </div>
-        </>
-      )}
-    </div>
-   
-    </div>
-    <div className="xl:hidden block color:red">
-                <Hamburger
-                  toggled={isOpen.hamburger}
-                  toggle={() => toggleHamburger()}
-                />
+        </Link>
+
+        <div className="buttons  my-4 text-white xl:flex hidden ">
+          {buttons.map((button) => (
+            <button
+              key={button.id}
+              onMouseEnter={() =>
+                screenWidth > 1120 ? setHoveredButton({ ...button }) : null
+              }
+              onMouseLeave={() =>
+                screenWidth > 1120 ? setHoveredButton(null) : null
+              }
+              onClick={() =>
+                screenWidth < 1120 ? setHoveredButton({ ...button }) : null
+              }
+            >
+              {button.name}
+            </button>
+          ))}
+
+          {hoveredButton && (
+            <>
+              <div
+                className="hovered-content  "
+                onMouseEnter={() => setHoveredButton({ ...hoveredButton })}
+                onMouseLeave={() =>
+                  screenWidth > 1120 ? setHoveredButton(null) : null
+                }
+              >
+                <ul className="hovered-list ">
+                  <div className="list-info">
+                    <span>
+                      <img className="hovered_logo" src={Logo} alt="" />
+                      {/* <Institut /> */}
+
+                      <h3>{hoveredButton.name}</h3>
+                    </span>
+                    <p>{hoveredButton.fakultetInfo}</p>
+                  </div>
+                  <div className="asdaaf">
+                    {hoveredButton?.label?.map((i, index) => (
+                      <>
+                        <li className="li " key={index}>
+                          <a href={i.href}>
+                            <span>{i.labelId}</span>
+                          </a>
+                        </li>
+                      </>
+                    ))}
+                  </div>
+                  <div className="as">
+                    {hoveredButton?.label?.map((i, index) => (
+                      <>
+                        <li className="li " key={index}>
+                          <a href={i.href}>
+                            <span>{i.labelId}</span>
+                          </a>
+                        </li>
+                      </>
+                    ))}
+                  </div>
+                </ul>
               </div>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="xl:hidden block color:red">
+        <Hamburger
+          toggled={isOpen.hamburger}
+          toggle={() => toggleHamburger()}
+        />
+      </div>
     </>
   );
 };

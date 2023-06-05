@@ -1,8 +1,9 @@
+import { Outlet } from "react-router-dom";
+
 import { Footer } from "./footer/Footer";
 import { Sidebar } from "./sidebar/Sidebar";
 import { FunctionalHeader } from "./functional_header/FunctionalHeader";
-import { Outlet } from "react-router-dom";
-import { Navbar } from "../layout/Navbar/Navbar";
+import { Navbar } from "./navbar";
 
 export const UserLayout = () => {
   return (

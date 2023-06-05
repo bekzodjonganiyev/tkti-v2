@@ -3,7 +3,6 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
-
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
 import uz from "../../../assets/images/flag-uz.png";
@@ -66,14 +65,13 @@ export const TopHeader = () => {
   };
 
   const changeLanguage = (code) => {
-    let pathnameLang = "uz"
+    let pathnameLang = "uz";
     i18next.changeLanguage(code);
-    if (pathname.split("/")[1] === "uz") pathnameLang = "uz"
-    if (pathname.split("/")[1] === "ru") pathnameLang = "ru"
-    if (pathname.split("/")[1] === "en") pathnameLang = "en"
+    if (pathname.split("/")[1] === "uz") pathnameLang = "uz";
+    if (pathname.split("/")[1] === "ru") pathnameLang = "ru";
+    if (pathname.split("/")[1] === "en") pathnameLang = "en";
     navigate(pathname.replace(pathnameLang, code));
     window.location.reload();
-    
   };
 
   return (
@@ -81,16 +79,16 @@ export const TopHeader = () => {
       <div className="bg-[#26597E] ">
         <header className="container w-full flex items-center justify-between mx-auto  h-16 border-slate-600 ">
           <div className="lg:flex justify-between  text-white xl:flex hidden border-white-600 ">
-            <NavLink to={`/`} className=" mx-4">
+            <NavLink to={`/`} className=" mr-4">
               {t("headerTop.0.name")}
             </NavLink>
-            <NavLink to={`/`} className=" mx-4">
+            <NavLink to={`/`} className=" mr-4">
               {t("headerTop.1.name")}
             </NavLink>
-            <NavLink to={`/`} className=" mx-4">
+            <NavLink to={`/`} className=" mr-4">
               {t("headerTop.2.name")}
             </NavLink>
-            <NavLink to={`/`} className=" mx-4">
+            <NavLink to={`/`} className=" mr-4">
               {t("headerTop.3.name")}
             </NavLink>
           </div>
@@ -167,12 +165,13 @@ export const TopHeader = () => {
                         onClick={() => {
                           changeLanguage(item.code);
                         }}
-                      ><img
-                            className="mx-2"
-                            style={{}}
-                            src={item.img}
-                            alt=""
-                          />
+                      >
+                        <img
+                          className="mx-2"
+                          style={{}}
+                          src={item.img}
+                          alt=""
+                        />
                         {/* <input type="hidden" value={item.code}/> */}
                         {/* <span className="flex">
                           
