@@ -8,6 +8,8 @@ import "./style.css";
 
 import { UniversalComponentActions } from "./action";
 
+import './style.css'
+
 export { genericComReducer } from "./reducer";
 export const UniversalComponent = () => {
   const { t } = useTranslation();

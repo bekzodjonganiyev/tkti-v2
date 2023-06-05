@@ -1,11 +1,11 @@
 import React from "react";
-
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 export const Sillabus = () => {
+  const { t } = useTranslation();
   return (
-    <div className="container mx-auto w-full my-24">
-      <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 font-semibold ">
-        Syllabusni toping
-      </h2>
+    <div className="container mx-auto w-[90%] my-24">
+      <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 font-semibold ">{t("HomePage.0.name")}</h2>
 
       <form action="" className="container mx-auto ">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

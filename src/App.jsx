@@ -10,9 +10,11 @@ import {
 } from "./components";
 
 import { AboutUs, Home } from "./pages";
-import { News } from "./pages/news";
+import { AboutUS } from "./pages/institut/aboutUs";
+import { Mission} from "./pages/institut/mission";
+import {ContactUs} from "./pages/institut/contactUs/ContactUs"
+// import { News } from "./pages/news";
 import { Announcement } from "./pages/announcement";
-import { Details, DetailsElon } from "./components/details";
 
 function App() {
   const { open } = useSelector((state) => state.news);
@@ -39,8 +41,14 @@ function App() {
           }
         >
           <Route index element={<Home />} />
-          <Route path="a" element={<AboutUs />} />
-          <Route path="news" element={<News />} />
+          <Route path="biz-haqimiqda" element={<AboutUS />} />
+          <Route path="bog'nalish" element={<ContactUs />} />
+          <Route path="Missiyamiz" element={<Mission />} />
+          <Route path="ish-reja" element={<WorkPlan />} />
+          <Route path="tarix" element={<History />} />
+          <Route path="test" element={<Test />} />
+          <Route path="korrupsiya" element={<Corruption />} />
+          {/* <Route path="news" element={<News />} /> */}
           <Route path="elon" element={<Announcement />} />
           <Route
             path="/:page/:id/"
