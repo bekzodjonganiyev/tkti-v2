@@ -331,7 +331,7 @@ export const Navbar = () => {
                           dropdown === item.name ? "block" : "hidden"
                         } pl-5 `}
                       >
-                        {item.sublinks.map((subItem, idx) => (
+                        {item?.sublinks?.map((subItem, idx) => (
                           <li className="my-2 list-disc" key={idx}>
                             <Link
                               onClick={() => setOpen(false)}
