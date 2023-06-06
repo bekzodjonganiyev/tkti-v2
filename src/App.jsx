@@ -9,11 +9,11 @@ import {
   UniversalComponent,
 } from "./components";
 
-import { AboutUs, Home } from "./pages";
+import {  Home } from "./pages";
 import { AboutUS } from "./pages/institut/aboutUs";
 import { Mission} from "./pages/institut/mission";
 import {ContactUs} from "./pages/institut/contactUs/ContactUs"
-// import { News } from "./pages/news";
+
 import { Announcement } from "./pages/announcement";
 
 import WorkPlan from "./pages/institut/workPlan";
