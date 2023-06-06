@@ -258,22 +258,17 @@ export const Navbar = () => {
               onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
               onMouseLeave={() => setHoveredLink(null)}
             >
-          
-
-           
               <div className="w-1/3">
                 <p className="uppercase">{hoveredLink?.name}</p>
-                {/* <span className="w-[100px] capitalize ">{hoveredLink?.desc}</span> */}
               </div>
               <ul className="grid grid-cols-2 gap-x-6 w-2/3">
                 {hoveredLink?.sublinks?.map((item) => (
                   <li className="py-2 border-b border-slate-100">
-                    <Link to={item.link}>{item?.name}</Link>
+                    <Link onClick={() => setIdForFetch(item.id)}  to={item.link}>{item?.name}</Link>
                   </li>
                 ))}
               </ul>
-              </div>
-          
+            </div>
           ) : null}
         </div>
 
