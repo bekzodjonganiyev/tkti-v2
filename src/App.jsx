@@ -18,7 +18,7 @@ function App() {
   const { open } = useSelector((state) => state.news);
 
   return (
-    <div className={open ? "h-screen--open" : "h-screen"}>
+    <div className={`h-screen`}>
       <Routes>
         <Route
           path="/"
@@ -42,6 +42,8 @@ function App() {
           <Route path="a" element={<AboutUs />} />
           <Route path="news" element={<News />} />
           <Route path="elon" element={<Announcement />} />
+          
+          {/* TODO - splitter va universal componentlarni optimizatsiya qilish kerak, misol uchun memoga o'rash kerek va hk */}
           <Route
             path="/:page/:id/"
             element={

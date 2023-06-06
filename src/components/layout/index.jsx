@@ -4,16 +4,19 @@ import { Footer } from "./footer/Footer";
 import { Sidebar } from "./sidebar/Sidebar";
 import { FunctionalHeader } from "./functional_header/FunctionalHeader";
 import { Navbar } from "./navbar";
+import AppContextProvider from "../../context/app.context";
 
 export const UserLayout = () => {
   return (
-    <div className="min-h-full flex flex-col">
-      <Navbar />
-      <main className="flex-auto ">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <AppContextProvider>
+      <div className="min-h-full flex flex-col">
+        <Navbar />
+        <main className="flex-auto  bg-[#f2f2f2]">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </AppContextProvider>
   );
 };
 
