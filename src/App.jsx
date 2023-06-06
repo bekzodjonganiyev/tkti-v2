@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+
 
 import { UserLayout, AdminLayout } from "./components/layout";
 import {
@@ -10,12 +10,19 @@ import {
 } from "./components";
 
 import { AboutUs, Home } from "./pages";
-import { News } from "./pages/news";
+import { AboutUS } from "./pages/institut/aboutUs";
+import { Mission} from "./pages/institut/mission";
+import {ContactUs} from "./pages/institut/contactUs/ContactUs"
+// import { News } from "./pages/news";
 import { Announcement } from "./pages/announcement";
+
+import WorkPlan from "./pages/institut/workPlan";
+import Corruption from "./pages/institut/corrupsion/Corrupsion";
 import { Details, DetailsElon } from "./components/details";
+import History from "./pages/institut/history";
 
 function App() {
-  const { open } = useSelector((state) => state.news);
+
 
   return (
     <div className={open ? "h-screen--open" : "h-screen"}>
@@ -39,8 +46,14 @@ function App() {
           }
         >
           <Route index element={<Home />} />
-          <Route path="a" element={<AboutUs />} />
-          <Route path="news" element={<News />} />
+          <Route path="institut/biz-haqimiqda" element={<AboutUS />} />
+          <Route path="institut/bog'nalish" element={<ContactUs />} />
+          <Route path="institut/Missiyamiz" element={<Mission/>} />
+          <Route path="institut/ish-reja" element={<WorkPlan />} />
+          <Route path="institut/tarix" element={<History/>} />
+          {/* <Route path="test" element={<Test/>} /> */}
+          <Route path="institut/korrupsiya" element={<Corruption />} />
+          {/* <Route path="news" element={<News />} /> */}
           <Route path="elon" element={<Announcement />} />
           <Route
             path="/:page/:id/"

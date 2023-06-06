@@ -1,0 +1,70 @@
+
+  .qabulDoc {
+    flex-wrap: wrap;
+    display: flex;
+ 
+    justify-content:space-around;
+    margin: 20px auto;
+  }
+
+  .qabulDoc__info {
+    display: flex;
+ 
+    cursor: pointer;
+    margin-bottom: 28px;
+    width: 720px;
+    border-left: 4px solid #10924D !important;
+    border: 2px solid #eceef1;
+    border-radius: 4px;
+  }
+  
+
+  .qabulDoc__Desc {
+    padding: 24px;
+    margin: 5px 0;
+  }
+ 
+  
+  .qabulDoc__Desc p {
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    margin-top: 8px;
+   
+    font-size: 1.2rem;
+  }
+ 
+  @media (max-width: 1200px) {
+    .cardHodim {
+      width: 80%;
+    }
+  }
+  @media (max-width: 920px) {
+   
+    .cardHodim {
+      max-width: fit-content;
+    }
+}
+
+  @media (max-width: 768px) {
+    /* .cardEmail{
+      width:min-content;
+    } */
+    .cardInfo {
+      width: 100vh;
+    }
+ 
+   
+  }
+  @media (max-width: 540px) {
+  
+    .qabulDoc__Desc p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .qabulDoc__Desc p{
+      font-size: 1rem;
+    }
+  }

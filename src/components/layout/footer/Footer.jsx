@@ -26,14 +26,14 @@ export const Footer = () => {
             <div className="">
               <Link to="/" className="my-4 block  ">
                 <div className="flex items-center ">
-                  <img src={logo} alt="Main logo" className="w-24 h-24" />
+                  <img src={logo} alt="Main logo" className="w-18 h-24" />
                   <div
                     className={`text-white lg:text-2xl xl:text-xl md:text-lg  md:w-[70%] font-bold`}
                   >
                     <div className="text-[15px] my-3 mx-3">
-                      <div>TOSHKENT</div>
-                      <div>KIMYO-TEXNOLOGIYA</div>
-                      <div>INSTITUTI</div>
+                    <div>{t("TktiName.0.name")}</div>
+                <div>{t("TktiName.1.name")}</div>
+                <div>{t("TktiName.2.name")}</div>
                     </div>
                   </div>
                 </div>

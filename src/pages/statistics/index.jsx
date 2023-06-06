@@ -2,7 +2,9 @@ import { useContext, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
-import "./style.css";
+
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 import uzEdu from "../../assets/images/eduuz.jpg";
 
 import lexUz from "../../assets/images/lexuz.jpg";
@@ -12,7 +14,10 @@ import scopus from "../../assets/images/scopus.jpg";
 import ziyoNetUz from "../../assets/images/ziyonet.jpg";
 import dtm from "../../assets/images/DTM.jpg";
 
+import "./style.css";
+
 export const Statistics = () => {
+  const { t } = useTranslation();
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -102,7 +107,7 @@ export const Statistics = () => {
     <>
       <div className="container-fluid w-[100%]  py-10  ">
         <h3 className="text-4xl text-center p-10 font-semibold">
-          Foydali havolalar
+           {t("HomePage.4.name")}
         </h3>
         <div className="container w-[95%] mx-auto">
           <Carousel

@@ -1,4 +1,9 @@
 {
+  "TktiName":[
+    { "name": "TOSHKENT" },
+    { "name": " KIMYO-TEXNOLOGIYA" },
+    { "name": "INSTITUTI" }
+  ],
   "headerTop": [
     { "name": "Hemis talaba" },
     { "name": "Hemis o‘qituvchi" },
@@ -15,6 +20,13 @@
     { "name": "Ilmiy tadqiqotlar" },
     { "name": "Xalqaro aloqalar" }
   ],
+  "HomePage":[
+    { "name": "Syllabusni toping" },
+    { "name": "Yangiliklar" },
+    { "name": "Elonlar" },
+    { "name": "Statistik ma’lumotlar" },
+    { "name": "Foydali havolalar" }
+  ],
   "Institute": [
     {
       "title": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN "
@@ -29,82 +41,59 @@
     { "name": "Faoliyat" },
     { "name": "Bog'laish" }
   ],
+  "aboutUs":[
+    { "name": "Biz haqimizda"},
+    { "name": "1.Biz kuchli salohiyatli ilmiy hodimlar va talabalarni qadirlaymiz. Jamiyatimiz milliy qadriyatlarimizga befarq bo`lmagan holda yuqori innovatsion go`yalarimiz bilan butun dunyoga ijobiy ta`sir ko`rsatamiz."},
+    { "name": "2.Institut-hodimlar uchun jozibali ish muhiti yaratishga ko`maklashadi. Talabalarda tanqidiy fikrlashga asoslangan ko`nikmalarni rivojlantiradi. Ilmiy hodimlar va olimlar bilan hamkorlikda loyiha va go`yalarni moliyalashtiradi va qo`llab quvvatlaydi."},
+    { "name": "3.1 Toshkent kimyo-texnologiya instituti O‘zbekiston Respublikasi Prezidentining 1991-yil 6-maydagi PF-203-sonli qaroriga (https://lex.uz/ru/docs/787853) asosan sobiq Toshkent politexnika institutining, kimyo-texnologiya va muhandislik-texnologiyasi fakultetlari negizida tashkil topgan. Biz ERASMUS+ dasturi loyihalari doirasida mahalliy va xalqaro hamkorlar o‘rtasida tajribaga egamiz.Har yili biz IUPAC doirasidagi deyarli barcha loyihalarda ishtirok etamiz. BRMning (SDG) yo`nalishlarida ishtirok etamiz."},
+    {"name":"3.2 Institutimiz ichki va ilmiy faoliyatdan tashqari atrof-muhitga ham alohida e`tiborli, ekologik haftaliklar va ko`ngilli yoshlardan iborat jamoa bilan obodonchilik ishlarini ham olib borish bilan birga ekologik nozarar bo`lgan start-up loyihalarni ham qo`llab quvvatlaydi, moliyalashtiradi va bu loyihalarga talabalarni o`z o`rnida jalb qilishga ko`maklashadi."},
+    {"name":"3.3 Ijtimoy ko`makka muhtoj va Iqtidorli talabalarni qo`llab quvvatlash maqsadida alohida stipendiya, rag`batlantirishlar va tadbirlar tashkil etadi. Chet-ellik va boshqa viloyatdan kelgan talabalarni institut yotoqxonasi bilan ta`minlaydi. "}
+
+  ],
+  "ContactUs": [
+   
+    { "name": "Toshkent, Samarqand Darvoza ko’chasi, 60 uy.    " },
+    { "name": "Toshkent sh., M. Ulug’bek ko’chasi, 41 uy.    " },
+    { "name": "Navoiy ko’chasi, 32-uy, Toshkent, O'zbekiston, 100011    " },
+    { "name": "Qibray tumani, ToshIES qo'rg'oni, Farovon mahallasi, 1-uy" },
+    { "name": "Toshkent, Navoiy ko’chasi, 36-uy    " }
+  ],
+  "WorkPlan":[
+  {"name":"OTM ish reja"},
+  {"name":"Toshkent kimyo-texnologiya institutining 2022-yil I yarim yilligi ish rejasi"},
+  {"name":"Toshkent kimyo-texnologiya institutining 2022-yil II yarim yilligi ish rejasi"},
+  {"name":"2022-yil I yarim yilligi"},
+  {"name":"2022-yil II yarim yilligi"}
+
+  ],
+  "Korruption":[
+    {"name":"Sodir etilgan korrupsiya holatlari to'g'risida xabar berish"},
+    {"name":"Toshkent kimyo texnologiya institutida korrupsiyaga qarshi kurashish madaniyatini oshirish va korrupsiyaga oid huquqbuzarliklarning oldini olish maqsadida rasmiy telegram boti yaratildi."},
+    {"name":"Bot orqali siz korruptsiyaga oid huquqbuzarliklar haqida xabar berishingiz mumkin"},
+    {"name":"Ishonch telefonlari"},
+    {"name":"Virtual qabulxona"}
+  
+    ],
+
+  "Mission": [
+
+  {"name":"Missiyamiz: Jamiyatimiz uchun zarur bo`lgan yetuk salohiyatli mutaxassislar tayyorlash, ilmiy izlanishlar sifati va qamrovini oshirish, ilmiy hodimlar uchun yuqori ish muhiti yaratish, sohaga oid bilimlarni xalqaro darajada muvofiqlashtirgan holda yuqori innovatsion loyihalar yaratish va uni butun dunyo miqyosida tadbiq etish."
+  }
+  ],
+  "Boglanish": [
+{
+    "name":"Missiyamiz: Jamiyatimiz uchun zarur bo`lgan yetuk salohiyatli mutaxassislar tayyorlash, ilmiy izlanishlar sifati va qamrovini oshirish, ilmiy hodimlar uchun yuqori ish muhiti yaratish, sohaga oid bilimlarni xalqaro darajada muvofiqlashtirgan holda yuqori innovatsion loyihalar yaratish va uni butun dunyo miqyosida tadbiq etish."
+}
+    
+   ],
   "Admission": [
     { "name": "Bakalavr va sirtqi ta’lim (ikkinchi mutaxassislik)" },
     { "name": "Magistratura" },
     { "name": "Doktorantura" },
     { "name": "Qo’shma ta’lim" }
   ],
-  "Students": [
-    { "name": "Moliya" },
-    { "name": "Talabalar turar joyi" },
-    { "name": "Tibbiyot bo’limi" },
-    { "name": "Iqtidorli talabalar" },
-    { "name": "Sport" },
-    { "name": "Ijtimoiy yordam" },
-    { "name": "Tanlov va grandlar" },
-    { "name": "Startup loyihalar" },
-    { "name": "Talabalarni baholash" },
-    { "name": "Bo’sh ish o’rinlari" },
-    { "name": "Ma’naviyat" },
-    { "name": "Ko’p beriladigan savollar" }
-  ],
+ 
 
-  "Education": [
-    {
-      "title": "INSTITUT O’TGAN DAVR ICHIDA KIMYO, OZIQ-OVQAT, NEFT-GAZ, QURILISH MATERIALLARI VA IQTISODIYOTNING BOSHQA TARMOQLARIGA 10 MINGDAN ZIYOD YUQORI MALAKALI MUHANDIS TEXNOLOGLAR, TA’LIM YO’NALISHLARI BO’YICHA MINGDAN ORTIQ BAKALAVR VA 30 GA YAQIN MUTAXASSISLIKLAR BO’YICHA MAGISTRLAR TAYYORLAB BERDI"
-    },
-    { "name": "Bakalavr ta'lim  " },
-    { "name": "Magistratura ta'lim" },
-    { "name": "Sirtqi ta'lim" },
-    { "name": "Qo’shma ta’lim" },
-    { "name": "Ikkinchi mutaxassislik" },
-
-    { "name": "Dars jadvali " }
-  ],
-
-  "ScientificResearch": [
-    {
-      "title": "KIMYOVIY TEXNOLOGIYA ANORGANIG MODDALAR TEXNOLOGIYASI (KISLOTA, ISHQOR, SODA, MINERAL OʻGʻITLAR VA BOSHQA SANOATI) VA ORGANIQ MODDALAR TEXNOLOGIYASI (SINTETIK KAUCHUK, PLASTMASSA, KIMYOVIY TOLALAR, SPIRT, ORGANIQ KISLOTALAR VA BOSHQA SANOATI)GA BOʻLINADI."
-    },
-    { "name": "Ilmiy kengash" },
-    { "name": "Xalqaro loyihalari" },
-    { "name": "Ilmiy loyihalar" },
-    { "name": "Startup loyihalar" },
-    { "name": "Xo'jalik shartnomalar" },
-    { "name": "Ilmiy journallar" },
-    { "name": "Konfrensiya  " },
-    { "name": "Ilmiy makablar" },
-    { "name": "Doktorantura" },
-    { "name": "Avtoreferat" },
-    { "name": "Ixtiro,  EHM dasturlari uchun guvohnomalar" }
-  ],
-
-  "International": [
-    {
-      "title": "INSTITUTDA SANOAT CHIQISHSHLARIDAN FOYDALANISH, EKOLOGIK XAVFSIZ, IMPORT OʻRNINI BOSUVCHI VA EKSPORTGA MOʻLJALLANGAN TEXNOLOGIYALARNI ISHLAB CHIQISH, ENERGIYANI TEJOVCHI MAXALLIY MINERAL XOM ASHYO BAZASI TASHKIL QILISH VA NEFT VA GAZLARDAN OLINADIGAN MAHSULOTLAR TURLARINI KOʻPAYTIRISH USTIDA ILMIY TADQIQOTLAR ISHLARI OLIB BORILADI."
-    },
-    { "name": "Xalqaro aloqalar bo'limi" },
-    { "name": "E'lon va yangiliklar" },
-    { "name": "Xalqaro loyihalari" },
-    { "name": "Xalqaro grandlar " },
-    { "name": "Xamkor universititut va tashklotlari " },
-    { "name": "Xalqaro faoliyat " }
-  ],
-
-  "MyTKTI": [
-    {
-      "title": "INSTITUTDA SANOAT CHIQISHSHLARIDAN FOYDALANISH, EKOLOGIK XAVFSIZ, IMPORT OʻRNINI BOSUVCHI VA EKSPORTGA MOʻLJALLANGAN TEXNOLOGIYALARNI ISHLAB CHIQISH, ENERGIYANI TEJOVCHI MAXALLIY MINERAL XOM ASHYO BAZASI TASHKIL QILISH VA NEFT VA GAZLARDAN OLINADIGAN MAHSULOTLAR TURLARINI KOʻPAYTIRISH USTIDA ILMIY TADQIQOTLAR ISHLARI OLIB BORILADI."
-    },
-    { "name": "Yangiyer " },
-    { "name": "Shaxrisabz" },
-    { "name": "Litsey" },
-    { "name": "Tarix va meros" },
-    { "name": "Bizning majburiyatlarimiz" },
-    { "name": "Korrupsiyani oldini olish" },
-    { "name": "Bitiruvchilar" },
-    { "name": "Korporativ pochta" }
-  ],
 "BodyInfo":{
   "body":"{{comp_body}}"
 },
@@ -140,54 +129,15 @@
       "Korporativ pochta",
       "Hemis o'qituvchi"
     ],
-    "ilmiy": ["Ilmiy tadqiqotlar','Institut loyihalari','Startup loyihalar"],
-    "talim": [
-      "Ta'lim dasturi`,'Dars jadvali',`O'quv kalendari`,`Sertifikatlar`,`Nashriyot"
-    ],
-    "fakultet": [
-      "Fakultetlar','Menejment va kasb ta`limi fakulteti','Oziq-ovqat mahsulotlari texnologiyasi fakulteti','Noorganik moddalar texnologiyasi fakulteti','Yoqilg`i va organik birikmalar kimyoviy texnologiyasi fakulteti','Vinochilik texnologiyasi va sanoat uzumchiligi fakulteti"
-    ],
-    "fakultetInfo": [
-      "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN",
-      "INSTITUTDA SANOAT CHIQISHSHLARIDAN FOYDALANISH, EKOLOGIK XAVFSIZ, IMPORT OʻRNINI BOSUVCHI VA EKSPORTGA MOʻLJALLANGAN TEXNOLOGIYALARNI ISHLAB CHIQISH, ENERGIYANI TEJOVCHI MAXALLIY MINERAL XOM ASHYO BAZASI TASHKIL QILISH VA NEFT VA GAZLARDAN OLINADIGAN MAHSULOTLAR TURLARINI KOʻPAYTIRISH USTIDA ILMIY TADQIQOTLAR ISHLARI OLIB BORILADI.",
-      "KIMYOVIY TEXNOLOGIYA ANORGANIG MODDALAR TEXNOLOGIYASI (KISLOTA, ISHQOR, SODA, MINERAL OʻGʻITLAR VA BOSHQA SANOATI) VA ORGANIQ MODDALAR TEXNOLOGIYASI (SINTETIK KAUCHUK, PLASTMASSA, KIMYOVIY TOLALAR, SPIRT, ORGANIQ KISLOTALAR VA BOSHQA SANOATI)GA BOʻLINADI.",
-      "INSTITUT O’TGAN DAVR ICHIDA KIMYO, OZIQ-OVQAT, NEFT-GAZ, QURILISH MATERIALLARI VA IQTISODIYOTNING BOSHQA TARMOQLARIGA 10 MINGDAN ZIYOD YUQORI MALAKALI MUHANDIS TEXNOLOGLAR, TA’LIM YO’NALISHLARI BO’YICHA MINGDAN ORTIQ BAKALAVR VA 30 GA YAQIN MUTAXASSISLIKLAR BO’YICHA MAGISTRLAR TAYYORLAB BERDI",
-      "KIMYOVIY TEXNOLOGIYALARNING ILMIY-TEXNIKAVIY RIVOJLANISH SUR'ATI TEZ SUR'ATLAR BILAN O'SIB BORMOQDA. ALYUMINIY ISHLAB CHIQARISHNING ELEKTROKIMYOVIY JARAYONINING SANOAT RIVOJLANISHI UCHUN 35 YIL KERAK BO'LDI.",
-      "TKTI BUTUN DUNYO BOʻYLAB 800 DAN ORTIQ TAʼLIM SUBYEKTLARINING IXTIYORIY TASHABBUSI SIFATIDA SHAKLLANGAN. BUGUNGI KUNDA BMT BILAN HAMKORLIK QILAYOTGAN VA MENEJMENT BILAN BOGʻLIQ BOʻLGAN OLIY OʻQUV YURTLARI OʻRTASIDAGI ENG YIRIK UYUSHMA HISOBLANADI."
-    ],
-    "institut": [
-      "Institut",
-      "Rektorat",
-      "Interaktiv xizmatlar','Tkti ish rejasi','Korrupsiayni oldini olish','Biz bilan aloqa','Xalqaro aloqalar','Ilmiy loyihalar','Tkti qoshidagi litsey"
-    ],
-    "institut1": [
-      "Institut",
-      "Biz haqimizda",
-      "Missiyamiz','Institut tuzilmasi','Tarix va meros','Bizning majburiyatlarimiz','Korrupsiyani oldini olish','Bitiruvchilar"
-    ],
+    
+    
     "library": "Kutubxona",
     "contact": "Bog'lanish",
 
     "name": "Hemis talaba ",
     "name2": "Hemis o‘qituvchi",
-    "about": "Biz haqimizda",
-    "product": "Mahsulotlar",
-    "partners": "Hamkorlar",
-    "ContactUs": "Bog'lanish",
-    "language": "Language",
-    "Gallary": "Galeriya"
-  },
-  "Statistic": {
-    "Statistical":"Statistik ma’lumotlar",
-    "facultet":" Fakultetlar",
-    "student":"Talabalar",
-    "Teacher":"O'qituvchilar",
-    "Partners":" Hamkorlari",
-    "OurPartners":" Bizning Hamkorlar",
-    "AreaEducation":"Ta'lim yo'nalishlari",
-    "Education":" Qo'shma ta'lim"
+    "about": "Biz haqimizda"
 
-    
   }
 
 }

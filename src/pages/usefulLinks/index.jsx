@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
-import { useTranslation } from "react-i18next";
-import i18next from "i18next";
 import CountUp from "react-countup";
 import Carousel from "react-multi-carousel";
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+
 import "react-multi-carousel/lib/styles.css";
 import fakultetImg from '../../assets/images/university.png'
 import studentImg from '../../assets/images/student.png'
@@ -73,7 +74,7 @@ export const UsefulLinks = () => {
   return (
     <>
       <div className="container w-full mx-auto  py-10  ">
-        <h3 className="text-4xl text-center p-10 font-semibold"> Statistik ma’lumotlar</h3>
+        <h3 className="text-4xl text-center p-10 font-semibold"> {t("HomePage.3.name")}</h3>
       
         <div className="about_us">
           <Carousel
