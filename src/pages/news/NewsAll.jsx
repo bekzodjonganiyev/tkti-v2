@@ -10,10 +10,10 @@ export { newsReducer } from "./reducer";
 
 export const NewsAll = ({ myKey }) => {
   const { t } = useTranslation();
-  const { getData, getDataById, deleteData } = new NewsActions();
+  const { getData } = new NewsActions();
 
   const getNews = (state) => state.news;
-  const { data, dataById, loading, error } = useSelector(getNews);
+  const { data, loading, error } = useSelector(getNews);
 
   const dispatch = useDispatch();
 

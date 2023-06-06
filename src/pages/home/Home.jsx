@@ -6,12 +6,14 @@ import { ElonAll } from "../announcement/ElonAll";
 import { UsefulLinks } from "../usefulLinks";
 import { Statistics } from "../statistics";
 import { Sillabus } from "../../assets/sillabus";
+import { Gallary } from "../../components/gallary/Gallary";
 
 export const Home = () => {
   return (
     <div>
       <Banner />
       <Sillabus />
+     
       <NewsAll />
       <ElonAll />
       <UsefulLinks />

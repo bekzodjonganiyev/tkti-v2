@@ -131,35 +131,73 @@ export const Navbar = () => {
   const link = [
     {
       name: t("Header.0.name"),
+      desc:t("Institute.0.title"),
       submenu: true,
-      sublinks: url?.res1,
+      sublinks: [{
+        name:t("Institute.1.name"),
+        link: `/institut/biz-haqimiqda`,
+        id:null,
+      },
+      {
+        name:t("Institute.2.name"),
+        link: `/institut/Missiyamiz`,
+        id:null,
+      },
+      {
+        name:t("Institute.4.name"),
+        link: `/institut/tarix`,
+        id:null,
+      },
+      {
+        name:t("Institute.5.name"),
+        link: `/institut/ish-reja`,
+        id:null,
+      },
+      {
+        name:t("Institute.6.name"),
+        link: `/institut/korrupsiya`,
+        id:null,
+      },
+      {
+        name:t("Institute.9.name"),
+        link: `/institut/bog'nalish`,
+        id:null,
+      },
+    ]
+      
     },
     {
       name: t("Header.1.name"),
+      desc:t("Institute.0.title"),
       submenu: true,
       sublinks: url?.res2,
     },
     {
       name: t("Header.2.name"),
+      desc:t("Institute.0.title"),
       submenu: true,
       sublinks: url?.res3,
     },
     {
       name: t("Header.3.name"),
+      desc:t("Institute.0.title"),
       submenu: true,
       sublinks: url?.res4,
     },
     {
       name: t("Header.4.name"),
+      desc:t("Institute.0.title"),
       submenu: true,
       sublinks: url?.res5,
     },
     {
       name: t("Header.5.name"),
+      desc:t("Institute.0.title"),
       submenu: true,
       sublinks: url?.res6,
     },
   ];
+
 
   useEffect(() => {
     // getUrls();
@@ -213,32 +251,31 @@ export const Navbar = () => {
               )}
             </ul>
 
-            {/* TODO - group hover bilan tanishib chiqih va li ning border-bottom iga implement qilish */}
-            {hoveredLink ? (
-              <div
-                className="backdrop-blur-md bg-white shadow z-50 flex justify-between rounded py-2 px-6"
-                onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
-                onMouseLeave={() => setHoveredLink(null)}
-              >
-                <div className="w-1/3">
-                  <p className="uppercase">{hoveredLink?.name}</p>
-                </div>
-                <ul className="grid grid-cols-2 gap-x-6 w-2/3">
-                  {hoveredLink?.sublinks?.map((item, idx) => (
-                    <li className="py-2 border-b border-slate-100" key={idx}>
-                      {/* setIdForFetch() bu funksiya getById uchun id ni taminlab beradi. Link ning to propsida id ishlatishga ruxsat berilmadi */}
-                      <Link
-                        onClick={() => setIdForFetch(item.id)}
-                        to={item.link}
-                      >
-                        {item?.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+          {/* TODO - group hover bilan tanishib chiqih va li ning border-bottom iga implement qilish */}
+          {hoveredLink ? (
+            <div
+              className="backdrop-blur-md bg-[rgba(0,0,0, 0.2)] shadow-blue-900 shadow z-50 flex justify-between rounded p-2"
+              onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
+              onMouseLeave={() => setHoveredLink(null)}
+            >
+          
+
+           
+              <div className="w-1/3">
+                <p className="uppercase">{hoveredLink?.name}</p>
+                {/* <span className="w-[100px] capitalize ">{hoveredLink?.desc}</span> */}
               </div>
-            ) : null}
-          </div>
+              <ul className="grid grid-cols-2 gap-x-6 w-2/3">
+                {hoveredLink?.sublinks?.map((item) => (
+                  <li className="py-2 border-b border-slate-100">
+                    <Link to={item.link}>{item?.name}</Link>
+                  </li>
+                ))}
+              </ul>
+              </div>
+          
+          ) : null}
+        </div>
 
           {/* Mobile header */}
           <div

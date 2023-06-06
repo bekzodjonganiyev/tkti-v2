@@ -12,6 +12,8 @@ import { Loader } from "../loader/Loader";
 import { UniversalComponentActions } from "./action";
 import { useAppContext } from "../../context/app.context";
 
+import './style.css'
+
 export { genericComReducer } from "./reducer";
 export const UniversalComponent = () => {
   const { t } = useTranslation();
