@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Pagination, message, Button, Space, Upload } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { UploadOutlined, LoadingOutlined } from "@ant-design/icons";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import copy from "copy-to-clipboard";
 
@@ -12,9 +12,7 @@ import { useState } from "react";
 export { mediaReducer } from "./reducer";
 export const Media = () => {
   const dispatch = useDispatch();
-  const { data, loading } = useSelector(
-    (state) => state.media
-  );
+  const { data, loading } = useSelector((state) => state.media);
   const { getData, postData, deleteData } = new MediaActions();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -77,7 +75,6 @@ export const Media = () => {
         onChange={onChange}
         total={Number(data.length)}
       /> */}
-      
     </div>
   );
 };
@@ -89,19 +86,23 @@ function FileDisplay({ file }) {
   const imgPrefix = "https://tkti-backend-g6pbz.ondigitalocean.app/";
   return (
     <div className="">
-      <LazyLoadImage
-        src={imgPrefix + file.link}
-        alt={file.name}
-        className="h-[400px] w-[300px]"
-        effect="opacity"
-      />
-      <p className="bg-gray-100 p-2">{file.name}</p>
+      {loading ? (
+        <LoadingOutlined spin />
+      ) : (
+        <LazyLoadImage
+          src={imgPrefix + file?.link}
+          alt={file?.name}
+          className="h-[400px] w-[300px]"
+          effect="opacity"
+        />
+      )}
+      <p className="bg-gray-100 p-2">{file?.name}</p>
       <div className="flex justify-between w-full">
         <button
           className="py-2 px-4 bg-green-500 hover:bg-green-400 text-white text-sm"
           onClick={() => {
-            copy(imgPrefix + file.link);
-            alert("COPIED✔" + imgPrefix + file.link);
+            copy(imgPrefix + file?.link);
+            alert("COPIED✔" + imgPrefix + file?.link);
           }}
         >
           Move the link

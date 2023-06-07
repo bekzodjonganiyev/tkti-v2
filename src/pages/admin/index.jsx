@@ -33,4 +33,28 @@ export { StudentCreate } from "./student/create";
 export { StudentChildEdit } from "./student/edit";
 export { StudentView } from "./student/view";
 
+export { Lidership } from "./lidership";
+export { LidershipCreate } from "./lidership/create";
+export { LidershipEdit } from "./lidership/edit";
+
+export { Faculty } from "./faculty";
+export { FacultyCreate } from "./faculty/create";
+export { FacultyEdit } from "./faculty/edit";
+
+export { Kafedra } from "./kafedra";
+export { KafedraCreate } from "./kafedra/create";
+export { KafedraEdit } from "./kafedra/edit";
+
+export { Department } from "./department";
+export { DepartmentCreate } from "./department/create";
+export { DepartmentEdit } from "./department/edit";
+
+export { Center } from "./center";
+export { CenterCreate } from "./center/create";
+export { CenterEdit } from "./center/edit";
+
+export { News } from "./news";
+export { NewsCreate } from "./news/create";
+export { NewsEdit } from "./news/edit";
+
 export { Media } from "./media";

@@ -1,7 +1,23 @@
 export const sidebarItems = [
   {
-    name: "Institut",
-    url: "institute",
+    name: "Rahbariyat",
+    url: "lidership",
+  },
+  {
+    name: "Fakultet",
+    url: "faculty",
+  },
+  {
+    name: "Kafedra",
+    url: "kafedra",
+  },
+  {
+    name: "Bo'lim",
+    url: "department",
+  },
+  {
+    name: "Markaz",
+    url: "center",
   },
   {
     name: "Ta'lim",
@@ -26,6 +42,10 @@ export const sidebarItems = [
   {
     name: "Talabalar",
     url: "student",
+  },
+  {
+    name: "Yangiliklar",
+    url: "news",
   },
   {
     name: "Media",
