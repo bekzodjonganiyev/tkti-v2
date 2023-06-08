@@ -8,6 +8,7 @@ import Logo from "../../../assets/images/logo.png";
 
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
 import { useAppContext } from "../../../context/app.context";
+import './style.css'
 
 export { headerReducer } from "./reducer";
 export const Navbar = () => {
@@ -230,10 +231,10 @@ export const Navbar = () => {
           elentning linklarni o'rab turgan wrapperning balanligiga tasir
           ko'rsatmasligi */}
 
-            <ul className="flex gap-20 borer border-rd-600 ">
+            <ul className="flex gap-20 borer  border-rd-600 ">
               {link?.map((item, id) =>
                 url.loading ? (
-                  <div className="max-w-xs mx-auto p-4" key={id}>
+                  <div className="max-w-xs mx-auto p-4 " key={id}>
                     <div className="animate-pulse">
                       <div className="bg-gray-200 rounded h-6 max-md:w-56 w-20"></div>
                     </div>
@@ -241,7 +242,7 @@ export const Navbar = () => {
                 ) : (
                   <li
                     key={id}
-                    className="pb-[31px] cursor-pointer"
+                    className="pb-[31px] navbar__hover cursor-pointer"
                     onMouseEnter={() => setHoveredLink({ ...item })}
                     onMouseLeave={() => setHoveredLink(null)}
                   >
@@ -254,16 +255,17 @@ export const Navbar = () => {
           {/* TODO - group hover bilan tanishib chiqih va li ning border-bottom iga implement qilish */}
           {hoveredLink ? (
             <div
-              className="backdrop-blur-md bg-[rgba(0,0,0, 0.2)] shadow-blue-900 shadow z-50 flex justify-between rounded p-2"
+              className=" navbar__hoverItems backdrop-blur-md bg-[rgba(0,0,0, 0.2)] z-50 flex justify-between rounded p-2 "
               onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
               onMouseLeave={() => setHoveredLink(null)}
             >
-              <div className="w-1/3">
+              <div className="w-1/3 navbarDes">
                 <p className="uppercase">{hoveredLink?.name}</p>
+                <p className="navbarDesc">{hoveredLink?.desc}</p>
               </div>
               <ul className="grid grid-cols-2 gap-x-6 w-2/3">
                 {hoveredLink?.sublinks?.map((item) => (
-                  <li className="py-2 border-b border-slate-100">
+                  <li className="py-2 border-b navbar__hoverItem border-slate-100">
                     <Link onClick={() => setIdForFetch(item.id)}  to={item.link}>{item?.name}</Link>
                   </li>
                 ))}

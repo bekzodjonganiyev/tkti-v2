@@ -88,7 +88,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
               style={{ width: "100%" }}
               loading={loading}
             >
-              Saqlash769tgtu7
+              Saqlash
             </Button>
           </Form.Item>
         </Form>
@@ -198,6 +198,16 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
                       ]}
                       className="w-[40%]"
                     >
+                       <div
+                    className="mb-2 text-gray-500 dark:text-gray-400"
+                    dangerouslySetInnerHTML={{
+                      __html: t("faq.desc", {
+                        faq_content_body: `${
+                          item?.[`body_uz}`]
+                        }`,
+                      }),
+                    }}
+                  />
                       <Input.TextArea placeholder="Last Name" />
                     </Form.Item>
                     <MinusCircleOutlined onClick={() => remove(name)} />
