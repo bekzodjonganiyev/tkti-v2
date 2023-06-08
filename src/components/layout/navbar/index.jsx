@@ -164,6 +164,11 @@ export const Navbar = () => {
         link: `/institut/bog'nalish`,
         id:null,
       },
+      {
+        name: "Tuzilma",
+        link: `/institut/tuzilma`,
+        id:null,
+      },
     ]
       
     },

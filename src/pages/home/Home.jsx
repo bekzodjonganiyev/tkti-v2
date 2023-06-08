@@ -1,7 +1,6 @@
 import Banner from "../../components/banner";
 
-import { NewsAll } from "../news/NewsAll";
-import { ElonAll } from "../announcement/ElonAll";
+import { News } from "../news";
 
 import { UsefulLinks } from "../usefulLinks";
 import { Statistics } from "../statistics";
@@ -13,9 +12,7 @@ export const Home = () => {
     <div>
       <Banner />
       <Sillabus />
-     
-      <NewsAll />
-      <ElonAll />
+      <News />
       <UsefulLinks />
       <Statistics />
     </div>

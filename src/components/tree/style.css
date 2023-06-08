@@ -1,0 +1,25 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .myLabelComponentInSvg {
+    height: 70px;
+    width: 180px;
+    margin: 10px;
+  }
+  
+
+  .node__root > circle {
+    fill: red;
+  }
+  
+  .node__branch > circle {
+    fill: yellow;
+  }
+  
+  .node__leaf > circle {
+    fill: green;
+    /* Let's also make the radius of leaf nodes larger */
+    r: 40;
+  }

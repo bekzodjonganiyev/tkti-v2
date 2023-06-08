@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 
 import { UserLayout, AdminLayout } from "./components/layout";
+import { Details } from "./components/details";
+import TreeInstitute from "./components/tree/TreeComp"
 import {
   ProtectedRoute,
   SplitterComponent,
@@ -13,13 +15,12 @@ import {  Home } from "./pages";
 import { AboutUS } from "./pages/institut/aboutUs";
 import { Mission} from "./pages/institut/mission";
 import {ContactUs} from "./pages/institut/contactUs/ContactUs"
-
-import { Announcement } from "./pages/announcement";
-
 import WorkPlan from "./pages/institut/workPlan";
 import Corruption from "./pages/institut/corrupsion/Corrupsion";
-import { Details, DetailsElon } from "./components/details";
 import History from "./pages/institut/history";
+import { News } from "./pages/news";
+
+
 
 function App() {
 
@@ -51,22 +52,14 @@ function App() {
           <Route path="institut/Missiyamiz" element={<Mission/>} />
           <Route path="institut/ish-reja" element={<WorkPlan />} />
           <Route path="institut/tarix" element={<History/>} />
-          {/* <Route path="test" element={<Test/>} /> */}
           <Route path="institut/korrupsiya" element={<Corruption />} />
-          {/* <Route path="news" element={<News />} /> */}
-          <Route path="elon" element={<Announcement />} />
+          <Route path="institut/tuzilma" element={<TreeInstitute/>} />
+          <Route path="elon" element={<TreeInstitute />} />
+          <Route path="news" element={<News />} />
           
           {/* TODO - splitter va universal componentlarni optimizatsiya qilish kerak, misol uchun memoga o'rash kerek va hk */}
-          <Route
-            path="/:page/:id/"
-            element={
-              <SplitterComponent>
-                <UniversalComponent />
-              </SplitterComponent>
-            }
-          />
+          <Route path="/:page/:id/"  element={<SplitterComponent><UniversalComponent /></SplitterComponent> } />
           <Route path="/:page/:id/:name" element={<UniversalComponent />} />
-          <Route path="/elon/:id" element={<DetailsElon />} />
           <Route path="/news/:id" element={<Details />} />
         </Route>
 
