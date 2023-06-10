@@ -1,13 +1,12 @@
 import { useState } from "react";
 import TextEditor from "../text_editor/TextEditor";
-import { Button, Form, Input, Select, Upload, Modal } from "antd";
+import { Button, Form, Input, Select, Upload, Modal, DatePicker } from "antd";
 import {
   UploadOutlined,
   MinusCircleOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
 
-/* eslint-disable no-template-curly-in-string */
 const validateMessages = {
   required: "${label} is required!",
   types: {
@@ -18,19 +17,26 @@ const validateMessages = {
     range: "${label} must be between ${min} and ${max}",
   },
 };
-/* eslint-enable no-template-curly-in-string */
 
-export const AddForm = ({ parents, postParent, loading, postChild }) => {
+const typesOfNews = [
+  { value: "yangilik", label: "Yangilik"},
+  { value: "elon", label: "Elon"},
+  { value: "video", label: "Video galeriya"},
+]
+
+export const AddForm = ({ parents, postParent, loading, postChild, newsForm }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [parentId, setParentId] = useState("");
+  const [dateOfNew, setDateOfNew] = useState("");
+  const [category, setCategory] = useState("");
 
   const [editor, setEditor] = useState({
     uz: "",
     ru: "",
     en: "",
   });
+
   const submitChild = (value) => {
-    
     const fmData = new FormData();
     fmData.append("title_uz", value.title_uz);
     fmData.append("title_ru", value.title_ru);
@@ -38,16 +44,23 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
     fmData.append("body_uz", editor?.uz);
     fmData.append("body_ru", editor?.ru);
     fmData.append("body_en", editor?.en);
-    fmData.append("nameId", parentId);
+    
 
     value.file?.length > 0
       ? value.file.forEach((item) => {
-          fmData.append("file", item.originFileObj);
+          fmData.append(`${newsForm ? "photo" : "file"}`, item.originFileObj);
         })
       : null;
     value.faq?.length > 0
-      ? fmData.append("faq", JSON.stringify(value.faq))
+      ? fmData.append("faq", value.faq)
       : null;
+    
+    if (newsForm) {
+      fmData.append("date", dateOfNew)
+      fmData.append("category", category)
+    } else {
+      fmData.append("nameId", parentId)
+    }
 
     postChild(fmData);
   };
@@ -62,6 +75,13 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
     return e?.fileList;
   };
 
+  const onChange = (date, dateString) => {
+    setDateOfNew(date.$d)
+  };
+
+  const handleChange = (value) => {
+    setCategory(value);
+  };
   return (
     <>
       <Modal
@@ -109,6 +129,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
         >
           <Input />
         </Form.Item>
+
         <Form.Item
           name="title_ru"
           label="Name"
@@ -116,6 +137,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
         >
           <Input />
         </Form.Item>
+
         <Form.Item
           name="title_en"
           label="Name"
@@ -143,31 +165,48 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
         />
         <hr />
 
-        <Form.Item label="Qo'shish" className="my-8">
-          <Select value={parentId} onChange={(e) => setParentId(e)}>
-            {parents.map((item) => (
-              <Option key={item._id} value={item._id}>
-                {item.title_uz}
-              </Option>
-            ))}
-          </Select>{" "}
-          <Button
-            className="my-8 bg-blue-600 text-white"
-            onClick={() => setIsModalOpen(true)}
-          >
-            + Bo'lim qo'shish
-          </Button>
-        </Form.Item>
+        {
+          newsForm 
+           ?  <div className="flex gap-10 w-full">
+                  <Form.Item className="mt-10 w-10/12" >
+                      <Select 
+                          placeholder="Yangilikning turini tanlang"
+                          options={typesOfNews}
+                          onChange={handleChange}
+                          allowClear
+                      />
+                  </Form.Item>
+                  <Form.Item className="mt-10 w-2/12" >
+                      <DatePicker onChange={onChange} className="w-full"/>
+                  </Form.Item>
+              </div> 
+           :  <Form.Item label="Qo'shish" className="my-8">
+                  <Select value={parentId} onChange={(e) => setParentId(e)}>
+                    {parents.map((item) => (
+                      <Option key={item._id} value={item._id}>
+                        {item.title_uz}
+                      </Option>
+                    ))}
+                  </Select>
+                  <Button
+                    className="my-8 bg-blue-600 text-white"
+                    onClick={() => setIsModalOpen(true)}
+                  >
+                    + Bo'lim qo'shish
+                  </Button>
+              </Form.Item>
+        }
+
         <Form.Item
           name="file"
-          label="Upload"
           valuePropName="fileList"
           getValueFromEvent={normFile}
         >
           <Upload name="logo" listType="picture">
-            <Button icon={<UploadOutlined />}>Click to upload</Button>
+            <Button type=" " icon={<UploadOutlined className="text-2xl"/>} className="bg-red-700 text-white text-lg h-12">Fayl yuklash</Button>
           </Upload>
         </Form.Item>
+
         <Form.List name="faq" className="my-8">
           {(fields, { add, remove }) => (
             <>
@@ -276,6 +315,7 @@ export const AddForm = ({ parents, postParent, loading, postChild }) => {
             </>
           )}
         </Form.List>
+
         <Form.Item>
           <Button htmlType="submit" className="bg-blue-600 text-white">
             Submit

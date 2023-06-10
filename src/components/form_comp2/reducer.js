@@ -17,14 +17,13 @@ export const form2Reducer = (state = form2InitialState, action) => {
     case form2ActionTypes.error:
       return {
         loading: false,
-        options: [],
-        dataById: {},
         success: false,
         error: action.payload,
       };
     case form2ActionTypes.getOptions:
       return {
         // AntD Select componenti uchun options props ga mos tushadigan qilib qo'yildi
+        ...state,
         options: action.payload.map((item) => ({
           value: item._id,
           label: item.title_uz,
@@ -35,6 +34,7 @@ export const form2Reducer = (state = form2InitialState, action) => {
       };
     case form2ActionTypes.getDataById:
       return {
+        ...state,
         dataById: action.payload,
         success: true,
         loading: false,

@@ -13,6 +13,7 @@ import { qabulChildReducer, qabulParentReducer } from "../pages/admin/qabul";
 import { userReducer } from "../pages/login/reducer";
 import { mediaReducer } from "../pages/admin/media";
 import { form2Reducer } from "../components/form_comp2";
+import { newsReducer } from "../pages/admin/news";
 
 export const rootReducers = combineReducers({
   aboutUs: aboutUsReducer,
@@ -40,6 +41,6 @@ export const rootReducers = combineReducers({
 
   user: userReducer,
   media: mediaReducer,
-
-  form2: form2Reducer
+  form2: form2Reducer,
+  news: newsReducer
 });

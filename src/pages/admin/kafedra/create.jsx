@@ -1,7 +1,11 @@
-import React from 'react'
+import { AddForm2 } from "../../../components";
 
 export const KafedraCreate = () => {
   return (
-    <div>KafedraCreate</div>
+    <AddForm2
+      hasSelect={true}
+      selectUrl={"Fak_data/all"}
+      url={"Kafedra_data/add"}
+    />
   )
 }
