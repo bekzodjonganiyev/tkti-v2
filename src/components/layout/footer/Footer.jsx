@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import logo from "../../../assets/images/logo.png";
+import logo from "../../../assets/images/Component1.png";
 
 import {
   TelegramIcon,
@@ -41,17 +41,29 @@ export const Footer = () => {
               <div className="flex gap-4    items-end justify-between ">
                 <div className="lg:flex lg:flex-col flex-row-reverse   max-md:flex-col max-md:gap-10 ">
                   <div className="flex lg:gap-5 gap-3 ">
+                   
+                    <Link to={`https://www.facebook.com/botir.usmonov.5?wtsid=rdr_09Vv2M1MyqnwE1349`}>
+                    
                     <FacebookIcon color="white " />
+                    </Link>
 
                     <YouTubeIcon color="white" />
-
+                    <Link to="https://t.me/b_shukurillaevich">
                     <TelegramIcon color="white" />
+                    </Link>
+<Link to="https://www.instagram.com/b.usmonov_/"> 
 
                     <InstagramIcon color="white" />
+</Link>
+<Link to={`https://www.linkedin.com/in/botir-usmonov-1228085/`}>
+
 
                     <Linkedin color="white" />
+</Link>
+<Link to={`https://www.researchgate.net/profile/Botir-Usmonov`}>
 
                     <Talim color="white" />
+</Link>
                   </div>
                   <div className="flex items-center gap-2 my-3">
                     <PhoneIcon />

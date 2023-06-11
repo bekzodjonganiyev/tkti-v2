@@ -23,10 +23,10 @@ export const Banner = () => {
      {loading ? (
         <h1>Loading...</h1>
       ) :(
-<div className="container-fluid w-[100%] h-[100vh]">
+<div className="container-fluid w-[100%] h-[83vh]">
   <Carousel>
     {data?.map((item)=>(
-      <div key={item._id} className="h-[100vh] bg-cover">
+      <div key={item._id} className="h-[83vh] bg-cover">
       <img
         src={`https://backend.tkti.uz/${item.banner_img}`}
         width="100%"

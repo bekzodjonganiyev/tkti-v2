@@ -4,11 +4,7 @@
     { "name": "ХИМИКО-ТЕХНОЛОГИЧЕСКИЙ" },
     { "name": " ИНСТИТУТ" }
   ],
-  "TktiName":[
-    { "name": "ТАШКЕНТСКИЙ" },
-    { "name": "ХИМИКО-ТЕХНОЛОГИЧЕСКИЙ" },
-    { "name": " ИНСТИТУТ" }
-  ],
+
   "headerTop": [
     { "name": "Хемис студент" },
     { "name": "Хемис учитель" },
@@ -26,6 +22,16 @@
     { "name": "Научное исследование" },
     { "name": "Международные отношения" }
   ],
+  "Statistic": {
+    "Statistical":"Статистические данные",
+    "facultet":"ФАКУЛЬТЕТЫ",
+    "student":"СТУДЕНТЫ",
+    "Teacher":"УЧИТЕЛЯ",
+    "Partners":"ПАРТНЕРЫ",
+    "OurPartners":"НАШИ ПАРТНЕРЫ",
+    "AreaEducation":"НАПРАВЛЕНИЯ ОБРАЗОВАНИ",
+    "Education":"СОВМЕСТНЫЕ ОБРАЗОВАТЕЛЬНЫЕ ПРОГРАММЫ"
+  },
   "HomePage":[
     { "name": "Найдите программу" },
     { "name": "Новости" },
@@ -33,13 +39,7 @@
     { "name": "Статистические данные" },
     { "name": "Полезные ссылки" }
   ],
-  "HomePage":[
-    { "name": "Найдите программу" },
-    { "name": "Новости" },
-    { "name": "Объявления" },
-    { "name": "Статистические данные" },
-    { "name": "Полезные ссылки" }
-  ],
+
   "Institute": [
     {
       "title": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN "

@@ -8,7 +8,6 @@ export const fetchApi = async (url, data) => {
     return message;
   }
 };
-
 export const http = axios.create({
   baseURL: "https://backend.tkti.uz/",
   headers: {

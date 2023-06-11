@@ -266,7 +266,7 @@ export const Navbar = () => {
             >
               <div className="w-1/3 navbarDes">
                 <p className="uppercase">{hoveredLink?.name}</p>
-                <p className="navbarDesc">{hoveredLink?.desc}</p>
+                <p className="navbarDesc lowercase ">{hoveredLink?.desc}</p>
               </div>
               <ul className="grid grid-cols-2 gap-x-6 w-2/3">
                 {hoveredLink?.sublinks?.map((item) => (
