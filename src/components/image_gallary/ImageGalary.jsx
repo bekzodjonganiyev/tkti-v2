@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PhotoAlbum from "react-photo-album";
-import { Link } from "react-router-dom";
 import Lightbox from "yet-another-react-lightbox";
-import { Spinner } from "flowbite-react";
 import "yet-another-react-lightbox/styles.css";
 
 // import optional lightbox plugins
@@ -14,23 +12,27 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import { baseURL } from "../../services/http";
 export const ImageGallary = ({ imgSrcs }) => {
-  const [photos, setPhotos] = useState({
-    data: [],
-    isLoading: true,
-    error: null,
-  });
+  
 
   const [index, setIndex] = useState(-1);
   const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
   
+  const hMaker = (string) => {
+    const a = string?.split("(")
+    if (Array.isArray(a)) {
+      return a[0].trim()
+    } else {
+      return a
+    }
+  }
+
   const whMaker = (string) => {
-    const imgName = string.split("/")[1]
-    const imgSize = imgName.split("-")[0]
-    const width = Number(imgSize.split("x")[0])
-    const height = Number(imgSize.split("x")[1])
+    const imgName = string.split("/")[1] // uploadsdan halos boldi 5444x7444-237374338.jpg
+    const imgSize = imgName.split("-")[0] // 5444x7444 holatga keldi {bug bor} bug hMaker() bilan hal boldi
+    const width = Number(imgSize.split("x")[0]) // 5444 
+    const height = Number(hMaker(imgSize.split("x")[1])) // 7444 {bug bor} bug hMaker() bilan hal boldi
     return {width: width, height: height}
   }
-  console.log(whMaker("uploads/6000x4001-1686650393207 (5454)-jsj.JPG"), "from test")
   const images = imgSrcs.map((photo) => ({
     src: baseURL + photo,
     width: whMaker(photo).width,
@@ -45,9 +47,6 @@ export const ImageGallary = ({ imgSrcs }) => {
     }),
   }));
   
-  console.log(imgSrcs)
-  console.log(images)
-
   const slides = images?.map(({ src, width, height, sliderImages }) => ({
     src,
     width,
@@ -63,7 +62,7 @@ export const ImageGallary = ({ imgSrcs }) => {
     <div className="mb-24 container mx-auto">
       <PhotoAlbum
         photos={images}
-        layout="rows"
+        layout="columns"
         spacing={20}
         targetRowHeight={300}
         onClick={({ index }) => setIndex(index)}

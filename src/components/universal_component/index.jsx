@@ -83,7 +83,7 @@ export const UniversalComponent = () => {
             </Accordion>
           )}
           {data?.file?.length > 0 ? (
-              <ImageGallary imgSrcs={item?.file} />
+              <ImageGallary imgSrcs={data?.file} />
             ) : null}
         </div>
       ) : (
