@@ -72,7 +72,7 @@ export const Footer = () => {
 
                   <div className="flex items-center gap-2 my-3">
                     <Email />
-                    <span className="text-white"> Info.tkti.uz</span>
+                    <span className="text-white"> info@tkti.uz</span>
                   </div>
                 </div>
               </div>

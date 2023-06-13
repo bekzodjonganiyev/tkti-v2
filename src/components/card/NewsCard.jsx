@@ -22,17 +22,25 @@ export const NewsCard = ({
   id
 }) => {
   const {t} = useTranslation()
+  const filtered = (title) => {
+    const replaced = title.replace(/['~"#“‘`]+/g, "");
+    const slug = replaced
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+    return slug;
+  };
   return (
     <Link 
     // to={`/${i18next.language}/news/details/${category}/${endpoint}`}
-    to={`/news/${id}`}
+    to={`/news/${filtered(id)}`}
     >
       <div className={`flex rounded-xl  border-red-900 ${inner ? "gap-5 sm:flex-row flex-col " : "flex-col w-[100%] md:w-56 lg:w-72 xl:w-[380] 2xl:w-[430px]"}`}>
         <div className={`relative`}>
           <LazyLoadImage
             src={img}
             alt={`Image Alt`}
-            className={`img-lazy ${inner ? "sm:w-60 sm:h-44 w-full h-auto" : "w-full h-full "} rounded-xl`}
+            className={`img-lazy ${inner ? "sm:w-60 sm:h-44 w-full h-auto" : "w-full h-72 "} rounded-xl`}
             placeholderSrc={placeholder}
             effect="blur" // opacity | black-and-white
           />

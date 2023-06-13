@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { Carousel } from "flowbite-react";
 import { useSelector, useDispatch } from "react-redux";
-import { BannerActions } from "./actions";
+
 import "./slider.css";
 
-import { Carousel } from "flowbite-react";
-export * from "./reducer";
+import { BannerActions } from "./actions";
+import { baseURL } from "../../services/http";
+
 export const Banner = () => {
   const { getData } = new BannerActions();
 
@@ -15,9 +17,9 @@ export const Banner = () => {
   useEffect(() => {
     dispatch(getData());
   }, []);
-
+  
   if (error) return <h1>{error}</h1>;
-
+  
   return (
     <>
      {loading ? (
@@ -28,12 +30,12 @@ export const Banner = () => {
     {data?.map((item)=>(
       <div key={item._id} className="h-[83vh] bg-cover">
       <img
-        src={`https://backend.tkti.uz/${item.banner_img}`}
+        src={`${baseURL}${item.banner_img}`}
         width="100%"
         height="100%"
         alt={item.name}
         className="bg-cover bg-center"
-      />
+        />
     </div>
     ))}
 
@@ -44,4 +46,4 @@ export const Banner = () => {
   );
 };
 
-export default Banner;
+export * from "./reducer";

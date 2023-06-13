@@ -5,6 +5,7 @@ import { bannerReducer } from "../components/banner";
 import { genericComReducer } from "../components/universal_component";
 import { splitterCompReducer } from "../components/splitter_component";
 import { newsReducer } from "../pages/news";
+import { tabCompReducer } from "../components/tab_component";
 
 export const rootReducers = combineReducers({
   details: detailsReducer,
@@ -12,5 +13,6 @@ export const rootReducers = combineReducers({
   banner: bannerReducer,
   genericCom: genericComReducer,
   splitterComp: splitterCompReducer,
+  tabComp: tabCompReducer,
   news: newsReducer
 });

@@ -8,7 +8,7 @@ import Logo from "../../../assets/images/logo.png";
 
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
 import { useAppContext } from "../../../context/app.context";
-import './style.css'
+import "./style.css";
 
 export { headerReducer } from "./reducer";
 export const Navbar = () => {
@@ -131,79 +131,81 @@ export const Navbar = () => {
 
   const link = [
     {
-      name: t("Header.0.name"),
-      desc:t("Institute.0.title"),
-      submenu: true,
-      sublinks: [{
-        name:t("Institute.1.name"),
-        link: `/institut/biz-haqimiqda`,
-        id:null,
-      },
-      {
-        name:t("Institute.2.name"),
-        link: `/institut/Missiyamiz`,
-        id:null,
-      },
-      {
-        name:t("Institute.4.name"),
-        link: `/institut/tarix`,
-        id:null,
-      },
-      {
-        name:t("Institute.5.name"),
-        link: `/institut/ish-reja`,
-        id:null,
-      },
-      {
-        name:t("Institute.6.name"),
-        link: `/institut/korrupsiya`,
-        id:null,
-      },
-      {
-        name:t("Institute.9.name"),
-        link: `/institut/bog'nalish`,
-        id:null,
-      },
-      {
-        name: "Tuzilma",
-        link: `/institut/tuzilma`,
-        id:null,
-      },
-    ]
-      
-    },
-    {
       name: t("Header.1.name"),
-      desc:t("Institute.0.title"),
+      desc: t("Institute.0.title"),
       submenu: true,
       sublinks: url?.res2,
     },
     {
-      name: t("Header.2.name"),
-      desc:t("Institute.0.title"),
+      name: t("Header.0.name"),
+      desc: t("Institute.0.title"),
       submenu: true,
-      sublinks: url?.res3,
-    },
-    {
-      name: t("Header.3.name"),
-      desc:t("Institute.0.title"),
-      submenu: true,
-      sublinks: url?.res4,
+      sublinks: [
+        {
+          name: t("Institute.1.name"),
+          link: `/institut/biz-haqimiqda`,
+          id: null,
+        },
+        // {
+        //   name: t("Institute.2.name"),
+        //   link: `/institut/Missiyamiz`,
+        //   id: null,
+        // },
+        // {
+        //   name: t("Institute.4.name"),
+        //   link: `/institut/tarix`,
+        //   id: null,
+        // },
+        {
+          name: t("Institute.5.name"),
+          link: `/institut/ish-reja`,
+          id: null,
+        },
+        {
+          name: t("Institute.6.name"),
+          link: `/institut/korrupsiya`,
+          id: null,
+        },
+        {
+          name: t("Institute.9.name"),
+          link: `/institut/bog'nalish`,
+          id: null,
+        },
+        {
+          name: t("Institute.3.name"),
+          link: `/institut/tuzilma`,
+          id: null,
+        },
+      ],
     },
     {
       name: t("Header.4.name"),
-      desc:t("Institute.0.title"),
+      desc: t("Institute.0.title"),
       submenu: true,
       sublinks: url?.res5,
     },
     {
       name: t("Header.5.name"),
-      desc:t("Institute.0.title"),
+      desc: t("Institute.0.title"),
       submenu: true,
       sublinks: url?.res6,
     },
-  ];
 
+    {
+      name: t("Header.2.name"),
+      desc: t("Institute.0.title"),
+      submenu: true,
+      sublinks: url?.res3,
+    },
+    {
+      name: t("Header.3.name"),
+      desc: t("Institute.0.title"),
+      submenu: true,
+      sublinks: url?.res4,
+    },
+    
+    
+  ];
 
   useEffect(() => {
     // getUrls();
@@ -257,27 +259,32 @@ export const Navbar = () => {
               )}
             </ul>
 
-          {/* TODO - group hover bilan tanishib chiqih va li ning border-bottom iga implement qilish */}
-          {hoveredLink ? (
-            <div
-              className=" navbar__hoverItems backdrop-blur-md bg-[rgba(0,0,0, 0.2)] z-50 flex justify-between rounded p-2 "
-              onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
-              onMouseLeave={() => setHoveredLink(null)}
-            >
-              <div className="w-1/3 navbarDes">
-                <p className="uppercase">{hoveredLink?.name}</p>
-                <p className="navbarDesc lowercase ">{hoveredLink?.desc}</p>
+            {/* TODO - group hover bilan tanishib chiqih va li ning border-bottom iga implement qilish */}
+            {hoveredLink ? (
+              <div
+                className=" navbar__hoverItems backdrop-blur-md bg-[rgba(0,0,0, 0.2)] z-50 flex justify-between rounded p-2 "
+                onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
+                onMouseLeave={() => setHoveredLink(null)}
+              >
+                <div className="w-1/3 navbarDes">
+                  <p className="uppercase">{hoveredLink?.name}</p>
+                  <p className="navbarDesc lowercase ">{hoveredLink?.desc}</p>
+                </div>
+                <ul className="grid grid-cols-2 grid-flow-row-dense gap-x-6 w-2/3">
+                  {hoveredLink?.sublinks?.map((item) => (
+                    <li className="py-2 border-b navbar__hoverItem border-slate-100">
+                      <Link
+                        onClick={() => setIdForFetch(item.id)}
+                        to={item.link}
+                      >
+                        {item?.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="grid grid-cols-2 gap-x-6 w-2/3">
-                {hoveredLink?.sublinks?.map((item) => (
-                  <li className="py-2 border-b navbar__hoverItem border-slate-100">
-                    <Link onClick={() => setIdForFetch(item.id)}  to={item.link}>{item?.name}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-        </div>
+            ) : null}
+          </div>
 
           {/* Mobile header */}
           <div
@@ -341,7 +348,10 @@ export const Navbar = () => {
                         {item?.sublinks?.map((subItem, idx) => (
                           <li className="my-2 list-disc" key={idx}>
                             <Link
-                              onClick={() => setOpen(false)}
+                              onClick={() => {
+                                setIdForFetch(item.id);
+                                setOpen(false);
+                              }}
                               to={subItem.link}
                             >
                               {subItem.name}

@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 const Corruption = () => {
     const { t } = useTranslation();
   const imageArray = [
-    { id: "1681730366292", width: "1000", height: "900" },
     { id: "1681730278827", width: "1000", height: "900" },
     { id: "1681730235869", width: "1000", height: "900" },
   ]
@@ -24,7 +23,7 @@ const Corruption = () => {
     }),
   }));
   return (
-    <div className="wrapped mb-5">
+    <div className="container mx-auto mb-5">
       <h3 className="text-center my-3 text-3xl font-bold">{t("Korruption.0.name")}</h3>
       <div className="text-xl w[80%] mx-auto">
         <p>

@@ -1,22 +1,27 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { Accordion } from "flowbite-react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Accordion, Spinner } from "flowbite-react";
+import Slider from "react-slick";
 import i18next from "i18next";
 
 import "./style.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 import { Loader } from "../loader/Loader";
 
 import { UniversalComponentActions } from "./action";
 import { useAppContext } from "../../context/app.context";
-
-import './style.css'
+import { baseURL } from "../../services/http";
 
 export { genericComReducer } from "./reducer";
 export const UniversalComponent = () => {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
 
   const dispatch = useDispatch();
   const genericCom = (state) => state.genericCom;
@@ -32,10 +37,16 @@ export const UniversalComponent = () => {
     dispatch(getData(`${page}/${idForFetch}`));
   }, [page, idForFetch]);
 
-  if (loading)
-    return (
-      <Loader />
-    );
+  console.log(data);
+
+  const settings = {
+    infinite: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  if (loading) return <Loader />;
 
   return (
     <div className="container mx-auto max-md:px-5 py-10 uni-comp-wrapper">
@@ -44,6 +55,48 @@ export const UniversalComponent = () => {
           <h1 className="text-3xl font-bold mb-5">
             {data[`title_${i18next.language}`]}
           </h1>
+          <Slider
+            {...settings}
+            autoplay={true}
+            cssEase="linear"
+            autoplaySpeed={4000}
+            // fade={true}
+            pauseOnHover={false}
+          >
+            {data?.file?.map((item) => (
+              <div
+                className="w-full h-[700px] max-md:h-auto relative -z-30 bg-black"
+                key={item}
+              >
+                <div className="absolute md:top-1/3 left-1/2 md:-translate-x-1/2 z-50 max-md:bottom-20 max-md:left-0 max-md:px-4">
+                  <h1 className="text-5xl font-bold text-white text-center shadow-md max-md:hidden">
+                    YANGIYER FLOUR{" "}
+                    <span className="text-primary_color">TRADING</span>
+                  </h1>
+                  {/* <p className="text-xl text-white text-center mt-10">
+                  {item.title}
+                </p> */}
+                </div>
+                <LazyLoadImage
+                  style={{
+                    opacity: "0.5",
+                  }}
+                  src={baseURL + item}
+                  alt={"qabul rasmlari"}
+                  effect={"blur"}
+                  placeholder={
+                    <Spinner
+                      color="info"
+                      aria-label="Extra large spinner example"
+                      size="xl"
+                    />
+                  }
+                  width={"100%"}
+                  height={"100%"}
+                />
+              </div>
+            ))}
+          </Slider>
           <div
             className="uni-comp-body mb-10"
             dangerouslySetInnerHTML={{
@@ -69,10 +122,59 @@ export const UniversalComponent = () => {
         </div>
       ) : (
         data?.child?.map((item) => (
-          <div  key={item._id}>
-            <h1 className="text-3xl font-bold mb-5">
+          <div key={item._id}>
+            <h1
+              className="text-3xl font-bold mb-5"
+              onClick={() => console.log(item.file)}
+            >
               {item[`title_${i18next.language}`]}
             </h1>
+            {item?.file?.length > 0 ? (
+              <Slider
+                {...settings}
+                autoplay={true}
+                cssEase="linear"
+                autoplaySpeed={4000}
+                // fade={true}
+                pauseOnHover={false}
+              >
+                {item?.file?.map((subItem) => (
+                  <div
+                    className="w-full h-[700px] max-md:h-auto relative -z-30 bg-black"
+                    key={subItem}
+                  >
+                    <div className="absolute md:top-1/3 left-1/2 md:-translate-x-1/2 z-50 max-md:bottom-20 max-md:left-0 max-md:px-4">
+                      <h1 className="text-5xl font-bold text-white text-center shadow-md max-md:hidden">
+                        YANGIYER FLOUR{" "}
+                        <span className="text-primary_color">TRADING</span>
+                      </h1>
+                      {/* <p className="text-xl text-white text-center mt-10">
+                        {item.title}
+                      </p> */}
+                    </div>
+                    <LazyLoadImage
+                      style={{
+                        opacity: "0.5",
+                      }}
+                      src={baseURL + subItem}
+                      alt={"qabul rasmlari"}
+                      effect={"blur"}
+                      placeholder={
+                        <Spinner
+                          color="info"
+                          aria-label="Extra large spinner example"
+                          size="xl"
+                        />
+                      }
+                      width={"100%"}
+                      height={"100%"}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            ) : (
+              null
+            )}
             <div
               className="uni-comp-body mb-10"
               dangerouslySetInnerHTML={{
@@ -98,6 +200,48 @@ export const UniversalComponent = () => {
           </div>
         ))
       )}
+      <Slider
+        {...settings}
+        autoplay={true}
+        cssEase="linear"
+        autoplaySpeed={4000}
+        // fade={true}
+        pauseOnHover={false}
+      >
+        {data?.child?.file?.map((item) => (
+          <div
+            className="w-full h-[700px] max-md:h-auto relative -z-30 bg-black"
+            key={item}
+          >
+            <div className="absolute md:top-1/3 left-1/2 md:-translate-x-1/2 z-50 max-md:bottom-20 max-md:left-0 max-md:px-4">
+              <h1 className="text-5xl font-bold text-white text-center shadow-md max-md:hidden">
+                YANGIYER FLOUR{" "}
+                <span className="text-primary_color">TRADING</span>
+              </h1>
+              {/* <p className="text-xl text-white text-center mt-10">
+                  {item.title}
+                </p> */}
+            </div>
+            <LazyLoadImage
+              style={{
+                opacity: "0.5",
+              }}
+              src={baseURL + item}
+              alt={"qabul rasmlari"}
+              effect={"blur"}
+              placeholder={
+                <Spinner
+                  color="info"
+                  aria-label="Extra large spinner example"
+                  size="xl"
+                />
+              }
+              width={"100%"}
+              height={"100%"}
+            />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

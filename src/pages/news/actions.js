@@ -8,13 +8,15 @@ export const SET_OPEN_NAVBAR = "SET_OPEN_NAVBAR";
 import apiClientWithFetch from "../../services/apiClientWithFetch";
 
 export class NewsActions {
-  getData(page, category) {
-    const params = `?category=${category}&page=$`
+  getData(category, page ) {
+    const url = page
+      ? `news/all?category=${category}&page${page}`
+      : `news/all?category=${category}`;
     return async (dispatch) => {
       dispatch({
         type: REQUEST_NEWS,
       });
-      const res = await apiClientWithFetch.get("news/all");
+      const res = await apiClientWithFetch.get(url);
       if (res.status === 200) {
         dispatch({
           type: GET_NEWS,

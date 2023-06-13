@@ -10,30 +10,24 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
 
+const imageArray = [
+  { id: "1686550782827", width: "6000", height: "4000" },
+  { id: "1686550791803", width: "6000", height: "4000" },
+  { id: "1686550929282", width: "6000", height: "4000" },
+  { id: "1686550803192", width: "6000", height: "4000" },
+  { id: "1686550912100", width: "6000", height: "4000" },
+ 
+]
 const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
 
-const unsplashLink = (id, width, height) =>
-  `https://source.unsplash.com/${id}/${width}x${height}`;
-
-const unsplashPhotos = [
-  { id: "Osq7UAVxIOI", width: 1080, height: 780 },
-  { id: "Dhmn6ete6g8", width: 1080, height: 1620 },
-  { id: "RkBTPqPEGDo", width: 1080, height: 720 },
-  { id: "Yizrl9N_eDA", width: 1080, height: 721 },
-
-  { id: "GbLS6YVXj0U", width: 1080, height: 810 },
-  { id: "9CRd1J1rEOM", width: 1080, height: 720 },
-  { id: "xKhtkhc9HbQ", width: 1080, height: 1440 },
-];
-
-const photos = unsplashPhotos.map((photo) => ({
-  src: unsplashLink(photo.id, photo.width, photo.height),
+const photos = imageArray.map((photo) => ({
+  src: `https://backend.tkti.uz//uploads/file-${photo.id}.JPG`,
   width: photo.width,
   height: photo.height,
   images: breakpoints.map((breakpoint) => {
     const height = Math.round((photo.height / photo.width) * breakpoint);
     return {
-      src: unsplashLink(photo.id, breakpoint, height),
+      src: `https://backend.tkti.uz//uploads/file-${photo.id}.JPG`,
       width: breakpoint,
       height,
     };

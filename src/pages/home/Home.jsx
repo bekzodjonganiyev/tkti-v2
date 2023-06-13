@@ -1,4 +1,4 @@
-import Banner from "../../components/banner";
+import {Banner} from "../../components/banner";
 
 import { News } from "../news";
 
@@ -12,7 +12,7 @@ export const Home = () => {
     <div>
       <Banner />
       <Sillabus />
-      <News />
+      <News home={true}/>
       <UsefulLinks />
       <Statistics />
     </div>

@@ -1,89 +1,115 @@
 import React from "react";
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import { PhoneIcon } from "../../../assets/icons";
+import { PhoneFilled, MailFilled } from "@ant-design/icons";
+import { LoacationSvg } from "../../../assets/icons";
 export const ContactUs = () => {
   const { t } = useTranslation();
   return (
-    <div className="container  mx-auto w-[90%]">
+    <div className="container  mx-auto w-full py-5">
       <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 font-semibold ">
-        Bog'lanish
+      {t("Institute.9.name")}
       </h2>
-    
-<div className="container mx-auto w-[90%] grid lg:grid-cols-2 ">
-      <div className="">
-        <div>
-          <span className="text-2xl">
-          {t("ContactUs.0.name")}
-          </span>
-         
-          <span>
-          <PhoneIcon color="#000"/> +998 71 273 64 60
-          </span>
-         
-        </div>
-        <div className="w-[35px]  h-[250] ">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1451.247693284386!2d69.21430996657398!3d41.304948152838854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE4JzE3LjYiTiA2OcKwMTInNTMuMCJF!5e0!3m2!1sru!2s!4v1685345582343!5m2!1sru!2s"   allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-      <div className=" ">
-        <div>
-          <span className="text-2xl">
-          {t("ContactUs.1.name")}
-          </span>
-          <span>
-          <PhoneIcon />  +998 71 267 98 32
-          </span>
-         
-        </div>
-        <div className="w-[35px]  h-[250] ">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2996.460932053506!2d69.31637407583443!3d41.32058937130837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE5JzE0LjEiTiA2OcKwMTknMDguMiJF!5e0!3m2!1sru!2s!4v1685345679663!5m2!1sru!2s"   allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-      <div className=" ">
-        <div>
-          <span className="text-2xl">
-          {t("ContactUs.2.name")}
-          </span>
-          <span>
-          <PhoneIcon /> +99871 244 92 35
-          </span>
-         
-        </div>
-        <div className="w-[35px]  h-[250] ">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2996.358301570982!2d69.24381487583457!3d41.32282147130823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE5JzIyLjIiTiA2OcKwMTQnNDcuMCJF!5e0!3m2!1sru!2s!4v1685345802537!5m2!1sru!2s"   allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-      <div className=" ">
-        <div>
-          <span className="text-2xl">
-          {t("ContactUs.3.name")}
-          </span>
-          <span>
-          <PhoneIcon /> +998 71 254 58 87
+      <div className="grid grid-cols-2">
+        {/* 32-uy */}
+        <A
+          img="https://backend.tkti.uz//uploads/file-1686549024609.JPG"
+          title={t("ContactUs.2.name")}
+          phone={"+99871 244 92 35"}
+          email={"info@tkti.uz"}
+          location={{
+            href: "https://goo.gl/maps/8heumXFm2mcfHGNR7",
+            title: t("ContactUs.2.manzil"),
+          }}
+        />
 
-          </span>
-         
-        </div>
-        <div className="w-[35px]  h-[250] ">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.6439677794037!2d69.36870917467044!3d1.3901797985966895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMjMnMjQuNyJOIDY5wrAyMicxNi42IkU!5e0!3m2!1sru!2s!4v1685345908693!5m2!1sru!2s"   allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-      <div className=" ">
-        <div>
-          <span className="text-2xl">
-          {t("ContactUs.4.name")}
-          </span>
-          <span>
-          <PhoneIcon />+99871 244 19 72
-          </span>
-         
-        </div>
-        <div className="w-[35px]  h-[250] ">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.6439677794037!2d69.36870917467044!3d1.3901797985966895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMjMnMjQuNyJOIDY5wrAyMicxNi42IkU!5e0!3m2!1sru!2s!4v1685346490064!5m2!1sru!2s"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
+        {/* 36-uy */}
+        <A
+          img="https://backend.tkti.uz//uploads/file-1686548995205.JPG"
+          title={t("ContactUs.0.name")}
+          phone={"+99871 244 19 72"}
+          email={"info@tkti.uz"}
+          location={{
+            href: "https://goo.gl/maps/5nPSvvNnu1WZQeVr6",
+            title: t("ContactUs.0.manzil"),
+          }}
+        />
 
+        {/* Samarqand darvoza  */}
+        <A
+          img="https://backend.tkti.uz//uploads/file-1686549011995.JPG"
+          title={t("ContactUs.1.name")}
+          phone={"+99871 273 64 60"}
+          email={"info@tkti.uz"}
+          location={{
+            href: "https://goo.gl/maps/H5oS7v4veRXVHszw8",
+            title: t("ContactUs.1.manzil"),
+          }}
+        />
+
+        {/* Maksim gorki */}
+        <A
+          img="https://backend.tkti.uz//uploads/file-1686549003735.JPG"
+          title={t("ContactUs.3.name")}
+          phone={" +998 71 267 98 32"}
+          email={"info@tkti.uz"}
+          location={{
+            href: "https://goo.gl/maps/gMXxgUjw5gwkokru5",
+            title: t("ContactUs.3.manzil"),
+          }}
+        />
+
+        {/* Qibray */}
+        <A
+          img="https://backend.tkti.uz//uploads/file-1686549019230.JPG"
+          title={t("ContactUs.4.name")}
+          phone={" +998 71 254 58 87"}
+          email={"info@tkti.uz"}
+          location={{
+            href: "https://goo.gl/maps/8yH7uRobbgHp15Xu9",
+            title: t("ContactUs.4.manzil"),
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+const A = ({
+  title,
+  img = "https://backend.tkti.uz//uploads/file-1686521977385.jpg",
+  phone,
+  email,
+  location,
+}) => {
+  return (
+    <div className="mb-10">
+      <div className="w-96">
+        <a href={img} target="_blank">
+          <img src={img} alt="bog'lanish bo'limiga rasm" className="mb-5" loading="lazy"/>
+        </a>
+        <h1 className="leading-5 font-medium mb-2">{title}</h1>
+        <div className="flex flex-col gap-1">
+          <p>
+            <span>
+              <PhoneFilled /> {phone}
+            </span>
+          </p>
+          <p>
+            <span>
+              <MailFilled /> {email}
+            </span>
+          </p>
+          <a
+            href={location.href}
+            target="_blank"
+            className="flex items-center text-blue-500"
+          >
+            <span>
+              <LoacationSvg />
+            </span>{" "}
+            {location.title}
+          </a>
+        </div>
       </div>
     </div>
   );

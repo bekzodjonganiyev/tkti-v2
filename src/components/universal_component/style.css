@@ -220,3 +220,7 @@ summary:focus-within{
   
   
   }
+
+  .accardionBody{
+    margin: 0 20px;
+  }

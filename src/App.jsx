@@ -8,6 +8,7 @@ import TreeInstitute from "./components/tree/TreeComp"
 import {
   ProtectedRoute,
   SplitterComponent,
+  TabComponent,
   UniversalComponent,
 } from "./components";
 
@@ -56,6 +57,9 @@ function App() {
           <Route path="institut/tuzilma" element={<TreeInstitute/>} />
           <Route path="elon" element={<TreeInstitute />} />
           <Route path="news" element={<News />} />
+          <Route path="test" element={<TabComponent />} />
+          <Route path="/institute/structute/:element/:name/:id" element={<TabComponent />} />
+          <Route path="/institute/structute/:name/:id" element={<TabComponent />} />
           
           {/* TODO - splitter va universal componentlarni optimizatsiya qilish kerak, misol uchun memoga o'rash kerek va hk */}
           <Route path="/:page/:id/"  element={<SplitterComponent><UniversalComponent /></SplitterComponent> } />
