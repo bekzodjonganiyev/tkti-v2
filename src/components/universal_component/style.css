@@ -224,3 +224,13 @@ summary:focus-within{
   .accardionBody{
     margin: 0 20px;
   }
+
+  .confrensiya{
+    display: flex;
+    
+    align-items:center;
+  }
+  .confrensiya img{
+    width: 100px;
+    margin: 0 15px;
+  }
