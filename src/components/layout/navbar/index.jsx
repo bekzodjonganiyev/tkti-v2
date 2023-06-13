@@ -173,7 +173,7 @@ export const Navbar = () => {
         },
         {
           name: t("Institute.3.name"),
-          link: `/institut/tuzilma`,
+          link: `/institut/structure`,
           id: null,
         },
       ],
@@ -190,7 +190,6 @@ export const Navbar = () => {
       submenu: true,
       sublinks: url?.res6,
     },
-
     {
       name: t("Header.2.name"),
       desc: t("Institute.0.title"),

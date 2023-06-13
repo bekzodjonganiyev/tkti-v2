@@ -54,7 +54,7 @@ function App() {
           <Route path="institut/ish-reja" element={<WorkPlan />} />
           <Route path="institut/tarix" element={<History/>} />
           <Route path="institut/korrupsiya" element={<Corruption />} />
-          <Route path="institut/tuzilma" element={<TreeInstitute/>} />
+          <Route path="institut/structure" element={<TreeInstitute/>} />
           <Route path="elon" element={<TreeInstitute />} />
           <Route path="news" element={<News />} />
           <Route path="test" element={<TabComponent />} />

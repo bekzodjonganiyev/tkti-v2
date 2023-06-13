@@ -31,9 +31,9 @@ export const Footer = () => {
                     className={`text-white lg:text-2xl xl:text-xl md:text-lg  md:w-[70%] font-bold`}
                   >
                     <div className="text-[15px] my-3 mx-3">
-                    <div>{t("TktiName.0.name")}</div>
-                <div>{t("TktiName.1.name")}</div>
-                <div>{t("TktiName.2.name")}</div>
+                      <div>{t("TktiName.0.name")}</div>
+                      <div>{t("TktiName.1.name")}</div>
+                      <div>{t("TktiName.2.name")}</div>
                     </div>
                   </div>
                 </div>
@@ -41,29 +41,30 @@ export const Footer = () => {
               <div className="flex gap-4    items-end justify-between ">
                 <div className="lg:flex lg:flex-col flex-row-reverse   max-md:flex-col max-md:gap-10 ">
                   <div className="flex lg:gap-5 gap-3 ">
-                   
-                    <Link to={`https://www.facebook.com/botir.usmonov.5?wtsid=rdr_09Vv2M1MyqnwE1349`}>
-                    
-                    <FacebookIcon color="white " />
+                    <Link
+                      to={`https://www.facebook.com/tktiuzrasmiy`}
+                    >
+                      <FacebookIcon color="white " />
                     </Link>
-
+                    <Link to={`http://youtube.com/@tktiuzrasmiy`}>
                     <YouTubeIcon color="white" />
-                    <Link to="https://t.me/b_shukurillaevich">
-                    <TelegramIcon color="white" />
                     </Link>
-<Link to="https://www.instagram.com/b.usmonov_/"> 
-
-                    <InstagramIcon color="white" />
-</Link>
-<Link to={`https://www.linkedin.com/in/botir-usmonov-1228085/`}>
-
-
-                    <Linkedin color="white" />
-</Link>
-<Link to={`https://www.researchgate.net/profile/Botir-Usmonov`}>
-
-                    <Talim color="white" />
-</Link>
+                    <Link to="https://t.me/tktiuz">
+                      <TelegramIcon color="white" />
+                    </Link>
+                    <Link to="https://www.instagram.com/tktiuz">
+                      <InstagramIcon color="white" />
+                    </Link>
+                    <Link
+                      to={`http://linkedin.com/company/tktiuz`}
+                    >
+                      <Linkedin color="white" />
+                    </Link>
+                    <Link
+                      to={`https://vk.com/tktiuz`}
+                    >
+                      <Talim color="white" />
+                    </Link>
                   </div>
                   <div className="flex items-center gap-2 my-3">
                     <PhoneIcon />

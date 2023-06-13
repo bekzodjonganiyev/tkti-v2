@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -17,11 +17,20 @@ import { Loader } from "../loader/Loader";
 import { UniversalComponentActions } from "./action";
 import { useAppContext } from "../../context/app.context";
 import { baseURL } from "../../services/http";
+import { time } from "../../services/dateFormatter";
+import {
+  CalendarIcon,
+  FacebookIcon,
+  Linkedin,
+  Talim,
+  TelegramIcon,
+} from "../../assets/icons";
+import { ImageGallary } from "../image_gallary/ImageGalary";
 
-export { genericComReducer } from "./reducer";
 export const UniversalComponent = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
+  const { page } = useParams();
 
   const dispatch = useDispatch();
   const genericCom = (state) => state.genericCom;
@@ -31,20 +40,16 @@ export const UniversalComponent = () => {
   // route da mongodb ning id sini olib tashlashlandi va id context orqali olib kelindi
   const { idForFetch } = useAppContext();
 
-  const { page } = useParams();
+  const [socialColor, setSocialColor] = useState({
+    fb: "#666",
+    lki: "#666",
+    wk: "#666",
+    tg: "#666",
+  });
 
   useEffect(() => {
     dispatch(getData(`${page}/${idForFetch}`));
   }, [page, idForFetch]);
-
-  console.log(data);
-
-  const settings = {
-    infinite: true,
-    speed: 400,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   if (loading) return <Loader />;
 
@@ -55,48 +60,6 @@ export const UniversalComponent = () => {
           <h1 className="text-3xl font-bold mb-5">
             {data[`title_${i18next.language}`]}
           </h1>
-          <Slider
-            {...settings}
-            autoplay={true}
-            cssEase="linear"
-            autoplaySpeed={4000}
-            // fade={true}
-            pauseOnHover={false}
-          >
-            {data?.file?.map((item) => (
-              <div
-                className="w-full h-[700px] max-md:h-auto relative -z-30 bg-black"
-                key={item}
-              >
-                <div className="absolute md:top-1/3 left-1/2 md:-translate-x-1/2 z-50 max-md:bottom-20 max-md:left-0 max-md:px-4">
-                  <h1 className="text-5xl font-bold text-white text-center shadow-md max-md:hidden">
-                    YANGIYER FLOUR{" "}
-                    <span className="text-primary_color">TRADING</span>
-                  </h1>
-                  {/* <p className="text-xl text-white text-center mt-10">
-                  {item.title}
-                </p> */}
-                </div>
-                <LazyLoadImage
-                  style={{
-                    opacity: "0.5",
-                  }}
-                  src={baseURL + item}
-                  alt={"qabul rasmlari"}
-                  effect={"blur"}
-                  placeholder={
-                    <Spinner
-                      color="info"
-                      aria-label="Extra large spinner example"
-                      size="xl"
-                    />
-                  }
-                  width={"100%"}
-                  height={"100%"}
-                />
-              </div>
-            ))}
-          </Slider>
           <div
             className="uni-comp-body mb-10"
             dangerouslySetInnerHTML={{
@@ -119,6 +82,9 @@ export const UniversalComponent = () => {
               ))}
             </Accordion>
           )}
+          {data?.file?.length > 0 ? (
+              <ImageGallary imgSrcs={item?.file} />
+            ) : null}
         </div>
       ) : (
         data?.child?.map((item) => (
@@ -129,52 +95,7 @@ export const UniversalComponent = () => {
             >
               {item[`title_${i18next.language}`]}
             </h1>
-            {item?.file?.length > 0 ? (
-              <Slider
-                {...settings}
-                autoplay={true}
-                cssEase="linear"
-                autoplaySpeed={4000}
-                // fade={true}
-                pauseOnHover={false}
-              >
-                {item?.file?.map((subItem) => (
-                  <div
-                    className="w-full h-[700px] max-md:h-auto relative -z-30 bg-black"
-                    key={subItem}
-                  >
-                    <div className="absolute md:top-1/3 left-1/2 md:-translate-x-1/2 z-50 max-md:bottom-20 max-md:left-0 max-md:px-4">
-                      <h1 className="text-5xl font-bold text-white text-center shadow-md max-md:hidden">
-                        YANGIYER FLOUR{" "}
-                        <span className="text-primary_color">TRADING</span>
-                      </h1>
-                      {/* <p className="text-xl text-white text-center mt-10">
-                        {item.title}
-                      </p> */}
-                    </div>
-                    <LazyLoadImage
-                      style={{
-                        opacity: "0.5",
-                      }}
-                      src={baseURL + subItem}
-                      alt={"qabul rasmlari"}
-                      effect={"blur"}
-                      placeholder={
-                        <Spinner
-                          color="info"
-                          aria-label="Extra large spinner example"
-                          size="xl"
-                        />
-                      }
-                      width={"100%"}
-                      height={"100%"}
-                    />
-                  </div>
-                ))}
-              </Slider>
-            ) : (
-              null
-            )}
+            
             <div
               className="uni-comp-body mb-10"
               dangerouslySetInnerHTML={{
@@ -197,51 +118,66 @@ export const UniversalComponent = () => {
                 ))}
               </Accordion>
             )}
+            {item?.file?.length > 0 ? (
+              <ImageGallary imgSrcs={item?.file} />
+            ) : null}
           </div>
         ))
       )}
-      <Slider
-        {...settings}
-        autoplay={true}
-        cssEase="linear"
-        autoplaySpeed={4000}
-        // fade={true}
-        pauseOnHover={false}
-      >
-        {data?.child?.file?.map((item) => (
-          <div
-            className="w-full h-[700px] max-md:h-auto relative -z-30 bg-black"
-            key={item}
+
+      {/* Share social networks */}
+      <div className="flex justify-between items-center mt-10">
+        <div className="lg:w-9/12 w-full flex flex-wrap gap-2 ">
+          <CalendarIcon />
+          <span className="font-medium">{time(data.date)}</span>
+        </div>
+        <div className="flex gap-5">
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}&quote=Assalomu alaykum yangiliini o'qidingzimi?`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() => setSocialColor({ ...socialColor, fb: "blue" })}
+            onMouseLeave={() => setSocialColor({ ...socialColor, fb: "#666" })}
           >
-            <div className="absolute md:top-1/3 left-1/2 md:-translate-x-1/2 z-50 max-md:bottom-20 max-md:left-0 max-md:px-4">
-              <h1 className="text-5xl font-bold text-white text-center shadow-md max-md:hidden">
-                YANGIYER FLOUR{" "}
-                <span className="text-primary_color">TRADING</span>
-              </h1>
-              {/* <p className="text-xl text-white text-center mt-10">
-                  {item.title}
-                </p> */}
-            </div>
-            <LazyLoadImage
-              style={{
-                opacity: "0.5",
-              }}
-              src={baseURL + item}
-              alt={"qabul rasmlari"}
-              effect={"blur"}
-              placeholder={
-                <Spinner
-                  color="info"
-                  aria-label="Extra large spinner example"
-                  size="xl"
-                />
-              }
-              width={"100%"}
-              height={"100%"}
-            />
-          </div>
-        ))}
-      </Slider>
+            <FacebookIcon color={socialColor.fb} />
+          </a>
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() =>
+              setSocialColor({ ...socialColor, lki: "green" })
+            }
+            onMouseLeave={() => setSocialColor({ ...socialColor, lki: "#666" })}
+          >
+            <Linkedin color={socialColor.lki} />
+          </a>
+          <a
+            href={`https://vk.com/share.php?url=${window.location.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() =>
+              setSocialColor({ ...socialColor, wk: "yellow" })
+            }
+            onMouseLeave={() => setSocialColor({ ...socialColor, wk: "#666" })}
+          >
+            <Talim color={socialColor.wk} />
+          </a>
+          <a
+            href={`https://telegram.me/share/url?url=${window.location.href}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() =>
+              setSocialColor({ ...socialColor, tg: "lightgreen" })
+            }
+            onMouseLeave={() => setSocialColor({ ...socialColor, tg: "#666" })}
+          >
+            <TelegramIcon color={socialColor.tg} />
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
+
+export { genericComReducer } from "./reducer";
