@@ -8,6 +8,7 @@ import { Loader } from "../loader/Loader";
 import { SplitterComponentActions } from "./action";
 import { useAppContext } from "../../context/app.context";
 import { time } from "../../services/dateFormatter";
+import { slug } from "../../services/slug"
 
 export { splitterCompReducer } from "./reducer";
 export const SplitterComponent = ({ children }) => {
@@ -19,11 +20,11 @@ export const SplitterComponent = ({ children }) => {
   // route da mongodb ning id sini olib tashlashlandi va id context orqali olib kelindi
   const { idForFetch, setIdForFetch } = useAppContext();
 
-  const { page } = useParams();
-
+  const { page, id } = useParams();
+  
   useEffect(() => {
-    dispatch(getData(`${page}/${idForFetch}`));
-  }, [page, idForFetch]);
+    dispatch(getData(`${page}/${id}`));
+  }, [page, id]);
 
   if (loading) return <Loader />;
 
@@ -35,7 +36,7 @@ export const SplitterComponent = ({ children }) => {
             <li className="bg-stone-50 rounded border-2 border-stone-200 px-10 py-7" key={item._id}>
               <Link
                 onClick={() => setIdForFetch(item._id)}
-                to={`/${page}_child/${item.title_uz}`}
+                to={`/${page}_child/details/${slug(item.title_uz)}`}
                 className="w-full block text-2xl mb-5 font-semibold"
               >
                 {item[`title_${i18next.language}`]}
@@ -49,4 +50,5 @@ export const SplitterComponent = ({ children }) => {
   } else {
     return children;
   }
+  // return <h1>okokjhbhyg</h1>
 };

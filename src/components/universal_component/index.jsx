@@ -30,7 +30,7 @@ import { ImageGallary } from "../image_gallary/ImageGalary";
 export const UniversalComponent = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const { page } = useParams();
+  const { page, id } = useParams();
 
   const dispatch = useDispatch();
   const genericCom = (state) => state.genericCom;
@@ -48,17 +48,17 @@ export const UniversalComponent = () => {
   });
 
   useEffect(() => {
-    dispatch(getData(`${page}/${idForFetch}`));
-  }, [page, idForFetch]);
+    dispatch(getData(`${page}/${id}`));
+  }, [page, id]);
 
   if (loading) return <Loader />;
 
   return (
     <div className="container mx-auto max-md:px-5 py-10 uni-comp-wrapper">
-      {page.split("_")[1] === "child" ? (
+      {page.split("_")[2] === "child" ? (
         <div>
           <h1 className="text-3xl font-bold mb-5">
-            {data[`title_${i18next.language}`]}
+            {data[`title  _${i18next.language}`]}
           </h1>
           <div
             className="uni-comp-body mb-10"
@@ -83,8 +83,8 @@ export const UniversalComponent = () => {
             </Accordion>
           )}
           {data?.file?.length > 0 ? (
-              <ImageGallary imgSrcs={data?.file} />
-            ) : null}
+            <ImageGallary imgSrcs={data?.file} />
+          ) : null}
         </div>
       ) : (
         data?.child?.map((item) => (
@@ -95,7 +95,7 @@ export const UniversalComponent = () => {
             >
               {item[`title_${i18next.language}`]}
             </h1>
-            
+
             <div
               className="uni-comp-body mb-10"
               dangerouslySetInnerHTML={{
@@ -119,7 +119,7 @@ export const UniversalComponent = () => {
               </Accordion>
             )}
             {item?.file?.length > 0 ? (
-              <ImageGallary imgSrcs={item?.file} />
+              <ImageGallary imgSrcs={item?.file.reverse()} />
             ) : null}
           </div>
         ))

@@ -37,7 +37,7 @@ export default function App() {
     link: `/institute/structute/rectorate/${i.job_uz}/${i._id}`,
     children: i.bolimlar.map((bolim) => ({
       name: bolim[`title_${i18next.language}`],
-      link: `/institute/structute/${bolim.title_uz}/${bolim._id}`,
+      link: `/institute/structute/department_and_center/${bolim.title_uz}/${bolim._id}`,
     })),
   }));
 

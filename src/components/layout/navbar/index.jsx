@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
+import "./style.css";
+
 import { TopHeader } from "../header/TopHeader";
 import Logo from "../../../assets/images/logo.png";
 
-import apiClientWithFetch from "../../../services/apiClientWithFetch";
 import { useAppContext } from "../../../context/app.context";
-import "./style.css";
+import apiClientWithFetch from "../../../services/apiClientWithFetch";
+import { slug } from "../../../services/slug";
 
 export { headerReducer } from "./reducer";
 export const Navbar = () => {
@@ -100,27 +102,27 @@ export const Navbar = () => {
         })),
         res2: responses[1]?.data?.map((item) => ({
           name: item[`title_${i18next.language}`],
-          link: `/qabul/${item.title_uz}`,
+          link: `/qabul/${slug(item.title_uz)}`,
           id: item?._id,
         })),
         res3: responses[2]?.data?.map((item) => ({
           name: item[`title_${i18next.language}`],
-          link: `/talabalar/${item.title_uz}`,
+          link: `/talabalar/${slug(item.title_uz)}`,
           id: item?._id,
         })),
         res4: responses[3]?.data?.map((item) => ({
           name: item[`title_${i18next.language}`],
-          link: `/talim/${item.title_uz}`,
+          link: `/talim/${slug(item.title_uz)}`,
           id: item?._id,
         })),
         res5: responses[4]?.data?.map((item) => ({
           name: item[`title_${i18next.language}`],
-          link: `/ilmiy_tad/${item.title_uz}`,
+          link: `/ilmiy_tad/${slug(item.title_uz)}`,
           id: item?._id,
         })),
         res6: responses[5]?.data?.map((item) => ({
           name: item[`title_${i18next.language}`],
-          link: `/xalqaro_aloqa/${item.title_uz}`,
+          link: `/xalqaro_aloqa/${slug(item.title_uz)}`,
           id: item?._id,
         })),
       }));

@@ -79,9 +79,7 @@ export const TabComponent = () => {
     // id bo'yicha get qilish atmen bo'ladi
     dispatch(getById(`${url}/${params.id}`));
   }, [url, params?.id]);
-
-  console.log(url);
-
+  
   if (loading) return <Loader />;
 
   if (params.element === "rectorate") return <RectorateItem />;

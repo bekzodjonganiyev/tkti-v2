@@ -234,3 +234,10 @@ summary:focus-within{
     width: 100px;
     margin: 0 15px;
   }
+
+  .studentTitle img{
+    border-radius:50%;
+    width: 110px;
+    object-fit: cover;
+    height: 110px;
+  }
