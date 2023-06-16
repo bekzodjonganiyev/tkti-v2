@@ -20,6 +20,7 @@ import WorkPlan from "./pages/institut/workPlan";
 import Corruption from "./pages/institut/corrupsion/Corrupsion";
 import History from "./pages/institut/history";
 import { News } from "./pages/news";
+import { InteractiveLink } from "./pages/InteractiveLInk";
 
 
 
@@ -57,6 +58,7 @@ function App() {
           <Route path="institut/structure" element={<TreeInstitute/>} />
           <Route path="elon" element={<TreeInstitute />} />
           <Route path="news" element={<News />} />
+          <Route path="foydali-havolalar" element={<InteractiveLink />} />
           <Route path="test" element={<TabComponent />} />
           <Route path="/institute/structute/:element/:name/:id" element={<TabComponent />} />
           <Route path="/institute/structute/:name/:id" element={<TabComponent />} />

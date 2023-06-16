@@ -21,10 +21,69 @@
       "name": "Class schedule"
     },
     {
-      "name": "Quick Links"
+      "name": "Interactive services"
     },
     {
       "name": "en"
+    }
+  ],
+  "havola":[
+    {
+      "name":"Confirmation of diploma of higher education"
+    },
+    {
+      "name":"Get a reference from the workplace"
+    },
+    {
+      "name":"Obtaining a certificate from the place of study (OTM)"
+    },
+    {
+      "name":"Electronic acceptance of applicants' application (undergraduate)"
+    },
+    {
+      "name":"Electronic acceptance of applicants' application (master's degree)"
+    },
+    {
+      "name":"A single open portal for vacancies of civil servants."
+    },
+    {
+      "name":"Electronic acceptance of applications by PhD and DSc"
+    },
+    {
+      "name":"On electronic acceptance of applicants' applications (second specialization)"
+    },
+    {
+      "name":"Information system for accounting of services provided to students on the basis of a contract"
+    },
+    {
+      "name":"The official page of the Ministry of Higher Education, Science and Innovation      "
+    },
+    {
+      "name":"Obtaining an archival certificate of confirmation of studies at a higher and secondary special educational institution"
+    },
+    {
+      "name":"Unified electronic library information system of higher education and research institutions of the Republic of Uzbekistan"
+    },
+    {
+      "name":"Yangiyer branch of Tashkent Institute of chemistry and technology"
+    },
+    {
+      "name":"Shahrisabz branch of Tashkent Institute of Chemical Technology"
+    },
+    {
+      "name":"Information system of online application submission for Student transfer and readmission"
+    },
+    {
+      "name":"The Government portal of the Republic of Uzbekistan"
+    },
+    {
+      "name":"Unified platform for public initiatives"
+    },
+    {
+      "name":"Corporate mail"
+    },
+    {
+      "name":"TICTI library"
     }
   ],
   "Header": [
@@ -74,6 +133,45 @@
     "AreaEducation": "AREAS OF EDUCATION",
     "Education": "JOINT EDUCATIONAL PROGRAMS"
   },
+  "Syllabus":[
+    {
+      "name": "Yil"
+    },
+    {
+      "name": "Ta'lim turi"
+    },
+    {
+      "name": "Ta'lm darajasi"
+    },
+    {
+      "name": "Fakultet"
+    },
+    {
+      "name": "Kafedra"
+    },
+    {
+      "name": "Yo'nalish"
+    },
+    {
+      "name": "Yilni tanlang"
+    },
+    {
+      "name": "Ta'lim turini tanlang"
+    },
+    {
+      "name": "Ta'lim darajasini tanlang"
+    },
+    {
+      "name": "Fakultetni tanlang"
+    },
+    {
+      "name": "Kafedrani tanlang"
+    },
+    {
+      "name": "Yo'nalishni tanlang"
+    }
+
+  ],
   "Institute": [
     {
       "title": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN "

@@ -5,3 +5,49 @@
   -o-filter: grayscale(100%);
   filter: grayscale(100%);
 }
+.foydali{
+
+  background-color:white !important;
+}
+.dropdownMenu {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+  background-color: white;
+}
+
+.dropdownMenu-header {
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdownMenu-body {
+  padding: 5px;
+  border-top: 1px solid #E5E8EC;
+  display: none;
+}
+
+.dropdownMenu-body.open {
+  display: block;
+}
+
+.dropdownMenu-item {
+  padding: 10px;
+}
+
+.dropdownMenu-item:hover {
+  cursor: pointer;
+}
+
+.dropdownMenu-item-dot {
+  opacity: 0;
+  color: #91A5BE;
+  transition: all .2s ease-in-out;
+}
+
+.dropdownMenu-item-dot.selected {
+  opacity: 1;
+}

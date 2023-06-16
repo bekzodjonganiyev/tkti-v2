@@ -14,7 +14,7 @@ export const Sillabus = () => {
               for="large"
               className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
             >
-              Yil
+               {t("Syllabus.0.name")}
             </label>
             <select
               id="large"
@@ -29,7 +29,7 @@ export const Sillabus = () => {
               for="large"
               className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
             >
-              Ta'lim turi
+                {t("Syllabus.1.name")}
             </label>
             <select
               id="large"
@@ -43,7 +43,7 @@ export const Sillabus = () => {
               for="large"
               className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
             >
-              Ta'lm darajasi
+                {t("Syllabus.2.name")}
             </label>
             <select
               id="large"
@@ -57,13 +57,13 @@ export const Sillabus = () => {
               for="large"
               className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
             >
-              Fakultet
+                {t("Syllabus.3.name")}
             </label>
             <select
               id="large"
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option selected>Fakultetni tanlang</option>
+              <option selected>{t("Syllabus.9.name")}</option>
             </select>
           </div>
           <div>
@@ -71,13 +71,13 @@ export const Sillabus = () => {
               for="large"
               className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
             >
-              Kafedra
+              {t("Syllabus.4.name")}
             </label>
             <select
               id="large"
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option selected>Kafedrani tanlang </option>
+              <option selected>  {t("Syllabus.10.name")} </option>
             </select>
           </div>
           <div>
@@ -85,13 +85,13 @@ export const Sillabus = () => {
               for="large"
               className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
             >
-              Yo'nalish
+                {t("Syllabus.5.name")}
             </label>
             <select
               id="large"
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option selected>Yo'nalishni tanlang</option>
+              <option selected>{t("Syllabus.10.name")}</option>
             </select>
           </div>
         </div>
