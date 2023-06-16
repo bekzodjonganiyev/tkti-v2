@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import { Dropdown } from "flowbite-react";
 
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
@@ -9,6 +10,7 @@ import uz from "../../../assets/images/flag-uz.png";
 import ru from "../../../assets/images/flag-ru.png";
 import en from "../../../assets/images/flag-en.png";
 export { bannerReducer } from "../../banner/reducer";
+
 export const TopHeader = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
@@ -43,6 +45,12 @@ export const TopHeader = () => {
       name: "English",
       conuntry_code: "gb",
     },
+  ];
+
+  const data = [
+    { id: 0, label: t("havola.18.name"), href: "https://new.akbt.uz" },
+    { id: 1, label: t("havola.17.name"), href: "https://mail.tkti.uz/" },
+    { id: 2, label: " Barchasi", href: "/foydali-havolalar" },
   ];
   const changeSize = (arg) => {
     const Page = document.body;
@@ -79,18 +87,39 @@ export const TopHeader = () => {
       <div className="bg-[#26597E] max-md:px-5">
         <header className="container w-full flex items-center justify-between mx-auto  h-16 border-slate-600 ">
           <div className="lg:flex justify-between  text-white xl:flex hidden border-white-600 ">
-            <NavLink to={`https://student.tcti.uz/dashboard/login`} className=" mr-4">
+            <NavLink
+              to={`https://student.tcti.uz/dashboard/login`}
+              className=" mr-4"
+            >
               {t("headerTop.0.name")}
             </NavLink>
-            <NavLink to={`https://hemis.tcti.uz/dashboard/login`} className=" mr-4">
+            <NavLink
+              to={`https://hemis.tcti.uz/dashboard/login`}
+              className=" mr-4"
+            >
               {t("headerTop.1.name")}
             </NavLink>
-            <NavLink to={`https://tkti-2023.edupage.org/timetable/view.php`} className=" mr-4">
+            <NavLink
+              to={`https://tkti-2023.edupage.org/timetable/view.php`}
+              className=" mr-4"
+            >
               {t("headerTop.2.name")}
             </NavLink>
-            <NavLink to={`/`} className=" mr-4">
-              {t("headerTop.3.name")}
-            </NavLink>
+            <div className="foydali ">
+              <Dropdown className="border-none" label={t("headerTop.3.name")} inline>
+                {data?.map((i, index) => (
+                  <>
+                    <li className="li " key={index}>
+                      <a href={i.href}>
+                        <Dropdown.Item>
+                          <span>{i.label}</span>
+                        </Dropdown.Item>
+                      </a>
+                    </li>
+                  </>
+                ))}
+              </Dropdown>
+            </div>
           </div>
           <div className="flex items-center h-5 ">
             <input

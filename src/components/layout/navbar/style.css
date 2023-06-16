@@ -22,7 +22,7 @@
   padding: 12px 0 12px 20px;
   text-transform: none;
   transition: all 0.3s;
-  width: 100%;
+  width: 220px;
 }
 .navbar__hoverItem:hover{
     background-color: #cddcf6;

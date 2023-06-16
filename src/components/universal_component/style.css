@@ -155,8 +155,9 @@ summary:focus-within{
 }
 .studentTitle img{
   border-radius:50%;
-  width: 80px;
-  height: 80px;
+  width: 110px;
+  object-fit: cover;
+  height: 110px;
 }
 .studentTitle h3{
   width: 50%;

@@ -27,6 +27,66 @@
       "name": "uz"
     }
   ],
+
+  "havola":[
+{
+  "name":"Oliy ma'lumot haqidagi diplomni tasdiqlash  "
+},
+{
+  "name":"Ish joyidan ma’lumotnoma olish"
+},
+{
+  "name":"O‘qish joyidan ma’lumotnoma olish(OTM)"
+},
+{
+  "name":"Abiturientlar arizasini elektron qabul qilish (bakalavriant)"
+},
+{
+  "name":"Abiturientlar arizasini elektron qabul qilish (magistratura)"
+},
+{
+  "name":"Davlat fuqorolik xizmati bo‘sh ish o‘rinlari yagona ochiq portali"
+},
+{
+  "name":"Abiturientlar arizasini elektron qabul qilish (doktarantura)"
+},
+{
+  "name":"Abiturientlar arizasini elektron qabul qilish (ikkinchi mutaxasislik ) bo‘yicha"
+},
+{
+  "name":"Talabalarga shartnoma asosida ko‘rsatiladigan xizmatlar hisobini yuritish axborot tizimi"
+},
+{
+  "name":"Oliy ta'lim fan va inovatsiya vazirligining rasmiy sahfasi"
+},
+{
+  "name":"Oliy va o‘rta maxsus ta'lim muassasasida o‘qiganlikni tasdiqlash haqidagi arxiv ma'lumotnomasini olish"
+}
+,{
+  "name":"O‘zbekiston Respublikasi oliy ta'lim va ilmiy tadqiqot muassasalarining yagona elektron kutubxona axborot tizim"
+},{
+  "name":"Toshkent kimyo-texnologiya instituti Yangiyer filiali"
+},
+{
+  "name":"Toshkent kimyo-texnologiya instituti Shahrisabz filiali​  "
+},
+{
+  "name":"O‘qishni ko‘chirish va tiklash uchun onlayn ariza topshirish axborot tizimi"
+},
+{
+  "name":"O`zbekiston Respublikasi Hukumat portali"
+},
+{
+  "name":"Mening fikrim - Jamoaviy murojaatlar portali"
+},
+{
+  "name":"Korporativ pochta"
+},
+{
+  "name":"TKTI kutubxonasi"
+}
+
+  ],
   "Header": [
     {
       "name": "Institut"
@@ -73,6 +133,45 @@
     {
       "name": "Foydali havolalar"
     }
+  ],
+  "Syllabus":[
+    {
+      "name": "Yil"
+    },
+    {
+      "name": "Ta'lim turi"
+    },
+    {
+      "name": "Ta'lm darajasi"
+    },
+    {
+      "name": "Fakultet"
+    },
+    {
+      "name": "Kafedra"
+    },
+    {
+      "name": "Yo'nalish"
+    },
+    {
+      "name": "Yilni tanlang"
+    },
+    {
+      "name": "Ta'lim turini tanlang"
+    },
+    {
+      "name": "Ta'lim darajasini tanlang"
+    },
+    {
+      "name": "Fakultetni tanlang"
+    },
+    {
+      "name": "Kafedrani tanlang"
+    },
+    {
+      "name": "Yo'nalishni tanlang"
+    }
+
   ],
   "Institute": [
     {

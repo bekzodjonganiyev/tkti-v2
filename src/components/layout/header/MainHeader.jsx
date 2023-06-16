@@ -321,7 +321,7 @@ const MainHeader = () => {
                       <>
                         <li className="li " key={index}>
                           <a href={i.href}>
-                            <span>{i.labelId}</span>
+                            <span className="w-15px ">{i.labelId}</span>
                           </a>
                         </li>
                       </>
