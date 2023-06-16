@@ -9,7 +9,7 @@ import { XodimCard } from "../xodim_card/XodimCard";
 
 import { getById } from "./action";
 import { baseURL } from "../../services/http";
-import { RectorateItem } from "../rectorate_item";
+import { RectorateItem } from "../rectorate_item/RectorateItem";
 
 export const TabComponent = () => {
   const dispatch = useDispatch();
