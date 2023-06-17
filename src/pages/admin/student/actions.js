@@ -128,7 +128,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.get("talabalar_child/all");
+      const res = await apiClientWithFetch.get("talabalar_data_child/all");
       if (res.status === 200) {
         dispatch({
           type: student_child.get,
@@ -148,7 +148,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.get(`talabalar_child/${id}`);
+      const res = await apiClientWithFetch.get(`talabalar_data_child/${id}`);
       if (res.status === 200) {
         dispatch({
           type: student_child.getById,
@@ -168,7 +168,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.add("talabalar_child/add", body, true);
+      const res = await apiClientWithFetch.add("talabalar_data_child/add", body, true);
       if (res.status === 200) {
         dispatch({
           type: student_child.post,
@@ -188,7 +188,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.update(`talabalar_child/${id}`, body, true);
+      const res = await apiClientWithFetch.update(`talabalar_data_child/${id}`, body, true);
       if (res.status === 200) {
         dispatch({
           type: student_child.put,
@@ -208,7 +208,7 @@ export class StudentChildActions {
       dispatch({
         type: student_child.request,
       });
-      const res = await apiClientWithFetch.delete(`talabalar_child/${id}`);
+      const res = await apiClientWithFetch.delete(`talabalar_data_child/${id}`);
       if (res.status === 200) {
         dispatch({
           type: student_child.delete,

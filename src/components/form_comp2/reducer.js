@@ -26,7 +26,7 @@ export const form2Reducer = (state = form2InitialState, action) => {
         ...state,
         options: action.payload.map((item) => ({
           value: item._id,
-          label: item.title_uz,
+          label: item.title_uz || item.job_uz,
         })),
         success: true,
         loading: false,

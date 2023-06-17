@@ -92,7 +92,7 @@ function FileDisplay({ file }) {
           src={`${baseURL}/${file?.link}`}
           alt={file?.name}
           className="h-[400px] w-[300px]"
-          effect="blur"
+          effect="black-and-white"
           />
           )}
       <p className="bg-gray-100 p-2">{file?.name}</p>

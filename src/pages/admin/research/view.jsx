@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { ResearchChildActions } from "./actions";
 import { DeleteIcon, EditIcon } from "../../../assets/icons";
+import { slug } from "../../../services/slug";
 
 export const ResearchView = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export const ResearchView = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/research/edit/${p.id}`}>
+          <Link to={`/adminPanel/research/edit/${slug(p.name)}`}>
             <EditIcon />
           </Link>
           <Popconfirm

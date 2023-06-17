@@ -36,7 +36,7 @@ const editorInit = {
     "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | codesample code",
 };
 
-export const AddForm2 = ({ hasSelect, selectUrl, url }) => {
+export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const form2State = useSelector(selectorFunc);
@@ -53,6 +53,15 @@ export const AddForm2 = ({ hasSelect, selectUrl, url }) => {
     en: "",
   });
   const [facultyId, setFacultyId] = useState("");
+  const [rektoratId, setRektoratId] = useState("");
+
+  const handleChange = (value) => {
+    bolim ? setRektoratId(value) : setFacultyId(value);
+  };
+
+  const selectFunc = () => {
+   return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId}
+  }
 
   const handleSubmit = (value) => {
     const obj = {
@@ -66,14 +75,11 @@ export const AddForm2 = ({ hasSelect, selectUrl, url }) => {
     };
 
     const body = hasSelect
-      ? JSON.stringify({ ...obj, fakultet_id: facultyId })
+      ? JSON.stringify({ ...obj, ...selectFunc()})
       : JSON.stringify(obj);
 
     dispatch(postData(url, body));
-    console.log(JSON.parse(body));
-  };
-  const handleChange = (value) => {
-    setFacultyId(value);
+    // console.log(JSON.parse(body));
   };
 
   useEffect(() => {
@@ -192,7 +198,7 @@ export const AddForm2 = ({ hasSelect, selectUrl, url }) => {
   );
 };
 
-export const EditForm2 = ({ hasSelect, selectUrl, url }) => {
+export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const { dataById, loading, options, success, error, updated } =
@@ -210,6 +216,17 @@ export const EditForm2 = ({ hasSelect, selectUrl, url }) => {
     en: dataById?.maqsad_en,
   });
   const [facultyId, setFacultyId] = useState(dataById?.fakultet_id);
+  const [rektoratId, setRektoratId] = useState(dataById?.rektorat);
+
+  const selectFunc = () => {
+    return bolim
+      ? {
+          rektorat: rektoratId,
+        }
+      : {
+          fakultet_id: facultyId,
+        };
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -227,23 +244,24 @@ export const EditForm2 = ({ hasSelect, selectUrl, url }) => {
     };
 
     const body = hasSelect
-      ? JSON.stringify({ ...obj, fakultet_id: facultyId })
+      ? JSON.stringify({ ...obj, ...selectFunc() })
       : JSON.stringify(obj);
 
     dispatch(putData(url, body));
     // console.log(JSON.parse(body));
   };
 
+  // window.location.reload(false)
   useEffect(() => {
     hasSelect ? dispatch(getOptions(selectUrl)) : null;
     dispatch(getDataById(url));
-  }, []);
-  
+  }, [url]);
+
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
   return (
     <div className="relative">
-      {((updated && !loading) || (error && !loading))? (
+      {(updated && !loading) || (error && !loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
           <Alert
             message={`${success ? "Saqlandi" : "Xatoli yuz berdi"}`}
@@ -353,8 +371,14 @@ export const EditForm2 = ({ hasSelect, selectUrl, url }) => {
               <select
                 name="fakultet_id"
                 id="fakultet_id"
-                defaultValue={dataById?.fakultet_id}
-                onChange={(e) => setFacultyId(e.target.value)}
+                defaultValue={
+                  bolim ? dataById?.rektorat : dataById?.fakultet_id
+                }
+                onChange={(e) =>
+                  bolim
+                    ? setRektoratId(e.target.value)
+                    : setFacultyId(e.target.value)
+                }
               >
                 {options?.map((item) => (
                   <option key={item.value} value={item.value}>

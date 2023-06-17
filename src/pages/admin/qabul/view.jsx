@@ -2,6 +2,7 @@ import { Popconfirm, Table } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { slug } from "../../../services/slug";
 
 import { QabulChildActions } from "./actions";
 
@@ -29,7 +30,7 @@ export const QabulView = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/admission/edit/${p.id}`}>edit</Link>
+          <Link to={`/adminPanel/admission/edit/${slug(p.name)}`}>edit</Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"

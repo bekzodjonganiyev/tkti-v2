@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 import { EducationChildActions } from "./actions";
+import { slug } from "../../../services/slug"
 
 export const  EducationView= () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ export const  EducationView= () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/education/edit/${p.id}`}>edit</Link>
+          <Link to={`/adminPanel/education/edit/${slug(p.name)}`}>edit</Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
