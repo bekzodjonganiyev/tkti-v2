@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import { Link } from "react-router-dom";
+import i18next from "i18next";
 
 import "./style.css";
 
 import apiClientWithFetch from "../../services/apiClientWithFetch";
-import i18next from "i18next";
 
 const getData = async (url, setData) => {
   const res = await apiClientWithFetch.get(url);
@@ -24,7 +24,7 @@ export default function App() {
   const nodeSize = { x: 200, y: 300 };
   const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: -100 };
 
-  const [lidership, setLidership] = useState({});
+  const [lidership, setLidership] = useState({loading: true});
   const [faculty, setFaculty] = useState({});
 
   useEffect(() => {
@@ -38,8 +38,16 @@ export default function App() {
     children: i.bolimlar.map((bolim) => ({
       name: bolim[`title_${i18next.language}`],
       link: `/institute/structute/department_and_center/${bolim.title_uz}/${bolim._id}`,
+      __rd3t:{
+        collapsed: false
+      }
     })),
+    __rd3t:{
+      collapsed: false
+    }
   }));
+
+  if (!lidership.loading) a.splice(0, 1);
 
   const b = [
     {
@@ -47,8 +55,16 @@ export default function App() {
       link: "",
       children: faculty.data?.map((i) => ({
         name: i[`title_${i18next.language}`],
-        link: `/institute/structute/faculty/${i[`title_${i18next.language}`]}/${i._id}`,
+        link: `/institute/structute/faculty/${i[`title_${i18next.language}`]}/${
+          i._id
+        }`,
+        __rd3t:{
+          collapsed: false
+        }
       })),
+      __rd3t:{
+        collapsed: false
+      }
     },
   ];
 
@@ -56,36 +72,38 @@ export default function App() {
 
   const treeData = {
     name: "Rektorat",
+    link: "/institute/structute/rectorate/Rektor/63cb0f958ff54e48750c0913",
     children: c,
   };
-  
+
   const renderForeignObjectNode = ({
     nodeDatum,
     toggleNode,
     foreignObjectProps,
-  }) => (
-    <foreignObject {...foreignObjectProps}>
-      <div className="px-3">
-        <div className="min-h-10 border border-blue-900 bg-white hover:bg-blue-900  hover:text-white py-2 px-4">
-          <h3 className="text-xs font-bold">{nodeDatum.name}</h3>
-          {nodeDatum.children ? (
-            <div className="flex justify-between items-center mt-6 px-2">
-              <button className="" onClick={toggleNode}>
-                {nodeDatum.__rd3t.collapsed ? "Ko'proq" : "Kamroq"}
-              </button>
-              <Link to={nodeDatum.link}>Batafsil</Link>
-            </div>
-          ) : nodeDatum.link ? (
-            <Link to={nodeDatum.link} className="pt-10">
-              Batafsil
-            </Link>
-          ) : (
-            ""
-          )}
-        </div>
+  }) => {
+    console.log(nodeDatum)
+    return <foreignObject {...foreignObjectProps}>
+    <div className="px-3">
+      <div className="min-h-10 border border-blue-900 bg-white hover:bg-blue-900  hover:text-white py-2 px-4">
+        <h3 className="text-xs font-bold">{nodeDatum.name}</h3>
+        {nodeDatum.children ? (
+          <div className="flex justify-between items-center mt-6 px-2">
+            <button className="" onClick={toggleNode}>
+              {nodeDatum.__rd3t.collapsed ? "Ko'proq" : "Kamroq"}
+            </button>
+            <Link to={nodeDatum.link}>Batafsil</Link>
+          </div>
+        ) : nodeDatum.link ? (
+          <Link to={nodeDatum.link} className="pt-10">
+            Batafsil
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
-    </foreignObject>
-  );
+    </div>
+  </foreignObject>
+  };
 
   return (
     <div className="text-center">

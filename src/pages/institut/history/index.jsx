@@ -8,7 +8,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
-const History = () => {
+export const History = () => {
   const imageArray = [
     { id: "1681724100858", width: "1000", height: "900" },
     { id: "1681724058110", width: "1000", height: "900" },
@@ -61,5 +61,3 @@ const History = () => {
     </div>
   );
 };
-
-export default History;

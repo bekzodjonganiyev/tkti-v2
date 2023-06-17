@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import "./workPlan.css";
 
-const WorkPlan = () => {
+export const WorkPlan = () => {
   const { t } = useTranslation();
   return (
     <div className="container mx-auto w-full">
@@ -43,5 +43,3 @@ const WorkPlan = () => {
     </div>
   );
 };
-
-export default WorkPlan;

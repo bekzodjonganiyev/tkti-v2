@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PhotoAlbum from "react-photo-album";
 import { useTranslation } from "react-i18next";
-const Corruption = () => {
+export const Corruption = () => {
     const { t } = useTranslation();
   const imageArray = [
     { id: "1681730278827", width: "1000", height: "900" },
@@ -42,5 +42,3 @@ const Corruption = () => {
     </div>
   );
 };
-
-export default Corruption;

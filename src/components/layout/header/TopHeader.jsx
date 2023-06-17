@@ -15,7 +15,7 @@ export const TopHeader = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const [isOpen, setOpen] = useState({ hamburger: false, lang: false });
+  const [langText, setLangText] = useState("Uz");
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -29,19 +29,19 @@ export const TopHeader = () => {
   const language = [
     {
       code: "uz",
-      img: uz,
+      text: "Uz",
       name: "Oʻzbekcha",
       conuntry_code: "uz",
     },
     {
       code: "ru",
-      img: ru,
+      text: "Ru",
       name: "русский ",
       conuntry_code: "ru",
     },
     {
       code: "en",
-      img: en,
+      text: "En",
       name: "English",
       conuntry_code: "gb",
     },
@@ -106,7 +106,11 @@ export const TopHeader = () => {
               {t("headerTop.2.name")}
             </NavLink>
             <div className="foydali ">
-              <Dropdown className="border-none" label={t("headerTop.3.name")} inline>
+              <Dropdown
+                className="border-none"
+                label={t("headerTop.3.name")}
+                inline
+              >
                 {data?.map((i, index) => (
                   <>
                     <li className="li " key={index}>
@@ -178,56 +182,20 @@ export const TopHeader = () => {
               <CircleHalf />
             </div>
 
-            <div className=" flex items-center justify-end gap-3">
-              <div
-                className="items-center gap-3  text-white ml-10 p-1.5 rounded cursor-pointer xl:flex hidden relative"
-                onClick={() => setOpen({ ...isOpen, lang: !isOpen.lang })}
-              >
-                <h3 className="cursor-pointer">{t("headerTop.4.name")}</h3>
-
-                {isOpen.lang && (
-                  <ul className="absolute block bg-[#efe9e9]  text-black top-12  left-[-80px] w-[200px] rounded z-50">
-                    {language.map((item) => (
-                      <li
-                        key={item.code}
-                        className="p-1.5 hover:bg-blue-800 cursor-pointer hover:text-white"
-                        onClick={() => {
-                          changeLanguage(item.code);
-                        }}
-                      >
-                        <img
-                          className="mx-2"
-                          style={{}}
-                          src={item.img}
-                          alt=""
-                        />
-                        {/* <input type="hidden" value={item.code}/> */}
-                        {/* <span className="flex">
-                          
-                          <label htmlFor="">  {item.name} </label>
-                        
-                        </span> */}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+            <div className=" flex items-center justify-end gap-3 ml-10">
+              <Dropdown inline label={langText} lang className="text-white">
+                {language.map((item) => (
+                  <Dropdown.Item
+                    className="capitalize"
+                    onClick={() => {setLangText(item.text); i18next.changeLanguage(item.code)}}
+                  >
+                    {item.code}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown>
+              
             </div>
           </div>
-
-          <ul className="lg:hidden flex  top-10 left-0  rounded cursor-pointer">
-            {language.map((item) => (
-              <li
-                key={item.code}
-                className="px-2 py-3"
-                onClick={() => {
-                  changeLanguage(item.code);
-                }}
-              >
-                <img className="w-[50px]" src={item.img} alt="" />
-              </li>
-            ))}
-          </ul>
         </header>
       </div>
     </>

@@ -1,10 +1,9 @@
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-
 import { UserLayout, AdminLayout } from "./components/layout";
 import { Details } from "./components/details";
-import TreeInstitute from "./components/tree/TreeComp"
+import TreeInstitute from "./components/tree/TreeComp";
 import {
   ProtectedRoute,
   SplitterComponent,
@@ -12,21 +11,23 @@ import {
   UniversalComponent,
 } from "./components";
 
-import {  Home } from "./pages";
-import { AboutUS } from "./pages/institut/aboutUs";
-import { Mission} from "./pages/institut/mission";
-import {ContactUs} from "./pages/institut/contactUs/ContactUs"
-import WorkPlan from "./pages/institut/workPlan";
-import Corruption from "./pages/institut/corrupsion/Corrupsion";
-import History from "./pages/institut/history";
-import { News } from "./pages/news";
-import { InteractiveLink } from "./pages/InteractiveLInk";
-
-
+import {
+  Home,
+  AboutUS,
+  ActivityDocuments,
+  ContactUs,
+  Corruption,
+  History,
+  InteractiveLink,
+  Mission,
+  MoreNews,
+  News,
+  Statistics,
+  UsefulLinks,
+  WorkPlan,
+} from "./pages";
 
 function App() {
-
-
   return (
     <div className={`h-screen`}>
       <Routes>
@@ -51,20 +52,33 @@ function App() {
           <Route index element={<Home />} />
           <Route path="institut/biz-haqimiqda" element={<AboutUS />} />
           <Route path="institut/bog'nalish" element={<ContactUs />} />
-          <Route path="institut/Missiyamiz" element={<Mission/>} />
+          <Route path="institut/missiyamiz" element={<Mission />} />
           <Route path="institut/ish-reja" element={<WorkPlan />} />
-          <Route path="institut/tarix" element={<History/>} />
+          <Route path="institut/tarix" element={<History />} />
           <Route path="institut/korrupsiya" element={<Corruption />} />
-          <Route path="institut/structure" element={<TreeInstitute/>} />
+          <Route path="institut/structure" element={<TreeInstitute />} />
           <Route path="elon" element={<TreeInstitute />} />
           <Route path="news" element={<News />} />
           <Route path="foydali-havolalar" element={<InteractiveLink />} />
           <Route path="test" element={<TabComponent />} />
-          <Route path="/institute/structute/:element/:name/:id" element={<TabComponent />} />
-          <Route path="/institute/structute/:name/:id" element={<TabComponent />} />
-          
+          <Route
+            path="/institute/structute/:element/:name/:id"
+            element={<TabComponent />}
+          />
+          <Route
+            path="/institute/structute/:name/:id"
+            element={<TabComponent />}
+          />
+
           {/* TODO - splitter va universal componentlarni optimizatsiya qilish kerak, misol uchun memoga o'rash kerek va hk */}
-          <Route path="/:page/:id/"  element={<SplitterComponent><UniversalComponent /></SplitterComponent> } />
+          <Route
+            path="/:page/:id/"
+            element={
+              <SplitterComponent>
+                <UniversalComponent />
+              </SplitterComponent>
+            }
+          />
           <Route path="/:page/details/:id" element={<UniversalComponent />} />
           <Route path="/news/:id" element={<Details />} />
         </Route>
