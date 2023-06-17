@@ -28,64 +28,64 @@
     }
   ],
 
-  "havola":[
-{
-  "name":"Oliy ma'lumot haqidagi diplomni tasdiqlash  "
-},
-{
-  "name":"Ish joyidan ma’lumotnoma olish"
-},
-{
-  "name":"O‘qish joyidan ma’lumotnoma olish(OTM)"
-},
-{
-  "name":"Abiturientlar arizasini elektron qabul qilish (bakalavriant)"
-},
-{
-  "name":"Abiturientlar arizasini elektron qabul qilish (magistratura)"
-},
-{
-  "name":"Davlat fuqorolik xizmati bo‘sh ish o‘rinlari yagona ochiq portali"
-},
-{
-  "name":"Abiturientlar arizasini elektron qabul qilish (doktarantura)"
-},
-{
-  "name":"Abiturientlar arizasini elektron qabul qilish (ikkinchi mutaxasislik ) bo‘yicha"
-},
-{
-  "name":"Talabalarga shartnoma asosida ko‘rsatiladigan xizmatlar hisobini yuritish axborot tizimi"
-},
-{
-  "name":"Oliy ta'lim fan va inovatsiya vazirligining rasmiy sahfasi"
-},
-{
-  "name":"Oliy va o‘rta maxsus ta'lim muassasasida o‘qiganlikni tasdiqlash haqidagi arxiv ma'lumotnomasini olish"
-}
-,{
-  "name":"O‘zbekiston Respublikasi oliy ta'lim va ilmiy tadqiqot muassasalarining yagona elektron kutubxona axborot tizim"
-},{
-  "name":"Toshkent kimyo-texnologiya instituti Yangiyer filiali"
-},
-{
-  "name":"Toshkent kimyo-texnologiya instituti Shahrisabz filiali​  "
-},
-{
-  "name":"O‘qishni ko‘chirish va tiklash uchun onlayn ariza topshirish axborot tizimi"
-},
-{
-  "name":"O`zbekiston Respublikasi Hukumat portali"
-},
-{
-  "name":"Mening fikrim - Jamoaviy murojaatlar portali"
-},
-{
-  "name":"Korporativ pochta"
-},
-{
-  "name":"TKTI kutubxonasi"
-}
-
+  "havola": [
+    {
+      "name": "Oliy ma'lumot haqidagi diplomni tasdiqlash  "
+    },
+    {
+      "name": "Ish joyidan ma’lumotnoma olish"
+    },
+    {
+      "name": "O‘qish joyidan ma’lumotnoma olish(OTM)"
+    },
+    {
+      "name": "Abiturientlar arizasini elektron qabul qilish (bakalavriant)"
+    },
+    {
+      "name": "Abiturientlar arizasini elektron qabul qilish (magistratura)"
+    },
+    {
+      "name": "Davlat fuqorolik xizmati bo‘sh ish o‘rinlari yagona ochiq portali"
+    },
+    {
+      "name": "Abiturientlar arizasini elektron qabul qilish (doktarantura)"
+    },
+    {
+      "name": "Abiturientlar arizasini elektron qabul qilish (ikkinchi mutaxasislik ) bo‘yicha"
+    },
+    {
+      "name": "Talabalarga shartnoma asosida ko‘rsatiladigan xizmatlar hisobini yuritish axborot tizimi"
+    },
+    {
+      "name": "Oliy ta'lim fan va inovatsiya vazirligining rasmiy sahfasi"
+    },
+    {
+      "name": "Oliy va o‘rta maxsus ta'lim muassasasida o‘qiganlikni tasdiqlash haqidagi arxiv ma'lumotnomasini olish"
+    },
+    {
+      "name": "O‘zbekiston Respublikasi oliy ta'lim va ilmiy tadqiqot muassasalarining yagona elektron kutubxona axborot tizim"
+    },
+    {
+      "name": "Toshkent kimyo-texnologiya instituti Yangiyer filiali"
+    },
+    {
+      "name": "Toshkent kimyo-texnologiya instituti Shahrisabz filiali​  "
+    },
+    {
+      "name": "O‘qishni ko‘chirish va tiklash uchun onlayn ariza topshirish axborot tizimi"
+    },
+    {
+      "name": "O`zbekiston Respublikasi Hukumat portali"
+    },
+    {
+      "name": "Mening fikrim - Jamoaviy murojaatlar portali"
+    },
+    {
+      "name": "Korporativ pochta"
+    },
+    {
+      "name": "TKTI kutubxonasi"
+    }
   ],
   "Header": [
     {
@@ -117,6 +117,9 @@
     "AreaEducation": "TA'LIM YO'NALISHLARI",
     "Education": "QO'SHMA TA'LIM"
   },
+  "newsPage": {
+    "All": "Barchasi    "
+  },
   "HomePage": [
     {
       "name": "Syllabusni toping"
@@ -132,9 +135,15 @@
     },
     {
       "name": "Foydali havolalar"
+    },
+    {
+      "name": "Video galeriya"
+    },
+    {
+      "name": " Barchasi   "
     }
   ],
-  "Syllabus":[
+  "Syllabus": [
     {
       "name": "Yil"
     },
@@ -170,8 +179,19 @@
     },
     {
       "name": "Yo'nalishni tanlang"
+    },
+    {
+      "name": "Yilni tanlang"
+    },
+    {
+      "name": "Kunduzgi/Sirtqi"
+    },
+    {
+      "name": "Bakalavr/Magistratura"
+    },
+    {
+      "name": "Qidirish"
     }
-
   ],
   "Institute": [
     {
@@ -205,7 +225,7 @@
       "name": "Bog'lanish"
     }
   ],
-  "": [],
+
   "aboutUs": [
     {
       "name": "Biz haqimizda"
@@ -229,22 +249,22 @@
   "ContactUs": [
     {
       "name": "Yoqilg'i organik birikmalar kimyoviy texnologiyasi fakulteti",
-      "manzil":"Toshkent, Navoiy ko’chasi, 36-uy"
+      "manzil": "Toshkent, Navoiy ko’chasi, 36-uy"
     },
     {
       "name": "Menejment va kasb ta'limi fakulteti",
       "manzil": "Toshkent, Samarqand Darvoza ko’chasi, 60-uy"
     },
     {
-      "name": "Oziq-ovqat mahsulotlari texnologiyasi fakulteti", 
-      "manzil":"Navoiy ko’chasi, 32-uy, Toshkent, O'zbekiston, 100011"
+      "name": "Oziq-ovqat mahsulotlari texnologiyasi fakulteti",
+      "manzil": "Navoiy ko’chasi, 32-uy, Toshkent, O'zbekiston, 100011"
     },
     {
-      "name": "Noorganik moddalar kimyoviy texnologiyasi fakulteti", 
+      "name": "Noorganik moddalar kimyoviy texnologiyasi fakulteti",
       "manzil": "Toshkent sh., M. Ulug’bek ko’chasi, 41-uy"
     },
     {
-      "name": "Vinochilik texnologiyasi va sanoat uzumchligi fakulteti", 
+      "name": "Vinochilik texnologiyasi va sanoat uzumchligi fakulteti",
       "manzil": "Qibray tumani, ToshIES qo'rg'oni, Farovon mahallasi, 1-uy"
     }
   ],
@@ -338,10 +358,7 @@
       "Filiallar",
       "Yoshlar ittifoqi"
     ],
-    "activity": [
-      "Faoliyat",
-      "Moliyaviy Faoliyat"
-    ],
+    "activity": ["Faoliyat", "Moliyaviy Faoliyat"],
     "mytkti": [
       "Mening TKTI",
       "Kutubxona",

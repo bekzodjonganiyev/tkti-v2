@@ -29,19 +29,19 @@ export const TopHeader = () => {
   const language = [
     {
       code: "uz",
-      text: "Uz",
-      name: "Oʻzbekcha",
+      img: uz,
+      name: "uz",
       conuntry_code: "uz",
     },
     {
       code: "ru",
-      text: "Ru",
+      img: ru,
       name: "русский ",
       conuntry_code: "ru",
     },
     {
       code: "en",
-      text: "En",
+      img: en,
       name: "English",
       conuntry_code: "gb",
     },
@@ -50,7 +50,7 @@ export const TopHeader = () => {
   const data = [
     { id: 0, label: t("havola.18.name"), href: "https://new.akbt.uz" },
     { id: 1, label: t("havola.17.name"), href: "https://mail.tkti.uz/" },
-    { id: 2, label: " Barchasi", href: "/foydali-havolalar" },
+    { id: 2, label: t("HomePage.6.name"), href: "/${i18next.language}/foydali-havolalar" },
   ];
   const changeSize = (arg) => {
     const Page = document.body;
@@ -73,12 +73,12 @@ export const TopHeader = () => {
   };
 
   const changeLanguage = (code) => {
-    let pathnameLang = "uz";
-    i18next.changeLanguage(code);
-    if (pathname.split("/")[1] === "uz") pathnameLang = "uz";
-    if (pathname.split("/")[1] === "ru") pathnameLang = "ru";
-    if (pathname.split("/")[1] === "en") pathnameLang = "en";
+    let pathnameLang = "uz"
+    if (pathname.split("/")[1] === "uz") pathnameLang = "uz"
+    if (pathname.split("/")[1] === "ru") pathnameLang = "ru"
+    if (pathname.split("/")[1] === "en") pathnameLang = "en"
     navigate(pathname.replace(pathnameLang, code));
+    i18next.changeLanguage(code);
     window.location.reload();
   };
 
@@ -182,18 +182,40 @@ export const TopHeader = () => {
               <CircleHalf />
             </div>
 
-            <div className=" flex items-center justify-end gap-3 ml-10">
-              <Dropdown inline label={langText} lang className="text-white">
-                {language.map((item) => (
-                  <Dropdown.Item
-                    className="capitalize"
-                    onClick={() => {setLangText(item.text); i18next.changeLanguage(item.code)}}
-                  >
-                    {item.code}
-                  </Dropdown.Item>
-                ))}
-              </Dropdown>
-              
+            <div className=" flex items-center justify-end gap-3">
+              <div
+                className="items-center gap-3  text-white ml-10 p-1.5 rounded cursor-pointer xl:flex hidden relative"
+                onClick={() => setOpen({ ...isOpen, lang: !isOpen.lang })}
+              >
+                <h3 className="cursor-pointer">{t("headerTop.4.name")}</h3>
+
+                {isOpen.lang && (
+                  <ul className="absolute block bg-[#efe9e9]  text-black top-12  left-[-80px] w-[200px] rounded z-50">
+                    {language.map((item) => (
+                      <li
+                        key={item.code}
+                        className="p-1.5 hover:bg-blue-800 cursor-pointer hover:text-white"
+                        onClick={() => {
+                          changeLanguage(item.code);
+                        }}
+                      >
+                        <img
+                          className="mx-2"
+                          style={{}}
+                          src={item.img}
+                          alt=""
+                        />
+                        {/* <input type="hidden" value={item.code}/> */}
+                        {/* <span className="flex">
+                          
+                          <label htmlFor="">  {item.name} </label>
+                        
+                        </span> */}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           </div>
         </header>

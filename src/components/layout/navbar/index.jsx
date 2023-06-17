@@ -222,9 +222,9 @@ export const Navbar = () => {
             <img src={Logo} alt="" width={"60"} height={"20"} className="" />
             <div className={`text-[#02307d] font-bold`}>
               <div className="text-[14px] mx-3 ">
-                <div>TOSHKENT </div>
-                <div>KIMYO-TEXNOLOGIYA</div>
-                <div>INSTITUTI</div>
+              <div>{t("TktiName.0.name")}</div>
+                      <div>{t("TktiName.1.name")}</div>
+                      <div>{t("TktiName.2.name")}</div>
               </div>
             </div>
           </Link>
@@ -276,7 +276,8 @@ export const Navbar = () => {
                     <li className="py-2 border-b navbar__hoverItem border-slate-100">
                       <Link
                         onClick={() => setIdForFetch(item.id)}
-                        to={item.link}
+                        to={`${i18next.language}${item.link}`}
+                      
                       >
                         {item?.name}
                       </Link>

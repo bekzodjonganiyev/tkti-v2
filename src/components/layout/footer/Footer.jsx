@@ -30,7 +30,7 @@ export const Footer = () => {
                   <div
                     className={`text-white lg:text-2xl xl:text-xl md:text-lg  md:w-[70%] font-bold`}
                   >
-                    <div className="text-[15px] my-3 mx-3">
+                    <div className="text-[14px] mx-3">
                       <div>{t("TktiName.0.name")}</div>
                       <div>{t("TktiName.1.name")}</div>
                       <div>{t("TktiName.2.name")}</div>
@@ -82,7 +82,7 @@ export const Footer = () => {
               <div className="text-white text-[20px]">
                 <div>
                   <NavLink to="#">
-                    <span className="mx-3">Fakultetlar</span>
+                    <span className="mx-3">{t("Institute.5.name")}</span>
                   </NavLink>
                 </div>
                 <div>

@@ -50,37 +50,24 @@ function App() {
           }
         >
           <Route index element={<Home />} />
-          <Route path="institut/biz-haqimiqda" element={<AboutUS />} />
-          <Route path="institut/bog'nalish" element={<ContactUs />} />
-          <Route path="institut/missiyamiz" element={<Mission />} />
-          <Route path="institut/ish-reja" element={<WorkPlan />} />
-          <Route path="institut/tarix" element={<History />} />
-          <Route path="institut/korrupsiya" element={<Corruption />} />
-          <Route path="institut/structure" element={<TreeInstitute />} />
-          <Route path="elon" element={<TreeInstitute />} />
-          <Route path="news" element={<News />} />
-          <Route path="foydali-havolalar" element={<InteractiveLink />} />
+          <Route path=":lang/institut/biz-haqimiqda" element={<AboutUS />} />
+          <Route path=":lang/institut/bog'nalish" element={<ContactUs />} />
+          <Route path=":lang/institut/Missiyamiz" element={<Mission/>} />
+          <Route path=":lang/institut/ish-reja" element={<WorkPlan />} />
+          <Route path=":lang/institut/tarix" element={<History/>} />
+          <Route path=":lang/institut/korrupsiya" element={<Corruption />} />
+          <Route path=":lang/institut/structure" element={<TreeInstitute/>} />
+          <Route path=":lang/elon" element={<TreeInstitute />} />
+          <Route path=":lang/news" element={<News />} />
+          <Route path=":lang/foydali-havolalar" element={<InteractiveLink />} />
           <Route path="test" element={<TabComponent />} />
-          <Route
-            path="/institute/structute/:element/:name/:id"
-            element={<TabComponent />}
-          />
-          <Route
-            path="/institute/structute/:name/:id"
-            element={<TabComponent />}
-          />
-
+          <Route path=":lang/institute/structute/:element/:name/:id" element={<TabComponent />} />
+          <Route path=":lang/institute/structute/:name/:id" element={<TabComponent />} />
+          
           {/* TODO - splitter va universal componentlarni optimizatsiya qilish kerak, misol uchun memoga o'rash kerek va hk */}
-          <Route
-            path="/:page/:id/"
-            element={
-              <SplitterComponent>
-                <UniversalComponent />
-              </SplitterComponent>
-            }
-          />
-          <Route path="/:page/details/:id" element={<UniversalComponent />} />
-          <Route path="/news/:id" element={<Details />} />
+          <Route path=":lang/:page/:id/"  element={<SplitterComponent><UniversalComponent /></SplitterComponent> } />
+          <Route path=":lang/:page/details/:id" element={<UniversalComponent />} />
+          <Route path=":lang/news/:id" element={<Details />} />
         </Route>
 
         <Route
