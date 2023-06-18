@@ -33,7 +33,7 @@ export const NewsCard = ({
   return (
     <Link 
     // to={`/${i18next.language}/news/details/${category}/${endpoint}`}
-    to={`/news/${filtered(id)}`}
+    to={`/${i18next.language}/news/${filtered(id)}`}
     >
       <div className={`flex rounded-xl  border-red-900 ${inner ? "gap-5 sm:flex-row flex-col " : "flex-col w-[100%] md:w-56 lg:w-72 xl:w-[380] 2xl:w-[430px]"}`}>
         <div className={`relative`}>

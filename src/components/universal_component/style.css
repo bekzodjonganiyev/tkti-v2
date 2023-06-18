@@ -1,137 +1,135 @@
-.uni-comp-body img{
+.uni-comp-body img {
   width: 100%;
   height: auto;
 }
 
 .cardHodim {
-    flex-wrap: wrap;
-    display: flex;
-  
-    margin: 20px auto;
+  flex-wrap: wrap;
+  display: flex;
+
+  margin: 20px auto;
+}
+.cardEmail {
+  width: max-content;
+}
+.cardInfo {
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 28px;
+  width: 600px;
+  border: 2px solid #eceef1;
+  border-radius: 4px;
+}
+
+.cardImg img {
+  object-fit: cover;
+  width: 217px;
+  height: 100%;
+}
+.cardDesc {
+  padding: 24px;
+  margin: 5px 0;
+}
+.aSD {
+  box-sizing: border-box;
+  width: 15%;
+  height: 2px;
+  background: #6db0ff;
+  transition: all 0.3s;
+}
+.cardInfo:hover .aSD {
+  width: 100%;
+}
+
+.cardDesc p {
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  margin-top: 8px;
+  color: #44494f;
+  font-size: 1.2rem;
+}
+.cardJob {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  color: #003b81;
+}
+@media (max-width: 1200px) {
+  .cardHodim {
+    width: 80%;
   }
-  .cardEmail {
-    width: max-content;
+}
+@media (max-width: 920px) {
+  .cardInfo {
+    width: 400px;
+    border: 0.4px solid #02307d !important;
+    border: none;
+    display: block;
+  }
+
+  .cardHodim {
+    max-width: fit-content;
+  }
+  .cardImg img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .studentTitle {
+    display: flex;
+    flex-direction: column;
+  }
+  .studentTitle h3 {
+    width: 100% !important;
   }
   .cardInfo {
-    display: flex;
-    cursor: pointer;
-    margin-bottom: 28px;
-    width: 600px;
-    border: 2px solid #eceef1;
-    border-radius: 4px;
+    width: 350px;
   }
-  
-  .cardImg img {
-    object-fit: cover;
-    width: 217px;
-    height: 100%;
-  }
+}
+@media (max-width: 540px) {
   .cardDesc {
-    padding: 24px;
-    margin: 5px 0;
+    padding: 12px;
+    font-size: 16px;
   }
-  .aSD {
-    box-sizing: border-box;
-    width: 15%;
-    height: 2px;
-    background: #6db0ff;
-    transition: all 0.3s;
-  }
-  .cardInfo:hover .aSD {
-    width: 100%;
-  }
-  
   .cardDesc p {
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
-    margin-top: 8px;
-    color: #44494f;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
-  .cardJob {
-    font-size: 1.25rem;
-    margin-bottom: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
-    color: #003b81;
-  }
-  @media (max-width: 1200px) {
-    .cardHodim {
-      width: 80%;
-    }
-  }
-  @media (max-width: 920px) {
-    
-    .cardInfo {
-      width: 400px;
-      border: 0.4px solid #02307d !important;
-      border: none;
-      display: block;
-    }
-  
-    .cardHodim {
-      max-width: fit-content;
-    }
-    .cardImg img {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin: 0 auto;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .studentTitle{
-      display: flex;
-      flex-direction:column;
-    }
-    .studentTitle h3{
-      width: 100% !important;
-    }
-    .cardInfo {
-      width: 350px;
-    }
-  }
-  @media (max-width: 540px) {
-    .cardDesc {
-      padding: 12px;
-      font-size: 16px;
-    }
-    .cardDesc p {
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 320px) {
-    .cardDesc p {
-      font-size: 1rem;
-    }
-  }
-  .accardionTitle{
-    cursor: pointer;
-    background:#cddcf6;
-    border: 1px solid blue;
-    
-    margin: 10px 20px;
-    border-radius:5px;
 }
-summary{
-    padding: 10px 5px;
+
+@media (max-width: 320px) {
+  .cardDesc p {
+    font-size: 1rem;
+  }
 }
-summary:hover{
-   
-    transition: .5s all;
-    color: #fff;
-    background:#02307d !important;
+.accardionTitle {
+  cursor: pointer;
+  background: #cddcf6;
+  border: 1px solid blue;
+
+  margin: 10px 20px;
+  border-radius: 5px;
 }
-summary:focus-within{
-    color: #fff;
-    transition: .5s all;
-    background:#02307d !important;
+summary {
+  padding: 10px 5px;
 }
-.ttjImage{
+summary:hover {
+  transition: 0.5s all;
+  color: #fff;
+  background: #02307d !important;
+}
+summary:focus-within {
+  color: #fff;
+  transition: 0.5s all;
+  background: #02307d !important;
+}
+.ttjImage {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -139,106 +137,105 @@ summary:focus-within{
   gap: 10px;
   flex-wrap: wrap;
 }
-.ttjImage img{
+.ttjImage img {
   width: 49%;
 }
-.studentTitle{
+.studentTitle {
   display: flex;
- 
-  
+
   justify-content: space-between;
 
-  align-items:center;
+  align-items: center;
   border: 1px solid #ddd;
   padding: 5px 15px;
   cursor: pointer;
 }
-.studentTitle img{
-  border-radius:50%;
+.studentTitle img {
+  border-radius: 50%;
   width: 110px;
   object-fit: cover;
   height: 110px;
 }
-.studentTitle h3{
+.studentTitle h3 {
   width: 50%;
   font-size: 18px;
   font-weight: 600;
 }
 
-.tableComp { 
-  width: 100%; 
-  border-collapse: collapse; 
-  margin:50px auto;
-  }
+.tableComp {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 50px auto;
+}
 
-.tableComp tr:nth-of-type(odd) { 
-  background: #eee !important; 
-  }
+.tableComp tr:nth-of-type(odd) {
+  background: #eee !important;
+}
 
-  .tableComp th { 
-  background: #3498db !important; 
-  color: white; 
-  font-weight: bold; 
-  }
+.tableComp th {
+  background: #3498db !important;
+  color: white;
+  font-weight: bold;
+}
 
-  .tableComp td,  .tableComp th { 
-  padding: 10px; 
-  border: 1px solid #ccc !important; 
-  text-align: left; 
+.tableComp td,
+.tableComp th {
+  padding: 10px;
+  border: 1px solid #ccc !important;
+  text-align: left;
   font-size: 18px;
-  }
-  .tableComp tr:nth-child(even) {
-    background: #efefef ;
-  }
-  
-  .tableComp tr:hover {
-    background: #d1d1d1;
-  }
-  @media 
-  only screen and (max-width: 760px),
-  (min-device-width: 768px) and (max-device-width: 1024px)  {
-  
-    .tableComp { 
-        width: 100%; 
-    }
-  
-    .tableComp,  .tableComp thead,  .tableComp tbody,  .tableComp th,  .tableComp td,  .tableComp tr { 
-      display: block; 
-    }
-    
-    /* Hide table headers (but not display: none;, for accessibility) */
-  
-    .tableComp  tr { border: 1px solid #ccc; }
-    
-    .tableComp td { 
-    
-      border: none;
-      border-bottom: 1px solid #eee; 
-     
-     
-    }
-  
-  
-  
+}
+.tableComp tr:nth-child(even) {
+  background: #efefef;
+}
+
+.tableComp tr:hover {
+  background: #d1d1d1;
+}
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  .tableComp {
+    width: 100%;
   }
 
-  .accardionBody{
-    margin: 0 20px;
+  .tableComp,
+  .tableComp thead,
+  .tableComp tbody,
+  .tableComp th,
+  .tableComp td,
+  .tableComp tr {
+    display: block;
   }
 
-  .confrensiya{
-    display: flex;
-    
-    align-items:center;
-  }
-  .confrensiya img{
-    width: 100px;
-    margin: 0 15px;
+  /* Hide table headers (but not display: none;, for accessibility) */
+
+  .tableComp tr {
+    border: 1px solid #ccc;
   }
 
-  .studentTitle img{
-    border-radius:50%;
-    width: 110px;
-    object-fit: cover;
-    height: 110px;
+  .tableComp td {
+    border: none;
+    border-bottom: 1px solid #eee;
   }
+}
+
+.accardionBody {
+  margin: 0 20px;
+}
+
+.confrensiya {
+  display: flex;
+
+  align-items: center;
+}
+.confrensiya img {
+  width: 100px;
+  margin: 0 15px;
+}
+
+.studentTitle img {
+  border-radius: 50%;
+  width: 110px;
+  object-fit: cover;
+  height: 110px;
+}

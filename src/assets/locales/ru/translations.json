@@ -123,6 +123,18 @@
     },
     {
       "name": "Выберите направление"
+    },
+    {
+      "name": "Yilni tanlang"
+    },
+    {
+      "name": "Kunduzgi/Sirtqi"
+    },
+    {
+      "name": "Bakalavr/Magistratura"
+    },
+    {
+      "name": "Qidirish"
     }
 
   ],
@@ -156,6 +168,15 @@
     "AreaEducation": "НАПРАВЛЕНИЯ ОБРАЗОВАНИ",
     "Education": "СОВМЕСТНЫЕ ОБРАЗОВАТЕЛЬНЫЕ ПРОГРАММЫ"
   },
+  "newsPage": {
+   
+
+
+    "News": " Новости",
+    "Announcements": "Объявления",
+    "Video": "Видео галерея",
+    "All": "Все    "
+  },
   "HomePage": [
     {
       "name": "Найдите программу"
@@ -171,6 +192,12 @@
     },
     {
       "name": "Полезные ссылки"
+    },
+    {
+      "name": "Видео галерея"
+    },
+    {
+      "name": " Все   "
     }
   ],
   "Institute": [

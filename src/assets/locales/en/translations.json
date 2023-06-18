@@ -27,63 +27,63 @@
       "name": "en"
     }
   ],
-  "havola":[
+  "havola": [
     {
-      "name":"Confirmation of diploma of higher education"
+      "name": "Confirmation of diploma of higher education"
     },
     {
-      "name":"Get a reference from the workplace"
+      "name": "Get a reference from the workplace"
     },
     {
-      "name":"Obtaining a certificate from the place of study (OTM)"
+      "name": "Obtaining a certificate from the place of study (OTM)"
     },
     {
-      "name":"Electronic acceptance of applicants' application (undergraduate)"
+      "name": "Electronic acceptance of applicants' application (undergraduate)"
     },
     {
-      "name":"Electronic acceptance of applicants' application (master's degree)"
+      "name": "Electronic acceptance of applicants' application (master's degree)"
     },
     {
-      "name":"A single open portal for vacancies of civil servants."
+      "name": "A single open portal for vacancies of civil servants."
     },
     {
-      "name":"Electronic acceptance of applications by PhD and DSc"
+      "name": "Electronic acceptance of applications by PhD and DSc"
     },
     {
-      "name":"On electronic acceptance of applicants' applications (second specialization)"
+      "name": "On electronic acceptance of applicants' applications (second specialization)"
     },
     {
-      "name":"Information system for accounting of services provided to students on the basis of a contract"
+      "name": "Information system for accounting of services provided to students on the basis of a contract"
     },
     {
-      "name":"The official page of the Ministry of Higher Education, Science and Innovation      "
+      "name": "The official page of the Ministry of Higher Education, Science and Innovation      "
     },
     {
-      "name":"Obtaining an archival certificate of confirmation of studies at a higher and secondary special educational institution"
+      "name": "Obtaining an archival certificate of confirmation of studies at a higher and secondary special educational institution"
     },
     {
-      "name":"Unified electronic library information system of higher education and research institutions of the Republic of Uzbekistan"
+      "name": "Unified electronic library information system of higher education and research institutions of the Republic of Uzbekistan"
     },
     {
-      "name":"Yangiyer branch of Tashkent Institute of chemistry and technology"
+      "name": "Yangiyer branch of Tashkent Institute of chemistry and technology"
     },
     {
-      "name":"Shahrisabz branch of Tashkent Institute of Chemical Technology"
+      "name": "Shahrisabz branch of Tashkent Institute of Chemical Technology"
     },
     {
-      "name":"Information system of online application submission for Student transfer and readmission"
+      "name": "Information system of online application submission for Student transfer and readmission"
     },
     {
-      "name":"The Government portal of the Republic of Uzbekistan"
+      "name": "The Government portal of the Republic of Uzbekistan"
     },
     {
-      "name":"Unified platform for public initiatives"
+      "name": "Unified platform for public initiatives"
     },
     {
-      "name":"Corporate mail"
+      "name": "Corporate mail"
     },
     {
-      "name":"TICTI library"
+      "name": "TICTI library"
     }
   ],
   "Header": [
@@ -121,6 +121,12 @@
     },
     {
       "name": "Useful links"
+    },
+    {
+      "name": "Video gallery"
+    },
+    {
+      "name": " All   "
     }
   ],
   "Statistic": {
@@ -133,9 +139,9 @@
     "AreaEducation": "AREAS OF EDUCATION",
     "Education": "JOINT EDUCATIONAL PROGRAMS"
   },
-  "Syllabus":[
+  "Syllabus": [
     {
-      "name": "Yil"
+      "name": "Year"
     },
     {
       "name": "Ta'lim turi"
@@ -144,7 +150,7 @@
       "name": "Ta'lm darajasi"
     },
     {
-      "name": "Fakultet"
+      "name": "Faculty"
     },
     {
       "name": "Kafedra"
@@ -159,18 +165,29 @@
       "name": "Ta'lim turini tanlang"
     },
     {
-      "name": "Ta'lim darajasini tanlang"
+      "name": "Select the level of education"
     },
     {
-      "name": "Fakultetni tanlang"
+      "name": "Choose a faculty"
     },
     {
-      "name": "Kafedrani tanlang"
+      "name": "Select a department"
     },
     {
-      "name": "Yo'nalishni tanlang"
+      "name": "Choose a direction"
+    },
+    {
+      "name": "Select a year"
+    },
+    {
+      "name": "Kunduzgi/Sirtqi"
+    },
+    {
+      "name": "Bachelor/Master"
+    },
+    {
+      "name": "Search"
     }
-
   ],
   "Institute": [
     {
@@ -240,27 +257,27 @@
   ],
   "ContactUs": [
     {
-      "name": "Faculty of chemical technology of fuel and organic compounds", 
-      "manzil":"36 apt, Street Navai, Tashkent"
+      "name": "Faculty of chemical technology of fuel and organic compounds",
+      "manzil": "36 apt, Street Navai, Tashkent"
     },
     {
-      "name": "Faculty of management and professional education", 
-      "manzil":"60 apt,  Samarkand Darvaza street, Tashkent"
+      "name": "Faculty of management and professional education",
+      "manzil": "60 apt,  Samarkand Darvaza street, Tashkent"
     },
     {
-      "name": "Faculty of food technology", 
-      "manzil":"Navoi Street, 32, Tashkent, Uzbekistan, 100011"
+      "name": "Faculty of food technology",
+      "manzil": "Navoi Street, 32, Tashkent, Uzbekistan, 100011"
     },
     {
-      "name": "Faculty of chemical technology of inorganic substances", 
-      "manzil":"41 apt, M. Ulugbek Street, Tashkent"
+      "name": "Faculty of chemical technology of inorganic substances",
+      "manzil": "41 apt, M. Ulugbek Street, Tashkent"
     },
     {
-      "name": "Faculty of winemaking technology and industrial viticulture", 
-      "manzil":"1 apt, Mahalla Faravan, Kibray, TashIES, Tashkent"
+      "name": "Faculty of winemaking technology and industrial viticulture",
+      "manzil": "1 apt, Mahalla Faravan, Kibray, TashIES, Tashkent"
     }
   ],
-  
+
   "WorkPlan": [
     {
       "name": "OTM work plan"

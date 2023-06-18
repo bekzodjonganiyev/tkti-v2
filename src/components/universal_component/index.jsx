@@ -107,10 +107,10 @@ export const UniversalComponent = () => {
               <Accordion>
                 {JSON.parse(item?.faq)?.map((subItem) => (
                   <Accordion.Panel key={item._id}>
-                    <Accordion.Title>
+                    <Accordion.Title className="text-xl  font-semibold">
                       {subItem[`question_${i18next.language}`]}
                     </Accordion.Title>
-                    <Accordion.Content>
+                    <Accordion.Content className="text-xl">
                       {subItem[`answer_${i18next.language}`]}
                     </Accordion.Content>
                   </Accordion.Panel>

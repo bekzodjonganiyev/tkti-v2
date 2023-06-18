@@ -20,7 +20,7 @@ export const Sillabus = () => {
               id="large"
               className="max-sm:w-full  block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option selected>O'quv yilini tanlang</option>
+              <option selected>{t("Syllabus.12.name")}</option>
             </select>
           </div>
 
@@ -35,7 +35,7 @@ export const Sillabus = () => {
               id="large"
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option selected>Kunduzgi/Sirtqi</option>
+              <option selected>{t("Syllabus.13.name")}</option>
             </select>
           </div>
           <div>
@@ -49,7 +49,7 @@ export const Sillabus = () => {
               id="large"
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option selected>Bakalavr/Magistr</option>
+              <option selected>{t("Syllabus.14.name")}</option>
             </select>
           </div>
           <div>
@@ -91,7 +91,7 @@ export const Sillabus = () => {
               id="large"
               className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option selected>{t("Syllabus.10.name")}</option>
+              <option selected>{t("Syllabus.11.name")}</option>
             </select>
           </div>
         </div>
@@ -99,7 +99,7 @@ export const Sillabus = () => {
           type="submit"
           className="flex justify-center  mx-auto  text-white my-5 bg-blue-700   items-center hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-20 py-4 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Qidirish
+          {t("Syllabus.15.name")}
         </button>
       </form>
     </div>

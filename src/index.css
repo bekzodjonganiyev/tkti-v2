@@ -3,7 +3,4 @@
 @tailwind components;
 @tailwind utilities;
 
-.h-screen--open {
-  overflow: hidden;
-  height: 100vh;
-}
+
