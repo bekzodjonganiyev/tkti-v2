@@ -83,8 +83,8 @@ export const Navbar = () => {
       "qabul/all",
       "talabalar/all",
       "talim/all",
-      "ilmiy_tad/all",
-      "xalqaro_aloqa/all",
+      "ilmiytad/all",
+      "xalqaro/all",
     ];
 
     try {
@@ -117,12 +117,12 @@ export const Navbar = () => {
         })),
         res5: responses[4]?.data?.map((item) => ({
           name: item[`title_${i18next.language}`],
-          link: `/ilmiy_tad/${slug(item.title_uz)}`,
+          link: `/ilmiytad/${slug(item.title_uz)}`,
           id: item?._id,
         })),
         res6: responses[5]?.data?.map((item) => ({
           name: item[`title_${i18next.language}`],
-          link: `/xalqaro_aloqa/${slug(item.title_uz)}`,
+          link: `/xalqaro/${slug(item.title_uz)}`,
           id: item?._id,
         })),
       }));
@@ -208,8 +208,9 @@ export const Navbar = () => {
     
   ];
 
+  console.log(link)
+
   useEffect(() => {
-    // getUrls();
     fetchData();
   }, [fetchData]);
 

@@ -29,7 +29,6 @@ import { ImageGallary } from "../image_gallary/ImageGalary";
 
 export const UniversalComponent = () => {
   const { t } = useTranslation();
-  const { pathname } = useLocation();
   const { page, id } = useParams();
 
   const dispatch = useDispatch();
@@ -58,7 +57,7 @@ export const UniversalComponent = () => {
       {page.split("_")[2] === "child" ? (
         <div>
           <h1 className="text-3xl font-bold mb-5">
-            {data[`title  _${i18next.language}`]}
+            {data[`title_${i18next.language}`]}
           </h1>
           <div
             className="uni-comp-body mb-10"

@@ -36,7 +36,7 @@ export const SplitterComponent = ({ children }) => {
             <li className="bg-stone-50 rounded border-2 border-stone-200 px-10 py-7" key={item._id}>
               <Link
                 onClick={() => setIdForFetch(item._id)}
-                to={`/${page}_child/details/${slug(item.title_uz)}`}
+                to={`/${page}_data_child/details/${slug(item.title_uz)}`}
                 className="w-full block text-2xl mb-5 font-semibold"
               >
                 {item[`title_${i18next.language}`]}

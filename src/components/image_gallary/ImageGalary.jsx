@@ -19,7 +19,7 @@ export const ImageGallary = ({ imgSrcs }) => {
   
   const hMaker = (string) => {
     const a = string?.split("(")
-    if (Array.isArray(a)) {
+    if (Array.isArray(a) && a !==undefined) {
       return a[0].trim()
     } else {
       return a
@@ -27,7 +27,7 @@ export const ImageGallary = ({ imgSrcs }) => {
   }
 
   const whMaker = (string) => {
-    const imgName = string.split("/")[1] // uploadsdan halos boldi 5444x7444-237374338.jpg
+    const imgName = string ? "asas" : string?.split("/")[1] // uploadsdan halos boldi 5444x7444-237374338.jpg
     const imgSize = imgName.split("-")[0] // 5444x7444 holatga keldi {bug bor} bug hMaker() bilan hal boldi
     const width = Number(imgSize.split("x")[0]) // 5444 
     const height = Number(hMaker(imgSize.split("x")[1])) // 7444 {bug bor} bug hMaker() bilan hal boldi
