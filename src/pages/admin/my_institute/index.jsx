@@ -3,15 +3,14 @@ import { Popconfirm, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { MyInstituteParentActions } from "./actions";
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
+import { MyInstituteParentActions } from "./actions";
+import { slug } from "../../../services/slug"
 
-export { myInstituteParentReducer, myInstituteChildReducer } from "./reducers";
 export const MyInstitute = () => {
   const dispatch = useDispatch();
 
-  const { getData, getDataById, postData, updateData, deleteData } =
-    new MyInstituteParentActions();
+  const { getData, getDataById, postData, updateData, deleteData } = new MyInstituteParentActions();
 
   const selectorFunc = (state) => state.myInstituteParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
@@ -33,22 +32,22 @@ export const MyInstitute = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/my-tkti/view/${p.id}`}>
+          <Link to={`/adminPanel/my-tkti/view/${slug(p.name)}/${p.id}`}>
             <ViewIcon />
           </Link>
           <Link to={"#"}>
             <EditIcon />
           </Link>
           <Popconfirm
-            title="O'chirishni xoxlaysizmi?"
-            description="Malumot o'chiriladi va uni tiklab bo'lmaydi"
-            onConfirm={() => dispatch(deleteData(p.id))}
+            title="Rostdan o'chirishni xoxlaysizmi?"
+            description="O'chirilgan malumotlar qayta tiklanmaydi"
+            onConfirm={() => dispatch(childAction.deleteData(p.id))}
             onCancel={() => {}}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">
+            <button>
               <DeleteIcon />
             </button>
           </Popconfirm>
@@ -80,3 +79,5 @@ export const MyInstitute = () => {
     </div>
   );
 };
+
+export { myInstituteParentReducer, myInstituteChildReducer } from "./reducers";

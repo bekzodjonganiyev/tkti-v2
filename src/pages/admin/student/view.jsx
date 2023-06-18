@@ -6,6 +6,7 @@ import { time } from "../../../services/dateFormatter";
 
 import { StudentChildActions } from "./actions";
 import { slug } from "../../../services/slug";
+import { DeleteIcon } from "../../../assets/icons";
 
 export const StudentView = () => {
   const dispatch = useDispatch();
@@ -37,17 +38,21 @@ export const StudentView = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/student/edit/${slug(p.name)}`}>edit</Link>
+          <Link to={`/adminPanel/student/edit/${slug(p.name)}/${p.id}`}>
+            edit
+          </Link>
           <Popconfirm
-            title="Delete the task"
-            description="Are you sure to delete this task?"
+            title="Rostdan o'chirishni xoxlaysizmi?"
+            description="O'chirilgan malumotlar qayta tiklanmaydi"
             onConfirm={() => dispatch(childAction.deleteData(p.id))}
             onCancel={() => {}}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">Delete</button>
+            <button>
+              <DeleteIcon />
+            </button>
           </Popconfirm>
         </div>
       ),

@@ -6,7 +6,7 @@ import { EditForm } from "../../../components";
 import { QabulChildActions, QabulParentActions } from "./actions";
 
 export const QabulChildEdit = () => {
-  const { id } = useParams();
+  const { page, id } = useParams();
   const dispatch = useDispatch();
 
   const selectorFuncParent = (state) => state.qabulParent;
@@ -18,7 +18,7 @@ export const QabulChildEdit = () => {
   const childAction = new QabulChildActions();
 
   useEffect(() => {
-    dispatch(childAction.getDataById(id));
+    dispatch(childAction.getDataById(page));
     dispatch(parentAction.getData());
   }, [id]);
 

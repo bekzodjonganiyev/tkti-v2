@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { ResearchParentActions } from "./actions";
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
-export { researchParentReducer, researchChildReducer } from "./reducers";
+import { slug } from "../../../services/slug";
 export const Research = () => {
   const dispatch = useDispatch();
 
@@ -31,22 +31,22 @@ export const Research = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/research/view/${p.id}`}>
+          <Link to={`/adminPanel/research/view/${slug(p.name)}/${p.id}`}>
             <ViewIcon />
           </Link>
           <Link to={"#"}>
             <EditIcon />
           </Link>
           <Popconfirm
-            title="Delete the task"
-            description="Are you sure to delete this task?"
-            onConfirm={() => dispatch(deleteData(p.id))}
-            onCancel
+            title="Rostdan o'chirishni xoxlaysizmi?"
+            description="O'chirilgan malumotlar qayta tiklanmaydi"
+            onConfirm={() => dispatch(childAction.deleteData(p.id))}
+            onCancel={() => {}}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">
+            <button>
               <DeleteIcon />
             </button>
           </Popconfirm>
@@ -75,3 +75,6 @@ export const Research = () => {
     </div>
   );
 };
+
+export { researchParentReducer, researchChildReducer } from "./reducers";
+

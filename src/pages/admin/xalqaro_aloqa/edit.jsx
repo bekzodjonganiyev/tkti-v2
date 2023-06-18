@@ -7,7 +7,7 @@ import { EditForm } from "../../../components";
 import { XalqaroChildActions, XalqaroParentActions } from "./actions";
 
 export const XalqaroChildEdit = () => {
-  const { id } = useParams();
+  const { page, id } = useParams();
   const dispatch = useDispatch();
 
   const selectorFuncParent = (state) => state.xalqaroParent;
@@ -19,7 +19,7 @@ export const XalqaroChildEdit = () => {
   const childAction = new XalqaroChildActions();
 
   useEffect(() => {
-    dispatch(childAction.getDataById(id));
+    dispatch(childAction.getDataById(page));
     dispatch(parentAction.getData());
   }, [id]);
   return (

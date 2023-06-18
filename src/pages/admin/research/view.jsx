@@ -9,7 +9,7 @@ import { slug } from "../../../services/slug";
 
 export const ResearchView = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { page, id } = useParams();
 
   const childAction = new ResearchChildActions();
 
@@ -33,7 +33,7 @@ export const ResearchView = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/research/edit/${slug(p.name)}`}>
+          <Link to={`/adminPanel/research/edit/${slug(p.name)}/${p.id}`}>
             <EditIcon />
           </Link>
           <Popconfirm

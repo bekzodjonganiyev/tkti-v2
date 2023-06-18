@@ -6,7 +6,7 @@ import { EditForm } from "../../../components";
 import { ResearchParentActions, ResearchChildActions } from "./actions";
 
 export const ResearchChildEdit = () => {
-  const { id } = useParams();
+  const { page, id } = useParams();
   const dispatch = useDispatch();
 
   const selectorFuncParent = (state) => state.researchParent;
@@ -18,7 +18,7 @@ export const ResearchChildEdit = () => {
   const childAction = new ResearchChildActions();
 
   useEffect(() => {
-    dispatch(childAction.getDataById(id));
+    dispatch(childAction.getDataById(page));
     dispatch(parentAction.getData());
   }, [id]);
 

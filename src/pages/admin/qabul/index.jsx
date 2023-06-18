@@ -1,11 +1,11 @@
 import { Popconfirm, Table } from "antd";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { QabulParentActions } from "./actions";
+import { slug } from "../../../services/slug"
 
-export { qabulParentReducer, qabulChildReducer } from "./reducers";
 export const Qabul = () => {
   const dispatch = useDispatch();
 
@@ -31,18 +31,18 @@ export const Qabul = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/admission/view/${p.id}`}>view</Link>
+          <Link to={`/adminPanel/admission/view/${slug(p.name)}/${p.id}`}>view</Link>
           <Link to={"#"}>edit</Link>
           <Popconfirm
-            title="Delete the task"
-            description="Are you sure to delete this task?"
-            onConfirm={() => dispatch(deleteData(p.id))}
-            onCancel
+            title="Rostdan o'chirishni xoxlaysizmi?"
+            description="O'chirilgan malumotlar qayta tiklanmaydi"
+            onConfirm={() => dispatch(childAction.deleteData(p.id))}
+            onCancel={() => {}}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">Delete</button>
+            <button >Delete</button>
           </Popconfirm>
         </div>
       ),
@@ -72,3 +72,5 @@ export const Qabul = () => {
     </div>
   );
 };
+
+export { qabulParentReducer, qabulChildReducer } from "./reducers";

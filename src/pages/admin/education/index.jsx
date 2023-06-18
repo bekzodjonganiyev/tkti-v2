@@ -1,16 +1,16 @@
-import { Popconfirm, Table } from "antd";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Popconfirm, Table } from "antd";
 
-import { EducationParentActions } from "./actions";
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
-export { educationParentReducer, educationChildReducer } from "./reducers";
+import { EducationParentActions } from "./actions";
+import { slug } from  "../../../services/slug"
+
 export const Education = () => {
   const dispatch = useDispatch();
 
-  const { getData, deleteData } =
-    new EducationParentActions();
+  const { getData, deleteData } = new EducationParentActions();
   const selectorFunc = (state) => state.educationParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
 
@@ -31,7 +31,7 @@ export const Education = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/education/view/${p.id}`}>
+          <Link to={`/adminPanel/education/view/${slug(p.name)}/${p.id}`}>
             <ViewIcon />
           </Link>
           <Link to="#">
@@ -75,3 +75,5 @@ export const Education = () => {
     </div>
   );
 };
+
+export { educationParentReducer, educationChildReducer } from "./reducers";

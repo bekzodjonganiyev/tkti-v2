@@ -6,7 +6,7 @@ import { EditForm } from "../../../components";
 import { StudentChildActions, StudentParentActions } from "./actions";
 
 export const StudentChildEdit = () => {
-  const { id } = useParams();
+  const { page, id } = useParams();
   const dispatch = useDispatch();
 
   const selectorFuncParent = (state) => state.studentParent;
@@ -18,7 +18,7 @@ export const StudentChildEdit = () => {
   const childAction = new StudentChildActions();
 
   useEffect(() => {
-    dispatch(childAction.getDataById(id));
+    dispatch(childAction.getDataById(page));
     dispatch(parentAction.getData());
   }, [id]);
 

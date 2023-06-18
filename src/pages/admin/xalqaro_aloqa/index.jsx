@@ -3,9 +3,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { XalqaroParentActions } from "./actions";
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
-export { xalqaroParentReducer, xalqaroChildReducer } from "./reducers";
+import { XalqaroParentActions } from "./actions";
+import { slug } from "../../../services/slug"
+
 export const XalqaroAloqa = () => {
   const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ export const XalqaroAloqa = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/int_connections/view/${p.id}`}>
+          <Link to={`/adminPanel/int_connections/view/${slug(p.name)}/${p.id}`}>
             <ViewIcon />
           </Link>
           <Link to={"#"}>
@@ -77,3 +78,5 @@ export const XalqaroAloqa = () => {
     </div>
   );
 };
+
+export { xalqaroParentReducer, xalqaroChildReducer } from "./reducers";
