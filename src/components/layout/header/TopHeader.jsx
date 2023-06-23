@@ -75,13 +75,13 @@ export const TopHeader = () => {
     }
   };
 
-  const handleLang = (code) => {
+  const changeLanguage = (code) => {
     let pathnameLang = "uz";
+    i18next.changeLanguage(code);
     if (pathname.split("/")[1] === "uz") pathnameLang = "uz";
     if (pathname.split("/")[1] === "ru") pathnameLang = "ru";
     if (pathname.split("/")[1] === "en") pathnameLang = "en";
     navigate(pathname.replace(pathnameLang, code));
-    i18next.changeLanguage(code);
     window.location.reload();
   };
 
