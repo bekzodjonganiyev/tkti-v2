@@ -2,14 +2,15 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { PhoneFilled, MailFilled } from "@ant-design/icons";
 import { LoacationSvg } from "../../../assets/icons";
+import './style.css'
 export const ContactUs = () => {
   const { t } = useTranslation();
   return (
     <div className="container  mx-auto w-full py-5">
-      <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 font-semibold ">
+      <h2 className="flex justify-center items-center mx-auto  lg:text-3xl  max-sm:text-2xl lg:my-8 my-6 font-semibold ">
       {t("Institute.9.name")}
       </h2>
-      <div className="grid grid-cols-2">
+      <div className="lg:grid grid-cols-2">
         {/* 32-uy */}
         <A
           img="https://backend.tkti.uz//uploads/file-1686549024609.JPG"
@@ -20,6 +21,7 @@ export const ContactUs = () => {
             href: "https://goo.gl/maps/8heumXFm2mcfHGNR7",
             title: t("ContactUs.2.manzil"),
           }}
+          className="w-full"
         />
 
         {/* 36-uy */}
@@ -82,15 +84,24 @@ const A = ({
   location,
 }) => {
   return (
-    <div className="mb-10">
-      <div className="w-96">
-        <a href={img} target="_blank">
-          <img src={img} alt="bog'lanish bo'limiga rasm" className="mb-5" loading="lazy"/>
+    <div className="mb-12">
+      
+      <div className="w-[90%] mx-auto">
+      <div class="image">
+				<div className="animation">
+					<figure>
+          <a href={img} target="_blank">
+          <img src={img} alt="bog'lanish bo'limiga rasm" className="mb-5 rounded-lg hover:scale- w-full " loading="lazy"/>
         </a>
-        <h1 className="leading-5 font-medium mb-2">{title}</h1>
+					</figure>
+				
+        </div>
+			</div>
+       
+        <h1 className="leading-5 font-medium mb-4 text-2xl">{title}</h1>
         <div className="flex flex-col gap-1">
           <p>
-            <span>
+            <span >
               <PhoneFilled /> {phone}
             </span>
           </p>

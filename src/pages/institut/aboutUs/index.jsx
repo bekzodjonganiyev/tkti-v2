@@ -6,7 +6,7 @@ export const AboutUS = () => {
   const { t } = useTranslation();
   return (
     <div className="container mx-auto w-[90%]  lg:my-10 my-3">
-      <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-8 my-6 font-semibold ">
+      <h2 className="flex justify-center items-center mx-auto  lg:text-3xl  max-sm:text-2xl lg:my-8 my-6 font-semibold ">
         {t("aboutUs.0.name")}
       </h2>
       <div className="text-lg">

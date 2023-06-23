@@ -24,7 +24,7 @@ export const Corruption = () => {
   }));
   return (
     <div className="container mx-auto mb-5">
-      <h3 className="text-center my-3 text-3xl font-bold">{t("Korruption.0.name")}</h3>
+      <h3 className="text-center my-3 lg:text-3xl font-bold max-sm:text-2xl">{t("Korruption.0.name")}</h3>
       <div className="text-xl w[80%] mx-auto">
         <p>
         {t("Korruption.1.name")}

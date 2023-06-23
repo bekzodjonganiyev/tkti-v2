@@ -41,13 +41,11 @@ export const Footer = () => {
               <div className="flex gap-4    items-end justify-between ">
                 <div className="lg:flex lg:flex-col flex-row-reverse   max-md:flex-col max-md:gap-10 ">
                   <div className="flex lg:gap-5 gap-3 ">
-                    <Link
-                      to={`https://www.facebook.com/tktiuzrasmiy`}
-                    >
+                    <Link to={`https://www.facebook.com/tktiuzrasmiy`}>
                       <FacebookIcon color="white " />
                     </Link>
                     <Link to={`http://youtube.com/@tktiuzrasmiy`}>
-                    <YouTubeIcon color="white" />
+                      <YouTubeIcon color="white" />
                     </Link>
                     <Link to="https://t.me/tktiuz">
                       <TelegramIcon color="white" />
@@ -55,14 +53,10 @@ export const Footer = () => {
                     <Link to="https://www.instagram.com/tktiuz">
                       <InstagramIcon color="white" />
                     </Link>
-                    <Link
-                      to={`http://linkedin.com/company/tktiuz`}
-                    >
+                    <Link to={`http://linkedin.com/company/tktiuz`}>
                       <Linkedin color="white" />
                     </Link>
-                    <Link
-                      to={`https://vk.com/tktiuz`}
-                    >
+                    <Link to={`https://vk.com/tktiuz`}>
                       <Talim color="white" />
                     </Link>
                   </div>
@@ -81,55 +75,57 @@ export const Footer = () => {
             <div className="lg:flex justify-evenly hidden">
               <div className="text-white text-[20px]">
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">{t("Institute.5.name")}</span>
+                  <NavLink to={`${i18next.language}/qabul/magistratura`}>
+                    <span className="mx-3">{t("Qabul.1.name")}</span>
                   </NavLink>
                 </div>
+
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Manzillarimiz</span>
+                  <NavLink to={`${i18next.language}//qabul/bakalavr`}>
+                    <span className="mx-3">{t("Qabul.0.name")}</span>
                   </NavLink>
                 </div>
+
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Karyera markazi</span>
+                  <NavLink to={`${i18next.language}/qabul/doktorantura`}>
+                    <span className="mx-3">{t("Qabul.2.name")}</span>
                   </NavLink>
                 </div>
+
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Filiallar</span>
+                  <NavLink to={`${i18next.language}/qabul/qo-shma-ta-lim`}>
+                    <span className="mx-3">{t("Qabul.3.name")}</span>
                   </NavLink>
                 </div>
+
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Hamkorlik</span>
+                  <NavLink to={`${i18next.language}/institut/structure`}>
+                    <span className="mx-3">{t("Institute.3.name")}</span>
                   </NavLink>
                 </div>
               </div>
               <div className="text-white text-[20px]">
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Talabalar hayoti</span>
+                  <NavLink to={`${i18next.language}/institut/biz-haqimiqda`}>
+                    <span className="mx-3">{t("Institute.1.name")}</span>
                   </NavLink>
                 </div>
+
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Ilmiy tadqiqot markazlar</span>
+                  <NavLink to={`${i18next.language}/institut/ish-reja`}>
+                    <span className="mx-3">{t("Institute.5.name")}</span>
                   </NavLink>
                 </div>
+
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Fotogallereya</span>
+                  <NavLink to={`${i18next.language}/institut/korrupsiya`}>
+                    <span className="mx-3">{t("Institute.6.name")}</span>
                   </NavLink>
                 </div>
+
                 <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Dars jadvali</span>
-                  </NavLink>
-                </div>
-                <div>
-                  <NavLink to="#">
-                    <span className="mx-3">Grantlar,stipendiyalar</span>
+                  <NavLink to={`${i18next.language}/institut/bog'nalish`}>
+                    <span className="mx-3">{t("Institute.9.name")}</span>
                   </NavLink>
                 </div>
               </div>
@@ -138,8 +134,7 @@ export const Footer = () => {
 
           <hr />
           <div className="text-white  flex justify-center my-3 text-xl">
-            O‘zbekiston Respublikasi 100011, Toshkent shahri, Navoiy ko‘chasi,
-            32
+          {t("ContactUs.2.manzil")}
           </div>
         </div>
       </footer>

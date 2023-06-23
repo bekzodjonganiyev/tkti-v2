@@ -53,10 +53,10 @@ export const UniversalComponent = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="container mx-auto max-md:px-5 py-10 uni-comp-wrapper">
+    <div className="container mx-auto w-[95%] max-md:px-5 py-10 uni-comp-wrapper">
       {page.split("_")[2] === "child" ? (
         <div>
-          <h1 className="text-3xl font-bold mb-5">
+          <h1 className="lg:text-3xl  max-sm:text-2xl font-bold mb-5 ">
             {data[`title_${i18next.language}`]}
           </h1>
           <div
@@ -89,7 +89,7 @@ export const UniversalComponent = () => {
         data?.child?.map((item) => (
           <div key={item._id}>
             <h1
-              className="text-3xl font-bold mb-5"
+              className="lg:text-3xl   max-sm:text-2xl font-bold mb-5"
               onClick={() => console.log(item.file)}
             >
               {item[`title_${i18next.language}`]}

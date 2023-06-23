@@ -235,6 +235,20 @@
       "name": "Joint education"
     }
   ],
+  "Qabul": [
+    {
+      "name": "Bachelor's and correspondence"
+    },
+    {
+      "name": "Master"
+    },
+    {
+      "name": "Doctorate"
+    },
+    {
+      "name": "Joint education"
+    }
+  ],
   "aboutUs": [
     {
       "name": ""

@@ -26,6 +26,7 @@ import {
   UsefulLinks,
   WorkPlan,
 } from "./pages";
+import { SillabusPage } from "./components/sillabus/SillabusPage";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
           <Route path=":lang/institut/tarix" element={<History/>} />
           <Route path=":lang/institut/korrupsiya" element={<Corruption />} />
           <Route path=":lang/institut/structure" element={<TreeInstitute/>} />
+          <Route path="/filter/result" element={<SillabusPage/>} />
           <Route path=":lang/elon" element={<TreeInstitute />} />
           <Route path=":lang/news" element={<News />} />
           <Route path=":lang/foydali-havolalar" element={<InteractiveLink />} />

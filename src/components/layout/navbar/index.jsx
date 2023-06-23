@@ -148,16 +148,7 @@ export const Navbar = () => {
           link: `/institut/biz-haqimiqda`,
           id: null,
         },
-        // {
-        //   name: t("Institute.2.name"),
-        //   link: `/institut/Missiyamiz`,
-        //   id: null,
-        // },
-        // {
-        //   name: t("Institute.4.name"),
-        //   link: `/institut/tarix`,
-        //   id: null,
-        // },
+        
         {
           name: t("Institute.5.name"),
           link: `/institut/ish-reja`,
@@ -355,7 +346,8 @@ export const Navbar = () => {
                                 setIdForFetch(item.id);
                                 setOpen(false);
                               }}
-                              to={subItem.link}
+                              to={`${i18next.language}${subItem.link}`}
+                          
                             >
                               {subItem.name}
                             </Link>

@@ -34,10 +34,10 @@ export default function App() {
 
   const a = lidership.data?.map((i) => ({
     name: i[`job_${i18next.language}`],
-    link: `/institute/structute/rectorate/${i.job_uz}/${i._id}`,
+    link: `/${i18next.language}/institute/structute/rectorate/${i.job_uz}/${i._id}`,
     children: i.bolimlar.map((bolim) => ({
       name: bolim[`title_${i18next.language}`],
-      link: `/institute/structute/department_and_center/${bolim.title_uz}/${bolim._id}`,
+      link: `/${i18next.language}/institute/structute/department_and_center/${bolim.title_uz}/${bolim._id}`,
       __rd3t:{
         collapsed: false
       }
@@ -55,7 +55,7 @@ export default function App() {
       link: "",
       children: faculty.data?.map((i) => ({
         name: i[`title_${i18next.language}`],
-        link: `/institute/structute/faculty/${i[`title_${i18next.language}`]}/${
+        link: `/${i18next.language}/institute/structute/faculty/${i[`title_${i18next.language}`]}/${
           i._id
         }`,
         __rd3t:{
@@ -72,7 +72,7 @@ export default function App() {
 
   const treeData = {
     name: "Rektorat",
-    link: "/institute/structute/rectorate/Rektor/63cb0f958ff54e48750c0913",
+    link: "/${i18next.language}/institute/structute/rectorate/Rektor/63cb0f958ff54e48750c0913",
     children: c,
   };
 

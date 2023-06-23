@@ -143,6 +143,20 @@
       "name": " Barchasi   "
     }
   ],
+  "Qabul": [
+    {
+      "name": "Bakalavr va sirtqi ta’lim"
+    },
+    {
+      "name": "Magistratura      "
+    },
+    {
+      "name": "Doktorantura"
+    },
+    {
+      "name": "Qo’shma ta’lim"
+    }
+  ],
   "Syllabus": [
     {
       "name": "Yil"
@@ -225,7 +239,7 @@
       "name": "Bog'lanish"
     }
   ],
-
+  "": [],
   "aboutUs": [
     {
       "name": "Biz haqimizda"

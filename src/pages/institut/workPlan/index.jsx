@@ -6,7 +6,7 @@ export const WorkPlan = () => {
   const { t } = useTranslation();
   return (
     <div className="container mx-auto w-full">
-       <h2 className="flex justify-center items-center mx-auto  text-3xl lg:my-6 my-4 font-semibold ">{t("WorkPlan.0.name")}</h2>
+       <h2 className="flex justify-center items-center mx-auto  lg:text-3xl  max-sm:text-2xl lg:my-6 my-4 font-semibold ">{t("WorkPlan.0.name")}</h2>
       <div className="grid lg:grid-cols-2 workplan__wrapper mb-5">
           <div className="my-2">
            

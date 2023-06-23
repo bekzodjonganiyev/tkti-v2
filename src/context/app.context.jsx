@@ -4,6 +4,7 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 const AppContextProvider = ({ children }) => {
+  const [searchedData, setSearchedData] = useState([]);
   const [idForFetch, setIdForFetch] = useState(
     localStorage.getItem("fetcherId") || ""
   );
@@ -18,7 +19,8 @@ const AppContextProvider = ({ children }) => {
   }, [idForFetch]);
 
   return (
-    <AppContext.Provider value={{ idForFetch, setIdForFetch }}>
+    <AppContext.Provider value={{ idForFetch, setIdForFetch,searchedData, setSearchedData, }}>
+        
       {children}
     </AppContext.Provider>
   );

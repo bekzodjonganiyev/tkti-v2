@@ -6,16 +6,15 @@ import { Dropdown } from "flowbite-react";
 
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
-import uz from "../../../assets/images/flag-uz.png";
-import ru from "../../../assets/images/flag-ru.png";
-import en from "../../../assets/images/flag-en.png";
 export { bannerReducer } from "../../banner/reducer";
 
 export const TopHeader = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const [langText, setLangText] = useState("Uz");
+  const [langText, setLangText] = useState(
+    localStorage.getItem("langText") || "Uz"
+  );
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -29,19 +28,19 @@ export const TopHeader = () => {
   const language = [
     {
       code: "uz",
-      img: uz,
-      name: "uz",
+      text: "Uz",
+      name: "Oʻzbekcha",
       conuntry_code: "uz",
     },
     {
       code: "ru",
-      img: ru,
+      text: "Ru",
       name: "русский ",
       conuntry_code: "ru",
     },
     {
       code: "en",
-      img: en,
+      text: "En",
       name: "English",
       conuntry_code: "gb",
     },
@@ -50,7 +49,11 @@ export const TopHeader = () => {
   const data = [
     { id: 0, label: t("havola.18.name"), href: "https://new.akbt.uz" },
     { id: 1, label: t("havola.17.name"), href: "https://mail.tkti.uz/" },
-    { id: 2, label: t("HomePage.6.name"), href: "/${i18next.language}/foydali-havolalar" },
+    {
+      id: 2,
+      label: t("HomePage.6.name"),
+      href: `/${i18next.language}/foydali-havolalar`,
+    },
   ];
   const changeSize = (arg) => {
     const Page = document.body;
@@ -72,11 +75,11 @@ export const TopHeader = () => {
     }
   };
 
-  const changeLanguage = (code) => {
-    let pathnameLang = "uz"
-    if (pathname.split("/")[1] === "uz") pathnameLang = "uz"
-    if (pathname.split("/")[1] === "ru") pathnameLang = "ru"
-    if (pathname.split("/")[1] === "en") pathnameLang = "en"
+  const handleLang = (code) => {
+    let pathnameLang = "uz";
+    if (pathname.split("/")[1] === "uz") pathnameLang = "uz";
+    if (pathname.split("/")[1] === "ru") pathnameLang = "ru";
+    if (pathname.split("/")[1] === "en") pathnameLang = "en";
     navigate(pathname.replace(pathnameLang, code));
     i18next.changeLanguage(code);
     window.location.reload();
@@ -182,40 +185,21 @@ export const TopHeader = () => {
               <CircleHalf />
             </div>
 
-            <div className=" flex items-center justify-end gap-3">
-              <div
-                className="items-center gap-3  text-white ml-10 p-1.5 rounded cursor-pointer xl:flex hidden relative"
-                onClick={() => setOpen({ ...isOpen, lang: !isOpen.lang })}
-              >
-                <h3 className="cursor-pointer">{t("headerTop.4.name")}</h3>
-
-                {isOpen.lang && (
-                  <ul className="absolute block bg-[#efe9e9]  text-black top-12  left-[-80px] w-[200px] rounded z-50">
-                    {language.map((item) => (
-                      <li
-                        key={item.code}
-                        className="p-1.5 hover:bg-blue-800 cursor-pointer hover:text-white"
-                        onClick={() => {
-                          changeLanguage(item.code);
-                        }}
-                      >
-                        <img
-                          className="mx-2"
-                          style={{}}
-                          src={item.img}
-                          alt=""
-                        />
-                        {/* <input type="hidden" value={item.code}/> */}
-                        {/* <span className="flex">
-                          
-                          <label htmlFor="">  {item.name} </label>
-                        
-                        </span> */}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+            <div className=" flex items-center justify-end gap-3 ml-10 text-white">
+              <Dropdown inline label={langText} lang className="text-white">
+                {language.map((item) => (
+                  <Dropdown.Item
+                    className="capitalize"
+                    onClick={() => {
+                      setLangText(item.text);
+                      localStorage.setItem("langText", item.text);
+                      handleLang(item.code);
+                    }}
+                  >
+                    {item.code}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown>
             </div>
           </div>
         </header>
