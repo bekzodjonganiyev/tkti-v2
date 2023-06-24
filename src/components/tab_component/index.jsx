@@ -18,7 +18,6 @@ export const TabComponent = () => {
 
   const params = useParams();
   const location = useLocation();
-  console.log(params, location);
 
   // TODO - shu qilgan ishimni react qanday qabul qiladi, hooklardan foydalanishim kerakmidi?
   const [url, setUrl] = useState("");
@@ -52,9 +51,7 @@ export const TabComponent = () => {
             title: "Kafedralar",
             content: dataById?.kafedralar?.map((item) => ({
               name: item[`title_${i18next.language}`],
-              link: `/institute/structute/kafedra/${
-                item[`title_${i18next.language}`]
-              }/${item._id}`,
+              link: `/institute/structute/kafedra/${item[`title_${i18next.language}`]}/${item._id}`,
             })),
           },
         ];
@@ -109,7 +106,7 @@ export const TabComponent = () => {
             ) : item.title === "Kafedralar" ? (
               <div className="flex flex-col gap-2">
                 {item.content?.map((kafedraItem) => (
-                  <Link to={kafedraItem.link}>{kafedraItem.name}</Link>
+                <Link to={`/${i18next.language}${kafedraItem.link}`}>{kafedraItem.name}</Link>
                 ))}
               </div>
             ) : (

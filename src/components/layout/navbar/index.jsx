@@ -198,9 +198,6 @@ export const Navbar = () => {
     
     
   ];
-
-  console.log(link)
-
   useEffect(() => {
     fetchData();
   }, [fetchData]);

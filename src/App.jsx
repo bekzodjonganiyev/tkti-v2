@@ -68,7 +68,7 @@ function App() {
           
           {/* TODO - splitter va universal componentlarni optimizatsiya qilish kerak, misol uchun memoga o'rash kerek va hk */}
           <Route path=":lang/:page/:id/"  element={<SplitterComponent><UniversalComponent /></SplitterComponent> } />
-          <Route path=":lang/:page/details/:id" element={<UniversalComponent />} />
+          <Route path=":lang/details/:page/:id" element={<UniversalComponent />} />
           <Route path=":lang/news/:id" element={<Details />} />
         </Route>
 

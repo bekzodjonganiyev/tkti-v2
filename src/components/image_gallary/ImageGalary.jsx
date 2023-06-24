@@ -12,14 +12,12 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import { baseURL } from "../../services/http";
 export const ImageGallary = ({ imgSrcs }) => {
-  
-
   const [index, setIndex] = useState(-1);
   const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
   
   const hMaker = (string) => {
     const a = string?.split("(")
-    if (Array.isArray(a) && a !==undefined) {
+    if (Array.isArray(a) && a !== undefined) {
       return a[0].trim()
     } else {
       return a
@@ -27,12 +25,13 @@ export const ImageGallary = ({ imgSrcs }) => {
   }
 
   const whMaker = (string) => {
-    const imgName = string ? "asas" : string?.split("/")[1] // uploadsdan halos boldi 5444x7444-237374338.jpg
+    const imgName = string?.split("/")[1] // uploadsdan halos boldi 5444x7444-237374338.jpg
     const imgSize = imgName.split("-")[0] // 5444x7444 holatga keldi {bug bor} bug hMaker() bilan hal boldi
     const width = Number(imgSize.split("x")[0]) // 5444 
     const height = Number(hMaker(imgSize.split("x")[1])) // 7444 {bug bor} bug hMaker() bilan hal boldi
     return {width: width, height: height}
   }
+
   const images = imgSrcs.map((photo) => ({
     src: baseURL + photo,
     width: whMaker(photo).width,

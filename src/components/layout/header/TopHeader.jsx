@@ -193,7 +193,7 @@ export const TopHeader = () => {
                     onClick={() => {
                       setLangText(item.text);
                       localStorage.setItem("langText", item.text);
-                      handleLang(item.code);
+                      changeLanguage(item.code);
                     }}
                   >
                     {item.code}
