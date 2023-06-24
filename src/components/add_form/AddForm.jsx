@@ -1,11 +1,8 @@
 import { useState } from "react";
 import TextEditor from "../text_editor/TextEditor";
 import { Button, Form, Input, Select, Upload, Modal, DatePicker } from "antd";
-import {
-  UploadOutlined,
-  MinusCircleOutlined,
-  PlusOutlined,
-} from "@ant-design/icons";
+import { UploadOutlined, MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteIcon } from "../../assets/icons";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -29,6 +26,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm }) =
   const [parentId, setParentId] = useState("");
   const [dateOfNew, setDateOfNew] = useState("");
   const [category, setCategory] = useState("");
+  const [state, setState] = useState([]);
 
   const [editor, setEditor] = useState({
     uz: "",
@@ -180,20 +178,23 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm }) =
                       <DatePicker onChange={onChange} className="w-full"/>
                   </Form.Item>
               </div> 
-           :  <Form.Item label="Qo'shish" className="my-8">
-                  <Select value={parentId} onChange={(e) => setParentId(e)}>
-                    {parents.map((item) => (
-                      <Option key={item._id} value={item._id}>
-                        {item.title_uz}
-                      </Option>
-                    ))}
-                  </Select>
-                  <Button
-                    className="my-8 bg-blue-600 text-white"
-                    onClick={() => setIsModalOpen(true)}
-                  >
-                    + Bo'lim qo'shish
-                  </Button>
+           :  <Form.Item className="my-8">
+                  <span className="text-lg">Bo'limni tanlang</span>
+                  <div className="flex items-center gap-10">
+                    <Select value={parentId} onChange={(e) => setParentId(e)} placeholder="Bo'limni tanlang">
+                      {parents.map((item) => (
+                        <Option key={item._id} value={item._id}>
+                          {item.title_uz}
+                        </Option>
+                      ))}
+                    </Select>
+                    <Button
+                      className="my-8 bg-blue-600 text-white"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      + Bo'lim qo'shish
+                    </Button>
+                  </div>
               </Form.Item>
         }
 
@@ -203,122 +204,83 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm }) =
           getValueFromEvent={normFile}
         >
           <Upload name="logo" listType="picture">
-            <Button type=" " icon={<UploadOutlined className="text-2xl"/>} className="bg-red-700 text-white text-lg h-12">Fayl yuklash</Button>
+            <Button type=" " icon={<UploadOutlined className="text-2xl"/>} className="bg-red-700 text-white text-lg h-12">Rasm yuklash</Button>
           </Upload>
         </Form.Item>
 
-        <Form.List name="faq" className="my-8">
-          {(fields, { add, remove }) => (
-            <>
-              {fields.map(({ key, name, ...restField }) => (
-                <div key={key}>
-                  <div className="w-full flex justify-between">
-                    <Form.Item
-                      {...restField}
-                      name={[name, "question_uz"]}
-                      rules={[
-                        {
-                          required: true,
-                          message: "Missing first name",
-                        },
-                      ]}
-                      className="w-[40%]"
-                    >
-                      <Input placeholder="First Name" />
-                    </Form.Item>
-                    <Form.Item
-                      {...restField}
-                      name={[name, "answer_uz"]}
-                      rules={[
-                        {
-                          required: true,
-                          message: "Missing last name",
-                        },
-                      ]}
-                      className="w-[40%]"
-                    >
-                      <Input.TextArea placeholder="Last Name" />
-                    </Form.Item>
-                    <MinusCircleOutlined onClick={() => remove(name)} />
+        <div className="mb-10">
+              {state.map((item) => (
+                <div
+                  className="flex justify-between items-center gap-10 mb-10"
+                  key={item}
+                >
+                  <div className="flex flex-col gap-2 w-1/3">
+                    <input
+                      placeholder="Savol uz"
+                      className="form-control"
+                      type="text"
+                      name={`savol_uz${item}`}
+                    />
+                    <textarea
+                      placeholder="Javob uz"
+                      className="form-control"
+                      name={`javob_uz${item}`}
+                      cols="5"
+                      rows="5"
+                    ></textarea>
                   </div>
-                  <div className="w-full flex justify-between">
-                    <Form.Item
-                      {...restField}
-                      name={[name, "question_ru"]}
-                      rules={[
-                        {
-                          required: true,
-                          message: "Missing first name",
-                        },
-                      ]}
-                      className="w-[40%]"
-                    >
-                      <Input placeholder="First Name" />
-                    </Form.Item>
-                    <Form.Item
-                      {...restField}
-                      name={[name, "answer_ru"]}
-                      rules={[
-                        {
-                          required: true,
-                          message: "Missing last name",
-                        },
-                      ]}
-                      className="w-[40%]"
-                    >
-                      <Input.TextArea placeholder="Last Name" />
-                    </Form.Item>
-                    <span></span>
+                  <div className="flex flex-col gap-2 w-1/3">
+                    <input
+                      placeholder="Savol ru"
+                      className="form-control"
+                      type="text"
+                      name={`savol_ru${item}`}
+                    />
+                    <textarea
+                      placeholder="Javob ru"
+                      className="form-control"
+                      name={`javob_ru${item}`}
+                      cols="5"
+                      rows="5"
+                    ></textarea>
                   </div>
-                  <div className="w-full flex justify-between">
-                    <Form.Item
-                      {...restField}
-                      name={[name, "question_en"]}
-                      rules={[
-                        {
-                          required: true,
-                          message: "Missing first name",
-                        },
-                      ]}
-                      className="w-[40%]"
-                    >
-                      <Input placeholder="First Name" />
-                    </Form.Item>
-                    <Form.Item
-                      {...restField}
-                      name={[name, "answer_en"]}
-                      rules={[
-                        {
-                          required: true,
-                          message: "Missing last name",
-                        },
-                      ]}
-                      className="w-[40%]"
-                    >
-                      <Input.TextArea placeholder="Last Name" />
-                    </Form.Item>
-                    <span></span>
+                  <div className="flex flex-col gap-2 w-1/3">
+                    <input
+                      placeholder="Savol en"
+                      className="form-control"
+                      type="text"
+                      name={`savol_en${item}`}
+                    />
+                    <textarea
+                      placeholder="Javob en"
+                      className="form-control"
+                      name={`javob_en${item}`}
+                      cols="5"
+                      rows="5"
+                    ></textarea>
                   </div>
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => {
+                      const arr = state.filter((a) => a !== item);
+                      setState(arr);
+                    }}
+                  >
+                    <DeleteIcon />
+                  </span>
                 </div>
               ))}
-              <Form.Item>
-                <Button
-                  type="dashed"
-                  className="bg-blue-600 text-white"
-                  onClick={() => add()}
-                  block
-                  icon={<PlusOutlined />}
-                >
-                  Accardion qo'shish
-                </Button>
-              </Form.Item>
-            </>
-          )}
-        </Form.List>
+              <div
+                className="py-2 px-[22px] bg-red-800 text-white inline mt-10 cursor-pointer rounded-md"
+                onClick={() => setState([...state, state.length + 1])}
+              >
+                Savol javob qo'shish
+              </div>
+            </div>
 
         <Form.Item>
-          <Button htmlType="submit" className="bg-blue-600 text-white">
-            Submit
+          <Button block htmlType="submit" className="bg-blue-600 text-white h-8">
+           <p className="h-10">Saqlash</p>
           </Button>
         </Form.Item>
       </Form>

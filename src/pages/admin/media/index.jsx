@@ -104,7 +104,7 @@ function FileDisplay({ file }) {
             alert("COPIED✔" + `${baseURL}/${file?.link}`);
           }}
           >
-          Move the link
+          Copy the link
         </button>{" "}
         <button
           className="py-2 px-4 bg-red-500  hover:bg-red-400 text-white text-sm"
