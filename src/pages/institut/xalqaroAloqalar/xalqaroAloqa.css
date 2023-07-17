@@ -33,3 +33,26 @@
 .aloqaBox .images{
     width: 300px !important;
 }
+.department__btn{
+border: 1px solid #02307D;
+border-radius:5px;
+padding: 5px 10px;
+cursor: pointer;
+background: #fff;
+}
+.department__file{
+    display: flex;
+    margin:  0 40px;
+    justify-content: flex-end;
+}
+.departmentContent {
+    color:#02307D;
+}
+.departmentContent h3, .departmentContent span{
+    font-weight: 600;
+    width: 100%;
+    
+}
+.departmentContent p, .xamkor__davlats a p{
+    font-size: 16px;
+}

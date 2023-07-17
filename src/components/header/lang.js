@@ -6,7 +6,7 @@ const HeaderLang = {
         graduates:'Bitiruvchilar',
         structure:['Tuzilma','Institut rahbariyati','Fakultetlar','Kafedrlar','Bo`lim va markazlar','Filiallar','Yoshlar ittifoqi'],
         activity:['Faoliyat','Moliyaviy Faoliyat'],
-        mytkti:['Mening TKTI',`Kutubxona`,'Tkti yangiyer','Hemis talaba','Virtual qabulxona',`Hemis o'qituvchi`],
+        mytkti:['Mening TKTI',`Kutubxona`,'Tkti yangiyer','Hemis talaba','Korporativ pochta',`Hemis o'qituvchi`],
 
         ilmiy:['Ilmiy tadqiqotlar','Institut loyihalari','Startup loyihalar'],
         talim:[`Ta'lim dasturi`,'Dars jadvali',`O'quv kalendari`,`Sertifikatlar`,`Nashriyot`],
@@ -18,7 +18,7 @@ const HeaderLang = {
     "KIMYOVIY TEXNOLOGIYALARNING ILMIY-TEXNIKAVIY RIVOJLANISH SUR'ATI TEZ SUR'ATLAR BILAN O'SIB BORMOQDA. ALYUMINIY ISHLAB CHIQARISHNING ELEKTROKIMYOVIY JARAYONINING SANOAT RIVOJLANISHI UCHUN 35 YIL KERAK BO'LDI."
 ,"TKTI BUTUN DUNYO BOʻYLAB 800 DAN ORTIQ TAʼLIM SUBYEKTLARINING IXTIYORIY TASHABBUSI SIFATIDA SHAKLLANGAN. BUGUNGI KUNDA BMT BILAN HAMKORLIK QILAYOTGAN VA MENEJMENT BILAN BOGʻLIQ BOʻLGAN OLIY OʻQUV YURTLARI OʻRTASIDAGI ENG YIRIK UYUSHMA HISOBLANADI."],
         institut:['Institut','Rektorat','Interaktiv xizmatlar','Tkti ish rejasi','Korrupsiayni oldini olish','Biz bilan aloqa','Xalqaro aloqalar','Ilmiy loyihalar','Tkti qoshidagi litsey'],
-       
+        institut1:['Institut','Biz haqimizda','Missiyamiz','Institut tuzilmasi','Tarix va meros','Bizning majburiyatlarimiz','Korrupsiyani oldini olish','Bitiruvchilar', 'Interaktiv xizmatlar'],
         library:'Kutubxona',
         contact:`Bog'lanish`
     },
@@ -29,7 +29,7 @@ const HeaderLang = {
         graduates:'Выпускники',
         structure:['Структура','Ректорат','Факультеты','Кафедра','Отдел и центры','Филиалы','Союз молодёжи'],
         activity:['Деятельность','Инансовая деятельность','Совместная учебная площадка','Тхти янгиер','Хемис студент','Виртуальный прием','Хемис учитель'],
-        mytkti:['Мой ТХТИ','Библиотека','Тхти янгиер','Хемис студент','Виртуальный прием','Хемис учитель'],
+        mytkti:['Мой ТХТИ','Библиотека','Тхти янгиер','Хемис студент','Корпоративная почта','Хемис учитель'],
         ilmiy:['Научное исследование','Институтские проекты','Стартап-проекты'],
         talim:[`Программа обучения`,'Расписание занятий','Академический календарь',`Сертификаты`,`Издатель`],
         fakultet:['Факультеты','Факультет «Менеджмент и профессиональное образование»','Факультет «Технология производство пищевых продуктов»','Факультет «Технология производства неорганических веществ»','Факультет “Химическая технология топлива и органических соединений”','Факультет «технология виноделия и промышленное виноградарство»'],
@@ -40,7 +40,7 @@ const HeaderLang = {
     `СКОРОСТЬ НАУЧНО-ТЕХНИЧЕСКОГО РАЗВИТИЯ ХИМИЧЕСКИХ ТЕХНОЛОГИЙ БЫСТРО РАСТУТ. ЕСЛИ В СЕРЕДИНЕ XIX ВЕКА. ЭТО БЫЛО 35 ЛЕТ ПРОМЫШЛЕННОЙ РАЗРАБОТКИ ЭЛЕКТРОХИМИЧЕСКОГО ПРОЦЕССА ПРОИЗВОДСТВА АЛЮМИНИЯ, ПОТОМ В 50-Х ГГ. ХХ ВЕКА.`,
 `TKTI БЫЛ СОЗДАН ПО ДОБРОВОЛЬНОЙ ИНИЦИАТИВЕ БОЛЕЕ 800 ОБРАЗОВАТЕЛЬНЫХ УЧАСТНИКОВ ВО ВСЕМ МИРЕ. СЕГОДНЯ ЯВЛЯЕТСЯ КРУПНЕЙШИМ СОЮЗОМ ВЫСШИХ УЧЕБНЫХ ЗАВЕДЕНИЙ В СОТРУДНИЧЕСТВЕ С ООН И В УПРАВЛЕНИИ.`],
         institut:["Институт",'Pекторат','Интерактивные услуги','План работы Тхти','Предотвращение коррупции','Контакты','Международные отношения','Научные проекты','Академический лицей при ТХТИ'],
-     
+        Institute1:['Институт','О нас','Наша миссия','Структура института','История и наследие','Наши обязанности','Предотвращение коррупции','Выпускники', 'Интерактивные услуги'],
         library:'Библиотека',
         contact:'Контакты'
     },
@@ -51,7 +51,7 @@ const HeaderLang = {
         graduates:'Graduates',
         structure:['Structure','Institute management','Faculties','Staff','Department and centers','Branches','Youth union'],
         activity:['Activity','Financial Activity'],
-        mytkti:['Мy TKTI','Library','Tkti yangiyer','Hemis student','Virtual reception','Hemis teacher'],
+        mytkti:['Мy TKTI','Library','Tkti yangiyer','Hemis student','Corporate mail','Hemis teacher'],
         ilmiy:['Scientific research','Institute projects','Startup projects'],
         talim:[`Educational program`,'Class schedule','Educational calendar',`Certificates`,`Publisher`],
         fakultet:['Faculties','faculty of Management and vocational education','faculty of Food production technology','faculty of technology of inorganic substances','faculty of Chemical technology of fuel and organic compounds','faculty of wine technology and industrial vitiganization'],
@@ -62,7 +62,7 @@ const HeaderLang = {
 `THE SPEED OF SCIENTIFIC AND TECHNOLOGICAL DEVELOPMENT OF CHEMICAL TECHNOLOGIES IS GROWING RAPIDLY. IF IN THE MIDDLE OF THE XIX CENTURY. IT WAS 35 YEARS FOR THE INDUSTRIAL DEVELOPMENT OF THE ELECTROCHEMICAL PROCESS OF ALUMINUM MANUFACTURING, THEN IN THE 50S OF THE XX CENTURY.`,
 `TKTI WAS FORMED AS A VOLUNTARY INITIATIVE OF MORE THAN 800 EDUCATIONAL SUBJECTS AROUND THE WORLD. TODAY IS THE LARGEST UNION OF HIGHER EDUCATION INSTITUTIONS IN COOPERATION WITH THE UN AND IN MANAGEMENT.`],
         institut:['Institute', 'Rectorate','Interactive services','Tkti business plan','Prevention of corruption','Contact us','International relations','Scientific projects','Lyceum under Tkti'],
-
+        institute1:['Institute','About Us','Our Mission','Institute Structure','History and Heritage','Our Obligations','Prevention of Corruption','Alumni', 'Interactive Services'],
         library:'Library',
         contact:'Contact'
     }

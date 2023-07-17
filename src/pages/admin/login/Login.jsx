@@ -5,10 +5,10 @@ import "./Login.css";
 
 import { Context } from "../../../context";
 import { useContext } from "react";
+import { Fetchers } from "../../../services/fetchRequests";
 
 const Login = () => {
-  const naviagte = useNavigate()
-  const { globalUrl } = useContext(Context);
+  const naviagte = useNavigate();
   const [inputValue, setInputValue] = useState({});
 
   const handleChange = (e) => {
@@ -18,65 +18,53 @@ const Login = () => {
 
   function postData(e) {
     e.preventDefault();
-    fetch(`${globalUrl}/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(inputValue),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success) {
-          alert(res.message + " ❌");
-        } else {
-          alert("Login qildingiz");
-          localStorage.setItem("token", res.token);
-          // setTimeout(() => {
-          // }, 2000)
-          naviagte("/admin")
-          // window.location.reload(true);
-        }
-      })
-      .catch((err) => console.log(err));
+    Fetchers.addData("auth/login", JSON.stringify(inputValue), false).then((res) => {
+      if (!res.success) {
+        alert(res.message + " ❌");
+      } else {
+        alert("Login qildingiz");
+        localStorage.setItem("token", res.token);
+        naviagte("/admin");
+      }
+    });
   }
   return (
     <div className="login-page">
       <form className="w-50 mx-auto" onSubmit={postData}>
-        <div class="form-floating mb-3 ">
+        <div className="form-floating mb-3 ">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="floatingInput"
             placeholder="Name"
             name="name"
             onChange={handleChange}
           />
-          <label for="floatingInput">Name</label>
+          <label htmlFor="floatingInput">Name</label>
         </div>
-        <div class="form-floating mb-3">
+        <div className="form-floating mb-3">
           <input
             type="password"
-            class="form-control"
+            className="form-control"
             id="floatingPassword"
             placeholder="Password"
             name="password"
             onChange={handleChange}
           />
-          <label for="floatingPassword">Password</label>
+          <label htmlFor="floatingPassword">Password</label>
         </div>
-        <div class="form-floating mb-3">
+        <div className="form-floating mb-3">
           <input
             type="email"
-            class="form-control"
-            id="floatingPassword"
+            className="form-control"
+            id="floatingEmail"
             placeholder="Email"
             name="email"
             onChange={handleChange}
           />
-          <label for="floatingPassword">Email</label>
+          <label htmlFor="floatingEmail">Email</label>
         </div>
-        <button type="submit" class="btn btn-primary w-100 p-3">
+        <button type="submit" className="btn btn-primary w-100 p-3">
           Login
         </button>
       </form>

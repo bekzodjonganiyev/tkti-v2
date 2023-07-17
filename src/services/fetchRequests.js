@@ -1,53 +1,46 @@
-import { useContext } from "react";
-
-import Context from "../context/index";
-
-const { globalUrl } = useContext(Context);
+const globalUrl = "https://backend.tkti.uz";
+// const globalUrl = "http://localhost:5000";
 
 class Http {
-  async addData(endpoint, body) {
+  async addData(endpoint, body, isFormData) {
+    let headers = isFormData
+      ? {
+          Token: localStorage.getItem("token"),
+        }
+      : {
+          "Content-type": "application/json",
+          Token: localStorage.getItem("token"),
+        };
     try {
       const res = (
         await fetch(`${globalUrl}/${endpoint}`, {
           method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            Token: localStorage.getItem("token"),
-          },
-          body: JSON.stringify(body),
+          headers,
+          body,
         })
       ).json();
       return res;
-
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const e = { message: err.message, error: true, success: false };
+      return e;
     }
   }
 
-  async addDataWithFormData(endpoint, formData) {
+  async getData(endpoint, shouldToken) {
     try {
-      const res = (
-        await fetch(`${globalUrl}/${endpoint}`, {
-          method: "POST",
-          headers: {
-            Token: localStorage.getItem("token"),
-          },
-          body: formData,
-        })
-      ).json();
-      return res;
+      const res = await fetch(`${globalUrl}/${endpoint}`, {
+        headers: shouldToken
+          ? {
+              "Content-type": "application/json",
+              Token: localStorage.getItem("token"),
+            }
+          : { "Content-type": "application/json" },
+      });
 
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async getData(endpoint) {
-    try {
-      const res = (await fetch(`${globalUrl}/${endpoint}`)).json();
-      return res;
-    } catch (error) {
-      console.log(error);
+      return res.json();
+    } catch (err) {
+      const e = { message: err.message, error: true, success: false };
+      return e;
     }
   }
 
@@ -63,9 +56,9 @@ class Http {
         })
       ).json();
       return res;
-
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const e = { message: err.message, error: true, success: false };
+      return e;
     }
   }
 
@@ -81,9 +74,11 @@ class Http {
         })
       ).json();
       return res;
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 }
+
+export const Fetchers = new Http();
+

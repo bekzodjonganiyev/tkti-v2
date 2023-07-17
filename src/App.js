@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import {lazy, Suspense} from "react";
 import { Route, Routes } from "react-router-dom";
 
 import "./index.css";
@@ -90,6 +90,13 @@ import QabulData from "./pages/admin/qabul/Qabul";
 import Media from "./pages/admin/media/Media";
 import ProtectedRoute from "./components/admin/protected_route/ProtectedRoute";
 import Banner from "./pages/admin/banner/Banner";
+import XalqaroAloqa from "./pages/admin/xalqaro_aloqa/XalqaroAloqa";
+
+//Institut-V2
+const AboutUs = lazy(() => import("./pages/institut/about_us/AboutUs"))
+const Mission = lazy(() => import("./pages/institut/mission/Mission"))
+const History = lazy(() => import("./pages/institut/history/History"))
+const Requipments = lazy(() => import("./pages/institut/requipments/Requipments"))
 
 
 function App() {
@@ -140,7 +147,6 @@ function App() {
         <Route path="/faoliyatlar" element={<FaoliyatNew />} />
         <Route path="/faoliyatlar/:ref" element={<SingleFaoliyat />} />
         
-
         <Route path="/sertifikat" element={<SertifikatComponent />} />
 
         <Route path="/nashriyot" element={<NashriyotComponent />} />
@@ -159,6 +165,20 @@ function App() {
         <Route path="/filter/result" element={<SearchedPage />} />
         <Route path="/dars-jadvali" element={<DarsJadval />} />
         <Route path="/login" element={<AdminLogin />} />
+
+        <Route path="/about-us" element={<Suspense fallback={<>Loading</>}>
+          <AboutUs />
+        </Suspense>}/>
+        <Route path="/our-mission" element={<Suspense fallback={<>Loading</>}>
+          <Mission />
+        </Suspense>}/>
+        <Route path="/history" element={<Suspense fallback={<>Loading</>}>
+          <History />
+        </Suspense>}/>
+        <Route path="/our-requipments" element={<Suspense fallback={<>Loading</>}>
+          <Requipments />
+        </Suspense>}/>
+
         <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>}>
           <Route index element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="fakultet" element={<ProtectedRoute><Fakultet /></ProtectedRoute>} />
@@ -178,7 +198,7 @@ function App() {
           <Route path="qabul" element={<ProtectedRoute><QabulData /></ProtectedRoute>} />
           <Route path="media" element={<ProtectedRoute><Media /></ProtectedRoute>} />
           <Route path="banner" element={<ProtectedRoute><Banner /></ProtectedRoute>} />
-
+          <Route path="xalqaro-bolim" element={<ProtectedRoute><XalqaroAloqa /></ProtectedRoute>} />
         </Route>
       </Routes>
       <Footer />

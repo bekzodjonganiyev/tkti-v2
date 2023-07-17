@@ -1,30 +1,30 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { convertToRaw, EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
+
 import "../yangilik/Yangilik.css";
+
 import FormHeader from "../../../components/admin/form_header/FormHeader";
 import Input from "../../../components/admin/input/Input";
 import Button from "../../../components/admin/button/Button";
 import Table from "../../../components/admin/table/Table";
-import { Context } from "../../../context";
 import ModalWindow from "../../../components/admin/modal-window/ModalWindow";
+
+import { Context } from "../../../context";
+import { Fetchers } from "../../../services/fetchRequests";
+import TextEditor from "../../../components/admin/text_editor/TextEditor";
+
 const Elon = () => {
   const imgRef = useRef();
-  const { time, globalUrl, names, convertToHtml } = useContext(Context);
+  const { globalUrl, names } = useContext(Context);
   const [type, setType] = useState("table");
   const [data, setData] = useState();
   const [onEdit, setOnEdit] = useState({});
   let content = null;
-  const [asosiyVazifaUz, setAsosiyVazifaUz] = useState(
-    EditorState.createEmpty()
-  );
-  const [asosiyVazifaRu, setAsosiyVazifaRu] = useState(
-    EditorState.createEmpty()
-  );
-  const [asosiyVazifaEn, setAsosiyVazifaEn] = useState(
-    EditorState.createEmpty()
-  );
+  const [editor, setEditor] = useState({
+    uz: "",
+    ru: "",
+    en: "",
+  });
+
   const analyseNameTableHead = ["Tartib raqam", "Elon nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   const bodyData = data;
@@ -36,13 +36,17 @@ const Elon = () => {
         <td>
           <button
             className="event-btn edit"
-            onClick={() =>
+            onClick={() => {
               setOnEdit({
                 open: true,
                 id: item._id,
-                name: item.title_uz
-              })
-            }
+                name: item.title_uz,
+                obj: item,
+              });
+              JSON.stringify(localStorage.setItem("ebody_uz", item.body_uz));
+              JSON.stringify(localStorage.setItem("ebody_ru", item.body_ru));
+              JSON.stringify(localStorage.setItem("ebody_en", item.body_en));
+            }}
           >
             <i className="fa fa-edit"></i>
           </button>
@@ -56,8 +60,10 @@ const Elon = () => {
       </tr>
     );
   };
+
   function getData() {
     fetch(`${globalUrl}/elon/all`, {
+      
       headers: {
         "Content-type": "application/json",
       },
@@ -68,37 +74,28 @@ const Elon = () => {
       })
       .catch((err) => console.log(err));
   }
+  
   function postData(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("body_uz", convertToHtml(asosiyVazifaUz));
-    formData.append("body_ru", convertToHtml(asosiyVazifaRu));
-    formData.append("body_en", convertToHtml(asosiyVazifaEn));
+    formData.append("body_uz", editor.uz);
+    formData.append("body_ru", editor.ru);
+    formData.append("body_en", editor.en);
     formData.append("title_uz", names?.nameUz);
     formData.append("title_ru", names?.nameRu);
     formData.append("title_en", names?.nameEn);
     formData.append("date", e.target.date.value);
     formData.append("photo", e.target.photo.files[0]);
-    fetch(`${globalUrl}/elon/add`, {
-      method: "POST",
-      headers: {
-        Token: localStorage.getItem("token"),
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success) {
-          alert(res.message + "❌");
-        } else {
-          alert(res.message);
-          window.location.reload(false);
-        }
-      })
-      .catch((err) => console.log(err));
-
-    console.log(formData);
+    Fetchers.addData("elon/add", formData, true).then((res) => {
+      if (!res.success) {
+        alert(res.message + "❌");
+      } else {
+        alert(res.message);
+        window.location.reload(false);
+      }
+    });
   }
+
   function deleteYangilik(id) {
     fetch(`${globalUrl}/elon/${id}`, {
       method: "DELETE",
@@ -120,8 +117,12 @@ const Elon = () => {
         console.log(err);
       });
   }
+
   useEffect(() => {
     getData();
+    localStorage.removeItem("ebody_uz");
+    localStorage.removeItem("ebody_ru");
+    localStorage.removeItem("ebody_en");
   }, []);
 
   if (type === "table") {
@@ -146,40 +147,29 @@ const Elon = () => {
           nameRu="Sarlavha kiritng(RU)"
           nameEn="Sarlavha kiritng(EN)"
         />
-        {/* Asosiy Vazifa */}
-        <div>
-          <span className="textEditorName">Asosiy Vazifa(UZ)</span>
-          <Editor
-            wrapperClassName="text-editor-wrapper"
-            editorClassName="text-editor-body"
-            toolbarClassName="text-editor-toolbar"
-            editorState={asosiyVazifaUz}
-            onEditorStateChange={(a) => setAsosiyVazifaUz(a)}
-          />
-        </div>
-        <div>
-          <span className="textEditorName">Asosiy Vazifa(RU)</span>
-          <Editor
-            wrapperClassName="text-editor-wrapper"
-            editorClassName="text-editor-body"
-            toolbarClassName="text-editor-toolbar"
-            editorState={asosiyVazifaRu}
-            onEditorStateChange={(a) => setAsosiyVazifaRu(a)}
-          />
-        </div>
-        <div>
-          <span className="textEditorName">Asosiy Vazifa(EN)</span>
-          <Editor
-            wrapperClassName="text-editor-wrapper"
-            editorClassName="text-editor-body"
-            toolbarClassName="text-editor-toolbar"
-            editorState={asosiyVazifaEn}
-            onEditorStateChange={(a) => setAsosiyVazifaEn(a)}
-          />
-        </div>
+        {/* ELON HAQIDA BATAFSIL */}
+        <TextEditor
+          title={{
+            uz: "Elon haqida batafsil(UZ)",
+            ru: "Elon haqida batafsil(RU)",
+            en: "Elon haqida batafsil(EN)",
+          }}
+          name={{ uz: "ebody_uz", ru: "ebody_ru", en: "ebody_en" }}
+          value={{
+            uz: editor.uz,
+            ru: editor.ru,
+            en: editor.en,
+          }}
+          handleValue={{
+            uz: (e) => setEditor({ ...editor, uz: e }),
+            ru: (e) => setEditor({ ...editor, ru: e }),
+            en: (e) => setEditor({ ...editor, en: e }),
+          }}
+        />
         <div className="file">
           <label htmlFor="forImg">
             <input
+              className="form-control"
               type="file"
               id="forImg"
               name="photo"
@@ -188,9 +178,14 @@ const Elon = () => {
             />
           </label>
         </div>
-        <div>
+        <div className="file">
           <label htmlFor="forDate">
-            <input type="date" id="forDate" name="date" />
+            <input
+              type="date"
+              id="forDate"
+              name="date"
+              className="form-control"
+            />
           </label>
         </div>
 
@@ -200,11 +195,20 @@ const Elon = () => {
   }
   return (
     <div className="yangilik">
-      {
-        onEdit.open && (
-          <ModalWindow id={onEdit.id} url={"elon"} name={onEdit.name} closeModal={() => setOnEdit({open: false})}/>
-        )
-      }
+      {onEdit.open && (
+        <ModalWindow
+          id={onEdit.id}
+          url={"elon"}
+          name={onEdit.name}
+          keys={{ uz: "ebody_uz", ru: "ebody_ru", en: "ebody_en" }}
+          closeModal={() => {
+            localStorage.removeItem("ebody_uz");
+            localStorage.removeItem("ebody_ru");
+            localStorage.removeItem("ebody_en");
+            setOnEdit({ open: false });
+          }}
+        />
+      )}
       <FormHeader
         title="Elon"
         event1="Elonlar jadvali"

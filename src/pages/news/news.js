@@ -17,7 +17,7 @@ function Yangiliklar({myKey}) {
     getMaxLength()
   }, [])
   return (
-    <>
+    <>  
       <div className="wrapped">
         <YangiliklarComp myKey={myKey} page={page} />
       </div>

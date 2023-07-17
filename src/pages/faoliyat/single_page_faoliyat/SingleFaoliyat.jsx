@@ -18,23 +18,47 @@ function SocialShare() {
       </div>
       {isOpen && (
         <div className="social-icons">
-          <a
-            href={`https://telegram.me/share/url?url=${window.location.href}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fa-brands fa-telegram"></i>
-          </a>
-          <a href="#">
-            <i className="fa-brands fa-twitter"></i>
-          </a>
-          <a
-            href={`https://api.whatsapp.com/send?${window.location.href}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fa-brands fa-whatsapp"></i>
-          </a>
+          <div>
+            <a
+              href={`https://telegram.me/share/url?url=${window.location.href}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-telegram"></i>
+            </a>
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}&quote=Assalomu alaykum yangiliini o'qidingzimi?`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-facebook-f"></i>
+            </a>
+          </div>
+          <div>
+            <a
+              href={`https://vk.com/share.php?url=${window.location.href}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-vk"></i>
+            </a>
+
+            <a
+              href={`https://twitter.com/share?text=Assalomu alaykum yangilikni ko'rdingizmi&url=${window.location.href}&text=Toshkent kimyo texnologiya instituti yangiliklari`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-twitter"></i>
+            </a>
+
+            <a
+              href={`https://api.whatsapp.com/send?text=Assalomu alaykum yangilikni ko'rdingizmi%20-%20${window.location.href}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
         </div>
       )}
     </div>
@@ -45,13 +69,17 @@ const SingleFaoliyat = () => {
   const { time, DataGetter } = useContext(Context);
   const { ref } = useParams();
   const { globalUrl, lang } = useContext(Context);
-  const [data, setData] = useState({ isFetched: false, error: false, data: {} });
+  const [data, setData] = useState({
+    isFetched: false,
+    error: false,
+    data: {},
+  });
   const navigate = useNavigate();
   const id = ref.substring(ref.lastIndexOf("-") + Number(1));
 
   useEffect(() => {
     if (id.length === 24) {
-      DataGetter(setData, `faoliyat/${id}`)
+      DataGetter(setData, `faoliyat/${id}`);
     }
   }, []);
 
@@ -78,7 +106,8 @@ const SingleFaoliyat = () => {
                       </span>
                     ))}
                   </div>
-                  <div className="card__html__content"
+                  <div
+                    className="card__html__content"
                     dangerouslySetInnerHTML={{
                       __html: i[`description_${lang}`],
                     }}

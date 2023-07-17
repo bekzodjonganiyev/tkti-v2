@@ -1,8 +1,6 @@
 import { useContext, useState } from "react";
-import { convertToRaw, EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
+import TextEditor from "../text_editor/TextEditor";
 
 import "./AddForm.css";
 
@@ -11,14 +9,11 @@ import SelectType from "../../../components/admin/select_type/SelectType";
 import Button from "../button/Button";
 
 import { Context } from "../../../context";
-import ProtectedRoute from "../protected_route/ProtectedRoute";
 
 const AddForm = (props) => {
   const { names, selectValue, globalUrl, convertToHtml } = useContext(Context);
   const {
     inputNames,
-    textEditorNames1,
-    textEditorNames2,
     selectName,
     buttonName,
     options,
@@ -26,24 +21,31 @@ const AddForm = (props) => {
     url,
   } = props;
 
-  const [aboutUz, setAboutUz] = useState(EditorState.createEmpty());
-  const [aboutRu, setAboutRu] = useState(EditorState.createEmpty());
-  const [aboutEn, setAboutEn] = useState(EditorState.createEmpty());
+  const [editorHaqida, setEditorHaqida] = useState({
+    uz: "",
+    ru: "",
+    en: "",
+  });
 
-  const [aimUz, setAimUz] = useState(EditorState.createEmpty());
-  const [aimRu, setAimRu] = useState(EditorState.createEmpty());
-  const [aimEn, setAimEn] = useState(EditorState.createEmpty());
+  const [editorMaqsad, setEditorMaqsad] = useState({
+    uz: "",
+    ru: "",
+    en: "",
+  });
+  
+ 
+
 
   const obj = {
     title_uz: names?.nameUz,
     title_ru: names?.nameRu,
     title_en: names?.nameEn,
-    haqida_uz: convertToHtml(aboutUz),
-    haqida_ru: convertToHtml(aboutRu),
-    haqida_en: convertToHtml(aboutEn),
-    maqsad_uz: convertToHtml(aimUz),
-    maqsad_en: convertToHtml(aimRu),
-    maqsad_ru: convertToHtml(aimEn),
+    haqida_uz: editorHaqida.uz,
+    haqida_ru: editorHaqida.ru,
+    haqida_en: editorHaqida.en,
+    maqsad_uz: editorMaqsad.uz,
+    maqsad_en: editorMaqsad.uz,
+    maqsad_ru: editorMaqsad.uz,
   };
 
   const body = hasSelect
@@ -78,68 +80,48 @@ const AddForm = (props) => {
         nameEn={inputNames.nameEn}
       />
       <hr />
-      <div>
-        <span className="textEditorName">{textEditorNames1.nameUz}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutUz}
-          onEditorStateChange={(a) => setAboutUz(a)}
+      <TextEditor
+          title={{
+            uz: " haqida (UZ)",
+            ru: " haqida(RU)",
+            en: " haqida(EN)",
+          }}
+          // name={{ uz: "ebody_uz", ru: "ebody_ru", en: "ebody_en" }}
+          value={{
+            uz: editorHaqida.uz,
+            ru: editorHaqida.ru,
+            en: editorHaqida.en,
+          }}
+          handleValue={{
+            uz: (e) => setEditorHaqida({ ...editorHaqida, uz: e }),
+            ru: (e) => setEditorHaqida({ ...editorHaqida, ru: e }),
+            en: (e) => setEditorHaqida({ ...editorHaqida, en: e }),
+          }}
         />
-      </div>
-      <div>
-        <span className="textEditorName">{textEditorNames1.nameRu}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutRu}
-          onEditorStateChange={(a) => setAboutRu(a)}
-        />
-      </div>
-      <div>
-        <span className="textEditorName">{textEditorNames1.nameEn}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aboutEn}
-          onEditorStateChange={(a) => setAboutEn(a)}
-        />
-      </div>
+      
       <hr />
 
-      <div>
-        <span className="textEditorName">{textEditorNames2.nameUz}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aimUz}
-          onEditorStateChange={(a) => setAimUz(a)}
+
+      <TextEditor
+          title={{
+            uz: "maqsad va vazifasi (UZ)",
+            ru: "maqsad va vazifasi (RU)",
+            en: "maqsad va vazifasi (EN)",
+          }}
+          name={{ uz: "ebody_uz", ru: "ebody_ru", en: "ebody_en" }}
+          value={{
+            uz: editorMaqsad.uz,
+            ru: editorMaqsad.ru,
+            en: editorMaqsad.en,
+          }}
+          handleValue={{
+            uz: (e) => setEditorMaqsad({ ...editorMaqsad, uz: e }),
+            ru: (e) => setEditorMaqsad({ ...editorMaqsad, ru: e }),
+            en: (e) => setEditorMaqsad({ ...editorMaqsad, en: e }),
+          }}
         />
-      </div>
-      <div>
-        <span className="textEditorName">{textEditorNames2.nameRu}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aimRu}
-          onEditorStateChange={(a) => setAimRu(a)}
-        />
-      </div>
-      <div>
-        <span className="textEditorName">{textEditorNames2.nameEn}</span>
-        <Editor
-          wrapperClassName="text-editor-wrapper"
-          editorClassName="text-editor-body"
-          toolbarClassName="text-editor-toolbar"
-          editorState={aimEn}
-          onEditorStateChange={(a) => setAimEn(a)}
-        />
-      </div>
+
+ 
 
       {hasSelect && (
         <>
@@ -154,7 +136,8 @@ const AddForm = (props) => {
           e.preventDefault();
           postData();
         }}
-      />
+        />
+        
     </form>
   );
 };

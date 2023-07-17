@@ -8,3 +8,8 @@
   flex-direction: column;
   gap: 50px;
 }
+
+.tiny-text-editor{
+  width: 95%;
+  margin: 0 auto;
+}

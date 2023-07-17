@@ -1,4 +1,5 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, useState, useEffect } from "react";
+// import { useDispatch } from "react-redux";
 
 import "./Bolim.css";
 
@@ -8,8 +9,10 @@ import FaoliyatForm from "../../../components/admin/faoliyat/FaoliyatForm";
 import XodimForm from "../../../components/admin/xodim_form/XodimForm";
 import EditXodim from "../../../components/admin/edit_xodim/EditXodim";
 import Table from "../../../components/admin/table/Table";
+import ModalWindow from "../../../components/admin/modal-window/ModalWindow";
 
 import { Context } from "../../../context";
+import ClientApiService from "../../../services/clientApi"
 
 const Bolim = () => {
   const { globalUrl } = useContext(Context);
@@ -17,8 +20,10 @@ const Bolim = () => {
   const [bolimData, setBolimData] = useState();
   const [bolimXodim, setBolimXodim] = useState();
   const [onEdit, setOnEdit] = useState({});
+  const [onEditBolim, setOnEditBolim] = useState({});
   const [search, setSearch] = useState("");
   const [xodimSearch, setXodimSearch] = useState("");
+  // const dispatch = useDispatch();
 
   let content = null;
 
@@ -52,7 +57,10 @@ const Bolim = () => {
         <td>{index + 1}</td>
         <td>{item.title_uz}</td>
         <td>
-          <button className="event-btn edit" onClick={() => {}}>
+          <button
+            className="event-btn edit"
+            onClick={() => {}}
+          >
             <i className="fa fa-edit"></i>
           </button>
           <button
@@ -189,6 +197,7 @@ const Bolim = () => {
 
   useEffect(() => {
     getData();
+    ClientApiService.getAll("/elon/all").then(res => console.log(res.data))
   }, []);
 
   if (type === "table") {
@@ -196,7 +205,11 @@ const Bolim = () => {
       <>
         {bolimData && (
           <>
-            <input className="form-control" type="text" onChange={(e) => setSearch(e.target.value)} />
+            <input
+              className="form-control"
+              type="text"
+              onChange={(e) => setSearch(e.target.value)}
+            />
             <Table
               headData={analyseNameTableHead}
               renderHead={renderHead}
@@ -260,6 +273,24 @@ const Bolim = () => {
   }
   return (
     <div>
+      {onEditBolim.open && (
+        <ModalWindow
+          id={onEditBolim.obj._id}
+          url={"bm_data"}
+          name={onEditBolim.obj.title_uz}
+          keys={{ uz: "bmBodyUz", ru: "bmBodyRu", en: "bmBodyEn" }}
+          closeModal={() => {
+            localStorage.removeItem("bmHaqidaUz");
+            localStorage.removeItem("bmHaqidaRu");
+            localStorage.removeItem("bmHaqidaEn");
+            localStorage.removeItem("bmMaqsadUz");
+            localStorage.removeItem("bmMaqsadRu");
+            localStorage.removeItem("bmMaqsadEn");
+            setOnEdit({ open: false });
+            setOnEditBolim({ open: false });
+          }}
+        />
+      )}
       <FormHeader
         title="Bo'lim"
         event1="Bo'limlar jadvali"

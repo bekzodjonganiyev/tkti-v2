@@ -24,17 +24,17 @@ const Input = ({ nameUz = "name", nameRu = "name", nameEn = "name" }) => {
     <div className="input-component">
       <label htmlFor="nameUz">
         {nameUz} <br />
-        <input type="text" id="nameUz" onInput={handChange} />
+        <input className="form-control" type="text" id="nameUz" onInput={handChange} />
       </label>
 
       <label htmlFor="nameRu">
         {nameRu} <br />
-        <input type="text" id="nameRu" onInput={handChange} />
+        <input className="form-control" type="text" id="nameRu" onInput={handChange} />
       </label>
 
       <label htmlFor="nameEn">
         {nameEn} <br />
-        <input type="text" id="nameEn" onInput={handChange} />
+        <input className="form-control" type="text" id="nameEn" onInput={handChange} />
       </label>
     </div>
   );

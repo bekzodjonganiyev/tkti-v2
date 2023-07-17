@@ -1,21 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 
-import { Institut } from "../../icons/Icons";
-import Logo from "../../files/logo.png";
 import "./MyComponent.css";
+
+import Logo from "../../files/logo.png";
 import HeaderLang from "./lang";
+
 import { Context } from "../../context";
 
 const MyComponent = () => {
+  const { lang, globalUrl } = useContext(Context);
+
   const [facultet, setFacultet] = useState([]);
-
-  const location = useLocation();
-
-  const { lang, setLang, globalUrl } = useContext(Context);
-
   const [hoveredButton, setHoveredButton] = useState(null);
+
   useEffect(() => {
     fetch(`${globalUrl}/Fak_data/all`, {
       headers: {
@@ -30,40 +27,40 @@ const MyComponent = () => {
   const buttons = [
     {
       id: 1,
-      name: HeaderLang[lang].institut[0],
+      name: HeaderLang[lang].institut1[0],
       fakultetInfo: HeaderLang[lang].fakultetInfo[0],
       label: [
         {
-          labelId: HeaderLang[lang].institut[1],
+          labelId: HeaderLang[lang].institut1[1],
+          href: "/about-us",
+        },
+        {
+          labelId: HeaderLang[lang].institut1[2],
+          href: "/our-mission",
+        },
+        {
+          labelId: HeaderLang[lang].institut1[3],
           href: "/rektorat",
         },
         {
-          labelId: HeaderLang[lang].institut[2],
-          href: "/interaktiv-hizmatlar",
+          labelId: HeaderLang[lang].institut1[4],
+          href: "/history",
         },
         {
-          labelId: HeaderLang[lang].institut[3],
-          href: "/tkti-ish-rejasi",
+          labelId: HeaderLang[lang].institut1[5],
+          href: "/our-requipments",
         },
         {
-          labelId: HeaderLang[lang].institut[4],
+          labelId: HeaderLang[lang].institut1[6],
           href: "/korrupsiya",
         },
         {
-          labelId: HeaderLang[lang].institut[5],
-          href: "/biz-bilan-aloqa",
+          labelId: HeaderLang[lang].institut1[7],
+          href: "/bitiruvchilar",
         },
         {
-          labelId: HeaderLang[lang].institut[6],
-          href: "/xalqaro-aloqalar",
-        },
-        {
-          labelId: HeaderLang[lang].institut[7],
-          href: "/faoliyat-hujjatlari",
-        },
-        {
-          labelId: HeaderLang[lang].institut[8],
-          href: "/litsey",
+          labelId: HeaderLang[lang].institut1[8],
+          href: "/interaktiv-hizmatlar",
         },
       ],
     },
@@ -162,7 +159,7 @@ const MyComponent = () => {
         },
         {
           labelId: HeaderLang[lang].mytkti[4],
-          href: "https://rector.tcti.uz/",
+          href: "https://corp.uz/webmail/",
         },
         {
           labelId: HeaderLang[lang].mytkti[5],

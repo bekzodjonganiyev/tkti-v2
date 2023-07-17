@@ -20,19 +20,10 @@ const Fakultet = () => {
   const props = {
     inputNames: {
       nameUz: "fakultet nomi Uz",
-      nameRu: "fakultet nomi Ru",
+      nameRu: "fakultet nomi Ru", 
       nameEn: "fakultet nomi En",
     },
-    textEditorNames1: {
-      nameUz: "maqsad va vazifa Uz",
-      nameRu: "maqsad va vazifa Ru",
-      nameEn: "maqsad va vazifa En",
-    },
-    textEditorNames2: {
-      nameUz: "fakultet haqida Uz",
-      nameRu: "fakultet haqida Ru",
-      nameEn: "fakultet haqida En",
-    },
+ 
     selectName: "select name",
     buttonName: "buttob name",
     url: "Fak_data/add",
@@ -214,8 +205,8 @@ const Fakultet = () => {
     content = (
       <AddForm
         inputNames={props.inputNames}
-        textEditorNames1={props.textEditorNames1}
-        textEditorNames2={props.textEditorNames2}
+     
+       
         selectName={props.selectName}
         buttomName={props.buttonName}
         hasSelect={false}

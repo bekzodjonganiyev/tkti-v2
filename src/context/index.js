@@ -10,13 +10,11 @@ function Provider({ children }) {
   const [lang, setLang] = useState(JSON.parse(localStorage.getItem("lang")) || "uz");
   const [refresh, setRefresh] = useState(false);
   const [searchedData, setSearchedData] = useState([]);
-  const [textEditorBodyUz, setTextEditorBodyUz] = useState();
-  const [textEditorBodyRu, setTextEditorBodyRu] = useState();
-  const [textEditorBodyEn, setTextEditorBodyEn] = useState();
   const [names, setNames] = useState();
   const [selectValue, setSelectValue] = useState();
+  const [editorValue, setEditorValue] = useState();
   // const globalUrl = "http://localhost:5000";
-  const globalUrl = "https://backend.tkti.uz";
+  const globalUrl = "httpss://backend.tkti.uz";
 
 
   const time = (arg) => {
@@ -133,12 +131,10 @@ function Provider({ children }) {
           convertToHtml,
           convertToEntityMap,
           names, setNames,
+          editorValue, setEditorValue,
           refresh, setRefresh,
           lang, setLang,
           searchedData, setSearchedData,
-          textEditorBodyUz, setTextEditorBodyUz,
-          textEditorBodyRu, setTextEditorBodyRu,
-          textEditorBodyEn, setTextEditorBodyEn,
           selectValue, setSelectValue,
         }}
       >

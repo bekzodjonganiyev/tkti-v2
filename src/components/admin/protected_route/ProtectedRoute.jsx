@@ -1,28 +1,21 @@
-import React, { useContext, useEffect } from "react";
-import { Route, Navigate, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
-import { Context } from "../../../context";
+import { Fetchers } from "../../../services/fetchRequests";
 
 export default function ProtectedRoute({ children }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const {globalUrl} = useContext(Context)
 
   useEffect(() => {
-    fetch(`${globalUrl}/kafedra_hodim/all`, {
-      headers: {
-        "Content-type": "application/json",
-        Token: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.status === 498){
-          navigate("/login")
-        }
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    Fetchers.getData("kafedra_hodim/all", true).then((res) => {
+      if (res.error) {
+        alert(res.message);
+      } else if (res.status === 498) {
+        navigate("/login");
+      }
+    });
+  }, [token]);
 
   return token ? <>{children}</> : <Navigate replace to="/login" />;
 }

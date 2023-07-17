@@ -341,13 +341,13 @@ function RectoratItem() {
         body: [
           {
             class: "fa-solid fa-phone",
-            text: "+998 71 244-79-24",
-            href: "tel:+998712447924",
+            text: "+998 71 244-79-21",
+            href: "tel:+998 71 244-79-21",
           },
           {
             class: "fa-solid fa-envelope",
             text: ContactLangMy[lang].polatov.p18,
-            href: "mailto:pulatov.x.l@dba.uz",
+            href: "mailto:x.pulatov@tkti.uz",
           },
           {
             class: "fa-solid fa-location-dot",

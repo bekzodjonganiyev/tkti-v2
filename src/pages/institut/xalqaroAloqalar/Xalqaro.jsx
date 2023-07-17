@@ -1,39 +1,35 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import aloqaLang from "./lang";
-import { AccordionBest } from "../../../components/accordion";
+import { AccordionComponent } from "../../../components/accordion";
 import "./xalqaroAloqa.css";
 import { Context } from "../../../context";
 
 const Xalqaro = () => {
-  const { lang } = useContext(Context);
-  const [g, setG] = useState([
-    {
-      id: 0,
-      status: true,
-      title: aloqaLang[lang].gpa[0].title,
-      content: aloqaLang[lang].gpa[0].content,
-    },
-    {
-      id: 1,
-      status: false,
-      title: aloqaLang[lang].gpa[1].title,
-      content: aloqaLang[lang].gpa[1].content,
-    },
-  ]);
-  useEffect(() => {
-    const filter = g.filter(
-      (a, index) => (
-        (a.title = aloqaLang[lang].gpa[index].title),
-        (a.content = aloqaLang[lang].gpa[index].content)
-      )
-    );
-    setG(filter);
-  }, [lang]);
+  const { lang, globalUrl } = useContext(Context);
+  const [fetchedData, setFetchedData] = useState([]);
 
+  const getData = async () => {
+    const res = await fetch(`${globalUrl}/xalqaro_aloqa/all`, {
+      headers: {
+        "Content-type": "application/json",
+        token: localStorage.getItem("token"),
+      },
+    });
+    const parsed = await res.json();
+    const filter = parsed.data.map((item) => ({
+      id: item._id,
+      status: false,
+      title: item[`title_${lang}`],
+      content: item[`body_${lang}`],
+    })).reverse();
+    setFetchedData(filter);
+  };
+  useEffect(() => {
+    getData();
+  }, [lang]);
   return (
     <div className="wrapped mt-5 mb-5">
-          <AccordionBest arr={g} setarr={setG} />
+      <AccordionComponent arr={fetchedData} setarr={setFetchedData} />
     </div>
   );
 };

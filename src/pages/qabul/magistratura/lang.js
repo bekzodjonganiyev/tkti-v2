@@ -5,9 +5,9 @@ const magistr = {
         
         shart:`Qabul qilish shartlari`,
         shartData:[
-{title:`Asosiy qoidalar`, content:`1. Magistraturaga oʻqishga qabul qilish Oʻzbekiston Respublikasi Vazirlar Mahkamasining “<a class='qabul-link' href='https://lex.uz/ru/docs/-3244181'>Oliy ta’lim muassasalariga o‘qishga qabul qilish, talabalar o‘qishini ko‘chirish, qayta tiklash va o‘qishdan chetlashtirish tartibi to‘g‘risidagi nizomlarni tasdiqlash haqida</a>”gi qaroriga muvofiq amalga oshiriladi.
+{title:`Asosiy qoidalar`, content:`1. Magistraturaga oʻqishga qabul qilish Oʻzbekiston Respublikasi Vazirlar Mahkamasining “<a className='qabul-link' href='https://lex.uz/ru/docs/-3244181'>Oliy ta’lim muassasalariga o‘qishga qabul qilish, talabalar o‘qishini ko‘chirish, qayta tiklash va o‘qishdan chetlashtirish tartibi to‘g‘risidagi nizomlarni tasdiqlash haqida</a>”gi qaroriga muvofiq amalga oshiriladi.
 <br />
-2. Tanlovga arizalar faqat veb-saytda onlayn (elektron ariza shakli) qabul qilinadi <a class='qabul-link' href='https://magistr.edu.uz'>https://magistr.edu.uz</a>
+2. Tanlovga arizalar faqat veb-saytda onlayn (elektron ariza shakli) qabul qilinadi <a className='qabul-link' href='https://magistr.edu.uz'>https://magistr.edu.uz</a>
 <br />
 3. Davlat oliy ta’lim muassasalari magistraturasiga qabul bir yilda ikki marta — avgust va yanvar oylarida tashkil etiladi. Bunda:
 <br />
@@ -15,32 +15,32 @@ const magistr = {
 <br />
 &nbsp; &nbsp; &nbsp; &nbsp;-   yanvar oyidagi qabul — dastlabki qabul natijalariga ko‘ra to‘lmagan o‘rinlar hamda Davlat komissiyasi tomonidan tasdiqlangan qo‘shimcha to‘lov-kontrakt asosidagi qabul parametrlariga muvofiq amalga oshiriladi
 <br />
-4. magistr.edu.uz platformasi orqali onlayn ro'yxatdan o'tish bo'yicha videoqo'llanma: <a class='qabul-link' href='https://www.youtube.com/watch?v=ZHzRXbCsHxM'>https://www.youtube.com/watch?v=ZHzRXbCsHxM</a>
+4. magistr.edu.uz platformasi orqali onlayn ro'yxatdan o'tish bo'yicha videoqo'llanma: <a className='qabul-link' href='https://www.youtube.com/watch?v=ZHzRXbCsHxM'>https://www.youtube.com/watch?v=ZHzRXbCsHxM</a>
 <br />
 5. Abituriyentlarni ro‘yxatdan o‘tkazish oliy ta’lim muassasasi qabul komissiyalari tomonidan har yili 15-iyundan 15-iyulgacha (shu kuni ham) bo‘lgan muddatda amalga oshiriladi.
 <br />
 6. Ariza topshirishda barcha kerakli ma'lumotlarni to'ldirish va kerakli hujjatlarning elektron nusxalarini taqdim etish majburiydir
 <br />
-7. <a class='qabul-link' href='https://magistr.edu.uz/profile'>https://magistr.edu.uz/profile</a> da ma‘lumotnomani to‘ldirish va ariza topshirishda quyidagilar talab qilinadi:
+7. <a className='qabul-link' href='https://magistr.edu.uz/profile'>https://magistr.edu.uz/profile</a> da ma‘lumotnomani to‘ldirish va ariza topshirishda quyidagilar talab qilinadi:
 <br /> - Shaxsiy ma'lumotlar
 <br /> - Tugatgan ta‘lim muassasasi
 <br /> - Mutaxassislikni tanlash
 <br /> - Imtiyozlarni kiritish
 <br />
-8. Xalqaro tan olingan chet tilini bilish darajasi haqidagi sertifikat IELTS ≥5,5, TOEFL ≥72, CEFR ≥B2, TestDaF (TDN3) yoki O‘zbekiston Respublikasi Vazirlar Mahkamasi huzuridagi Davlat test markazi tomonidan beriladigan Chet tilini bilish darajasi haqidagi B2 yoki C1 darajasidagi sertifikat taqdim etganlarga chet tilidan 50 ball qo‘yiladi va ular chet tilidan kirish sinovida ishtirok etmaydi: <a class='qabul-link' href='https://t.me/eduuz/9503'>Magistratura va doktoranturaga hujjat topshirishda talab etiladigan xorijiy tillarni bilish darajasini baholovchi milliy va xalqaro tan olingan sertifikatlar ROʻYXATI</a>
+8. Xalqaro tan olingan chet tilini bilish darajasi haqidagi sertifikat IELTS ≥5,5, TOEFL ≥72, CEFR ≥B2, TestDaF (TDN3) yoki O‘zbekiston Respublikasi Vazirlar Mahkamasi huzuridagi Davlat test markazi tomonidan beriladigan Chet tilini bilish darajasi haqidagi B2 yoki C1 darajasidagi sertifikat taqdim etganlarga chet tilidan 50 ball qo‘yiladi va ular chet tilidan kirish sinovida ishtirok etmaydi: <a className='qabul-link' href='https://t.me/eduuz/9503'>Magistratura va doktoranturaga hujjat topshirishda talab etiladigan xorijiy tillarni bilish darajasini baholovchi milliy va xalqaro tan olingan sertifikatlar ROʻYXATI</a>
 <br />
-9. O‘zbekiston Respublikasi Prezidentining hamda Vazirlar Mahkamasining normativ-huquqiy hujjatlarida belgilangan tartibda imtiyozga ega bo‘lgan abituriyentlar sinovlarisiz davlat grantlari asosida qabul qilinadi. <a class='qabul-link' href='https://magistr.edu.uz/#privilege'>https://magistr.edu.uz/#privilege</a> ro’yxat shu yerda (word fayl bo’ladi)
+9. O‘zbekiston Respublikasi Prezidentining hamda Vazirlar Mahkamasining normativ-huquqiy hujjatlarida belgilangan tartibda imtiyozga ega bo‘lgan abituriyentlar sinovlarisiz davlat grantlari asosida qabul qilinadi. <a className='qabul-link' href='https://magistr.edu.uz/#privilege'>https://magistr.edu.uz/#privilege</a> ro’yxat shu yerda (word fayl bo’ladi)
 <br />
 10. O'zbek yoki ingliz tillaridan tashqari boshqa tillarda berilgan hujjatlar ushbu tillardan biriga tarjima qilinishi va qonun hujjatlarida belgilangan tartibda tasdiqlanishi kerak.
 <br />
-11. Agar shaxsda diplomni tan olish to'g'risidagi guvohnoma bo'lmasa, ta'limni tan olish <a class='qabul-link' href='https://my.gov.uz/oz/service/214'>O'zbekiston Respublikasi Vazirlar Mahkamasi huzuridagi ta'lim sifatini nazorat qilish Davlat inspeksiyasi</a> tomonidan 10 ish kuni ichida amalga oshiriladi.
+11. Agar shaxsda diplomni tan olish to'g'risidagi guvohnoma bo'lmasa, ta'limni tan olish <a className='qabul-link' href='https://my.gov.uz/oz/service/214'>O'zbekiston Respublikasi Vazirlar Mahkamasi huzuridagi ta'lim sifatini nazorat qilish Davlat inspeksiyasi</a> tomonidan 10 ish kuni ichida amalga oshiriladi.
 Xorijiy davlatlarda ta’lim olganlik to‘g‘risidagi hujjatlarni tan olish quyidagi hollarda to‘g‘ridan to‘g‘ri (sinovlarsiz) amalga oshiriladi: 1-bob. Umumiy qoidalar, 7-banda keltirilgan
 <br />
 Qo'shimcha ma'lumotni bu yerda topishingiz mumkin:
 <br />
-1. <a class='qabul-link' href='https://my.gov.uz/oz/service/210'>Xorijiy davlatda ta'lim olganlik to'g'risidagi hujjatni tan olish va nostrifikatsiyalash (ekvivalentligini qayd etish) uchun elektron ariza yuborish</a>
+1. <a className='qabul-link' href='https://my.gov.uz/oz/service/210'>Xorijiy davlatda ta'lim olganlik to'g'risidagi hujjatni tan olish va nostrifikatsiyalash (ekvivalentligini qayd etish) uchun elektron ariza yuborish</a>
 <br />
-2. <a class='qabul-link' href='https://lex.uz/docs/-4441142'>O‘zbekiston Respublikasi Vazirlar Mahkamasining 2019 yil 24 iyuldagi "Xorijiy davlatlarda ta’lim olganlik to‘g‘risidagi hujjatlarni tan olish tartibini takomillashtirish haqida"gi 620-son qarori</a>
+2. <a className='qabul-link' href='https://lex.uz/docs/-4441142'>O‘zbekiston Respublikasi Vazirlar Mahkamasining 2019 yil 24 iyuldagi "Xorijiy davlatlarda ta’lim olganlik to‘g‘risidagi hujjatlarni tan olish tartibini takomillashtirish haqida"gi 620-son qarori</a>
 <br />
 12. Institutda chet el fuqarolarini qabul qilish va o'qitish tartibi to'g'risidagi ma'lumotlar va o'quv dasturini tanlash bo'yicha maslahatlar Xalqaro aloqalar bo'limida ish kunlari soat 09:00 dan 17:00 gacha dush-juma kunlari taqdim etiladi. 
 `},
@@ -60,7 +60,7 @@ Magistraturaga o‘qishga kirishda eng ko‘p (maksimal) to‘planishi mumkin bo
 <br />    
 2022
 <br />
-1. Davlat oliy ta’lim muassasalari magistraturasiga qabul abituriyentning bakalavriat diplom bali o‘rtacha ko‘rsatkichi hamda xorijiy tilni bilish darajasi bo‘yicha tegishli <a class='qabul-link' href='https://t.me/eduuz/9503'>milliy yoki xalqaro sertifikat bali asosida</a> , ballar ketma-ketligiga qat’iy rioya qilgan holda amalga oshiriladi hamda qo‘shimcha imtihon o‘tkazilmaydi;
+1. Davlat oliy ta’lim muassasalari magistraturasiga qabul abituriyentning bakalavriat diplom bali o‘rtacha ko‘rsatkichi hamda xorijiy tilni bilish darajasi bo‘yicha tegishli <a className='qabul-link' href='https://t.me/eduuz/9503'>milliy yoki xalqaro sertifikat bali asosida</a> , ballar ketma-ketligiga qat’iy rioya qilgan holda amalga oshiriladi hamda qo‘shimcha imtihon o‘tkazilmaydi;
 <br />
 2. Bakalavriat diplom bali o’rtacha ko’rsatkichi yuqori abituriyentning TKTIga magistraturasiga kirish natijasi yuqoridir.
 `}
@@ -123,9 +123,9 @@ Magistraturaga o‘qishga kirishda eng ko‘p (maksimal) to‘planishi mumkin bo
      
         shart:`Условия приема`,
         shartData:[
-            {title:`Основные правила`, content:`1. Прием в магистратуру осуществляется в соответствии с постановлением Кабинета Министров Республики Узбекистан “ <a class='qabul-link' href='https://lex.uz/docs/3244184'>Об утверждении положения о порядке приема на учебу, перевода, восстановления и отчисления студентов в высших образовательных учреждениях</a> ”.
+            {title:`Основные правила`, content:`1. Прием в магистратуру осуществляется в соответствии с постановлением Кабинета Министров Республики Узбекистан “ <a className='qabul-link' href='https://lex.uz/docs/3244184'>Об утверждении положения о порядке приема на учебу, перевода, восстановления и отчисления студентов в высших образовательных учреждениях</a> ”.
            <br /> 
-           2. Заявки на участие в конкурсе принимаются только онлайн (электронная форма заявки ) на сайте <a class='qabul-link' href='https://magistr.edu.uz/'>https://magistr.edu.uz</a>
+           2. Заявки на участие в конкурсе принимаются только онлайн (электронная форма заявки ) на сайте <a className='qabul-link' href='https://magistr.edu.uz/'>https://magistr.edu.uz</a>
 <br />
 3. Прием в магистратуру государственных высших учебных заведений организуется два раза в год — в августе и январе. В этом:
 <br />
@@ -133,13 +133,13 @@ Magistraturaga o‘qishga kirishda eng ko‘p (maksimal) to‘planishi mumkin bo
 <br />
 - январский прием-мест, не заполненных по результатам первичного приема, а также доплаты, утвержденной Государственной комиссией, - осуществляется в соответствии с параметрами приема на контрактной основе
 <br />
-4. Видеогид по онлайн регистрации через платформу magistr.edu.uz: <a class='qabul-link' href='https://www.youtube.com/watch?v=ZHzRXbCsHxM'>https://www.youtube.com/watch?v=ZHzRXbCsHxM</a>
+4. Видеогид по онлайн регистрации через платформу magistr.edu.uz: <a className='qabul-link' href='https://www.youtube.com/watch?v=ZHzRXbCsHxM'>https://www.youtube.com/watch?v=ZHzRXbCsHxM</a>
 <br />
 Регистрация абитуриентов осуществляется приемными комиссиями высшего образовательного учреждения в срок с 15 июня по 15 июля (в этот же день) каждого года.
 <br />
 При подаче заявления обязательно заполнение всех необходимых данных и предоставление электронных копий всех необходимых документов.
 <br />
-<a class='qabul-link' href='https://magistr.edu.uz/profile'>https://magistr.edu.uz/profile</a> при заполнении справки и подаче заявления требуется:
+<a className='qabul-link' href='https://magistr.edu.uz/profile'>https://magistr.edu.uz/profile</a> при заполнении справки и подаче заявления требуется:
 <br />
 -  Персональные данные
 <br /
@@ -149,23 +149,23 @@ Magistraturaga o‘qishga kirishda eng ko‘p (maksimal) to‘planishi mumkin bo
 <br /
 -  Введение дополнительных льгот
 <br /
-8.   Сертификат международного образца о знании иностранного языка IELTS ≥5.5, TOEFL ≥72, CEFR ≥B2, TestDaF (TDN3) или B2 или C1 владения иностранным языком, выданный Государственным центром тестирования при Кабинете Министров Республики Узбекистан 50 баллы по иностранному языку начисляются тем, кто предъявляет сертификат об уровне владения иностранным языком и не участвует во вступительном испытании по иностранному языку: <a class='qabul-link' href='https://t.me/eduuz/9503'>ПЕРЕЧЕНЬ признанных на национальном и международном уровнях сертификатов, оценивающих уровень знания иностранных языков, необходимых для поступление в магистратуру и докторантуру</a>
+8.   Сертификат международного образца о знании иностранного языка IELTS ≥5.5, TOEFL ≥72, CEFR ≥B2, TestDaF (TDN3) или B2 или C1 владения иностранным языком, выданный Государственным центром тестирования при Кабинете Министров Республики Узбекистан 50 баллы по иностранному языку начисляются тем, кто предъявляет сертификат об уровне владения иностранным языком и не участвует во вступительном испытании по иностранному языку: <a className='qabul-link' href='https://t.me/eduuz/9503'>ПЕРЕЧЕНЬ признанных на национальном и международном уровнях сертификатов, оценивающих уровень знания иностранных языков, необходимых для поступление в магистратуру и докторантуру</a>
 <br />
-9.  Абитуриенты, имеющие льготы в порядке, установленном нормативными правовыми актами Президента Республики Узбекистан и Кабинета Министров, принимаются на основе государственных грантов без испытаний. <a class='qabul-link' href='https://magistr.edu.uz/#privilege'>https://magistr.edu.uz/#privilege</a> список здесь (будет ворд файл)
+9.  Абитуриенты, имеющие льготы в порядке, установленном нормативными правовыми актами Президента Республики Узбекистан и Кабинета Министров, принимаются на основе государственных грантов без испытаний. <a className='qabul-link' href='https://magistr.edu.uz/#privilege'>https://magistr.edu.uz/#privilege</a> список здесь (будет ворд файл)
 <br />
 10.  окументы, выданные на других языках, кроме узбексого или английского, должны быть переведены на один из этих языков и утверждены в установленном законом порядке.
 <br />
-11.  При отсутствии у лица свидетельства о признании диплома признание образования осуществляется в течение 10 рабочих дней <a class='qabul-link' href='https://my.gov.uz/ru/service/210'>Государственной инспекцией качества образования при Кабинете Министров Республики Узбекистан</a>.
+11.  При отсутствии у лица свидетельства о признании диплома признание образования осуществляется в течение 10 рабочих дней <a className='qabul-link' href='https://my.gov.uz/ru/service/210'>Государственной инспекцией качества образования при Кабинете Министров Республики Узбекистан</a>.
 <br />
 Признание документов об образовании в иностранных государствах осуществляется непосредственно (без испытаний) в следующих случаях: Глава 1. Общие правила приведены в пункте 7
 <br />
 Более подробную информацию можно найти здесь:
 <br />
-1. <a class='qabul-link' href=''>Направление электронного заявления о признании и нострификации (фиксации эквивалентности) документа об образовании в иностранном государстве</a>
+1. <a className='qabul-link' href=''>Направление электронного заявления о признании и нострификации (фиксации эквивалентности) документа об образовании в иностранном государстве</a>
 <br/>
-2. <a class='qabul-link' href='https://lex.uz/docs/-4441142'>Постановление Кабинета Министров Республики Узбекистан от 24 июля 2019 года № 620 «О совершенствовании порядка признания документов об образовании в иностранных государствах»</a>
+2. <a className='qabul-link' href='https://lex.uz/docs/-4441142'>Постановление Кабинета Министров Республики Узбекистан от 24 июля 2019 года № 620 «О совершенствовании порядка признания документов об образовании в иностранных государствах»</a>
 <br/>
-12.  Информацию о порядке приема и обучения иностранных граждан в институте и консультации по выбору программы обучения можно получить в отделе международных связей в рабочие дни с 09:00 до 17:00, с понедельника по пятницу. . г.Ташкент, Навои 9, 32-дом, тел. +998 93 527 95 00; электронная почта: zebo.babakhanova@gmail.com. <a class='qabul-link' href='https://t.me/tkti_international'>https://t.me/tkti_international</a>
+12.  Информацию о порядке приема и обучения иностранных граждан в институте и консультации по выбору программы обучения можно получить в отделе международных связей в рабочие дни с 09:00 до 17:00, с понедельника по пятницу. . г.Ташкент, Навои 9, 32-дом, тел. +998 93 527 95 00; электронная почта: zebo.babakhanova@gmail.com. <a className='qabul-link' href='https://t.me/tkti_international'>https://t.me/tkti_international</a>
 `
         },
         {
@@ -183,7 +183,7 @@ Magistraturaga o‘qishga kirishda eng ko‘p (maksimal) to‘planishi mumkin bo
 <br />
 2022
 <br />
-1. прием в магистратуру государственных высших учебных заведений осуществляется на основании среднего показателя диплома бакалавриата абитуриента и <a class='qabul-link' href='https://t.me/eduuz/9503'>соответствующего национального или международного сертификата по уровню владения иностранным языком</a>, с строгим соблюдением последовательности баллов и без проведения дополнительных экзаменов;
+1. прием в магистратуру государственных высших учебных заведений осуществляется на основании среднего показателя диплома бакалавриата абитуриента и <a className='qabul-link' href='https://t.me/eduuz/9503'>соответствующего национального или международного сертификата по уровню владения иностранным языком</a>, с строгим соблюдением последовательности баллов и без проведения дополнительных экзаменов;
 <br />
 2. Абитуриент с более высоким средним баллом диплома бакалавра имеет более высокие шансы на поступление в магистратуру ТХТИ.
 `
@@ -257,13 +257,13 @@ Magistraturaga o‘qishga kirishda eng ko‘p (maksimal) to‘planishi mumkin bo
 <br />
 - January admission - places not filled according to the results of the initial admission, as well as additional payments approved by the State Commission - are carried out in accordance with the admission parameters on a contract basis
 <br />
-4. Video guide for online registration through the magistr.edu.uz platform: <a class='qabul-link' href='https://www.youtube.com/watch?v=ZHzRXbCsHxM'>https://www.youtube.com/watch?v=ZHzRXbCsHxM</a>
+4. Video guide for online registration through the magistr.edu.uz platform: <a className='qabul-link' href='https://www.youtube.com/watch?v=ZHzRXbCsHxM'>https://www.youtube.com/watch?v=ZHzRXbCsHxM</a>
 <br />
 5. Registration of applicants is carried out by the admission committees of a higher educational institution from June 15 to July 15 (on the same day) of each year.
 <br />
 6. When submitting an application, it is mandatory to fill in all the necessary data and provide electronic copies of all necessary documents.
 <br />
-7. <a class='qabul-link' href='https://magistr.edu.uz/profile'>https://magistr.edu.uz/profile</a> when filling out a certificate and submitting an application, it is required:
+7. <a className='qabul-link' href='https://magistr.edu.uz/profile'>https://magistr.edu.uz/profile</a> when filling out a certificate and submitting an application, it is required:
 <br />
 - Personal data
 <br />

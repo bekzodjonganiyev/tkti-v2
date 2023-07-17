@@ -8,6 +8,12 @@ const startupLang = {
       {
         title: `ILMIY LOYIHALAR`,
         content: `
+
+        <i className="fa-solid fa-calendar-days">
+        <span>01.07.2020-30.06.2023</span>
+      </i>
+      <p>Baliqchilik uchun ammofos o‘rnini bosuvchi foforli va azotfosforli  mineral ozuqaviy qo‘shimchalar texnologiyasini ishlab chiqish</p><hr>
+    
                 <i className="fa-solid fa-calendar-days">
                   <span>01.07.2020-30.06.2023</span>
                 </i>
