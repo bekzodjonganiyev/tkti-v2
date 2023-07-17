@@ -142,6 +142,16 @@ const ContactLangMy = {
             p18: "x.pulatov@tkti.uz",
           p19: "Manzil: Toshkent sh. Navoiy koʻchasi, 32 uy, 100011",
           },
+          zebo:{
+ title:`    Babaxanova Zebo Abdullaevna 2017-yil iyul oyidan boshlab Toshkent kimyo-texnologiya instituti xalqaro hamkorlik bo‘limi boshlig’i sifatida faoliyat yuritib kelmoqda.
+ <br />
+1993-yilda Toshkent davlat universitetini “Kimyo” mutaxassisligi bo’yicha tamomlagan. 2019-yilda Texnika fanlari doktori (DSc) ilmiy darajasini olgan. Ilm fan sohasida qo’shgan hissalari uchun Babaxanova Z.A 2014-yilda “Shuhrat” medali bilan taqdirlangan.`,
+          },
+          anvar:{
+            title:`    Babaxanova Zebo Abdullaevna 2017-yil iyul oyidan boshlab Toshkent kimyo-texnologiya instituti xalqaro hamkorlik bo‘limi boshlig’i sifatida faoliyat yuritib kelmoqda.
+            <br />
+           1993-yilda Toshkent davlat universitetini “Kimyo” mutaxassisligi bo’yicha tamomlagan. 2019-yilda Texnika fanlari doktori (DSc) ilmiy darajasini olgan. Ilm fan sohasida qo’shgan hissalari uchun Babaxanova Z.A 2014-yilda “Shuhrat” medali bilan taqdirlangan.`,
+                     },
           hero:{
             title:`Tuzilishi`,
             info:`TKTI zamonaviy kafedralar tuzilishiga ega. Universitetda faoliyat siyosati uchun mas’ul strategik guruh shakllantirilib, amalga oshirish ular nazorati ostidagi sohaga mas’ul bo‘limlarga o‘tkazildi.`
@@ -359,6 +369,17 @@ const ContactLangMy = {
             p18: "x.pulatov@tkti.uz",
           p19: "Адрес: г. Ташкент, ул. Навоий, дом 32, 100011",
           }, 
+
+          zebo:{
+ title:`     С июля 2017 года Зебо Абдуллаевна Бабаханова работала заведующей отделом международного сотрудничества Ташкентского химико-технологического института.
+ <br />
+ В 1993 году окончила Ташкентский государственный университет по специальности «Химия». В 2019 году получила степень доктора технических наук (DSc). В 2014 году Бабаханова З.А. награждена медалью «Слава» за вклад в науку.`,      
+},
+      anvar:{
+            title:`    Babaxanova Zebo Abdullaevna 2017-yil iyul oyidan boshlab Toshkent kimyo-texnologiya instituti xalqaro hamkorlik bo‘limi boshlig’i sifatida faoliyat yuritib kelmoqda.
+            <br />
+           1993-yilda Toshkent davlat universitetini “Kimyo” mutaxassisligi bo’yicha tamomlagan. 2019-yilda Texnika fanlari doktori (DSc) ilmiy darajasini olgan. Ilm fan sohasida qo’shgan hissalari uchun Babaxanova Z.A 2014-yilda “Shuhrat” medali bilan taqdirlangan.`,
+                     },
           hero:{
             title:`Структура`,
             info:`ТХТИ имеет современную структуру кафедр. В вузе была сформирована стратегическая группа, отвечающая за политику деятельности, а ее реализация была передана подразделениям, отвечающим за подведомственную им сферу.`
@@ -525,6 +546,17 @@ const ContactLangMy = {
             p18: "x.pulatov@tkti.uz",
           p19: "Address: 32, Navoiy street, Tashkent city, 100011",
           },
+
+            zebo:{
+ title:`      Since July 2017, Zebo Abdullaevna Babakhanova has been working as the head of the international cooperation department of the Tashkent Institute of Chemical Technology. <br/>
+
+In 1993, she graduated from Tashkent State University, majoring in "Chemistry". In 2019, she received the degree of Doctor of Technical Sciences (DSc). In 2014, Babakhanova Z.A. was awarded the "Fame" medal for its contributions in the field of science.`,
+          },
+          anvar:{
+            title:`    Babaxanova Zebo Abdullaevna 2017-yil iyul oyidan boshlab Toshkent kimyo-texnologiya instituti xalqaro hamkorlik bo‘limi boshlig’i sifatida faoliyat yuritib kelmoqda.
+            <br />
+           1993-yilda Toshkent davlat universitetini “Kimyo” mutaxassisligi bo’yicha tamomlagan. 2019-yilda Texnika fanlari doktori (DSc) ilmiy darajasini olgan. Ilm fan sohasida qo’shgan hissalari uchun Babaxanova Z.A 2014-yilda “Shuhrat” medali bilan taqdirlangan.`,
+                     },
           hero:{
             title:`Structure`,
             info:`TICT has a modern structure of departments. In the university, a strategic group responsible for the policy of activity was formed, and the implementation was transferred to the departments responsible for the field under their control.`

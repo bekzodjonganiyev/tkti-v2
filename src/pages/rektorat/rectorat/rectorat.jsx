@@ -4,7 +4,8 @@ import ImageRectorat2 from "../../../files/Oquv-pro-rector.jpg";
 import ImageRectorat3 from "../../../files/Ilmiy-pro-rector.jpg";
 import ImageRectorat4 from "../../../files/Moliya-pro-rectori.jpg";
 import ImageRectorat5 from "../../../files/Manviy-pro-rector.jpg";
-
+import ImageRectorat6 from "../../../files/zebo.jpg";
+import ImageRectorat7 from "../../../files/anvar.png";
 import ContactLang from "../lang";
 import "./rectorat.css";
 import { Context } from "../../../context";
@@ -20,11 +21,15 @@ function Rectorat() {
         fourth: "Iqtisodiy va tashkiliy masalalar bo‘yicha prorektor",
         fifth:
           "Yoshlar masalalari va ma'naviy-ma'rifiy ishlari bo'yicha birinchi prorektor",
+          zebo:"Xalqaro hamkorlik bo'yicha prorektor",
+          anvar:"Korxonalar va ta’lim muassasalari bilan ishlash bo'yicha prorektor",
         sixth: "Usmonov Botir Shukurillayevich",
         seventh: "Safarov Toyir Tursunovich",
         eighth: "Pulatov Xayrulla Lutpullayevich",
         nineth: "Qodirov Bobiromon Bekmurodovich",
         tenth: "Boborajabov Bahodir Nasriddinovich",
+        zeboName:"Zebo Abdullayevna Babaxanova",
+        anvarName:"Anvar Normamatovich Shernayev",
       },
     },
     ru: {
@@ -35,11 +40,15 @@ function Rectorat() {
         fourth: "Проректор по экономическим и организационным вопросам",
         fifth:
           "Первый проректор по работе с молодежью и духовно-просветительской работе",
+          zebo:" Проректор по международному сотрудничеству",
+          anvar:"Проректор по работе с предприятиями и учебными заведениями",
         sixth: "Усмонов Ботир Шукуриллаевич",
         seventh: "Сафаров Тойир Турсунович",
         eighth: "Пулатов Хайрулла Лутпуллаевич",
         nineth: "Кадыров Бобиромон Бекмуродович",
         tenth: "Боборажабов Баходир Насриддинович",
+        zeboName:"Зебо Aбдуллайевна Бабаханова",
+        anvarName:"Aнвар Нормаматович Шернайев",
       },
     },
     en: {
@@ -49,11 +58,16 @@ function Rectorat() {
         third: "Vice - Rector for Research and Innovation",
         fourth: "Vice - rector for economic and organizational issues",
         fifth: "First vice-rector for youth issues and spiritual and educational affairs",
+        zebo:" Vice-rector for international cooperation",
+       
+        anvar:"Vice-rector for work with enterprises and educational institutions",
         sixth: "Usmonov Botir Shukurillaevich",
         seventh: "Safarov Toyir Tursunovich",
         eighth: "Pulatov Khayrulla Lutpullaevich",
         nineth: "Kadirov Bobiromon Bekmurodovich",
         tenth: "Boborajabov Bahodir Nasriddinovich",
+        zeboName:"Zebo Abdullayevna Babakhanova",
+        anvarName:"Anvar Normamatovich Shernayev",
       },
     },
   };
@@ -181,6 +195,59 @@ function Rectorat() {
           class: "fa-solid fa-envelope",
           text: ContactLang[lang].prormanav.f16,
           href: "mailto:boborajabov@bk.ru",
+        },
+        {
+          class: "fa-solid fa-location-dot",
+          text: ContactLang[lang].prormanav.f17,
+        },
+      ],
+    },
+    {
+      id: 6,
+      status: false,
+      title: rectoratLang[lang].rahbariyat.zebo,
+      content: {
+        name: rectoratLang[lang].rahbariyat.zeboName,
+        img: ImageRectorat6,
+        job: rectoratLang[lang].rahbariyat.zebo,
+      },
+      body: [
+        {
+          class: "fa-solid fa-phone",
+          text: "+998 71 244-77-26",
+          href: "+998 71 244-77-26",
+        },
+        {
+          class: "fa-solid fa-envelope",
+          text:"zebo.babakhanova@tkti.uz",
+          href: "zebo.babakhanova@tkti.uz",
+        },
+        {
+          class: "fa-solid fa-location-dot",
+          text: ContactLang[lang].prormanav.f17,
+        },
+      ],
+    },
+    {
+      id: 7,
+      status: false,
+      title: rectoratLang[lang].rahbariyat.anvar,
+      content: {
+        name: rectoratLang[lang].rahbariyat.anvarName,
+        img: ImageRectorat7,
+        job: rectoratLang[lang].rahbariyat.anvar,
+      },
+      
+      body: [
+        {
+          class: "fa-solid fa-phone",
+          text: "+998 71 244-79-24",
+          href: "tel:712447924",
+        },
+        {
+          class: "fa-solid fa-envelope",
+          text: "a.normatov@tkti.uz",
+          href: "a.normatov@tkti.uz",
         },
         {
           class: "fa-solid fa-location-dot",
