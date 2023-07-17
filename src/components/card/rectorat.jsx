@@ -15,6 +15,8 @@ function Rectorat({home}) {
         second: "O’quv ishlari bo’yicha prorektor",
         third: "Ilmiy ishlar va innovatsiyalar bo‘yicha prorektor",
         fourth: "Iqtisodiy va tashkiliy masalalar bo‘yicha prorektor",
+        zebo:"Xalqaro hamkorlik bo'yicha prorektor",
+        anvar:"Korxonalar va ta’lim muassasalari bilan ishlash bo'yicha prorektor",
         fifth:
           "Yoshlar masalalari va ma'naviy-ma'rifiy ishlari birinchi bo'yicha prorektor",
         sixth: "Usmonov Botir Shukurillayevich",
@@ -22,6 +24,8 @@ function Rectorat({home}) {
         eighth: "Pulatov Xayrulla Lutpullayevich",
         nineth: "Qodirov Bobiromon Bekmurodovich",
         tenth: "Boborajabov Bahodir Nasriddinovich",
+        zeboName:"Zebo Abdullayevna Babaxanova",
+        anvarName:"Anvar Normamatovich Shernayev",
       },
     },
     ru: {
@@ -30,6 +34,8 @@ function Rectorat({home}) {
         second: "Проректор по учебной работе",
         third: "Проректор по научной работе и инновациям",
         fourth: "Проректор по экономическим и организационным вопросам",
+        zebo:" Проректор по международному сотрудничеству",
+        anvar:"Проректор по работе с предприятиями и учебными заведениями",
         fifth:
           "Первый проректор по делам молодежи и духовно-просветительской работе",
         sixth: "Усмонов Ботир Шукуриллаевич",
@@ -37,6 +43,8 @@ function Rectorat({home}) {
         eighth: "Пулатов Хайрулла Лутпуллаевич",
         nineth: "Кадыров Бобиромон Бекмуродович",
         tenth: "Боборажабов Баходир Насриддинович",
+        zeboName:"Зебо Aбдуллайевна Бабаханова",
+        anvarName:"Aнвар Нормаматович Шернайев",
       },
     },
     en: {
@@ -46,11 +54,16 @@ function Rectorat({home}) {
         third: "Vice - Rector for Research and Innovation",
         fourth: "Vice - rector for economic and organizational issues",
         fifth: "The first vice-rector for youth issues and spiritual and educational affairs",
+        zebo:" Vice-rector for international cooperation",
+       
+        anvar:"Vice-rector for work with enterprises and educational institutions",
         sixth: "Usmonov Botir Shukurillaevich",
         seventh: "Safarov Toyir Tursunovich",
         eighth: "Pulatov Khayrulla Lutpullaevich",
         nineth: "Kadirov Bobiromon Bekmurodovich",
         tenth: "Boborajabov Bahodir Nasriddinovich",
+        zeboName:"Zebo Abdullayevna Babakhanova",
+        anvarName:"Anvar Normamatovich Shernayev",
       },
     },
   };

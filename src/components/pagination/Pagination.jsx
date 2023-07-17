@@ -1,5 +1,6 @@
 import React from "react";
 import apiClient from "../../services/apiClient";
+
 import "./Pagination.css";
 
 function Pagination({ maxLength, currentPage = 1, setCurrentPage}) {
@@ -57,3 +58,4 @@ function Pagination({ maxLength, currentPage = 1, setCurrentPage}) {
 }
 
 export default Pagination;
+

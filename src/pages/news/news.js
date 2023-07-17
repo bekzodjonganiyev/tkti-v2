@@ -12,7 +12,6 @@ function Yangiliklar({myKey}) {
     const res = await apiClient.get(`${myKey}/all`)
     setData(res?.total)
   }
-
   useEffect(() => {
     getMaxLength()
   }, [])

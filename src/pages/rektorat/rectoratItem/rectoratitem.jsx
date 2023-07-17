@@ -258,6 +258,8 @@ function RectoratItem() {
                     <li>${ContactLangMy[lang].prormanav.f14}</li>
                     <li>${ContactLangMy[lang].prormanav.f15}</li>`,
     },
+
+    
   ]);
 
   const [rectors] = useState([
