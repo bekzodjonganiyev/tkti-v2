@@ -58,3 +58,4 @@ function Pagination({ maxLength, currentPage = 1, setCurrentPage}) {
 }
 
 export default Pagination;
+
