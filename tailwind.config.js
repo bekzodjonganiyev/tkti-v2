@@ -1,11 +1,20 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const defaultTheme = require('tailwindcss/defaultTheme')
+export default {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'sans': ['Inter', ...defaultTheme.fontFamily.sans],
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 

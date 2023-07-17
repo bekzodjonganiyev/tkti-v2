@@ -2,7 +2,7 @@ import React from "react";
 
 import "./XodimCard.css";
 
-const XodimCard = (props) => {
+export const XodimCard = (props) => {
   const { img, job, name, email, tel } = props;
   return (
     <div className="cardHodim">
@@ -28,5 +28,3 @@ const XodimCard = (props) => {
     </div>
   );
 };
-
-export default XodimCard;

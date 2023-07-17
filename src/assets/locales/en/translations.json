@@ -1,0 +1,368 @@
+{
+  "TktiName": [
+    {
+      "name": "TASHKENT"
+    },
+    {
+      "name": "INSTITUTE OF CHEMICAL"
+    },
+    {
+      "name": "TECHNOLOGY"
+    }
+  ],
+  "headerTop": [
+    {
+      "name": "Hemis student"
+    },
+    {
+      "name": "Hemis teacher"
+    },
+    {
+      "name": "Class schedule"
+    },
+    {
+      "name": "Interactive services"
+    },
+    {
+      "name": "en"
+    }
+  ],
+  "havola": [
+    {
+      "name": "Confirmation of diploma of higher education"
+    },
+    {
+      "name": "Get a reference from the workplace"
+    },
+    {
+      "name": "Obtaining a certificate from the place of study (OTM)"
+    },
+    {
+      "name": "Electronic acceptance of applicants' application (undergraduate)"
+    },
+    {
+      "name": "Electronic acceptance of applicants' application (master's degree)"
+    },
+    {
+      "name": "A single open portal for vacancies of civil servants."
+    },
+    {
+      "name": "Electronic acceptance of applications by PhD and DSc"
+    },
+    {
+      "name": "On electronic acceptance of applicants' applications (second specialization)"
+    },
+    {
+      "name": "Information system for accounting of services provided to students on the basis of a contract"
+    },
+    {
+      "name": "The official page of the Ministry of Higher Education, Science and Innovation      "
+    },
+    {
+      "name": "Obtaining an archival certificate of confirmation of studies at a higher and secondary special educational institution"
+    },
+    {
+      "name": "Unified electronic library information system of higher education and research institutions of the Republic of Uzbekistan"
+    },
+    {
+      "name": "Yangiyer branch of Tashkent Institute of chemistry and technology"
+    },
+    {
+      "name": "Shahrisabz branch of Tashkent Institute of Chemical Technology"
+    },
+    {
+      "name": "Information system of online application submission for Student transfer and readmission"
+    },
+    {
+      "name": "The Government portal of the Republic of Uzbekistan"
+    },
+    {
+      "name": "Unified platform for public initiatives"
+    },
+    {
+      "name": "Corporate mail"
+    },
+    {
+      "name": "TICTI library"
+    }
+  ],
+  "Header": [
+    {
+      "name": "Institute"
+    },
+    {
+      "name": "Admissions"
+    },
+    {
+      "name": "Students"
+    },
+    {
+      "name": "Education"
+    },
+    {
+      "name": "Scientific research"
+    },
+    {
+      "name": "International relations"
+    }
+  ],
+  "HomePage": [
+    {
+      "name": "Find the syllabus"
+    },
+    {
+      "name": "News"
+    },
+    {
+      "name": "Announcements"
+    },
+    {
+      "name": "Statistical data"
+    },
+    {
+      "name": "Useful links"
+    },
+    {
+      "name": "Video gallery"
+    },
+    {
+      "name": " All   "
+    }
+  ],
+  "Statistic": {
+    "Statistical": "Statistical data",
+    "facultet": "FACULTIES",
+    "student": "STUDENTS",
+    "Teacher": "TEACHERS",
+    "Partners": "PARTNERS",
+    "OurPartners": "OUR PARTNERS",
+    "AreaEducation": "AREAS OF EDUCATION",
+    "Education": "JOINT EDUCATIONAL PROGRAMS"
+  },
+  "Syllabus": [
+    {
+      "name": "Year"
+    },
+    {
+      "name": "Ta'lim turi"
+    },
+    {
+      "name": "Ta'lm darajasi"
+    },
+    {
+      "name": "Faculty"
+    },
+    {
+      "name": "Kafedra"
+    },
+    {
+      "name": "Yo'nalish"
+    },
+    {
+      "name": "Yilni tanlang"
+    },
+    {
+      "name": "Ta'lim turini tanlang"
+    },
+    {
+      "name": "Select the level of education"
+    },
+    {
+      "name": "Choose a faculty"
+    },
+    {
+      "name": "Select a department"
+    },
+    {
+      "name": "Choose a direction"
+    },
+    {
+      "name": "Select a year"
+    },
+    {
+      "name": "Kunduzgi/Sirtqi"
+    },
+    {
+      "name": "Bachelor/Master"
+    },
+    {
+      "name": "Search"
+    }
+  ],
+  "Institute": [
+    {
+      "title": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN "
+    },
+    {
+      "name": "About Us"
+    },
+    {
+      "name": "Our mission"
+    },
+    {
+      "name": "Structure"
+    },
+    {
+      "name": "History and legacy"
+    },
+    {
+      "name": "Work plan"
+    },
+    {
+      "name": "Corruption prevention"
+    },
+    {
+      "name": "Graduates"
+    },
+    {
+      "name": "Activity"
+    },
+    {
+      "name": "Contact"
+    }
+  ],
+  "Admission": [
+    {
+      "name": "Bachelor"
+    },
+    {
+      "name": "Master"
+    },
+    {
+      "name": "Doctorate"
+    },
+    {
+      "name": "Joint education"
+    }
+  ],
+  "Qabul": [
+    {
+      "name": "Bachelor's and correspondence"
+    },
+    {
+      "name": "Master"
+    },
+    {
+      "name": "Doctorate"
+    },
+    {
+      "name": "Joint education"
+    }
+  ],
+  "aboutUs": [
+    {
+      "name": ""
+    },
+    {
+      "name": "1. We value academic staff and students with strong potential. Our society is not indifferent to our national values and we have a positive impact on the whole world with our highly innovative ideas."
+    },
+    {
+      "name": "2. The institute helps to create an attractive working environment for employees. Develops critical thinking skills in students. It finances and supports projects and ideas in cooperation with academic staff and scientists."
+    },
+    {
+      "name": "3.1 Tashkent Institute of Chemical Technology was named after the decision of the president of the Republic of Uzbekistan dated May 6, 1991 PF-203 (https://lex.uz/ru/docs/787853) formed mainly on the basis of the faculty of Chemical-Technology and engineering-technology of the former Tashkent Polytechnic Institute.We have experience between domestic and international partners as part of ERASMUS+ Programme projects. We participate in almost all projects within IUPAC every year. It participates SDG routes. "
+    },
+    {
+      "name": "3.2 The Institute promotes the creation of an attractive working environment for employees. Develops skills based on critical thinking in students. Funds and supports projects and ideas in collaboration with scientific staff and scientists. In addition to internal and scientific activities, our institute also pays special attention to the environment and help to attract students to these projects.  "
+    },
+    {
+      "name": "3.3 It organizes separate scholarships, incentives and events in order to support students who need social support and are gifted. It provides students from foreign countries and other provinces with an institute dormitory."
+    }
+  ],
+  "ContactUs": [
+    {
+      "name": "Faculty of chemical technology of fuel and organic compounds",
+      "manzil": "36 apt, Street Navai, Tashkent"
+    },
+    {
+      "name": "Faculty of management and professional education",
+      "manzil": "60 apt,  Samarkand Darvaza street, Tashkent"
+    },
+    {
+      "name": "Faculty of food technology",
+      "manzil": "Navoi Street, 32, Tashkent, Uzbekistan, 100011"
+    },
+    {
+      "name": "Faculty of chemical technology of inorganic substances",
+      "manzil": "41 apt, M. Ulugbek Street, Tashkent"
+    },
+    {
+      "name": "Faculty of winemaking technology and industrial viticulture",
+      "manzil": "1 apt, Mahalla Faravan, Kibray, TashIES, Tashkent"
+    }
+  ],
+
+  "WorkPlan": [
+    {
+      "name": "OTM work plan"
+    },
+    {
+      "name": "Work plan of the Tashkent Institute of Chemical Technology for the first half of 2022"
+    },
+    {
+      "name": "Work plan of the Tashkent Institute of Chemical Technology for the second half of 2022"
+    },
+    {
+      "name": "The first half of 2022"
+    },
+    {
+      "name": "The second half of 2022"
+    }
+  ],
+  "Korruption": [
+    {
+      "name": "Reporting of corruption cases "
+    },
+    {
+      "name": "In order to increase the culture of sturgling against corruption and prevent corrupt offenses at the Tashkent Institute of Chemical Technology"
+    },
+    {
+      "name": " In order to increase the culture of fight against corruption and to prevent corruption offenses at the "
+    },
+    {
+      "name": "Tashkent Institute of Chemical Technology, you can report corruption offenses through"
+    },
+    {
+      "name": "Call centre"
+    },
+    {
+      "name": "Virtual admission"
+    }
+  ],
+  "Mission": [
+    {
+      "name": "Our mission: Training of high-potential specialists necessary for our society, increasing the quality and scope of scientific research, creating a high working environment for scientific staff, creating highly innovative projects by coordinating knowledge related to the field at the international level and implementing it on a global scale.    "
+    }
+  ],
+  "Education": [
+    {
+      "title": "INSTITUT O’TGAN DAVR ICHIDA KIMYO, OZIQ-OVQAT, NEFT-GAZ, QURILISH MATERIALLARI VA IQTISODIYOTNING BOSHQA TARMOQLARIGA 10 MINGDAN ZIYOD YUQORI MALAKALI MUHANDIS TEXNOLOGLAR, TA’LIM YO’NALISHLARI BO’YICHA MINGDAN ORTIQ BAKALAVR VA 30 GA YAQIN MUTAXASSISLIKLAR BO’YICHA MAGISTRLAR TAYYORLAB BERDI"
+    },
+    {
+      "name": "Bachelor "
+    },
+    {
+      "name": "Master    "
+    },
+    {
+      "name": "Correspondence"
+    },
+    {
+      "name": "Joint education"
+    },
+    {
+      "name": "Second education"
+    },
+    {
+      "name": "Dars jadvali "
+    }
+  ],
+  "NewsCard": {
+    "title": "{{news_card_title}}",
+    "body": "{{news_card_body}}"
+  },
+  "MoreDetails": {
+    "title": "{{more_details_title}}",
+    "body": "{{more_details_body}}"
+  }
+}
