@@ -1,4 +1,5 @@
-import axios from "axios";
+
+import axios from "axios"
 export const fetchApi = async (url, data) => {
   try {
     const res = await fetch(`https://backend.tkti.uz/${url}`, data);
@@ -17,3 +18,4 @@ export const instance = axios.create({
     "Token": localStorage.getItem("token")
   }
 });
+

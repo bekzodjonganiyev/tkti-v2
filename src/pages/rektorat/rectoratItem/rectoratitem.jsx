@@ -318,7 +318,7 @@ function RectoratItem() {
           {
             class: "fa-solid fa-envelope",
             text: ContactLangMy[lang].safarov.p38,
-            href: "mailto:uquv_prorektor@tcti.uz",
+            href: "mailto:t.safarov@tkti.uz",
           },
           {
             class: "fa-solid fa-location-dot",

@@ -12,12 +12,11 @@ function Yangiliklar({myKey}) {
     const res = await apiClient.get(`${myKey}/all`)
     setData(res?.total)
   }
-  
   useEffect(() => {
     getMaxLength()
   }, [])
   return (
-    <>  
+    <>
       <div className="wrapped">
         <YangiliklarComp myKey={myKey} page={page} />
       </div>
@@ -25,5 +24,4 @@ function Yangiliklar({myKey}) {
     </>
   );
 }
-
 export default Yangiliklar;

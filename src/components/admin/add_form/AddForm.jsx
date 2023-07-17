@@ -44,8 +44,8 @@ const AddForm = (props) => {
     haqida_ru: editorHaqida.ru,
     haqida_en: editorHaqida.en,
     maqsad_uz: editorMaqsad.uz,
-    maqsad_en: editorMaqsad.uz,
-    maqsad_ru: editorMaqsad.uz,
+    maqsad_ru: editorMaqsad.ru,
+    maqsad_en: editorMaqsad.en,
   };
 
   const body = hasSelect

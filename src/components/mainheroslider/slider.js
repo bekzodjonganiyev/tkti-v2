@@ -46,12 +46,12 @@ function MainSlider() {
               banner.isFetched && banner.data && banner.data.length >0 ?(
                 banner.data.map((e,index) =>(
                   <div key={index} className="carousel-item">
-                    <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="100%" alt={e.name}/>
+                    <img src={`${globalUrl}/${e.banner_img}`} width="100%" height="70%" alt={e.name}/>
                   </div>
                 ))
               ):(
                 <div className="carousel-item active">
-                    <img src={slide_5} width="100%" height="100%" alt='Banner img'/>
+                    <img src={slide_5} width="100%" height="70%" alt='Banner img'/>
                   </div>
               )
             }

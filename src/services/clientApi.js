@@ -1,8 +1,8 @@
-import { instance } from "./http";
+import  {fetchApi} from "./http";
 
 class ClientApiService {
   getAll(url){
-    return instance.get(url)
+    return fetchApi.get(url)
   }
 
   getById(url, id){

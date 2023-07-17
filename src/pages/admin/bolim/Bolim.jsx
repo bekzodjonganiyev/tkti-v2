@@ -48,7 +48,7 @@ const Bolim = () => {
     url: "bm_data/add",
   };
 
-  // FOR BO'LIM DATA
+
   const analyseNameTableHead = ["Tartib raqam", "Bo'lim nomi", "Amallar"];
   const renderHead = (item, index) => <th key={index}>{item}</th>;
   const renderBody = (item, index) => {
