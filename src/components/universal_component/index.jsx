@@ -118,7 +118,7 @@ export const UniversalComponent = () => {
               </Accordion>
             )}
             {item?.file?.length > 0 ? (
-              <ImageGallary imgSrcs={item?.file.reverse()} />
+              <ImageGallary imgSrcs={item?.file} />
             ) : null}
           </div>
         ))
