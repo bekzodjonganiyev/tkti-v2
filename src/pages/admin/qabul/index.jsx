@@ -36,7 +36,7 @@ export const Qabul = () => {
           <Popconfirm
             title="Rostdan o'chirishni xoxlaysizmi?"
             description="O'chirilgan malumotlar qayta tiklanmaydi"
-            onConfirm={() => dispatch(childAction.deleteData(p.id))}
+            onConfirm={() => dispatch(deleteData(p.id))}
             onCancel={() => {}}
             okText="Yes"
             cancelText="No"
