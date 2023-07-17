@@ -34,13 +34,7 @@ const AboutUs = () => {
           }}
           style={{ backgroundImage: `url("${globalUrl + item.link[0]}")` }}
         >
-          {/* {item.link.map((item) => (
-            <img
-              key={item}
-              src={globalUrl + item}
-              className="w-full h-full rounded-md bg-cover bg-center bg-no-repeat"
-            />
-          ))} */}
+         
           {hoverableData && item._id === hoverableData._id && (
             <div className="absolute top-0 w-full h-full bg-blue-800 text-white opacity-75 text-center p-4 rounded-md flex justify-center items-center">
               <h1 className="text-md max-xl:text-xs font-semibold">

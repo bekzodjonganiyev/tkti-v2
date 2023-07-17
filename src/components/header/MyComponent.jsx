@@ -58,6 +58,10 @@ const MyComponent = () => {
           labelId: HeaderLang[lang].institut1[7],
           href: "/bitiruvchilar",
         },
+        {
+          labelId: HeaderLang[lang].institut1[8],
+          href: "/interaktiv-hizmatlar",
+        },
       ],
     },
     {

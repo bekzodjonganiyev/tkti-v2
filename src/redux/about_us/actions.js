@@ -10,8 +10,7 @@ export const fetchUsers = () => {
       .getAll("/about_us")
       .then((response) => {
         // response.data is the users
-        const {data} = response.data;
-        dispatch(fetchUsersSuccess(data));
+        dispatch(fetchUsersSuccess(response));
       })
       .catch((error) => {
         // error.mssage is the error message
@@ -39,3 +38,4 @@ export const fetchUsersFailure = (error) => {
     payload: error,
   };
 };
+

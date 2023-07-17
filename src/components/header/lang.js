@@ -18,7 +18,7 @@ const HeaderLang = {
     "KIMYOVIY TEXNOLOGIYALARNING ILMIY-TEXNIKAVIY RIVOJLANISH SUR'ATI TEZ SUR'ATLAR BILAN O'SIB BORMOQDA. ALYUMINIY ISHLAB CHIQARISHNING ELEKTROKIMYOVIY JARAYONINING SANOAT RIVOJLANISHI UCHUN 35 YIL KERAK BO'LDI."
 ,"TKTI BUTUN DUNYO BOʻYLAB 800 DAN ORTIQ TAʼLIM SUBYEKTLARINING IXTIYORIY TASHABBUSI SIFATIDA SHAKLLANGAN. BUGUNGI KUNDA BMT BILAN HAMKORLIK QILAYOTGAN VA MENEJMENT BILAN BOGʻLIQ BOʻLGAN OLIY OʻQUV YURTLARI OʻRTASIDAGI ENG YIRIK UYUSHMA HISOBLANADI."],
         institut:['Institut','Rektorat','Interaktiv xizmatlar','Tkti ish rejasi','Korrupsiayni oldini olish','Biz bilan aloqa','Xalqaro aloqalar','Ilmiy loyihalar','Tkti qoshidagi litsey'],
-        institut1:['Institut','Biz haqimizda','Missiyamiz','Institut tuzilmasi','Tarix va meros','Bizning majburiyatlarimiz','Korrupsiyani oldini olish','Bitiruvchilar'],
+        institut1:['Institut','Biz haqimizda','Missiyamiz','Institut tuzilmasi','Tarix va meros','Bizning majburiyatlarimiz','Korrupsiyani oldini olish','Bitiruvchilar', 'Interaktiv xizmatlar'],
         library:'Kutubxona',
         contact:`Bog'lanish`
     },
@@ -40,7 +40,7 @@ const HeaderLang = {
     `СКОРОСТЬ НАУЧНО-ТЕХНИЧЕСКОГО РАЗВИТИЯ ХИМИЧЕСКИХ ТЕХНОЛОГИЙ БЫСТРО РАСТУТ. ЕСЛИ В СЕРЕДИНЕ XIX ВЕКА. ЭТО БЫЛО 35 ЛЕТ ПРОМЫШЛЕННОЙ РАЗРАБОТКИ ЭЛЕКТРОХИМИЧЕСКОГО ПРОЦЕССА ПРОИЗВОДСТВА АЛЮМИНИЯ, ПОТОМ В 50-Х ГГ. ХХ ВЕКА.`,
 `TKTI БЫЛ СОЗДАН ПО ДОБРОВОЛЬНОЙ ИНИЦИАТИВЕ БОЛЕЕ 800 ОБРАЗОВАТЕЛЬНЫХ УЧАСТНИКОВ ВО ВСЕМ МИРЕ. СЕГОДНЯ ЯВЛЯЕТСЯ КРУПНЕЙШИМ СОЮЗОМ ВЫСШИХ УЧЕБНЫХ ЗАВЕДЕНИЙ В СОТРУДНИЧЕСТВЕ С ООН И В УПРАВЛЕНИИ.`],
         institut:["Институт",'Pекторат','Интерактивные услуги','План работы Тхти','Предотвращение коррупции','Контакты','Международные отношения','Научные проекты','Академический лицей при ТХТИ'],
-     
+        Institute1:['Институт','О нас','Наша миссия','Структура института','История и наследие','Наши обязанности','Предотвращение коррупции','Выпускники', 'Интерактивные услуги'],
         library:'Библиотека',
         contact:'Контакты'
     },
@@ -62,7 +62,7 @@ const HeaderLang = {
 `THE SPEED OF SCIENTIFIC AND TECHNOLOGICAL DEVELOPMENT OF CHEMICAL TECHNOLOGIES IS GROWING RAPIDLY. IF IN THE MIDDLE OF THE XIX CENTURY. IT WAS 35 YEARS FOR THE INDUSTRIAL DEVELOPMENT OF THE ELECTROCHEMICAL PROCESS OF ALUMINUM MANUFACTURING, THEN IN THE 50S OF THE XX CENTURY.`,
 `TKTI WAS FORMED AS A VOLUNTARY INITIATIVE OF MORE THAN 800 EDUCATIONAL SUBJECTS AROUND THE WORLD. TODAY IS THE LARGEST UNION OF HIGHER EDUCATION INSTITUTIONS IN COOPERATION WITH THE UN AND IN MANAGEMENT.`],
         institut:['Institute', 'Rectorate','Interactive services','Tkti business plan','Prevention of corruption','Contact us','International relations','Scientific projects','Lyceum under Tkti'],
-
+        institute1:['Institute','About Us','Our Mission','Institute Structure','History and Heritage','Our Obligations','Prevention of Corruption','Alumni', 'Interactive Services'],
         library:'Library',
         contact:'Contact'
     }
