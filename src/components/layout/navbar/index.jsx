@@ -228,7 +228,7 @@ export const Navbar = () => {
           elentning linklarni o'rab turgan wrapperning balanligiga tasir
           ko'rsatmasligi */}
 
-            <ul className="flex gap-20 borer  border-rd-600 ">
+            <ul className="flex gap-20 ">
               {link?.map((item, id) =>
                 url.loading ? (
                   <div className="max-w-xs mx-auto p-4 " key={id}>
@@ -256,10 +256,10 @@ export const Navbar = () => {
                 onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
                 onMouseLeave={() => setHoveredLink(null)}
               >
-                <div className="w-1/3 navbarDes">
+                {/* <div className="w-1/3 navbarDes">
                   <p className="uppercase">{hoveredLink?.name}</p>
                   <p className="navbarDesc lowercase ">{hoveredLink?.desc}</p>
-                </div>
+                </div> */}
                 <ul className="grid grid-cols-2 grid-flow-row-dense gap-x-6 w-2/3">
                   {hoveredLink?.sublinks?.map((item) => (
                     <li className="py-2 border-b navbar__hoverItem border-slate-100">

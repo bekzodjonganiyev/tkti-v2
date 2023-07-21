@@ -6,6 +6,7 @@ import { Dropdown } from "flowbite-react";
 
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
+import { useEffect } from "react";
 export { bannerReducer } from "../../banner/reducer";
 
 export const TopHeader = () => {
@@ -86,6 +87,7 @@ export const TopHeader = () => {
     window.location.reload();
   };
 
+
   const handleSearchSubmit = (e) => {
     e.preventDefault()
     window.location.href = `/search?${searchValue}`
@@ -96,7 +98,6 @@ export const TopHeader = () => {
     if (pathname.split("/")[1] === "ru") setLangText("Ru");
     if (pathname.split("/")[1] === "en") setLangText("En");
   }, [])
-
 
   return (
     <>

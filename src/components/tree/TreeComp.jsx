@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import { Link } from "react-router-dom";
-import i18next from "i18next";
+import i18next, { t } from "i18next";
 
 import "./style.css";
 
@@ -51,7 +51,7 @@ export default function App() {
 
   const b = [
     {
-      name: "Fakultetlar",
+      name: t("TreeComp.faculty"),
       link: "",
       children: faculty.data?.map((i) => ({
         name: i[`title_${i18next.language}`],
@@ -71,8 +71,8 @@ export default function App() {
   const c = a?.concat(b);
 
   const treeData = {
-    name: "Rektorat",
-    link: "/${i18next.language}/institute/structute/rectorate/Rektor/63cb0f958ff54e48750c0913",
+    name: t("TreeComp.rektor"),
+    link: `/${i18next.language}/institute/structute/rectorate/Rektor/64ba275c4a1f2f8964b8c439`,
     children: c,
   };
 
@@ -89,13 +89,13 @@ export default function App() {
         {nodeDatum.children ? (
           <div className="flex justify-between items-center mt-6 px-2">
             <button className="" onClick={toggleNode}>
-              {nodeDatum.__rd3t.collapsed ? "Ko'proq" : "Kamroq"}
+              {nodeDatum.__rd3t.collapsed ? t("TreeComp.collapse") : t("TreeComp.expand")}
             </button>
-            <Link to={nodeDatum.link}>Batafsil</Link>
+            <Link to={nodeDatum.link}>{t("TreeComp.more")}</Link>
           </div>
         ) : nodeDatum.link ? (
           <Link to={nodeDatum.link} className="pt-10">
-            Batafsil
+            {t("TreeComp.more")}
           </Link>
         ) : (
           ""
