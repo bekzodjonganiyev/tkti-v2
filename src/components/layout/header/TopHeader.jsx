@@ -6,7 +6,6 @@ import { Dropdown } from "flowbite-react";
 
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
-import { useEffect } from "react";
 export { bannerReducer } from "../../banner/reducer";
 
 export const TopHeader = () => {
