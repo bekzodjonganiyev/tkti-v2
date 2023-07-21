@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Tabs } from "flowbite-react";
-import i18next from "i18next";
+import i18next, { t } from "i18next";
 
 import { Loader } from "../loader/Loader";
 import { XodimCard } from "../xodim_card/XodimCard";
@@ -25,19 +25,19 @@ export const TabComponent = () => {
 
   const initialtabItems = [
     {
-      title: "Haqida",
+      title: t("TabComp.about"),
       content: dataById[`haqida_${i18next.language}`],
     },
     {
-      title: "Maqsad",
+      title: t("TabComp.aim"),
       content: dataById[`maqsad_${i18next.language}`],
     },
     {
-      title: "Xodimlar",
+      title: t("TabComp.employer"),
       content: dataById?.hodimlar?.map((item) => item),
     },
     {
-      title: "Faoliyat",
+      title: t("TabComp.action"),
       content: dataById?.faoliyatlar?.map((item) => item),
     },
   ];
@@ -48,7 +48,7 @@ export const TabComponent = () => {
       : [
           ...initialtabItems,
           {
-            title: "Kafedralar",
+            title: t("TabComp.kafedras"),
             content: dataById?.kafedralar?.map((item) => ({
               name: item[`title_${i18next.language}`],
               link: `/institute/structute/kafedra/${item[`title_${i18next.language}`]}/${item._id}`,
@@ -90,7 +90,7 @@ export const TabComponent = () => {
       >
         {tabItems.map((item) => (
           <Tabs.Item title={item.title} className="">
-            {item.title === "Xodimlar" ? (
+            {item.title === t("TabComp.employer") ? (
               item.content?.map((employerItem) => (
                 <XodimCard
                   key={employerItem._id}
@@ -101,9 +101,9 @@ export const TabComponent = () => {
                   tel={employerItem.tell}
                 />
               ))
-            ) : item.title === "Faoliyat" ? (
-              "Faoliyat"
-            ) : item.title === "Kafedralar" ? (
+            ) : item.title === t("TabComp.action") ? (
+              t("TabComp.action")
+            ) : item.title === t("TabComp.kafedras") ? (
               <div className="flex flex-col gap-2">
                 {item.content?.map((kafedraItem) => (
                 <Link to={`/${i18next.language}${kafedraItem.link}`}>{kafedraItem.name}</Link>

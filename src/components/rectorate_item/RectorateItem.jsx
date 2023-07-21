@@ -31,8 +31,6 @@ export const RectorateItem = () => {
     }
   };
 
-  console.log(data);
-
   useEffect(() => {
     getData();
   }, [id]);

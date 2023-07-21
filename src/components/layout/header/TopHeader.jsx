@@ -6,6 +6,7 @@ import { Dropdown } from "flowbite-react";
 
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
+import { useEffect } from "react";
 export { bannerReducer } from "../../banner/reducer";
 
 export const TopHeader = () => {
@@ -84,6 +85,13 @@ export const TopHeader = () => {
     navigate(pathname.replace(pathnameLang, code));
     window.location.reload();
   };
+
+  // useEffect(() => {
+  //   // window.location.reload()
+  //   const p = pathname.split("/")[1]
+  //   console.log(p, "lang")
+  //   // changeLanguage()
+  // }, [pathname])
 
   return (
     <>

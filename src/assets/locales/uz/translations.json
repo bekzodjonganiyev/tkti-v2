@@ -251,13 +251,13 @@
       "name": "2.Institut-hodimlar uchun jozibali ish muhiti yaratishga ko`maklashadi. Talabalarda tanqidiy fikrlashga asoslangan ko`nikmalarni rivojlantiradi. Ilmiy hodimlar va olimlar bilan hamkorlikda loyiha va go`yalarni moliyalashtiradi va qo`llab quvvatlaydi."
     },
     {
-      "name": "3.1 Toshkent kimyo-texnologiya instituti O‘zbekiston Respublikasi Prezidentining 1991-yil 6-maydagi PF-203-sonli qaroriga (https://lex.uz/ru/docs/787853) asosan sobiq Toshkent politexnika institutining, kimyo-texnologiya va muhandislik-texnologiyasi fakultetlari negizida tashkil topgan. Biz ERASMUS+ dasturi loyihalari doirasida mahalliy va xalqaro hamkorlar o‘rtasida tajribaga egamiz.Har yili biz IUPAC doirasidagi deyarli barcha loyihalarda ishtirok etamiz. BRMning (SDG) yo`nalishlarida ishtirok etamiz."
+      "name": "3 Toshkent kimyo-texnologiya instituti O‘zbekiston Respublikasi Prezidentining 1991-yil 6-maydagi PF-203-sonli qaroriga (https://lex.uz/ru/docs/787853) asosan sobiq Toshkent politexnika institutining, kimyo-texnologiya va muhandislik-texnologiyasi fakultetlari negizida tashkil topgan. Biz ERASMUS+ dasturi loyihalari doirasida mahalliy va xalqaro hamkorlar o‘rtasida tajribaga egamiz.Har yili biz IUPAC doirasidagi deyarli barcha loyihalarda ishtirok etamiz. BRMning (SDG) yo`nalishlarida ishtirok etamiz."
     },
     {
-      "name": "3.2 Institutimiz ichki va ilmiy faoliyatdan tashqari atrof-muhitga ham alohida e`tiborli, ekologik haftaliklar va ko`ngilli yoshlardan iborat jamoa bilan obodonchilik ishlarini ham olib borish bilan birga ekologik nozarar bo`lgan start-up loyihalarni ham qo`llab quvvatlaydi, moliyalashtiradi va bu loyihalarga talabalarni o`z o`rnida jalb qilishga ko`maklashadi."
+      "name": "3.1 Institutimiz ichki va ilmiy faoliyatdan tashqari atrof-muhitga ham alohida e`tiborli, ekologik haftaliklar va ko`ngilli yoshlardan iborat jamoa bilan obodonchilik ishlarini ham olib borish bilan birga ekologik nozarar bo`lgan start-up loyihalarni ham qo`llab quvvatlaydi, moliyalashtiradi va bu loyihalarga talabalarni o`z o`rnida jalb qilishga ko`maklashadi."
     },
     {
-      "name": "3.3 Ijtimoy ko`makka muhtoj va Iqtidorli talabalarni qo`llab quvvatlash maqsadida alohida stipendiya, rag`batlantirishlar va tadbirlar tashkil etadi. Chet-ellik va boshqa viloyatdan kelgan talabalarni institut yotoqxonasi bilan ta`minlaydi. "
+      "name": "3.2 Ijtimoy ko`makka muhtoj va Iqtidorli talabalarni qo`llab quvvatlash maqsadida alohida stipendiya, rag`batlantirishlar va tadbirlar tashkil etadi. Chet-ellik va boshqa viloyatdan kelgan talabalarni institut yotoqxonasi bilan ta`minlaydi. "
     }
   ],
   "ContactUs": [
@@ -386,5 +386,21 @@
     "name": "Hemis talaba ",
     "name2": "Hemis o‘qituvchi",
     "about": "Biz haqimizda"
+  },
+
+  "TabComp": {
+    "about":"Haqida",
+    "aim":"Maqsad",
+    "employer":"Xodimlar",
+    "kafedras":"Bo'lim",
+    "action":"Faoliyat"
+  },
+
+  "TreeComp": {
+    "rektor": "Rektor",
+    "collapse": "Ko'proq",
+    "expand": "Kamroq",
+    "more": "Batafsil",
+    "faculty": "Fakultetlar"
   }
 }
