@@ -1,52 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: "Inter", sans-serif;
-  font-size: 16px !important;
-}
-html {
-  overflow-x: hidden !important;
+
+.greyscale {
+    filter: grayscale(96%) !important;
 }
 
-ul, ol {
-  list-style-type: none;
-}
-a{
-  text-decoration: none;
-  color: #02307D;
-}
-
-.wrapped{
-  padding: 0 2%;
-  /* min-width: 425px; */
-}
-
-.map{
-  width: 100%;
-}
-
-.map > iframe {
-  margin: 2rem auto;
-  display: block;
-  width: 100%;
-  height: 300px;
-  max-width: 1200px;
-}
-.cardTitleComp{
-  display: flex;
-  justify-content: center;
-  color:#02307D;
-  font-weight: 600;
-  margin: 20px 0;
-}
-
-@media only screen and (min-width: 1440px) {
-  .my__container {
-    max-width: 1440px;
-    margin: 0 auto;
-    
-  }
+.header__greyscale {
+    cursor: pointer;
 }

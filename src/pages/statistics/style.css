@@ -1,0 +1,13 @@
+.useful-item {
+  transition: all 0.5s ease;
+  box-shadow: 0px 0px 13px 0px rgba(180, 216, 224, 0.486);
+  border-radius: 10px;
+}
+
+.useful-item:hover {
+  box-shadow: 0px 0px 13px 0px rgba(55, 95, 100, 0.356);
+}
+
+.react-multiple-carousel__arrow {
+  display: none !important;
+}

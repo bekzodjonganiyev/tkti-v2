@@ -1,0 +1,407 @@
+{
+  "TktiName": [
+    {
+      "name": "TOSHKENT"
+    },
+    {
+      "name": " KIMYO-TEXNOLOGIYA"
+    },
+    {
+      "name": "INSTITUTI"
+    }
+  ],
+  "headerTop": [
+    {
+      "name": "Hemis talaba"
+    },
+    {
+      "name": "Hemis o‘qituvchi"
+    },
+    {
+      "name": "Dars jadvali"
+    },
+    {
+      "name": "Tezkor havolalar"
+    },
+    {
+      "name": "uz"
+    },
+    {
+      "name": "Qidiruv"
+    }
+  ],
+
+  "havola": [
+    {
+      "name": "Oliy ma'lumot haqidagi diplomni tasdiqlash  "
+    },
+    {
+      "name": "Ish joyidan ma’lumotnoma olish"
+    },
+    {
+      "name": "O‘qish joyidan ma’lumotnoma olish(OTM)"
+    },
+    {
+      "name": "Abiturientlar arizasini elektron qabul qilish (bakalavriant)"
+    },
+    {
+      "name": "Abiturientlar arizasini elektron qabul qilish (magistratura)"
+    },
+    {
+      "name": "Davlat fuqorolik xizmati bo‘sh ish o‘rinlari yagona ochiq portali"
+    },
+    {
+      "name": "Abiturientlar arizasini elektron qabul qilish (doktarantura)"
+    },
+    {
+      "name": "Abiturientlar arizasini elektron qabul qilish (ikkinchi mutaxasislik ) bo‘yicha"
+    },
+    {
+      "name": "Talabalarga shartnoma asosida ko‘rsatiladigan xizmatlar hisobini yuritish axborot tizimi"
+    },
+    {
+      "name": "Oliy ta'lim fan va inovatsiya vazirligining rasmiy sahfasi"
+    },
+    {
+      "name": "Oliy va o‘rta maxsus ta'lim muassasasida o‘qiganlikni tasdiqlash haqidagi arxiv ma'lumotnomasini olish"
+    },
+    {
+      "name": "O‘zbekiston Respublikasi oliy ta'lim va ilmiy tadqiqot muassasalarining yagona elektron kutubxona axborot tizim"
+    },
+    {
+      "name": "Toshkent kimyo-texnologiya instituti Yangiyer filiali"
+    },
+    {
+      "name": "Toshkent kimyo-texnologiya instituti Shahrisabz filiali​  "
+    },
+    {
+      "name": "O‘qishni ko‘chirish va tiklash uchun onlayn ariza topshirish axborot tizimi"
+    },
+    {
+      "name": "O`zbekiston Respublikasi Hukumat portali"
+    },
+    {
+      "name": "Mening fikrim - Jamoaviy murojaatlar portali"
+    },
+    {
+      "name": "Korporativ pochta"
+    },
+    {
+      "name": "TKTI kutubxonasi"
+    }
+  ],
+  "Header": [
+    {
+      "name": "Institut"
+    },
+    {
+      "name": "Qabul"
+    },
+    {
+      "name": "Talabalar"
+    },
+    {
+      "name": "Ta'lim"
+    },
+    {
+      "name": "Ilmiy tadqiqotlar"
+    },
+    {
+      "name": "Xalqaro aloqalar"
+    }
+  ],
+  "Statistic": {
+    "Statistical": "Statistik ma’lumotlar",
+    "facultet": "FAKULTETLAR",
+    "student": "TALABALAR",
+    "Teacher": "O'QITUVCHILAR",
+    "Partners": "HAMKORLAR",
+    "OurPartners": "BIZNING HAMKORLAR",
+    "AreaEducation": "TA'LIM YO'NALISHLARI",
+    "Education": "QO'SHMA TA'LIM"
+  },
+  "newsPage": {
+    "All": "Barchasi    "
+  },
+  "HomePage": [
+    {
+      "name": "Syllabusni toping"
+    },
+    {
+      "name": "Yangiliklar"
+    },
+    {
+      "name": "Elonlar"
+    },
+    {
+      "name": "Statistik ma’lumotlar"
+    },
+    {
+      "name": "Foydali havolalar"
+    },
+    {
+      "name": "Video galeriya"
+    },
+    {
+      "name": " Barchasi   "
+    }
+  ],
+  "Qabul": [
+    {
+      "name": "Bakalavr va sirtqi ta’lim"
+    },
+    {
+      "name": "Magistratura      "
+    },
+    {
+      "name": "Doktorantura"
+    },
+    {
+      "name": "Qo’shma ta’lim"
+    }
+  ],
+  "Syllabus": [
+    {
+      "name": "Yil"
+    },
+    {
+      "name": "Ta'lim turi"
+    },
+    {
+      "name": "Ta'lm darajasi"
+    },
+    {
+      "name": "Fakultet"
+    },
+    {
+      "name": "Kafedra"
+    },
+    {
+      "name": "Yo'nalish"
+    },
+    {
+      "name": "Yilni tanlang"
+    },
+    {
+      "name": "Ta'lim turini tanlang"
+    },
+    {
+      "name": "Ta'lim darajasini tanlang"
+    },
+    {
+      "name": "Fakultetni tanlang"
+    },
+    {
+      "name": "Kafedrani tanlang"
+    },
+    {
+      "name": "Yo'nalishni tanlang"
+    },
+    {
+      "name": "Yilni tanlang"
+    },
+    {
+      "name": "Kunduzgi/Sirtqi"
+    },
+    {
+      "name": "Bakalavr/Magistratura"
+    },
+    {
+      "name": "Qidirish"
+    }
+  ],
+  "Institute": [
+    {
+      "title": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN "
+    },
+    {
+      "name": "Biz haqimizda "
+    },
+    {
+      "name": "Missiyamiz"
+    },
+    {
+      "name": "Institut tuzilmasi"
+    },
+    {
+      "name": "Tarix va meros"
+    },
+    {
+      "name": "TKTI ish rejasi"
+    },
+    {
+      "name": "Korrupsiyani oldini olish"
+    },
+    {
+      "name": "Bitiruvchilar"
+    },
+    {
+      "name": "Faoliyat"
+    },
+    {
+      "name": "Bog'lanish"
+    }
+  ],
+  "": [],
+  "aboutUs": [
+    {
+      "name": "Biz haqimizda"
+    },
+    {
+      "name": "1.Biz kuchli salohiyatli ilmiy hodimlar va talabalarni qadirlaymiz. Jamiyatimiz milliy qadriyatlarimizga befarq bo`lmagan holda yuqori innovatsion go`yalarimiz bilan butun dunyoga ijobiy ta`sir ko`rsatamiz."
+    },
+    {
+      "name": "2.Institut-hodimlar uchun jozibali ish muhiti yaratishga ko`maklashadi. Talabalarda tanqidiy fikrlashga asoslangan ko`nikmalarni rivojlantiradi. Ilmiy hodimlar va olimlar bilan hamkorlikda loyiha va go`yalarni moliyalashtiradi va qo`llab quvvatlaydi."
+    },
+    {
+      "name": "3.1 Toshkent kimyo-texnologiya instituti O‘zbekiston Respublikasi Prezidentining 1991-yil 6-maydagi PF-203-sonli qaroriga (https://lex.uz/ru/docs/787853) asosan sobiq Toshkent politexnika institutining, kimyo-texnologiya va muhandislik-texnologiyasi fakultetlari negizida tashkil topgan. Biz ERASMUS+ dasturi loyihalari doirasida mahalliy va xalqaro hamkorlar o‘rtasida tajribaga egamiz.Har yili biz IUPAC doirasidagi deyarli barcha loyihalarda ishtirok etamiz. BRMning (SDG) yo`nalishlarida ishtirok etamiz."
+    },
+    {
+      "name": "3.2 Institutimiz ichki va ilmiy faoliyatdan tashqari atrof-muhitga ham alohida e`tiborli, ekologik haftaliklar va ko`ngilli yoshlardan iborat jamoa bilan obodonchilik ishlarini ham olib borish bilan birga ekologik nozarar bo`lgan start-up loyihalarni ham qo`llab quvvatlaydi, moliyalashtiradi va bu loyihalarga talabalarni o`z o`rnida jalb qilishga ko`maklashadi."
+    },
+    {
+      "name": "3.3 Ijtimoy ko`makka muhtoj va Iqtidorli talabalarni qo`llab quvvatlash maqsadida alohida stipendiya, rag`batlantirishlar va tadbirlar tashkil etadi. Chet-ellik va boshqa viloyatdan kelgan talabalarni institut yotoqxonasi bilan ta`minlaydi. "
+    }
+  ],
+  "ContactUs": [
+    {
+      "name": "Yoqilg'i organik birikmalar kimyoviy texnologiyasi fakulteti",
+      "manzil": "Toshkent, Navoiy ko’chasi, 36-uy"
+    },
+    {
+      "name": "Menejment va kasb ta'limi fakulteti",
+      "manzil": "Toshkent, Samarqand Darvoza ko’chasi, 60-uy"
+    },
+    {
+      "name": "Oziq-ovqat mahsulotlari texnologiyasi fakulteti",
+      "manzil": "Navoiy ko’chasi, 32-uy, Toshkent, O'zbekiston, 100011"
+    },
+    {
+      "name": "Noorganik moddalar kimyoviy texnologiyasi fakulteti",
+      "manzil": "Toshkent sh., M. Ulug’bek ko’chasi, 41-uy"
+    },
+    {
+      "name": "Vinochilik texnologiyasi va sanoat uzumchligi fakulteti",
+      "manzil": "Qibray tumani, ToshIES qo'rg'oni, Farovon mahallasi, 1-uy"
+    }
+  ],
+  "WorkPlan": [
+    {
+      "name": "OTM ish reja"
+    },
+    {
+      "name": "Toshkent kimyo-texnologiya institutining 2022-yil I yarim yilligi ish rejasi"
+    },
+    {
+      "name": "Toshkent kimyo-texnologiya institutining 2022-yil II yarim yilligi ish rejasi"
+    },
+    {
+      "name": "2022-yil I yarim yilligi"
+    },
+    {
+      "name": "2022-yil II yarim yilligi"
+    }
+  ],
+  "Korruption": [
+    {
+      "name": "Sodir etilgan korrupsiya holatlari to'g'risida xabar berish"
+    },
+    {
+      "name": "Toshkent kimyo texnologiya institutida korrupsiyaga qarshi kurashish madaniyatini oshirish va korrupsiyaga oid huquqbuzarliklarning oldini olish maqsadida rasmiy telegram boti yaratildi."
+    },
+    {
+      "name": "Bot orqali siz korruptsiyaga oid huquqbuzarliklar haqida xabar berishingiz mumkin"
+    },
+    {
+      "name": "Ishonch telefonlari"
+    },
+    {
+      "name": "Virtual qabulxona"
+    }
+  ],
+  "Mission": [
+    {
+      "name": "Missiyamiz: Jamiyatimiz uchun zarur bo`lgan yetuk salohiyatli mutaxassislar tayyorlash, ilmiy izlanishlar sifati va qamrovini oshirish, ilmiy hodimlar uchun yuqori ish muhiti yaratish, sohaga oid bilimlarni xalqaro darajada muvofiqlashtirgan holda yuqori innovatsion loyihalar yaratish va uni butun dunyo miqyosida tadbiq etish."
+    }
+  ],
+  "Boglanish": [
+    {
+      "name": "Missiyamiz: Jamiyatimiz uchun zarur bo`lgan yetuk salohiyatli mutaxassislar tayyorlash, ilmiy izlanishlar sifati va qamrovini oshirish, ilmiy hodimlar uchun yuqori ish muhiti yaratish, sohaga oid bilimlarni xalqaro darajada muvofiqlashtirgan holda yuqori innovatsion loyihalar yaratish va uni butun dunyo miqyosida tadbiq etish."
+    }
+  ],
+  "Admission": [
+    {
+      "name": "Bakalavr va sirtqi ta’lim (ikkinchi mutaxassislik)"
+    },
+    {
+      "name": "Magistratura"
+    },
+    {
+      "name": "Doktorantura"
+    },
+    {
+      "name": "Qo’shma ta’lim"
+    }
+  ],
+  "Tabs": [
+    {
+      "name": "Haqida"
+    },
+    {
+      "name": "Maqsad"
+    },
+    {
+      "name": "Xodimlar"
+    },
+    {
+      "name": "Faoliyat hujjatlari"
+    }
+  ],
+  "BodyInfo": {
+    "body": "{{comp_body}}"
+  },
+  "NewsCard": {
+    "title": "{{news_card_title}}",
+    "body": "{{news_card_body}}"
+  },
+  "MoreDetails": {
+    "title": "{{more_details_title}}",
+    "body": "{{more_details_body}}"
+  },
+  "logo": [
+    {
+      "name": "TOSHKENT"
+    },
+    {
+      "name": "Hemis o‘qituvchi"
+    }
+  ],
+  "Headera": {
+    "qabul": "Qabul",
+    "students": "Talabalar",
+    "graduates": "Bitiruvchilar",
+    "structure": [
+      "Tuzilma",
+      "Institut rahbariyati",
+      "Fakultetlar",
+      "Kafedrlar",
+      "Bo`lim va markazlar",
+      "Filiallar",
+      "Yoshlar ittifoqi"
+    ],
+    "activity": ["Faoliyat", "Moliyaviy Faoliyat"],
+    "mytkti": [
+      "Mening TKTI",
+      "Kutubxona",
+      "Tkti yangiyer",
+      "Hemis talaba",
+      "Korporativ pochta",
+      "Hemis o'qituvchi"
+    ],
+    "library": "Kutubxona",
+    "contact": "Bog'lanish",
+    "name": "Hemis talaba ",
+    "name2": "Hemis o‘qituvchi",
+    "about": "Biz haqimizda"
+  }
+}
