@@ -51,6 +51,8 @@ function App() {
           }
         >
           <Route index element={<Home />} />
+          <Route path={"/:lang"} element={<Home />} />
+          <Route path={"/search"} element={<Home />} />
           <Route path=":lang/institut/biz-haqimiqda" element={<AboutUS />} />
           <Route path=":lang/institut/bog'nalish" element={<ContactUs />} />
           <Route path=":lang/institut/Missiyamiz" element={<Mission/>} />

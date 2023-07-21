@@ -95,6 +95,13 @@ export const UniversalComponent = () => {
               {item[`title_${i18next.language}`]}
             </h1>
 
+
+
+
+
+
+
+            
             <div
               className="uni-comp-body mb-10"
               dangerouslySetInnerHTML={{
