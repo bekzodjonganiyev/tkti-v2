@@ -11,3 +11,9 @@
 .header__greyscale {
     cursor: pointer;
 }
+
+.news-details img{
+    image-rendering: optimizeSpeed;
+    width: 100%;
+    margin-bottom: 10px;
+}

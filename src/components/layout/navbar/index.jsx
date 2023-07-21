@@ -134,13 +134,13 @@ export const Navbar = () => {
   const link = [
     {
       name: t("Header.1.name"),
-      desc: t("Institute.0.title"),
+      desc: t("Institute.0.title.bir"),
       submenu: true,
       sublinks: url?.res2,
     },
     {
       name: t("Header.0.name"),
-      desc: t("Institute.0.title"),
+      desc: t("Institute.0.title.ikki"),
       submenu: true,
       sublinks: [
         {
@@ -173,25 +173,25 @@ export const Navbar = () => {
     },
     {
       name: t("Header.4.name"),
-      desc: t("Institute.0.title"),
+      desc: t("Institute.0.title.uch"),
       submenu: true,
       sublinks: url?.res5,
     },
     {
       name: t("Header.5.name"),
-      desc: t("Institute.0.title"),
+      desc: t("Institute.0.title.tort"),
       submenu: true,
       sublinks: url?.res6,
     },
     {
       name: t("Header.2.name"),
-      desc: t("Institute.0.title"),
+      desc: t("Institute.0.title.besh"),
       submenu: true,
       sublinks: url?.res3,
     },
     {
       name: t("Header.3.name"),
-      desc: t("Institute.0.title"),
+      desc: t("Institute.0.title.olti"),
       submenu: true,
       sublinks: url?.res4,
     },
@@ -228,7 +228,7 @@ export const Navbar = () => {
           elentning linklarni o'rab turgan wrapperning balanligiga tasir
           ko'rsatmasligi */}
 
-            <ul className="flex gap-20 ">
+            <ul className="flex gap-12 ">
               {link?.map((item, id) =>
                 url.loading ? (
                   <div className="max-w-xs mx-auto p-4 " key={id}>
@@ -239,7 +239,7 @@ export const Navbar = () => {
                 ) : (
                   <li
                     key={id}
-                    className="pb-[31px] navbar__hover cursor-pointer"
+                    className="pb-[31px] navbar__hover cursor-pointer uppercase"
                     onMouseEnter={() => setHoveredLink({ ...item })}
                     onMouseLeave={() => setHoveredLink(null)}
                   >
@@ -256,10 +256,13 @@ export const Navbar = () => {
                 onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
                 onMouseLeave={() => setHoveredLink(null)}
               >
-                {/* <div className="w-1/3 navbarDes">
-                  <p className="uppercase">{hoveredLink?.name}</p>
+                <div className="w-1/3 navbarDes">
+                  <div className="flex gap-5 items-center mb-5">
+                    <img src={Logo} alt="" width={"60"} height={"20"} className="" />
+                    <p className="uppercase">{hoveredLink?.name}</p>
+                  </div>
                   <p className="navbarDesc lowercase ">{hoveredLink?.desc}</p>
-                </div> */}
+                </div>
                 <ul className="grid grid-cols-2 grid-flow-row-dense gap-x-6 w-2/3">
                   {hoveredLink?.sublinks?.map((item) => (
                     <li className="py-2 border-b navbar__hoverItem border-slate-100">

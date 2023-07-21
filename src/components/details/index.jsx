@@ -24,7 +24,7 @@ export const Details = (myKey) => {
 
   if (error) return <h1>{error}</h1>;
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-10 news-details">
       {loading ? (
         <h1>Loading...</h1>
       ) : (

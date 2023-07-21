@@ -71,7 +71,7 @@ export const News = ({ home }) => {
           ))}
         </div>
       )}
-      {/* Share social networks */}
+      {/* Share social networks
       <div className="flex justify-between items-center mt-10">
         <div className="lg:w-9/12 w-full flex flex-wrap gap-2 ">
           <CalendarIcon />
@@ -121,7 +121,7 @@ export const News = ({ home }) => {
             <TelegramIcon color={socialColor.tg} />
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
