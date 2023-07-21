@@ -2,3 +2,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.greyscale {
+    filter: grayscale(96%) !important;
+}
+
+.header__greyscale {
+    cursor: pointer;
+}

@@ -25,6 +25,9 @@
     },
     {
       "name": "en"
+    },
+    {
+      "name": "Search"
     }
   ],
   "havola": [
@@ -68,7 +71,7 @@
       "name": "Yangiyer branch of Tashkent Institute of chemistry and technology"
     },
     {
-      "name": "Shahrisabz branch of Tashkent Institute of Chemical Technology"
+      "name": "Shakhrisabz branch of Tashkent Institute of Chemical Technology"
     },
     {
       "name": "Information system of online application submission for Student transfer and readmission"
@@ -144,25 +147,25 @@
       "name": "Year"
     },
     {
-      "name": "Ta'lim turi"
+      "name": "Type of education"
     },
     {
-      "name": "Ta'lm darajasi"
+      "name": "Education level"
     },
     {
       "name": "Faculty"
     },
     {
-      "name": "Kafedra"
+      "name": "Department"
     },
     {
-      "name": "Yo'nalish"
+      "name": "Direction"
     },
     {
-      "name": "Yilni tanlang"
+      "name": "Select a year"
     },
     {
-      "name": "Ta'lim turini tanlang"
+      "name": "Select the type of education"
     },
     {
       "name": "Select the level of education"
@@ -180,7 +183,7 @@
       "name": "Select a year"
     },
     {
-      "name": "Kunduzgi/Sirtqi"
+      "name": "Day/Outdoor"
     },
     {
       "name": "Bachelor/Master"
@@ -191,7 +194,7 @@
   ],
   "Institute": [
     {
-      "title": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN "
+      "title": "CHEMICAL TECHNOLOGY - THE SCIENCE OF ECONOMICALLY AND ENVIRONMENTALLY CONVENIENT METHODS AND PROCESSES OF CHEMICALLY RECYCLING NATURAL RAW MATERIALS, INDUSTRIAL WASTES, AS WELL AS SYNTHETIC SEMI-PRODUCTS INTO CONSUMER PRODUCTS AND INDUSTRIAL TOOLS"
     },
     {
       "name": "About Us"
@@ -233,6 +236,20 @@
     },
     {
       "name": "Joint education"
+    }
+  ],
+  "Tabs": [
+    {
+      "name": "About"
+    },
+    {
+      "name": "Goal"
+    },
+    {
+      "name": "Employees"
+    },
+    {
+      "name": "Activity documents"
     }
   ],
   "Qabul": [
@@ -336,7 +353,7 @@
   ],
   "Education": [
     {
-      "title": "INSTITUT O’TGAN DAVR ICHIDA KIMYO, OZIQ-OVQAT, NEFT-GAZ, QURILISH MATERIALLARI VA IQTISODIYOTNING BOSHQA TARMOQLARIGA 10 MINGDAN ZIYOD YUQORI MALAKALI MUHANDIS TEXNOLOGLAR, TA’LIM YO’NALISHLARI BO’YICHA MINGDAN ORTIQ BAKALAVR VA 30 GA YAQIN MUTAXASSISLIKLAR BO’YICHA MAGISTRLAR TAYYORLAB BERDI"
+      "title": "The institute has prepared masters in more than 10,000 bachelors and about 30 specialties for chemical, food, oil and gas, construction materials and other sectors of chemistry, education in the past period"
     },
     {
       "name": "Bachelor "
@@ -354,7 +371,7 @@
       "name": "Second education"
     },
     {
-      "name": "Dars jadvali "
+      "name": "Lesson schedule "
     }
   ],
   "NewsCard": {

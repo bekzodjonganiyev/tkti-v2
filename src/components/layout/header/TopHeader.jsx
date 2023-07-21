@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {NavLink, useLocation, useNavigate, useNavigation} from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import { Dropdown } from "flowbite-react";
@@ -16,6 +16,7 @@ export const TopHeader = () => {
     localStorage.getItem("langText") || "Uz"
   );
   const [isHovered, setIsHovered] = useState(false);
+  const [ searchValue, setSearchValue ] = useState('')
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -85,6 +86,18 @@ export const TopHeader = () => {
     window.location.reload();
   };
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    window.location.href = `/search?${searchValue}`
+  }
+
+  useEffect(() => {
+    if (pathname.split("/")[1] === "uz") setLangText("Uz");
+    if (pathname.split("/")[1] === "ru") setLangText("Ru");
+    if (pathname.split("/")[1] === "en") setLangText("En");
+  }, [])
+
+
   return (
     <>
       <div className="bg-[#26597E] max-md:px-5">
@@ -129,11 +142,14 @@ export const TopHeader = () => {
             </div>
           </div>
           <div className="flex items-center h-5 ">
-            <input
-              className="py-1  lg:w-[300px] md:w-[280px] sm:w-[200px]  rounded-3xl"
-              type="text"
-              placeholder="Qidiruv"
-            />
+            <form onSubmit={handleSearchSubmit}>
+              <input
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  className="py-1  lg:w-[300px] md:w-[280px] sm:w-[200px]  rounded-3xl"
+                  type="text"
+                  placeholder={t("headerTop.5.name")}
+              />
+            </form>
           </div>
           <div className="lg:flex hidden justify-between items-center">
             <img src={gerb} alt="O'z. Res. gerbi" width={"50"} />
@@ -180,7 +196,7 @@ export const TopHeader = () => {
             </div>
             <div
               onClick={() => document.body.classList.toggle("greyscale")}
-              className="header__nav"
+              className="header__greyscale"
             >
               <CircleHalf />
             </div>
