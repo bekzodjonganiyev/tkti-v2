@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import i18next from "i18next";
 
 const AppContext = createContext();
@@ -33,7 +33,6 @@ const AppContextProvider = ({ children }) => {
 ''
   return (
     <AppContext.Provider value={{ idForFetch, setIdForFetch,searchedData, setSearchedData, }}>
-        
       {children}
     </AppContext.Provider>
   );

@@ -27,6 +27,12 @@ import {
   WorkPlan,
 } from "./pages";
 import { SillabusPage } from "./components/sillabus/SillabusPage";
+// import FacultetComponent from "./pages/structure/fakultet/index.jsx";
+// import FakultetSingle from "./pages/structure/fakultet/Single.jsx";
+// import BolimMarkaz from "./pages/structure/bolimMarkazi/index.jsx";
+// import BolimMarkazSingle from "./pages/structure/bolimMarkazi/Single.jsx";
+// import KafedraComponent from "./pages/structure/kafedra/index.jsx";
+// import KafedraSingle from "./pages/structure/kafedra/Single.jsx";
 
 function App() {
   return (
@@ -67,6 +73,15 @@ function App() {
           <Route path="test" element={<TabComponent />} />
           <Route path=":lang/institute/structute/:element/:name/:id" element={<TabComponent />} />
           <Route path=":lang/institute/structute/:name/:id" element={<TabComponent />} />
+
+          {/* =--------------- Tuzilma Page uchun ---------------------------= */}
+          {/*<Route path="/fakultetlar" element={<FacultetComponent />} />*/}
+          {/*<Route path="/fakultetlar/:id" element={<FakultetSingle />} />*/}
+          {/*<Route path="/bolimMarkaz" element={<BolimMarkaz />} />*/}
+          {/*<Route path="/bolimlar/:id" element={<BolimMarkazSingle myKey='bolim' />} />*/}
+          {/*<Route path="/markazlar/:id" element={<BolimMarkazSingle myKey='markaz' />} />*/}
+          {/*<Route path="/kafedralar" element={<KafedraComponent />} />*/}
+          {/*<Route path="/kafedralar/:id" element={<KafedraSingle />} />*/}
           
           {/* TODO - splitter va universal componentlarni optimizatsiya qilish kerak, misol uchun memoga o'rash kerek va hk */}
           <Route path=":lang/:page/:id/"  element={<SplitterComponent><UniversalComponent /></SplitterComponent> } />

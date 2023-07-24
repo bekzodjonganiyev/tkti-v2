@@ -101,7 +101,7 @@ export const UniversalComponent = () => {
 
 
 
-            
+
             <div
               className="uni-comp-body mb-10"
               dangerouslySetInnerHTML={{
