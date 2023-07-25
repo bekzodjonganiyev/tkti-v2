@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Popconfirm, Table } from "antd";
+import { Avatar, Popconfirm, Table } from "antd";
 
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 import { LidershipParentActions } from "./actions";
@@ -23,6 +23,13 @@ export const Lidership = () => {
     {
       title: "T/r",
       dataIndex: "order",
+    },
+    {
+      title: "Rasmi",
+      dataIndex: "photo",
+      render: (_, p) => (
+        <Avatar src={<img src={p?.photo} alt="avatar" />}/>
+      )
     },
     {
       title: "Nomi",
@@ -50,7 +57,7 @@ export const Lidership = () => {
           {/* <Link to={`/adminPanel/lidership/view/${slug(p?.name)}/${p?.id}`}>
             <ViewIcon />
           </Link> */}
-          <Link to={`/adminPanel/lidership/edit/${slug(p?.name)}/${p?.id}`}>
+          <Link to={`/adminPanel/lidership/edit/${p?.id}`}>
             <EditIcon />
           </Link>
           <Popconfirm
@@ -77,6 +84,7 @@ export const Lidership = () => {
     job: item?.job_uz,
     date: item?.date,
     tel: item?.tel,
+    photo: item?.photo,
     id: item?._id,
   }));
 

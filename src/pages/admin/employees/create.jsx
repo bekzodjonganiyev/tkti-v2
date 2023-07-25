@@ -1,7 +1,10 @@
-import React from 'react'
+import { EmployeesAddForm } from "../../../components/form_comp2";
 
-export const EmployessCreate = () => {
+export const EmployeesCreate = () => {
   return (
-    <div>EmployeesCreate</div>
+    <EmployeesAddForm
+      hasSelect={false}
+      url={"Fak_data/add"}
+    />
   )
 }

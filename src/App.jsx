@@ -79,20 +79,14 @@ import {
   //Yangiliklar
   News,
   NewsCreate,
-  NewsEdit
+  NewsEdit,
+
+  // Xodimlar
+  Employees,
+  EmployeesCreate,
+  EmployeesEdit
 
 } from "./pages/admin";
-import { LidershipView } from "./pages/admin/lidership/view";
-import { Employees } from "./pages/admin/employees";
-import { EmployessCreate } from "./pages/admin/employees/create";
-import { EmployeesView } from "./pages/admin/employees/view";
-import { EmployeesEdit } from "./pages/admin/employees/edit";
-
-
-// TODOS 
-// 1. Admin panelda CRUD bolmagan bolimlar to’g`irlanadi, jadvallarga vaqtni korsatish. Talim, Rahbariyat
-// 2. Xodimlar page sidebarga ochilib CRUD qilinadi
-// 3. Madia bolimida paginatsiya qilinadi va ishlashi yaxshilanadi. Agar file bolsa iconga joylashririladi
 
 
 function App() {
@@ -134,13 +128,11 @@ function App() {
 
           <Route path="lidership" element={<Lidership />} />
           <Route path="lidership/add" element={<LidershipCreate />} />
-          <Route path="lidership/edit/:page/:id" element={<LidershipEdit />} />
-          {/* <Route path="lidership/view/:page/:id" element={<LidershipView />} /> */}
+          <Route path="lidership/edit/:id" element={<LidershipEdit />} />
 
           <Route path="employees" element={<Employees />} />
-          <Route path="employees/add" element={<EmployessCreate />} />
-          <Route path="employees/edit/:page/:id" element={<EmployeesEdit />} />
-          <Route path="employees/view/:page/:id" element={<EmployeesView />} />
+          <Route path="employees/add" element={<EmployeesCreate />} />
+          <Route path="employees/edit/:id" element={<EmployeesEdit />} />
 
           <Route path="faculty" element={<Faculty />} />
           <Route path="faculty/add" element={<FacultyCreate />} />

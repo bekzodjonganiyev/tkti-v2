@@ -6,8 +6,8 @@ import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 import { EducationParentActions } from "./actions";
 import { slug } from  "../../../services/slug";
 import { EditForm } from "../../../components";
-import { EducationParentEdit } from "./editParent";
 import { simplifyDateTime } from "../../../helpers";
+import { ParentEditForm } from "../../../components/form_comp2";
 
 export const Education = () => {
 
@@ -17,6 +17,8 @@ export const Education = () => {
   const { getData, deleteData } = new EducationParentActions();
   const selectorFunc = (state) => state.educationParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
+
+  console.log(dataById);
 
   useEffect(() => {
     dispatch(getData());
@@ -80,12 +82,13 @@ export const Education = () => {
             </button>
           </Popconfirm>
           <Modal 
-          title="Taxrirlash" 
-          open={isModalOpen} 
-          onOk={handleOk} 
-          onCancel={handleCancel}
+            title="Taxrirlash" 
+            open={isModalOpen} 
+            onOk={handleOk} 
+            onCancel={handleCancel}
+            footer={false}
           >
-             <EducationParentEdit parentId={parentId}/>
+             <ParentEditForm url={`talim/all`} id={parentId} />
           </Modal>
         </div>
       ),

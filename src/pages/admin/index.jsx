@@ -18,6 +18,10 @@ export { EducationCreate } from "./education/create";
 export { EducationChildEdit } from "./education/edit";
 export { EducationView } from "./education/view";
 
+export { Employees } from "./employees";
+export { EmployeesCreate } from "./employees/create"
+export { EmployeesEdit } from "./employees/edit"
+
 export { Pressclub } from "./press_club";
 export { PressclubCreate } from "./press_club/create";
 export { PressclubChildEdit } from "./press_club/edit";
