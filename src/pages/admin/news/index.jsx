@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import { AddIcon, DeleteIcon, EditIcon } from "../../../assets/icons";
 import { NewsActions } from "./actions";
+import { simplifyDateTime } from "../../../helpers";
 
 export const News = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,13 @@ export const News = () => {
     {
       title: "Nomi",
       dataIndex: "name",
+    },
+    {
+      title: "Sana",
+      dataIndex: 'date',
+      render: (_, p) => (
+        <span>{simplifyDateTime(p?.date)}</span>
+      )
     },
     {
       dataIndex: "icon",
@@ -51,6 +59,7 @@ export const News = () => {
   const dataSource = data.map((item, id) => ({
     order: id + 1,
     name: item.title_uz,
+    date: item?.date,
     id: item._id,
   }));
 

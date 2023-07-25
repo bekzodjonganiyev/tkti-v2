@@ -3,17 +3,16 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
-import { EducationChildActions } from "./actions";
+import { LidershipChildActions } from "./actions";
 import { slug } from "../../../services/slug"
-import { DeleteIcon, EditIcon } from "../../../assets/icons";
 
-export const  EducationView= () => {
+export const  LidershipView= () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const childAction = new EducationChildActions();
+  const childAction = new LidershipChildActions();
 
-  const selectorFuncChild = (state) => state.educationChild;
+  const selectorFuncChild = (state) => state.lidershipChild;
   const childState = useSelector(selectorFuncChild);
 
   useEffect(() => { dispatch(childAction.getData())}, [id]);
@@ -31,9 +30,7 @@ export const  EducationView= () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/education/edit/${slug(p.name)}/${p.id}`}>
-          <EditIcon />
-          </Link>
+          <Link to={`/adminPanel/rahbariyat/edit/${slug(p.name)}/${p.id}`}>edit</Link>
           <Popconfirm
             title="Rostdan o'chirishni xoxlaysizmi?"
             description="O'chirilgan malumotlar qayta tiklanmaydi"
@@ -43,7 +40,7 @@ export const  EducationView= () => {
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button ><DeleteIcon/></button>
+            <button >Delete</button>
           </Popconfirm>
         </div>
       ),

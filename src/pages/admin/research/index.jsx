@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { ResearchParentActions } from "./actions";
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 import { slug } from "../../../services/slug";
+import { simplifyDateTime } from "../../../helpers";
 export const Research = () => {
   const dispatch = useDispatch();
 
@@ -26,6 +27,13 @@ export const Research = () => {
     {
       title: "Nomi",
       dataIndex: "name",
+    },
+    {
+      title: "Sana",
+      dataIndex: 'date',
+      render: (_, p) => (
+        <span>{simplifyDateTime(p?.date)}</span>
+      )
     },
     {
       dataIndex: "icon",
@@ -58,6 +66,7 @@ export const Research = () => {
   const dataSource = data.map((item, id) => ({
     order: id + 1,
     name: item.title_uz,
+    date: item?.date,
     id: item._id,
   }));
 

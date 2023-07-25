@@ -4,6 +4,10 @@ export const sidebarItems = [
     url: "lidership",
   },
   {
+    name: "Xodimlar",
+    url: "employees",
+  },
+  {
     name: "Fakultet",
     url: "faculty",
   },

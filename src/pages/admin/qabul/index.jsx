@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import { QabulParentActions } from "./actions";
 import { slug } from "../../../services/slug"
+import { simplifyDateTime } from "../../../helpers";
+import { DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 
 export const Qabul = () => {
   const dispatch = useDispatch();
@@ -28,11 +30,22 @@ export const Qabul = () => {
       dataIndex: "name",
     },
     {
+      title: "Sana",
+      dataIndex: 'date',
+      render: (_, p) => (
+        <span>{simplifyDateTime(p?.date)}</span>
+      )
+    },
+    {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/admission/view/${slug(p.name)}/${p.id}`}>view</Link>
-          <Link to={"#"}>edit</Link>
+          <Link to={`/adminPanel/admission/view/${slug(p.name)}/${p.id}`}>
+          <ViewIcon />
+          </Link>
+          <Link to={"#"}>
+          <EditIcon />
+          </Link>
           <Popconfirm
             title="Rostdan o'chirishni xoxlaysizmi?"
             description="O'chirilgan malumotlar qayta tiklanmaydi"
@@ -42,7 +55,7 @@ export const Qabul = () => {
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button >Delete</button>
+            <button ><DeleteIcon/></button>
           </Popconfirm>
         </div>
       ),
@@ -52,6 +65,7 @@ export const Qabul = () => {
   const dataSource = data.map((item, id) => ({
     order: id + 1,
     name: item.title_uz,
+    date: item?.date,
     id: item._id,
   }));
 

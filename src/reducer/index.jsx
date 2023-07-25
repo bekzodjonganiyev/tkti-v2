@@ -14,6 +14,8 @@ import { userReducer } from "../pages/login/reducer";
 import { mediaReducer } from "../pages/admin/media";
 import { form2Reducer } from "../components/form_comp2";
 import { newsReducer } from "../pages/admin/news";
+import { lidershipChildReducer, lidershipParentReducer } from "../pages/admin/lidership";
+import { employeesChildReducer, employeesParentReducer } from "../pages/admin/employees";
 
 export const rootReducers = combineReducers({
   aboutUs: aboutUsReducer,
@@ -29,6 +31,12 @@ export const rootReducers = combineReducers({
 
   educationParent: educationParentReducer,
   educationChild: educationChildReducer,
+  
+  lidershipParent: lidershipParentReducer,
+  lidershipChild: lidershipChildReducer,
+
+  employeesParent: employeesParentReducer,
+  employeesChild: employeesChildReducer,
 
   pressclubParent: pressclubParentReducer,
   pressclubChild: pressclubChildReducer,

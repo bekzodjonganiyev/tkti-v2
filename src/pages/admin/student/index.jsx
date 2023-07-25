@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { StudentParentActions } from "./actions";
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 import { slug } from "../../../services/slug";
+import { simplifyDateTime } from "../../../helpers";
 
 export { studentParentReducer, studentChildReducer } from "./reducers";
 export const Student = () => {
@@ -28,6 +29,13 @@ export const Student = () => {
     {
       title: "Nomi",
       dataIndex: "name",
+    },
+    {
+      title: "Sana",
+      dataIndex: 'date',
+      render: (_, p) => (
+        <span>{simplifyDateTime(p?.date)}</span>
+      )
     },
     {
       dataIndex: "icon",
@@ -60,6 +68,7 @@ export const Student = () => {
   const dataSource = data.map((item, id) => ({
     order: id + 1,
     name: item.title_uz,
+    date: item?.date,
     id: item._id,
   }));
 

@@ -3,20 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { EditForm } from "../../../components";
-import { EducationChildActions, EducationParentActions } from "./actions";
+import { EmploeyeesChildActions, EmployeesParentActions } from "./actions";
 
-export const EducationChildEdit = () => {
+export const EmployeesEdit = () => {
   const { page, id } = useParams();
   const dispatch = useDispatch();
 
-  const selectorFuncParent = (state) => state.educationParent;
-  const selectorFuncChild = (state) => state.educationChild;
+  const selectorFuncParent = (state) => state.employeesParent;
+  const selectorFuncChild = (state) => state.employeesChild;
 
   const parentState = useSelector(selectorFuncParent);
   const childState = useSelector(selectorFuncChild);
 
-  const parentAction = new EducationParentActions();
-  const childAction = new EducationChildActions();
+  const parentAction = new EmployeesParentActions();
+  const childAction = new EmploeyeesChildActions();
 
   useEffect(() => {
     dispatch(childAction.getDataById(page));

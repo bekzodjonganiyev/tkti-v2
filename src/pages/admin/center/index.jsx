@@ -3,6 +3,8 @@ import { Popconfirm, Table } from "antd";
 import { Link } from "react-router-dom";
 
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
+import { simplifyDateTime } from "../../../helpers";
+import { DeleteIcon, EditIcon } from "../../../assets/icons";
 
 export const Center = () => {
   const [data, setData] = useState({ loading: true, data: [], error: null });
@@ -53,10 +55,17 @@ export const Center = () => {
       dataIndex: "name",
     },
     {
+      title: "Sana",
+      dataIndex: 'date',
+      render: (_, p) => (
+        <span>{simplifyDateTime(p?.date)}</span>
+      )
+    },
+    {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/center/edit/${p.id}`}>edit</Link>
+          <Link to={`/adminPanel/center/edit/${p.id}`}><EditIcon /></Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
@@ -66,7 +75,7 @@ export const Center = () => {
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link">Delete</button>
+            <button type="link"><DeleteIcon /></button>
           </Popconfirm>
         </div>
       ),
@@ -76,6 +85,7 @@ export const Center = () => {
   const dataSource = data?.data?.map((item, id) => ({
     order: id + 1,
     name: item.title_uz,
+    date: item?.date,
     id: item._id,
   }));
 
