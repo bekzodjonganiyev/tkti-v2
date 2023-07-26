@@ -60,7 +60,7 @@ const BolimMarkaz = () => {
         {
             bolim?.isFetched && bolim?.data ? (
                 bolim?.data.map((item, index) => (
-                  <AnimateCard refLink={`${i18next.language}/institut/structute/department_and_center`} refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
+                  <AnimateCard refLink={`${i18next.language}/institut/structute/department`} refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
                 ))
             ):bolim.error ?(
                 <></>
@@ -90,7 +90,7 @@ const BolimMarkaz = () => {
                 markaz.data.map((item, index) => (
                   <AnimateCard 
                     key={index} 
-                    refLink={`${i18next.language}/institut/structute/department_and_center`}
+                    refLink={`${i18next.language}/institut/structute/center`}
                     refTitle={item?.title_uz} 
                     refId={item._id} 
                     mainTitle={item?.title_uz} 

@@ -80,7 +80,8 @@ function App() {
           <Route path=":lang/institut/bolim-va-markazlar" element={<BolimMarkaz/>} />
           <Route path=":lang/institut/structute/faculty/:id" element={<TabComponent/>} />
           <Route path=":lang/institut/structute/kafedra/:id" element={<TabComponent/>} />
-          <Route path=":lang/institut/structute/department_and_center/:id" element={<TabComponent/>} />
+          <Route path=":lang/institut/structute/department/:id" element={<TabComponent/>} />
+          <Route path=":lang/institut/structute/center/:id" element={<TabComponent/>} />
 
 
           <Route path="/filter/result" element={<SillabusPage/>} />

@@ -36,7 +36,7 @@ export const News = ({ home }) => {
     <div className="container mx-auto py-10">
       <div className="flex justify-between items-center mb-10">
         <h1 className="text-2xl font-bold">{t("HomePage.1.name")}</h1>
-        <Link  to={`${i18next.language}/news`} className="flex items-center gap-1">{t("HomePage.6.name")} <LeftArrow /></Link>
+        <Link  to={`/${i18next.language}/news`} className="flex items-center gap-1">{t("HomePage.6.name")} <LeftArrow /></Link>
       </div>
       <div className="flex gap-4 mb-5">
         <button onClick={() => setCategory("yangilik")} className="border border-indigo-900 hover:bg-indigo-900 hover:text-white transition-colors py-2 px-4 rounded-2xl ">

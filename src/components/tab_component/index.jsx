@@ -25,6 +25,7 @@ export const TabComponent = () => {
   const [url, setUrl] = useState("");
   const [hasPage, setHasPage] = useState(true);
 
+
   const initialtabItems = [
     {
       title: t("TabComp.about"),
@@ -65,14 +66,17 @@ export const TabComponent = () => {
     } else if (location?.pathname?.includes('kafedra')) {
       setUrl("Kafedra_data");
       setHasPage(true);
-    } else if (location?.pathname?.includes("department_and_center")) {
+    } else if (location?.pathname?.includes("department")) {
       setUrl("bm_data");
+      setHasPage(true);
+    }  else if (location?.pathname?.includes("center")) {
+      setUrl("markaz_data");
       setHasPage(true);
     } else {
       setUrl(undefined);
       setHasPage(false);
     }
-  }, [params.element]);
+  }, [params]);
   useEffect(() => {
     // TODO - backenddan getById ga o'xshagan api chiqarish kerak, name bo'yicha data kelsin
     // id bo'yicha get qilish atmen bo'ladi

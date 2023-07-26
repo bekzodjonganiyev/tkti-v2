@@ -22,3 +22,7 @@
 .container {
     margin-inline: auto !important;
 }
+
+.focus\:ring-4:focus {
+    box-shadow: none !important;
+}
