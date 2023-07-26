@@ -25,8 +25,6 @@ export const TabComponent = () => {
   const [url, setUrl] = useState("");
   const [hasPage, setHasPage] = useState(true);
 
-  console.log(dataById);
-
   const initialtabItems = [
     {
       title: t("TabComp.about"),
@@ -59,8 +57,6 @@ export const TabComponent = () => {
             })),
           },
         ];
-
-        console.log(location?.pathname?.includes('kafedra'));
 
   useEffect(() => {
     if (location?.pathname?.includes('faculty')) {

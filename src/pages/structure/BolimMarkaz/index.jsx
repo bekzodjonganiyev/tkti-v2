@@ -90,7 +90,7 @@ const BolimMarkaz = () => {
                 markaz.data.map((item, index) => (
                   <AnimateCard 
                     key={index} 
-                    refLink='markazlar' 
+                    refLink={`${i18next.language}/institut/structute/department_and_center`}
                     refTitle={item?.title_uz} 
                     refId={item._id} 
                     mainTitle={item?.title_uz} 
