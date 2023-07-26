@@ -19,9 +19,13 @@ export const TabComponent = () => {
   const params = useParams();
   const location = useLocation();
 
+  console.log(params.element);
+
   // TODO - shu qilgan ishimni react qanday qabul qiladi, hooklardan foydalanishim kerakmidi?
   const [url, setUrl] = useState("");
   const [hasPage, setHasPage] = useState(true);
+
+  console.log(dataById);
 
   const initialtabItems = [
     {
@@ -56,14 +60,16 @@ export const TabComponent = () => {
           },
         ];
 
+        console.log(location?.pathname?.includes('kafedra'));
+
   useEffect(() => {
-    if (params.element === "faculty") {
-      setUrl("Fak_data");
+    if (location?.pathname?.includes('faculty')) {
+      setUrl("Fak_data"); 
       setHasPage(true);
-    } else if (params.element === "kafedra") {
+    } else if (location?.pathname?.includes('kafedra')) {
       setUrl("Kafedra_data");
       setHasPage(true);
-    } else if (params.element === "department_and_center") {
+    } else if (location?.pathname?.includes("department_and_center")) {
       setUrl("bm_data");
       setHasPage(true);
     } else {

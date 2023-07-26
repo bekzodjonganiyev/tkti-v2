@@ -27,6 +27,12 @@ import {
   WorkPlan,
 } from "./pages";
 import { SillabusPage } from "./components/sillabus/SillabusPage";
+import KafedraComponent from "./pages/structure/Kafedra";
+import FacultetComponent from "./pages/structure/fakultet";
+import BolimMarkaz from "./pages/structure/BolimMarkaz";
+import FakultetSingle from "./pages/structure/fakultet/Single";
+import KafedraSingle from "./pages/structure/Kafedra/Single";
+import BolimMarkazSingle from "./pages/structure/BolimMarkaz/Single";
 // import FacultetComponent from "./pages/structure/fakultet/index.jsx";
 // import FakultetSingle from "./pages/structure/fakultet/Single.jsx";
 // import BolimMarkaz from "./pages/structure/bolimMarkazi/index.jsx";
@@ -66,6 +72,17 @@ function App() {
           <Route path=":lang/institut/tarix" element={<History/>} />
           <Route path=":lang/institut/korrupsiya" element={<Corruption />} />
           <Route path=":lang/institut/structure" element={<TreeInstitute/>} />
+
+
+
+          <Route path=":lang/institut/fakultetlar" element={<FacultetComponent/>} />
+          <Route path=":lang/institut/kafedralar" element={<KafedraComponent/>} />
+          <Route path=":lang/institut/bolim-va-markazlar" element={<BolimMarkaz/>} />
+          <Route path=":lang/institut/structute/faculty/:id" element={<TabComponent/>} />
+          <Route path=":lang/institut/structute/kafedra/:id" element={<TabComponent/>} />
+          <Route path=":lang/institut/structute/department_and_center/:id" element={<TabComponent/>} />
+
+
           <Route path="/filter/result" element={<SillabusPage/>} />
           <Route path=":lang/elon" element={<TreeInstitute />} />
           <Route path=":lang/news" element={<News />} />

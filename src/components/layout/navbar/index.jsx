@@ -165,10 +165,26 @@ export const Navbar = () => {
           id: null,
         },
         {
+          name: t("Institute.10.name"),
+          link: `/institut/kafedralar`,
+          id: null,
+        },
+        {
           name: t("Institute.3.name"),
           link: `/institut/structure`,
           id: null,
         },
+        {
+          name: t("Institute.11.name"),
+          link: `/institut/fakultetlar`,
+          id: null,
+        },
+        {
+          name: t("Institute.12.name"),
+          link: `/institut/bolim-va-markazlar`,
+          id: null,
+        },
+       
       ],
     },
     {
@@ -195,12 +211,13 @@ export const Navbar = () => {
       submenu: true,
       sublinks: url?.res4,
     },
-    
-    
   ];
+
+
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
 
   return (
     <nav className="">
@@ -265,11 +282,10 @@ export const Navbar = () => {
                 </div>
                 <ul className="grid grid-cols-2 grid-flow-row-dense gap-x-6 w-2/3">
                   {hoveredLink?.sublinks?.map((item) => (
-                    <li className="py-2 border-b navbar__hoverItem border-slate-100">
+                    <li key={item?.id} className="py-2 border-b navbar__hoverItem border-slate-100">
                       <Link
                         onClick={() => setIdForFetch(item.id)}
                         to={`${i18next.language}${item.link}`}
-                      
                       >
                         {item?.name}
                       </Link>

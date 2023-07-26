@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
@@ -253,6 +253,8 @@ const MainHeader = () => {
   };
 
   const screenWidth = window.screen.width;
+
+
   return (
     <>
       <div
