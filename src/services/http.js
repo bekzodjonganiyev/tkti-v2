@@ -1,7 +1,9 @@
 import axios from "axios";
 // export const baseURL = "https://tkti-backend-g6pbz.ondigitalocean.app/"
 // export const baseURL = "http://localhost:5001/"
-export const baseURL = "https://backend.tkti.uz/"
+export const baseURL = "https://backend.tkti.uz/";
+
+
 export const fetchApi = async (url, data) => {
   try {
     const res = await fetch(`${baseURL}${url}`, data);
@@ -10,6 +12,8 @@ export const fetchApi = async (url, data) => {
     return message;
   }
 };
+
+
 export const http = axios.create({
   baseURL: "https://backend.tkti.uz/",
   headers: {

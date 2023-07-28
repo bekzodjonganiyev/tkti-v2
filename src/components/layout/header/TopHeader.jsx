@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {NavLink, useLocation, useNavigate, useNavigation} from "react-router-dom";
+import {Link, NavLink, useLocation, useNavigate, useNavigation} from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import { Dropdown } from "flowbite-react";
@@ -152,7 +152,9 @@ export const TopHeader = () => {
             </form>
           </div>
           <div className="lg:flex hidden justify-between items-center">
-            <img src={gerb} alt="O'z. Res. gerbi" width={"50"} />
+            <Link to={ i18next.language + "/davlat-ramzlari"}>
+              <img src={gerb} alt="O'z. Res. gerbi" width={"50"} />
+            </Link>
             <div>
               <div
                 className="dropdown"

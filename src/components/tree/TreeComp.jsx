@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import { Link } from "react-router-dom";
 import i18next, { t } from "i18next";
-
 import "./style.css";
 
 import apiClientWithFetch from "../../services/apiClientWithFetch";

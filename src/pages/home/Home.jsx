@@ -18,6 +18,24 @@ export const Home = () => {
         setYili(Array.from(new Set(newArr)));
       });
   }, []);
+
+
+  
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        console.log('Latitude:', latitude);
+        console.log('Longitude:', longitude);
+      },
+      (error) => {
+        console.error('Error getting location:', error.message);
+      }
+    );
+  }, []);
+
+
+
   return (
     <div>
       <Banner />

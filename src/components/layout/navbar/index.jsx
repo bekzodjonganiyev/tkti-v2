@@ -184,6 +184,11 @@ export const Navbar = () => {
           link: `/institut/bolim-va-markazlar`,
           id: null,
         },
+        {
+          name: t("Institute.13.name"),
+          link: `/institut/rektorat`,
+          id: null,
+        },
        
       ],
     },

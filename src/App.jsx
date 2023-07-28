@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-
 import { UserLayout, AdminLayout } from "./components/layout";
 import { Details } from "./components/details";
 import TreeInstitute from "./components/tree/TreeComp";
@@ -14,31 +13,22 @@ import {
 import {
   Home,
   AboutUS,
-  ActivityDocuments,
   ContactUs,
   Corruption,
   History,
   InteractiveLink,
   Mission,
-  MoreNews,
   News,
-  Statistics,
-  UsefulLinks,
   WorkPlan,
 } from "./pages";
 import { SillabusPage } from "./components/sillabus/SillabusPage";
 import KafedraComponent from "./pages/structure/Kafedra";
 import FacultetComponent from "./pages/structure/fakultet";
 import BolimMarkaz from "./pages/structure/BolimMarkaz";
-import FakultetSingle from "./pages/structure/fakultet/Single";
-import KafedraSingle from "./pages/structure/Kafedra/Single";
-import BolimMarkazSingle from "./pages/structure/BolimMarkaz/Single";
-// import FacultetComponent from "./pages/structure/fakultet/index.jsx";
-// import FakultetSingle from "./pages/structure/fakultet/Single.jsx";
-// import BolimMarkaz from "./pages/structure/bolimMarkazi/index.jsx";
-// import BolimMarkazSingle from "./pages/structure/bolimMarkazi/Single.jsx";
-// import KafedraComponent from "./pages/structure/kafedra/index.jsx";
-// import KafedraSingle from "./pages/structure/kafedra/Single.jsx";
+import Rectorat from "./pages/rektorat/rectorat/rectorat";
+import RectoratItem from "./pages/rektorat/rectoratItem/rectoratitem";
+import Silbol from "./pages/simbol/Silbol";
+
 
 function App() {
   return (
@@ -65,6 +55,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path={"/:lang"} element={<Home />} />
           <Route path={"/search"} element={<Home />} />
+
+
           <Route path=":lang/institut/biz-haqimiqda" element={<AboutUS />} />
           <Route path=":lang/institut/bog'nalish" element={<ContactUs />} />
           <Route path=":lang/institut/Missiyamiz" element={<Mission/>} />
@@ -72,9 +64,8 @@ function App() {
           <Route path=":lang/institut/tarix" element={<History/>} />
           <Route path=":lang/institut/korrupsiya" element={<Corruption />} />
           <Route path=":lang/institut/structure" element={<TreeInstitute/>} />
-
-
-
+          <Route path=":lang/institut/rektorat" element={<Rectorat />} />
+          <Route path=":lang/institut/rektorat/:id" element={<RectoratItem />} />
           <Route path=":lang/institut/fakultetlar" element={<FacultetComponent/>} />
           <Route path=":lang/institut/kafedralar" element={<KafedraComponent/>} />
           <Route path=":lang/institut/bolim-va-markazlar" element={<BolimMarkaz/>} />
@@ -83,6 +74,7 @@ function App() {
           <Route path=":lang/institut/structute/department/:id" element={<TabComponent/>} />
           <Route path=":lang/institut/structute/center/:id" element={<TabComponent/>} />
 
+          <Route path=":lang/davlat-ramzlari" element={<Silbol />} />
 
           <Route path="/filter/result" element={<SillabusPage/>} />
           <Route path=":lang/elon" element={<TreeInstitute />} />
@@ -91,15 +83,6 @@ function App() {
           <Route path="test" element={<TabComponent />} />
           <Route path=":lang/institute/structute/:element/:name/:id" element={<TabComponent />} />
           <Route path=":lang/institute/structute/:name/:id" element={<TabComponent />} />
-
-          {/* =--------------- Tuzilma Page uchun ---------------------------= */}
-          {/*<Route path="/fakultetlar" element={<FacultetComponent />} />*/}
-          {/*<Route path="/fakultetlar/:id" element={<FakultetSingle />} />*/}
-          {/*<Route path="/bolimMarkaz" element={<BolimMarkaz />} />*/}
-          {/*<Route path="/bolimlar/:id" element={<BolimMarkazSingle myKey='bolim' />} />*/}
-          {/*<Route path="/markazlar/:id" element={<BolimMarkazSingle myKey='markaz' />} />*/}
-          {/*<Route path="/kafedralar" element={<KafedraComponent />} />*/}
-          {/*<Route path="/kafedralar/:id" element={<KafedraSingle />} />*/}
           
           {/* TODO - splitter va universal componentlarni optimizatsiya qilish kerak, misol uchun memoga o'rash kerek va hk */}
           <Route path=":lang/:page/:id/"  element={<SplitterComponent><UniversalComponent /></SplitterComponent> } />
