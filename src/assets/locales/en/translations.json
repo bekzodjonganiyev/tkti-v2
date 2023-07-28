@@ -229,6 +229,18 @@
     },
     {
       "name": "Contact"
+    },
+    {
+      "name": "Department"
+    },
+    {
+      "name": "Faculty"
+    },
+    {
+      "name": "Department and centers"
+    },
+    {
+      "name": "Management of the institute"
     }
   ],
   "Admission": [
