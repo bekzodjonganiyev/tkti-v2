@@ -37,7 +37,7 @@ export const Home = () => {
 
 
   return (
-    <div>
+    <div className="max-md:px-2">
       <Banner />
       <Sillabus yili={yili} />
       <News home={true}/>

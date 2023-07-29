@@ -92,7 +92,6 @@ export const Navbar = () => {
         urls.map((url) => apiClientWithFetch.get(url))
       );
 
-
       setUrl((prevState) => ({
         ...prevState,
         loading: false,
@@ -149,7 +148,7 @@ export const Navbar = () => {
           link: `/institut/biz-haqimiqda`,
           id: null,
         },
-        
+
         {
           name: t("Institute.5.name"),
           link: `/institut/ish-reja`,
@@ -190,7 +189,6 @@ export const Navbar = () => {
           link: `/institut/rektorat`,
           id: null,
         },
-       
       ],
     },
     {
@@ -219,11 +217,9 @@ export const Navbar = () => {
     },
   ];
 
-
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
 
   return (
     <nav className="">
@@ -234,9 +230,9 @@ export const Navbar = () => {
             <img src={Logo} alt="" width={"60"} height={"20"} className="" />
             <div className={`text-[#02307d] font-bold`}>
               <div className="text-[14px] mx-3 ">
-              <div>{t("TktiName.0.name")}</div>
-                      <div>{t("TktiName.1.name")}</div>
-                      <div>{t("TktiName.2.name")}</div>
+                <div>{t("TktiName.0.name")}</div>
+                <div>{t("TktiName.1.name")}</div>
+                <div>{t("TktiName.2.name")}</div>
               </div>
             </div>
           </Link>
@@ -251,7 +247,7 @@ export const Navbar = () => {
           elentning linklarni o'rab turgan wrapperning balanligiga tasir
           ko'rsatmasligi */}
 
-            <ul className="flex gap-12 ">
+            <ul className={`flex ${i18next.language === "uz" ? "gap-14" : "gap-7"}`}>
               {link?.map((item, id) =>
                 url.loading ? (
                   <div className="max-w-xs mx-auto p-4 " key={id}>
@@ -262,7 +258,7 @@ export const Navbar = () => {
                 ) : (
                   <li
                     key={id}
-                    className="pb-[31px] navbar__hover cursor-pointer uppercase"
+                    className="pb-[31px] navbar__hover cursor-pointer uppercase text-sm"
                     onMouseEnter={() => setHoveredLink({ ...item })}
                     onMouseLeave={() => setHoveredLink(null)}
                   >
@@ -275,29 +271,41 @@ export const Navbar = () => {
             {/* TODO - group hover bilan tanishib chiqih va li ning border-bottom iga implement qilish */}
             {hoveredLink ? (
               <div
-                className=" navbar__hoverItems backdrop-blur-md bg-[rgba(0,0,0, 0.2)] z-50 flex justify-between rounded p-2 "
+                className="navbar__hoverItems bg-[rgba(0,0,0, 0.2)] z-50 flex items-center justify-center"
                 onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
                 onMouseLeave={() => setHoveredLink(null)}
               >
-                <div className="w-1/3 navbarDes">
-                  <div className="flex gap-5 items-center mb-5">
-                    <img src={Logo} alt="" width={"60"} height={"20"} className="" />
-                    <p className="uppercase">{hoveredLink?.name}</p>
+                <div className="flex gap-12 m-4">
+                  <div className=" pr-5">
+                    <div className="flex gap-5 items-center mb-5">
+                      <img
+                        src={Logo}
+                        alt=""
+                        width={"60"}
+                        height={"20"}
+                        className=""
+                      />
+                      <p className="uppercase">{hoveredLink?.name}</p>
+                    </div>
+                    <p className="w-[300px] lowercase">{hoveredLink?.desc}</p>
                   </div>
-                  <p className="navbarDesc lowercase ">{hoveredLink?.desc}</p>
-                </div>
-                <ul className="grid grid-cols-2 grid-flow-row-dense gap-x-6 w-2/3">
-                  {hoveredLink?.sublinks?.map((item) => (
-                    <li key={item?.id} className="py-2 border-b navbar__hoverItem border-slate-100">
-                      <Link
-                        onClick={() => setIdForFetch(item.id)}
-                        to={`${i18next.language}${item.link}`}
+                  <ul className="h-fit grid grid-cols-2 gap-x-10">
+                    {hoveredLink?.sublinks?.map((item) => (
+                      <li
+                        key={item?.id}
+                        className="h-fit w-44 navbar__hoverItem text-left pl-2 border-b border-slate-200"
                       >
-                        {item?.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                        <Link
+                          className="block py-2"
+                          onClick={() => setIdForFetch(item.id)}
+                          to={`${i18next.language}${item.link}`}
+                        >
+                          {item?.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ) : null}
           </div>
@@ -369,7 +377,6 @@ export const Navbar = () => {
                                 setOpen(false);
                               }}
                               to={`${i18next.language}${subItem.link}`}
-                          
                             >
                               {subItem.name}
                             </Link>

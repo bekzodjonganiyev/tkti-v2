@@ -21,7 +21,7 @@ export const Footer = () => {
   return (
     <>
       <footer className={` bg-[#26597E] `}>
-        <div className="container mx-auto w-[90%] my-[40px]">
+        <div className="container mx-auto w-full my-[40px]">
           <div className="container  flex justify-between  items-center ">
             <div className="">
               <Link to="/" className="my-4 block  ">

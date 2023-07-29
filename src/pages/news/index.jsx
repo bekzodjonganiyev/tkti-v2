@@ -57,7 +57,7 @@ export const News = ({ home }) => {
             <NewsCard
               key={item._id}
               id={item.title_uz}
-              dateProps={item.date}
+              dateProps={time(item.date)}
               img={`${baseURL}${item.photo}`}
               title={t("NewsCard.title", {
                 news_card_title: `${item?.[`title_${i18next.language}`]}`,
