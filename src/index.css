@@ -33,7 +33,7 @@
     text-align: justify;
     width: 100%;
     height: auto;
-    padding: 10px 7px;
+    padding: 10px 16px;
     background: #fff;
     border-bottom: 1px solid whitesmoke;
     display: flex;
@@ -147,4 +147,16 @@
     .accordion__item >h4{
         font-weight: 500;
     }
+}
+
+.card__html__content > img {
+    margin-inline: auto;
+    width: 90%;
+    margin-bottom: 48px;
+}
+
+.card__html__content > p {
+    margin-inline: auto;
+    width: 90%;
+    margin-bottom: 24px;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Tabs } from "flowbite-react";
+import { Tabs, Tooltip } from "flowbite-react";
 import i18next, { t } from "i18next";
 
 import { Loader } from "../loader/Loader";
@@ -19,7 +19,7 @@ export const TabComponent = () => {
   const params = useParams();
   const location = useLocation();
 
-  console.log(params.element);
+  console.log(dataById);
 
   // TODO - shu qilgan ishimni react qanday qabul qiladi, hooklardan foydalanishim kerakmidi?
   const [url, setUrl] = useState("");
@@ -59,6 +59,7 @@ export const TabComponent = () => {
           },
         ];
 
+        console.log(tabItems);
   useEffect(() => {
     if (location?.pathname?.includes('faculty')) {
       setUrl("Fak_data"); 
@@ -95,7 +96,7 @@ export const TabComponent = () => {
         style="underline"
       >
         {tabItems.map((item) => (
-          <Tabs.Item title={item.title} className="">
+          <Tabs.Item key={item?._id} title={item.title} className="">
             {item.title === t("TabComp.employer") ? (
               item.content?.map((employerItem) => (
                 <XodimCard
@@ -108,11 +109,17 @@ export const TabComponent = () => {
                 />
               ))
             ) : item.title === t("TabComp.action") ? (
-              t("TabComp.action")
+              <div className="flex flex-col gap-2">
+                {item?.content?.map((kafedraItem) => (
+                  <Tooltip key={kafedraItem?._id} content={kafedraItem[`about_${i18next.language}`]}>
+                    <Link className="accordion__item" to={`/${i18next.language}/faoliyat/${kafedraItem._id}`}>{kafedraItem[`title_${i18next.language}`]}</Link>
+                  </Tooltip>
+                ))}
+              </div>
             ) : item.title === t("TabComp.kafedras") ? (
               <div className="flex flex-col gap-2">
                 {item.content?.map((kafedraItem) => (
-                <Link to={`/${i18next.language}${kafedraItem.link}`}>{kafedraItem.name}</Link>
+                <Link key={kafedraItem?._id} to={`/${i18next.language}${kafedraItem.link}`}>{kafedraItem.name}</Link>
                 ))}
               </div>
             ) : (

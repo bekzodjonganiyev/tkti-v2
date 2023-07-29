@@ -39,14 +39,12 @@ const KafedraSingle = () => {
   const refId = id.substring(id.lastIndexOf("-") + Number(1));
   const [activeButton, setActiveButton] = useState(1);
 
-
   useEffect(() => {
     if(refId.length ===24){
         DataGetter(setNewOne, `kafedra_data/${refId}`)
     }
   }, []);
 
-  console.log(newOne);
 
   return (
     <div className="container">

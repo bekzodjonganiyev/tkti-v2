@@ -4,6 +4,9 @@ import "./rectorat.css";
 import { Context } from "../../../context";
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
 import { baseURL } from "../../../services/http";
+import { EmailIcon2, LocationIcon2, PhoneIcon2 } from "../../../assets/icons";
+import i18next from "i18next";
+import { Link } from "react-router-dom";
 
 function Rectorat() {
   const { lang, refresh } = useContext(Context);
@@ -12,32 +15,36 @@ function Rectorat() {
 
   useEffect(() => {
     const newRectors = data?.data?.map((item, index) => {
-      return {
-        id: item?._id,
-        status: index === 0 ? true : false,
-        title: item[`job_${lang}`],
-        content: {
-          name: item[`name_${lang}`],
-          img: baseURL + item?.photo,
-          job: item[`job_${lang}`],
-        },
-        body: [
-          {
-            class: "fa-solid fa-phone",
-            text: item?.tel,
-            href: item?.tel,
+      return (
+        {
+          id: item?._id,
+          status: index === 0 ? true : false,
+          title: item[`job_${lang}`],
+          content: {
+            name: item[`name_${lang}`],
+            img: baseURL + item?.photo,
+            job: item[`job_${lang}`]
           },
-          {
-            class: "fa-solid fa-envelope",
-            text: item?.link,
-            href: item?.link,
-          },
-        ],
-      };
-    });
-    setRectors(newRectors);
-  }, [data]);
+          body: [
+            {
+              class: "fa-solid fa-phone",
+              text: item?.tel,
+              href: item?.tel,
+            },
+            {
+              class: "fa-solid fa-envelope",
+              text: item?.link,
+              href: item?.link,
+            }
+          ]
+        }
+      )
+    })
+    setRectors(newRectors)
+  }, [data])
 
+
+  console.log(data);
   const test = (id) => {
     rectors.map((a) => (a.status = false));
     const find = rectors.find((e) => e.id === id);
@@ -95,73 +102,79 @@ function Rectorat() {
                 ></span>
               </li>
 
-              <div
-                className={
-                  a.status
-                    ? "accordion__secret__item rectorat__secret__key"
-                    : "hidden"
-                }
-              >
-                <a className="rectorat__item" href={`rektorat/${a.id}`}>
-                  <img src={a.content.img} alt="img" />
-                  <div className="rectorat__item__body">
-                    <h2>{a.content.name}</h2>
-                    <span>{a.content.job}</span>
-                    {a.body.map((a, index) =>
-                      a.href ? (
-                        <a key={index} href={a.href}>
-                          {" "}
-                          <i className={a.class}></i> {a.text}
+                      <div
+                        className={
+                          a.status
+                            ? "accordion__secret__item rectorat__secret__key"
+                            : "hidden"
+                        }
+                      >
+                        <a
+                          className="rectorat__item"
+                          href={`rektorat/${a.id}`}
+                        >
+                          <img src={a.content.img} alt="img" />
+                          <div className="rectorat__item__body">
+                            <h2>{a.content.name}</h2>
+                            <span>{a.content.job}</span>
+                            {a.body.map((a, index) =>
+                              a.href ? (
+                                <a key={index} href={a.href}>
+                                  {" "}
+                                  <i className={a.class}></i> {a.text}
+                                </a>
+                              ) : (
+                                <p key={index}>
+                                  <i className={a.class}></i> {a.text}
+                                </p>
+                              )
+                            )}
+                          </div>
                         </a>
-                      ) : (
-                        <p key={index}>
-                          <i className={a.class}></i> {a.text}
-                        </p>
-                      )
-                    )}
-                  </div>
-                </a>
-              </div>
-            </>
-          ))}
-        </div>
+                      </div>
+                    </>
+                  ))}
+                </div>
 
-        <div className="rectorat__right">
-          {rectors?.map((a, index) => (
-            <>
-              <div
-                key={index}
-                className={
-                  a.status
-                    ? "accordion__secret__key__desk rectorat__secret__key__desk"
-                    : "hidden"
-                }
-              >
-                <a className="rectorat__item__desk" href={`rektorat/${a.id}`}>
-                  <img src={a.content.img} alt="img" />
-                  <div className="rectorat__desk__body">
-                    <h2>{a.content.name}</h2>
-                    <span>{a.content.job}</span>
-                    {a.body.map((a, index) =>
-                      a.href ? (
-                        <a key={index} href={a.href}>
-                          {" "}
-                          <i className={a.class}></i> {a.text}
+                <div className="rectorat__right">
+                  {rectors?.map((a, index) => (
+                    <>
+                      <div
+                        key={index}
+                        className={
+                          a.status
+                            ? "accordion__secret__key__desk rectorat__secret__key__desk"
+                            : "hidden"
+                        }
+                      >
+                        <a
+                          className="rectorat__item__desk"
+                          href={`rektorat/${a.id}`}
+                        >
+                          <img src={a.content.img} alt="img" />
+                          <div className="rectorat__desk__body">
+                            <h2>{a.content.name}</h2>
+                            <span>{a.content.job}</span>
+                            {a.body.map((a, index) =>
+                              a.href ? (
+                                <a key={index} href={a.href}>
+                                  {" "}
+                                  <i className={a.class}></i> {a.text}
+                                </a>
+                              ) : (
+                                <p key={index}>
+                                  <i className={a.class}></i> {a.text}
+                                </p>
+                              )
+                            )}
+                          </div>
                         </a>
-                      ) : (
-                        <p key={index}>
-                          <i className={a.class}></i> {a.text}
-                        </p>
-                      )
-                    )}
-                  </div>
-                </a>
+                      </div>
+                    </>
+                  ))}
+                </div>
               </div>
-            </>
-          ))}
-        </div>
-      </div>
-    </div>
+            </div>
   );
 }
 

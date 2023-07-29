@@ -26,9 +26,9 @@ import KafedraComponent from "./pages/structure/Kafedra";
 import FacultetComponent from "./pages/structure/fakultet";
 import BolimMarkaz from "./pages/structure/BolimMarkaz";
 import Rectorat from "./pages/rektorat/rectorat/rectorat";
-import RectoratItem from "./pages/rektorat/rectoratItem/rectoratitem";
 import Silbol from "./pages/simbol/Silbol";
 import { RectorateItem } from "./components/rectorate_item/RectorateItem";
+import SingleFaoliyat from "./pages/faoliyat/single_page_faoliyat/SingleFaoliyat";
 
 
 function App() {
@@ -74,6 +74,8 @@ function App() {
           <Route path=":lang/institut/structute/kafedra/:id" element={<TabComponent/>} />
           <Route path=":lang/institut/structute/department/:id" element={<TabComponent/>} />
           <Route path=":lang/institut/structute/center/:id" element={<TabComponent/>} />
+
+          <Route path=":lang/faoliyat/:id" element={<SingleFaoliyat />} />
 
           <Route path=":lang/davlat-ramzlari" element={<Silbol />} />
 
