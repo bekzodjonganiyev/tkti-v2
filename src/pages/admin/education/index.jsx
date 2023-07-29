@@ -88,7 +88,7 @@ export const Education = () => {
             onCancel={handleCancel}
             footer={false}
           >
-             <ParentEditForm url={`talim/all`} id={parentId} />
+             <ParentEditForm setModal={setIsModalOpen} getUrl={`talim/all`} postUrl={`talim/${parentId}`} id={parentId} />
           </Modal>
         </div>
       ),

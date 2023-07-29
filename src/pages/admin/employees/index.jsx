@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
 import { simplifyDateTime } from "../../../helpers";
 import { AddIcon, DeleteIcon, EditIcon } from "../../../assets/icons";
+import { baseURL } from "../../../services/http";
 
 export const Employees = () => {
   const [data, setData] = useState({ loading: true, data: [], error: null });
@@ -110,6 +111,7 @@ export const Employees = () => {
     tel: item?.tell,
     email: item?.email,
     date: item?.date,
+    photo: baseURL + '/' + item?.photo,
     id: item._id,
   }));
 

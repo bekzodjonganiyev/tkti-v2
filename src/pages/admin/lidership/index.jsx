@@ -7,6 +7,7 @@ import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 import { LidershipParentActions } from "./actions";
 import { slug } from  "../../../services/slug"
 import { simplifyDateTime } from "../../../helpers";
+import { baseURL } from "../../../services/http";
 
 export const Lidership = () => {
   const dispatch = useDispatch();
@@ -84,7 +85,7 @@ export const Lidership = () => {
     job: item?.job_uz,
     date: item?.date,
     tel: item?.tel,
-    photo: item?.photo,
+    photo: baseURL + '/' + item?.photo,
     id: item?._id,
   }));
 

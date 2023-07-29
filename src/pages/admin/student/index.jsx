@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Popconfirm, Table } from "antd";
+import { Modal, Popconfirm, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -7,15 +7,35 @@ import { StudentParentActions } from "./actions";
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 import { slug } from "../../../services/slug";
 import { simplifyDateTime } from "../../../helpers";
+import { ParentEditForm } from "../../../components/form_comp2";
+import { useState } from "react";
 
 export { studentParentReducer, studentChildReducer } from "./reducers";
 export const Student = () => {
   const dispatch = useDispatch();
 
+  const [ parentId, setParentId ] = useState(undefined)
+
   const { getData, getDataById, postData, updateData, deleteData } =
     new StudentParentActions();
   const selectorFunc = (state) => state.studentParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = (id) => {
+    setParentId(id)
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
 
   useEffect(() => {
     dispatch(getData());
@@ -44,9 +64,9 @@ export const Student = () => {
           <Link to={`/adminPanel/student/view/${slug(p.name)}/${p.id}`}>
             <ViewIcon />
           </Link>
-          <Link to={"#"}>
+          <div onClick={() => showModal(p.id)}>
             <EditIcon />
-          </Link>
+          </div>
           <Popconfirm
             title="Rostdan o'chirishni xoxlaysizmi?"
             description="O'chirilgan malumotlar qayta tiklanmaydi"
@@ -60,6 +80,15 @@ export const Student = () => {
               <DeleteIcon />
             </button>
           </Popconfirm>
+          <Modal 
+            title="Taxrirlash" 
+            open={isModalOpen} 
+            onOk={handleOk} 
+            onCancel={handleCancel}
+            footer={false}
+          >
+             <ParentEditForm setModal={setIsModalOpen} getUrl={`talabalar/all`} postUrl={`talabalar/${parentId}`} id={parentId} />
+          </Modal>
         </div>
       ),
     },

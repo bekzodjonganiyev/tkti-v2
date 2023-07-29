@@ -35,7 +35,7 @@ export const News = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={"#"}>
+          <Link to={`/adminPanel/news/edit/${p?.id}`}>
             <EditIcon />
           </Link>
           <Popconfirm

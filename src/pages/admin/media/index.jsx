@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal } from "antd";
+import { Modal, Pagination } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import copy from "copy-to-clipboard";
@@ -70,11 +70,13 @@ export const Media = () => {
           <FileDisplay file={item} key={item?._id} />
           ))}
       </div>
-      {/* <Pagination
-        current={current}
-        onChange={onChange}
-        total={Number(data.length)}
-      /> */}
+      <div className="w-full flex justify-end">
+        <Pagination
+          current={current}
+          onChange={onChange}
+          total={Number(data.length)}
+        />
+      </div>
     </div>
   );
 };

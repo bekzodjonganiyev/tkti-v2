@@ -762,7 +762,6 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     en: dataById?.qisqacha_en,
   });
 
-  console.log(dataById);
   const [facultyId, setFacultyId] = useState(dataById?.fakultet_id);
   const [rektoratId, setRektoratId] = useState(dataById?.rektorat);
 
@@ -1129,7 +1128,146 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   );
 };
 
-export const ParentEditForm = ({ url, id }) => {
+export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
+  const selectorFunc = (state) => state.form2;
+  const dispatch = useDispatch();
+  const { dataById, loading, options, success, error, updated } =
+    useSelector(selectorFunc);
+  const { getOptions, putData, getDataById } = new From2Actions();
+
+
+  const filterData = dataById?.filter(item => item?._id === id)
+
+  console.log(filterData);
+
+  const [body, setBody] = useState({
+    uz: filterData[0]?.body_uz,
+    ru: filterData[0]?.body_ru,
+    en: filterData[0]?.body_en,
+  });
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const obj = {
+      title_en: e.target.title_en.value,
+      title_uz: e.target.title_uz.value,
+      title_ru: e.target.title_ru.value,
+      body_en: body?.en,
+      body_uz: body?.uz,
+      body_ru: body?.ru,
+    };
+
+    const body = JSON.stringify(obj);
+
+    dispatch(putData(url, body));
+    // console.log(JSON.parse(body));
+  };
+
+  // window.location.reload(false)
+  useEffect(() => {
+    dispatch(getDataById(url));
+  }, [url]);
+
+
+  useEffect(() => {
+      setBody({ 
+        uz: filterData[0]?.body_uz,
+        ru: filterData[0]?.body_ru,
+        en: filterData[0]?.body_en,
+      })
+  }, [dataById])
+
+  // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
+  // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
+  return (
+    <div className="relative">
+      {(updated && !loading) || (error && !loading) ? (
+        <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
+          <Alert
+            message={`${success ? "Saqlandi" : "Xatoli yuz berdi"}`}
+            description=""
+            type={`${success ? "success" : "error"}`}
+            closable
+            showIcon
+          />
+        </div>
+      ) : null}
+      <Spin spinning={loading}>
+        <form onSubmit={handleSubmit} className="pb-10">
+          {/* TITLES */}
+          <div className="flex flex-col gap-1 mb-5">
+            <label htmlFor="title_uz">F.I.Sh (UZ)</label>
+            <input
+              type="text"
+              id="title_uz"
+              name="title_uz"
+              defaultValue={filterData[0]?.title_uz}
+            />
+          </div>
+
+          <div className="flex flex-col gap-1 mb-5">
+            <label htmlFor="title_ru">F.I.Sh (RU)</label>
+            <input
+              type="text"
+              id="title_ru"
+              name="title_ru"
+              defaultValue={filterData[0]?.title_ru}
+            />
+          </div>
+
+          <div className="flex flex-col gap-1 mb-5">
+            <label htmlFor="title_en">F.I.Sh (EN)</label>
+            <input
+              type="text"
+              id="title_en"
+              name="title_en"
+              defaultValue={filterData[0]?.title_en}
+            />
+          </div>
+          {/* TITLES */}
+
+          {/* BODY */}
+          <div className="mt-10">
+            <span> Body (UZ)</span>
+            <Editor
+              init={editorInit}
+              initialValue={body?.uz}
+              onEditorChange={(e) => setBody({ ...body, uz: e })}
+            />
+          </div>
+
+          <div className="mt-10">
+            <span>Body (RU)</span>
+            <Editor
+              init={editorInit}
+              initialValue={body?.ru}
+              onEditorChange={(e) => setBody({ ...body, ru: e })}
+            />
+          </div>
+
+          <div className="mt-10">
+            <span>Body (EN)</span>
+            <Editor
+              init={editorInit}
+              initialValue={body?.en}
+              onEditorChange={(e) => setBody({ ...body, en: e })}
+            />
+          </div>
+          {/* BODY */}
+
+          <button className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold">
+            Saqlash
+          </button>
+        </form>
+      </Spin>
+    </div>
+  );
+};
+
+
+export const ParentEditForm = ({ getUrl, postUrl, id, setModal }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const { dataById, loading, options, success, error, updated } =
@@ -1138,7 +1276,6 @@ export const ParentEditForm = ({ url, id }) => {
 
   let filterData = []
 
-  console.log(dataById);
 
 try {
   filterData = dataById ? dataById?.filter(item => item?._id === id) : []
@@ -1158,12 +1295,12 @@ try {
 
     const body = JSON.stringify(obj); 
 
-    dispatch(putData(url, body));
+    dispatch(putData(postUrl, body));
   };
 
   useEffect(() => {
-    dispatch(getDataById(url));
-  }, [url]);
+    dispatch(getDataById(getUrl));
+  }, [getUrl]);
 
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi

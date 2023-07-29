@@ -1,4 +1,4 @@
-import { Button, message, Popconfirm, Table } from "antd";
+import { Button, message, Modal, Popconfirm, Table } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,14 +7,34 @@ import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 import { XalqaroParentActions } from "./actions";
 import { slug } from "../../../services/slug"
 import { simplifyDateTime } from "../../../helpers";
+import { ParentEditForm } from "../../../components/form_comp2";
+import { useState } from "react";
 
 export const XalqaroAloqa = () => {
   const dispatch = useDispatch();
+
+  
+  const [ parentId, setParentId ] = useState(undefined)
 
   const { getData, getDataById, postData, updateData, deleteData } =
     new XalqaroParentActions();
   const selectorFunc = (state) => state.xalqaroParent;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = (id) => {
+    setParentId(id)
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     dispatch(getData());
@@ -43,9 +63,9 @@ export const XalqaroAloqa = () => {
           <Link to={`/adminPanel/int_connections/view/${slug(p.name)}/${p.id}`}>
             <ViewIcon />
           </Link>
-          <Link to={"#"}>
+          <div  onClick={() => showModal(p.id)}>
             <EditIcon />
-          </Link>
+          </div>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"
@@ -57,7 +77,15 @@ export const XalqaroAloqa = () => {
           >
             <button type="link"><DeleteIcon/></button>
           </Popconfirm>
-          
+          <Modal 
+            title="Taxrirlash" 
+            open={isModalOpen} 
+            onOk={handleOk} 
+            onCancel={handleCancel}
+            footer={false}
+          >
+             <ParentEditForm setModal={setIsModalOpen} getUrl={`xalqaro/all`} postUrl={`xalqaro/${parentId}`} id={parentId} />
+          </Modal>
         </div>
       ),
     },
