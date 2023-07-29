@@ -13,6 +13,7 @@ function Rectorat() {
   const [data, setData] = useState({ loading: true });
   const [rectors, setRectors] = useState([]);
 
+
   useEffect(() => {
     const newRectors = data?.data?.map((item, index) => {
       return (
@@ -27,12 +28,16 @@ function Rectorat() {
           },
           body: [
             {
-              class: "fa-solid fa-phone",
+              class: <LocationIcon2/>,
+              text: item[`address_${i18next.language}`],
+            },
+            {
+              class: <PhoneIcon2/>,
               text: item?.tel,
               href: item?.tel,
             },
             {
-              class: "fa-solid fa-envelope",
+              class: <EmailIcon2/>,
               text: item?.link,
               href: item?.link,
             }
@@ -81,26 +86,32 @@ function Rectorat() {
 
   return (
     <div className="container wrapped mb-5 mt-10">
-      <div className="rectorat__list">
-        <div className="rectorat__menu">
-          {rectors?.map((a) => (
-            <>
-              <li
-                onClick={() => test(a.id)}
-                className={`accordion__item ${
-                  a.status ? "active__accordion" : ""
-                }`}
-              >
-                {" "}
-                <h4>{a.title}</h4>{" "}
-                <span
-                  className={
-                    a.status
-                      ? "fa-solid fa-angle-down"
-                      : "fa-solid fa-angle-right"
-                  }
-                ></span>
-              </li>
+              <h3 style={{ display: "flex", justifyContent: "left" }}>
+                {ContactLang[lang].hero.title}
+              </h3>
+              <span className="my-5 d-block">
+                {ContactLang[lang].hero.info}
+              </span>
+              <div className="rectorat__list">
+                <div className="rectorat__menu">
+                  {rectors?.map((a) => (
+                    <>
+                      <li
+                        onClick={() => test(a.id)}
+                        className={`accordion__item ${
+                          a.status ? "active__accordion" : ""
+                        }`}
+                      >
+                        {" "}
+                        <h4>{a.title}</h4>{" "}
+                        <span
+                          className={
+                            a.status
+                              ? "fa-solid fa-angle-down"
+                              : "fa-solid fa-angle-right"
+                          }
+                        ></span>
+                      </li>
 
                       <div
                         className={
@@ -136,40 +147,36 @@ function Rectorat() {
                   ))}
                 </div>
 
+                
+
                 <div className="rectorat__right">
-                  {rectors?.map((a, index) => (
+                  {rectors?.map((a) => (
                     <>
-                      <div
-                        key={index}
-                        className={
-                          a.status
-                            ? "accordion__secret__key__desk rectorat__secret__key__desk"
-                            : "hidden"
-                        }
-                      >
-                        <a
-                          className="rectorat__item__desk"
-                          href={`rektorat/${a.id}`}
-                        >
-                          <img src={a.content.img} alt="img" />
-                          <div className="rectorat__desk__body">
-                            <h2>{a.content.name}</h2>
+                      {/* begin::Person card */}
+                      <Link to={`${a.id}`} className={ a.status ? "accordion__secret__key__desk rectorat__secret__key__desk" : "hidden " + " flex flex-col max-lg:w-full"} >
+                        {/* Avatar */}
+                        <div className="w-full">
+                          <img
+                            loading="lazy"
+                            src={a?.content?.img}
+                            alt={a?.title}
+                            className="w-full h-full object-cover bg-center"
+                          />
+                        </div>
+                        {/* Info section */}
+                        <div className="flex flex-col gap-4 p-4 bg-[#26597E] text-white">
+                           <h2>{a.content.name}</h2>
                             <span>{a.content.job}</span>
-                            {a.body.map((a, index) =>
-                              a.href ? (
-                                <a key={index} href={a.href}>
-                                  {" "}
-                                  <i className={a.class}></i> {a.text}
-                                </a>
-                              ) : (
-                                <p key={index}>
-                                  <i className={a.class}></i> {a.text}
-                                </p>
-                              )
-                            )}
-                          </div>
-                        </a>
-                      </div>
+                          {
+                            a?.body?.map((item, i) => 
+                              <p key={i} className="flex items-center gap-2">
+                                {item?.class} {item?.text}
+                              </p>
+                            )
+                          }
+                        </div>
+                      </Link>
+                      {/* end::Person card */}
                     </>
                   ))}
                 </div>

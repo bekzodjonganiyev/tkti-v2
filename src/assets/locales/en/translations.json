@@ -404,7 +404,7 @@
     "about": "About",
     "aim": "Aim",
     "employer": "Employees",
-    "action": "Activity",
+    "action": "Activity documents",
     "kafedras": "Department"
   },
   "TreeComp": {
@@ -413,5 +413,11 @@
     "expand": "Less",
     "more": "More",
     "faculty": "Faculties"
+  },
+  "RectorateAccordion": {
+    "short": "Brief information",
+    "action": "Scientific and pedagogical work",
+    "scients": "Scientific directions",
+    "task": "The main duties of the position"
   }
 }

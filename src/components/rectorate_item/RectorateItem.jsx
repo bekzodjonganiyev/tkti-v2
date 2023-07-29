@@ -6,7 +6,7 @@ import { Loader } from "../loader/Loader";
 
 import apiClientWithFetch from "../../services/apiClientWithFetch";
 import { baseURL } from "../../services/http";
-import i18next from "i18next";
+import i18next, { t } from "i18next";
 import { EmailIcon2, LocationIcon2, PhoneIcon2 } from "../../assets/icons";
 
 export const RectorateItem = () => {
@@ -51,10 +51,10 @@ export const RectorateItem = () => {
           {data?.data[`job_${i18next.language}`]}
         </p>
         <div>
-          <Accordion className=" ">
+          <Accordion>
             <Accordion.Panel className="focus:border-none">
               <Accordion.Title>
-                <h2>Qisqacha malumot</h2>
+                <h2>{t("RectorateAccordion.short")}</h2>
               </Accordion.Title>
               <Accordion.Content>
                 <div
@@ -67,7 +67,7 @@ export const RectorateItem = () => {
             </Accordion.Panel>
             <Accordion.Panel>
               <Accordion.Title>
-                <h2>Ilmiy va pedagogik mehnat faoliyati</h2>
+                <h2>{t("RectorateAccordion.action")}</h2>
               </Accordion.Title>
               <Accordion.Content>
                 <div
@@ -81,7 +81,7 @@ export const RectorateItem = () => {
             </Accordion.Panel>
             <Accordion.Panel>
               <Accordion.Title>
-                <h2>Ilmiy yoʻnalishlari</h2>
+                <h2>{t("RectorateAccordion.scients")}</h2>
               </Accordion.Title>
               <Accordion.Content>
                 <div
@@ -95,7 +95,7 @@ export const RectorateItem = () => {
             </Accordion.Panel>
             <Accordion.Panel>
               <Accordion.Title>
-                <h2>Lavozimdagi asosiy vazifalari</h2>
+                <h2>{t("RectorateAccordion.task")}</h2>
               </Accordion.Title>
               <Accordion.Content>
                 <div

@@ -35,7 +35,6 @@ const BolimMarkaz = () => {
   });
 
   console.log("markaz: ", markaz);
-  console.log("bolim:", bolim);
 
 
   useEffect(() => {
@@ -60,7 +59,7 @@ const BolimMarkaz = () => {
         {
             bolim?.isFetched && bolim?.data ? (
                 bolim?.data.map((item, index) => (
-                  <AnimateCard refLink={`${i18next.language}/institut/structute/department`} refTitle={item?.title_uz} refId={item._id} key={index} mainTitle={item[`title_${lang}`]} />
+                  <AnimateCard refLink={`${i18next.language}/institut/structute/department`} refTitle={item[`title_${i18next.language}`]} refId={item._id} key={index} mainTitle={item[`title_${i18next.language}`]} />
                 ))
             ):bolim.error ?(
                 <></>
@@ -91,9 +90,9 @@ const BolimMarkaz = () => {
                   <AnimateCard 
                     key={index} 
                     refLink={`${i18next.language}/institut/structute/center`}
-                    refTitle={item?.title_uz} 
+                    refTitle={item[`title_${i18next.language}`]} 
                     refId={item._id} 
-                    mainTitle={item?.title_uz} 
+                    mainTitle={item[`title_${i18next.language}`]} 
                     />
                 ))
             ): markaz.error ?(

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Tabs, Tooltip } from "flowbite-react";
+import { Tabs } from "flowbite-react";
 import i18next, { t } from "i18next";
 
 import { Loader } from "../loader/Loader";
@@ -10,11 +10,12 @@ import { XodimCard } from "../xodim_card/XodimCard";
 import { getById } from "./action";
 import { baseURL } from "../../services/http";
 import { RectorateItem } from "../rectorate_item/RectorateItem";
+import { simplifyDateTime } from "../../helders";
 
 export const TabComponent = () => {
   const dispatch = useDispatch();
   const selectorFunc = (state) => state.tabComp;
-  const { dataById, loading, error } = useSelector(selectorFunc);
+  const { dataById, loading } = useSelector(selectorFunc);
 
   const params = useParams();
   const location = useLocation();
@@ -111,15 +112,19 @@ export const TabComponent = () => {
             ) : item.title === t("TabComp.action") ? (
               <div className="flex flex-col gap-2">
                 {item?.content?.map((kafedraItem) => (
-                  <Tooltip key={kafedraItem?._id} content={kafedraItem[`about_${i18next.language}`]}>
-                    <Link className="accordion__item" to={`/${i18next.language}/faoliyat/${kafedraItem._id}`}>{kafedraItem[`title_${i18next.language}`]}</Link>
-                  </Tooltip>
+                  <Link key={kafedraItem?._id} className="activity__item_wrapper bg-stone-50 rounded border-2 border-stone-200 px-8 py-4" to={`/${i18next.language}/faoliyat/${kafedraItem._id}`}>
+                    {kafedraItem[`title_${i18next.language}`]}
+                    <span className="mt-2 text-gray-400 text-sm">{ simplifyDateTime(kafedraItem?.date) }</span>
+                    </Link>
                 ))}
               </div>
             ) : item.title === t("TabComp.kafedras") ? (
               <div className="flex flex-col gap-2">
                 {item.content?.map((kafedraItem) => (
-                <Link key={kafedraItem?._id} to={`/${i18next.language}${kafedraItem.link}`}>{kafedraItem.name}</Link>
+                <Link key={kafedraItem?._id} to={`/${i18next.language}${kafedraItem.link}`}>
+                  {kafedraItem.name}
+                   
+                </Link>
                 ))}
               </div>
             ) : (

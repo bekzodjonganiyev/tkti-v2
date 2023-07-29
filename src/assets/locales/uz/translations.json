@@ -430,7 +430,7 @@
     "aim": "Maqsad",
     "employer": "Xodimlar",
     "kafedras": "Bo'lim",
-    "action": "Faoliyat"
+    "action": "Faoliyat hujjatlari"
   },
   "TreeComp": {
     "rektor": "Rektor",
@@ -438,5 +438,11 @@
     "expand": "Kamroq",
     "more": "Batafsil",
     "faculty": "Fakultetlar"
+  },
+  "RectorateAccordion": {
+    "short": "Qisqacha malumot",
+    "action": "Ilmiy va pedagogik mehnat faoliyati",
+    "scients": "Ilmiy yoʻnalishlari",
+    "task": "Lavozimdagi asosiy vazifalari"
   }
 }

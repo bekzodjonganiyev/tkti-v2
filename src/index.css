@@ -160,3 +160,10 @@
     width: 90%;
     margin-bottom: 24px;
 }
+
+.activity__item_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column
+}
