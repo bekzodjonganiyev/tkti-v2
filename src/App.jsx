@@ -28,6 +28,7 @@ import BolimMarkaz from "./pages/structure/BolimMarkaz";
 import Rectorat from "./pages/rektorat/rectorat/rectorat";
 import RectoratItem from "./pages/rektorat/rectoratItem/rectoratitem";
 import Silbol from "./pages/simbol/Silbol";
+import { RectorateItem } from "./components/rectorate_item/RectorateItem";
 
 
 function App() {
@@ -65,7 +66,7 @@ function App() {
           <Route path=":lang/institut/korrupsiya" element={<Corruption />} />
           <Route path=":lang/institut/structure" element={<TreeInstitute/>} />
           <Route path=":lang/institut/rektorat" element={<Rectorat />} />
-          <Route path=":lang/institut/rektorat/:id" element={<RectoratItem />} />
+          <Route path=":lang/institut/rektorat/:id" element={<RectorateItem />} />
           <Route path=":lang/institut/fakultetlar" element={<FacultetComponent/>} />
           <Route path=":lang/institut/kafedralar" element={<KafedraComponent/>} />
           <Route path=":lang/institut/bolim-va-markazlar" element={<BolimMarkaz/>} />

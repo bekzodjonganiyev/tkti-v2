@@ -151,7 +151,8 @@ export const TopHeader = () => {
               />
             </form>
           </div>
-          <div className="lg:flex hidden justify-between items-center">
+          <div className="flex justify-between items-center">
+            <div className="lg:flex hidden justify-between items-center">
             <Link to={ i18next.language + "/davlat-ramzlari"}>
               <img src={gerb} alt="O'z. Res. gerbi" width={"50"} />
             </Link>
@@ -201,6 +202,7 @@ export const TopHeader = () => {
               className="header__greyscale"
             >
               <CircleHalf />
+            </div>
             </div>
 
             <div className=" flex items-center justify-end gap-3 ml-10 text-white">

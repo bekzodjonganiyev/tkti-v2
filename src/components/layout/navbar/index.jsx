@@ -92,7 +92,6 @@ export const Navbar = () => {
         urls.map((url) => apiClientWithFetch.get(url))
       );
 
-      console.log(responses);
 
       setUrl((prevState) => ({
         ...prevState,

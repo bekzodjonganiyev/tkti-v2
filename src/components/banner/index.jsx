@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { Carousel } from "flowbite-react";
 import { useSelector, useDispatch } from "react-redux";
-
 import "./slider.css";
-
 import { BannerActions } from "./actions";
 import { baseURL } from "../../services/http";
 
+
 export const Banner = () => {
   const { getData } = new BannerActions();
-
   const getBanner = (state) => state.banner;
   const { data, loading, error } = useSelector(getBanner);
   const dispatch = useDispatch();

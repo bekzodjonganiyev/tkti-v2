@@ -14,6 +14,7 @@ export const RectorateItem = () => {
 
   const [data, setData] = useState({ loading: true });
 
+
   const getData = async () => {
     const res = await apiClientWithFetch.get(`rektorat/${id}`);
     if (res.status === 200) {
