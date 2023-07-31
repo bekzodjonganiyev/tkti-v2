@@ -167,3 +167,9 @@
     align-items: flex-start;
     flex-direction: column
 }
+
+.loodaer__wrapper {
+    display: flex !important;
+    justify-content: space-around !important;
+    gap: 24px;
+}

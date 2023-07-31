@@ -45,10 +45,10 @@
     flex-direction: column;
 }
 
-.loodaer__wrapper{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.loodaer__wrapper {
+    display: flex !important;
+    justify-content: space-around !important;
+    gap: 24px;
 }
 .container{
     /* min-width: 425px; */

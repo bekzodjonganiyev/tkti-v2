@@ -3,7 +3,7 @@ import ContentLoader from 'react-content-loader'
 
 const DoorDashFavorite = props => (
   <ContentLoader
-    width={props.width}
+    width={props?.width}
     height={400}
     viewBox="0 0 450 400"
     backgroundColor="#f0f0f0"
