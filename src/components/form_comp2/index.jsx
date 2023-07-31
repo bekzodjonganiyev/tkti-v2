@@ -126,10 +126,18 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item name="name_ru" label="Nomi RUS" rules={[{ required: true }]}>
+        <Form.Item
+          name="title_ru"
+          label="Nomi RUS"
+          rules={[{ required: true }]}
+        >
           <Input />
         </Form.Item>
-        <Form.Item name="name_en" label="Nomi ING" rules={[{ required: true }]}>
+        <Form.Item
+          name="title_en"
+          label="Nomi ING"
+          rules={[{ required: true }]}
+        >
           <Input />
         </Form.Item>
 
