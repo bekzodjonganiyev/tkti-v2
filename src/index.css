@@ -6,3 +6,16 @@
     background: indigo;
     color: white
 }
+
+.lazy-load-image-background {
+    background-color: #fff;
+    width: 100%;
+}
+
+.lazy-load-image-background > img {
+    object-fit: contain;
+    object-position: center;
+    margin-inline: auto;
+    width: 300px;
+    height: 400px;
+}

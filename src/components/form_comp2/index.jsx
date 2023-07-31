@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Form, Input, Select, Alert, Spin } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  Select,
+  Alert,
+  Spin,
+  message,
+  Upload,
+} from "antd";
 import { Editor } from "@tinymce/tinymce-react";
+import { UploadOutlined } from "@ant-design/icons";
 
 import TextEditor from "../text_editor/TextEditor";
 import { From2Actions } from "./action";
@@ -60,8 +70,8 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   };
 
   const selectFunc = () => {
-   return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId}
-  }
+    return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId };
+  };
 
   const handleSubmit = (value) => {
     const obj = {
@@ -75,7 +85,7 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
     };
 
     const body = hasSelect
-      ? JSON.stringify({ ...obj, ...selectFunc()})
+      ? JSON.stringify({ ...obj, ...selectFunc() })
       : JSON.stringify(obj);
 
     dispatch(postData(url, body));
@@ -116,18 +126,10 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          name="name_ru"
-          label="Nomi RUS"
-          rules={[{ required: true }]}
-        >
+        <Form.Item name="name_ru" label="Nomi RUS" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item
-          name="name_en"
-          label="Nomi ING"
-          rules={[{ required: true }]}
-        >
+        <Form.Item name="name_en" label="Nomi ING" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
 
@@ -244,8 +246,6 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
       maqsad_en: aim?.en,
     };
 
-
-
     const body = hasSelect
       ? JSON.stringify({ ...obj, ...selectFunc() })
       : JSON.stringify(obj);
@@ -265,15 +265,15 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
       uz: dataById?.haqida_uz,
       ru: dataById?.haqida_ru,
       en: dataById?.haqida_en,
-    })
+    });
     setAim({
       uz: dataById?.maqsad_uz,
       ru: dataById?.maqsad_ru,
       en: dataById?.maqsad_en,
-    })
-    setFacultyId(dataById?.fakultet_id)
-    setRektoratId(dataById?.rektorat)
-  }, [dataById])
+    });
+    setFacultyId(dataById?.fakultet_id);
+    setRektoratId(dataById?.rektorat);
+  }, [dataById]);
 
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
@@ -416,14 +416,12 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   );
 };
 
-
 export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const { dataById, loading, options, success, error, updated } =
     useSelector(selectorFunc);
   const { getOptions, putData, getDataById } = new From2Actions();
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -437,7 +435,7 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
       job_en: e.target.job_en.value,
       tell: e.target.tel.value,
       email: e.target.email.value,
-      kafedra_id: dataById?.kafedra_id
+      kafedra_id: dataById?.kafedra_id,
     };
 
     const body = JSON.stringify(obj);
@@ -469,7 +467,6 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
       ) : null}
       <Spin spinning={loading}>
         <form onSubmit={handleSubmit} className="pb-10">
-
           {/* TITLES */}
           <div className="flex flex-col gap-1 mb-5">
             <label htmlFor="name_uz">Sarlavha (UZ)</label>
@@ -501,7 +498,6 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             />
           </div>
           {/* TITLES */}
-
 
           {/* JOB */}
           <div className="flex flex-col gap-1 mb-5">
@@ -535,8 +531,8 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
           </div>
           {/* JOB */}
 
-           {/* OTHERS */}
-           <div className="flex flex-col gap-1 mb-5">
+          {/* OTHERS */}
+          <div className="flex flex-col gap-1 mb-5">
             <label htmlFor="tel">Telefon raqami</label>
             <input
               type="text"
@@ -558,9 +554,10 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
           {/* OTHERS */}
 
-         
-
-          <button type="submit" className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold">
+          <button
+            type="submit"
+            className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold"
+          >
             Saqlash
           </button>
         </form>
@@ -593,22 +590,24 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   };
 
   const selectFunc = () => {
-   return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId}
-  }
+    return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId };
+  };
 
-  const handleSubmit = (value) => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const obj = {
-      ...value,
-      haqida_uz: aboutUs?.uz,
-      haqida_ru: aboutUs?.ru,
-      haqida_en: aboutUs?.en,
-      maqsad_uz: aim?.uz,
-      maqsad_ru: aim?.ru,
-      maqsad_en: aim?.en,
+      name_uz: e.target.name_uz.value,
+      name_ru: e.target.name_ru.value,
+      name_en: e.target.name_en.value,
+      job_uz: e.target.job_uz.value,
+      job_ru: e.target.job_ru.value,
+      job_en: e.target.job_en.value,
+      tell: e.target.tel.value,
+      email: e.target.email.value,
     };
 
     const body = hasSelect
-      ? JSON.stringify({ ...obj, ...selectFunc()})
+      ? JSON.stringify({ ...obj, ...selectFunc() })
       : JSON.stringify(obj);
 
     dispatch(postData(url, body));
@@ -633,100 +632,93 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
           />
         </div>
       ) : null}
-      <Form
-        onFinish={handleSubmit}
-        style={{
-          maxWidth: "100%",
-          padding: "20px",
-        }}
-        className="my-8 mx-4"
-        validateMessages={validateMessages}
-      >
-        <Form.Item
-          name="title_uz"
-          label="Nomi UZB"
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="name_ru"
-          label="Nomi RUS"
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="name_en"
-          label="Nomi ING"
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <TextEditor
-          title={{
-            uz: "Haqida batafsil UZB",
-            ru: "Haqida batafsil RUS",
-            en: "Haqida batafsil ING",
-          }}
-          value={{
-            uz: aboutUs.uz,
-            ru: aboutUs.ru,
-            en: aboutUs.en,
-          }}
-          handleValue={{
-            uz: (e) => setAboutUs({ ...aboutUs, uz: e }),
-            ru: (e) => setAboutUs({ ...aboutUs, ru: e }),
-            en: (e) => setAboutUs({ ...aboutUs, en: e }),
-          }}
-        />
-
-        <TextEditor
-          title={{
-            uz: "Maqsad batafsil UZB",
-            ru: "Maqsad batafsil RUS",
-            en: "Maqsad batafsil ING",
-          }}
-          value={{
-            uz: aim.uz,
-            ru: aim.ru,
-            en: aim.en,
-          }}
-          handleValue={{
-            uz: (e) => setAim({ ...aim, uz: e }),
-            ru: (e) => setAim({ ...aim, ru: e }),
-            en: (e) => setAim({ ...aim, en: e }),
-          }}
-        />
-
-        <br />
-
-        {hasSelect ? (
-          <Select
-            defaultValue="lucy"
-            style={{
-              width: "100%",
-            }}
-            onChange={handleChange}
-            options={form2State.options}
+      <form onSubmit={handleSubmit} className="pb-10">
+        {/* TITLES */}
+        <div className="flex flex-col gap-1 mb-5">
+          <label htmlFor="name_uz">F.I.Sh (UZ)</label>
+          <input
+            type="text"
+            id="name_uz"
+            name="name_uz"
           />
-        ) : null}
+        </div>
 
-        <br />
-        <br />
+        <div className="flex flex-col gap-1 mb-5">
+          <label htmlFor="name_ru">F.I.Sh (RU)</label>
+          <input
+            type="text"
+            id="name_ru"
+            name="name_ru"
+          />
+        </div>
 
-        <Button
-          htmlType="submit"
-          loading={form2State.loading}
-          type={" "}
-          block
-          className="bg-blue-500 text-white flex justify-center items-center py-6"
-          classNames=""
+        <div className="flex flex-col gap-1 mb-5">
+          <label htmlFor="name_en">F.I.Sh (EN)</label>
+          <input
+            type="text"
+            id="name_en"
+            name="name_en"
+          />
+        </div>
+        {/* TITLES */}
+
+        {/* JOB */}
+        <div className="flex flex-col gap-1 mb-5">
+          <label htmlFor="job_uz">Lavozimi (UZ)</label>
+          <input
+            type="text"
+            id="job_uz"
+            name="job_uz"
+          />
+        </div>
+
+        <div className="flex flex-col gap-1 mb-5">
+          <label htmlFor="job_ru">Lavozimi (RU)</label>
+          <input
+            type="text"
+            id="job_ru"
+            name="job_ru"
+          />
+        </div>
+
+        <div className="flex flex-col gap-1 mb-5">
+          <label htmlFor="job_en">Lavozimi (EN)</label>
+          <input
+            type="text"
+            id="job_en"
+            name="job_en"
+          />
+        </div>
+        {/* JOB */}
+
+        {/* OTHERS */}
+        <div className="flex flex-col gap-1 mb-5">
+          <label htmlFor="tel">Telefon raqami</label>
+          <input
+            type="text"
+            id="tel"
+            name="tel"
+          />
+        </div>
+
+        <div className="flex flex-col gap-1 mb-5">
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+          />
+        </div>
+
+        {/* OTHERS */}
+
+        <button
+          type="submit"
+          className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold"
         >
-          <p className="text-lg">Saqlash</p>
-        </Button>
-      </Form>
+          Saqlash
+        </button>
+      </form>
     </div>
   );
 };
@@ -818,29 +810,28 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     dispatch(getDataById(url));
   }, [url]);
 
-
   useEffect(() => {
-      setQisqacha({ 
-        uz: dataById?.qisqacha_uz,
-        ru: dataById?.qisqacha_ru,
-        en: dataById?.qisqacha_en,
-      })
-      setAsosiyVazifa({
-        uz: dataById?.asosiy_vazifa_uz,
-        ru: dataById?.asosiy_vazifa_ru,
-        en: dataById?.asosiy_vazifa_en,
-      })
-      setIlmiyYonalish({
-        uz: dataById?.ilmiy_yonlaish_uz,
-        ru: dataById?.ilmiy_yonlaish_ru,
-        en: dataById?.ilmiy_yonlaish_en,
-      })
-      setMehnatFaoliyat({
-        uz: dataById?.mehnat_faoliyat_uz,
-        ru: dataById?.mehnat_faoliyat_ru,
-        en: dataById?.mehnat_faoliyat_en,
-      })
-  }, [dataById])
+    setQisqacha({
+      uz: dataById?.qisqacha_uz,
+      ru: dataById?.qisqacha_ru,
+      en: dataById?.qisqacha_en,
+    });
+    setAsosiyVazifa({
+      uz: dataById?.asosiy_vazifa_uz,
+      ru: dataById?.asosiy_vazifa_ru,
+      en: dataById?.asosiy_vazifa_en,
+    });
+    setIlmiyYonalish({
+      uz: dataById?.ilmiy_yonlaish_uz,
+      ru: dataById?.ilmiy_yonlaish_ru,
+      en: dataById?.ilmiy_yonlaish_en,
+    });
+    setMehnatFaoliyat({
+      uz: dataById?.mehnat_faoliyat_uz,
+      ru: dataById?.mehnat_faoliyat_ru,
+      en: dataById?.mehnat_faoliyat_en,
+    });
+  }, [dataById]);
 
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
@@ -955,7 +946,6 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
           </div>
           {/* ADDRESS */}
 
-
           {/* TELL */}
           <div className="flex flex-col gap-1 mb-5">
             <label htmlFor="tel">Telefon raqami</label>
@@ -967,8 +957,8 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             />
           </div>
 
-           {/* LINK */}
-           <div className="flex flex-col gap-1 mb-5">
+          {/* LINK */}
+          <div className="flex flex-col gap-1 mb-5">
             <label htmlFor="link">Link</label>
             <input
               type="text"
@@ -1013,7 +1003,9 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <Editor
               init={editorInit}
               initialValue={dataById?.asosiy_vazifa_uz}
-              onEditorChange={(e) => setAsosiyVazifa({ ...asosiyVazifa, uz: e })}
+              onEditorChange={(e) =>
+                setAsosiyVazifa({ ...asosiyVazifa, uz: e })
+              }
             />
           </div>
 
@@ -1022,7 +1014,9 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <Editor
               init={editorInit}
               initialValue={dataById?.asosiy_vazifa_ru}
-              onEditorChange={(e) => setAsosiyVazifa({ ...asosiyVazifa, ru: e })}
+              onEditorChange={(e) =>
+                setAsosiyVazifa({ ...asosiyVazifa, ru: e })
+              }
             />
           </div>
 
@@ -1031,7 +1025,9 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <Editor
               init={editorInit}
               initialValue={dataById?.asosiy_vazifa_en}
-              onEditorChange={(e) => setAsosiyVazifa({ ...asosiyVazifa, en: e })}
+              onEditorChange={(e) =>
+                setAsosiyVazifa({ ...asosiyVazifa, en: e })
+              }
             />
           </div>
           {/* ASOSIY VAZIFA */}
@@ -1042,7 +1038,9 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <Editor
               init={editorInit}
               initialValue={dataById?.ilmiy_yonlaish_uz}
-              onEditorChange={(e) => setIlmiyYonalish({ ...ilmiyYonalish, uz: e })}
+              onEditorChange={(e) =>
+                setIlmiyYonalish({ ...ilmiyYonalish, uz: e })
+              }
             />
           </div>
 
@@ -1051,7 +1049,9 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <Editor
               init={editorInit}
               initialValue={dataById?.ilmiy_yonlaish_ru}
-              onEditorChange={(e) => setIlmiyYonalish({ ...ilmiyYonalish, ru: e })}
+              onEditorChange={(e) =>
+                setIlmiyYonalish({ ...ilmiyYonalish, ru: e })
+              }
             />
           </div>
 
@@ -1060,18 +1060,22 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <Editor
               init={editorInit}
               initialValue={dataById?.ilmiy_yonlaish_en}
-              onEditorChange={(e) => setIlmiyYonalish({ ...ilmiyYonalish, en: e })}
+              onEditorChange={(e) =>
+                setIlmiyYonalish({ ...ilmiyYonalish, en: e })
+              }
             />
           </div>
           {/* ILMIY */}
 
-           {/* ILMIY */}
-           <div className="mt-10">
+          {/* ILMIY */}
+          <div className="mt-10">
             <span>Mehnat faoliyat (UZ)</span>
             <Editor
               init={editorInit}
               initialValue={dataById?.mehnat_faoliyat_uz}
-              onEditorChange={(e) => setMehnatFaoliyat({ ...mehnatFaoliyat, uz: e })}
+              onEditorChange={(e) =>
+                setMehnatFaoliyat({ ...mehnatFaoliyat, uz: e })
+              }
             />
           </div>
 
@@ -1080,7 +1084,9 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <Editor
               init={editorInit}
               initialValue={dataById?.mehnat_faoliyat_ru}
-              onEditorChange={(e) => setMehnatFaoliyat({ ...mehnatFaoliyat, ru: e })}
+              onEditorChange={(e) =>
+                setMehnatFaoliyat({ ...mehnatFaoliyat, ru: e })
+              }
             />
           </div>
 
@@ -1089,7 +1095,9 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <Editor
               init={editorInit}
               initialValue={dataById?.mehnat_faoliyat_en}
-              onEditorChange={(e) => setMehnatFaoliyat({ ...mehnatFaoliyat, en: e })}
+              onEditorChange={(e) =>
+                setMehnatFaoliyat({ ...mehnatFaoliyat, en: e })
+              }
             />
           </div>
           {/* AIM */}
@@ -1128,6 +1136,304 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   );
 };
 
+export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
+  const selectorFunc = (state) => state.form2;
+  const dispatch = useDispatch();
+  const form2State = useSelector(selectorFunc);
+  console.log(form2State);
+  const { getOptions, postData } = new From2Actions();
+
+  const [image, setImage] = useState(undefined);
+
+  console.log(image);
+
+  const [asosiyVazifa, setAsosiyVazifa] = useState({
+    uz: "",
+    ru: "",
+    en: "",
+  });
+
+  const [ilmiyYonalish, setIlmiyYonalish] = useState({
+    uz: "",
+    ru: "",
+    en: "",
+  });
+
+  const [mehnatFaoliyat, setMehnatFaoliyat] = useState({
+    uz: "",
+    ru: "",
+    en: "",
+  });
+
+  const [qisqacha, setQisqacha] = useState({
+    uz: "",
+    ru: "",
+    en: "",
+  });
+  const [facultyId, setFacultyId] = useState("");
+  const [rektoratId, setRektoratId] = useState("");
+
+  const handleChange = (value) => {
+    bolim ? setRektoratId(value) : setFacultyId(value);
+  };
+
+  const selectFunc = () => {
+    return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId };
+  };
+
+  const handleSubmit = (e) => {
+    const formData = new FormData();
+    const obj = {
+      ...e,
+      asosiy_vazifa_en: asosiyVazifa?.en,
+      asosiy_vazifa_uz: asosiyVazifa?.uz,
+      asosiy_vazifa_ru: asosiyVazifa?.ru,
+      ilmiy_yonlaish_en: ilmiyYonalish?.en,
+      ilmiy_yonlaish_uz: ilmiyYonalish?.uz,
+      ilmiy_yonlaish_ru: ilmiyYonalish?.ru,
+      mehnat_faoliyat_en: mehnatFaoliyat?.en,
+      mehnat_faoliyat_uz: mehnatFaoliyat?.uz,
+      mehnat_faoliyat_ru: mehnatFaoliyat?.ru,
+      qisqacha_en: qisqacha?.en,
+      qisqacha_uz: qisqacha?.uz,
+      qisqacha_ru: qisqacha?.ru,
+      photo: image?.fileList[0]?.originFileObj,
+    };
+
+    formData.append(
+      "data",
+      new Blob([JSON.stringify(obj)], { type: "application/json" })
+    );
+
+    const body = hasSelect
+      ? JSON.stringify({ ...obj, ...selectFunc() })
+      : JSON.stringify(obj);
+
+    dispatch(postData(url, body));
+    // console.log(JSON.parse(body));
+  };
+
+  useEffect(() => {
+    hasSelect ? dispatch(getOptions(selectUrl)) : null;
+  }, []);
+
+  return (
+    <div className="relative">
+      {(form2State.added && !form2State.loading) ||
+      (form2State.error && !form2State.loading) ? (
+        <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
+          <Alert
+            message={`${form2State.success ? "Saqlandi" : "Xatoli yuz berdi"}`}
+            description=""
+            type={`${form2State.success ? "success" : "error"}`}
+            closable
+            showIcon
+          />
+        </div>
+      ) : null}
+      <Form
+        onFinish={handleSubmit}
+        style={{
+          maxWidth: "100%",
+          padding: "20px",
+        }}
+        className="my-8 mx-4"
+        validateMessages={validateMessages}
+      >
+        {/* =----------- NAME ---------------= */}
+        <Form.Item
+          name="name_uz"
+          label="Ismi (UZ)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="name_ru"
+          label="Ismi (Ru)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="name_en"
+          label="Ismi (En)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+
+        {/* =------------------- JOB -----------------= */}
+        <Form.Item
+          name="job_uz"
+          label="Lavozimi (UZ)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="job_ru"
+          label="Lavozimi (Ru)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="job_en"
+          label="Lavozimi (En)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+
+        {/* =------------------- ADDRESS -----------------= */}
+        <Form.Item
+          name="address_uz"
+          label="Ish vaqti (UZ)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="address_ru"
+          label="Ish vaqti (Ru)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="address_en"
+          label="Ish vaqti (En)"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+
+        {/* =------------ EMAIL -----------------= */}
+        <Form.Item name="email" label="Email" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+
+        {/* =------------ TEL -----------------= */}
+        <Form.Item
+          name="tel"
+          label="Telefon raqami"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+
+        {/* =-------------- QISQACHA ------------------= */}
+        <TextEditor
+          title={{
+            uz: "Qisqacha (Uz)",
+            ru: "Qisqacha (Ru)",
+            en: "Qisqacha (En)",
+          }}
+          value={{
+            uz: qisqacha.uz,
+            ru: qisqacha.ru,
+            en: qisqacha.en,
+          }}
+          handleValue={{
+            uz: (e) => setQisqacha({ ...qisqacha, uz: e }),
+            ru: (e) => setQisqacha({ ...qisqacha, ru: e }),
+            en: (e) => setQisqacha({ ...qisqacha, en: e }),
+          }}
+        />
+
+        {/* =-------------- ASOSIY VAZIFA ------------------= */}
+        <TextEditor
+          title={{
+            uz: "Asosiy vazifa (Uz)",
+            ru: "Asosiy vazifa (Ru)",
+            en: "Asosiy vazifa (En)",
+          }}
+          value={{
+            uz: asosiyVazifa.uz,
+            ru: asosiyVazifa.ru,
+            en: asosiyVazifa.en,
+          }}
+          handleValue={{
+            uz: (e) => setAsosiyVazifa({ ...asosiyVazifa, uz: e }),
+            ru: (e) => setAsosiyVazifa({ ...asosiyVazifa, ru: e }),
+            en: (e) => setAsosiyVazifa({ ...asosiyVazifa, en: e }),
+          }}
+        />
+
+        {/* =-------------- ILMIY YO'NALISH ------------------= */}
+        <TextEditor
+          title={{
+            uz: "Ilmiy yo'nalish (Uz)",
+            ru: "Ilmiy yo'nalish (Ru)",
+            en: "Ilmiy yo'nalish (En)",
+          }}
+          value={{
+            uz: ilmiyYonalish?.uz,
+            ru: ilmiyYonalish?.ru,
+            en: ilmiyYonalish?.en,
+          }}
+          handleValue={{
+            uz: (e) => setIlmiyYonalish({ ...ilmiyYonalish, uz: e }),
+            ru: (e) => setIlmiyYonalish({ ...ilmiyYonalish, ru: e }),
+            en: (e) => setIlmiyYonalish({ ...ilmiyYonalish, en: e }),
+          }}
+        />
+
+        {/* =------------ Mehnat faoliyat ----------------= */}
+        <TextEditor
+          title={{
+            uz: "Mehnat faoliyat (Uz)",
+            ru: "Mehnat faoliyat (Ru)",
+            en: "Mehnat faoliyat (En)",
+          }}
+          value={{
+            uz: mehnatFaoliyat?.uz,
+            ru: mehnatFaoliyat?.ru,
+            en: mehnatFaoliyat?.en,
+          }}
+          handleValue={{
+            uz: (e) => setMehnatFaoliyat({ ...mehnatFaoliyat, uz: e }),
+            ru: (e) => setMehnatFaoliyat({ ...mehnatFaoliyat, ru: e }),
+            en: (e) => setMehnatFaoliyat({ ...mehnatFaoliyat, en: e }),
+          }}
+        />
+
+        <Upload onChange={(info) => setImage(info)}>
+          <Button icon={<UploadOutlined />}>Click to Upload</Button>
+        </Upload>
+
+        <br />
+
+        {hasSelect ? (
+          <Select
+            defaultValue="lucy"
+            style={{
+              width: "100%",
+            }}
+            onChange={handleChange}
+            options={form2State.options}
+          />
+        ) : null}
+
+        <br />
+        <br />
+
+        <Button
+          htmlType="submit"
+          loading={form2State.loading}
+          type={" "}
+          block
+          className="bg-blue-500 text-white flex justify-center items-center py-6"
+          classNames=""
+        >
+          <p className="text-lg">Saqlash</p>
+        </Button>
+      </Form>
+    </div>
+  );
+};
+
 export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
@@ -1135,8 +1441,7 @@ export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
     useSelector(selectorFunc);
   const { getOptions, putData, getDataById } = new From2Actions();
 
-
-  const filterData = dataById?.filter(item => item?._id === id)
+  const filterData = dataById?.filter((item) => item?._id === id);
 
   console.log(filterData);
 
@@ -1145,7 +1450,6 @@ export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
     ru: filterData[0]?.body_ru,
     en: filterData[0]?.body_en,
   });
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -1170,14 +1474,13 @@ export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
     dispatch(getDataById(url));
   }, [url]);
 
-
   useEffect(() => {
-      setBody({ 
-        uz: filterData[0]?.body_uz,
-        ru: filterData[0]?.body_ru,
-        en: filterData[0]?.body_en,
-      })
-  }, [dataById])
+    setBody({
+      uz: filterData[0]?.body_uz,
+      ru: filterData[0]?.body_ru,
+      en: filterData[0]?.body_en,
+    });
+  }, [dataById]);
 
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
@@ -1266,7 +1569,6 @@ export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
   );
 };
 
-
 export const ParentEditForm = ({ getUrl, postUrl, id, setModal }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
@@ -1274,15 +1576,13 @@ export const ParentEditForm = ({ getUrl, postUrl, id, setModal }) => {
     useSelector(selectorFunc);
   const { getOptions, putData, getDataById } = new From2Actions();
 
-  let filterData = []
+  let filterData = [];
 
-
-try {
-  filterData = dataById ? dataById?.filter(item => item?._id === id) : []
-} catch (e) {
-  console.log(e);
-}
-
+  try {
+    filterData = dataById ? dataById?.filter((item) => item?._id === id) : [];
+  } catch (e) {
+    console.log(e);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -1293,7 +1593,7 @@ try {
       title_en: e.target.title_en.value,
     };
 
-    const body = JSON.stringify(obj); 
+    const body = JSON.stringify(obj);
 
     dispatch(putData(postUrl, body));
   };

@@ -5,6 +5,7 @@ import { Modal, Pagination } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import copy from "copy-to-clipboard";
+import docsImg from "../../../assets/docs.png"
 
 import { MediaActions } from "./action";
 import { AddIcon } from "../../../assets/icons";
@@ -82,16 +83,23 @@ export const Media = () => {
 };
 
 function FileDisplay({ file }) {
+
+  const fileExtension = file?.link?.split('.').pop().toLowerCase();
+  const isImage = ['png', 'jpg', 'jpeg', 'gif', 'svg'].includes(fileExtension);
+
   const dispatch = useDispatch();
+
   const { loading, error } = useSelector((state) => state.media);
   const { deleteData } = new MediaActions();
+
+
   return (
     <div className="">
       {loading ? (
         <LoadingOutlined spin />
         ) : (
           <LazyLoadImage
-          src={`${baseURL}/${file?.link}`}
+          src={isImage ? `${baseURL}/${file?.link}` : docsImg}
           alt={file?.name}
           className="h-[400px] w-[300px]"
           effect="black-and-white"

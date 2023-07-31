@@ -6,7 +6,7 @@ import { time } from "../../../services/dateFormatter";
 
 import { StudentChildActions } from "./actions";
 import { slug } from "../../../services/slug";
-import { DeleteIcon } from "../../../assets/icons";
+import { DeleteIcon, EditIcon } from "../../../assets/icons";
 
 export const StudentView = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ export const StudentView = () => {
       render: (_, p) => (
         <div className="flex gap-4">
           <Link to={`/adminPanel/student/edit/${slug(p.name)}/${p.id}`}>
-            edit
+            <EditIcon/>
           </Link>
           <Popconfirm
             title="Rostdan o'chirishni xoxlaysizmi?"

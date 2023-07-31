@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { slug } from "../../../services/slug";
 
 import { XalqaroChildActions } from "./actions";
+import { DeleteIcon, EditIcon } from "../../../assets/icons";
 
 export const  XalqaroView= () => {
   const dispatch = useDispatch();
@@ -30,7 +31,9 @@ export const  XalqaroView= () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/int_connections/edit/${slug(p.name)}/${p.id}`}>edit</Link>
+          <Link to={`/adminPanel/int_connections/edit/${slug(p.name)}/${p.id}`}>
+            <EditIcon />
+          </Link>
           <Popconfirm
             title="Rostdan o'chirishni xoxlaysizmi?"
             description="O'chirilgan malumotlar qayta tiklanmaydi"
@@ -40,7 +43,9 @@ export const  XalqaroView= () => {
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button >Delete</button>
+            <button >
+              <DeleteIcon/>
+            </button>
           </Popconfirm>
         </div>
       ),

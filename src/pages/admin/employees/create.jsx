@@ -4,7 +4,7 @@ export const EmployeesCreate = () => {
   return (
     <EmployeesAddForm
       hasSelect={false}
-      url={"Fak_data/add"}
+      url={"kafedra_hodim/add"}
     />
   )
 }
