@@ -170,11 +170,6 @@ export const Navbar = () => {
           id: null,
         },
         {
-          name: t("Institute.3.name"),
-          link: `/institut/structure`,
-          id: null,
-        },
-        {
           name: t("Institute.11.name"),
           link: `/institut/fakultetlar`,
           id: null,
