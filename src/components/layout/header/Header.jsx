@@ -1,8 +1,4 @@
-import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Hamburger from "hamburger-react";
-import i18next from "i18next";
-import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (

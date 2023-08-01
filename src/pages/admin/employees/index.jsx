@@ -14,13 +14,14 @@ export const Employees = () => {
     { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', get: 'kafedra_hodim/all', delete: 'kafedra_hodim' },
     { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', get: 'markaz_hodim/all',  delete: 'markaz_hodim'  },
     { id: 'bm_id', value: "Bo'lim", url: 'bm_data/all', get: 'bm_hodim/all',  delete: 'bm_hodim'  },
-    { id: 'kafultet_id', value: "Fakultet", url: 'Fak_data/all', get: 'Fak_hodim/all',  delete: 'Fak_hodim'  },
+    { id: 'fakultet_id', value: "Fakultet", url: 'Fak_data/all', get: 'Fak_hodim/all',  delete: 'Fak_hodim'  },
   ]
   const [ hodim, setHodim ] = useState(selectOptions1[3])
 
   const handleChange = (value) => {
     const selectedOption = selectOptions1.find(option => option.value === value);
     setHodim(selectedOption);
+    sessionStorage.setItem('hodim', JSON.stringify(selectedOption))
   };
 
 
@@ -99,7 +100,9 @@ export const Employees = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/employees/edit/${p?.id}`}><EditIcon /></Link>
+          <Link to={`/adminPanel/employees/edit/${p?.id}`}>
+            <EditIcon />
+          </Link>
           <Popconfirm
             title="Delete the task"
             description="Are you sure to delete this task?"

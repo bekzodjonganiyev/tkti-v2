@@ -427,13 +427,6 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
 
 export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
-  const selectOptions1 = [
-    { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', add: 'kafedra_hodim', },
-    { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', add: 'markaz_hodim' },
-    { id: 'bm_id', value: "Bo'lim", url: 'bm_data/all', add: 'bm_hodim' },
-    { id: 'kafultet_id', value: "Fakultet", url: 'Fak_data/all', add: 'Fak_hodim' },
-  ]
-  const [ hodim, setHodim ] = useState({ id: 'kafedra_id', title: "Kafedra", url: 'kafedra_data/all', add: 'kafedra_hodim/add'})
   const [ hodimChildId, setHodimChildId ] = useState(undefined)
 
   const selectorFunc = (state) => state.form2;
@@ -442,6 +435,7 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const { dataById, loading, options, success, error, updated } =
   useSelector(selectorFunc);
   const { getOptions, getDataById } = new From2Actions();
+  const [ hodim, setHodim ] = useState(JSON.parse(sessionStorage.getItem('hodim')))
   
   const [messageApi, contextHolder] = message.useMessage();
   const key = 'updatable';
@@ -456,19 +450,12 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
   const imgRef = useRef()
   const [ image, setImage ] = useState(undefined)
-
-  const handleChange = (value) => {
-    const selectedOption = selectOptions1.find(option => option.value === value);
-    setHodim(selectedOption);
-  };
-
-  const handleChildChange = (id) => {
-    setHodimChildId(id)
+  const handleChildChange = (chidlId) => {
+    setHodimChildId(chidlId)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const formData = new FormData()
     formData.append('name_uz', e.target.name_uz.value);
     formData.append('name_ru', e.target.name_ru.value);
@@ -479,9 +466,9 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     formData.append('tell', e.target.tel.value);
     formData.append('email', e.target.email.value);
     imgRef.current.files[0] && formData.append('photo', imgRef.current.files[0]);
-    // formData.append(hodim?.id, hodimChildId);
+    formData.append(hodim?.id, hodimChildId);
 
-    fetch(`${baseURL}/${hodim?.add}/${id}`, {
+    fetch(`${baseURL}/${hodim?.delete}/${id}`, {
       method: "PUT",
       headers: {
         Token: localStorage.getItem("token"),
@@ -520,17 +507,18 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
       .catch((err) => console.log(err));
   };
 
-  console.log(options);
-
   useEffect(() => {
     dispatch(getOptions(hodim?.url));
-    setHodimChildId(null)
   }, [hodim]);
-  
+
   useEffect(() => {
-    // setKafedraId(dataById?.kafedra_id)
     setImage(dataById?.photo)
   }, [dataById])
+
+  useEffect(() => {
+    dispatch(getDataById(hodim?.delete + "/" + id));
+    setHodim(JSON.parse(sessionStorage.getItem('hodim')))
+  }, [])
 
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
@@ -643,26 +631,15 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <input className="mb-16" type="file" accept="image/*"  id="image" multiple ref={imgRef} />
           </label>
 
+
           <Select
-            defaultValue={hodim?.value}
-            value={hodim?.value}
+            value={hodimChildId}
             style={{
               width: "100%",
             }}
-            onChange={(value) => handleChange(value)}
-            options={selectOptions1}
+            onChange={handleChildChange}
+            options={options}
           />
-
-          {
-            options?.length ? <Select
-                          value={hodimChildId}
-                          style={{
-                            width: "100%",
-                          }}
-                          onChange={handleChildChange}
-                          options={options}
-                        /> : null
-          }
 
           <button
             type="submit"
@@ -690,8 +667,6 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const dispatch = useDispatch();
   const form2State = useSelector(selectorFunc);
   const { getOptions } = new From2Actions();
-
-  console.log(form2State);
 
   const [messageApi, contextHolder] = message.useMessage();
   const key = 'updatable';

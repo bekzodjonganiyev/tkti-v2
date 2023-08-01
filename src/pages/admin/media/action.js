@@ -11,12 +11,12 @@ export const media_types = {
   import apiClientWithFetch from "../../../services/apiClientWithFetch";
   
   export class MediaActions {
-    getData() {
+    getData(page) {
       return async (dispatch) => {
         dispatch({
           type: media_types.request,
         });
-        const res = await apiClientWithFetch.get("media/get/all");
+        const res = await apiClientWithFetch.get(`media/get/all?page=${page}`);
         if (res.status === 200) {
           dispatch({
             type: media_types.get,
@@ -51,7 +51,7 @@ export const media_types = {
       };
     }
   
-    postData(body) {
+    postData(body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: media_types.request,
@@ -62,11 +62,13 @@ export const media_types = {
             type: media_types.post,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: media_types.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
