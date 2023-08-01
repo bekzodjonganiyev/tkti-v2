@@ -46,5 +46,6 @@ export const rootReducers = combineReducers({
   user: userReducer,
   media: mediaReducer,
   form2: form2Reducer,
-  news: newsReducer
+  news: newsReducer,
+  employees: newsReducer
 });

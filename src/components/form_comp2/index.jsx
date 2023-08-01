@@ -426,6 +426,16 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
 };
 
 export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
+
+  const selectOptions1 = [
+    { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', add: 'kafedra_hodim', },
+    { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', add: 'markaz_hodim' },
+    { id: 'bm_id', value: "Bo'lim", url: 'bm_data/all', add: 'bm_hodim' },
+    { id: 'kafultet_id', value: "Fakultet", url: 'Fak_data/all', add: 'Fak_hodim' },
+  ]
+  const [ hodim, setHodim ] = useState({ id: 'kafedra_id', title: "Kafedra", url: 'kafedra_data/all', add: 'kafedra_hodim/add'})
+  const [ hodimChildId, setHodimChildId ] = useState(undefined)
+
   const selectorFunc = (state) => state.form2;
   const { id } = useParams()
   const dispatch = useDispatch();
@@ -446,11 +456,15 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
   const imgRef = useRef()
   const [ image, setImage ] = useState(undefined)
-  const [kafedraId, setKafedraId] = useState("");
 
   const handleChange = (value) => {
-    setKafedraId(value)
+    const selectedOption = selectOptions1.find(option => option.value === value);
+    setHodim(selectedOption);
   };
+
+  const handleChildChange = (id) => {
+    setHodimChildId(id)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -465,9 +479,9 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     formData.append('tell', e.target.tel.value);
     formData.append('email', e.target.email.value);
     imgRef.current.files[0] && formData.append('photo', imgRef.current.files[0]);
-    formData.append('kafedra_id', kafedraId);
+    // formData.append(hodim?.id, hodimChildId);
 
-    fetch(`${baseURL}/kafedra_hodim/${id}`, {
+    fetch(`${baseURL}/${hodim?.add}/${id}`, {
       method: "PUT",
       headers: {
         Token: localStorage.getItem("token"),
@@ -504,23 +518,18 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
         }
       })
       .catch((err) => console.log(err));
-
-
-    // const body = JSON.stringify(obj);
-
-    // dispatch(putData(url, body));
-    // console.log(JSON.parse(body));
   };
 
-  // window.location.reload(false)
+  console.log(options);
+
   useEffect(() => {
-    hasSelect ? dispatch(getOptions(selectUrl)) : null;
-    dispatch(getDataById(url));
-  }, [url]);
+    dispatch(getOptions(hodim?.url));
+    setHodimChildId(null)
+  }, [hodim]);
   
   useEffect(() => {
-    setKafedraId(dataById?.kafedra_id)
-    setImage(dataById?.photo) 
+    // setKafedraId(dataById?.kafedra_id)
+    setImage(dataById?.photo)
   }, [dataById])
 
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
@@ -634,17 +643,26 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             <input className="mb-16" type="file" accept="image/*"  id="image" multiple ref={imgRef} />
           </label>
 
-        {hasSelect ? (
           <Select
-            defaultValue={kafedraId}
-            value={kafedraId}
+            defaultValue={hodim?.value}
+            value={hodim?.value}
             style={{
               width: "100%",
             }}
-            onChange={handleChange}
-            options={options}
+            onChange={(value) => handleChange(value)}
+            options={selectOptions1}
           />
-        ) : null}
+
+          {
+            options?.length ? <Select
+                          value={hodimChildId}
+                          style={{
+                            width: "100%",
+                          }}
+                          onChange={handleChildChange}
+                          options={options}
+                        /> : null
+          }
 
           <button
             type="submit"
@@ -659,11 +677,21 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 };
 
 export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
+
+  const selectOptions1 = [
+    { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', add: 'kafedra_hodim/add', },
+    { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', add: 'markaz_hodim/add' },
+    { id: 'bm_id', value: "Bo'lim", url: 'bm_data/all', add: 'bm_hodim/add' },
+    { id: 'fakultet_id', value: "Fakultet", url: 'Fak_data/all', add: 'Fak_hodim/add' },
+  ]
+  const [ hodim, setHodim ] = useState(null)
+  const [ hodimChildId, setHodimChildId ] = useState(undefined)
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const form2State = useSelector(selectorFunc);
   const { getOptions } = new From2Actions();
-  const [kafedraId, setKafedraId] = useState("");
+
+  console.log(form2State);
 
   const [messageApi, contextHolder] = message.useMessage();
   const key = 'updatable';
@@ -677,8 +705,13 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   };
 
   const handleChange = (value) => {
-    setKafedraId(value)
+      const selectedOption = selectOptions1.find(option => option.value === value);
+      setHodim(selectedOption);
   };
+
+  const handleChildChange = (id) => {
+    setHodimChildId(id)
+  }
 
   const imgRef = useRef()
 
@@ -695,9 +728,9 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
     formData.append('tell', e.target.tel.value);
     formData.append('email', e.target.email.value);
     formData.append('photo', imgRef.current.files[0]);
-    formData.append('kafedra_id', kafedraId);
+    formData.append(hodim?.id, hodimChildId);
 
-    fetch(`${baseURL}/kafedra_hodim/add`, {
+    fetch(`${baseURL}/${hodim?.add}`, {
       method: "POST",
       headers: {
         Token: localStorage.getItem("token"),
@@ -733,19 +766,13 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
         }
       })
       .catch((err) => console.log(err));
-
-    // const body = hasSelect
-    //   ? JSON.stringify({ ...obj, ...selectFunc() })
-    //   : JSON.stringify(obj);
-
-
-    // dispatch(postData(url, formData, true));
-    // console.log(JSON.parse(body));
   };
 
   useEffect(() => {
-    hasSelect ? dispatch(getOptions(selectUrl)) : null;
-  }, []);
+    hodim !== null && dispatch(getOptions(hodim?.url))
+    setHodimChildId(null)
+  }, [hodim?.url])
+
 
   return (
     <div className="relative">
@@ -844,20 +871,29 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
         <label htmlFor="image">
           Rasm yuklash <br />
-          <input className="mb-16" type="file" id="image" multiple ref={imgRef} />
+          <input className="mb-16" accept="image/*" type="file" id="image" multiple ref={imgRef} />
         </label>
 
-        {hasSelect ? (
           <Select
-            defaultValue="Kafedra"
+            defaultValue={hodim?.value}
+            value={hodim?.value}
             style={{
               width: "100%",
             }}
-            onChange={handleChange}
-            options={form2State.options}
+            onChange={(value) => handleChange(value)}
+            options={selectOptions1}
           />
-        ) : null}
 
+          {
+            form2State?.options?.length ? <Select
+                          value={hodimChildId}
+                          style={{
+                            width: "100%",
+                          }}
+                          onChange={handleChildChange}
+                          options={form2State?.options}
+                        /> : null
+          }
         <br />
 
         <button

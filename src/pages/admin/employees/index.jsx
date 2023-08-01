@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Avatar, Popconfirm, Table } from "antd";
+import { Avatar, Popconfirm, Select, Table } from "antd";
 import { Link } from "react-router-dom";
 
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
@@ -10,8 +10,22 @@ import { baseURL } from "../../../services/http";
 export const Employees = () => {
   const [data, setData] = useState({ loading: true, data: [], error: null });
 
+  const selectOptions1 = [
+    { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', get: 'kafedra_hodim/all', delete: 'kafedra_hodim' },
+    { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', get: 'markaz_hodim/all',  delete: 'markaz_hodim'  },
+    { id: 'bm_id', value: "Bo'lim", url: 'bm_data/all', get: 'bm_hodim/all',  delete: 'bm_hodim'  },
+    { id: 'kafultet_id', value: "Fakultet", url: 'Fak_data/all', get: 'Fak_hodim/all',  delete: 'Fak_hodim'  },
+  ]
+  const [ hodim, setHodim ] = useState(selectOptions1[3])
+
+  const handleChange = (value) => {
+    const selectedOption = selectOptions1.find(option => option.value === value);
+    setHodim(selectedOption);
+  };
+
+
   const getData = async () => {
-    const res = await apiClientWithFetch.get("kafedra_hodim/all");
+    const res = await apiClientWithFetch.get(hodim?.get);
     if (res.status === 200) {
       setData({
         loading: false,
@@ -29,7 +43,7 @@ export const Employees = () => {
 
   const deleteData = async (id) => {
     setData({ ...data, loading: true });
-    const res = await apiClientWithFetch.delete(`kafedra_hodim/${id}`);
+    const res = await apiClientWithFetch.delete(`${hodim?.delete}/${id}`);
     if (res.status === 200) {
       const filtered = data.data.filter((item) => item._id !== res.data?._id);
       setData({
@@ -116,11 +130,24 @@ export const Employees = () => {
   }));
 
   useEffect(() => {
-    getData();
+    setHodim(selectOptions1[3])
   }, []);
+
+  useEffect(() => {
+    getData()
+  }, [hodim?.url])
 
   return (
     <div>
+       <Select
+            defaultValue={hodim?.value}
+            value={hodim?.value}
+            style={{
+              width: "200px",
+            }}
+            onChange={(value) => handleChange(value)}
+            options={selectOptions1}
+          />
       <Link
         to={"/adminPanel/employees/add"}
         className="float-right my-2"
