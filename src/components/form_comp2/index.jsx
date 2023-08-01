@@ -8,16 +8,14 @@ import {
   Alert,
   Spin,
   message,
-  Upload,
 } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
-import { UploadOutlined } from "@ant-design/icons";
 
 import TextEditor from "../text_editor/TextEditor";
 import { From2Actions } from "./action";
 import { useRef } from "react";
 import { baseURL } from "../../services/http";
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -48,6 +46,8 @@ const editorInit = {
   toolbar:
     "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | codesample code",
 };
+
+
 
 export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
@@ -262,10 +262,8 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
       : JSON.stringify(obj);
 
     dispatch(putData(url, body));
-    // console.log(JSON.parse(body));
   };
 
-  // window.location.reload(false)
   useEffect(() => {
     hasSelect ? dispatch(getOptions(selectUrl)) : null;
     dispatch(getDataById(url));
@@ -435,6 +433,17 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   useSelector(selectorFunc);
   const { getOptions, getDataById } = new From2Actions();
   
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = 'updatable';
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Loading...',
+    });
+    callback()
+  };
+
   const imgRef = useRef()
   const [ image, setImage ] = useState(undefined)
   const [kafedraId, setKafedraId] = useState("");
@@ -468,10 +477,30 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
       .then((res) => res.json())
       .then((res) => {
         if (!res.success) {
-          alert(res.message + "❌");
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: 'error',
+                content: res?.message,
+                duration: 2,
+              });
+            }, 1000)
+          })
         } else {
-          alert(res.message);
-          window.location.reload(false);
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: 'success',
+                content: res?.message,
+                duration: 2,
+              });
+              setTimeout(() => {
+                window.location.href = "/adminPanel/employees";
+              }, 500)
+            }, 1000)
+          })
         }
       })
       .catch((err) => console.log(err));
@@ -498,6 +527,7 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
   return (
     <div className="relative">
+      { contextHolder }
       {(updated && !loading) || (error && !loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
           <Alert
@@ -635,6 +665,17 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const { getOptions } = new From2Actions();
   const [kafedraId, setKafedraId] = useState("");
 
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = 'updatable';
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Loading...',
+    });
+    callback()
+  };
+
   const handleChange = (value) => {
     setKafedraId(value)
   };
@@ -666,10 +707,29 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
       .then((res) => res.json())
       .then((res) => {
         if (!res.success) {
-          alert(res.message + "❌");
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: 'loading',
+                content: res?.message,
+              });
+            }, 1000)
+          })
         } else {
-          alert(res.message);
-          window.location.reload(false);
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: 'success',
+                content: res?.message,
+                duration: 2,
+              });
+              setTimeout(() => {
+                window.location.href = "/adminPanel/employees";
+              }, 500)
+            }, 1000)
+          })
         }
       })
       .catch((err) => console.log(err));
@@ -689,6 +749,7 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
   return (
     <div className="relative">
+      { contextHolder }
       {(form2State.added && !form2State.loading) ||
       (form2State.error && !form2State.loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
@@ -818,6 +879,17 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     useSelector(selectorFunc);
   const { getOptions, getDataById } = new From2Actions();
 
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = 'updatable';
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Loading...',
+    });
+    callback()
+  };
+
   const imgRef = useRef()
   const [ image, setImage ] = useState(undefined)
 
@@ -844,6 +916,8 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     ru: dataById?.qisqacha_ru,
     en: dataById?.qisqacha_en,
   });
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -876,6 +950,8 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     imgRef.current.files[0] && formData.append('photo', imgRef.current.files[0]);
 
 
+
+
     fetch(`${baseURL}/rektorat/${id}`, {
       method: "PUT",
       headers: {
@@ -886,10 +962,29 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
       .then((res) => res.json())
       .then((res) => {
         if (!res.success) {
-          alert(res.message + "❌");
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: 'loading',
+                content: res?.message,
+              });
+            }, 1000)
+          })
         } else {
-          alert(res.message);
-          window.location.reload(false);
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: 'success',
+                content: res?.message,
+                duration: 2,
+              });
+              setTimeout(() => {
+                window.location.href = "/adminPanel/lidership";
+              }, 500)
+            }, 1000)
+          })
         }
       })
       .catch((err) => console.log(err));
@@ -932,6 +1027,7 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
   return (
     <div className="relative">
+      { contextHolder }
       {(updated && !loading) || (error && !loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
           <Alert
@@ -1245,6 +1341,17 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const imgRef = useRef()
   const { getOptions } = new From2Actions();
 
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = 'updatable';
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Loading...',
+    });
+    callback()
+  };
+
 
   const [asosiyVazifa, setAsosiyVazifa] = useState({
     uz: "",
@@ -1289,6 +1396,8 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
     formData.append("photo", imgRef.current.files[0]);
 
 
+
+
     fetch(`${baseURL}/rektorat/add`, {
       method: "POST",
       headers: {
@@ -1299,10 +1408,29 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
       .then((res) => res.json())
       .then((res) => {
         if (!res.success) {
-          alert(res.message + " ❌");
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: 'loading',
+                content: res?.message,
+              });
+            }, 1000)
+          })
         } else {
-          alert("Malumotlar qo'shildi");
-          window.location.reload(true);
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: 'success',
+                content: res?.message,
+                duration: 2,
+              });
+              setTimeout(() => {
+                window.location.href = "/adminPanel/lidership";
+              }, 500)
+            }, 1000)
+          })
         }
       })
       .catch((err) => console.log(err));
@@ -1315,6 +1443,7 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
   return (
     <div className="relative">
+      { contextHolder }
       {(form2State.added && !form2State.loading) ||
       (form2State.error && !form2State.loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
