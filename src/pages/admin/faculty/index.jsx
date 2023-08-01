@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
 import { simplifyDateTime } from "../../../helpers";
-import { DeleteIcon, EditIcon } from "../../../assets/icons";
+import { AddIcon, DeleteIcon, EditIcon } from "../../../assets/icons";
 
 export const Faculty = () => {
   const [data, setData] = useState({ loading: true, data: [], error: null });
@@ -97,9 +97,9 @@ export const Faculty = () => {
     <div>
       <Link
         to={"/adminPanel/faculty/add"}
-        className="float-right bg-cyan-500 my-2"
+        className="float-right my-2"
       >
-        add user
+        <AddIcon/>
       </Link>
       <Table
         columns={columns}

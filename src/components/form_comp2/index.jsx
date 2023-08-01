@@ -15,6 +15,9 @@ import { UploadOutlined } from "@ant-design/icons";
 
 import TextEditor from "../text_editor/TextEditor";
 import { From2Actions } from "./action";
+import { useRef } from "react";
+import { baseURL } from "../../services/http";
+import { useParams } from "react-router-dom";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -426,29 +429,57 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
 
 export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
+  const { id } = useParams()
   const dispatch = useDispatch();
   const { dataById, loading, options, success, error, updated } =
-    useSelector(selectorFunc);
-  const { getOptions, putData, getDataById } = new From2Actions();
+  useSelector(selectorFunc);
+  const { getOptions, getDataById } = new From2Actions();
+  
+  const imgRef = useRef()
+  const [ image, setImage ] = useState(undefined)
+  const [kafedraId, setKafedraId] = useState("");
+
+  const handleChange = (value) => {
+    setKafedraId(value)
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const obj = {
-      name_uz: e.target.name_uz.value,
-      name_ru: e.target.name_ru.value,
-      name_en: e.target.name_en.value,
-      job_uz: e.target.job_uz.value,
-      job_ru: e.target.job_ru.value,
-      job_en: e.target.job_en.value,
-      tell: e.target.tel.value,
-      email: e.target.email.value,
-      kafedra_id: dataById?.kafedra_id,
-    };
+    const formData = new FormData()
+    formData.append('name_uz', e.target.name_uz.value);
+    formData.append('name_ru', e.target.name_ru.value);
+    formData.append('name_en', e.target.name_en.value);
+    formData.append('job_uz', e.target.job_uz.value);
+    formData.append('job_ru', e.target.job_ru.value);
+    formData.append('job_en', e.target.job_en.value);
+    formData.append('tell', e.target.tel.value);
+    formData.append('email', e.target.email.value);
+    imgRef.current.files[0] && formData.append('photo', imgRef.current.files[0]);
+    formData.append('kafedra_id', kafedraId);
 
-    const body = JSON.stringify(obj);
+    fetch(`${baseURL}/kafedra_hodim/${id}`, {
+      method: "PUT",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
 
-    dispatch(putData(url, body));
+
+    // const body = JSON.stringify(obj);
+
+    // dispatch(putData(url, body));
     // console.log(JSON.parse(body));
   };
 
@@ -457,6 +488,11 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     hasSelect ? dispatch(getOptions(selectUrl)) : null;
     dispatch(getDataById(url));
   }, [url]);
+  
+  useEffect(() => {
+    setKafedraId(dataById?.kafedra_id)
+    setImage(dataById?.photo) 
+  }, [dataById])
 
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
@@ -562,6 +598,24 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
           {/* OTHERS */}
 
+          <label htmlFor="image" >
+            <img width={300} height={300} src={baseURL + '/' + image} alt="" />
+            Rasm yuklash <br />
+            <input className="mb-16" type="file" accept="image/*"  id="image" multiple ref={imgRef} />
+          </label>
+
+        {hasSelect ? (
+          <Select
+            defaultValue={kafedraId}
+            value={kafedraId}
+            style={{
+              width: "100%",
+            }}
+            onChange={handleChange}
+            options={options}
+          />
+        ) : null}
+
           <button
             type="submit"
             className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold"
@@ -578,47 +632,54 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const form2State = useSelector(selectorFunc);
-  const { getOptions, postData } = new From2Actions();
-
-  const [aboutUs, setAboutUs] = useState({
-    uz: "",
-    ru: "",
-    en: "",
-  });
-  const [aim, setAim] = useState({
-    uz: "",
-    ru: "",
-    en: "",
-  });
-  const [facultyId, setFacultyId] = useState("");
-  const [rektoratId, setRektoratId] = useState("");
+  const { getOptions } = new From2Actions();
+  const [kafedraId, setKafedraId] = useState("");
 
   const handleChange = (value) => {
-    bolim ? setRektoratId(value) : setFacultyId(value);
+    setKafedraId(value)
   };
 
-  const selectFunc = () => {
-    return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId };
-  };
+  const imgRef = useRef()
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const obj = {
-      name_uz: e.target.name_uz.value,
-      name_ru: e.target.name_ru.value,
-      name_en: e.target.name_en.value,
-      job_uz: e.target.job_uz.value,
-      job_ru: e.target.job_ru.value,
-      job_en: e.target.job_en.value,
-      tell: e.target.tel.value,
-      email: e.target.email.value,
-    };
+    const formData = new FormData()
+    formData.append('name_uz', e.target.name_uz.value);
+    formData.append('name_ru', e.target.name_ru.value);
+    formData.append('name_en', e.target.name_en.value);
+    formData.append('job_uz', e.target.job_uz.value);
+    formData.append('job_ru', e.target.job_ru.value);
+    formData.append('job_en', e.target.job_en.value);
+    formData.append('tell', e.target.tel.value);
+    formData.append('email', e.target.email.value);
+    formData.append('photo', imgRef.current.files[0]);
+    formData.append('kafedra_id', kafedraId);
 
-    const body = hasSelect
-      ? JSON.stringify({ ...obj, ...selectFunc() })
-      : JSON.stringify(obj);
+    fetch(`${baseURL}/kafedra_hodim/add`, {
+      method: "POST",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
 
-    dispatch(postData(url, body));
+    // const body = hasSelect
+    //   ? JSON.stringify({ ...obj, ...selectFunc() })
+    //   : JSON.stringify(obj);
+
+
+    // dispatch(postData(url, formData, true));
     // console.log(JSON.parse(body));
   };
 
@@ -720,6 +781,24 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
         {/* OTHERS */}
 
+        <label htmlFor="image">
+          Rasm yuklash <br />
+          <input className="mb-16" type="file" id="image" multiple ref={imgRef} />
+        </label>
+
+        {hasSelect ? (
+          <Select
+            defaultValue="Kafedra"
+            style={{
+              width: "100%",
+            }}
+            onChange={handleChange}
+            options={form2State.options}
+          />
+        ) : null}
+
+        <br />
+
         <button
           type="submit"
           className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold"
@@ -734,9 +813,13 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
-  const { dataById, loading, options, success, error, updated } =
+  const { id } = useParams()
+  const { dataById, loading, success, error, updated } =
     useSelector(selectorFunc);
-  const { getOptions, putData, getDataById } = new From2Actions();
+  const { getOptions, getDataById } = new From2Actions();
+
+  const imgRef = useRef()
+  const [ image, setImage ] = useState(undefined)
 
   const [asosiyVazifa, setAsosiyVazifa] = useState({
     uz: dataById?.asosiy_vazifa_uz,
@@ -762,61 +845,65 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     en: dataById?.qisqacha_en,
   });
 
-  const [facultyId, setFacultyId] = useState(dataById?.fakultet_id);
-  const [rektoratId, setRektoratId] = useState(dataById?.rektorat);
-
-  const selectFunc = () => {
-    return bolim
-      ? {
-          rektorat: rektoratId,
-        }
-      : {
-          fakultet_id: facultyId,
-        };
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const obj = {
-      name_en: e.target.name_en.value,
-      name_uz: e.target.name_uz.value,
-      name_ru: e.target.name_ru.value,
-      address_en: e.target.address_en.value,
-      address_uz: e.target.address_uz.value,
-      address_ru: e.target.address_ru.value,
-      job_en: e.target.job_en.value,
-      job_uz: e.target.job_uz.value,
-      job_ru: e.target.job_ru.value,
-      link: e.target.link.value,
-      tel: e.target.tel.value,
-      asosiy_vazifa_en: asosiyVazifa?.en,
-      asosiy_vazifa_uz: asosiyVazifa?.uz,
-      asosiy_vazifa_ru: asosiyVazifa?.ru,
-      ilmiy_yonlaish_en: ilmiyYonalish?.en,
-      ilmiy_yonlaish_uz: ilmiyYonalish?.uz,
-      ilmiy_yonlaish_ru: ilmiyYonalish?.ru,
-      mehnat_faoliyat_en: mehnatFaoliyat?.en,
-      mehnat_faoliyat_uz: mehnatFaoliyat?.uz,
-      mehnat_faoliyat_ru: mehnatFaoliyat?.ru,
-      qisqacha_en: qisqacha?.en,
-      qisqacha_uz: qisqacha?.uz,
-      qisqacha_ru: qisqacha?.ru,
-    };
+    const formData = new FormData();
 
-    const body = hasSelect
-      ? JSON.stringify({ ...obj, ...selectFunc() })
-      : JSON.stringify(obj);
+    formData.append('name_en', e.target.name_en.value);
+    formData.append('name_uz', e.target.name_uz.value);
+    formData.append('name_ru', e.target.name_ru.value);
+    formData.append('address_en', e.target.address_en.value);
+    formData.append('address_uz', e.target.address_uz.value);
+    formData.append('address_ru', e.target.address_ru.value);
+    formData.append('job_en', e.target.job_en.value);
+    formData.append('job_uz', e.target.job_uz.value);
+    formData.append('job_ru', e.target.job_ru.value);
+    formData.append('link', e.target.link.value);
+    formData.append('tel', e.target.tel.value);
+    formData.append('asosiy_vazifa_en', asosiyVazifa?.en);
+    formData.append('asosiy_vazifa_uz', asosiyVazifa?.uz);
+    formData.append('asosiy_vazifa_ru', asosiyVazifa?.ru);
+    formData.append('ilmiy_yonlaish_en', ilmiyYonalish?.en);
+    formData.append('ilmiy_yonlaish_uz', ilmiyYonalish?.uz);
+    formData.append('ilmiy_yonlaish_ru', ilmiyYonalish?.ru);
+    formData.append('mehnat_faoliyat_en', mehnatFaoliyat?.en);
+    formData.append('mehnat_faoliyat_uz', mehnatFaoliyat?.uz);
+    formData.append('mehnat_faoliyat_ru', mehnatFaoliyat?.ru);
+    formData.append('qisqacha_en', qisqacha?.en);
+    formData.append('qisqacha_uz', qisqacha?.uz);
+    formData.append('qisqacha_ru', qisqacha?.ru);
+    imgRef.current.files[0] && formData.append('photo', imgRef.current.files[0]);
 
-    dispatch(putData(url, body));
-    // console.log(JSON.parse(body));
+
+    fetch(`${baseURL}/rektorat/${id}`, {
+      method: "PUT",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + "❌");
+        } else {
+          alert(res.message);
+          window.location.reload(false);
+        }
+      })
+      .catch((err) => console.log(err));
+
   };
 
-  // window.location.reload(false)
   useEffect(() => {
     hasSelect ? dispatch(getOptions(selectUrl)) : null;
     dispatch(getDataById(url));
   }, [url]);
+
+  useEffect(() => {
+    setImage(dataById?.photo)
+  }, [dataById])
 
   useEffect(() => {
     setQisqacha({
@@ -967,7 +1054,7 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
           {/* LINK */}
           <div className="flex flex-col gap-1 mb-5">
-            <label htmlFor="link">Link</label>
+            <label htmlFor="link">Email</label>
             <input
               type="text"
               id="link"
@@ -1110,8 +1197,15 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
           </div>
           {/* AIM */}
 
+          
+          <label htmlFor="image" >
+            <img width={300} height={300} src={baseURL + '/' + image} alt="" />
+            Rasm yuklash <br />
+            <input className="mb-16" type="file" accept="image/*"  id="image" multiple ref={imgRef} />
+          </label>
+
           {/* SELECT FAKULTET */}
-          {hasSelect ? (
+          {/* {hasSelect ? (
             <div className="my-10">
               <label htmlFor="fakultet_id"></label>
               <select
@@ -1133,7 +1227,7 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
                 ))}
               </select>
             </div>
-          ) : null}
+          ) : null} */}
 
           <button className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold">
             Saqlash
@@ -1148,12 +1242,9 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const form2State = useSelector(selectorFunc);
-  console.log(form2State);
-  const { getOptions, postData } = new From2Actions();
+  const imgRef = useRef()
+  const { getOptions } = new From2Actions();
 
-  const [image, setImage] = useState(undefined);
-
-  console.log(image);
 
   const [asosiyVazifa, setAsosiyVazifa] = useState({
     uz: "",
@@ -1178,47 +1269,44 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
     ru: "",
     en: "",
   });
-  const [facultyId, setFacultyId] = useState("");
-  const [rektoratId, setRektoratId] = useState("");
-
-  const handleChange = (value) => {
-    bolim ? setRektoratId(value) : setFacultyId(value);
-  };
-
-  const selectFunc = () => {
-    return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId };
-  };
 
   const handleSubmit = (e) => {
     const formData = new FormData();
-    const obj = {
-      ...e,
-      asosiy_vazifa_en: asosiyVazifa?.en,
-      asosiy_vazifa_uz: asosiyVazifa?.uz,
-      asosiy_vazifa_ru: asosiyVazifa?.ru,
-      ilmiy_yonlaish_en: ilmiyYonalish?.en,
-      ilmiy_yonlaish_uz: ilmiyYonalish?.uz,
-      ilmiy_yonlaish_ru: ilmiyYonalish?.ru,
-      mehnat_faoliyat_en: mehnatFaoliyat?.en,
-      mehnat_faoliyat_uz: mehnatFaoliyat?.uz,
-      mehnat_faoliyat_ru: mehnatFaoliyat?.ru,
-      qisqacha_en: qisqacha?.en,
-      qisqacha_uz: qisqacha?.uz,
-      qisqacha_ru: qisqacha?.ru,
-      photo: image?.fileList[0]?.originFileObj,
-    };
 
-    formData.append(
-      "data",
-      new Blob([JSON.stringify(obj)], { type: "application/json" })
-    );
+    Object.keys(e).forEach((i) => formData.append(i, e[i]));
+    formData.append("qisqacha_uz", qisqacha?.uz);
+    formData.append("qisqacha_ru", qisqacha?.ru);
+    formData.append("qisqacha_en", qisqacha?.en);
+    formData.append("mehnat_faoliyat_uz", mehnatFaoliyat?.uz);
+    formData.append("mehnat_faoliyat_ru", mehnatFaoliyat?.ru);
+    formData.append("mehnat_faoliyat_en", mehnatFaoliyat?.en);
+    formData.append("ilmiy_yonlaish_uz", ilmiyYonalish?.uz);
+    formData.append("ilmiy_yonlaish_ru", ilmiyYonalish?.ru);
+    formData.append("ilmiy_yonlaish_en", ilmiyYonalish?.en);
+    formData.append("asosiy_vazifa_uz", asosiyVazifa?.uz);
+    formData.append("asosiy_vazifa_ru", asosiyVazifa?.ru);
+    formData.append("asosiy_vazifa_en", asosiyVazifa?.en);
+    formData.append("photo", imgRef.current.files[0]);
 
-    const body = hasSelect
-      ? JSON.stringify({ ...obj, ...selectFunc() })
-      : JSON.stringify(obj);
 
-    dispatch(postData(url, body));
-    // console.log(JSON.parse(body));
+    fetch(`${baseURL}/rektorat/add`, {
+      method: "POST",
+      headers: {
+        Token: localStorage.getItem("token"),
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!res.success) {
+          alert(res.message + " ❌");
+        } else {
+          alert("Malumotlar qo'shildi");
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => console.log(err));
+
   };
 
   useEffect(() => {
@@ -1318,7 +1406,7 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
         </Form.Item>
 
         {/* =------------ EMAIL -----------------= */}
-        <Form.Item name="email" label="Email" rules={[{ required: true }]}>
+        <Form.Item name="link" label="Email" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
 
@@ -1407,22 +1495,10 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
           }}
         />
 
-        <Upload onChange={(info) => setImage(info)}>
-          <Button icon={<UploadOutlined />}>Click to Upload</Button>
-        </Upload>
-
-        <br />
-
-        {hasSelect ? (
-          <Select
-            defaultValue="lucy"
-            style={{
-              width: "100%",
-            }}
-            onChange={handleChange}
-            options={form2State.options}
-          />
-        ) : null}
+        <label htmlFor="image">
+          Rasm yuklash <br />
+          <input type="file" accept="image/*" id="image" multiple ref={imgRef} />
+        </label>
 
         <br />
         <br />

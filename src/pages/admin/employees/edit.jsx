@@ -5,7 +5,11 @@ export const EmployeesEdit = () => {
   const { id } = useParams()
 
   return (
-    <EmployeesEditForm  hasSelect={false} url={`kafedra_hodim/${id}`}/>
+    <EmployeesEditForm  
+      hasSelect={true} 
+      selectUrl={"Kafedra_data/all"}
+      url={`kafedra_hodim/${id}`}
+      />
   )
 }
 

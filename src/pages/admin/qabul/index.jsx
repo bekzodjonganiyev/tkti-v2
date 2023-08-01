@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { QabulParentActions } from "./actions";
 import { slug } from "../../../services/slug"
 import { simplifyDateTime } from "../../../helpers";
-import { DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
+import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
 import { ParentEditForm } from "../../../components/form_comp2";
 import { useState } from "react";
 
@@ -101,9 +101,9 @@ export const Qabul = () => {
     <div>
       <Link
         to={"/adminPanel/admission/add"}
-        className="float-right bg-cyan-500 my-2"
+        className="float-right my-2"
       >
-        add user
+        <AddIcon/>
       </Link>
       <Table
         columns={columns}
