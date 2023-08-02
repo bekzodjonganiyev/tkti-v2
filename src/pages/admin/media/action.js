@@ -18,6 +18,7 @@ export const media_types = {
         });
         const res = await apiClientWithFetch.get(`media/get/all?page=${page}`);
         if (res.status === 200) {
+          sessionStorage.setItem('totalItems', JSON.stringify(res?.totalItems))
           dispatch({
             type: media_types.get,
             payload: res.data,

@@ -25,7 +25,7 @@ export const Employees = () => {
   };
 
 
-  const getData = async () => {
+  const getData = async () => {``
     const res = await apiClientWithFetch.get(hodim?.get);
     if (res.status === 200) {
       setData({
@@ -139,6 +139,10 @@ export const Employees = () => {
   useEffect(() => {
     getData()
   }, [hodim?.url])
+
+  useEffect(() => {
+    sessionStorage.setItem('hodim', JSON.stringify({ id: 'fakultet_id', value: "Fakultet", url: 'Fak_data/all', get: 'Fak_hodim/all',  delete: 'Fak_hodim'  }) )
+  }, [])
 
   return (
     <div>

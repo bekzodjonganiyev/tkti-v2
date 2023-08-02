@@ -14,11 +14,9 @@ import { baseURL } from "../../../services/http";
 export const Media = () => {
   const dispatch = useDispatch();
   const { data, loading } = useSelector((state) => state.media);
-  const { getData, postData, deleteData } = new MediaActions();
+  const { getData, postData } = new MediaActions();
 
-  console.log(data);
-
-  const [ totalPage, setTotalPage ] = useState(1)
+  const [ totalItems, setTotalItems ] = useState(JSON.parse(sessionStorage.getItem('totalItems')))
   const [modalOpen, setModalOpen] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [current, setCurrent] = useState(1);
@@ -85,7 +83,8 @@ export const Media = () => {
 
 
   useEffect(() => {
-    setTotalPage(Math.ceil(data?.totalItems / 10))
+    setTotalItems(JSON.parse(sessionStorage.getItem('totalItems')))
+    !totalItems && window.location.reload()
   }, [])
   return (
     <div>
@@ -130,8 +129,10 @@ export const Media = () => {
         <Pagination
           current={current}
           onChange={onChange}
-          total={1000}
+          total={totalItems}
           pageSize={10}
+          // totalItems={1000}
+          // totalPage={totalPage}
         />
       </div>
     </div>
