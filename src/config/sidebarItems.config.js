@@ -20,6 +20,10 @@ export const sidebarItems = [
     url: "department",
   },
   {
+    name: "Faoliyat",
+    url: "faoliyat",
+  },
+  {
     name: "Markaz",
     url: "center",
   },

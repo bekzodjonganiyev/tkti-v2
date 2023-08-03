@@ -1,0 +1,12 @@
+.input-component{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+
+input{
+    width: 100%;    
+}
