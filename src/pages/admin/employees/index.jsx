@@ -13,7 +13,7 @@ export const Employees = () => {
   const selectOptions1 = [
     { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', get: 'kafedra_hodim/all', delete: 'kafedra_hodim' },
     { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', get: 'markaz_hodim/all',  delete: 'markaz_hodim'  },
-    { id: 'bm_id', value: "Bo'lim", url: 'bm_data/all', get: 'bm_hodim/all',  delete: 'bm_hodim'  },
+    { id: 'bolim_id', value: "Bo'lim", url: 'bm_data/all', get: 'bm_hodim/all',  delete: 'bm_hodim'  },
     { id: 'fakultet_id', value: "Fakultet", url: 'Fak_data/all', get: 'Fak_hodim/all',  delete: 'Fak_hodim'  },
   ]
   const [ hodim, setHodim ] = useState(selectOptions1[3])

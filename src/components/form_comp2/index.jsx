@@ -658,7 +658,7 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectOptions1 = [
     { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', add: 'kafedra_hodim/add', },
     { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', add: 'markaz_hodim/add' },
-    { id: 'bm_id', value: "Bo'lim", url: 'bm_data/all', add: 'bm_hodim/add' },
+    { id: 'bolim_id', value: "Bo'lim", url: 'bm_data/all', add: 'bm_hodim/add' },
     { id: 'fakultet_id', value: "Fakultet", url: 'Fak_data/all', add: 'Fak_hodim/add' },
   ]
   const [ hodim, setHodim ] = useState(null)
