@@ -10,7 +10,7 @@ const FaoliyatForm = ({
   url = "Fak_data/all",
   categoryLabel = "Fakultetni tanlang",
 }) => {
-  const { globalUrl } = useContext(Context);
+  const { globalUrl, refresh } = useContext(Context);
   const [inputValue, setInputValue] = useState({});
   const [options, setOptions] = useState([]);
 
@@ -56,7 +56,7 @@ const FaoliyatForm = ({
 
   useEffect(() => {
     getOptions();
-  }, []);
+  }, [refresh]);
 
   return (
     <form onSubmit={postData} className="faoliyat-form">
