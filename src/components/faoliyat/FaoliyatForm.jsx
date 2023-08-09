@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import "./FaoliyatForm.css";
 
@@ -13,10 +13,19 @@ const FaoliyatForm = ({
   const { globalUrl, refresh } = useContext(Context);
   const [inputValue, setInputValue] = useState({});
   const [options, setOptions] = useState([]);
+  const [values, setValues] = useState({
+    title_uz: '',
+    title_en: '',
+    title_ru: '',
+    about_uz: '',
+    about_en: '',
+    about_ru: '',
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputValue((prev) => ({ ...prev, [name]: value }));
+    setValues({ ...values, [name]: value });
   };
 
   function getOptions() {
@@ -52,11 +61,22 @@ const FaoliyatForm = ({
         }
       })
       .catch((err) => console.log(err));
+    console.log(values);
   }
 
   useEffect(() => {
     getOptions();
   }, [refresh]);
+
+  useEffect(() => {
+    const updatedObj = Object.keys(values).reduce((acc, key) => {
+      if (!key.includes("id")) {
+          acc[key] = values[key];
+      }
+      return acc;
+  }, {});
+  setValues(updatedObj)
+  }, [catogoryId]);
 
   return (
     <form onSubmit={postData} className="faoliyat-form">
@@ -68,6 +88,7 @@ const FaoliyatForm = ({
             type="text"
             id="nameUZ"
             name="title_uz"
+            value={inputValue?.title_uz}
             onChange={handleChange}
           />
         </label>
@@ -78,6 +99,7 @@ const FaoliyatForm = ({
             type="text"
             id="nameRU"
             name="title_ru"
+            value={inputValue?.title_ru}
             onChange={handleChange}
           />
         </label>
@@ -88,6 +110,7 @@ const FaoliyatForm = ({
             type="text"
             id="nameEN"
             name="title_en"
+            value={inputValue?.title_en}
             onChange={handleChange}
           />
         </label>
@@ -101,6 +124,7 @@ const FaoliyatForm = ({
             type="text"
             id="lavUZ"
             name="about_uz"
+            value={inputValue?.about_uz}
             onChange={handleChange}
           />
         </label>
@@ -111,6 +135,7 @@ const FaoliyatForm = ({
             type="text"
             id="lavRU"
             name="about_ru"
+            value={inputValue?.about_ru}
             onChange={handleChange}
           />
         </label>
@@ -121,6 +146,7 @@ const FaoliyatForm = ({
             type="text"
             id="lavEN"
             name="about_en"
+            value={inputValue?.about_en}
             onChange={handleChange}
           />
         </label>
@@ -144,11 +170,11 @@ const FaoliyatForm = ({
       </div>
 
       <button
-            type="submit"
-            className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold"
-          >
-            Saqlash
-          </button>
+        type="submit"
+        className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold"
+      >
+        Saqlash
+      </button>
     </form>
   );
 };
