@@ -6,6 +6,7 @@ import "./FaoliyatData.css";
 
 import Input from "../../../pages/admin/foliyat/input/Input";
 import { Context } from "../../../context";
+import { message } from "antd";
 
 const FaoliyatData = () => {
   const { globalUrl, names } = useContext(Context);
@@ -17,6 +18,17 @@ const FaoliyatData = () => {
     ru: "",
     en: "",
   });
+
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = "updatable";
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: "loading",
+      content: "Loading...",
+    });
+    callback();
+  };
 
   const [hashtag, setHashtag] = useState("");
   const [elements, setElements] = useState([]);
@@ -69,10 +81,26 @@ const FaoliyatData = () => {
       .then((res) => res.json())
       .then((res) => {
         if (!res.success) {
-          alert(res.message + " ❌");
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: "error",
+                content: res?.message,
+              });
+            }, 1000);
+          });
         } else {
-          alert(res.message);
-          window.location.reload(true);
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: "success",
+                content: res?.message,
+                duration: 2,
+              });
+            }, 1000);
+          });
         }
       })
       .catch((err) => console.log(err));
@@ -103,6 +131,7 @@ const FaoliyatData = () => {
 
   return (
     <form className="faoliyat-data-form" onSubmit={postData}>
+      { contextHolder }
       <Input
         nameUz="Faoliyatning nomi(UZ)"
         nameRu="Faoliyatning nomi(RU)"
@@ -130,7 +159,7 @@ const FaoliyatData = () => {
       />
 
       {/* Lokatsiya kiritamiz */}
-      <div className="additional-datas">
+      <div style={{ width: '100%' }} className="additional-datas mt-10">
         <label htmlFor="locationUz">
           Joylashuvni kiriting(UZ) <br />
           <input
@@ -164,7 +193,7 @@ const FaoliyatData = () => {
 
       {/* Hash tag */}
       <div
-        style={{ display: "flex", flexDirection: "column" }}
+        style={{ display: "flex", flexDirection: "column", width: '100%' }}
         className="additional-datas"
       >
         <div style={{ display: "flex", alignItems: "flex-end" }}>
@@ -217,7 +246,7 @@ const FaoliyatData = () => {
       </div>
 
       {/* Faoliyatni tanlang */}
-      <div className="additional-datas">
+      <div style={{ width: '100%' }} className="additional-datas">
         <label htmlFor="selectActiviyName">
           Faoliyatni tanlang <br />
           <select
@@ -240,7 +269,7 @@ const FaoliyatData = () => {
 
       <button
             type="submit"
-            className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold"
+            className="bg-blue-500 mt-4 mb-10 flex items-center justify-center w-full text-white py-2 font-bold"
           >
             Saqlash
           </button>

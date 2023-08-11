@@ -21,7 +21,7 @@ const Input = ({ nameUz = "name", nameRu = "name", nameEn = "name" }) => {
   }, [state])
   
   return (
-    <div className="input-component">
+    <div style={{ width: '100%' }} className="input-component mb-10">
       <label htmlFor="nameUz">
         {nameUz} <br />
         <input className="form-control" type="text" id="nameUz" onInput={handChange} />

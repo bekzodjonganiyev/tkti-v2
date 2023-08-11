@@ -1,21 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-  Alert,
-  Spin,
-  message,
-} from "antd";
+import { Button, Form, Input, Select, Alert, Spin, message } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 
 import TextEditor from "../text_editor/TextEditor";
 import { From2Actions } from "./action";
 import { useRef } from "react";
 import { baseURL } from "../../services/http";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -46,8 +38,6 @@ const editorInit = {
   toolbar:
     "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | codesample code",
 };
-
-
 
 export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
@@ -426,46 +416,48 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
 };
 
 export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
-
-  const [ hodimChildId, setHodimChildId ] = useState(undefined)
+  const [hodimChildId, setHodimChildId] = useState(undefined);
 
   const selectorFunc = (state) => state.form2;
-  const { id } = useParams()
+  const { id } = useParams();
   const dispatch = useDispatch();
   const { dataById, loading, options, success, error, updated } =
-  useSelector(selectorFunc);
+    useSelector(selectorFunc);
   const { getOptions, getDataById } = new From2Actions();
-  const [ hodim, setHodim ] = useState(JSON.parse(sessionStorage.getItem('hodim')))
-  
+  const [hodim, setHodim] = useState(
+    JSON.parse(sessionStorage.getItem("hodim"))
+  );
+
   const [messageApi, contextHolder] = message.useMessage();
-  const key = 'updatable';
+  const key = "updatable";
   const openMessage = (callback) => {
     messageApi.open({
       key,
-      type: 'loading',
-      content: 'Loading...',
+      type: "loading",
+      content: "Loading...",
     });
-    callback()
+    callback();
   };
 
-  const imgRef = useRef()
-  const [ image, setImage ] = useState(undefined)
+  const imgRef = useRef();
+  const [image, setImage] = useState(undefined);
   const handleChildChange = (chidlId) => {
-    setHodimChildId(chidlId)
-  }
+    setHodimChildId(chidlId);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData()
-    formData.append('name_uz', e.target.name_uz.value);
-    formData.append('name_ru', e.target.name_ru.value);
-    formData.append('name_en', e.target.name_en.value);
-    formData.append('job_uz', e.target.job_uz.value);
-    formData.append('job_ru', e.target.job_ru.value);
-    formData.append('job_en', e.target.job_en.value);
-    formData.append('tell', e.target.tel.value);
-    formData.append('email', e.target.email.value);
-    imgRef.current.files[0] && formData.append('photo', imgRef.current.files[0]);
+    const formData = new FormData();
+    formData.append("name_uz", e.target.name_uz.value);
+    formData.append("name_ru", e.target.name_ru.value);
+    formData.append("name_en", e.target.name_en.value);
+    formData.append("job_uz", e.target.job_uz.value);
+    formData.append("job_ru", e.target.job_ru.value);
+    formData.append("job_en", e.target.job_en.value);
+    formData.append("tell", e.target.tel.value);
+    formData.append("email", e.target.email.value);
+    imgRef.current.files[0] &&
+      formData.append("photo", imgRef.current.files[0]);
     formData.append(hodim?.id, hodimChildId);
 
     fetch(`${baseURL}/${hodim?.delete}/${id}`, {
@@ -482,26 +474,26 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             setTimeout(() => {
               messageApi.open({
                 key,
-                type: 'error',
+                type: "error",
                 content: res?.message,
                 duration: 2,
               });
-            }, 1000)
-          })
+            }, 1000);
+          });
         } else {
           openMessage(() => {
             setTimeout(() => {
               messageApi.open({
                 key,
-                type: 'success',
+                type: "success",
                 content: res?.message,
                 duration: 2,
               });
               setTimeout(() => {
                 window.location.href = "/adminPanel/employees";
-              }, 500)
-            }, 1000)
-          })
+              }, 500);
+            }, 1000);
+          });
         }
       })
       .catch((err) => console.log(err));
@@ -512,19 +504,19 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   }, [hodim]);
 
   useEffect(() => {
-    setImage(dataById?.photo)
-  }, [dataById])
+    setImage(dataById?.photo);
+  }, [dataById]);
 
   useEffect(() => {
     dispatch(getDataById(hodim?.delete + "/" + id));
-    setHodim(JSON.parse(sessionStorage.getItem('hodim')))
-  }, [])
+    setHodim(JSON.parse(sessionStorage.getItem("hodim")));
+  }, []);
 
   // TODO - edit button bozilib yangi pageda getById bo'ladi va initialValuelar set bo'ladi
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
   return (
     <div className="relative">
-      { contextHolder }
+      {contextHolder}
       {(updated && !loading) || (error && !loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
           <Alert
@@ -625,12 +617,18 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
           {/* OTHERS */}
 
-          <label htmlFor="image" >
-            <img width={300} height={300} src={baseURL + '/' + image} alt="" />
+          <label htmlFor="image">
+            <img width={300} height={300} src={baseURL + "/" + image} alt="" />
             Rasm yuklash <br />
-            <input className="mb-16" type="file" accept="image/*"  id="image" multiple ref={imgRef} />
+            <input
+              className="mb-16"
+              type="file"
+              accept="image/*"
+              id="image"
+              multiple
+              ref={imgRef}
+            />
           </label>
-
 
           <Select
             value={hodimChildId}
@@ -654,55 +652,75 @@ export const EmployeesEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
 };
 
 export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
-
   const selectOptions1 = [
-    { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', add: 'kafedra_hodim/add', },
-    { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', add: 'markaz_hodim/add' },
-    { id: 'bolim_id', value: "Bo'lim", url: 'bm_data/all', add: 'bm_hodim/add' },
-    { id: 'fakultet_id', value: "Fakultet", url: 'Fak_data/all', add: 'Fak_hodim/add' },
-  ]
-  const [ hodim, setHodim ] = useState(null)
-  const [ hodimChildId, setHodimChildId ] = useState(undefined)
+    {
+      id: "kafedra_id",
+      value: "Kafedra",
+      url: "Kafedra_data/all",
+      add: "kafedra_hodim/add",
+    },
+    {
+      id: "markaz_id",
+      value: "Markaz",
+      url: "markaz_data/all",
+      add: "markaz_hodim/add",
+    },
+    {
+      id: "bolim_id",
+      value: "Bo'lim",
+      url: "bm_data/all",
+      add: "bm_hodim/add",
+    },
+    {
+      id: "fakultet_id",
+      value: "Fakultet",
+      url: "Fak_data/all",
+      add: "Fak_hodim/add",
+    },
+  ];
+  const [hodim, setHodim] = useState(null);
+  const [hodimChildId, setHodimChildId] = useState(undefined);
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const form2State = useSelector(selectorFunc);
   const { getOptions } = new From2Actions();
 
   const [messageApi, contextHolder] = message.useMessage();
-  const key = 'updatable';
+  const key = "updatable";
   const openMessage = (callback) => {
     messageApi.open({
       key,
-      type: 'loading',
-      content: 'Loading...',
+      type: "loading",
+      content: "Loading...",
     });
-    callback()
+    callback();
   };
 
   const handleChange = (value) => {
-      const selectedOption = selectOptions1.find(option => option.value === value);
-      setHodim(selectedOption);
+    const selectedOption = selectOptions1.find(
+      (option) => option.value === value
+    );
+    setHodim(selectedOption);
   };
 
   const handleChildChange = (id) => {
-    setHodimChildId(id)
-  }
+    setHodimChildId(id);
+  };
 
-  const imgRef = useRef()
-
+  const imgRef = useRef();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append('name_uz', e.target.name_uz.value);
-    formData.append('name_ru', e.target.name_ru.value);
-    formData.append('name_en', e.target.name_en.value);
-    formData.append('job_uz', e.target.job_uz.value);
-    formData.append('job_ru', e.target.job_ru.value);
-    formData.append('job_en', e.target.job_en.value);
-    formData.append('tell', e.target.tel.value);
-    formData.append('email', e.target.email.value);
-    formData.append('photo', imgRef.current.files[0]);
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name_uz", e.target.name_uz.value);
+    formData.append("name_ru", e.target.name_ru.value);
+    formData.append("name_en", e.target.name_en.value);
+    formData.append("job_uz", e.target.job_uz.value);
+    formData.append("job_ru", e.target.job_ru.value);
+    formData.append("job_en", e.target.job_en.value);
+    formData.append("tell", e.target.tel.value);
+    formData.append("email", e.target.email.value);
+    formData.append("photo", imgRef.current.files[0]);
     formData.append(hodim?.id, hodimChildId);
 
     fetch(`${baseURL}/${hodim?.add}`, {
@@ -719,39 +737,38 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
             setTimeout(() => {
               messageApi.open({
                 key,
-                type: 'loading',
+                type: "loading",
                 content: res?.message,
               });
-            }, 1000)
-          })
+            }, 1000);
+          });
         } else {
           openMessage(() => {
             setTimeout(() => {
               messageApi.open({
                 key,
-                type: 'success',
+                type: "success",
                 content: res?.message,
                 duration: 2,
               });
               setTimeout(() => {
                 window.location.href = "/adminPanel/employees";
-              }, 500)
-            }, 1000)
-          })
+              }, 500);
+            }, 1000);
+          });
         }
       })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    hodim !== null && dispatch(getOptions(hodim?.url))
-    setHodimChildId(null)
-  }, [hodim?.url])
-
+    hodim !== null && dispatch(getOptions(hodim?.url));
+    setHodimChildId(null);
+  }, [hodim?.url]);
 
   return (
     <div className="relative">
-      { contextHolder }
+      {contextHolder}
       {(form2State.added && !form2State.loading) ||
       (form2State.error && !form2State.loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
@@ -768,107 +785,82 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
         {/* TITLES */}
         <div className="flex flex-col gap-1 mb-5">
           <label htmlFor="name_uz">F.I.Sh (UZ)</label>
-          <input
-            type="text"
-            id="name_uz"
-            name="name_uz"
-          />
+          <input type="text" id="name_uz" name="name_uz" />
         </div>
 
         <div className="flex flex-col gap-1 mb-5">
           <label htmlFor="name_ru">F.I.Sh (RU)</label>
-          <input
-            type="text"
-            id="name_ru"
-            name="name_ru"
-          />
+          <input type="text" id="name_ru" name="name_ru" />
         </div>
 
         <div className="flex flex-col gap-1 mb-5">
           <label htmlFor="name_en">F.I.Sh (EN)</label>
-          <input
-            type="text"
-            id="name_en"
-            name="name_en"
-          />
+          <input type="text" id="name_en" name="name_en" />
         </div>
         {/* TITLES */}
 
         {/* JOB */}
         <div className="flex flex-col gap-1 mb-5">
           <label htmlFor="job_uz">Lavozimi (UZ)</label>
-          <input
-            type="text"
-            id="job_uz"
-            name="job_uz"
-          />
+          <input type="text" id="job_uz" name="job_uz" />
         </div>
 
         <div className="flex flex-col gap-1 mb-5">
           <label htmlFor="job_ru">Lavozimi (RU)</label>
-          <input
-            type="text"
-            id="job_ru"
-            name="job_ru"
-          />
+          <input type="text" id="job_ru" name="job_ru" />
         </div>
 
         <div className="flex flex-col gap-1 mb-5">
           <label htmlFor="job_en">Lavozimi (EN)</label>
-          <input
-            type="text"
-            id="job_en"
-            name="job_en"
-          />
+          <input type="text" id="job_en" name="job_en" />
         </div>
         {/* JOB */}
 
         {/* OTHERS */}
         <div className="flex flex-col gap-1 mb-5">
           <label htmlFor="tel">Telefon raqami</label>
-          <input
-            type="text"
-            id="tel"
-            name="tel"
-          />
+          <input type="text" id="tel" name="tel" />
         </div>
 
         <div className="flex flex-col gap-1 mb-5">
           <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-          />
+          <input type="text" id="email" name="email" />
         </div>
 
         {/* OTHERS */}
 
         <label htmlFor="image">
           Rasm yuklash <br />
-          <input className="mb-16" accept="image/*" type="file" id="image" multiple ref={imgRef} />
+          <input
+            className="mb-16"
+            accept="image/*"
+            type="file"
+            id="image"
+            multiple
+            ref={imgRef}
+          />
         </label>
 
+        <Select
+          defaultValue={hodim?.value}
+          value={hodim?.value}
+          style={{
+            width: "100%",
+          }}
+          onChange={(value) => handleChange(value)}
+          options={selectOptions1}
+        />
+
+        {form2State?.options?.length ? (
           <Select
-            defaultValue={hodim?.value}
-            value={hodim?.value}
+            value={hodimChildId}
             style={{
               width: "100%",
             }}
-            onChange={(value) => handleChange(value)}
-            options={selectOptions1}
+            onChange={handleChildChange}
+            options={form2State?.options}
           />
-
-          {
-            form2State?.options?.length ? <Select
-                          value={hodimChildId}
-                          style={{
-                            width: "100%",
-                          }}
-                          onChange={handleChildChange}
-                          options={form2State?.options}
-                        /> : null
-          }
+        ) : null}
         <br />
 
         <button
@@ -885,24 +877,24 @@ export const EmployeesAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
-  const { id } = useParams()
+  const { id } = useParams();
   const { dataById, loading, success, error, updated } =
     useSelector(selectorFunc);
   const { getOptions, getDataById } = new From2Actions();
 
   const [messageApi, contextHolder] = message.useMessage();
-  const key = 'updatable';
+  const key = "updatable";
   const openMessage = (callback) => {
     messageApi.open({
       key,
-      type: 'loading',
-      content: 'Loading...',
+      type: "loading",
+      content: "Loading...",
     });
-    callback()
+    callback();
   };
 
-  const imgRef = useRef()
-  const [ image, setImage ] = useState(undefined)
+  const imgRef = useRef();
+  const [image, setImage] = useState(undefined);
 
   const [asosiyVazifa, setAsosiyVazifa] = useState({
     uz: dataById?.asosiy_vazifa_uz,
@@ -928,40 +920,36 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
     en: dataById?.qisqacha_en,
   });
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
 
-    formData.append('name_en', e.target.name_en.value);
-    formData.append('name_uz', e.target.name_uz.value);
-    formData.append('name_ru', e.target.name_ru.value);
-    formData.append('address_en', e.target.address_en.value);
-    formData.append('address_uz', e.target.address_uz.value);
-    formData.append('address_ru', e.target.address_ru.value);
-    formData.append('job_en', e.target.job_en.value);
-    formData.append('job_uz', e.target.job_uz.value);
-    formData.append('job_ru', e.target.job_ru.value);
-    formData.append('link', e.target.link.value);
-    formData.append('tel', e.target.tel.value);
-    formData.append('asosiy_vazifa_en', asosiyVazifa?.en);
-    formData.append('asosiy_vazifa_uz', asosiyVazifa?.uz);
-    formData.append('asosiy_vazifa_ru', asosiyVazifa?.ru);
-    formData.append('ilmiy_yonlaish_en', ilmiyYonalish?.en);
-    formData.append('ilmiy_yonlaish_uz', ilmiyYonalish?.uz);
-    formData.append('ilmiy_yonlaish_ru', ilmiyYonalish?.ru);
-    formData.append('mehnat_faoliyat_en', mehnatFaoliyat?.en);
-    formData.append('mehnat_faoliyat_uz', mehnatFaoliyat?.uz);
-    formData.append('mehnat_faoliyat_ru', mehnatFaoliyat?.ru);
-    formData.append('qisqacha_en', qisqacha?.en);
-    formData.append('qisqacha_uz', qisqacha?.uz);
-    formData.append('qisqacha_ru', qisqacha?.ru);
-    imgRef.current.files[0] && formData.append('photo', imgRef.current.files[0]);
-
-
-
+    formData.append("name_en", e.target.name_en.value);
+    formData.append("name_uz", e.target.name_uz.value);
+    formData.append("name_ru", e.target.name_ru.value);
+    formData.append("address_en", e.target.address_en.value);
+    formData.append("address_uz", e.target.address_uz.value);
+    formData.append("address_ru", e.target.address_ru.value);
+    formData.append("job_en", e.target.job_en.value);
+    formData.append("job_uz", e.target.job_uz.value);
+    formData.append("job_ru", e.target.job_ru.value);
+    formData.append("link", e.target.link.value);
+    formData.append("tel", e.target.tel.value);
+    formData.append("asosiy_vazifa_en", asosiyVazifa?.en);
+    formData.append("asosiy_vazifa_uz", asosiyVazifa?.uz);
+    formData.append("asosiy_vazifa_ru", asosiyVazifa?.ru);
+    formData.append("ilmiy_yonlaish_en", ilmiyYonalish?.en);
+    formData.append("ilmiy_yonlaish_uz", ilmiyYonalish?.uz);
+    formData.append("ilmiy_yonlaish_ru", ilmiyYonalish?.ru);
+    formData.append("mehnat_faoliyat_en", mehnatFaoliyat?.en);
+    formData.append("mehnat_faoliyat_uz", mehnatFaoliyat?.uz);
+    formData.append("mehnat_faoliyat_ru", mehnatFaoliyat?.ru);
+    formData.append("qisqacha_en", qisqacha?.en);
+    formData.append("qisqacha_uz", qisqacha?.uz);
+    formData.append("qisqacha_ru", qisqacha?.ru);
+    imgRef.current.files[0] &&
+      formData.append("photo", imgRef.current.files[0]);
 
     fetch(`${baseURL}/rektorat/${id}`, {
       method: "PUT",
@@ -977,29 +965,28 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
             setTimeout(() => {
               messageApi.open({
                 key,
-                type: 'loading',
+                type: "loading",
                 content: res?.message,
               });
-            }, 1000)
-          })
+            }, 1000);
+          });
         } else {
           openMessage(() => {
             setTimeout(() => {
               messageApi.open({
                 key,
-                type: 'success',
+                type: "success",
                 content: res?.message,
                 duration: 2,
               });
               setTimeout(() => {
                 window.location.href = "/adminPanel/lidership";
-              }, 500)
-            }, 1000)
-          })
+              }, 500);
+            }, 1000);
+          });
         }
       })
       .catch((err) => console.log(err));
-
   };
 
   useEffect(() => {
@@ -1008,8 +995,8 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   }, [url]);
 
   useEffect(() => {
-    setImage(dataById?.photo)
-  }, [dataById])
+    setImage(dataById?.photo);
+  }, [dataById]);
 
   useEffect(() => {
     setQisqacha({
@@ -1038,7 +1025,7 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
   return (
     <div className="relative">
-      { contextHolder }
+      {contextHolder}
       {(updated && !loading) || (error && !loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
           <Alert
@@ -1304,11 +1291,17 @@ export const LidershipEditForm = ({ hasSelect, selectUrl, url, bolim }) => {
           </div>
           {/* AIM */}
 
-          
-          <label htmlFor="image" >
-            <img width={300} height={300} src={baseURL + '/' + image} alt="" />
+          <label htmlFor="image">
+            <img width={300} height={300} src={baseURL + "/" + image} alt="" />
             Rasm yuklash <br />
-            <input className="mb-16" type="file" accept="image/*"  id="image" multiple ref={imgRef} />
+            <input
+              className="mb-16"
+              type="file"
+              accept="image/*"
+              id="image"
+              multiple
+              ref={imgRef}
+            />
           </label>
 
           {/* SELECT FAKULTET */}
@@ -1349,20 +1342,19 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const form2State = useSelector(selectorFunc);
-  const imgRef = useRef()
+  const imgRef = useRef();
   const { getOptions } = new From2Actions();
 
   const [messageApi, contextHolder] = message.useMessage();
-  const key = 'updatable';
+  const key = "updatable";
   const openMessage = (callback) => {
     messageApi.open({
       key,
-      type: 'loading',
-      content: 'Loading...',
+      type: "loading",
+      content: "Loading...",
     });
-    callback()
+    callback();
   };
-
 
   const [asosiyVazifa, setAsosiyVazifa] = useState({
     uz: "",
@@ -1406,9 +1398,6 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
     formData.append("asosiy_vazifa_en", asosiyVazifa?.en);
     formData.append("photo", imgRef.current.files[0]);
 
-
-
-
     fetch(`${baseURL}/rektorat/add`, {
       method: "POST",
       headers: {
@@ -1423,29 +1412,28 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
             setTimeout(() => {
               messageApi.open({
                 key,
-                type: 'loading',
+                type: "loading",
                 content: res?.message,
               });
-            }, 1000)
-          })
+            }, 1000);
+          });
         } else {
           openMessage(() => {
             setTimeout(() => {
               messageApi.open({
                 key,
-                type: 'success',
+                type: "success",
                 content: res?.message,
                 duration: 2,
               });
               setTimeout(() => {
                 window.location.href = "/adminPanel/lidership";
-              }, 500)
-            }, 1000)
-          })
+              }, 500);
+            }, 1000);
+          });
         }
       })
       .catch((err) => console.log(err));
-
   };
 
   useEffect(() => {
@@ -1454,7 +1442,7 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
   return (
     <div className="relative">
-      { contextHolder }
+      {contextHolder}
       {(form2State.added && !form2State.loading) ||
       (form2State.error && !form2State.loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
@@ -1637,7 +1625,13 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 
         <label htmlFor="image">
           Rasm yuklash <br />
-          <input type="file" accept="image/*" id="image" multiple ref={imgRef} />
+          <input
+            type="file"
+            accept="image/*"
+            id="image"
+            multiple
+            ref={imgRef}
+          />
         </label>
 
         <br />

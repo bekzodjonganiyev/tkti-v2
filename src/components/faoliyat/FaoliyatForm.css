@@ -1,14 +1,12 @@
 .faoliyat-form{
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 16px;
 }
 
 .faoliyat-form div{
-    width: 95%;
-    margin: 0 auto;
     display: flex;
-    gap: 50px;
+    gap: 16px;
 }
 
 .faoliyat-form div label{

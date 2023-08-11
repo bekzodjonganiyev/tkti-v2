@@ -87,7 +87,9 @@ import {
   EmployeesEdit
 
 } from "./pages/admin";
-import Faoliyat from "./pages/admin/foliyat/Faoliyat";
+import { Faoliyat } from "./pages/admin/foliyat";
+import FaoliyatCreate from "./pages/admin/foliyat/FaoliyatCreate";
+import { FaoliyatEdit } from "./pages/admin/foliyat/edit";
 
 
 function App() {
@@ -170,7 +172,9 @@ function App() {
           <Route path="student/edit/:page/:id" element={<StudentChildEdit />} />
           <Route path="student/view/:page/:id" element={<StudentView />} />
 
-          <Route path="faoliyat" element={<Faoliyat />} />
+          <Route path="faoliyat/add" element={<FaoliyatCreate/>} />
+          <Route path="faoliyat/edit/:id" element={<FaoliyatEdit/>} />
+          <Route path="faoliyat" element={<Faoliyat/>} />
 
           <Route path="education" element={<Education />} />
           <Route path="education/add" element={<EducationCreate />} />

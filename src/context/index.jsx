@@ -4,9 +4,7 @@ const Context = React.createContext();
 function Provider({ children }) {
   const [names, setNames] = useState();
   const [ refresh, setRefresh ] = useState(false)
-  // const globalUrl = "http://localhost:5000";
   const globalUrl = "https://backend.tkti.uz";
-
 
   return (
     <>

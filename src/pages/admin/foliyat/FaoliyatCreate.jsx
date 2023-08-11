@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-
 import "./Faoliyat.css";
 import FaoliyatData from "../../../components/faoliyat/faoliyat_data/FaoliyatData";
 import FaoliyatForm from "../../../components/faoliyat/FaoliyatForm";
 import FormHeader from "./form_header/FormHeader";
 import { memo } from "react";
-import { Select } from "antd";
+import { Select, message } from "antd";
 import { useContext } from "react";
 import { Context } from "../../../context";
 
 
-const Faoliyat = () => {
+const FaoliyatCreate = () => {
   const { setRefresh, refresh } = useContext(Context);
 
   const selectOptions1 = [
@@ -20,6 +19,8 @@ const Faoliyat = () => {
     { id: 'fakultet_id', value: "Fakultetlar", url: 'Fak_data/all', get: 'Fak_hodim/all',  delete: 'Fak_hodim'  },
   ]
   const [ hodim, setHodim ] = useState(selectOptions1[3])
+
+
 
   const handleChange = (value) => {
     const selectedOption = selectOptions1.find(option => option.value === value);
@@ -51,4 +52,4 @@ const Faoliyat = () => {
   );
 };
 
-export default memo(Faoliyat);
+export default memo(FaoliyatCreate);
