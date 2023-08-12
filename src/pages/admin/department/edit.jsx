@@ -10,6 +10,7 @@ export const DepartmentEdit = () => {
       selectUrl={"rektorat/all"}
       selectId={"rektorat"}
       bolim={true}
+      ifUpdateSuccessToWhere={"department"}
     />
   );
 };

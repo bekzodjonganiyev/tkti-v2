@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Popconfirm, Table, Select } from "antd";
+import { Popconfirm, Table, Select, Pagination } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,9 @@ export const News = () => {
   const { getData, getDataById, postData, updateData, deleteData } = new NewsActions();
   const selectorFunc = (state) => state.news;
   const { data, dataById, loading, error } = useSelector(selectorFunc);
+  const [ totalItems, setTotalItems ] = useState('')
+  const [ currentPage, setCurrentPage ] = useState(1)
+
 
   const [category, setCategory] = useState("yangilik")
 
@@ -70,8 +73,10 @@ export const News = () => {
   ];
 
   useEffect(() => {
-    dispatch(getData(category));
-  }, [category]);
+    dispatch(getData(category, currentPage, (res) => {
+      setTotalItems(res?.total)
+    }));
+  }, [category, currentPage]);
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -86,6 +91,16 @@ export const News = () => {
         size="large"
         loading={loading}
       />
+        <div className="w-full flex justify-end">
+        <Pagination
+          current={currentPage}
+          onChange={(page) => setCurrentPage(page)}
+          total={totalItems}
+          pageSize={10}
+          // totalItems={1000}
+          // totalPage={totalPage}
+        />
+      </div>
     </div>
   );
 };

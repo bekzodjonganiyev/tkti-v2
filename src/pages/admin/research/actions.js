@@ -51,7 +51,7 @@ export const research_parent = {
       };
     }
   
-    postData(body) {
+    postData(body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: research_parent,
@@ -62,16 +62,18 @@ export const research_parent = {
             type: research_parent.post,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: research_parent.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
   
-    updateData(id, body) {
+    updateData(id, body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: research_parent.request,
@@ -82,11 +84,13 @@ export const research_parent = {
             type: research_parent.put,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: research_parent.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
@@ -163,7 +167,7 @@ export const research_parent = {
       };
     }
   
-    postData(body) {
+    postData(body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: research_child,
@@ -174,16 +178,18 @@ export const research_parent = {
             type: research_child.post,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: research_child.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
   
-    updateData(id, body) {
+    updateData(id, body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: research_child.request,
@@ -194,11 +200,13 @@ export const research_parent = {
             type: research_child.put,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: research_child.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }

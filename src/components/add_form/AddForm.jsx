@@ -1,6 +1,6 @@
 import { useState } from "react";
 import TextEditor from "../text_editor/TextEditor";
-import { Button, Form, Input, Select, Upload, Modal, DatePicker } from "antd";
+import { Button, Form, Input, Select, Upload, Modal, DatePicker, message } from "antd";
 import { UploadOutlined, MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { DeleteIcon } from "../../assets/icons";
 
@@ -21,7 +21,7 @@ const typesOfNews = [
   { value: "video", label: "Video galeriya"},
 ]
 
-export const AddForm = ({ parents, postParent, loading, postChild, newsForm }) => {
+export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifCreateSuccessWhereTo }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [parentId, setParentId] = useState("");
   const [dateOfNew, setDateOfNew] = useState("");
@@ -33,6 +33,17 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm }) =
     ru: "",
     en: "",
   });
+
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = "updatable";
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: "loading",
+      content: "Loading...",
+    });
+    callback();
+  };
 
   const submitChild = (value) => {
     const fmData = new FormData();
@@ -60,7 +71,33 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm }) =
       fmData.append("nameId", parentId)
     }
 
-    postChild(fmData);
+    postChild(fmData, 
+      (res) => {
+        openMessage(() => {
+          setTimeout(() => {
+            messageApi.open({
+              key,
+              type: "success",
+              content: res?.message,
+            });
+            setTimeout(() => {
+              window.location.href = `/adminPanel/${ifCreateSuccessWhereTo}`
+            }, 500)
+          }, 1000);
+        });
+      },
+      (res) => {
+        openMessage(() => {
+          setTimeout(() => {
+            messageApi.open({
+              key,
+              type: "error",
+              content: res?.message,
+            });
+          }, 1000);
+        });
+      }
+      );
   };
   const submitParent = (value) => {
     postParent(value);
@@ -82,6 +119,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm }) =
   };
   return (
     <>
+    {contextHolder}
       <Modal
         title="Parent qo'shish"
         open={isModalOpen}

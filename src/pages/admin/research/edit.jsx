@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -8,6 +8,7 @@ import { ResearchParentActions, ResearchChildActions } from "./actions";
 export const ResearchChildEdit = () => {
   const { page, id } = useParams();
   const dispatch = useDispatch();
+  const [ refresh, setRefresh ] = useState(false)
 
   const selectorFuncParent = (state) => state.researchParent;
   const selectorFuncChild = (state) => state.researchChild;
@@ -20,15 +21,34 @@ export const ResearchChildEdit = () => {
   useEffect(() => {
     dispatch(childAction.getDataById(page));
     dispatch(parentAction.getData());
-  }, [id]);
+  }, [id, refresh]);
+
+  useEffect(() => {
+    setRefresh(!refresh)
+  }, [])
+
+  const childUpdate = (e, successCallback, errorCallback) => {
+    dispatch(childAction.updateData(id, e,
+      // =------------------ SUCCESS CALLBACK ----------------=
+      (res) => {
+        successCallback(res)
+      },
+      // =------------------ ERROR CALLBACK ------------------=
+      (res) => {
+        errorCallback(res)
+      }
+      ))
+      setRefresh(!refresh)
+  }
 
   return (
     <div>
       <EditForm
         childById={childState?.dataById}
         parents={parentState?.data}
-        putChild={(e) => dispatch(childAction.updateData(id, e))}
+        putChild={childUpdate}
         loading={childState?.loading}
+        ifUpdateSuccessWhereTo={"research"}
       />
     </div>
   );

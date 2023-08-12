@@ -6,6 +6,7 @@ export const CenterCreate = () => {
     <AddForm2
       hasSelect={false}
       url={"markaz_data/add"}
+      ifCreateSuccessWhereTo={"center"}
     />
   );
 };

@@ -84,12 +84,25 @@ const FaoliyatForm = ({
                 content: res?.message,
                 duration: 2,
               });
+              setTimeout(() => {
+               if (confirm("Ushbu sahifada yana amal bajarasizmi?") === false) {
+                window.location.href = "/adminPanel/faoliyat"
+               } else {
+                  setInputValue({
+                    title_uz: "",
+                    title_en: "",
+                    title_ru: "",
+                    about_uz: "",
+                    about_en: "",
+                    about_ru: "",
+                  })
+               }
+              }, 500)
             }, 1000);
           });
         }
       })
       .catch((err) => console.log(err));
-    console.log(values);
   }
 
   useEffect(() => {

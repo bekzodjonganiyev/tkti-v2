@@ -11,9 +11,9 @@ export const newsActionTypes = {
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
 
 export class NewsActions {
-  getData(category, page) {
+  getData(category, page, callback) {
     const url = page
-      ? `news/all?category=${category}&page${page}`
+      ? `news/all?category=${category}&page=${page}`
       : `news/all?category=${category}`;
     return async (dispatch) => {
       dispatch({
@@ -25,6 +25,7 @@ export class NewsActions {
           type: newsActionTypes.get,
           payload: res.data,
         });
+        callback(res)
       } else {
         dispatch({
           type: newsActionTypes.error,
@@ -54,7 +55,7 @@ export class NewsActions {
     };
   }
 
-  postData(body) {
+  postData(body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: newsActionTypes.loading,
@@ -65,16 +66,18 @@ export class NewsActions {
           type: newsActionTypes.post,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: newsActionTypes.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
 
-  updateData(id, body) {
+  updateData(id, body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: newsActionTypes.loading,
@@ -85,11 +88,13 @@ export class NewsActions {
           type: newsActionTypes.put,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: newsActionTypes.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }

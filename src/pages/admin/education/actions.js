@@ -51,7 +51,7 @@ export class EducationParentActions {
     };
   }
 
-  postData(body) {
+  postData(body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: education_parent.request,
@@ -62,16 +62,18 @@ export class EducationParentActions {
           type: education_parent.post,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: education_parent.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
 
-  updateData(id, body) {
+  updateData(id, body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: education_parent.request,
@@ -82,16 +84,18 @@ export class EducationParentActions {
           type: education_parent.put,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: education_parent.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
 
-  deleteData(id) {
+  deleteData(id, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: education_parent.request,
@@ -102,11 +106,13 @@ export class EducationParentActions {
           type: education_parent.delete,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: education_parent.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
@@ -163,7 +169,7 @@ export class EducationChildActions {
     };
   }
 
-  postData(body) {
+  postData(body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: education_child.request,
@@ -174,16 +180,18 @@ export class EducationChildActions {
           type: education_child.post,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: education_child.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
 
-  updateData(id, body) {
+  updateData(id, body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: education_child.request,
@@ -194,11 +202,13 @@ export class EducationChildActions {
           type: education_child.put,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: education_child.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }

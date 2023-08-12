@@ -7,6 +7,7 @@ export const DepartmentCreate = () => {
       url={"bm_data/add"}
       selectUrl={"rektorat/all"}
       bolim={true}
+      ifCreateSuccessWhereTo={"department"}
     />
   )
 }

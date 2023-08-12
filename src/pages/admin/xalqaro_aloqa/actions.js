@@ -51,7 +51,7 @@ export class XalqaroParentActions {
     };
   }
 
-  postData(body) {
+  postData(body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: xalqaro_parent,
@@ -62,16 +62,18 @@ export class XalqaroParentActions {
           type: xalqaro_parent.post,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: xalqaro_parent.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
 
-  updateData(id, body) {
+  updateData(id, body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: xalqaro_parent.request,
@@ -82,11 +84,13 @@ export class XalqaroParentActions {
           type: xalqaro_parent.put,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: xalqaro_parent.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
@@ -163,7 +167,7 @@ export class XalqaroChildActions {
     };
   }
 
-  postData(body) {
+  postData(body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: xalqaro_child,
@@ -174,16 +178,18 @@ export class XalqaroChildActions {
           type: xalqaro_child.post,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: xalqaro_child.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
 
-  updateData(id, body) {
+  updateData(id, body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: xalqaro_child.request,
@@ -194,11 +200,13 @@ export class XalqaroChildActions {
           type: xalqaro_child.put,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: xalqaro_child.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }

@@ -51,7 +51,7 @@ export const qabul_parent = {
       };
     }
   
-    postData(body) {
+    postData(body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: qabul_parent.request,
@@ -62,16 +62,18 @@ export const qabul_parent = {
             type: qabul_parent.post,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: qabul_parent.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
   
-    updateData(id, body) {
+    updateData(id, body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: qabul_parent.request,
@@ -82,16 +84,18 @@ export const qabul_parent = {
             type: qabul_parent.put,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: qabul_parent.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
   
-    deleteData(id) {
+    deleteData(id, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: qabul_parent.request,
@@ -102,11 +106,13 @@ export const qabul_parent = {
             type: qabul_parent.delete,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: qabul_parent.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
@@ -163,7 +169,7 @@ export const qabul_parent = {
       };
     }
   
-    postData(body) {
+    postData(body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: qabul_child.request,
@@ -174,16 +180,18 @@ export const qabul_parent = {
             type: qabul_child.post,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: qabul_child.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
   
-    updateData(id, body) {
+    updateData(id, body, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: qabul_child.request,
@@ -194,16 +202,18 @@ export const qabul_parent = {
             type: qabul_child.put,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: qabul_child.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }
   
-    deleteData(id) {
+    deleteData(id, successCallback, errorCallback) {
       return async (dispatch) => {
         dispatch({
           type: qabul_child.request,
@@ -214,11 +224,13 @@ export const qabul_parent = {
             type: qabul_child.delete,
             payload: res.data,
           });
+          successCallback(res)
         } else {
           dispatch({
             type: qabul_child.error,
             payload: res?.status ? res.status : res,
           });
+          errorCallback(res)
         }
       };
     }

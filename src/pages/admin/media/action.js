@@ -11,18 +11,18 @@ export const media_types = {
   import apiClientWithFetch from "../../../services/apiClientWithFetch";
   
   export class MediaActions {
-    getData(page) {
+    getData(page, callback) {
       return async (dispatch) => {
         dispatch({
           type: media_types.request,
         });
         const res = await apiClientWithFetch.get(`media/get/all?page=${page}`);
         if (res.status === 200) {
-          sessionStorage.setItem('totalItems', JSON.stringify(res?.totalItems))
           dispatch({
             type: media_types.get,
             payload: res.data,
           });
+          callback(res)
         } else {
           dispatch({
             type: media_types.error,

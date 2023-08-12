@@ -5,6 +5,7 @@ export const FacultyCreate = () => {
     <AddForm2
       hasSelect={false}
       url={"Fak_data/add"}
+      ifCreateSuccessWhereTo={"faculty"}
     />
   )
 }

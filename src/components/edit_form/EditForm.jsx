@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { DeleteIcon } from "../../assets/icons";
+import { Spin, message } from "antd";
 
-export const EditForm = ({ childById, parents, putChild, loading }) => {
+export const EditForm = ({ childById, parents, putChild, loading, ifUpdateSuccessWhereTo }) => {
   const [editorUz, setEditorUz] = useState("");
   const [editorRu, setEditorRu] = useState("");
   const [editorEn, setEditorEn] = useState("");
+  const [title, setTitle] = useState({
+    uz: childById?.title_uz,
+    ru: childById?.title_ru,
+    en: childById?.title_en,
+  });
   const [state, setState] = useState([]);
 
   const editorInit = {
@@ -27,19 +33,57 @@ export const EditForm = ({ childById, parents, putChild, loading }) => {
       "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | codesample code",
   };
 
+
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = "updatable";
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: "loading",
+      content: "Loading...",
+    });
+    callback();
+  };
+
   const submit = (e) => {
     e.preventDefault();
 
     const fmData = new FormData();
-    fmData.append("title_uz", e.target.title_uz.value);
-    fmData.append("title_ru", e.target.title_ru.value);
-    fmData.append("title_en", e.target.title_en.value);
+    fmData.append("title_uz", title?.uz);
+    fmData.append("title_ru", title?.ru);
+    fmData.append("title_en", title?.en);
     fmData.append("nameId", e.target.nameId.value);
     fmData.append("body_uz", editorUz);
     fmData.append("body_ru", editorRu);
     fmData.append("body_en", editorEn);
 
-    putChild(fmData);
+    putChild(fmData, 
+        (res) => {
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: "success",
+                content: res?.message,
+              });
+              setTimeout(() => {
+                window.location.href = `/adminPanel/${ifUpdateSuccessWhereTo}`
+              }, 500)
+            }, 1000);
+          });
+        },
+        (res) => {
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: "error",
+                content: res?.message,
+              });
+            }, 1000);
+          });
+        }
+      );
   };
 
   useEffect(() => {
@@ -48,7 +92,13 @@ export const EditForm = ({ childById, parents, putChild, loading }) => {
       setEditorRu(childById.body_ru);
       setEditorEn(childById.body_en);
     }
+    setTitle({
+      uz: childById?.title_uz,
+      ru: childById?.title_ru,
+      en: childById?.title_en,
+    });
   }, [childById]);
+
 
 
   const func = (e) => {
@@ -64,10 +114,8 @@ export const EditForm = ({ childById, parents, putChild, loading }) => {
 
   return (
     <div>
-      {loading ? (
-        "Loading"
-      ) : (
-        <>
+      {contextHolder}
+      <Spin spinning={loading}>
           <form onSubmit={submit} className="pb-10">
             <div className="flex flex-col gap-1 mb-5">
               <label htmlFor="title_uz">Sarlavha (UZ)</label>
@@ -75,7 +123,8 @@ export const EditForm = ({ childById, parents, putChild, loading }) => {
                 type="text"
                 id="title_uz"
                 name="title_uz"
-                defaultValue={childById?.title_uz}
+                value={title?.uz}
+                onChange={(e) => setTitle({ ...title, uz: e.target.value })}
               />
             </div>
             <div className="flex flex-col gap-1 mb-5">
@@ -84,7 +133,8 @@ export const EditForm = ({ childById, parents, putChild, loading }) => {
                 type="text"
                 id="title_ru"
                 name="title_ru"
-                defaultValue={childById?.title_ru}
+                value={title?.ru}
+                onChange={(e) => setTitle({ ...title, ru: e.target.value })}
               />
             </div>
             <div className="flex flex-col gap-1 mb-5">
@@ -93,7 +143,8 @@ export const EditForm = ({ childById, parents, putChild, loading }) => {
                 type="text"
                 id="title_en"
                 name="title_en"
-                defaultValue={childById?.title_en}
+                value={title?.en}
+                onChange={(e) => setTitle({ ...title, en: e.target.value })}
               />
             </div>
             <div className="mt-10">
@@ -207,8 +258,7 @@ export const EditForm = ({ childById, parents, putChild, loading }) => {
               Saqlash
             </button>
           </form>
-        </>
-      )}
+      </Spin>
     </div>
   );
 };

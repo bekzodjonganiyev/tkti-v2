@@ -6,6 +6,7 @@ export const KafedraCreate = () => {
       hasSelect={true}
       selectUrl={"Fak_data/all"}
       url={"Kafedra_data/add"}
+      ifCreateSuccessWhereTo={"kafedra"}
     />
   )
 }

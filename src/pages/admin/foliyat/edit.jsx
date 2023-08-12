@@ -29,10 +29,9 @@ export const FaoliyatEdit = () => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { dataById, loading, success, error, updated } = useSelector(selectorFunc);
-  const { getOptions, getDataById } = new From2Actions();
-
-  console.log(dataById);
+  const { dataById, loading } = useSelector(selectorFunc);
+  const { getDataById, putData } = new From2Actions();
+  const [ refresh, setRefresh ] = useState(false)
 
   const [messageApi, contextHolder] = message.useMessage();
   const key = "updatable";
@@ -60,24 +59,70 @@ export const FaoliyatEdit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const obj = {
+      title_uz: title?.uz,
+      title_ru: title?.ru,
+      title_en: title?.en,
       about_en: qisqacha?.en,
       about_ru: qisqacha?.ru,
       about_uz: qisqacha?.uz,
-      // title_uz: title?.uz,
-      title_ru: title?.ru,
-      title_en: title?.en,
     }
 
-    fetch(`${baseURL}/faoliyat/${id}`, {
-      method: "PUT",
-      headers: {
-        Token: localStorage.getItem("token"),
-      },
-      body: JSON.stringify(obj),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success) {
+    const endpointData = JSON.stringify(obj)
+
+    // fetch(`${baseURL}/faoliyat/${id}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     Token: localStorage.getItem("token"),
+    //   },
+    //   body: endpointData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     if (!res.success) {
+    //       openMessage(() => {
+    //         setTimeout(() => {
+    //           messageApi.open({
+    //             key,
+    //             type: "error",
+    //             content: res?.message,
+    //           });
+    //         }, 1000);
+    //       });
+    //     } else {
+    //       openMessage(() => {
+    //         setTimeout(() => {
+    //           messageApi.open({
+    //             key,
+    //             type: "success",
+    //             content: res?.message,
+    //             duration: 2,
+    //           });
+    //           setTimeout(() => {
+    //             window.location.href = "/adminPanel/faoliyat";
+    //           }, 500);
+    //         }, 1000);
+    //       });
+    //     }
+    //   })
+    //   .catch((err) => console.log(err));
+      dispatch(putData(`/faoliyat/${id}`, endpointData, 
+      // =------------- SUCCESS CALLBACK ---------------------=
+        (res) => {
+          openMessage(() => {
+            setTimeout(() => {
+              messageApi.open({
+                key,
+                type: "success",
+                content: res?.message,
+              });
+              setTimeout(() => {
+                window.location.href = "/adminPanel/faoliyat"
+              }, 500)
+            }, 1000);
+          });
+        },
+        // =------------------ ERROR CALLBACK ------------------=
+        (res) => {
           openMessage(() => {
             setTimeout(() => {
               messageApi.open({
@@ -87,29 +132,14 @@ export const FaoliyatEdit = () => {
               });
             }, 1000);
           });
-        } else {
-          openMessage(() => {
-            setTimeout(() => {
-              messageApi.open({
-                key,
-                type: "success",
-                content: res?.message,
-                duration: 2,
-              });
-              setTimeout(() => {
-                window.location.href = "/adminPanel/faoliyat";
-              }, 500);
-            }, 1000);
-          });
         }
-      })
-      .catch((err) => console.log(err));
+      ));
+      setRefresh(!refresh)
   };
-
 
   useEffect(() => {
     dispatch(getDataById(`faoliyat/${id}`));
-  }, []);
+  }, [refresh, id]);
 
   useEffect(() => {
     setQisqacha({
@@ -126,7 +156,6 @@ export const FaoliyatEdit = () => {
   }, [dataById]);
 
 
-  console.log(qisqacha);
   return (
     <div className="relative">
       {contextHolder}
@@ -134,32 +163,35 @@ export const FaoliyatEdit = () => {
         <form onSubmit={handleSubmit} className="pb-10">
           {/* TITLES */}
           <div className="flex flex-col gap-1 mb-5">
-            <label htmlFor="name_uz">Nomi (UZ)</label>
+            <label htmlFor="title_uz">Nomi (UZ)</label>
             <input
               type="text"
-              id="name_uz"
-              name="name_uz"
-              defaultValue={title?.uz}
+              id="title_uz"
+              name="title_uz"
+              value={title?.uz}
+              onChange={(e) => setTitle({ ...title, uz: e.target.value })}
             />
           </div>
 
           <div className="flex flex-col gap-1 mb-5">
-            <label htmlFor="name_ru">Nomi (RU)</label>
+            <label htmlFor="title_ru">Nomi (RU)</label>
             <input
               type="text"
-              id="name_ru"
-              name="name_ru"
-              defaultValue={title?.ru}
+              id="title_ru"
+              name="title_ru"
+              value={title?.ru}
+              onChange={(e) => setTitle({ ...title, ru: e.target.value })}
             />
           </div>
 
           <div className="flex flex-col gap-1 mb-5">
-            <label htmlFor="name_en">Nomi (EN)</label>
+            <label htmlFor="title_en">Nomi (EN)</label>
             <input
               type="text"
-              id="name_en"
-              name="name_en"
-              defaultValue={title?.en}
+              id="title_en"
+              name="title_en"
+              value={title?.en}
+              onChange={(e) => setTitle({ ...title, en: e.target.value })}
             />
           </div>
           {/* TITLES */}

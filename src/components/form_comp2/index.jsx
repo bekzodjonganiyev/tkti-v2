@@ -39,7 +39,7 @@ const editorInit = {
     "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | codesample code",
 };
 
-export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
+export const AddForm2 = ({ hasSelect, selectUrl, url, bolim, ifCreateSuccessWhereTo }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const form2State = useSelector(selectorFunc);
@@ -57,6 +57,7 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   });
   const [facultyId, setFacultyId] = useState("");
   const [rektoratId, setRektoratId] = useState("");
+  const [ refresh, setRefresh ] = useState(false)
 
   const handleChange = (value) => {
     bolim ? setRektoratId(value) : setFacultyId(value);
@@ -64,6 +65,17 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
 
   const selectFunc = () => {
     return bolim ? { rektorat: rektoratId } : { fakultet_id: facultyId };
+  };
+
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = "updatable";
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: "loading",
+      content: "Loading...",
+    });
+    callback();
   };
 
   const handleSubmit = (value) => {
@@ -81,17 +93,44 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
       ? JSON.stringify({ ...obj, ...selectFunc() })
       : JSON.stringify(obj);
 
-    dispatch(postData(url, body));
-    // console.log(JSON.parse(body));
+    dispatch(postData(url, body, 
+      (res) => {
+        openMessage(() => {
+          setTimeout(() => {
+            messageApi.open({
+              key,
+              type: "success",
+              content: res?.message,
+            });
+            setTimeout(() => {
+              window.location.href = `/adminPanel/${ifCreateSuccessWhereTo}`
+            }, 500)
+          }, 1000);
+        });
+      },
+      (res) => {
+        openMessage(() => {
+          setTimeout(() => {
+            messageApi.open({
+              key,
+              type: "error",
+              content: res?.message,
+            });
+          }, 1000);
+        });
+      }
+        ));
+    setRefresh(!refresh)
   };
 
   useEffect(() => {
     hasSelect ? dispatch(getOptions(selectUrl)) : null;
-  }, []);
+  }, [refresh, selectUrl]);
 
   return (
     <div className="relative">
-      {(form2State.added && !form2State.loading) ||
+      {contextHolder}
+      {/* {(form2State.added && !form2State.loading) ||
       (form2State.error && !form2State.loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
           <Alert
@@ -102,7 +141,7 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
             showIcon
           />
         </div>
-      ) : null}
+      ) : null} */}
       <Form
         onFinish={handleSubmit}
         style={{
@@ -201,7 +240,8 @@ export const AddForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   );
 };
 
-export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
+export const EditForm2 = ({ hasSelect, selectUrl, url, bolim, ifUpdateSuccessToWhere }) => {
+  const [ refresh, setRefresh ] = useState(false)
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const { dataById, loading, options, success, error, updated } =
@@ -221,6 +261,17 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   const [facultyId, setFacultyId] = useState(dataById?.fakultet_id);
   const [rektoratId, setRektoratId] = useState(dataById?.rektorat);
 
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = "updatable";
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: "loading",
+      content: "Loading...",
+    });
+    callback();
+  };
+
   const selectFunc = () => {
     return bolim
       ? {
@@ -231,7 +282,6 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
         };
   };
 
-  console.log(dataById);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -251,13 +301,40 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
       ? JSON.stringify({ ...obj, ...selectFunc() })
       : JSON.stringify(obj);
 
-    dispatch(putData(url, body));
+    dispatch(putData(url, body, 
+      (res) => {
+        openMessage(() => {
+          setTimeout(() => {
+            messageApi.open({
+              key,
+              type: "success",
+              content: res?.message,
+            });
+            setTimeout(() => {
+              window.location.href = `/adminPanel/${ifUpdateSuccessToWhere}`
+            }, 500)
+          }, 1000);
+        });
+      },
+      (res) => {
+        openMessage(() => {
+          setTimeout(() => {
+            messageApi.open({
+              key,
+              type: "error",
+              content: res?.message,
+            });
+          }, 1000);
+        });
+      }
+      ));
+      setRefresh(!refresh)
   };
 
   useEffect(() => {
     hasSelect ? dispatch(getOptions(selectUrl)) : null;
     dispatch(getDataById(url));
-  }, [url]);
+  }, [url, refresh]);
 
   useEffect(() => {
     setAbout({
@@ -278,7 +355,8 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
   return (
     <div className="relative">
-      {(updated && !loading) || (error && !loading) ? (
+      {contextHolder}
+      {/* {(updated && !loading) || (error && !loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
           <Alert
             message={`${success ? "Saqlandi" : "Xatoli yuz berdi"}`}
@@ -288,7 +366,7 @@ export const EditForm2 = ({ hasSelect, selectUrl, url, bolim }) => {
             showIcon
           />
         </div>
-      ) : null}
+      ) : null} */}
       <Spin spinning={loading}>
         <form onSubmit={handleSubmit} className="pb-10">
           {/* TITLES */}
@@ -1655,19 +1733,30 @@ export const LidershipAddForm = ({ hasSelect, selectUrl, url, bolim }) => {
 export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
+  const [ refresh, setRefresh ] = useState(false)
   const { dataById, loading, options, success, error, updated } =
     useSelector(selectorFunc);
   const { getOptions, putData, getDataById } = new From2Actions();
 
-  const filterData = dataById?.filter((item) => item?._id === id);
-
-  console.log(filterData);
+  const filterData = dataById?.length ? dataById?.filter((item) => item?._id === id) : [];
 
   const [body, setBody] = useState({
     uz: filterData[0]?.body_uz,
     ru: filterData[0]?.body_ru,
     en: filterData[0]?.body_en,
   });
+
+  
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = "updatable";
+  const openMessage = (callback) => {
+    messageApi.open({
+      key,
+      type: "loading",
+      content: "Loading...",
+    });
+    callback();
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -1681,16 +1770,42 @@ export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
       body_ru: body?.ru,
     };
 
-    const body = JSON.stringify(obj);
+    const endpointData = JSON.stringify(obj);
 
-    dispatch(putData(url, body));
+    dispatch(putData(`${url}&id=${id}`, endpointData, 
+      // =------------- SUCCESS CALLBACK ---------------------=
+      (res) => {
+        openMessage(() => {
+          setTimeout(() => {
+            messageApi.open({
+              key,
+              type: "success",
+              content: res?.message,
+            });
+          }, 1000);
+        });
+      },
+      // =------------------ ERROR CALLBACK ------------------=
+      (res) => {
+        openMessage(() => {
+          setTimeout(() => {
+            messageApi.open({
+              key,
+              type: "error",
+              content: res?.message,
+            });
+          }, 1000);
+        });
+      }
+      ));
+      setRefresh(!refresh)
     // console.log(JSON.parse(body));
   };
 
   // window.location.reload(false)
   useEffect(() => {
     dispatch(getDataById(url));
-  }, [url]);
+  }, [url, refresh]);
 
   useEffect(() => {
     setBody({
@@ -1704,7 +1819,8 @@ export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
   // shu joyida birorta ham filedni o'zgartirmayt form submit qilinsa xato chiqaradi
   return (
     <div className="relative">
-      {(updated && !loading) || (error && !loading) ? (
+      {contextHolder}
+      {/* {(updated && !loading) || (error && !loading) ? (
         <div className={`fixed top-5 right-12 w-96 z-50 duration-300`}>
           <Alert
             message={`${success ? "Saqlandi" : "Xatoli yuz berdi"}`}
@@ -1714,7 +1830,7 @@ export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
             showIcon
           />
         </div>
-      ) : null}
+      ) : null} */}
       <Spin spinning={loading}>
         <form onSubmit={handleSubmit} className="pb-10">
           {/* TITLES */}
@@ -1778,7 +1894,7 @@ export const NewsEditForm = ({ hasSelect, selectUrl, url, bolim, id }) => {
           </div>
           {/* BODY */}
 
-          <button className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold">
+          <button type="submit" className="bg-blue-500 my-16 flex items-center justify-center w-full text-white py-2 font-bold">
             Saqlash
           </button>
         </form>

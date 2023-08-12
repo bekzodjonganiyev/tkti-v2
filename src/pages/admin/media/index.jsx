@@ -6,7 +6,6 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import copy from "copy-to-clipboard";
 import docsImg from "../../../assets/docs.png";
-
 import { MediaActions } from "./action";
 import { AddIcon } from "../../../assets/icons";
 import { baseURL } from "../../../services/http";
@@ -15,7 +14,6 @@ export const Media = () => {
   const dispatch = useDispatch();
   const { data, loading } = useSelector((state) => state.media);
   const { getData, postData } = new MediaActions();
-
   const [ totalItems, setTotalItems ] = useState(JSON.parse(sessionStorage.getItem('totalItems')))
   const [modalOpen, setModalOpen] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -78,14 +76,10 @@ export const Media = () => {
     // =-------------- / Error bo'lgandagi callback fuksiya / -------------------=
   };
   useEffect(() => {
-    dispatch(getData(current));
+    dispatch(getData(current, (res) => setTotalItems(res?.totalItems) ));
   }, [refresh, current]);
 
 
-  useEffect(() => {
-    setTotalItems(JSON.parse(sessionStorage.getItem('totalItems')))
-    !totalItems && window.location.reload()
-  }, [])
   return (
     <div>
       {contextHolder}

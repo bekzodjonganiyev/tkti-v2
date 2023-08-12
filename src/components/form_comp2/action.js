@@ -55,7 +55,7 @@ export class From2Actions {
     };
   }
 
-  postData(url, body) {
+  postData(url, body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: form2ActionTypes.loading,
@@ -66,16 +66,18 @@ export class From2Actions {
           type: form2ActionTypes.post,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: form2ActionTypes.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
 
-  putData(url, body) {
+  putData(url, body, successCallback, errorCallback) {
     return async (dispatch) => {
       dispatch({
         type: form2ActionTypes.loading,
@@ -90,11 +92,13 @@ export class From2Actions {
           type: form2ActionTypes.put,
           payload: res.data,
         });
+        successCallback(res)
       } else {
         dispatch({
           type: form2ActionTypes.error,
           payload: res?.status ? res.status : res,
         });
+        errorCallback(res)
       }
     };
   }
