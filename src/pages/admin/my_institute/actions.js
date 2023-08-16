@@ -16,7 +16,7 @@ export const my_institute_parent = {
         dispatch({
           type: my_institute_parent.request,
         });
-        const res = await apiClientWithFetch.get("my_tkti/all");
+        const res = await apiClientWithFetch.get("mytkti/all");
         if (res.status === 200) {
           dispatch({
             type: my_institute_parent.get,
@@ -36,7 +36,7 @@ export const my_institute_parent = {
         dispatch({
           type: my_institute_parent.request,
         });
-        const res = await apiClientWithFetch.get(`my_tkti/${id}`);
+        const res = await apiClientWithFetch.get(`mytkti/${id}`);
         if (res.status === 200) {
           dispatch({
             type: my_institute_parent.getById,
@@ -56,7 +56,7 @@ export const my_institute_parent = {
         dispatch({
           type: my_institute_parent.request,
         });
-        const res = await apiClientWithFetch.add("my_tkti/add", body);
+        const res = await apiClientWithFetch.add("mytkti/add", body);
         if (res.status === 200) {
           dispatch({
             type: my_institute_parent.post,
@@ -76,7 +76,7 @@ export const my_institute_parent = {
         dispatch({
           type: my_institute_parent.request,
         });
-        const res = await apiClientWithFetch.update(`my_tkti/${id}`, body);
+        const res = await apiClientWithFetch.update(`mytkti/${id}`, body);
         if (res.status === 200) {
           dispatch({
             type: my_institute_parent.put,
@@ -96,7 +96,7 @@ export const my_institute_parent = {
         dispatch({
           type: my_institute_parent.request,
         });
-        const res = await apiClientWithFetch.delete(`my_tkti/${id}`);
+        const res = await apiClientWithFetch.delete(`mytkti/${id}`);
         if (res.status === 200) {
           dispatch({
             type: my_institute_parent.delete,
