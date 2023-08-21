@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
-// import draftToHtml from "draftjs-to-html";
-// import {convertToRaw, ContentState, convertFromHTML} from "draft-js"
+import { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from "../services/http";
 
-const Context = React.createContext();
+const Context = createContext();
 
 function Provider({ children }) {
   const navigate = useNavigate()
   const [lang, setLang] = useState(localStorage.getItem("langText")?.toLowerCase() || "uz");
-  const [refresh, setRefresh] = useState(false);
   const [searchedData, setSearchedData] = useState([]);
-  const [names, setNames] = useState();
-  const [selectValue, setSelectValue] = useState();
-  const [editorValue, setEditorValue] = useState();
-  // const globalUrl = "http://localhost:5000";
+  const [paramsId, setParamsId] = useState(JSON.parse(localStorage.getItem("paramsId")) || {});
 
 
   const time = (arg) => {
@@ -35,24 +29,20 @@ function Provider({ children }) {
     };
   };
 
-  // const convertToHtml = (raw) => {
-  //   return draftToHtml(convertToRaw(raw.getCurrentContent()));
-  // }
-
-  // const convertToEntityMap = (raw) => {
-  //   const contentBlock = convertFromHTML(raw);
-  //   const contentState = ContentState.createFromBlockArray(
-  //     contentBlock.contentBlocks,
-  //     contentBlock.entityMap
-  //   );
-  //   return contentState;
-  // }
-
   useEffect(() => {
     if (lang) {
       localStorage.setItem("lang", JSON.stringify(lang));
     }
   }, [lang]);
+
+  useEffect(() => {
+    if (paramsId) {
+      console.log("first")
+      localStorage.setItem("paramsId", JSON.stringify(paramsId));
+    } else {
+      navigate("/")
+    }
+  }, [paramsId]);
 
   const DataGetter = (setMyState, url) =>{
     fetch(`${baseURL}/${url}`, {
@@ -127,12 +117,9 @@ function Provider({ children }) {
           DataPoster,
           time,
           textSytles,
-          names, setNames,
-          editorValue, setEditorValue,
-          refresh, setRefresh,
           lang, setLang,
           searchedData, setSearchedData,
-          selectValue, setSelectValue,
+          paramsId, setParamsId,
         }}
       >
         {children}

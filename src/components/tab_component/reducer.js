@@ -3,7 +3,7 @@ import { tabCompActionTypes } from "./action";
 const initialState = {
     loading: undefined,
     dataById: {},
-    error: undefined,
+    error: null,
 }
 export const tabCompReducer = (state = initialState, action) => {
     switch (action.type) {

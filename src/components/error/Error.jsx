@@ -1,3 +1,4 @@
+import { Button } from "flowbite-react";
 import React from "react";
 
 export const Error = ({ error }) => {
@@ -32,6 +33,22 @@ export const Error = ({ error }) => {
           />
         </svg>
         <p className="mt-10 text-xl font-bold">{error}</p>
+        <div className="flex gap-2 mt-5">
+          <Button
+            size={"sm"}
+            className="bg-black hover:bg-gray-600"
+            onClick={() => location.reload()}
+          >
+            Qayta yuklash
+          </Button>
+          <Button
+            size={"sm"}
+            className="bg-black hover:bg-gray-600"
+            onClick={() => location.href = "/"}
+          >
+            Bosh sahifaga
+          </Button>
+        </div>
       </div>
     </div>
   );
