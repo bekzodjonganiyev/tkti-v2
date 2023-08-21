@@ -46,15 +46,6 @@ const BolimMarkaz = () => {
 
   return (
     <div className="container">
-      {
-        bolim?.isFetched && bolim?.data ? (
-          <h3 style={textSytles(30,700)} className="text-center">{hero[lang]?.title}</h3>
-        ):bolim?.error ?(
-          <div className={"text-center"} style={textSytles(30,700)}>{hero[lang]?.title} :</div>
-        ):(
-          <ThreeDots width='100%' />
-        )
-      }
       <div className="facultetInfo">
         {
             bolim?.isFetched && bolim?.data ? (
@@ -72,16 +63,6 @@ const BolimMarkaz = () => {
             )
         }
       </div>
-
-      {
-        markaz.isFetched && markaz.data ? (
-          <h3 style={textSytles(30,700)} className="text-center">{hero[lang]?.title2}</h3>
-        ):markaz.error ?(
-          <div className="text-center" style={textSytles(30,700)}>{hero[lang]?.title2} :(</div>
-        ):(
-          <ThreeDots width='100%' />
-        )
-      }
 
       <div className="facultetInfo">
         {

@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Accordion, Spinner } from "flowbite-react";
-import Slider from "react-slick";
 import i18next from "i18next";
 
 import "./style.css";
@@ -13,6 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 import { Loader } from "../loader/Loader";
+import { Error } from "../error/Error";
 
 import { UniversalComponentActions } from "./action";
 import { useAppContext } from "../../context/app.context";
@@ -33,7 +32,7 @@ export const UniversalComponent = () => {
 
   const dispatch = useDispatch();
   const genericCom = (state) => state.genericCom;
-  const { data, loading } = useSelector(genericCom);
+  const { data, loading, error } = useSelector(genericCom);
   const { getData } = new UniversalComponentActions();
 
   // route da mongodb ning id sini olib tashlashlandi va id context orqali olib kelindi
@@ -51,6 +50,7 @@ export const UniversalComponent = () => {
   }, [page, id]);
 
   if (loading) return <Loader />;
+  if (error) return <Error error={error}/>;
 
   return (
     <div className="container mx-auto w-[95%] max-md:px-5 py-10 uni-comp-wrapper">

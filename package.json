@@ -27,6 +27,7 @@
     "react-countup": "^6.4.2",
     "react-d3-tree": "^3.6.1",
     "react-dom": "^18.2.0",
+    "react-fast-marquee": "^1.6.0",
     "react-i18next": "^12.2.2",
     "react-lazy-load-image-component": "^1.6.0",
     "react-multi-carousel": "^2.8.3",

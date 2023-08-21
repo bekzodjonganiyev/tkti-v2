@@ -52,8 +52,6 @@ const KafedraSingle = () => {
         {
           newOne.isFetched && newOne.data ? (
             <>
-                <div className="fakultetName">{newOne.data[`title_${lang}`]}</div>
-
                 <div className="btnGroup">
                     <button onClick={() => setActiveButton(1)}>{hero[lang].title}</button>
                     <button onClick={() => setActiveButton(2)}>{hero[lang].desc}</button>

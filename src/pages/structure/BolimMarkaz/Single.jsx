@@ -43,10 +43,6 @@ const BolimMarkazSingle = ({myKey}) => {
         {
             newOne.isFetched && newOne.data ? (
                 <>
-                    <div>
-                        <h2>{newOne.data[`title_${lang}`]}</h2>
-                    </div>
-
                     <div className="btnGroup">
                         <button onClick={() => setActiveButton(1)}>{hero[lang]?.title}</button>
                         <button onClick={() => setActiveButton(2)}>{hero[lang]?.desc}</button>

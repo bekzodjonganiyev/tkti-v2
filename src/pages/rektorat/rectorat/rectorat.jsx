@@ -86,12 +86,6 @@ function Rectorat() {
 
   return (
     <div className="container wrapped mb-5 mt-10">
-              <h3 style={{ display: "flex", justifyContent: "left" }}>
-                {ContactLang[lang].hero.title}
-              </h3>
-              <span className="my-5 d-block">
-                {ContactLang[lang].hero.info}
-              </span>
               <div className="rectorat__list">
                 <div className="rectorat__menu">
                   {rectors?.map((a) => (
@@ -124,7 +118,7 @@ function Rectorat() {
                           className="rectorat__item"
                           href={`rektorat/${a.id}`}
                         >
-                          <img src={a.content.img} alt="img" />
+                          <img src={a.content.img} alt="img" loading="lazy" />
                           <div className="rectorat__item__body">
                             <h2>{a.content.name}</h2>
                             <span>{a.content.job}</span>

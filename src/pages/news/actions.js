@@ -10,7 +10,7 @@ import apiClientWithFetch from "../../services/apiClientWithFetch";
 export class NewsActions {
   getData(category, page ) {
     const url = page
-      ? `news/all?category=${category}&page${page}`
+      ? `news/all?category=${category}&page=${page}`
       : `news/all?category=${category}`;
     return async (dispatch) => {
       dispatch({
@@ -20,7 +20,7 @@ export class NewsActions {
       if (res.status === 200) {
         dispatch({
           type: GET_NEWS,
-          payload: res.data,
+          payload: res
         });
       } else {
         dispatch({

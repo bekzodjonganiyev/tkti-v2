@@ -212,12 +212,12 @@
   "Institute": [
     {
       "title": {
-        "bir": "INSTITUT O’TGAN DAVR ICHIDA KIMYO, OZIQ-OVQAT, NEFT-GAZ, QURILISH MATERIALLARI VA IQTISODIYOTNING BOSHQA TARMOQLARIGA 10 MINGDAN ZIYOD YUQORI MALAKALI MUHANDIS TEXNOLOGLAR, TA’LIM YO’NALISHLARI BO’YICHA MINGDAN ORTIQ BAKALAVR VA 30 GA YAQIN MUTAXASSISLIKLAR BO’YICHA MAGISTRLAR TAYYORLAB BERDI ",
-        "ikki": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN ",
-        "uch": "INSTITUTDA SANOAT CHIQISHSHLARIDAN FOYDALANISH, EKOLOGIK XAVFSIZ, IMPORT OʻRNINI BOSUVCHI VA EKSPORTGA MOʻLJALLANGAN TEXNOLOGIYALARNI ISHLAB CHIQISH, ENERGIYANI TEJOVCHI MAXALLIY MINERAL XOM ASHYO BAZASI TASHKIL QILISH VA NEFT VA GAZLARDAN OLINADIGAN MAHSULOTLAR TURLARINI KOʻPAYTIRISH USTIDA ILMIY TADQIQOTLAR ISHLARI OLIB BORILADI. ",
-        "tort": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN ",
-        "besh": "KIMYOVIY TEXNOLOGIYA - TABIIY XOM ASHYO, SANOAT CHIQINDILARI, SHUNINGDEK, SINTETIK YARIM MAHSULOTLARNI KIMYOVIY YOʻL BILAN QAYTA ISHLAB, ISTEʼMOL MAHSULOTLARI VA ISHLAB CHIQARISH VOSITALARIGA AYLANTIRISHNING IQTISODIY VA EKOLOGIK JIHATDAN QULAY USULLARI VA JARAYONLARI HAQIDAGI FAN ",
-        "olti": "KIMYOVIY TEXNOLOGIYA ANORGANIG MODDALAR TEXNOLOGIYASI (KISLOTA, ISHQOR, SODA, MINERAL OʻGʻITLAR VA BOSHQA SANOATI) VA ORGANIQ MODDALAR TEXNOLOGIYASI (SINTETIK KAUCHUK, PLASTMASSA, KIMYOVIY TOLALAR, SPIRT, ORGANIQ KISLOTALAR VA BOSHQA SANOATI)GA BOʻLINADI. "
+        "bir": "Institut o’tgan davr ichida kimyo, oziq-ovqat, neft-gaz, qurilish materiallari va iqtisodiyotning boshqa tarmoqlariga 10 mingdan ziyod yuqori malakali muhandis texnologlar, ta’lim yo’nalishlari bo’yicha mingdan ortiq bakalavr va magistrlar tayyorlab berdi.",
+        "ikki": "Toshkent kimyo-texnologiya instituti kimyoviy texnologiya, oziq-ovqat texnologiya, neft va gazni qayta ishkash texnologiyasi, ekologiya va boshqa sohalar  uchun oliy maʼlumotli mutaxassislar va ilmiy kadrlarni tayyorlash, qayta tayyorlash va ularning malakasini oshirish boʼyicha tayanch oliy taʼlim muassasasi hisoblanadi.",
+        "uch": "Institutda O‘zbekiston ishlab chiqarish soha va korxonalarining dolzarb muammolarini hal etishga qaratilgan yashil kimyo, energetika va oziq-ovqat mahsulotlari ishlab chiqarish uchun ekologik toza, import o‘rnini bosuvchi va eksportbop, energiya tejovchi texnologiyalarni ishlab chiqish, mahalliy mineral xomashyo bazasini kengaytirish, neft va gaz asosida olinadigan mahsulotlar turlarini ko‘paytirish, ikkilamchi xomashyo va sanoat chiqindilaridan samarali foydalanish bo‘yicha ilmiy-tadqiqot ishlari olib borilmoqda.",
+        "tort": "Institut talaba, professor-o‘qituvchi va xodimlarining xorijiy ilg'or oliy ta’lim muassasalari, ilmiy markazlari bilan hamkorlik faoliyatini qo'llab quvvatlaydi, shuningdek xorijiy talabalar va professor-o‘qituvchilarning institutda o’quv ilmiy va mehnat faoliyatini tashkillashtiradi.",
+        "besh": "Bugungi kunda institutning ko'plab bitiruvchilari O'zbekiston vazirliklari, idoralari va ishlab chiqarish korxonalarida rahbarlik lavozimlarini egallab, dunyoning yetakchi xalqaro tashkilotlari va yirik kompaniyalarida muvaffaqiyatli faoliyat yuritmoqdalar.",
+        "olti": "Institut kimyoviy texnologiya, oziq-ovqat maxsulotlar texnologiyasi, neft-gazni qayta ishlash texnologiyasi ta’lim sohasi bо‘yicha Respublikada tayanch oliy ta’lim muassasasi hisoblanadi. Bugungi kunda universitetda kredit-modul tizimi asosida 16 ta bakalavriat ta’lim yо‘nalishlari va 20 ta magistratura mutaxassisligi bо‘yicha yuqori malakali kadrlar tayyorlanmoqda."
       }
     },
     {
@@ -263,22 +263,25 @@
   "": [],
   "aboutUs": [
     {
-      "name": "Biz haqimizda"
+      "name": "TKTI haqida"
     },
     {
-      "name": "1.Biz kuchli salohiyatli ilmiy hodimlar va talabalarni qadirlaymiz. Jamiyatimiz milliy qadriyatlarimizga befarq bo`lmagan holda yuqori innovatsion go`yalarimiz bilan butun dunyoga ijobiy ta`sir ko`rsatamiz."
+      "name": "Toshkent kimyo-texnologiya instituti (TKTI, http://tkti.uz) - kimyoviy texnologiya (organik va noorganik moddalar, polimerlar, silikat va qiyin eruvchan materiallar, nodir va kamyob metallar kimyoviy texnologiyasi), oziq-ovqat texnologiyasi, neft va gazni qayta ishlash, ekologiya, biotexnologiya, enologiya, sellyuloza va yogʻochga ishlov berish texnologiyasi va b. yo‘nalishlar boyicha yuqori malakali mutaxassislar tayyorlashga ixtisoslashgan Markaziy Osiyodagi yetakchi universitetlardan biri hisoblanadi."
     },
     {
-      "name": "2.Institut-hodimlar uchun jozibali ish muhiti yaratishga ko`maklashadi. Talabalarda tanqidiy fikrlashga asoslangan ko`nikmalarni rivojlantiradi. Ilmiy hodimlar va olimlar bilan hamkorlikda loyiha va go`yalarni moliyalashtiradi va qo`llab quvvatlaydi."
+      "name": "Toshkent kimyo-texnologiya instituti 1991-yil 6-maydagi O‘zbekiston Respublikasi Prezidentining Farmoni bilan tashkil etilgan. TKTI respublikada oliy texnik ta’lim darajasini oshirish, muhandislik va ilmiy kadrlar tayyorlashni takomillashtirish maqsadida 1929 yildan beri faoliyat yuritayotgan sobiq Toshkent politexnika institutining bir necha fakultetlari negizida tashkil etilgan. Institut o‘z faoliyati davomida mamlakatimiz kimyo, neft-gaz, oziq-ovqat, qurilish sanoati va iqtisodiyotining boshqa tarmoqlari uchun 10 mingdan ortiq yuqori malakali muhandis-texnologlar tayyorladi."
     },
     {
-      "name": "3 Toshkent kimyo-texnologiya instituti O‘zbekiston Respublikasi Prezidentining 1991-yil 6-maydagi PF-203-sonli qaroriga (https://lex.uz/ru/docs/787853) asosan sobiq Toshkent politexnika institutining, kimyo-texnologiya va muhandislik-texnologiyasi fakultetlari negizida tashkil topgan. Biz ERASMUS+ dasturi loyihalari doirasida mahalliy va xalqaro hamkorlar o‘rtasida tajribaga egamiz.Har yili biz IUPAC doirasidagi deyarli barcha loyihalarda ishtirok etamiz. BRMning (SDG) yo`nalishlarida ishtirok etamiz."
+      "name": "Toshkent kimyo-texnologiya instituti Oʻzbekistondagi yetakchi kimyo-texnologiya oliy oʻquv yurtiboʻlib, oʻquv, ilmiy-tadqiqot, pedagogik va tarbiyaviy faoliyatni amalga oshiradi. Institut tuzilmasigaToshkent shahridagi Bosh kampus, Shahrisabz va Yangiyerdagi filiallar kiradi. Toshkent shahridagiBosh kampusda 5 ta fakultet, 24 ta kafedra, 6 ta ishlab chiqarish oʻquv markazlari va 12 ta ilmiylaboratoriyalar mavjud "
     },
     {
-      "name": "3.1 Institutimiz ichki va ilmiy faoliyatdan tashqari atrof-muhitga ham alohida e`tiborli, ekologik haftaliklar va ko`ngilli yoshlardan iborat jamoa bilan obodonchilik ishlarini ham olib borish bilan birga ekologik nozarar bo`lgan start-up loyihalarni ham qo`llab quvvatlaydi, moliyalashtiradi va bu loyihalarga talabalarni o`z o`rnida jalb qilishga ko`maklashadi."
+      "name": "Institut to'rt yillik bakalavriat dasturlari, ikki yillik magistrlik dasturlari va fan doktori (PhD va DSc) dasturlari bo‘yicha akkreditatsiyadan o'tgan. Jami 29 ta bakalavriat dasturlari; 30 ta magistratura mutaxassisligi, 16 ta doktorantura; hamda halqaro dasturlar - 5 ta ikki tomonlama diplom berish bakalavriat dasturlari; 7 ta ikki tomonlama diplom magistratura dasturi, 1 ta qo‘shma doktorantura dasturi (“Cotutelle dasturi”) bo‘yicha kadrlar tayyorlanadi. Institutda kunduzgi va sirtqi ta’lim turlarida 7800 nafar bakalavriat, 445 nafar magistratura va 139 nafar doktorantura talabalari taxsil oladi."
     },
     {
-      "name": "3.2 Ijtimoy ko`makka muhtoj va Iqtidorli talabalarni qo`llab quvvatlash maqsadida alohida stipendiya, rag`batlantirishlar va tadbirlar tashkil etadi. Chet-ellik va boshqa viloyatdan kelgan talabalarni institut yotoqxonasi bilan ta`minlaydi. "
+      "name": "TKTI da 400 dan ortiq professor-o‘qituvchilar mehnat faoliyatini yuritadi, ulardan 5 nafari O‘zbekiston Respublikasi va Xalqaro Fanlar Akademiyalarining akademiklari va muxbir a’zolari, 266 nafari fan doktorlari va nomzodlari, falsafa doktorlari hisoblanadi. Institutda Yevropa Ittifoqi, AQSh, Yaponiya, Xitoy, Rossiya Federatsiyasi, Janubiy Koreya va b. davlatlar etakchi universitetlaridan taklif etilgan xorijiy professor-o‘qituvchilar tomonidan muntazam ravishda o‘quv seminarlari va ma’ruzalar tashkil etiladi. Bundan tashqari, Toshkent kimyo-texnologiya institutida Oʻqituvchilarni malaka oshirish va qayta tayyorlash tarmoq markazi va ilmiy darajalar berish boʻyicha ikkita ixtisoslashtirilgan ilmiy kengash, “Asfalt-beton texnologiyasini modifikatsiyalash boʻyicha Oʻzbekiston-Xitoy qoʻshma ilmiytadqiqot laboratoriyasi”, “Zamonaviy fizik-kimyoviy tahlil laboratoriyasi” faoliyat koʻrsatmoqda."
+    },
+    {
+      "name": "Toshkent kimyo-texnologiya instituti xalqaro miqyosda tan olingan davlat oliy ta’lim muassasasi bo‘lib, 110 dan ortiq yetakchi xorijiy universitet va ilmiy markazlar bilan faol hamkorlik qiladi."
     }
   ],
   "ContactUs": [

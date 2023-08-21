@@ -21,18 +21,18 @@ export const Home = () => {
 
 
   
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        console.log('Latitude:', latitude);
-        console.log('Longitude:', longitude);
-      },
-      (error) => {
-        console.error('Error getting location:', error.message);
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       const { latitude, longitude } = position.coords;
+  //       console.log('Latitude:', latitude);
+  //       console.log('Longitude:', longitude);
+  //     },
+  //     (error) => {
+  //       console.error('Error getting location:', error.message);
+  //     }
+  //   );
+  // }, []);
 
 
 

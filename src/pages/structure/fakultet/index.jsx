@@ -37,8 +37,6 @@ const FacultetComponent = () => {
       {
         facultet.isFetched && facultet.data.length >0 ?(
           <div>
-            <h2 className="text-center" style={textSytles(30, 700)}>{hero[lang]}</h2>
-            <span style={textSytles(18, 600)}>{AboutTextFunction(facultet.data.length)}</span>
           </div>
         ): facultet.error ?(
           <></>

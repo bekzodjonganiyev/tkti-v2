@@ -1,8 +1,15 @@
-import {useEffect, useState} from "react";
-import {Link, NavLink, useLocation, useNavigate, useNavigation} from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import { Dropdown } from "flowbite-react";
+import Marquee from "react-fast-marquee";
 
 import { Agee, CircleHalf } from "../../../assets/icons";
 import gerb from "../../../assets/images/gerb.png";
@@ -16,7 +23,7 @@ export const TopHeader = () => {
     localStorage.getItem("langText") || "Uz"
   );
   const [isHovered, setIsHovered] = useState(false);
-  const [ searchValue, setSearchValue ] = useState('')
+  const [searchValue, setSearchValue] = useState("");
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -86,20 +93,22 @@ export const TopHeader = () => {
     window.location.reload();
   };
 
-
   const handleSearchSubmit = (e) => {
-    e.preventDefault()
-    window.location.href = `/search?${searchValue}`
-  }
+    e.preventDefault();
+    window.location.href = `/search?${searchValue}`;
+  };
 
   useEffect(() => {
     if (pathname.split("/")[1] === "uz") setLangText("Uz");
     if (pathname.split("/")[1] === "ru") setLangText("Ru");
     if (pathname.split("/")[1] === "en") setLangText("En");
-  }, [])
+  }, []);
 
   return (
     <>
+      <Marquee>
+      Sayt test rejimida ishlayapti 🔴 Сайт работает в тестовом режиме 🔴 The site is in test mode 
+      </Marquee>
       <div className="bg-[#26597E] max-md:px-5">
         <header className="container w-full flex items-center justify-between mx-auto  h-16 border-slate-600 ">
           <div className="lg:flex justify-between  text-white xl:flex hidden border-white-600 ">
@@ -144,65 +153,65 @@ export const TopHeader = () => {
           <div className="flex items-center h-5 ">
             <form onSubmit={handleSearchSubmit}>
               <input
-                  onChange={(e) => setSearchValue(e.target.value)}
-                  className="py-1  lg:w-[300px] md:w-[280px] sm:w-[200px]  rounded-3xl"
-                  type="text"
-                  placeholder={t("headerTop.5.name")}
+                onChange={(e) => setSearchValue(e.target.value)}
+                className="py-1  lg:w-[300px] md:w-[280px] sm:w-[200px]  rounded-3xl"
+                type="text"
+                placeholder={t("headerTop.5.name")}
               />
             </form>
           </div>
           <div className="flex justify-between items-center">
             <div className="lg:flex hidden justify-between items-center">
-            <Link to={ i18next.language + "/davlat-ramzlari"}>
-              <img src={gerb} alt="O'z. Res. gerbi" width={"50"} />
-            </Link>
-            <div>
-              <div
-                className="dropdown"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                {" "}
-                <Agee />
-              </div>
-              {isHovered && (
+              <Link to={i18next.language + "/davlat-ramzlari"}>
+                <img src={gerb} alt="O'z. Res. gerbi" width={"50"} />
+              </Link>
+              <div>
                 <div
-                  className="dropdown-content flex absolute z-50 top-[45px]  bg-white cursor-pointer "
+                  className="dropdown"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div
-                    onClick={() => changeSize("minus")}
-                    className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
-                  >
-                    A-
-                  </div>
-                  <div>
-                    <h3
-                      onClick={() => changeSize("default")}
-                      className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
-                    >
-                      A
-                    </h3>
-                  </div>
-                  <div>
-                    <h3
-                      onClick={() => changeSize("plus")}
-                      className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
-                    >
-                      A+
-                    </h3>
-                  </div>
+                  {" "}
+                  <Agee />
                 </div>
-              )}
-              <div className="dropdown-content icon__wrapper"></div>
-            </div>
-            <div
-              onClick={() => document.body.classList.toggle("greyscale")}
-              className="header__greyscale"
-            >
-              <CircleHalf />
-            </div>
+                {isHovered && (
+                  <div
+                    className="dropdown-content flex absolute z-50 top-[45px]  bg-white cursor-pointer "
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <div
+                      onClick={() => changeSize("minus")}
+                      className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
+                    >
+                      A-
+                    </div>
+                    <div>
+                      <h3
+                        onClick={() => changeSize("default")}
+                        className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
+                      >
+                        A
+                      </h3>
+                    </div>
+                    <div>
+                      <h3
+                        onClick={() => changeSize("plus")}
+                        className="w-[20px] h-[20px] bg-[#fff] text-[#02307d] text-xl font-normal m-3 cursor-pointer"
+                      >
+                        A+
+                      </h3>
+                    </div>
+                  </div>
+                )}
+                <div className="dropdown-content icon__wrapper"></div>
+              </div>
+              <div
+                onClick={() => document.body.classList.toggle("greyscale")}
+                className="header__greyscale"
+              >
+                <CircleHalf />
+              </div>
             </div>
 
             <div className=" flex items-center justify-end gap-3 ml-10 text-white">

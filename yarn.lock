@@ -2004,6 +2004,11 @@
     "loose-envify" "^1.1.0"
     "scheduler" "^0.23.0"
 
+"react-fast-marquee@^1.6.0":
+  "integrity" "sha512-jtuwT9SNjrqxnE7lGZ8mTL1I8Q4+9G4aBta2p+y2Pa3SjR17QROblwrLICyM8rbjQFHgHawTHcaH9HvoVO2NOA=="
+  "resolved" "https://registry.npmjs.org/react-fast-marquee/-/react-fast-marquee-1.6.0.tgz"
+  "version" "1.6.0"
+
 "react-i18next@^12.2.2":
   "integrity" "sha512-KBB6buBmVKXUWNxXHdnthp+38gPyBT46hJCAIQ8rX19NFL/m2ahte2KARfIDf2tMnSAL7wwck6eDOd/9zn6aFg=="
   "resolved" "https://registry.npmjs.org/react-i18next/-/react-i18next-12.2.2.tgz"

@@ -8,7 +8,7 @@ import {
   
   const initialState = {
     loading: false,
-    data: [],
+    data: {},
     dataById: {},
     error: "",
     open: false

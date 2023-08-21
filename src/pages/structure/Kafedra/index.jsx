@@ -27,15 +27,6 @@ const KafedraComponent = () => {
 
   return (
     <div className="container">
-              {
-                rektorat.isFetched && rektorat.data ? (
-                  <h2 className="text-center" style={textSytles(25,700)}>{hero[lang]}</h2>
-                ): rektorat.error ? (
-                  <div className="text-center" style={textSytles(25,700)}>Xatolik :(</div>
-                ):(
-                  <ThreeDots width='100%' />
-                )
-              }
       <div className="facultetInfo">
         {
             rektorat.isFetched && rektorat.data ? (

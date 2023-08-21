@@ -7,6 +7,8 @@ import "./style.css";
 
 import { TopHeader } from "../header/TopHeader";
 import Logo from "../../../assets/images/logo.png";
+import Logo1 from "../../../assets/images/qs-logo.png";
+import Logo2 from "../../../assets/images/the-logo.jpg";
 
 import { useAppContext } from "../../../context/app.context";
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
@@ -79,7 +81,7 @@ export const Navbar = () => {
   // TODO - ChatGPT optimizatsiya qilgan kodlar bu kodlarni o'rganish kerak
   const fetchData = useCallback(async () => {
     const urls = [
-      "my_tkti/all",
+      "mytkti/all",
       "qabul/all",
       "talabalar/all",
       "talim/all",
@@ -97,7 +99,7 @@ export const Navbar = () => {
         loading: false,
         res1: responses[0]?.data?.map((item) => ({
           name: item[`title_${i18next.language}`],
-          link: `/my_tkti/${item.title_uz}`,
+          link: `/mytkti/${slug(item.title_uz)}`.toLowerCase(),
           id: item?._id,
         })),
         res2: responses[1]?.data?.map((item) => ({
@@ -148,12 +150,6 @@ export const Navbar = () => {
           link: `/institut/biz-haqimiqda`,
           id: null,
         },
-
-        {
-          name: t("Institute.5.name"),
-          link: `/institut/ish-reja`,
-          id: null,
-        },
         {
           name: t("Institute.6.name"),
           link: `/institut/korrupsiya`,
@@ -184,6 +180,7 @@ export const Navbar = () => {
           link: `/institut/rektorat`,
           id: null,
         },
+        ...url?.res1 ?? []
       ],
     },
     {
@@ -220,10 +217,10 @@ export const Navbar = () => {
     <nav className="">
       <TopHeader />
       <div className="bg-white py-3">
-        <div className="container mx-auto w-full flex items-center justify-between max-md:px-5">
+        <div className="container mx-auto w-full flex items-center justify-between max-md:px-5 relative">
           <Link to="/" className="flex  justify-between items-center">
             <img src={Logo} alt="" width={"60"} height={"20"} className="" />
-            <div className={`text-[#02307d] font-bold`}>
+            <div className={`text-[#02307d] font-bold max-md:hidden`}>
               <div className="text-[14px] mx-3 ">
                 <div>{t("TktiName.0.name")}</div>
                 <div>{t("TktiName.1.name")}</div>
@@ -231,6 +228,12 @@ export const Navbar = () => {
               </div>
             </div>
           </Link>
+          <a target="_blank" href="https://www.timeshighereducation.com/world-university-rankings/tashkent-institute-chemical-technology" className=" btn-glow">
+            <img src={Logo2} alt="" width={"60"} height={"20"} className="" />
+          </a>
+          <a target="_blank" href="https://www.topuniversities.com/universities/tashkent-institute-chemical-technology" className="rounded-2xl btn-glow">
+            <img src={Logo1} alt="" width={"60"} height={"20"} className="rounded-2xl" />
+          </a>
 
           <button className="text-3xl lg:hidden" onClick={() => setOpen(true)}>
             <ion-icon name="menu"></ion-icon>
@@ -282,7 +285,7 @@ export const Navbar = () => {
                       />
                       <p className="uppercase">{hoveredLink?.name}</p>
                     </div>
-                    <p className="w-[300px] lowercase">{hoveredLink?.desc}</p>
+                    <p className="w-[300px] leading-4">{hoveredLink?.desc}</p>
                   </div>
                   <ul className="h-fit grid grid-cols-2 gap-x-10">
                     {hoveredLink?.sublinks?.map((item) => (
@@ -311,7 +314,7 @@ export const Navbar = () => {
               open ? "right-0" : "right-[-100%]"
             }`}
           >
-            <div className="px-2 flex justify-between">
+            <div className="px-2 flex justify-between pr-10">
               <Link to="/" className="flex justify-center items-center">
                 <img
                   src={Logo}
