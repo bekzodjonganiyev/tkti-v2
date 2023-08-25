@@ -2,14 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/app.context";
 import { baseURL } from "../../services/http";
-import './style.css'
+import "./style.css";
 export const SillabusPage = () => {
-
-    const {  searchedData } = useAppContext();
+  const { searchedData } = useAppContext();
   return (
-    <div> <div>
     <div className="container">
-      {searchedData && searchedData.length ? (
+      {searchedData && searchedData.length > 0 ? (
         searchedData.map((i, key) => (
           <div key={key} className="result">
             <h1>{i.title}</h1>
@@ -25,6 +23,5 @@ export const SillabusPage = () => {
         <h1>So'rovingiz b'oyicha malumotlar topilmadi</h1>
       )}
     </div>
-  </div></div>
-  )
-}
+  );
+};

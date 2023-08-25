@@ -106,11 +106,11 @@ export const TopHeader = () => {
 
   return (
     <>
-      <Marquee>
+      <Marquee className="bg-white">
       Sayt test rejimida ishlayapti 🔴 Сайт работает в тестовом режиме 🔴 The site is in test mode 
       </Marquee>
       <div className="bg-[#26597E] max-md:px-5">
-        <header className="container w-full flex items-center justify-between mx-auto  h-16 border-slate-600 ">
+        <header className="container px-0 w-full flex items-center justify-between mx-auto  h-16 border-slate-600 ">
           <div className="lg:flex justify-between  text-white xl:flex hidden border-white-600 ">
             <NavLink
               to={`https://student.tcti.uz/dashboard/login`}
@@ -215,10 +215,10 @@ export const TopHeader = () => {
             </div>
 
             <div className=" flex items-center justify-end gap-3 ml-10 text-white">
-              <Dropdown inline label={langText} lang className="text-white">
+              <Dropdown inline label={langText} lang className="text-white z-50">
                 {language.map((item) => (
                   <Dropdown.Item
-                    className="capitalize"
+                    className="capitalize z-50"
                     onClick={() => {
                       setLangText(item.text);
                       localStorage.setItem("langText", item.text);

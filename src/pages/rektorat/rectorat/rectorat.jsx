@@ -48,8 +48,6 @@ function Rectorat() {
     setRectors(newRectors)
   }, [data])
 
-
-  console.log(data);
   const test = (id) => {
     rectors.map((a) => (a.status = false));
     const find = rectors.find((e) => e.id === id);

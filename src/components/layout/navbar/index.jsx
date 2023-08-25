@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
@@ -16,6 +16,7 @@ import { slug } from "../../../services/slug";
 
 export { headerReducer } from "./reducer";
 export const Navbar = () => {
+  const navRef = useRef(null)
   const { t } = useTranslation();
   const { setIdForFetch } = useAppContext();
 
@@ -180,7 +181,7 @@ export const Navbar = () => {
           link: `/institut/rektorat`,
           id: null,
         },
-        ...url?.res1 ?? []
+        ...(url?.res1 ?? []),
       ],
     },
     {
@@ -216,23 +217,39 @@ export const Navbar = () => {
   return (
     <nav className="">
       <TopHeader />
-      <div className="bg-white py-3">
-        <div className="container mx-auto w-full flex items-center justify-between max-md:px-5 relative">
+      <div className="bg-white py-3 sticky top-0 z-20" ref={navRef}>
+        <div className="container px-0 w-full flex items-center justify-between max-md:px-5 relative">
           <Link to="/" className="flex  justify-between items-center">
             <img src={Logo} alt="" width={"60"} height={"20"} className="" />
             <div className={`text-[#02307d] font-bold max-md:hidden`}>
-              <div className="text-[14px] mx-3 ">
-                <div>{t("TktiName.0.name")}</div>
-                <div>{t("TktiName.1.name")}</div>
-                <div>{t("TktiName.2.name")}</div>
+              <div className="mx-3 ">
+                <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.0.name")}</div>
+                <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.1.name")}</div>
+                <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.2.name")}</div>
               </div>
             </div>
           </Link>
-          <a target="_blank" href="https://www.timeshighereducation.com/world-university-rankings/tashkent-institute-chemical-technology" className=" btn-glow">
+
+          <a
+            target="_blank"
+            href="https://www.timeshighereducation.com/world-university-rankings/tashkent-institute-chemical-technology"
+            className=" btn-glow"
+          >
             <img src={Logo2} alt="" width={"60"} height={"20"} className="" />
           </a>
-          <a target="_blank" href="https://www.topuniversities.com/universities/tashkent-institute-chemical-technology" className="rounded-2xl btn-glow">
-            <img src={Logo1} alt="" width={"60"} height={"20"} className="rounded-2xl" />
+
+          <a
+            target="_blank"
+            href="https://www.topuniversities.com/universities/tashkent-institute-chemical-technology"
+            className="rounded-2xl btn-glow"
+          >
+            <img
+              src={Logo1}
+              alt=""
+              width={"60"}
+              height={"20"}
+              className="rounded-2xl"
+            />
           </a>
 
           <button className="text-3xl lg:hidden" onClick={() => setOpen(true)}>
@@ -240,12 +257,14 @@ export const Navbar = () => {
           </button>
 
           {/* Desktop header */}
-          <div className="flex flex-col h-6 max-lg:hidden">
+          <div className="max-lg:hidden">
             {/*balandilik(h-6) berilganiligiga sabab hover bolganda chiqadigan
           elentning linklarni o'rab turgan wrapperning balanligiga tasir
           ko'rsatmasligi */}
 
-            <ul className={`flex ${i18next.language === "uz" ? "gap-14" : "gap-7"}`}>
+            <ul
+              className={`flex justify-between w-[750px]`}
+            >
               {link?.map((item, id) =>
                 url.loading ? (
                   <div className="max-w-xs mx-auto p-4 " key={id}>
@@ -256,7 +275,7 @@ export const Navbar = () => {
                 ) : (
                   <li
                     key={id}
-                    className="pb-[31px] navbar__hover cursor-pointer uppercase text-sm"
+                    className="py-5 navbar__hover cursor-pointer uppercase min-[1200px]:text-sm text-[11px]"
                     onMouseEnter={() => setHoveredLink({ ...item })}
                     onMouseLeave={() => setHoveredLink(null)}
                   >
@@ -269,17 +288,17 @@ export const Navbar = () => {
             {/* TODO - group hover bilan tanishib chiqih va li ning border-bottom iga implement qilish */}
             {hoveredLink ? (
               <div
-                className="navbar__hoverItems bg-[rgba(0,0,0, 0.2)] z-50 flex items-center justify-center"
+                className={`w-[760px] navbar__hoverItems bg-[rgba(0,0,0, 0.2)] z-10 flex items-center justify-center absolute top-[99%] right-0`}
                 onMouseEnter={() => setHoveredLink({ ...hoveredLink })}
                 onMouseLeave={() => setHoveredLink(null)}
               >
-                <div className="flex gap-12 m-4">
+                <div className="flex gap-5 m-4">
                   <div className=" pr-5">
-                    <div className="flex gap-5 items-center mb-5">
+                    <div className="flex gap-3 items-center mb-3">
                       <img
                         src={Logo}
                         alt=""
-                        width={"60"}
+                        width={"40"}
                         height={"20"}
                         className=""
                       />
