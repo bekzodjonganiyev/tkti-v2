@@ -15,7 +15,7 @@ import { mediaReducer } from "../pages/admin/media";
 import { form2Reducer } from "../components/form_comp2";
 import { newsReducer } from "../pages/admin/news";
 import { lidershipChildReducer, lidershipParentReducer } from "../pages/admin/lidership";
-import { faoliyatReducer } from "../pages/admin/foliyat";
+import { faoliyatChildReducer, faoliyatParentReducer } from "../pages/admin/foliyat";
 
 export const rootReducers = combineReducers({
   aboutUs: aboutUsReducer,
@@ -25,6 +25,8 @@ export const rootReducers = combineReducers({
 
   studentParent: studentParentReducer,
   studentChild: studentChildReducer,
+  faoliyatParent: faoliyatParentReducer,
+  faoliyatChild: faoliyatChildReducer,
 
   researchParent: researchParentReducer,
   researchChild: researchChildReducer,
@@ -49,5 +51,4 @@ export const rootReducers = combineReducers({
   form2: form2Reducer,
   news: newsReducer,
   employees: newsReducer,
-  faoliyat: faoliyatReducer
 });

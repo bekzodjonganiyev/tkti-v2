@@ -11,21 +11,47 @@ export const Employees = () => {
   const [data, setData] = useState({ loading: true, data: [], error: null });
 
   const selectOptions1 = [
-    { id: 'kafedra_id', value: "Kafedra", url: 'Kafedra_data/all', get: 'kafedra_hodim/all', delete: 'kafedra_hodim' },
-    { id: 'markaz_id', value: "Markaz", url: 'markaz_data/all', get: 'markaz_hodim/all',  delete: 'markaz_hodim'  },
-    { id: 'bolim_id', value: "Bo'lim", url: 'bm_data/all', get: 'bm_hodim/all',  delete: 'bm_hodim'  },
-    { id: 'fakultet_id', value: "Fakultet", url: 'Fak_data/all', get: 'Fak_hodim/all',  delete: 'Fak_hodim'  },
-  ]
-  const [ hodim, setHodim ] = useState(selectOptions1[3])
+    {
+      id: "kafedra_id",
+      value: "Kafedra",
+      url: "Kafedra_data/all",
+      get: "kafedra_hodim/all",
+      delete: "kafedra_hodim",
+    },
+    {
+      id: "markaz_id",
+      value: "Markaz",
+      url: "markaz_data/all",
+      get: "markaz_hodim/all",
+      delete: "markaz_hodim",
+    },
+    {
+      id: "bolim_id",
+      value: "Bo'lim",
+      url: "bm_data/all",
+      get: "bm_hodim/all",
+      delete: "bm_hodim",
+    },
+    {
+      id: "fakultet_id",
+      value: "Fakultet",
+      url: "Fak_data/all",
+      get: "Fak_hodim/all",
+      delete: "Fak_hodim",
+    },
+  ];
+  const [hodim, setHodim] = useState(selectOptions1[3]);
 
   const handleChange = (value) => {
-    const selectedOption = selectOptions1.find(option => option.value === value);
+    const selectedOption = selectOptions1.find(
+      (option) => option.value === value
+    );
     setHodim(selectedOption);
-    sessionStorage.setItem('hodim', JSON.stringify(selectedOption))
+    sessionStorage.setItem("hodim", JSON.stringify(selectedOption));
   };
 
-
-  const getData = async () => {``
+  const getData = async () => {
+    ``;
     const res = await apiClientWithFetch.get(hodim?.get);
     if (res.status === 200) {
       setData({
@@ -69,9 +95,7 @@ export const Employees = () => {
     {
       title: "Rasmi",
       dataIndex: "photo",
-      render: (_, p) => (
-        <Avatar src={<img src={p?.photo} alt="avatar" />}/>
-      )
+      render: (_, p) => <Avatar src={<img src={p?.photo} alt="avatar" />} />,
     },
     {
       title: "Nomi",
@@ -91,10 +115,8 @@ export const Employees = () => {
     },
     {
       title: "Sana",
-      dataIndex: 'date',
-      render: (_, p) => (
-        <span>{simplifyDateTime(p?.date)}</span>
-      )
+      dataIndex: "date",
+      render: (_, p) => <span>{simplifyDateTime(p?.date)}</span>,
     },
     {
       dataIndex: "icon",
@@ -112,8 +134,8 @@ export const Employees = () => {
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
           >
-            <button type="link"> 
-            <DeleteIcon />
+            <button type="link">
+              <DeleteIcon />
             </button>
           </Popconfirm>
         </div>
@@ -128,37 +150,43 @@ export const Employees = () => {
     tel: item?.tell,
     email: item?.email,
     date: item?.date,
-    photo: baseURL + '/' + item?.photo,
+    photo: baseURL + "/" + item?.photo,
     id: item._id,
   }));
 
   useEffect(() => {
-    setHodim(selectOptions1[3])
+    setHodim(selectOptions1[3]);
   }, []);
 
   useEffect(() => {
-    getData()
-  }, [hodim?.url])
+    getData();
+  }, [hodim?.url]);
 
   useEffect(() => {
-    sessionStorage.setItem('hodim', JSON.stringify({ id: 'fakultet_id', value: "Fakultet", url: 'Fak_data/all', get: 'Fak_hodim/all',  delete: 'Fak_hodim'  }) )
-  }, [])
+    sessionStorage.setItem(
+      "hodim",
+      JSON.stringify({
+        id: "fakultet_id",
+        value: "Fakultet",
+        url: "Fak_data/all",
+        get: "Fak_hodim/all",
+        delete: "Fak_hodim",
+      })
+    );
+  }, []);
 
   return (
     <div>
-       <Select
-            defaultValue={hodim?.value}
-            value={hodim?.value}
-            style={{
-              width: "200px",
-            }}
-            onChange={(value) => handleChange(value)}
-            options={selectOptions1}
-          />
-      <Link
-        to={"/adminPanel/employees/add"}
-        className="float-right my-2"
-      >
+      <Select
+        defaultValue={hodim?.value}
+        value={hodim?.value}
+        style={{
+          width: "200px",
+        }}
+        onChange={(value) => handleChange(value)}
+        options={selectOptions1}
+      />
+      <Link to={"/adminPanel/employees/add"} className="float-right my-2">
         <AddIcon />
       </Link>
       <Table
@@ -168,5 +196,5 @@ export const Employees = () => {
         loading={data.loading}
       />
     </div>
-  )
-}
+  );
+};

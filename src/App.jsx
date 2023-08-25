@@ -90,6 +90,8 @@ import {
 import { Faoliyat } from "./pages/admin/foliyat";
 import FaoliyatCreate from "./pages/admin/foliyat/FaoliyatCreate";
 import { FaoliyatEdit } from "./pages/admin/foliyat/edit";
+import { FaoliyatView } from "./pages/admin/foliyat/view";
+import { FaoliyatChildEdit } from "./pages/admin/foliyat/childEdit";
 
 
 function App() {
@@ -174,6 +176,8 @@ function App() {
 
           <Route path="faoliyat/add" element={<FaoliyatCreate/>} />
           <Route path="faoliyat/edit/:id" element={<FaoliyatEdit/>} />
+          <Route path="faoliyat/edit/child/:id" element={<FaoliyatChildEdit/>} />
+          <Route path="faoliyat/view/:page/:id" element={<FaoliyatView/>} />
           <Route path="faoliyat" element={<Faoliyat/>} />
 
           <Route path="education" element={<Education />} />

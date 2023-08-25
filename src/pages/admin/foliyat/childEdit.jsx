@@ -24,13 +24,15 @@ const editorInit = {
     "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | codesample code",
 };
 
-export const FaoliyatEdit = () => {
+export const FaoliyatChildEdit = () => {
   const selectorFunc = (state) => state.form2;
   const dispatch = useDispatch();
   const { id } = useParams();
   const { dataById, loading } = useSelector(selectorFunc);
   const { getDataById, putData } = new From2Actions();
   const [refresh, setRefresh] = useState(false);
+
+  console.log(dataById);
 
   const [messageApi, contextHolder] = message.useMessage();
   const key = "updatable";
@@ -44,15 +46,21 @@ export const FaoliyatEdit = () => {
   };
 
   const [qisqacha, setQisqacha] = useState({
-    uz: dataById?.about_uz,
-    ru: dataById?.about_ru,
-    en: dataById?.about_en,
+    uz: dataById?.description_uz,
+    ru: dataById?.description_ru,
+    en: dataById?.description_en,
   });
 
   const [title, setTitle] = useState({
     uz: dataById?.title_uz,
     ru: dataById?.title_ru,
     en: dataById?.title_en,
+  });
+
+  const [locationData, setLocationData] = useState({
+    uz: dataById?.location_uz,
+    ru: dataById?.location_ru,
+    en: dataById?.location_en,
   });
 
   console.log(dataById);
@@ -63,9 +71,12 @@ export const FaoliyatEdit = () => {
       title_uz: title?.uz,
       title_ru: title?.ru,
       title_en: title?.en,
-      about_en: qisqacha?.en,
-      about_ru: qisqacha?.ru,
-      about_uz: qisqacha?.uz,
+      description_en: qisqacha?.en,
+      description_ru: qisqacha?.ru,
+      description_uz: qisqacha?.uz,
+      location_en: locationData?.en,
+      location_ru: locationData?.ru,
+      location_uz: locationData?.uz,
     };
 
     const endpointData = JSON.stringify(obj);
@@ -108,7 +119,7 @@ export const FaoliyatEdit = () => {
     //   .catch((err) => console.log(err));
     dispatch(
       putData(
-        `/faoliyat/${id}`,
+        `/faoliyat_data/${dataById?.faoliyat_id}`,
         endpointData,
         // =------------- SUCCESS CALLBACK ---------------------=
         (res) => {
@@ -120,7 +131,7 @@ export const FaoliyatEdit = () => {
                 content: res?.message,
               });
               setTimeout(() => {
-                window.location.href = "/adminPanel/faoliyat";
+                window.location.href = `/adminPanel/faoliyat/edit/child/${id}`;
               }, 500);
             }, 1000);
           });
@@ -143,20 +154,25 @@ export const FaoliyatEdit = () => {
   };
 
   useEffect(() => {
-    dispatch(getDataById(`faoliyat/${id}`));
+    dispatch(getDataById(`faoliyat_data/${id}`));
   }, [refresh, id]);
 
   useEffect(() => {
     setQisqacha({
-      uz: dataById?.about_uz,
-      ru: dataById?.about_ru,
-      en: dataById?.about_en,
+      uz: dataById?.description_uz,
+      ru: dataById?.description_ru,
+      en: dataById?.description_en,
     });
 
     setTitle({
       uz: dataById?.title_uz,
       ru: dataById?.title_ru,
       en: dataById?.title_en,
+    });
+    setLocationData({
+      uz: dataById?.location_uz,
+      ru: dataById?.location_ru,
+      en: dataById?.location_en,
     });
   }, [dataById]);
 
@@ -199,6 +215,40 @@ export const FaoliyatEdit = () => {
             />
           </div>
           {/* TITLES */}
+
+
+          <div className="flex flex-col gap-1 mb-5">
+            <label htmlFor="title_uz">Manzil (UZ)</label>
+            <input
+              type="text"
+              id="title_uz"
+              name="title_uz"
+              value={locationData?.uz}
+              onChange={(e) => setTitle({ ...locationData, uz: e.target.value })}
+            />
+          </div>
+
+          <div className="flex flex-col gap-1 mb-5">
+            <label htmlFor="title_ru">Manzil (RU)</label>
+            <input
+              type="text"
+              id="title_ru"
+              name="title_ru"
+              value={locationData?.ru}
+              onChange={(e) => setTitle({ ...locationData, ru: e.target.value })}
+            />
+          </div>
+
+          <div className="flex flex-col gap-1 mb-5">
+            <label htmlFor="title_en">Manzil (EN)</label>
+            <input
+              type="text"
+              id="title_en"
+              name="title_en"
+              value={locationData?.en}
+              onChange={(e) => setTitle({ ...locationData, en: e.target.value })}
+            />
+          </div>
 
           {/* QISQACHA */}
           <div className="mt-10">
