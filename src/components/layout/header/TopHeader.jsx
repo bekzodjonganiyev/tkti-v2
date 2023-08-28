@@ -132,7 +132,7 @@ export const TopHeader = () => {
             </NavLink>
             <div className="foydali ">
               <Dropdown
-                className="border-none"
+                className="border-none z-50"
                 label={t("headerTop.3.name")}
                 inline
               >
