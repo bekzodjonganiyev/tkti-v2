@@ -239,3 +239,12 @@ summary:focus-within {
   object-fit: cover;
   height: 110px;
 }
+
+.uni-comp-body table, tbody, thead, tr, td, th{
+  border: 1px solid #02307d;
+  /* border-collapse: collapse; */
+}
+.uni-comp-body{
+  overflow-x: scroll !important;
+  scrollbar-track-color: #003b81;
+}
