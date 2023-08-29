@@ -252,6 +252,14 @@ export const Navbar = () => {
             />
           </a>
 
+          <a
+            target="_blank"
+            href="https://qabul.tkti.uz/en/application"
+            className="rounded-2xl uppercase text-sm "
+          >
+            qoshma talim
+          </a>
+
           <button className="text-3xl lg:hidden" onClick={() => setOpen(true)}>
             <ion-icon name="menu"></ion-icon>
           </button>
@@ -329,9 +337,8 @@ export const Navbar = () => {
 
           {/* Mobile header */}
           <div
-            className={`lg:hidden bg-white fixed w-full top-0 bottom-0 overflow-y-auto duration-500 z-20 py-10 ${
-              open ? "right-0" : "right-[-100%]"
-            }`}
+            className={`lg:hidden bg-white fixed w-full top-0 bottom-0 overflow-y-auto duration-500 z-20 py-10 ${open ? "right-0" : "right-[-100%]"
+              }`}
           >
             <div className="px-2 flex justify-between pr-10">
               <Link to="/" className="flex justify-center items-center">
@@ -382,9 +389,8 @@ export const Navbar = () => {
                         ></ion-icon>
                       </p>
                       <ul
-                        className={`${
-                          dropdown === item.name ? "block" : "hidden"
-                        } pl-5 `}
+                        className={`${dropdown === item.name ? "block" : "hidden"
+                          } pl-5 `}
                       >
                         {item?.sublinks?.map((subItem, idx) => (
                           <li className="my-2 list-disc" key={idx}>
