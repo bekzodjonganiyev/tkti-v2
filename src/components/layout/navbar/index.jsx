@@ -222,7 +222,7 @@ export const Navbar = () => {
           <Link to="/" className="flex  justify-between items-center">
             <img src={Logo} alt="" width={"60"} height={"20"} className="" />
             <div className={`text-[#02307d] font-bold max-md:hidden`}>
-              <div className="mx-3 ">
+              <div className="mx-3 max-[1156px]:hidden">
                 <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.0.name")}</div>
                 <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.1.name")}</div>
                 <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.2.name")}</div>
@@ -235,7 +235,7 @@ export const Navbar = () => {
             href="https://www.timeshighereducation.com/world-university-rankings/tashkent-institute-chemical-technology"
             className=" btn-glow"
           >
-            <img src={Logo2} alt="" width={"60"} height={"20"} className="" />
+            <img src={Logo2} alt="" width={"60"} height={"20"} className="max-[1156px]:w-10" />
           </a>
 
           <a
@@ -248,16 +248,16 @@ export const Navbar = () => {
               alt=""
               width={"60"}
               height={"20"}
-              className="rounded-2xl"
+              className="rounded-2xl max-[1156px]:w-10"
             />
           </a>
 
           <a
             target="_blank"
             href="https://qabul.tkti.uz/en/application"
-            className="rounded-2xl uppercase text-sm "
+            className="rounded-2xl uppercase text-center min-[1200px]:text-sm text-[11px]"
           >
-            qoshma talim
+            qo'shma <br className="max-md:block hidden" /> talim
           </a>
 
           <button className="text-3xl lg:hidden" onClick={() => setOpen(true)}>
@@ -265,7 +265,7 @@ export const Navbar = () => {
           </button>
 
           {/* Desktop header */}
-          <div className="max-lg:hidden">
+          <div className="max-lg:hidden ">
             {/*balandilik(h-6) berilganiligiga sabab hover bolganda chiqadigan
           elentning linklarni o'rab turgan wrapperning balanligiga tasir
           ko'rsatmasligi */}
