@@ -242,7 +242,7 @@ export const Navbar = () => {
             href="https://www.timeshighereducation.com/world-university-rankings/tashkent-institute-chemical-technology"
             className=" btn-glow"
           >
-            <img src={Logo2} alt="" width={"60"} height={"20"} className="" />
+            <img src={Logo2} alt="" width={"60"} height={"20"} className="max-[1156px]:w-10" />
           </a>
 
           <a
@@ -255,7 +255,7 @@ export const Navbar = () => {
               alt=""
               width={"60"}
               height={"20"}
-              className="rounded-2xl"
+              className="rounded-2xl max-[1156px]:w-10"
             />
           </a>
 
@@ -279,7 +279,7 @@ export const Navbar = () => {
           </button>
 
           {/* Desktop header */}
-          <div className="max-lg:hidden">
+          <div className="max-lg:hidden ">
             {/*balandilik(h-6) berilganiligiga sabab hover bolganda chiqadigan
           elentning linklarni o'rab turgan wrapperning balanligiga tasir
           ko'rsatmasligi */}
@@ -349,9 +349,8 @@ export const Navbar = () => {
 
           {/* Mobile header */}
           <div
-            className={`lg:hidden bg-white fixed w-full top-0 bottom-0 overflow-y-auto duration-500 z-20 py-10 ${
-              open ? "right-0" : "right-[-100%]"
-            }`}
+            className={`lg:hidden bg-white fixed w-full top-0 bottom-0 overflow-y-auto duration-500 z-20 py-10 ${open ? "right-0" : "right-[-100%]"
+              }`}
           >
             <div className="px-2 flex justify-between pr-10">
               <Link to="/" className="flex justify-center items-center">
@@ -402,9 +401,8 @@ export const Navbar = () => {
                         ></ion-icon>
                       </p>
                       <ul
-                        className={`${
-                          dropdown === item.name ? "block" : "hidden"
-                        } pl-5 `}
+                        className={`${dropdown === item.name ? "block" : "hidden"
+                          } pl-5 `}
                       >
                         {item?.sublinks?.map((subItem, idx) => (
                           <li className="my-2 list-disc" key={idx}>

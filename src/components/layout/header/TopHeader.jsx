@@ -109,7 +109,7 @@ export const TopHeader = () => {
       <Marquee className="bg-white">
       Sayt test rejimida ishlayapti 🔴 Сайт работает в тестовом режиме 🔴 The site is in test mode 
       </Marquee>
-      <div className="bg-[#26597E] max-md:px-5">
+      <div className="bg-[#26597E] max-md:px-5 ">
         <header className="container px-0 w-full flex items-center justify-between mx-auto  h-16 border-slate-600 ">
           <div className="lg:flex justify-between  text-white xl:flex hidden border-white-600 ">
             <NavLink
@@ -160,7 +160,7 @@ export const TopHeader = () => {
               />
             </form>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex md:justify-between items-center">
             <div className="lg:flex hidden justify-between items-center">
               <Link to={i18next.language + "/davlat-ramzlari"}>
                 <img src={gerb} alt="O'z. Res. gerbi" width={"50"} />
