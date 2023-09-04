@@ -9,6 +9,7 @@ import { TopHeader } from "../header/TopHeader";
 import Logo from "../../../assets/images/logo.png";
 import Logo1 from "../../../assets/images/qs-logo.png";
 import Logo2 from "../../../assets/images/the-logo.jpg";
+import Logo3 from "../../../assets/images/qoshma-talim.jpg";
 
 import { useAppContext } from "../../../context/app.context";
 import apiClientWithFetch from "../../../services/apiClientWithFetch";
@@ -16,7 +17,7 @@ import { slug } from "../../../services/slug";
 
 export { headerReducer } from "./reducer";
 export const Navbar = () => {
-  const navRef = useRef(null)
+  const navRef = useRef(null);
   const { t } = useTranslation();
   const { setIdForFetch } = useAppContext();
 
@@ -218,14 +219,20 @@ export const Navbar = () => {
     <nav className="">
       <TopHeader />
       <div className="bg-white py-3 sticky top-0 z-20" ref={navRef}>
-        <div className="container px-0 w-full flex items-center justify-between max-md:px-5 relative">
+        <div className="container px-0 w-full flex items-center justify-between max-md:gap-5 max-md:px-5 relative">
           <Link to="/" className="flex  justify-between items-center">
             <img src={Logo} alt="" width={"60"} height={"20"} className="" />
             <div className={`text-[#02307d] font-bold max-md:hidden`}>
               <div className="mx-3 ">
-                <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.0.name")}</div>
-                <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.1.name")}</div>
-                <div className="min-[1214px]:text-[14px] text-[10px]">{t("TktiName.2.name")}</div>
+                <div className="min-[1214px]:text-[14px] text-[10px]">
+                  {t("TktiName.0.name")}
+                </div>
+                <div className="min-[1214px]:text-[14px] text-[10px]">
+                  {t("TktiName.1.name")}
+                </div>
+                <div className="min-[1214px]:text-[14px] text-[10px]">
+                  {t("TktiName.2.name")}
+                </div>
               </div>
             </div>
           </Link>
@@ -252,6 +259,21 @@ export const Navbar = () => {
             />
           </a>
 
+          <a
+            target="_blank"
+            href="https://qabul.tkti.uz/uz/application"
+            className="rounded-2xl flex flex-col items-center"
+          >
+            <img
+              src={Logo3}
+              alt=""
+              width={"80"}
+              height={"30"}
+              className="rounded-2xl"
+            />
+            <p className="text-xs text-center">Qo'shma talim</p>
+          </a>
+
           <button className="text-3xl lg:hidden" onClick={() => setOpen(true)}>
             <ion-icon name="menu"></ion-icon>
           </button>
@@ -262,9 +284,7 @@ export const Navbar = () => {
           elentning linklarni o'rab turgan wrapperning balanligiga tasir
           ko'rsatmasligi */}
 
-            <ul
-              className={`flex justify-between w-[750px]`}
-            >
+            <ul className={`flex justify-between w-[750px]`}>
               {link?.map((item, id) =>
                 url.loading ? (
                   <div className="max-w-xs mx-auto p-4 " key={id}>
