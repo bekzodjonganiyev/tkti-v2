@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { Modal } from "flowbite-react";
 
 import "./style.css";
 
@@ -33,6 +34,7 @@ export const Navbar = () => {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [modal, setModal] = useState(false);
 
   // TODO - bu kodlarni optimizatsiya qilish kerak
   // const getUrls = async () => {
@@ -137,12 +139,6 @@ export const Navbar = () => {
 
   const link = [
     {
-      name: t("Header.1.name"),
-      desc: t("Institute.0.title.bir"),
-      submenu: true,
-      sublinks: url?.res2,
-    },
-    {
       name: t("Header.0.name"),
       desc: t("Institute.0.title.ikki"),
       submenu: true,
@@ -186,6 +182,12 @@ export const Navbar = () => {
       ],
     },
     {
+      name: t("Header.3.name"),
+      desc: t("Institute.0.title.olti"),
+      submenu: true,
+      sublinks: url?.res4,
+    },
+    {
       name: t("Header.4.name"),
       desc: t("Institute.0.title.uch"),
       submenu: true,
@@ -204,10 +206,10 @@ export const Navbar = () => {
       sublinks: url?.res3,
     },
     {
-      name: t("Header.3.name"),
-      desc: t("Institute.0.title.olti"),
+      name: t("Header.1.name"),
+      desc: t("Institute.0.title.bir"),
       submenu: true,
-      sublinks: url?.res4,
+      sublinks: url?.res2,
     },
   ];
 
@@ -217,6 +219,43 @@ export const Navbar = () => {
 
   return (
     <nav className="">
+      <Modal show={modal} onClose={() => setModal(false)}>
+        <Modal.Header>
+          {i18next.language === "uz" ? (
+            <p className="">2023/2024 o‘quv yili</p>
+          ) : i18next.language === "ru" ? (
+            <p className="">2023/2024 учебный год</p>
+          ) : (
+            <p className="">2023/2024 academic year</p>
+          )}
+        </Modal.Header>
+        <Modal.Body className="flex flex-col gap-5">
+          <a
+            target="_blank"
+            href="https://qabul.tkti.uz/uz/application"
+            className="text-center p-3 border rounded-md hover:bg-stone-200"
+            onClick={() => setModal(true)}
+          >
+            {i18next.language === "uz"
+              ? "Toshkent kimyo-texnologiya instituti qo'shma talim dasturi"
+              : i18next.language === "ru"
+              ? "Совместная программа обучения Ташкентского химико-технологического института"
+              : "Joint training program of the Tashkent Institute of Chemical Technology"}
+          </a>
+          <a
+            target="_blank"
+            href="#"
+            className="text-center p-3 border rounded-md hover:bg-stone-200"
+            onClick={() => setModal(true)}
+          >
+            {i18next.language === "uz"
+              ? "Toshkent kimyo-texnologiya instituti qo'shma talim dasturi (Yangiyer filiali)"
+              : i18next.language === "ru"
+              ? "Совместная программа обучения Ташкентского химико-технологического института (Янгиер ветвь)"
+              : "Joint training program of the Tashkent Institute of Chemical Technology (Yangiyer branch)"}
+          </a>
+        </Modal.Body>
+      </Modal>
       <TopHeader />
       <div className="bg-white py-3 sticky top-0 z-20" ref={navRef}>
         <div className="container px-0 w-full flex items-center justify-between max-md:gap-5 max-md:px-5 relative">
@@ -242,7 +281,13 @@ export const Navbar = () => {
             href="https://www.timeshighereducation.com/world-university-rankings/tashkent-institute-chemical-technology"
             className=" btn-glow"
           >
-            <img src={Logo2} alt="" width={"60"} height={"20"} className="max-[1156px]:w-10" />
+            <img
+              src={Logo2}
+              alt=""
+              width={"60"}
+              height={"20"}
+              className="max-[1156px]:w-10"
+            />
           </a>
 
           <a
@@ -259,10 +304,9 @@ export const Navbar = () => {
             />
           </a>
 
-          <a
-            target="_blank"
-            href="https://qabul.tkti.uz/uz/application"
+          <button
             className="rounded-2xl flex flex-col items-center"
+            onClick={() => setModal(true)}
           >
             <img
               src={Logo3}
@@ -271,8 +315,20 @@ export const Navbar = () => {
               height={"30"}
               className="rounded-2xl"
             />
-            <p className="text-xs text-center">Qo'shma talim</p>
-          </a>
+            {i18next.language === "uz" ? (
+              <p className="text-xs text-center">
+                Qo'shma talim <br /> qabul
+              </p>
+            ) : i18next.language === "ru" ? (
+              <p className="text-xs text-center">
+                Cовместные <br /> образованые
+              </p>
+            ) : (
+              <p className="text-xs text-center">
+                Double degree <br /> admission
+              </p>
+            )}
+          </button>
 
           <button className="text-3xl lg:hidden" onClick={() => setOpen(true)}>
             <ion-icon name="menu"></ion-icon>
@@ -349,8 +405,9 @@ export const Navbar = () => {
 
           {/* Mobile header */}
           <div
-            className={`lg:hidden bg-white fixed w-full top-0 bottom-0 overflow-y-auto duration-500 z-20 py-10 ${open ? "right-0" : "right-[-100%]"
-              }`}
+            className={`lg:hidden bg-white fixed w-full top-0 bottom-0 overflow-y-auto duration-500 z-20 py-10 ${
+              open ? "right-0" : "right-[-100%]"
+            }`}
           >
             <div className="px-2 flex justify-between pr-10">
               <Link to="/" className="flex justify-center items-center">
@@ -401,8 +458,9 @@ export const Navbar = () => {
                         ></ion-icon>
                       </p>
                       <ul
-                        className={`${dropdown === item.name ? "block" : "hidden"
-                          } pl-5 `}
+                        className={`${
+                          dropdown === item.name ? "block" : "hidden"
+                        } pl-5 `}
                       >
                         {item?.sublinks?.map((subItem, idx) => (
                           <li className="my-2 list-disc" key={idx}>
