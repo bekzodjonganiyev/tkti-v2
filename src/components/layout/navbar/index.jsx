@@ -244,7 +244,7 @@ export const Navbar = () => {
           </a>
           <a
             target="_blank"
-            href="#"
+            href="https://tkti-yangiyer.vercel.app/uz/application"
             className="text-center p-3 border rounded-md hover:bg-stone-200"
             onClick={() => setModal(true)}
           >
