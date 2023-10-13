@@ -106,9 +106,9 @@ export const TopHeader = () => {
 
   return (
     <>
-      <Marquee className="bg-white">
+      {/* <Marquee className="bg-white">
       Sayt test rejimida ishlayapti 🔴 Сайт работает в тестовом режиме 🔴 The site is in test mode 
-      </Marquee>
+      </Marquee> */}
       <div className="bg-[#26597E] max-md:px-5 ">
         <header className="container px-0 w-full flex items-center justify-between mx-auto  h-16 border-slate-600 ">
           <div className="lg:flex justify-between  text-white xl:flex hidden border-white-600 ">
