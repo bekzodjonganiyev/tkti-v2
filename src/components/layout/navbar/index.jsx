@@ -144,11 +144,6 @@ export const Navbar = () => {
       submenu: true,
       sublinks: [
         {
-          name: t("Institute.1.name"),
-          link: `/institut/biz-haqimiqda`,
-          id: null,
-        },
-        {
           name: t("Institute.6.name"),
           link: `/institut/korrupsiya`,
           id: null,
