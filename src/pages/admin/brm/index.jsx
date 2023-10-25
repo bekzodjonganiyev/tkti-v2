@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { AddIcon, DeleteIcon, EditIcon, ViewIcon } from "../../../assets/icons";
-import { MyInstituteParentActions } from "./actions";
+import { BrmParentActions } from "./actions";
 import { slug } from "../../../services/slug"
 
-export const MyInstitute = () => {
+export const Brm = () => {
   const dispatch = useDispatch();
 
-  const { getData, getDataById, postData, updateData, deleteData } = new MyInstituteParentActions();
+  const { getData, deleteData } = new BrmParentActions();
 
-  const selectorFunc = (state) => state.myInstituteParent;
-  const { data, dataById, loading, error } = useSelector(selectorFunc);
+  const selectorFunc = (state) => state.brmParent;
+  const { data, loading } = useSelector(selectorFunc);
 
   useEffect(() => {
     dispatch(getData());
@@ -32,7 +32,7 @@ export const MyInstitute = () => {
       dataIndex: "icon",
       render: (_, p) => (
         <div className="flex gap-4">
-          <Link to={`/adminPanel/my-tkti/view/${slug(p.name)}/${p.id}`}>
+          <Link to={`/adminPanel/brm/view/${slug(p.name)}/${p.id}`}>
             <ViewIcon />
           </Link>
           <Link to={"#"}>
@@ -42,7 +42,7 @@ export const MyInstitute = () => {
             title="Rostdan o'chirishni xoxlaysizmi?"
             description="O'chirilgan malumotlar qayta tiklanmaydi"
             onConfirm={() => dispatch(deleteData(p.id))}
-            onCancel={() => {}}
+            onCancel={() => { }}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ style: { background: "red" } }}
@@ -65,7 +65,7 @@ export const MyInstitute = () => {
   return (
     <div>
       <Link
-        to={"/adminPanel/my-tkti/add"}
+        to={"/adminPanel/brm/add"}
         className="float-right bg-cyan-500 my-2"
       >
         <AddIcon />
@@ -80,4 +80,4 @@ export const MyInstitute = () => {
   );
 };
 
-export { myInstituteParentReducer, myInstituteChildReducer } from "./reducers";
+export { brmChildReducer, brmParentReducer } from "./reducers";
