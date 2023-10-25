@@ -20,6 +20,8 @@ import {
   Mission,
   News,
   WorkPlan,
+  Brm,
+  BrmSingle,
 } from "./pages";
 import { SillabusPage } from "./components/sillabus/SillabusPage";
 import KafedraComponent from "./pages/structure/Kafedra";
@@ -74,6 +76,8 @@ function App() {
           <Route path=":lang/institut/structute/kafedra/:id" element={<TabComponent/>} />
           <Route path=":lang/institut/structute/department/:id" element={<TabComponent/>} />
           <Route path=":lang/institut/structute/center/:id" element={<TabComponent/>} />
+          <Route path=":lang/institut/brm" element={<Brm/>} />
+          <Route path=":lang/institut/brm/:name" element={<BrmSingle/>} />
 
           <Route path=":lang/faoliyat/:id" element={<SingleFaoliyat />} />
 
@@ -91,19 +95,6 @@ function App() {
           <Route path=":lang/:page/:id/"  element={<SplitterComponent><UniversalComponent /></SplitterComponent> } />
           <Route path=":lang/details/:page/:id" element={<UniversalComponent />} />
           <Route path=":lang/news/:id" element={<Details />} />
-        </Route>
-
-        <Route
-          path="adminPanel"
-          element={
-            <Suspense>
-              <ProtectedRoute>
-                <AdminLayout />
-              </ProtectedRoute>
-            </Suspense>
-          }
-        >
-          <Route index element={<h1 className="text-3xl">Dashboard</h1>} />
         </Route>
       </Routes>
     </div>

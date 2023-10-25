@@ -173,6 +173,11 @@ export const Navbar = () => {
           link: `/institut/rektorat`,
           id: null,
         },
+        {
+          name: t("Institute.14.name"),
+          link: `/institut/brm`,
+          id: null,
+        },
         ...(url?.res1 ?? []),
       ],
     },

@@ -8,16 +8,15 @@ import { Statistics } from "./statistics";
 import { UsefulLinks } from "./usefulLinks";
 import { AboutUS } from "./institut/aboutUs";
 import { ActivityDocuments } from "./institut/activitydocuments/ActivityDocuments";
-import { ContactUs} from "./institut/contactUs/ContactUs";
+import { ContactUs } from "./institut/contactUs/ContactUs";
 import { Corruption } from "./institut/corrupsion/Corrupsion";
-import { History} from "./institut/history";
-import { Mission} from "./institut/mission";
+import { History } from "./institut/history";
+import { Mission } from "./institut/mission";
 import { WorkPlan } from "./institut/workPlan";
+import { Brm } from "./brm/Brm"
+import { BrmSingle } from "./brm/BrmSingle"
 
-// import {LatestNews} from "./latest_news/LatestNews";
-// import {ActualNews} from "./actual_news/ActualNews";
-// import {VideoNews} from "./video_news/VideoNews";
-const AboutUs = lazy(() => import("./institut/about_us").then(module => ({default: module.AboutUs})))
+const AboutUs = lazy(() => import("./institut/about_us").then(module => ({ default: module.AboutUs })))
 
 
 
@@ -37,5 +36,6 @@ export {
     Statistics,
     UsefulLinks,
     WorkPlan,
-    
+    Brm,
+    BrmSingle
 }
