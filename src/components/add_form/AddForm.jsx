@@ -143,7 +143,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
             isBrm
               ? <>
                 <Form.Item
-                  name="file"
+                  name="icon"
                   valuePropName="fileList"
                   getValueFromEvent={normFile}
                 >
