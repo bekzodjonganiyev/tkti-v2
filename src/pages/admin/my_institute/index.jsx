@@ -41,7 +41,7 @@ export const MyInstitute = () => {
           <Popconfirm
             title="Rostdan o'chirishni xoxlaysizmi?"
             description="O'chirilgan malumotlar qayta tiklanmaydi"
-            onConfirm={() => dispatch(deleteData(p.id))}
+            onConfirm={() => dispatch(childAction.deleteData(p.id))}
             onCancel={() => {}}
             okText="Yes"
             cancelText="No"

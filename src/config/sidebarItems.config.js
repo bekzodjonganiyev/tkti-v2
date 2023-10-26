@@ -40,10 +40,6 @@ export const sidebarItems = [
     url: "my-tkti",
   },
   {
-    name: "Brm",
-    url: "brm",
-  },
-  {
     name: "Xalqaro aloqalar",
     url: "int_connections",
   },

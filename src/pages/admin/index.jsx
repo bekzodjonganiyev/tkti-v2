@@ -37,11 +37,6 @@ export { StudentCreate } from "./student/create";
 export { StudentChildEdit } from "./student/edit";
 export { StudentView } from "./student/view";
 
-export { Brm } from "./brm";
-export { BrmCreate } from "./brm/create";
-export { BrmChildEdit } from "./brm/edit";
-export { BrmView } from "./brm/view";
-
 export { Lidership } from "./lidership";
 export { LidershipCreate } from "./lidership/create";
 export { LidershipEdit } from "./lidership/edit";

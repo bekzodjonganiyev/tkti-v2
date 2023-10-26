@@ -48,12 +48,6 @@ import {
   ResearchChildEdit,
   ResearchView,
 
-  //Brm
-  Brm, 
-  BrmCreate,
-  BrmChildEdit,
-  BrmView,
-
   //Media
   Media,
 
@@ -211,11 +205,6 @@ function App() {
           <Route path="my-tkti/add" element={<MyInstituteCreate />} />
           <Route path="my-tkti/edit/:page/:id" element={<MyInstituteChildEdit />} />
           <Route path="my-tkti/view/:page/:id" element={<MyInstituteView />} />
-
-          <Route path="brm" element={<Brm />} />
-          <Route path="brm/add" element={<BrmCreate />} />
-          <Route path="brm/edit/:page/:id" element={<BrmChildEdit />} />
-          <Route path="brm/view/:page/:id" element={<BrmView />} />
 
           <Route path="media" element={<Media />}/>
         </Route>

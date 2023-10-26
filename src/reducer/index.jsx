@@ -9,14 +9,13 @@ import { myInstituteChildReducer, myInstituteParentReducer } from "../pages/admi
 import { studentChildReducer, studentParentReducer } from "../pages/admin/student";
 import { researchChildReducer, researchParentReducer } from "../pages/admin/research";
 import { qabulChildReducer, qabulParentReducer } from "../pages/admin/qabul";
-import { lidershipChildReducer, lidershipParentReducer } from "../pages/admin/lidership";
-import { faoliyatChildReducer, faoliyatParentReducer } from "../pages/admin/foliyat";
-import { brmChildReducer, brmParentReducer } from "../pages/admin/brm";
 
 import { userReducer } from "../pages/login/reducer";
 import { mediaReducer } from "../pages/admin/media";
 import { form2Reducer } from "../components/form_comp2";
 import { newsReducer } from "../pages/admin/news";
+import { lidershipChildReducer, lidershipParentReducer } from "../pages/admin/lidership";
+import { faoliyatChildReducer, faoliyatParentReducer } from "../pages/admin/foliyat";
 
 export const rootReducers = combineReducers({
   aboutUs: aboutUsReducer,
@@ -46,9 +45,6 @@ export const rootReducers = combineReducers({
 
   qabulChild: qabulChildReducer,
   qabulParent: qabulParentReducer,
-
-  brmChild: brmChildReducer,
-  brmParent: brmParentReducer,
 
   user: userReducer,
   media: mediaReducer,
