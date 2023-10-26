@@ -16,12 +16,12 @@ const validateMessages = {
 };
 
 const typesOfNews = [
-  { value: "yangilik", label: "Yangilik"},
-  { value: "elon", label: "Elon"},
-  { value: "video", label: "Video galeriya"},
+  { value: "yangilik", label: "Yangilik" },
+  { value: "elon", label: "Elon" },
+  { value: "video", label: "Video galeriya" },
 ]
 
-export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifCreateSuccessWhereTo }) => {
+export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifCreateSuccessWhereTo, isBrm }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [parentId, setParentId] = useState("");
   const [dateOfNew, setDateOfNew] = useState("");
@@ -53,17 +53,17 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
     fmData.append("body_uz", editor?.uz);
     fmData.append("body_ru", editor?.ru);
     fmData.append("body_en", editor?.en);
-    
+
 
     value.file?.length > 0
       ? value.file.forEach((item) => {
-          fmData.append(`${newsForm ? "photo" : "file"}`, item.originFileObj);
-        })
+        fmData.append(`${newsForm ? "photo" : "file"}`, item.originFileObj);
+      })
       : null;
     value.faq?.length > 0
       ? fmData.append("faq", value.faq)
       : null;
-    
+
     if (newsForm) {
       fmData.append("date", dateOfNew)
       fmData.append("category", category)
@@ -71,7 +71,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
       fmData.append("nameId", parentId)
     }
 
-    postChild(fmData, 
+    postChild(fmData,
       (res) => {
         openMessage(() => {
           setTimeout(() => {
@@ -97,9 +97,11 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
           }, 1000);
         });
       }
-      );
+    );
   };
+  
   const submitParent = (value) => {
+    value.icon = value.icon[0]?.originFileObj
     postParent(value);
   };
 
@@ -119,7 +121,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
   };
   return (
     <>
-    {contextHolder}
+      {contextHolder}
       <Modal
         title="Parent qo'shish"
         open={isModalOpen}
@@ -137,6 +139,27 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
           <Form.Item name={"title_en"}>
             <Input placeholder="Parent(EN)" />
           </Form.Item>
+          {
+            isBrm
+              ? <>
+                <Form.Item
+                  name="file"
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
+                >
+                  <Upload maxCount={1} name="logo" listType="picture">
+                    <Button type="default" icon={<UploadOutlined className="text-2xl" />} className="bg-red-700 text-white text-lg h-12">Rasm yuklash</Button>
+                  </Upload>
+                </Form.Item>
+                <Form.Item name={"color"}>
+                  <Input placeholder="Yo'nalish rangi" />
+                </Form.Item>
+                <Form.Item name={"order"}>
+                  <Input placeholder="Yo'nalish raqami" type="number" />
+                </Form.Item>
+              </>
+              : null
+          }
           <Form.Item>
             <Button
               className="bg-blue-600 text-white"
@@ -149,6 +172,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
           </Form.Item>
         </Form>
       </Modal>
+
       <Form
         onFinish={submitChild}
         style={{
@@ -161,7 +185,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
         <Form.Item
           name="title_uz"
           label="Name"
-          rules={[{ required: true}]}
+          rules={[{ required: true }]}
         >
           <Input />
         </Form.Item>
@@ -169,7 +193,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
         <Form.Item
           name="title_ru"
           label="Name"
-          rules={[{ required: true}]}
+          rules={[{ required: true }]}
         >
           <Input />
         </Form.Item>
@@ -177,7 +201,7 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
         <Form.Item
           name="title_en"
           label="Name"
-          rules={[{ required: true}]}
+          rules={[{ required: true }]}
         >
           <Input />
         </Form.Item>
@@ -202,38 +226,38 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
         <hr />
 
         {
-          newsForm 
-           ?  <div className="flex gap-10 w-full">
-                  <Form.Item className="mt-10 w-10/12" >
-                      <Select 
-                          placeholder="Yangilikning turini tanlang"
-                          options={typesOfNews}
-                          onChange={handleChange}
-                          allowClear
-                      />
-                  </Form.Item>
-                  <Form.Item className="mt-10 w-2/12" >
-                      <DatePicker onChange={onChange} className="w-full"/>
-                  </Form.Item>
-              </div> 
-           :  <Form.Item className="my-8">
-                  <span className="text-lg">Bo'limni tanlang</span>
-                  <div className="flex items-center gap-10">
-                    <Select value={parentId} onChange={(e) => setParentId(e)} placeholder="Bo'limni tanlang">
-                      {parents.map((item) => (
-                        <Option key={item._id} value={item._id}>
-                          {item.title_uz}
-                        </Option>
-                      ))}
-                    </Select>
-                    <Button
-                      className="my-8 bg-blue-600 text-white"
-                      onClick={() => setIsModalOpen(true)}
-                    >
-                      + Bo'lim qo'shish
-                    </Button>
-                  </div>
+          newsForm
+            ? <div className="flex gap-10 w-full">
+              <Form.Item className="mt-10 w-10/12" >
+                <Select
+                  placeholder="Yangilikning turini tanlang"
+                  options={typesOfNews}
+                  onChange={handleChange}
+                  allowClear
+                />
               </Form.Item>
+              <Form.Item className="mt-10 w-2/12" >
+                <DatePicker onChange={onChange} className="w-full" />
+              </Form.Item>
+            </div>
+            : <Form.Item className="my-8">
+              <span className="text-lg">Bo'limni tanlang</span>
+              <div className="flex items-center gap-10">
+                <Select value={parentId} onChange={(e) => setParentId(e)} placeholder="Bo'limni tanlang">
+                  {parents.map((item) => (
+                    <Option key={item._id} value={item._id}>
+                      {item.title_uz}
+                    </Option>
+                  ))}
+                </Select>
+                <Button
+                  className="my-8 bg-blue-600 text-white"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  + Bo'lim qo'shish
+                </Button>
+              </div>
+            </Form.Item>
         }
 
         <Form.Item
@@ -242,83 +266,83 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
           getValueFromEvent={normFile}
         >
           <Upload name="logo" listType="picture">
-            <Button type=" " icon={<UploadOutlined className="text-2xl"/>} className="bg-red-700 text-white text-lg h-12">Rasm yuklash</Button>
+            <Button type=" " icon={<UploadOutlined className="text-2xl" />} className="bg-red-700 text-white text-lg h-12">Rasm yuklash</Button>
           </Upload>
         </Form.Item>
 
         <div className="mb-10">
-              {state.map((item) => (
-                <div
-                  className="flex justify-between items-center gap-10 mb-10"
-                  key={item}
-                >
-                  <div className="flex flex-col gap-2 w-1/3">
-                    <input
-                      placeholder="Savol uz"
-                      className="form-control"
-                      type="text"
-                      name={`savol_uz${item}`}
-                    />
-                    <textarea
-                      placeholder="Javob uz"
-                      className="form-control"
-                      name={`javob_uz${item}`}
-                      cols="5"
-                      rows="5"
-                    ></textarea>
-                  </div>
-                  <div className="flex flex-col gap-2 w-1/3">
-                    <input
-                      placeholder="Savol ru"
-                      className="form-control"
-                      type="text"
-                      name={`savol_ru${item}`}
-                    />
-                    <textarea
-                      placeholder="Javob ru"
-                      className="form-control"
-                      name={`javob_ru${item}`}
-                      cols="5"
-                      rows="5"
-                    ></textarea>
-                  </div>
-                  <div className="flex flex-col gap-2 w-1/3">
-                    <input
-                      placeholder="Savol en"
-                      className="form-control"
-                      type="text"
-                      name={`savol_en${item}`}
-                    />
-                    <textarea
-                      placeholder="Javob en"
-                      className="form-control"
-                      name={`javob_en${item}`}
-                      cols="5"
-                      rows="5"
-                    ></textarea>
-                  </div>
-                  <span
-                    className="cursor-pointer"
-                    onClick={() => {
-                      const arr = state.filter((a) => a !== item);
-                      setState(arr);
-                    }}
-                  >
-                    <DeleteIcon />
-                  </span>
-                </div>
-              ))}
-              <div
-                className="py-2 px-[22px] bg-red-800 text-white inline mt-10 cursor-pointer rounded-md"
-                onClick={() => setState([...state, state.length + 1])}
-              >
-                Savol javob qo'shish
+          {state.map((item) => (
+            <div
+              className="flex justify-between items-center gap-10 mb-10"
+              key={item}
+            >
+              <div className="flex flex-col gap-2 w-1/3">
+                <input
+                  placeholder="Savol uz"
+                  className="form-control"
+                  type="text"
+                  name={`savol_uz${item}`}
+                />
+                <textarea
+                  placeholder="Javob uz"
+                  className="form-control"
+                  name={`javob_uz${item}`}
+                  cols="5"
+                  rows="5"
+                ></textarea>
               </div>
+              <div className="flex flex-col gap-2 w-1/3">
+                <input
+                  placeholder="Savol ru"
+                  className="form-control"
+                  type="text"
+                  name={`savol_ru${item}`}
+                />
+                <textarea
+                  placeholder="Javob ru"
+                  className="form-control"
+                  name={`javob_ru${item}`}
+                  cols="5"
+                  rows="5"
+                ></textarea>
+              </div>
+              <div className="flex flex-col gap-2 w-1/3">
+                <input
+                  placeholder="Savol en"
+                  className="form-control"
+                  type="text"
+                  name={`savol_en${item}`}
+                />
+                <textarea
+                  placeholder="Javob en"
+                  className="form-control"
+                  name={`javob_en${item}`}
+                  cols="5"
+                  rows="5"
+                ></textarea>
+              </div>
+              <span
+                className="cursor-pointer"
+                onClick={() => {
+                  const arr = state.filter((a) => a !== item);
+                  setState(arr);
+                }}
+              >
+                <DeleteIcon />
+              </span>
             </div>
+          ))}
+          <div
+            className="py-2 px-[22px] bg-red-800 text-white inline mt-10 cursor-pointer rounded-md"
+            onClick={() => setState([...state, state.length + 1])}
+          >
+            Savol javob qo'shish
+          </div>
+        </div>
 
         <Form.Item>
           <Button block htmlType="submit" className="bg-blue-600 text-white h-8">
-           <p className="h-10">Saqlash</p>
+            <p className="h-10">Saqlash</p>
           </Button>
         </Form.Item>
       </Form>
