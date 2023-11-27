@@ -99,10 +99,14 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
       }
     );
   };
-  
+
   const submitParent = (value) => {
-    value.icon = value.icon[0]?.originFileObj
-    postParent(value);
+    if (isBrm) {
+      value.icon = value.icon[0]?.originFileObj
+      postParent(value);
+    } else {
+      postParent(value);
+    }
   };
 
   const normFile = (e) => {
