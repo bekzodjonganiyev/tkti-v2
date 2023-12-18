@@ -248,9 +248,9 @@ export const AddForm = ({ parents, postParent, loading, postChild, newsForm, ifC
               <span className="text-lg">Bo'limni tanlang</span>
               <div className="flex items-center gap-10">
                 <Select value={parentId} onChange={(e) => setParentId(e)} placeholder="Bo'limni tanlang">
-                  {parents.map((item) => (
+                  {parents.map((item, id) => (
                     <Option key={item._id} value={item._id}>
-                      {item.title_uz}
+                      {id+1}{" "}{item.title_uz}
                     </Option>
                   ))}
                 </Select>
