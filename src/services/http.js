@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // export const baseURL = "https://tkti-backend-g6pbz.ondigitalocean.app"
-export const baseURL = "http://localhost:5000"
-// export const baseURL = "https://backend.tkti.uz" 
+// export const baseURL = "http://localhost:5000"
+export const baseURL = "https://backend.tkti.uz" 
 export const fetchApi = async (url, data) => {
   try {
     const res = await fetch(`${baseURL}/${url}`, data);
